@@ -1,0 +1,51 @@
+{
+  "name": "yoctolib-es",
+  "author": "Yoctopuce",
+  "description": "Yoctopuce library for EcmaScript (fully asynchronous)",
+  "version": "1.10.22592-dev.4",
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "scripts": {
+    "build": "node bin/build.js",
+    "unbuild": "node bin/build.js unbuild",
+    "set-version": "node bin/build.js set-version",
+    "make-index": "node bin/build.js make-index",
+    "babel": "babel lib --presets es2015-node,stage-3 --out-dir nodejs -s"
+  },
+  "main": "npm-index.js",
+  "map": {
+    "yoctolib-es": "."
+  },
+  "directories": {
+    "lib": "lib",
+    "bin": "bin",
+    "doc": "doc",
+    "example": "example_nodejs"
+  },
+  "dependencies": {
+    "ws": "^0.8.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.3.17",
+    "babel-preset-es2015-node": "^5.0.1",
+    "babel-preset-stage-3": "^6.3.13",
+    "jspm": "^0.16.19",
+    "semver": "^5.1.0"
+  },
+  "jspm": {
+    "registry": "npm",
+    "main": "jspm-index.js",
+    "format": "es6",
+    "directories": {
+      "lib": "lib"
+    },
+    "map": {
+      "yoctolib-es": "."
+    },
+    "dependencies": {},
+    "devDependencies": {
+      "babel": "babel-core@^5.8.24",
+      "babel-runtime": "^5.8.24",
+      "core-js": "^1.1.4"
+    }
+  }
+}
