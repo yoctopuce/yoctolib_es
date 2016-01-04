@@ -47,11 +47,11 @@ WARRANTY, OR OTHERWISE.
 * **config.js**
 	jspm's configuration file file
 * **yoctolib-es.js**
-	Root file for Javascript package manager
+	Root file for jspm package (for running examples locally)
 * **LICENCE.txt**
 	Yoctopuce Licence
 * **npm-index.js**
-	Root file for vanilla node.js (index to pre-transpiled file)
+	Root file for vanilla node.js (pointing to pre-transpiled bundle)
 * **package.json**
 	npm's package file
 

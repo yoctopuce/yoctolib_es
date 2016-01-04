@@ -42,8 +42,8 @@ function makeIndex()
             }
         }
     });
-    fs.writeFileSync("yoctolib-es.js", index, 'utf-8');
-    console.log('yoctolib-es.js index file has been recreated')
+    fs.writeFileSync("lib/index.js", index, 'utf-8');
+    console.log('index.js file has been updated')
 }
 
 function setVersion(str_newver)
@@ -111,7 +111,7 @@ function build()
     runBabel();
     console.log('Creating yoctolib-jspm bundle');
     jspm.setPackagePath('.');
-    jspm.bundle('yoctolib-es.js', 'bundles/yoctolib-jspm.js', bundleOptions)
+    jspm.bundle('lib/index.js', 'bundles/yoctolib-jspm.js', bundleOptions)
     .then(function() { console.log('yoctolib-jspm bundle created, jspm will use pre-transpiled file'); })
     .catch(function(err) { console.log(err); });
 }

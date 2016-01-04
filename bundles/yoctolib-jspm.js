@@ -13004,7 +13004,7 @@ System.register('lib/yocto_api.js', ['npm:babel-runtime@5.8.34/helpers/class-cal
                         return _regeneratorRuntime.async(function GetAPIVersion$(context$2$0) {
                             while (1) switch (context$2$0.prev = context$2$0.next) {
                                 case 0:
-                                    return context$2$0.abrupt('return', '1.10.22592-dev.4');
+                                    return context$2$0.abrupt('return', '1.10.22592-dev.6');
 
                                 case 1:
                                 case 'end':
@@ -14612,7 +14612,7 @@ System.register('lib/yocto_anbutton.js', ['npm:babel-runtime@5.8.34/helpers/get'
         }
     };
 });
-System.register('yoctolib-es.js', ['lib/yocto_api.js', 'lib/yocto_anbutton.js'], function (_export) {
+System.register('lib/index.js', ['lib/yocto_api.js', 'lib/yocto_anbutton.js'], function (_export) {
   'use strict';
 
   return {

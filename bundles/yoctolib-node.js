@@ -1,4 +1,32 @@
-/*********************************************************************
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _yocto_api = require('lib/yocto_api');
+
+for (let _key in _yocto_api) {
+  if (_key === "default") continue;
+  Object.defineProperty(exports, _key, {
+    enumerable: true,
+    get: function () {
+      return _yocto_api[_key];
+    }
+  });
+}
+
+var _yocto_anbutton = require('lib/yocto_anbutton');
+
+for (let _key2 in _yocto_anbutton) {
+  if (_key2 === "default") continue;
+  Object.defineProperty(exports, _key2, {
+    enumerable: true,
+    get: function () {
+      return _yocto_anbutton[_key2];
+    }
+  });
+}/*********************************************************************
  *
  * $Id: pic24config.php 22503 2015-12-22 15:34:43Z mvuilleu $
  *
@@ -9953,7 +9981,7 @@ class YAPIContext {
      */
     GetAPIVersion() {
         return _asyncToGenerator(function* () {
-            return (/* version number patched automatically */'1.10.22592-dev.4'
+            return (/* version number patched automatically */'1.10.22592-dev.6'
             );
         })();
     }
