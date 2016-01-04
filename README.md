@@ -43,22 +43,22 @@ WARRANTY, OR OTHERWISE.
 * **example_node/**
 	Directory with examples that run on node.js
 * **lib/**
-	Source code of the library (in Javascript)
+	Source code of the library (in EcmaScript 2015 + async/await)
 * **config.js**
-	jspm's package file
-* **jspm-index.js**
+	jspm's configuration file file
+* **yoctolib-es.js**
 	Root file for Javascript package manager
-* **LICENCE.TXT**
+* **LICENCE.txt**
 	Yoctopuce Licence
 * **npm-index.js**
-	Root file for node package manager
+	Root file for vanilla node.js (index to pre-transpiled file)
 * **package.json**
 	npm's package file
 
 
 ## Installation
 
-Start by installing Node.Js for your system, because you'll need it to install jspm. It's very easy, under Windows you
+Start by installing Node.js for your system, because you'll need it to install jspm. It's very easy, under Windows you
 only have to run the installer and that's it. Make sure to install it fully, including npm, and add it to the system
 path. Now, you must install jspm on the machine. You can do this very easily with an npm command:
 ```bash

@@ -4,6 +4,14 @@
   "description": "Yoctopuce library for EcmaScript (fully asynchronous)",
   "version": "1.10.22592-dev.4",
   "license": "SEE LICENSE IN LICENSE.txt",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/yoctopuce/yoctolib_es.git"
+  },
+  "bugs" : {
+    "url" : "https://github.com/yoctopuce/yoctolib_es/issues"
+  },
+  "keywords" : [ "Yoctopuce", "EcmaScript" ],
   "scripts": {
     "build": "node bin/build.js",
     "unbuild": "node bin/build.js unbuild",
