@@ -1,5 +1,5 @@
 "use strict";
-var yoctolib = require('../../npm-index');
+var yoctolib = require('../../yoctolib-node');
 var YAPI = yoctolib.YAPI;
 var YErrorMsg = yoctolib.YErrorMsg;
 var YAnButton = yoctolib.YAnButton;

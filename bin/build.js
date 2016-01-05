@@ -33,19 +33,17 @@ var babel = require('babel-core');
 function makeIndex()
 {
     // generate index files that includes support for all Yoctopuce functions
-    // - lib/index.js is used when loading module from github using jspm
+    // - yoctolib-es/index.js is used when loading module from github using jspm
     // - yoctolib-es.js us used when loading module locally (within examples)
-    var locindex = 'export * from \'lib/yocto_api\'\n';
-    var libindex = 'export * from \'yoctolib-es/yocto_api\'\n';
-    var lib = resolve(__dirname, '../lib/');
+    var index = 'export * from \'yoctolib-es/yocto_api\'\n';
+    var lib = resolve(__dirname, '../yoctolib-es/');
     fs.readdirSync(lib).forEach(function (mod) {
         if (mod.length > 3 && mod.slice(-3) == '.js' && mod != 'index.js') {
-            locindex += 'export * from \'lib/' + mod.slice(0, -3) + '\'\n';
-            libindex += 'export * from \'yoctolib-es/' + mod.slice(0, -3) + '\'\n';
+            index += 'export * from \'yoctolib-es/' + mod.slice(0, -3) + '\'\n';
         }
     });
-    fs.writeFileSync("yoctolib-es.js", locindex, 'utf-8');
-    fs.writeFileSync("lib/index.js", libindex, 'utf-8');
+    fs.writeFileSync("yoctolib-es.js", index, 'utf-8');
+    fs.writeFileSync("yoctolib-es/index.js", index, 'utf-8');
     console.log('index files have been updated')
 }
 
@@ -71,7 +69,7 @@ function setVersion(str_newver)
 
     // update version number in yocto_api.js
     var pattern = '/* version number patched automatically */';
-    var jsFile = fs.readFileSync('lib/yocto_api.js');
+    var jsFile = fs.readFileSync('yoctolib-es/yocto_api.js');
     var pos = jsFile.indexOf(pattern);
     if(pos < 0) {
         console.log('*** Warning, cannot patch yocto_api.js, pattern not found !');
@@ -83,15 +81,14 @@ function setVersion(str_newver)
         jsFile.copy(res, 0, 0, pos);
         res.write(patch, pos);
         jsFile.copy(res, pos + patch.length, endMark);
-        fs.writeFileSync('lib/yocto_api.js', res);
+        fs.writeFileSync('yoctolib-es/yocto_api.js', res);
     }
 }
 
 function runBabel()
 {
     // generate an node.js bundle file that includes support for all Yoctopuce functions
-    var bundle = '';
-    var lib = resolve(__dirname, '../lib/');
+    var lib = resolve(__dirname, '../yoctolib-es/');
     var babel_options = {
         'plugins': [
             "transform-strict-mode",
@@ -106,24 +103,23 @@ function runBabel()
     };
     fs.readdirSync(lib).forEach(function (mod) {
         if (mod.length > 3 && mod.slice(-3) == '.js') {
-            var res = babel.transformFileSync('lib/'+mod, babel_options);
-            bundle += res.code + '\n';
+            var res = babel.transformFileSync('yoctolib-es/'+mod, babel_options);
+            fs.writeFileSync('yoctolib-node/'+mod, res.code + '\n', 'utf-8');
         }
     });
-    fs.writeFileSync("bundles/yoctolib-node.js", bundle, 'utf-8');
-    console.log('yoctolib-node.js file has been recreated')
+    console.log('yoctolib-node version has been updated')
 }
 
 function build()
 {
     var bundleOptions = { sourceMaps: true, lowResSourceMaps: false, minify: false, inject:true };
     console.log('Please be patient, this can take a few minutes...');
-    console.log('Creating yoctolib-node.js bundle');
+    console.log('Creating pre-transpiled files');
     runBabel();
-    console.log('Creating yoctolib-jspm bundle');
+    console.log('Creating yoctolib-es bundle');
     jspm.setPackagePath('.');
-    jspm.bundle('yoctolib-es', 'bundles/yoctolib-jspm.js', bundleOptions)
-    .then(function() { console.log('yoctolib-jspm bundle created, jspm will use pre-transpiled file'); })
+    jspm.bundle('yoctolib-es', 'bundles/yoctolib-es.js', bundleOptions)
+    .then(function() { console.log('yoctolib-es bundle created, jspm will use pre-transpiled file'); })
     .catch(function(err) { console.log(err); });
 }
 

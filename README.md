@@ -42,14 +42,18 @@ WARRANTY, OR OTHERWISE.
 	Directory with examples that run into a web browser
 * **example_node/**
 	Directory with examples that run on node.js
-* **lib/**
-	Source code of the library (in EcmaScript 2015 + async/await)
 * **config.js**
 	jspm's configuration file file
 * **LICENCE.txt**
 	Yoctopuce Licence
-* **npm-index.js**
-	Root file for vanilla node.js (pointing to pre-transpiled bundle)
+* **yoctolib-es.js**
+	Root file for the library (in EcmaScript 2015 + async/await)
+* **yoctolib-es/**
+	Source code of the library (in EcmaScript 2015 + async/await)
+* **yoctolib-node.js**
+	Root file for vanilla node.js library (pointing to pre-transpiled files)
+* **yoctolib-node/**
+	Pre-transpiled library files
 * **package.json**
 	npm's package file
 

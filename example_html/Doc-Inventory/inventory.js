@@ -1,4 +1,4 @@
-import { YAPI, YFunction, YModule, YSensor, YErrorMsg } from 'lib/yocto_api';
+import { YAPI, YFunction, YModule, YSensor, YErrorMsg } from 'yoctolib-es';
 
 async function startDemo()
 {

@@ -1,4 +1,4 @@
-import { YAPI, YAPIContext, YFunction, YModule, YSensor, YErrorMsg, yGetTickCount } from 'lib/yocto_api';
+import { YAPI, YAPIContext, YFunction, YModule, YSensor, YErrorMsg, yGetTickCount } from 'yoctolib-es';
 
 var WebSocketServer = System._nodeRequire('ws').Server;
 
