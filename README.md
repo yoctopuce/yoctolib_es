@@ -46,8 +46,6 @@ WARRANTY, OR OTHERWISE.
 	Source code of the library (in EcmaScript 2015 + async/await)
 * **config.js**
 	jspm's configuration file file
-* **yoctolib-es.js**
-	Root file for jspm package (for running examples locally)
 * **LICENCE.txt**
 	Yoctopuce Licence
 * **npm-index.js**

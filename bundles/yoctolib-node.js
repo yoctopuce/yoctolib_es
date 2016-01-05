@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _yocto_api = require('lib/yocto_api');
+var _yocto_api = require('yoctolib-es/yocto_api');
 
 for (let _key in _yocto_api) {
   if (_key === "default") continue;
@@ -16,7 +16,7 @@ for (let _key in _yocto_api) {
   });
 }
 
-var _yocto_anbutton = require('lib/yocto_anbutton');
+var _yocto_anbutton = require('yoctolib-es/yocto_anbutton');
 
 for (let _key2 in _yocto_anbutton) {
   if (_key2 === "default") continue;
@@ -9981,7 +9981,7 @@ class YAPIContext {
      */
     GetAPIVersion() {
         return _asyncToGenerator(function* () {
-            return (/* version number patched automatically */'1.10.22592-dev.6'
+            return (/* version number patched automatically */'1.10.22592-dev.23'
             );
         })();
     }

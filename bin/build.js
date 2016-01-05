@@ -32,18 +32,23 @@ var babel = require('babel-core');
 
 function makeIndex()
 {
-    // generate an index.js file that includes support for all Yoctopuce functions
-    var index = 'export * from \'lib/yocto_api\'\n';
+    // generate index files that includes support for all Yoctopuce functions
+    // - lib/index.js is used when loading module from github using jspm
+    // - yoctolib-es.js us used when loading module locally (within examples)
+    var locindex = 'export * from \'lib/yocto_api\'\n';
+    var libindex = 'export * from \'yoctolib-es/yocto_api\'\n';
     var lib = resolve(__dirname, '../lib/');
     fs.readdirSync(lib).forEach(function (mod) {
         if (mod.length > 3 && mod.slice(-3) == '.js') {
             if(mod == 'yocto_anbutton.js') {
-                index += 'export * from \'lib/' + mod.slice(0, -3) + '\'\n';
+                locindex += 'export * from \'lib/' + mod.slice(0, -3) + '\'\n';
+                libindex += 'export * from \'yoctolib-es/' + mod.slice(0, -3) + '\'\n';
             }
         }
     });
-    fs.writeFileSync("lib/index.js", index, 'utf-8');
-    console.log('index.js file has been updated')
+    fs.writeFileSync("yoctolib-es.js", locindex, 'utf-8');
+    fs.writeFileSync("lib/index.js", libindex, 'utf-8');
+    console.log('index files have been updated')
 }
 
 function setVersion(str_newver)
@@ -111,7 +116,7 @@ function build()
     runBabel();
     console.log('Creating yoctolib-jspm bundle');
     jspm.setPackagePath('.');
-    jspm.bundle('lib/index.js', 'bundles/yoctolib-jspm.js', bundleOptions)
+    jspm.bundle('yoctolib-es', 'bundles/yoctolib-jspm.js', bundleOptions)
     .then(function() { console.log('yoctolib-jspm bundle created, jspm will use pre-transpiled file'); })
     .catch(function(err) { console.log(err); });
 }
