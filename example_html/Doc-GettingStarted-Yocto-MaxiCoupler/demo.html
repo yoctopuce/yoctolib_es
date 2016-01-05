@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello World</title>
+    <script src='../../jspm_packages/system.js'></script>
+    <script src='../../config.js'></script>
+    <script>
+        System.import('example_html/Doc-GettingStarted-Yocto-MaxiCoupler/demo')
+                .then((demo) => { window.sw = demo.sw; });
+    </script>
+</head>
+<body>
+ Module to use: <input id='serial'>
+ <input id='msg' style='color:red;border:none;' readonly><br>
+ Relay1 <a href='javascript:sw(1,0);' >OFF</a> / <a href='javascript:sw(1,1);'>ON</a><br>
+ Relay2 <a href='javascript:sw(2,0);' >OFF</a> / <a href='javascript:sw(2,1);'>ON</a><br>
+ Relay3 <a href='javascript:sw(3,0);' >OFF</a> / <a href='javascript:sw(3,1);'>ON</a><br>
+ Relay4 <a href='javascript:sw(4,0);' >OFF</a> / <a href='javascript:sw(4,1);'>ON</a><br>
+ Relay5 <a href='javascript:sw(5,0);' >OFF</a> / <a href='javascript:sw(5,1);'>ON</a><br>
+ Relay6 <a href='javascript:sw(6,0);' >OFF</a> / <a href='javascript:sw(6,1);'>ON</a><br>
+ Relay7 <a href='javascript:sw(7,0);' >OFF</a> / <a href='javascript:sw(7,1);'>ON</a><br>
+ Relay8 <a href='javascript:sw(8,0);' >OFF</a> / <a href='javascript:sw(8,1);'>ON</a><br>
+</body>
+</html>

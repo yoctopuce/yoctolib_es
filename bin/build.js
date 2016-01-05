@@ -39,11 +39,9 @@ function makeIndex()
     var libindex = 'export * from \'yoctolib-es/yocto_api\'\n';
     var lib = resolve(__dirname, '../lib/');
     fs.readdirSync(lib).forEach(function (mod) {
-        if (mod.length > 3 && mod.slice(-3) == '.js') {
-            if(mod == 'yocto_anbutton.js') {
-                locindex += 'export * from \'lib/' + mod.slice(0, -3) + '\'\n';
-                libindex += 'export * from \'yoctolib-es/' + mod.slice(0, -3) + '\'\n';
-            }
+        if (mod.length > 3 && mod.slice(-3) == '.js' && mod != 'index.js') {
+            locindex += 'export * from \'lib/' + mod.slice(0, -3) + '\'\n';
+            libindex += 'export * from \'yoctolib-es/' + mod.slice(0, -3) + '\'\n';
         }
     });
     fs.writeFileSync("yoctolib-es.js", locindex, 'utf-8');
@@ -95,13 +93,21 @@ function runBabel()
     var bundle = '';
     var lib = resolve(__dirname, '../lib/');
     var babel_options = {
-        'presets': ['es2015-node','stage-3'],
+        'plugins': [
+            "transform-strict-mode",
+            "transform-es2015-parameters",
+            "transform-es2015-destructuring",
+            "transform-es2015-typeof-symbol",
+            "transform-es2015-modules-commonjs",
+            "transform-es2015-object-super",
+            "transform-async-to-generator"
+        ],
         'compact': false
     };
     fs.readdirSync(lib).forEach(function (mod) {
         if (mod.length > 3 && mod.slice(-3) == '.js') {
             var res = babel.transformFileSync('lib/'+mod, babel_options);
-            bundle += res.code;
+            bundle += res.code + '\n';
         }
     });
     fs.writeFileSync("bundles/yoctolib-node.js", bundle, 'utf-8');
