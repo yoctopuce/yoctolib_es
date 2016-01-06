@@ -1031,7 +1031,7 @@ export class YNetwork extends YFunction
      */
     static FindNetwork(func)
     {
-        /** @type {YNetwork} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCache('Network', func);
         if (obj == null) {
@@ -1067,7 +1067,7 @@ export class YNetwork extends YFunction
      */
     static FindNetworkInContext(yctx,func)
     {
-        /** @type {YNetwork} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCacheInContext(yctx,  'Network', func);
         if (obj == null) {
@@ -1139,7 +1139,7 @@ export class YNetwork extends YFunction
      *         a network interface currently online, or a null pointer
      *         if there are no more network interfaces to enumerate.
      */
-    /* */ nextNetwork()
+    nextNetwork()
     {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
@@ -1192,7 +1192,27 @@ export class YNetwork extends YFunction
 //--- (Network functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a network interface for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the network interface is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YNetwork.isOnline() to test if the network interface is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a network interface by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the network interface
+ *
+ * @return {YNetwork} a YNetwork object allowing you to drive the network interface.
  */
 export function yFindNetwork(func)
 {
@@ -1200,7 +1220,13 @@ export function yFindNetwork(func)
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of network interfaces currently accessible.
+ * Use the method YNetwork.nextNetwork() to iterate on
+ * next network interfaces.
+ *
+ * @return {YNetwork} a pointer to a YNetwork object, corresponding to
+ *         the first network interface currently online, or a null pointer
+ *         if there are none.
  */
 export function yFirstNetwork()
 {

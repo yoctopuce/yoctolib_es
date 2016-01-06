@@ -273,7 +273,7 @@ class YCurrentLoopOutput extends _yocto_api.YFunction {
      * @return {YCurrentLoopOutput} a YCurrentLoopOutput object allowing you to drive the 4-20mA output.
      */
     static FindCurrentLoopOutput(func) {
-        /** @type {YCurrentLoopOutput} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('CurrentLoopOutput', func);
         if (obj == null) {
@@ -308,7 +308,7 @@ class YCurrentLoopOutput extends _yocto_api.YFunction {
      * @return {YCurrentLoopOutput} a YCurrentLoopOutput object allowing you to drive the 4-20mA output.
      */
     static FindCurrentLoopOutputInContext(yctx, func) {
-        /** @type {YCurrentLoopOutput} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'CurrentLoopOutput', func);
         if (obj == null) {
@@ -353,7 +353,7 @@ class YCurrentLoopOutput extends _yocto_api.YFunction {
      *         a 4-20mA output currently online, or a null pointer
      *         if there are no more 4-20mA outputs to enumerate.
      */
-    /* */nextCurrentLoopOutput() {
+    nextCurrentLoopOutput() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -403,7 +403,27 @@ class YCurrentLoopOutput extends _yocto_api.YFunction {
 exports.YCurrentLoopOutput = YCurrentLoopOutput; //--- (CurrentLoopOutput functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a 4-20mA output for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the 4-20mA output is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YCurrentLoopOutput.isOnline() to test if the 4-20mA output is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a 4-20mA output by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the 4-20mA output
+ *
+ * @return {YCurrentLoopOutput} a YCurrentLoopOutput object allowing you to drive the 4-20mA output.
  */
 
 function yFindCurrentLoopOutput(func) {
@@ -411,7 +431,13 @@ function yFindCurrentLoopOutput(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of 4-20mA outputs currently accessible.
+ * Use the method YCurrentLoopOutput.nextCurrentLoopOutput() to iterate on
+ * next 4-20mA outputs.
+ *
+ * @return {YCurrentLoopOutput} a pointer to a YCurrentLoopOutput object, corresponding to
+ *         the first 4-20mA output currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstCurrentLoopOutput() {
     return YCurrentLoopOutput.FirstCurrentLoopOutput();

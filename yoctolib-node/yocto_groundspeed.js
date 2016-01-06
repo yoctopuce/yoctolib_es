@@ -99,7 +99,7 @@ class YGroundSpeed extends _yocto_api.YSensor {
      * @return {YGroundSpeed} a YGroundSpeed object allowing you to drive the ground speed sensor.
      */
     static FindGroundSpeed(func) {
-        /** @type {YGroundSpeed} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('GroundSpeed', func);
         if (obj == null) {
@@ -134,7 +134,7 @@ class YGroundSpeed extends _yocto_api.YSensor {
      * @return {YGroundSpeed} a YGroundSpeed object allowing you to drive the ground speed sensor.
      */
     static FindGroundSpeedInContext(yctx, func) {
-        /** @type {YGroundSpeed} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'GroundSpeed', func);
         if (obj == null) {
@@ -151,7 +151,7 @@ class YGroundSpeed extends _yocto_api.YSensor {
      *         a ground speed sensor currently online, or a null pointer
      *         if there are no more ground speed sensors to enumerate.
      */
-    /* */nextGroundSpeed() {
+    nextGroundSpeed() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -201,7 +201,27 @@ class YGroundSpeed extends _yocto_api.YSensor {
 exports.YGroundSpeed = YGroundSpeed; //--- (GroundSpeed functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a ground speed sensor for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the ground speed sensor is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YGroundSpeed.isOnline() to test if the ground speed sensor is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a ground speed sensor by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the ground speed sensor
+ *
+ * @return {YGroundSpeed} a YGroundSpeed object allowing you to drive the ground speed sensor.
  */
 
 function yFindGroundSpeed(func) {
@@ -209,7 +229,13 @@ function yFindGroundSpeed(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of ground speed sensors currently accessible.
+ * Use the method YGroundSpeed.nextGroundSpeed() to iterate on
+ * next ground speed sensors.
+ *
+ * @return {YGroundSpeed} a pointer to a YGroundSpeed object, corresponding to
+ *         the first ground speed sensor currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstGroundSpeed() {
     return YGroundSpeed.FirstGroundSpeed();

@@ -290,7 +290,7 @@ class YAudioOut extends _yocto_api.YFunction {
      * @return {YAudioOut} a YAudioOut object allowing you to drive the audio output.
      */
     static FindAudioOut(func) {
-        /** @type {YAudioOut} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('AudioOut', func);
         if (obj == null) {
@@ -325,7 +325,7 @@ class YAudioOut extends _yocto_api.YFunction {
      * @return {YAudioOut} a YAudioOut object allowing you to drive the audio output.
      */
     static FindAudioOutInContext(yctx, func) {
-        /** @type {YAudioOut} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'AudioOut', func);
         if (obj == null) {
@@ -342,7 +342,7 @@ class YAudioOut extends _yocto_api.YFunction {
      *         an audio output currently online, or a null pointer
      *         if there are no more audio outputs to enumerate.
      */
-    /* */nextAudioOut() {
+    nextAudioOut() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -392,7 +392,27 @@ class YAudioOut extends _yocto_api.YFunction {
 exports.YAudioOut = YAudioOut; //--- (AudioOut functions)
 
 /**
- * comment from .yc definition
+ * Retrieves an audio output for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the audio output is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YAudioOut.isOnline() to test if the audio output is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * an audio output by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the audio output
+ *
+ * @return {YAudioOut} a YAudioOut object allowing you to drive the audio output.
  */
 
 function yFindAudioOut(func) {
@@ -400,7 +420,13 @@ function yFindAudioOut(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of audio outputs currently accessible.
+ * Use the method YAudioOut.nextAudioOut() to iterate on
+ * next audio outputs.
+ *
+ * @return {YAudioOut} a pointer to a YAudioOut object, corresponding to
+ *         the first audio output currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstAudioOut() {
     return YAudioOut.FirstAudioOut();

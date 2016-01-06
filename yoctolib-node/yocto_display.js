@@ -1237,7 +1237,7 @@ class YDisplay extends _yocto_api.YFunction {
      * @return {YDisplay} a YDisplay object allowing you to drive the display.
      */
     static FindDisplay(func) {
-        /** @type {YDisplay} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('Display', func);
         if (obj == null) {
@@ -1272,7 +1272,7 @@ class YDisplay extends _yocto_api.YFunction {
      * @return {YDisplay} a YDisplay object allowing you to drive the display.
      */
     static FindDisplayInContext(yctx, func) {
-        /** @type {YDisplay} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Display', func);
         if (obj == null) {
@@ -1498,7 +1498,7 @@ class YDisplay extends _yocto_api.YFunction {
      *         a display currently online, or a null pointer
      *         if there are no more displays to enumerate.
      */
-    /* */nextDisplay() {
+    nextDisplay() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -1615,7 +1615,27 @@ class YDisplay extends _yocto_api.YFunction {
 exports.YDisplay = YDisplay; //--- (generated code: Display functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a display for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the display is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YDisplay.isOnline() to test if the display is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a display by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the display
+ *
+ * @return {YDisplay} a YDisplay object allowing you to drive the display.
  */
 
 function yFindDisplay(func) {
@@ -1623,7 +1643,13 @@ function yFindDisplay(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of displays currently accessible.
+ * Use the method YDisplay.nextDisplay() to iterate on
+ * next displays.
+ *
+ * @return {YDisplay} a pointer to a YDisplay object, corresponding to
+ *         the first display currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstDisplay() {
     return YDisplay.FirstDisplay();

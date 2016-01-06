@@ -174,7 +174,7 @@ export class YHumidity extends YSensor
      */
     static FindHumidity(func)
     {
-        /** @type {YHumidity} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCache('Humidity', func);
         if (obj == null) {
@@ -210,7 +210,7 @@ export class YHumidity extends YSensor
      */
     static FindHumidityInContext(yctx,func)
     {
-        /** @type {YHumidity} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCacheInContext(yctx,  'Humidity', func);
         if (obj == null) {
@@ -227,7 +227,7 @@ export class YHumidity extends YSensor
      *         a humidity sensor currently online, or a null pointer
      *         if there are no more humidity sensors to enumerate.
      */
-    /* */ nextHumidity()
+    nextHumidity()
     {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
@@ -280,7 +280,27 @@ export class YHumidity extends YSensor
 //--- (Humidity functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a humidity sensor for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the humidity sensor is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YHumidity.isOnline() to test if the humidity sensor is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a humidity sensor by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the humidity sensor
+ *
+ * @return {YHumidity} a YHumidity object allowing you to drive the humidity sensor.
  */
 export function yFindHumidity(func)
 {
@@ -288,7 +308,13 @@ export function yFindHumidity(func)
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of humidity sensors currently accessible.
+ * Use the method YHumidity.nextHumidity() to iterate on
+ * next humidity sensors.
+ *
+ * @return {YHumidity} a pointer to a YHumidity object, corresponding to
+ *         the first humidity sensor currently online, or a null pointer
+ *         if there are none.
  */
 export function yFirstHumidity()
 {

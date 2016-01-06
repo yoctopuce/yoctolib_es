@@ -198,7 +198,7 @@ class YMagnetometer extends _yocto_api.YSensor {
      * @return {YMagnetometer} a YMagnetometer object allowing you to drive the magnetometer.
      */
     static FindMagnetometer(func) {
-        /** @type {YMagnetometer} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('Magnetometer', func);
         if (obj == null) {
@@ -233,7 +233,7 @@ class YMagnetometer extends _yocto_api.YSensor {
      * @return {YMagnetometer} a YMagnetometer object allowing you to drive the magnetometer.
      */
     static FindMagnetometerInContext(yctx, func) {
-        /** @type {YMagnetometer} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Magnetometer', func);
         if (obj == null) {
@@ -250,7 +250,7 @@ class YMagnetometer extends _yocto_api.YSensor {
      *         a magnetometer currently online, or a null pointer
      *         if there are no more magnetometers to enumerate.
      */
-    /* */nextMagnetometer() {
+    nextMagnetometer() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -300,7 +300,27 @@ class YMagnetometer extends _yocto_api.YSensor {
 exports.YMagnetometer = YMagnetometer; //--- (Magnetometer functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a magnetometer for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the magnetometer is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YMagnetometer.isOnline() to test if the magnetometer is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a magnetometer by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the magnetometer
+ *
+ * @return {YMagnetometer} a YMagnetometer object allowing you to drive the magnetometer.
  */
 
 function yFindMagnetometer(func) {
@@ -308,7 +328,13 @@ function yFindMagnetometer(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of magnetometers currently accessible.
+ * Use the method YMagnetometer.nextMagnetometer() to iterate on
+ * next magnetometers.
+ *
+ * @return {YMagnetometer} a pointer to a YMagnetometer object, corresponding to
+ *         the first magnetometer currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstMagnetometer() {
     return YMagnetometer.FirstMagnetometer();

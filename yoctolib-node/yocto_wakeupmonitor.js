@@ -357,7 +357,7 @@ class YWakeUpMonitor extends _yocto_api.YFunction {
      * @return {YWakeUpMonitor} a YWakeUpMonitor object allowing you to drive the monitor.
      */
     static FindWakeUpMonitor(func) {
-        /** @type {YWakeUpMonitor} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('WakeUpMonitor', func);
         if (obj == null) {
@@ -392,7 +392,7 @@ class YWakeUpMonitor extends _yocto_api.YFunction {
      * @return {YWakeUpMonitor} a YWakeUpMonitor object allowing you to drive the monitor.
      */
     static FindWakeUpMonitorInContext(yctx, func) {
-        /** @type {YWakeUpMonitor} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'WakeUpMonitor', func);
         if (obj == null) {
@@ -518,7 +518,7 @@ class YWakeUpMonitor extends _yocto_api.YFunction {
      *         a monitor currently online, or a null pointer
      *         if there are no more monitors to enumerate.
      */
-    /* */nextWakeUpMonitor() {
+    nextWakeUpMonitor() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -568,7 +568,27 @@ class YWakeUpMonitor extends _yocto_api.YFunction {
 exports.YWakeUpMonitor = YWakeUpMonitor; //--- (WakeUpMonitor functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a monitor for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the monitor is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YWakeUpMonitor.isOnline() to test if the monitor is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a monitor by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the monitor
+ *
+ * @return {YWakeUpMonitor} a YWakeUpMonitor object allowing you to drive the monitor.
  */
 
 function yFindWakeUpMonitor(func) {
@@ -576,7 +596,13 @@ function yFindWakeUpMonitor(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of monitors currently accessible.
+ * Use the method YWakeUpMonitor.nextWakeUpMonitor() to iterate on
+ * next monitors.
+ *
+ * @return {YWakeUpMonitor} a pointer to a YWakeUpMonitor object, corresponding to
+ *         the first monitor currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstWakeUpMonitor() {
     return YWakeUpMonitor.FirstWakeUpMonitor();

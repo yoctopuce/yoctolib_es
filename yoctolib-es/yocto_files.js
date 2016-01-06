@@ -198,7 +198,7 @@ export class YFiles extends YFunction
      */
     static FindFiles(func)
     {
-        /** @type {YFiles} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCache('Files', func);
         if (obj == null) {
@@ -234,7 +234,7 @@ export class YFiles extends YFunction
      */
     static FindFilesInContext(yctx,func)
     {
-        /** @type {YFiles} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCacheInContext(yctx,  'Files', func);
         if (obj == null) {
@@ -370,7 +370,7 @@ export class YFiles extends YFunction
      *         a filesystem currently online, or a null pointer
      *         if there are no more filesystems to enumerate.
      */
-    /* */ nextFiles()
+    nextFiles()
     {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
@@ -423,7 +423,27 @@ export class YFiles extends YFunction
 //--- (generated code: Files functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a filesystem for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the filesystem is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YFiles.isOnline() to test if the filesystem is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a filesystem by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the filesystem
+ *
+ * @return {YFiles} a YFiles object allowing you to drive the filesystem.
  */
 export function yFindFiles(func)
 {
@@ -431,7 +451,13 @@ export function yFindFiles(func)
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of filesystems currently accessible.
+ * Use the method YFiles.nextFiles() to iterate on
+ * next filesystems.
+ *
+ * @return {YFiles} a pointer to a YFiles object, corresponding to
+ *         the first filesystem currently online, or a null pointer
+ *         if there are none.
  */
 export function yFirstFiles()
 {

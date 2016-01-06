@@ -98,7 +98,7 @@ class YCurrent extends _yocto_api.YSensor {
      * @return {YCurrent} a YCurrent object allowing you to drive the current sensor.
      */
     static FindCurrent(func) {
-        /** @type {YCurrent} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('Current', func);
         if (obj == null) {
@@ -133,7 +133,7 @@ class YCurrent extends _yocto_api.YSensor {
      * @return {YCurrent} a YCurrent object allowing you to drive the current sensor.
      */
     static FindCurrentInContext(yctx, func) {
-        /** @type {YCurrent} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Current', func);
         if (obj == null) {
@@ -150,7 +150,7 @@ class YCurrent extends _yocto_api.YSensor {
      *         a current sensor currently online, or a null pointer
      *         if there are no more current sensors to enumerate.
      */
-    /* */nextCurrent() {
+    nextCurrent() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -200,7 +200,27 @@ class YCurrent extends _yocto_api.YSensor {
 exports.YCurrent = YCurrent; //--- (Current functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a current sensor for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the current sensor is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YCurrent.isOnline() to test if the current sensor is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a current sensor by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the current sensor
+ *
+ * @return {YCurrent} a YCurrent object allowing you to drive the current sensor.
  */
 
 function yFindCurrent(func) {
@@ -208,7 +228,13 @@ function yFindCurrent(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of current sensors currently accessible.
+ * Use the method YCurrent.nextCurrent() to iterate on
+ * next current sensors.
+ *
+ * @return {YCurrent} a pointer to a YCurrent object, corresponding to
+ *         the first current sensor currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstCurrent() {
     return YCurrent.FirstCurrent();

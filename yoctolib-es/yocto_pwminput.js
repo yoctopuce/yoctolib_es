@@ -317,7 +317,7 @@ export class YPwmInput extends YSensor
      */
     static FindPwmInput(func)
     {
-        /** @type {YPwmInput} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCache('PwmInput', func);
         if (obj == null) {
@@ -353,7 +353,7 @@ export class YPwmInput extends YSensor
      */
     static FindPwmInputInContext(yctx,func)
     {
-        /** @type {YPwmInput} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCacheInContext(yctx,  'PwmInput', func);
         if (obj == null) {
@@ -382,7 +382,7 @@ export class YPwmInput extends YSensor
      *         a PWM input currently online, or a null pointer
      *         if there are no more PWM inputs to enumerate.
      */
-    /* */ nextPwmInput()
+    nextPwmInput()
     {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
@@ -435,7 +435,27 @@ export class YPwmInput extends YSensor
 //--- (PwmInput functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a PWM input for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the PWM input is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YPwmInput.isOnline() to test if the PWM input is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a PWM input by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the PWM input
+ *
+ * @return {YPwmInput} a YPwmInput object allowing you to drive the PWM input.
  */
 export function yFindPwmInput(func)
 {
@@ -443,7 +463,13 @@ export function yFindPwmInput(func)
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of PWM inputs currently accessible.
+ * Use the method YPwmInput.nextPwmInput() to iterate on
+ * next PWM inputs.
+ *
+ * @return {YPwmInput} a pointer to a YPwmInput object, corresponding to
+ *         the first PWM input currently online, or a null pointer
+ *         if there are none.
  */
 export function yFirstPwmInput()
 {

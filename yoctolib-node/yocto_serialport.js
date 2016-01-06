@@ -596,7 +596,7 @@ class YSerialPort extends _yocto_api.YFunction {
      * @return {YSerialPort} a YSerialPort object allowing you to drive the serial port.
      */
     static FindSerialPort(func) {
-        /** @type {YSerialPort} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('SerialPort', func);
         if (obj == null) {
@@ -631,7 +631,7 @@ class YSerialPort extends _yocto_api.YFunction {
      * @return {YSerialPort} a YSerialPort object allowing you to drive the serial port.
      */
     static FindSerialPortInContext(yctx, func) {
-        /** @type {YSerialPort} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'SerialPort', func);
         if (obj == null) {
@@ -2050,7 +2050,7 @@ class YSerialPort extends _yocto_api.YFunction {
      *         a serial port currently online, or a null pointer
      *         if there are no more serial ports to enumerate.
      */
-    /* */nextSerialPort() {
+    nextSerialPort() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -2100,7 +2100,27 @@ class YSerialPort extends _yocto_api.YFunction {
 exports.YSerialPort = YSerialPort; //--- (SerialPort functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a serial port for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the serial port is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YSerialPort.isOnline() to test if the serial port is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a serial port by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the serial port
+ *
+ * @return {YSerialPort} a YSerialPort object allowing you to drive the serial port.
  */
 
 function yFindSerialPort(func) {
@@ -2108,7 +2128,13 @@ function yFindSerialPort(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of serial ports currently accessible.
+ * Use the method YSerialPort.nextSerialPort() to iterate on
+ * next serial ports.
+ *
+ * @return {YSerialPort} a pointer to a YSerialPort object, corresponding to
+ *         the first serial port currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstSerialPort() {
     return YSerialPort.FirstSerialPort();

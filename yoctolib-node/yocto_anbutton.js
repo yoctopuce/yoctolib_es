@@ -533,7 +533,7 @@ class YAnButton extends _yocto_api.YFunction {
      * @return {YAnButton} a YAnButton object allowing you to drive the analog input.
      */
     static FindAnButton(func) {
-        /** @type {YAnButton} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('AnButton', func);
         if (obj == null) {
@@ -568,7 +568,7 @@ class YAnButton extends _yocto_api.YFunction {
      * @return {YAnButton} a YAnButton object allowing you to drive the analog input.
      */
     static FindAnButtonInContext(yctx, func) {
-        /** @type {YAnButton} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'AnButton', func);
         if (obj == null) {
@@ -600,7 +600,7 @@ class YAnButton extends _yocto_api.YFunction {
      *         an analog input currently online, or a null pointer
      *         if there are no more analog inputs to enumerate.
      */
-    /* */nextAnButton() {
+    nextAnButton() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -650,7 +650,27 @@ class YAnButton extends _yocto_api.YFunction {
 exports.YAnButton = YAnButton; //--- (AnButton functions)
 
 /**
- * comment from .yc definition
+ * Retrieves an analog input for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the analog input is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YAnButton.isOnline() to test if the analog input is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * an analog input by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the analog input
+ *
+ * @return {YAnButton} a YAnButton object allowing you to drive the analog input.
  */
 
 function yFindAnButton(func) {
@@ -658,7 +678,13 @@ function yFindAnButton(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of analog inputs currently accessible.
+ * Use the method YAnButton.nextAnButton() to iterate on
+ * next analog inputs.
+ *
+ * @return {YAnButton} a pointer to a YAnButton object, corresponding to
+ *         the first analog input currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstAnButton() {
     return YAnButton.FirstAnButton();

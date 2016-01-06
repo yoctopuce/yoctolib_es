@@ -99,7 +99,7 @@ export class YQt extends YFunction
      */
     static FindQt(func)
     {
-        /** @type {YQt} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCache('Qt', func);
         if (obj == null) {
@@ -135,7 +135,7 @@ export class YQt extends YFunction
      */
     static FindQtInContext(yctx,func)
     {
-        /** @type {YQt} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCacheInContext(yctx,  'Qt', func);
         if (obj == null) {
@@ -152,7 +152,7 @@ export class YQt extends YFunction
      *         a quaternion component currently online, or a null pointer
      *         if there are no more quaternion components to enumerate.
      */
-    /* */ nextQt()
+    nextQt()
     {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
@@ -205,7 +205,27 @@ export class YQt extends YFunction
 //--- (generated code: Qt functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a quaternion component for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the quaternion component is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YQt.isOnline() to test if the quaternion component is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a quaternion component by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the quaternion component
+ *
+ * @return {YQt} a YQt object allowing you to drive the quaternion component.
  */
 export function yFindQt(func)
 {
@@ -213,7 +233,13 @@ export function yFindQt(func)
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of quaternion components currently accessible.
+ * Use the method YQt.nextQt() to iterate on
+ * next quaternion components.
+ *
+ * @return {YQt} a pointer to a YQt object, corresponding to
+ *         the first quaternion component currently online, or a null pointer
+ *         if there are none.
  */
 export function yFirstQt()
 {
@@ -394,7 +420,7 @@ export class YGyro extends YFunction
      */
     static FindGyro(func)
     {
-        /** @type {YGyro} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCache('Gyro', func);
         if (obj == null) {
@@ -430,7 +456,7 @@ export class YGyro extends YFunction
      */
     static FindGyroInContext(yctx,func)
     {
-        /** @type {YGyro} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCacheInContext(yctx,  'Gyro', func);
         if (obj == null) {
@@ -755,7 +781,7 @@ export class YGyro extends YFunction
      *         a gyroscope currently online, or a null pointer
      *         if there are no more gyroscopes to enumerate.
      */
-    /* */ nextGyro()
+    nextGyro()
     {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
@@ -808,7 +834,27 @@ export class YGyro extends YFunction
 //--- (generated code: Gyro functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a gyroscope for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the gyroscope is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YGyro.isOnline() to test if the gyroscope is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a gyroscope by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the gyroscope
+ *
+ * @return {YGyro} a YGyro object allowing you to drive the gyroscope.
  */
 export function yFindGyro(func)
 {
@@ -816,7 +862,13 @@ export function yFindGyro(func)
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of gyroscopes currently accessible.
+ * Use the method YGyro.nextGyro() to iterate on
+ * next gyroscopes.
+ *
+ * @return {YGyro} a pointer to a YGyro object, corresponding to
+ *         the first gyro currently online, or a null pointer
+ *         if there are none.
  */
 export function yFirstGyro()
 {

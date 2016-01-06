@@ -174,7 +174,7 @@ export class YCarbonDioxide extends YSensor
      */
     static FindCarbonDioxide(func)
     {
-        /** @type {YCarbonDioxide} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCache('CarbonDioxide', func);
         if (obj == null) {
@@ -210,7 +210,7 @@ export class YCarbonDioxide extends YSensor
      */
     static FindCarbonDioxideInContext(yctx,func)
     {
-        /** @type {YCarbonDioxide} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCacheInContext(yctx,  'CarbonDioxide', func);
         if (obj == null) {
@@ -267,7 +267,7 @@ export class YCarbonDioxide extends YSensor
      *         a CO2 sensor currently online, or a null pointer
      *         if there are no more CO2 sensors to enumerate.
      */
-    /* */ nextCarbonDioxide()
+    nextCarbonDioxide()
     {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
@@ -320,7 +320,27 @@ export class YCarbonDioxide extends YSensor
 //--- (CarbonDioxide functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a CO2 sensor for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the CO2 sensor is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YCarbonDioxide.isOnline() to test if the CO2 sensor is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a CO2 sensor by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the CO2 sensor
+ *
+ * @return {YCarbonDioxide} a YCarbonDioxide object allowing you to drive the CO2 sensor.
  */
 export function yFindCarbonDioxide(func)
 {
@@ -328,7 +348,13 @@ export function yFindCarbonDioxide(func)
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of CO2 sensors currently accessible.
+ * Use the method YCarbonDioxide.nextCarbonDioxide() to iterate on
+ * next CO2 sensors.
+ *
+ * @return {YCarbonDioxide} a pointer to a YCarbonDioxide object, corresponding to
+ *         the first CO2 sensor currently online, or a null pointer
+ *         if there are none.
  */
 export function yFirstCarbonDioxide()
 {

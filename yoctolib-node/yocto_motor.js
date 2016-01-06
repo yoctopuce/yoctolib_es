@@ -584,7 +584,7 @@ class YMotor extends _yocto_api.YFunction {
      * @return {YMotor} a YMotor object allowing you to drive the motor.
      */
     static FindMotor(func) {
-        /** @type {YMotor} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('Motor', func);
         if (obj == null) {
@@ -619,7 +619,7 @@ class YMotor extends _yocto_api.YFunction {
      * @return {YMotor} a YMotor object allowing you to drive the motor.
      */
     static FindMotorInContext(yctx, func) {
-        /** @type {YMotor} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Motor', func);
         if (obj == null) {
@@ -698,7 +698,7 @@ class YMotor extends _yocto_api.YFunction {
      *         a motor currently online, or a null pointer
      *         if there are no more motors to enumerate.
      */
-    /* */nextMotor() {
+    nextMotor() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -748,7 +748,27 @@ class YMotor extends _yocto_api.YFunction {
 exports.YMotor = YMotor; //--- (Motor functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a motor for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the motor is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YMotor.isOnline() to test if the motor is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a motor by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the motor
+ *
+ * @return {YMotor} a YMotor object allowing you to drive the motor.
  */
 
 function yFindMotor(func) {
@@ -756,7 +776,13 @@ function yFindMotor(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of motors currently accessible.
+ * Use the method YMotor.nextMotor() to iterate on
+ * next motors.
+ *
+ * @return {YMotor} a pointer to a YMotor object, corresponding to
+ *         the first motor currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstMotor() {
     return YMotor.FirstMotor();

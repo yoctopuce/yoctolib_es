@@ -461,7 +461,7 @@ export class YRelay extends YFunction
      */
     static FindRelay(func)
     {
-        /** @type {YRelay} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCache('Relay', func);
         if (obj == null) {
@@ -497,7 +497,7 @@ export class YRelay extends YFunction
      */
     static FindRelayInContext(yctx,func)
     {
-        /** @type {YRelay} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCacheInContext(yctx,  'Relay', func);
         if (obj == null) {
@@ -514,7 +514,7 @@ export class YRelay extends YFunction
      *         a relay currently online, or a null pointer
      *         if there are no more relays to enumerate.
      */
-    /* */ nextRelay()
+    nextRelay()
     {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
@@ -567,7 +567,27 @@ export class YRelay extends YFunction
 //--- (Relay functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a relay for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the relay is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YRelay.isOnline() to test if the relay is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a relay by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the relay
+ *
+ * @return {YRelay} a YRelay object allowing you to drive the relay.
  */
 export function yFindRelay(func)
 {
@@ -575,7 +595,13 @@ export function yFindRelay(func)
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of relays currently accessible.
+ * Use the method YRelay.nextRelay() to iterate on
+ * next relays.
+ *
+ * @return {YRelay} a pointer to a YRelay object, corresponding to
+ *         the first relay currently online, or a null pointer
+ *         if there are none.
  */
 export function yFirstRelay()
 {

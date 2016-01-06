@@ -93,7 +93,7 @@ export class YVoc extends YSensor
      */
     static FindVoc(func)
     {
-        /** @type {YVoc} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCache('Voc', func);
         if (obj == null) {
@@ -129,7 +129,7 @@ export class YVoc extends YSensor
      */
     static FindVocInContext(yctx,func)
     {
-        /** @type {YVoc} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCacheInContext(yctx,  'Voc', func);
         if (obj == null) {
@@ -146,7 +146,7 @@ export class YVoc extends YSensor
      *         a Volatile Organic Compound sensor currently online, or a null pointer
      *         if there are no more Volatile Organic Compound sensors to enumerate.
      */
-    /* */ nextVoc()
+    nextVoc()
     {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
@@ -199,7 +199,27 @@ export class YVoc extends YSensor
 //--- (Voc functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a Volatile Organic Compound sensor for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the Volatile Organic Compound sensor is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YVoc.isOnline() to test if the Volatile Organic Compound sensor is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a Volatile Organic Compound sensor by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the Volatile Organic Compound sensor
+ *
+ * @return {YVoc} a YVoc object allowing you to drive the Volatile Organic Compound sensor.
  */
 export function yFindVoc(func)
 {
@@ -207,7 +227,13 @@ export function yFindVoc(func)
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of Volatile Organic Compound sensors currently accessible.
+ * Use the method YVoc.nextVoc() to iterate on
+ * next Volatile Organic Compound sensors.
+ *
+ * @return {YVoc} a pointer to a YVoc object, corresponding to
+ *         the first Volatile Organic Compound sensor currently online, or a null pointer
+ *         if there are none.
  */
 export function yFirstVoc()
 {

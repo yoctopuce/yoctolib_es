@@ -168,7 +168,7 @@ class YCompass extends _yocto_api.YSensor {
      * @return {YCompass} a YCompass object allowing you to drive the compass.
      */
     static FindCompass(func) {
-        /** @type {YCompass} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('Compass', func);
         if (obj == null) {
@@ -203,7 +203,7 @@ class YCompass extends _yocto_api.YSensor {
      * @return {YCompass} a YCompass object allowing you to drive the compass.
      */
     static FindCompassInContext(yctx, func) {
-        /** @type {YCompass} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Compass', func);
         if (obj == null) {
@@ -220,7 +220,7 @@ class YCompass extends _yocto_api.YSensor {
      *         a compass currently online, or a null pointer
      *         if there are no more compasses to enumerate.
      */
-    /* */nextCompass() {
+    nextCompass() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -270,7 +270,27 @@ class YCompass extends _yocto_api.YSensor {
 exports.YCompass = YCompass; //--- (Compass functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a compass for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the compass is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YCompass.isOnline() to test if the compass is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a compass by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the compass
+ *
+ * @return {YCompass} a YCompass object allowing you to drive the compass.
  */
 
 function yFindCompass(func) {
@@ -278,7 +298,13 @@ function yFindCompass(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of compasses currently accessible.
+ * Use the method YCompass.nextCompass() to iterate on
+ * next compasses.
+ *
+ * @return {YCompass} a pointer to a YCompass object, corresponding to
+ *         the first compass currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstCompass() {
     return YCompass.FirstCompass();

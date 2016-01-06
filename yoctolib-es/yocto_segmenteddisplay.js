@@ -174,7 +174,7 @@ export class YSegmentedDisplay extends YFunction
      */
     static FindSegmentedDisplay(func)
     {
-        /** @type {YSegmentedDisplay} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCache('SegmentedDisplay', func);
         if (obj == null) {
@@ -210,7 +210,7 @@ export class YSegmentedDisplay extends YFunction
      */
     static FindSegmentedDisplayInContext(yctx,func)
     {
-        /** @type {YSegmentedDisplay} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCacheInContext(yctx,  'SegmentedDisplay', func);
         if (obj == null) {
@@ -227,7 +227,7 @@ export class YSegmentedDisplay extends YFunction
      *         a segmented display currently online, or a null pointer
      *         if there are no more segmented displays to enumerate.
      */
-    /* */ nextSegmentedDisplay()
+    nextSegmentedDisplay()
     {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
@@ -280,7 +280,27 @@ export class YSegmentedDisplay extends YFunction
 //--- (SegmentedDisplay functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a segmented display for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the segmented displays is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YSegmentedDisplay.isOnline() to test if the segmented displays is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a segmented display by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the segmented displays
+ *
+ * @return {YSegmentedDisplay} a YSegmentedDisplay object allowing you to drive the segmented displays.
  */
 export function yFindSegmentedDisplay(func)
 {
@@ -288,7 +308,13 @@ export function yFindSegmentedDisplay(func)
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of segmented displays currently accessible.
+ * Use the method YSegmentedDisplay.nextSegmentedDisplay() to iterate on
+ * next segmented displays.
+ *
+ * @return {YSegmentedDisplay} a pointer to a YSegmentedDisplay object, corresponding to
+ *         the first segmented displays currently online, or a null pointer
+ *         if there are none.
  */
 export function yFirstSegmentedDisplay()
 {

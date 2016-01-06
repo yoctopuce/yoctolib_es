@@ -630,7 +630,7 @@ export class YDataLogger extends YFunction
      */
     static FindDataLogger(func)
     {
-        /** @type {YDataLogger} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCache('DataLogger', func);
         if (obj == null) {
@@ -666,7 +666,7 @@ export class YDataLogger extends YFunction
      */
     static FindDataLoggerInContext(yctx,func)
     {
-        /** @type {YDataLogger} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCacheInContext(yctx,  'DataLogger', func);
         if (obj == null) {
@@ -732,7 +732,7 @@ export class YDataLogger extends YFunction
      *         a data logger currently online, or a null pointer
      *         if there are no more data loggers to enumerate.
      */
-    /* */ nextDataLogger()
+    nextDataLogger()
     {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
@@ -785,7 +785,27 @@ export class YDataLogger extends YFunction
 //--- (generated code: DataLogger functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a data logger for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the data logger is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YDataLogger.isOnline() to test if the data logger is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a data logger by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the data logger
+ *
+ * @return {YDataLogger} a YDataLogger object allowing you to drive the data logger.
  */
 export function yFindDataLogger(func)
 {
@@ -793,7 +813,13 @@ export function yFindDataLogger(func)
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of data loggers currently accessible.
+ * Use the method YDataLogger.nextDataLogger() to iterate on
+ * next data loggers.
+ *
+ * @return {YDataLogger} a pointer to a YDataLogger object, corresponding to
+ *         the first data logger currently online, or a null pointer
+ *         if there are none.
  */
 export function yFirstDataLogger()
 {

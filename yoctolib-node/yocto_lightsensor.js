@@ -213,7 +213,7 @@ class YLightSensor extends _yocto_api.YSensor {
      * @return {YLightSensor} a YLightSensor object allowing you to drive the light sensor.
      */
     static FindLightSensor(func) {
-        /** @type {YLightSensor} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('LightSensor', func);
         if (obj == null) {
@@ -248,7 +248,7 @@ class YLightSensor extends _yocto_api.YSensor {
      * @return {YLightSensor} a YLightSensor object allowing you to drive the light sensor.
      */
     static FindLightSensorInContext(yctx, func) {
-        /** @type {YLightSensor} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'LightSensor', func);
         if (obj == null) {
@@ -265,7 +265,7 @@ class YLightSensor extends _yocto_api.YSensor {
      *         a light sensor currently online, or a null pointer
      *         if there are no more light sensors to enumerate.
      */
-    /* */nextLightSensor() {
+    nextLightSensor() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -315,7 +315,27 @@ class YLightSensor extends _yocto_api.YSensor {
 exports.YLightSensor = YLightSensor; //--- (LightSensor functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a light sensor for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the light sensor is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YLightSensor.isOnline() to test if the light sensor is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a light sensor by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the light sensor
+ *
+ * @return {YLightSensor} a YLightSensor object allowing you to drive the light sensor.
  */
 
 function yFindLightSensor(func) {
@@ -323,7 +343,13 @@ function yFindLightSensor(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of light sensors currently accessible.
+ * Use the method YLightSensor.nextLightSensor() to iterate on
+ * next light sensors.
+ *
+ * @return {YLightSensor} a pointer to a YLightSensor object, corresponding to
+ *         the first light sensor currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstLightSensor() {
     return YLightSensor.FirstLightSensor();

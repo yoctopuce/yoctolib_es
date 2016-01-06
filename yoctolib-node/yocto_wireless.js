@@ -94,19 +94,19 @@ class YWlanRecord {
 
     //--- (generated code: YWlanRecord implementation)
 
-    /* */get_ssid() {
+    get_ssid() {
         return this._ssid;
     }
 
-    /* */get_channel() {
+    get_channel() {
         return this._channel;
     }
 
-    /* */get_security() {
+    get_security() {
         return this._sec;
     }
 
-    /* */get_linkQuality() {
+    get_linkQuality() {
         return this._rssi;
     }
 
@@ -332,7 +332,7 @@ class YWireless extends _yocto_api.YFunction {
      * @return {YWireless} a YWireless object allowing you to drive the wireless lan interface.
      */
     static FindWireless(func) {
-        /** @type {YWireless} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('Wireless', func);
         if (obj == null) {
@@ -367,7 +367,7 @@ class YWireless extends _yocto_api.YFunction {
      * @return {YWireless} a YWireless object allowing you to drive the wireless lan interface.
      */
     static FindWirelessInContext(yctx, func) {
-        /** @type {YWireless} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Wireless', func);
         if (obj == null) {
@@ -490,7 +490,7 @@ class YWireless extends _yocto_api.YFunction {
      *         a wireless lan interface currently online, or a null pointer
      *         if there are no more wireless lan interfaces to enumerate.
      */
-    /* */nextWireless() {
+    nextWireless() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -540,7 +540,27 @@ class YWireless extends _yocto_api.YFunction {
 exports.YWireless = YWireless; //--- (generated code: Wireless functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a wireless lan interface for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the wireless lan interface is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YWireless.isOnline() to test if the wireless lan interface is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a wireless lan interface by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the wireless lan interface
+ *
+ * @return {YWireless} a YWireless object allowing you to drive the wireless lan interface.
  */
 
 function yFindWireless(func) {
@@ -548,7 +568,13 @@ function yFindWireless(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of wireless lan interfaces currently accessible.
+ * Use the method YWireless.nextWireless() to iterate on
+ * next wireless lan interfaces.
+ *
+ * @return {YWireless} a pointer to a YWireless object, corresponding to
+ *         the first wireless lan interface currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstWireless() {
     return YWireless.FirstWireless();

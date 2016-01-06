@@ -214,7 +214,7 @@ class YAltitude extends _yocto_api.YSensor {
      * @return {YAltitude} a YAltitude object allowing you to drive the altimeter.
      */
     static FindAltitude(func) {
-        /** @type {YAltitude} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('Altitude', func);
         if (obj == null) {
@@ -249,7 +249,7 @@ class YAltitude extends _yocto_api.YSensor {
      * @return {YAltitude} a YAltitude object allowing you to drive the altimeter.
      */
     static FindAltitudeInContext(yctx, func) {
-        /** @type {YAltitude} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Altitude', func);
         if (obj == null) {
@@ -266,7 +266,7 @@ class YAltitude extends _yocto_api.YSensor {
      *         an altimeter currently online, or a null pointer
      *         if there are no more altimeters to enumerate.
      */
-    /* */nextAltitude() {
+    nextAltitude() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -316,7 +316,27 @@ class YAltitude extends _yocto_api.YSensor {
 exports.YAltitude = YAltitude; //--- (Altitude functions)
 
 /**
- * comment from .yc definition
+ * Retrieves an altimeter for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the altimeter is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YAltitude.isOnline() to test if the altimeter is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * an altimeter by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the altimeter
+ *
+ * @return {YAltitude} a YAltitude object allowing you to drive the altimeter.
  */
 
 function yFindAltitude(func) {
@@ -324,7 +344,13 @@ function yFindAltitude(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of altimeters currently accessible.
+ * Use the method YAltitude.nextAltitude() to iterate on
+ * next altimeters.
+ *
+ * @return {YAltitude} a pointer to a YAltitude object, corresponding to
+ *         the first altimeter currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstAltitude() {
     return YAltitude.FirstAltitude();

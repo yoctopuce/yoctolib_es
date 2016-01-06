@@ -268,7 +268,7 @@ class YLed extends _yocto_api.YFunction {
      * @return {YLed} a YLed object allowing you to drive the led.
      */
     static FindLed(func) {
-        /** @type {YLed} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('Led', func);
         if (obj == null) {
@@ -303,7 +303,7 @@ class YLed extends _yocto_api.YFunction {
      * @return {YLed} a YLed object allowing you to drive the led.
      */
     static FindLedInContext(yctx, func) {
-        /** @type {YLed} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Led', func);
         if (obj == null) {
@@ -320,7 +320,7 @@ class YLed extends _yocto_api.YFunction {
      *         a led currently online, or a null pointer
      *         if there are no more leds to enumerate.
      */
-    /* */nextLed() {
+    nextLed() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -370,7 +370,27 @@ class YLed extends _yocto_api.YFunction {
 exports.YLed = YLed; //--- (Led functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a led for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the led is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YLed.isOnline() to test if the led is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a led by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the led
+ *
+ * @return {YLed} a YLed object allowing you to drive the led.
  */
 
 function yFindLed(func) {
@@ -378,7 +398,13 @@ function yFindLed(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of leds currently accessible.
+ * Use the method YLed.nextLed() to iterate on
+ * next leds.
+ *
+ * @return {YLed} a pointer to a YLed object, corresponding to
+ *         the first led currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstLed() {
     return YLed.FirstLed();

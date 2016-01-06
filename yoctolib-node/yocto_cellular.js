@@ -90,31 +90,31 @@ class YCellRecord {
 
     //--- (generated code: YCellRecord implementation)
 
-    /* */get_cellOperator() {
+    get_cellOperator() {
         return this._oper;
     }
 
-    /* */get_mobileCountryCode() {
+    get_mobileCountryCode() {
         return this._mcc;
     }
 
-    /* */get_mobileNetworkCode() {
+    get_mobileNetworkCode() {
         return this._mnc;
     }
 
-    /* */get_locationAreaCode() {
+    get_locationAreaCode() {
         return this._lac;
     }
 
-    /* */get_cellId() {
+    get_cellId() {
         return this._cid;
     }
 
-    /* */get_signalStrength() {
+    get_signalStrength() {
         return this._dbm;
     }
 
-    /* */get_timingAdvance() {
+    get_timingAdvance() {
         return this._tad;
     }
 
@@ -623,7 +623,7 @@ class YCellular extends _yocto_api.YFunction {
      * @return {YCellular} a YCellular object allowing you to drive the cellular interface.
      */
     static FindCellular(func) {
-        /** @type {YCellular} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('Cellular', func);
         if (obj == null) {
@@ -658,7 +658,7 @@ class YCellular extends _yocto_api.YFunction {
      * @return {YCellular} a YCellular object allowing you to drive the cellular interface.
      */
     static FindCellularInContext(yctx, func) {
-        /** @type {YCellular} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Cellular', func);
         if (obj == null) {
@@ -947,7 +947,7 @@ class YCellular extends _yocto_api.YFunction {
      *         a cellular interface currently online, or a null pointer
      *         if there are no more cellular interfaces to enumerate.
      */
-    /* */nextCellular() {
+    nextCellular() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -997,7 +997,27 @@ class YCellular extends _yocto_api.YFunction {
 exports.YCellular = YCellular; //--- (generated code: Cellular functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a cellular interface for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the cellular interface is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YCellular.isOnline() to test if the cellular interface is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a cellular interface by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the cellular interface
+ *
+ * @return {YCellular} a YCellular object allowing you to drive the cellular interface.
  */
 
 function yFindCellular(func) {
@@ -1005,7 +1025,13 @@ function yFindCellular(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of cellular interfaces currently accessible.
+ * Use the method YCellular.nextCellular() to iterate on
+ * next cellular interfaces.
+ *
+ * @return {YCellular} a pointer to a YCellular object, corresponding to
+ *         the first cellular interface currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstCellular() {
     return YCellular.FirstCellular();

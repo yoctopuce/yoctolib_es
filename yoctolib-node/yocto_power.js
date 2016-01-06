@@ -206,7 +206,7 @@ class YPower extends _yocto_api.YSensor {
      * @return {YPower} a YPower object allowing you to drive the electrical power sensor.
      */
     static FindPower(func) {
-        /** @type {YPower} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('Power', func);
         if (obj == null) {
@@ -241,7 +241,7 @@ class YPower extends _yocto_api.YSensor {
      * @return {YPower} a YPower object allowing you to drive the electrical power sensor.
      */
     static FindPowerInContext(yctx, func) {
-        /** @type {YPower} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Power', func);
         if (obj == null) {
@@ -273,7 +273,7 @@ class YPower extends _yocto_api.YSensor {
      *         a electrical power sensor currently online, or a null pointer
      *         if there are no more electrical power sensors to enumerate.
      */
-    /* */nextPower() {
+    nextPower() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -323,7 +323,27 @@ class YPower extends _yocto_api.YSensor {
 exports.YPower = YPower; //--- (Power functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a electrical power sensor for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the electrical power sensor is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YPower.isOnline() to test if the electrical power sensor is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a electrical power sensor by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the electrical power sensor
+ *
+ * @return {YPower} a YPower object allowing you to drive the electrical power sensor.
  */
 
 function yFindPower(func) {
@@ -331,7 +351,13 @@ function yFindPower(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of electrical power sensors currently accessible.
+ * Use the method YPower.nextPower() to iterate on
+ * next electrical power sensors.
+ *
+ * @return {YPower} a pointer to a YPower object, corresponding to
+ *         the first electrical power sensor currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstPower() {
     return YPower.FirstPower();

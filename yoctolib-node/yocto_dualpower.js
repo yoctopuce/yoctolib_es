@@ -231,7 +231,7 @@ class YDualPower extends _yocto_api.YFunction {
      * @return {YDualPower} a YDualPower object allowing you to drive the power control.
      */
     static FindDualPower(func) {
-        /** @type {YDualPower} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('DualPower', func);
         if (obj == null) {
@@ -266,7 +266,7 @@ class YDualPower extends _yocto_api.YFunction {
      * @return {YDualPower} a YDualPower object allowing you to drive the power control.
      */
     static FindDualPowerInContext(yctx, func) {
-        /** @type {YDualPower} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'DualPower', func);
         if (obj == null) {
@@ -283,7 +283,7 @@ class YDualPower extends _yocto_api.YFunction {
      *         a dual power control currently online, or a null pointer
      *         if there are no more dual power controls to enumerate.
      */
-    /* */nextDualPower() {
+    nextDualPower() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -333,7 +333,27 @@ class YDualPower extends _yocto_api.YFunction {
 exports.YDualPower = YDualPower; //--- (DualPower functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a dual power control for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the power control is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YDualPower.isOnline() to test if the power control is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a dual power control by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the power control
+ *
+ * @return {YDualPower} a YDualPower object allowing you to drive the power control.
  */
 
 function yFindDualPower(func) {
@@ -341,7 +361,13 @@ function yFindDualPower(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of dual power controls currently accessible.
+ * Use the method YDualPower.nextDualPower() to iterate on
+ * next dual power controls.
+ *
+ * @return {YDualPower} a pointer to a YDualPower object, corresponding to
+ *         the first dual power control currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstDualPower() {
     return YDualPower.FirstDualPower();

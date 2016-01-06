@@ -210,7 +210,7 @@ class YQuadratureDecoder extends _yocto_api.YSensor {
      * @return {YQuadratureDecoder} a YQuadratureDecoder object allowing you to drive the quadrature decoder.
      */
     static FindQuadratureDecoder(func) {
-        /** @type {YQuadratureDecoder} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('QuadratureDecoder', func);
         if (obj == null) {
@@ -245,7 +245,7 @@ class YQuadratureDecoder extends _yocto_api.YSensor {
      * @return {YQuadratureDecoder} a YQuadratureDecoder object allowing you to drive the quadrature decoder.
      */
     static FindQuadratureDecoderInContext(yctx, func) {
-        /** @type {YQuadratureDecoder} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'QuadratureDecoder', func);
         if (obj == null) {
@@ -262,7 +262,7 @@ class YQuadratureDecoder extends _yocto_api.YSensor {
      *         a quadrature decoder currently online, or a null pointer
      *         if there are no more quadrature decoders to enumerate.
      */
-    /* */nextQuadratureDecoder() {
+    nextQuadratureDecoder() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -312,7 +312,27 @@ class YQuadratureDecoder extends _yocto_api.YSensor {
 exports.YQuadratureDecoder = YQuadratureDecoder; //--- (QuadratureDecoder functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a quadrature decoder for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the quadrature decoder is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YQuadratureDecoder.isOnline() to test if the quadrature decoder is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a quadrature decoder by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the quadrature decoder
+ *
+ * @return {YQuadratureDecoder} a YQuadratureDecoder object allowing you to drive the quadrature decoder.
  */
 
 function yFindQuadratureDecoder(func) {
@@ -320,7 +340,13 @@ function yFindQuadratureDecoder(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of quadrature decoders currently accessible.
+ * Use the method YQuadratureDecoder.nextQuadratureDecoder() to iterate on
+ * next quadrature decoders.
+ *
+ * @return {YQuadratureDecoder} a pointer to a YQuadratureDecoder object, corresponding to
+ *         the first quadrature decoder currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstQuadratureDecoder() {
     return YQuadratureDecoder.FirstQuadratureDecoder();

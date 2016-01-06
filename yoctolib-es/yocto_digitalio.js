@@ -379,7 +379,7 @@ export class YDigitalIO extends YFunction
      */
     static FindDigitalIO(func)
     {
-        /** @type {YDigitalIO} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCache('DigitalIO', func);
         if (obj == null) {
@@ -415,7 +415,7 @@ export class YDigitalIO extends YFunction
      */
     static FindDigitalIOInContext(yctx,func)
     {
-        /** @type {YDigitalIO} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCacheInContext(yctx,  'DigitalIO', func);
         if (obj == null) {
@@ -641,7 +641,7 @@ export class YDigitalIO extends YFunction
      *         a digital IO port currently online, or a null pointer
      *         if there are no more digital IO ports to enumerate.
      */
-    /* */ nextDigitalIO()
+    nextDigitalIO()
     {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
@@ -694,7 +694,27 @@ export class YDigitalIO extends YFunction
 //--- (DigitalIO functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a digital IO port for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the digital IO port is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YDigitalIO.isOnline() to test if the digital IO port is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a digital IO port by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the digital IO port
+ *
+ * @return {YDigitalIO} a YDigitalIO object allowing you to drive the digital IO port.
  */
 export function yFindDigitalIO(func)
 {
@@ -702,7 +722,13 @@ export function yFindDigitalIO(func)
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of digital IO ports currently accessible.
+ * Use the method YDigitalIO.nextDigitalIO() to iterate on
+ * next digital IO ports.
+ *
+ * @return {YDigitalIO} a pointer to a YDigitalIO object, corresponding to
+ *         the first digital IO port currently online, or a null pointer
+ *         if there are none.
  */
 export function yFirstDigitalIO()
 {

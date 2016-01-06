@@ -196,7 +196,7 @@ export class YAltitude extends YSensor
      */
     static FindAltitude(func)
     {
-        /** @type {YAltitude} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCache('Altitude', func);
         if (obj == null) {
@@ -232,7 +232,7 @@ export class YAltitude extends YSensor
      */
     static FindAltitudeInContext(yctx,func)
     {
-        /** @type {YAltitude} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCacheInContext(yctx,  'Altitude', func);
         if (obj == null) {
@@ -249,7 +249,7 @@ export class YAltitude extends YSensor
      *         an altimeter currently online, or a null pointer
      *         if there are no more altimeters to enumerate.
      */
-    /* */ nextAltitude()
+    nextAltitude()
     {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
@@ -302,7 +302,27 @@ export class YAltitude extends YSensor
 //--- (Altitude functions)
 
 /**
- * comment from .yc definition
+ * Retrieves an altimeter for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the altimeter is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YAltitude.isOnline() to test if the altimeter is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * an altimeter by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the altimeter
+ *
+ * @return {YAltitude} a YAltitude object allowing you to drive the altimeter.
  */
 export function yFindAltitude(func)
 {
@@ -310,7 +330,13 @@ export function yFindAltitude(func)
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of altimeters currently accessible.
+ * Use the method YAltitude.nextAltitude() to iterate on
+ * next altimeters.
+ *
+ * @return {YAltitude} a pointer to a YAltitude object, corresponding to
+ *         the first altimeter currently online, or a null pointer
+ *         if there are none.
  */
 export function yFirstAltitude()
 {

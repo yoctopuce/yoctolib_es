@@ -465,7 +465,7 @@ class YServo extends _yocto_api.YFunction {
      * @return {YServo} a YServo object allowing you to drive the servo.
      */
     static FindServo(func) {
-        /** @type {YServo} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('Servo', func);
         if (obj == null) {
@@ -500,7 +500,7 @@ class YServo extends _yocto_api.YFunction {
      * @return {YServo} a YServo object allowing you to drive the servo.
      */
     static FindServoInContext(yctx, func) {
-        /** @type {YServo} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Servo', func);
         if (obj == null) {
@@ -517,7 +517,7 @@ class YServo extends _yocto_api.YFunction {
      *         a servo currently online, or a null pointer
      *         if there are no more servos to enumerate.
      */
-    /* */nextServo() {
+    nextServo() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -567,7 +567,27 @@ class YServo extends _yocto_api.YFunction {
 exports.YServo = YServo; //--- (Servo functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a servo for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the servo is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YServo.isOnline() to test if the servo is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a servo by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the servo
+ *
+ * @return {YServo} a YServo object allowing you to drive the servo.
  */
 
 function yFindServo(func) {
@@ -575,7 +595,13 @@ function yFindServo(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of servos currently accessible.
+ * Use the method YServo.nextServo() to iterate on
+ * next servos.
+ *
+ * @return {YServo} a pointer to a YServo object, corresponding to
+ *         the first servo currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstServo() {
     return YServo.FirstServo();

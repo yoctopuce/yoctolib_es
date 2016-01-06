@@ -413,7 +413,7 @@ export class YColorLed extends YFunction
      */
     static FindColorLed(func)
     {
-        /** @type {YColorLed} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCache('ColorLed', func);
         if (obj == null) {
@@ -449,7 +449,7 @@ export class YColorLed extends YFunction
      */
     static FindColorLedInContext(yctx,func)
     {
-        /** @type {YColorLed} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCacheInContext(yctx,  'ColorLed', func);
         if (obj == null) {
@@ -536,7 +536,7 @@ export class YColorLed extends YFunction
      *         an RGB led currently online, or a null pointer
      *         if there are no more RGB leds to enumerate.
      */
-    /* */ nextColorLed()
+    nextColorLed()
     {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
@@ -589,7 +589,27 @@ export class YColorLed extends YFunction
 //--- (ColorLed functions)
 
 /**
- * comment from .yc definition
+ * Retrieves an RGB led for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the RGB led is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YColorLed.isOnline() to test if the RGB led is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * an RGB led by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the RGB led
+ *
+ * @return {YColorLed} a YColorLed object allowing you to drive the RGB led.
  */
 export function yFindColorLed(func)
 {
@@ -597,7 +617,13 @@ export function yFindColorLed(func)
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of RGB leds currently accessible.
+ * Use the method YColorLed.nextColorLed() to iterate on
+ * next RGB leds.
+ *
+ * @return {YColorLed} a pointer to a YColorLed object, corresponding to
+ *         the first RGB led currently online, or a null pointer
+ *         if there are none.
  */
 export function yFirstColorLed()
 {

@@ -241,7 +241,7 @@ export class YRealTimeClock extends YFunction
      */
     static FindRealTimeClock(func)
     {
-        /** @type {YRealTimeClock} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCache('RealTimeClock', func);
         if (obj == null) {
@@ -277,7 +277,7 @@ export class YRealTimeClock extends YFunction
      */
     static FindRealTimeClockInContext(yctx,func)
     {
-        /** @type {YRealTimeClock} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCacheInContext(yctx,  'RealTimeClock', func);
         if (obj == null) {
@@ -294,7 +294,7 @@ export class YRealTimeClock extends YFunction
      *         a clock currently online, or a null pointer
      *         if there are no more clocks to enumerate.
      */
-    /* */ nextRealTimeClock()
+    nextRealTimeClock()
     {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
@@ -347,7 +347,27 @@ export class YRealTimeClock extends YFunction
 //--- (RealTimeClock functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a clock for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the clock is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YRealTimeClock.isOnline() to test if the clock is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a clock by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the clock
+ *
+ * @return {YRealTimeClock} a YRealTimeClock object allowing you to drive the clock.
  */
 export function yFindRealTimeClock(func)
 {
@@ -355,7 +375,13 @@ export function yFindRealTimeClock(func)
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of clocks currently accessible.
+ * Use the method YRealTimeClock.nextRealTimeClock() to iterate on
+ * next clocks.
+ *
+ * @return {YRealTimeClock} a pointer to a YRealTimeClock object, corresponding to
+ *         the first clock currently online, or a null pointer
+ *         if there are none.
  */
 export function yFirstRealTimeClock()
 {

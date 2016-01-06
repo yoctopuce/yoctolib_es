@@ -285,7 +285,7 @@ export class YBuzzer extends YFunction
      */
     static FindBuzzer(func)
     {
-        /** @type {YBuzzer} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCache('Buzzer', func);
         if (obj == null) {
@@ -321,7 +321,7 @@ export class YBuzzer extends YFunction
      */
     static FindBuzzerInContext(yctx,func)
     {
-        /** @type {YBuzzer} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCacheInContext(yctx,  'Buzzer', func);
         if (obj == null) {
@@ -466,7 +466,7 @@ export class YBuzzer extends YFunction
      *         a buzzer currently online, or a null pointer
      *         if there are no more buzzers to enumerate.
      */
-    /* */ nextBuzzer()
+    nextBuzzer()
     {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
@@ -519,7 +519,27 @@ export class YBuzzer extends YFunction
 //--- (Buzzer functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a buzzer for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the buzzer is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YBuzzer.isOnline() to test if the buzzer is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a buzzer by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the buzzer
+ *
+ * @return {YBuzzer} a YBuzzer object allowing you to drive the buzzer.
  */
 export function yFindBuzzer(func)
 {
@@ -527,7 +547,13 @@ export function yFindBuzzer(func)
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of buzzers currently accessible.
+ * Use the method YBuzzer.nextBuzzer() to iterate on
+ * next buzzers.
+ *
+ * @return {YBuzzer} a pointer to a YBuzzer object, corresponding to
+ *         the first buzzer currently online, or a null pointer
+ *         if there are none.
  */
 export function yFirstBuzzer()
 {

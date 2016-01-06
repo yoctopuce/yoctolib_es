@@ -98,7 +98,7 @@ class YPressure extends _yocto_api.YSensor {
      * @return {YPressure} a YPressure object allowing you to drive the pressure sensor.
      */
     static FindPressure(func) {
-        /** @type {YPressure} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('Pressure', func);
         if (obj == null) {
@@ -133,7 +133,7 @@ class YPressure extends _yocto_api.YSensor {
      * @return {YPressure} a YPressure object allowing you to drive the pressure sensor.
      */
     static FindPressureInContext(yctx, func) {
-        /** @type {YPressure} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Pressure', func);
         if (obj == null) {
@@ -150,7 +150,7 @@ class YPressure extends _yocto_api.YSensor {
      *         a pressure sensor currently online, or a null pointer
      *         if there are no more pressure sensors to enumerate.
      */
-    /* */nextPressure() {
+    nextPressure() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -200,7 +200,27 @@ class YPressure extends _yocto_api.YSensor {
 exports.YPressure = YPressure; //--- (Pressure functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a pressure sensor for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the pressure sensor is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YPressure.isOnline() to test if the pressure sensor is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a pressure sensor by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the pressure sensor
+ *
+ * @return {YPressure} a YPressure object allowing you to drive the pressure sensor.
  */
 
 function yFindPressure(func) {
@@ -208,7 +228,13 @@ function yFindPressure(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of pressure sensors currently accessible.
+ * Use the method YPressure.nextPressure() to iterate on
+ * next pressure sensors.
+ *
+ * @return {YPressure} a pointer to a YPressure object, corresponding to
+ *         the first pressure sensor currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstPressure() {
     return YPressure.FirstPressure();

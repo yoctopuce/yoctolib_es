@@ -98,7 +98,7 @@ class YVoltage extends _yocto_api.YSensor {
      * @return {YVoltage} a YVoltage object allowing you to drive the voltage sensor.
      */
     static FindVoltage(func) {
-        /** @type {YVoltage} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('Voltage', func);
         if (obj == null) {
@@ -133,7 +133,7 @@ class YVoltage extends _yocto_api.YSensor {
      * @return {YVoltage} a YVoltage object allowing you to drive the voltage sensor.
      */
     static FindVoltageInContext(yctx, func) {
-        /** @type {YVoltage} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Voltage', func);
         if (obj == null) {
@@ -150,7 +150,7 @@ class YVoltage extends _yocto_api.YSensor {
      *         a voltage sensor currently online, or a null pointer
      *         if there are no more voltage sensors to enumerate.
      */
-    /* */nextVoltage() {
+    nextVoltage() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -200,7 +200,27 @@ class YVoltage extends _yocto_api.YSensor {
 exports.YVoltage = YVoltage; //--- (Voltage functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a voltage sensor for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the voltage sensor is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YVoltage.isOnline() to test if the voltage sensor is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a voltage sensor by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the voltage sensor
+ *
+ * @return {YVoltage} a YVoltage object allowing you to drive the voltage sensor.
  */
 
 function yFindVoltage(func) {
@@ -208,7 +228,13 @@ function yFindVoltage(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of voltage sensors currently accessible.
+ * Use the method YVoltage.nextVoltage() to iterate on
+ * next voltage sensors.
+ *
+ * @return {YVoltage} a pointer to a YVoltage object, corresponding to
+ *         the first voltage sensor currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstVoltage() {
     return YVoltage.FirstVoltage();

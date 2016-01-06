@@ -172,7 +172,7 @@ class YPwmPowerSource extends _yocto_api.YFunction {
      * @return {YPwmPowerSource} a YPwmPowerSource object allowing you to drive the voltage source.
      */
     static FindPwmPowerSource(func) {
-        /** @type {YPwmPowerSource} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('PwmPowerSource', func);
         if (obj == null) {
@@ -207,7 +207,7 @@ class YPwmPowerSource extends _yocto_api.YFunction {
      * @return {YPwmPowerSource} a YPwmPowerSource object allowing you to drive the voltage source.
      */
     static FindPwmPowerSourceInContext(yctx, func) {
-        /** @type {YPwmPowerSource} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'PwmPowerSource', func);
         if (obj == null) {
@@ -224,7 +224,7 @@ class YPwmPowerSource extends _yocto_api.YFunction {
      *         a voltage source currently online, or a null pointer
      *         if there are no more Voltage sources to enumerate.
      */
-    /* */nextPwmPowerSource() {
+    nextPwmPowerSource() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -274,7 +274,27 @@ class YPwmPowerSource extends _yocto_api.YFunction {
 exports.YPwmPowerSource = YPwmPowerSource; //--- (PwmPowerSource functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a voltage source for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the voltage source is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YPwmPowerSource.isOnline() to test if the voltage source is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a voltage source by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the voltage source
+ *
+ * @return {YPwmPowerSource} a YPwmPowerSource object allowing you to drive the voltage source.
  */
 
 function yFindPwmPowerSource(func) {
@@ -282,7 +302,13 @@ function yFindPwmPowerSource(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of Voltage sources currently accessible.
+ * Use the method YPwmPowerSource.nextPwmPowerSource() to iterate on
+ * next Voltage sources.
+ *
+ * @return {YPwmPowerSource} a pointer to a YPwmPowerSource object, corresponding to
+ *         the first source currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstPwmPowerSource() {
     return YPwmPowerSource.FirstPwmPowerSource();

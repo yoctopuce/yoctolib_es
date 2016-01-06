@@ -375,7 +375,7 @@ export class YWakeUpSchedule extends YFunction
      */
     static FindWakeUpSchedule(func)
     {
-        /** @type {YWakeUpSchedule} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCache('WakeUpSchedule', func);
         if (obj == null) {
@@ -411,7 +411,7 @@ export class YWakeUpSchedule extends YFunction
      */
     static FindWakeUpScheduleInContext(yctx,func)
     {
-        /** @type {YWakeUpSchedule} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCacheInContext(yctx,  'WakeUpSchedule', func);
         if (obj == null) {
@@ -458,7 +458,7 @@ export class YWakeUpSchedule extends YFunction
      *         a wake up schedule currently online, or a null pointer
      *         if there are no more wake up schedules to enumerate.
      */
-    /* */ nextWakeUpSchedule()
+    nextWakeUpSchedule()
     {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
@@ -511,7 +511,27 @@ export class YWakeUpSchedule extends YFunction
 //--- (WakeUpSchedule functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a wake up schedule for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the wake up schedule is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YWakeUpSchedule.isOnline() to test if the wake up schedule is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a wake up schedule by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the wake up schedule
+ *
+ * @return {YWakeUpSchedule} a YWakeUpSchedule object allowing you to drive the wake up schedule.
  */
 export function yFindWakeUpSchedule(func)
 {
@@ -519,7 +539,13 @@ export function yFindWakeUpSchedule(func)
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of wake up schedules currently accessible.
+ * Use the method YWakeUpSchedule.nextWakeUpSchedule() to iterate on
+ * next wake up schedules.
+ *
+ * @return {YWakeUpSchedule} a pointer to a YWakeUpSchedule object, corresponding to
+ *         the first wake up schedule currently online, or a null pointer
+ *         if there are none.
  */
 export function yFirstWakeUpSchedule()
 {

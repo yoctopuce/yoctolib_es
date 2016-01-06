@@ -1438,9 +1438,11 @@ class YFunction {
     }
 
     /**
-     * comment from .yc definition
+     * Returns the next Function
+     *
+     * @returns {YFunction}
      */
-    /* */nextFunction() {
+    nextFunction() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != YAPI_SUCCESS) return null;
@@ -1450,7 +1452,8 @@ class YFunction {
         return YFunction.FindFunctionInContext(this._yapi, next_hwid);
     }
 
-    /** Retrieve the first function object in a given context (starts enum
+    /**
+     * Retrieves the first Function in a YAPI context
      *
      * @returns {YFunction}
      */
@@ -1461,9 +1464,11 @@ class YFunction {
         return YFunction.FindFunction(next_hwid);
     }
 
-    /** Retrieve the first function object in a given context (starts enum
+    /**
+     * Retrieves the first Function in a given context
      *
      * @param yctx {YAPIContext}
+     *
      * @returns {YFunction}
      */
     static FirstFunctionInContext(yctx) {
@@ -1574,7 +1579,7 @@ class YFunction {
      * The unique hardware identifier is composed of the device serial
      * number and of the hardware identifier of the function (for example RELAYLO1-123456.relay1).
      *
-     * @return {string|null} a string that uniquely identifies the function (ex: RELAYLO1-123456.relay1)
+     * @return {string} a string that uniquely identifies the function (ex: RELAYLO1-123456.relay1)
      *
      * On failure, throws an exception or returns  YFunction.HARDWAREID_INVALID.
      */
@@ -1631,7 +1636,7 @@ class YFunction {
      * otherwise the serial number of the module and the hardware identifier of the function
      * (for example: MyCustomName.relay1)
      *
-     * @return {string|null} a string that uniquely identifies the function using logical names
+     * @return {string} a string that uniquely identifies the function using logical names
      *         (ex: MyCustomName.relay1)
      *
      * On failure, throws an exception or returns  YFunction.FRIENDLYNAME_INVALID.
@@ -1729,6 +1734,8 @@ class YFunction {
      * @return {string}
      */
     imm_escapeAttr(str_newval) {
+        // We intentionally use escape here, because we want to encode non-ASCII
+        // characters using single-byte ISO characters (not multi-byte UTF-8)
         return escape(str_newval).replace(/[+]/g, '%2B').replace(/%20/g, '+').replace(/%21/g, '!').replace(/%24/g, '$').replace(/%27/g, '\'').replace(/%28/g, '(').replace(/%29/g, ')').replace(/%2[cC]/g, ',').replace(/%2[fF]/g, '/').replace(/%3[aA]/g, ':').replace(/%3[bB]/g, ';').replace(/%3[fF]/g, '?').replace(/%5[bB]/g, '[').replace(/%5[dD]/g, ']');
     }
 
@@ -1819,15 +1826,14 @@ class YFunction {
     /**
      * Waits for all pending asynchronous commands on the module to complete, and invoke
      * the user-provided callback function. The callback function can therefore freely
-     * issue issue requets to the module without risk of communication delay.
+     * issue synchronous or asynchronous commands, without risking to block the
+     * Javascript VM.
      *
-     * Note that with the new async/await support, the this function is now seldom useful.
-     *
-     * @param callback {function} : callback function that is invoked when all pending commands on
+     * @param callback : callback function that is invoked when all pending commands on
      *         the module are completed.
      *         The callback function receives two arguments: the caller-specific
      *         context object and the receiving function object.
-     * @param context {object} : caller-specific object that is passed as-is to the callback function
+     * @param context : caller-specific object that is passed as-is to the callback function
      *
      * @return nothing.
      */
@@ -1989,7 +1995,7 @@ class YFunction {
      * @return {number} a number corresponding to the code of the latest error that occurred while
      *         using the function object
      */
-    /**/get_errorType() {
+    get_errorType() {
         return this._lastErrorType;
     }
 
@@ -2001,7 +2007,7 @@ class YFunction {
      * @return {string} a string corresponding to the latest error message that occured while
      *         using the function object
      */
-    /**/get_errorMessage() {
+    get_errorMessage() {
         return this._lastErrorMsg;
     }
 
@@ -2068,7 +2074,7 @@ class YFunction {
         return _asyncToGenerator(function* () {
             // try to resolve the function name to a device id without query
             if (_this29._serial != '') {
-                return yield yFindModule(_this29._serial + '.module', _this29._yapi);
+                return yield yFindModuleInContext(_this29._yapi, _this29._serial + '.module');
             }
             var hwid = _this29._func;
             var resolve;
@@ -2184,6 +2190,7 @@ exports.YFunction = YFunction; //--- (generated code: YModule class start)
  * to enumerate the functions provided by each module.
  */
 //--- (end of generated code: YModule class start)
+/** @extends {YFunction} **/
 
 class YModule extends YFunction {
     constructor(obj_yapi, str_func) {
@@ -2880,9 +2887,8 @@ class YModule extends YFunction {
      *         or get additional information on the module.
      */
     static FindModule(func) {
-        /** @type {YModule} **/
+        /** @type {YFunction} **/
         let obj;
-        //noinspection JSValidateTypes
         obj = YFunction._FindFromCache('Module', func);
         if (obj == null) {
             obj = new YModule(YAPI, func);
@@ -2916,9 +2922,8 @@ class YModule extends YFunction {
      * @return {YModule} a YModule object allowing you to drive the module.
      */
     static FindModuleInContext(yctx, func) {
-        /** @type {YModule} **/
+        /** @type {YFunction} **/
         let obj;
-        //noinspection JSValidateTypes
         obj = YFunction._FindFromCacheInContext(yctx, 'Module', func);
         if (obj == null) {
             obj = new YModule(yctx, func);
@@ -3348,7 +3353,7 @@ class YModule extends YFunction {
     }
 
     // cannot be generated for JS:
-    // /* */ imm_flattenJsonStruct(jsoncomplex)
+    // imm_flattenJsonStruct(jsoncomplex)
 
     calibVersion(cparams) {
         return _asyncToGenerator(function* () {
@@ -3962,7 +3967,7 @@ class YModule extends YFunction {
      *         the next module found, or a null pointer
      *         if there are no more modules to enumerate.
      */
-    /* */nextModule() {
+    nextModule() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != YAPI_SUCCESS) return null;
@@ -3989,13 +3994,11 @@ class YModule extends YFunction {
     }
 
     /**
-     * Starts the enumeration of modules currently accessible.
-     * Use the method YModule.nextModule() to iterate on the
-     * next modules.
+     * Retrieves the first Module in a given context
      *
-     * @return {YModule} a pointer to a YModule object, corresponding to
-     *         the first module currently online, or a null pointer
-     *         if there are none.
+     * @param yctx {YAPIContext}
+     *
+     * @returns {YModule}
      */
     static FirstModuleInContext(yctx) {
         /** @type {string|null} **/
@@ -4010,7 +4013,21 @@ class YModule extends YFunction {
 exports.YModule = YModule; //--- (generated code: Module functions)
 
 /**
- * comment from .yc definition
+ * Allows you to find a module from its serial number or from its logical name.
+ *
+ * This function does not require that the module is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YModule.isOnline() to test if the module is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a module by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string containing either the serial number or
+ *         the logical name of the desired module
+ *
+ * @return {YModule} a YModule object allowing you to drive the module
+ *         or get additional information on the module.
  */
 
 function yFindModule(func) {
@@ -4018,7 +4035,13 @@ function yFindModule(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of modules currently accessible.
+ * Use the method YModule.nextModule() to iterate on the
+ * next modules.
+ *
+ * @return {YModule} a pointer to a YModule object, corresponding to
+ *         the first module currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstModule() {
     return YModule.FirstModule();
@@ -4510,9 +4533,8 @@ class YSensor extends YFunction {
      * @return {YSensor} a YSensor object allowing you to drive the sensor.
      */
     static FindSensor(func) {
-        /** @type {YSensor} **/
+        /** @type {YFunction} **/
         let obj;
-        //noinspection JSValidateTypes
         obj = YFunction._FindFromCache('Sensor', func);
         if (obj == null) {
             obj = new YSensor(YAPI, func);
@@ -4546,9 +4568,8 @@ class YSensor extends YFunction {
      * @return {YSensor} a YSensor object allowing you to drive the sensor.
      */
     static FindSensorInContext(yctx, func) {
-        /** @type {YSensor} **/
+        /** @type {YFunction} **/
         let obj;
-        //noinspection JSValidateTypes
         obj = YFunction._FindFromCacheInContext(yctx, 'Sensor', func);
         if (obj == null) {
             obj = new YSensor(yctx, func);
@@ -4821,10 +4842,13 @@ class YSensor extends YFunction {
         var _this98 = this;
 
         return _asyncToGenerator(function* () {
+            /** @type {YFunction} **/
+            let sensor;
+            sensor = _this98;
             if (callback != null) {
-                yield YFunction._UpdateTimedReportCallbackList(_this98, true);
+                yield YFunction._UpdateTimedReportCallbackList(sensor, true);
             } else {
-                yield YFunction._UpdateTimedReportCallbackList(_this98, false);
+                yield YFunction._UpdateTimedReportCallbackList(sensor, false);
             }
             _this98._timedReportCallbackSensor = callback;
             return 0;
@@ -5151,7 +5175,7 @@ class YSensor extends YFunction {
         })();
     }
 
-    /* */imm_decodeVal(w) {
+    imm_decodeVal(w) {
         /** @type {number} **/
         let val;
         val = w;
@@ -5168,7 +5192,7 @@ class YSensor extends YFunction {
         return val;
     }
 
-    /* */imm_decodeAvg(dw) {
+    imm_decodeAvg(dw) {
         /** @type {number} **/
         let val;
         val = dw;
@@ -5192,7 +5216,7 @@ class YSensor extends YFunction {
      *         a sensor currently online, or a null pointer
      *         if there are no more sensors to enumerate.
      */
-    /* */nextSensor() {
+    nextSensor() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != YAPI_SUCCESS) return null;
@@ -5239,17 +5263,44 @@ class YSensor extends YFunction {
     //--- (end of generated code: YSensor implementation)
 }
 
-//--- (generated code: Sensor functions)
+exports.YSensor = YSensor; //--- (generated code: Sensor functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a sensor for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the sensor is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YSensor.isOnline() to test if the sensor is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a sensor by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the sensor
+ *
+ * @return {YSensor} a YSensor object allowing you to drive the sensor.
  */
+
 function yFindSensor(func) {
     return YSensor.FindSensor(func);
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of sensors currently accessible.
+ * Use the method YSensor.nextSensor() to iterate on
+ * next sensors.
+ *
+ * @return {YSensor} a pointer to a YSensor object, corresponding to
+ *         the first sensor currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstSensor() {
     return YSensor.FirstSensor();
@@ -5299,7 +5350,7 @@ class YMeasure {
      * @return {number} an floating point number corresponding to the number of seconds
      *         between the Jan 1, 1970 UTC and the beginning of this measure.
      */
-    /* */get_startTimeUTC() {
+    get_startTimeUTC() {
         return this._start;
     }
 
@@ -5311,7 +5362,7 @@ class YMeasure {
      * @return {number} an floating point number corresponding to the number of seconds
      *         between the Jan 1, 1970 UTC and the end of this measure.
      */
-    /* */get_endTimeUTC() {
+    get_endTimeUTC() {
         return this._end;
     }
 
@@ -5321,7 +5372,7 @@ class YMeasure {
      *
      * @return {number} a floating-point number corresponding to the smallest value observed.
      */
-    /* */get_minValue() {
+    get_minValue() {
         return this._minVal;
     }
 
@@ -5331,7 +5382,7 @@ class YMeasure {
      *
      * @return {number} a floating-point number corresponding to the average value observed.
      */
-    /* */get_averageValue() {
+    get_averageValue() {
         return this._avgVal;
     }
 
@@ -5341,7 +5392,7 @@ class YMeasure {
      *
      * @return {number} a floating-point number corresponding to the largest value observed.
      */
-    /* */get_maxValue() {
+    get_maxValue() {
         return this._maxVal;
     }
 
@@ -5366,7 +5417,7 @@ class YMeasure {
     }
 }
 
-//--- (generated code: YDataStream definitions)
+exports.YMeasure = YMeasure; //--- (generated code: YDataStream definitions)
 //--- (end of generated code: YDataStream definitions)
 
 //--- (generated code: YDataStream class start)
@@ -5384,6 +5435,7 @@ class YMeasure {
  * a more convenient interface.
  */
 //--- (end of generated code: YDataStream class start)
+
 class YDataStream {
     constructor(obj_parent, obj_dataset, encoded) {
         //--- (generated code: YDataStream constructor)
@@ -5448,7 +5500,7 @@ class YDataStream {
 
     //--- (generated code: YDataStream implementation)
 
-    /* */imm_initFromDataSet(dataset, encoded) {
+    imm_initFromDataSet(dataset, encoded) {
         /** @type {number} **/
         let val;
         /** @type {number} **/
@@ -5580,7 +5632,7 @@ class YDataStream {
         return 0;
     }
 
-    /* */imm_parseStream(sdata) {
+    imm_parseStream(sdata) {
         /** @type {number} **/
         let idx;
         /** @type {number[]} **/
@@ -5633,7 +5685,7 @@ class YDataStream {
         return YAPI_SUCCESS;
     }
 
-    /* */imm_get_url() {
+    imm_get_url() {
         /** @type {string} **/
         let url;
         url = 'logger.json?id=' + this._functionId + '&run=' + String(Math.round(this._runNo)) + '&utc=' + String(Math.round(this._utcStamp));
@@ -5648,7 +5700,7 @@ class YDataStream {
         })();
     }
 
-    /* */imm_decodeVal(w) {
+    imm_decodeVal(w) {
         /** @type {number} **/
         let val;
         val = w;
@@ -5667,7 +5719,7 @@ class YDataStream {
         return val;
     }
 
-    /* */imm_decodeAvg(dw, count) {
+    imm_decodeAvg(dw, count) {
         /** @type {number} **/
         let val;
         val = dw;
@@ -6064,7 +6116,7 @@ class YDataSet {
 
     //--- (generated code: YDataSet implementation)
 
-    /* */imm_get_calibration() {
+    imm_get_calibration() {
         return this._calib;
     }
 
@@ -8610,7 +8662,7 @@ class YAPIContext {
      */
     GetAPIVersion() {
         return _asyncToGenerator(function* () {
-            return (/* version number patched automatically */'1.10.22592-dev.38'
+            return (/* version number patched automatically */'1.10.22592-dev.43'
             );
         })();
     }
@@ -9125,7 +9177,7 @@ class YAPIContext {
      *
      * @return {number} a long integer corresponding to the millisecond counter.
      */
-    /**/GetTickCount() {
+    GetTickCount() {
         return +new Date();
     }
 
@@ -9616,7 +9668,7 @@ function ySleep(ms_duration, errmsg) {
  * This counter can be used to compute delays in relation with
  * Yoctopuce devices, which also uses the millisecond as timebase.
  *
- * @return a long integer corresponding to the millisecond counter.
+ * @return {number} a long integer corresponding to the millisecond counter.
  */
 function yGetTickCount() {
     return YAPI.GetTickCount();
@@ -9642,7 +9694,7 @@ function yCheckLogicalName(name) {
  * a device is plugged. This callback will be invoked while yUpdateDeviceList
  * is running. You will have to call this function on a regular basis.
  *
- * @param arrivalCallback {DeviceArrivalCallback} : a procedure taking a YModule parameter, or null
+ * @param arrivalCallback {function} : a procedure taking a YModule parameter, or null
  *         to unregister a previously registered  callback.
  */
 function yRegisterDeviceArrivalCallback(arrivalCallback) {
@@ -9658,7 +9710,7 @@ function yRegisterDeviceChangeCallback(changeCallback) {
  * a device is unplugged. This callback will be invoked while yUpdateDeviceList
  * is running. You will have to call this function on a regular basis.
  *
- * @param removalCallback {DeviceRemovalCallback} : a procedure taking a YModule parameter, or null
+ * @param removalCallback {function} : a procedure taking a YModule parameter, or null
  *         to unregister a previously registered  callback.
  */
 function yRegisterDeviceRemovalCallback(removalCallback) {

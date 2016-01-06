@@ -512,7 +512,7 @@ class YBluetoothLink extends _yocto_api.YFunction {
      * @return {YBluetoothLink} a YBluetoothLink object allowing you to drive the cellular interface.
      */
     static FindBluetoothLink(func) {
-        /** @type {YBluetoothLink} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('BluetoothLink', func);
         if (obj == null) {
@@ -547,7 +547,7 @@ class YBluetoothLink extends _yocto_api.YFunction {
      * @return {YBluetoothLink} a YBluetoothLink object allowing you to drive the cellular interface.
      */
     static FindBluetoothLinkInContext(yctx, func) {
-        /** @type {YBluetoothLink} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'BluetoothLink', func);
         if (obj == null) {
@@ -594,7 +594,7 @@ class YBluetoothLink extends _yocto_api.YFunction {
      *         a cellular interface currently online, or a null pointer
      *         if there are no more cellular interfaces to enumerate.
      */
-    /* */nextBluetoothLink() {
+    nextBluetoothLink() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -644,7 +644,27 @@ class YBluetoothLink extends _yocto_api.YFunction {
 exports.YBluetoothLink = YBluetoothLink; //--- (BluetoothLink functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a cellular interface for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the cellular interface is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YBluetoothLink.isOnline() to test if the cellular interface is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a cellular interface by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the cellular interface
+ *
+ * @return {YBluetoothLink} a YBluetoothLink object allowing you to drive the cellular interface.
  */
 
 function yFindBluetoothLink(func) {
@@ -652,7 +672,13 @@ function yFindBluetoothLink(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of cellular interfaces currently accessible.
+ * Use the method YBluetoothLink.nextBluetoothLink() to iterate on
+ * next cellular interfaces.
+ *
+ * @return {YBluetoothLink} a pointer to a YBluetoothLink object, corresponding to
+ *         the first cellular interface currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstBluetoothLink() {
     return YBluetoothLink.FirstBluetoothLink();

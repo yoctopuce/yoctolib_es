@@ -33072,7 +33072,7 @@ System.register('yoctolib-es/yocto_api.js', ['npm:babel-runtime@5.8.34/helpers/c
                                     }
 
                                     context$2$0.next = 3;
-                                    return _regeneratorRuntime.awrap(yFindModule(this._serial + '.module', this._yapi));
+                                    return _regeneratorRuntime.awrap(yFindModuleInContext(this._yapi, this._serial + '.module'));
 
                                 case 3:
                                     return context$2$0.abrupt('return', context$2$0.sent);
@@ -35692,7 +35692,6 @@ System.register('yoctolib-es/yocto_api.js', ['npm:babel-runtime@5.8.34/helpers/c
                     key: 'FindModule',
                     value: function FindModule(func) {
                         var obj = undefined;
-
                         obj = YFunction._FindFromCache('Module', func);
                         if (obj == null) {
                             obj = new YModule(YAPI, func);
@@ -35704,7 +35703,6 @@ System.register('yoctolib-es/yocto_api.js', ['npm:babel-runtime@5.8.34/helpers/c
                     key: 'FindModuleInContext',
                     value: function FindModuleInContext(yctx, func) {
                         var obj = undefined;
-
                         obj = YFunction._FindFromCacheInContext(yctx, 'Module', func);
                         if (obj == null) {
                             obj = new YModule(yctx, func);
@@ -36640,30 +36638,35 @@ System.register('yoctolib-es/yocto_api.js', ['npm:babel-runtime@5.8.34/helpers/c
                 }, {
                     key: 'registerTimedReportCallback',
                     value: function registerTimedReportCallback(callback) {
+                        var sensor;
                         return _regeneratorRuntime.async(function registerTimedReportCallback$(context$2$0) {
                             while (1) switch (context$2$0.prev = context$2$0.next) {
                                 case 0:
+                                    sensor = undefined;
+
+                                    sensor = this;
+
                                     if (!(callback != null)) {
-                                        context$2$0.next = 5;
+                                        context$2$0.next = 7;
                                         break;
                                     }
 
-                                    context$2$0.next = 3;
-                                    return _regeneratorRuntime.awrap(YFunction._UpdateTimedReportCallbackList(this, true));
-
-                                case 3:
-                                    context$2$0.next = 7;
-                                    break;
+                                    context$2$0.next = 5;
+                                    return _regeneratorRuntime.awrap(YFunction._UpdateTimedReportCallbackList(sensor, true));
 
                                 case 5:
-                                    context$2$0.next = 7;
-                                    return _regeneratorRuntime.awrap(YFunction._UpdateTimedReportCallbackList(this, false));
+                                    context$2$0.next = 9;
+                                    break;
 
                                 case 7:
+                                    context$2$0.next = 9;
+                                    return _regeneratorRuntime.awrap(YFunction._UpdateTimedReportCallbackList(sensor, false));
+
+                                case 9:
                                     this._timedReportCallbackSensor = callback;
                                     return context$2$0.abrupt('return', 0);
 
-                                case 9:
+                                case 11:
                                 case 'end':
                                     return context$2$0.stop();
                             }
@@ -37111,7 +37114,6 @@ System.register('yoctolib-es/yocto_api.js', ['npm:babel-runtime@5.8.34/helpers/c
                     key: 'FindSensor',
                     value: function FindSensor(func) {
                         var obj = undefined;
-
                         obj = YFunction._FindFromCache('Sensor', func);
                         if (obj == null) {
                             obj = new YSensor(YAPI, func);
@@ -37123,7 +37125,6 @@ System.register('yoctolib-es/yocto_api.js', ['npm:babel-runtime@5.8.34/helpers/c
                     key: 'FindSensorInContext',
                     value: function FindSensorInContext(yctx, func) {
                         var obj = undefined;
-
                         obj = YFunction._FindFromCacheInContext(yctx, 'Sensor', func);
                         if (obj == null) {
                             obj = new YSensor(yctx, func);
@@ -37149,6 +37150,8 @@ System.register('yoctolib-es/yocto_api.js', ['npm:babel-runtime@5.8.34/helpers/c
 
                 return YSensor;
             })(YFunction);
+
+            _export('YSensor', YSensor);
 
             YMeasure = (function () {
                 function YMeasure(float_start, float_end, float_minVal, float_avgVal, float_maxVal) {
@@ -37210,6 +37213,8 @@ System.register('yoctolib-es/yocto_api.js', ['npm:babel-runtime@5.8.34/helpers/c
 
                 return YMeasure;
             })();
+
+            _export('YMeasure', YMeasure);
 
             YDataStream = (function () {
                 function YDataStream(obj_parent, obj_dataset, encoded) {
@@ -41131,7 +41136,7 @@ System.register('yoctolib-es/yocto_api.js', ['npm:babel-runtime@5.8.34/helpers/c
                         return _regeneratorRuntime.async(function GetAPIVersion$(context$2$0) {
                             while (1) switch (context$2$0.prev = context$2$0.next) {
                                 case 0:
-                                    return context$2$0.abrupt('return', '1.10.22592-dev.38');
+                                    return context$2$0.abrupt('return', '1.10.22592-dev.43');
 
                                 case 1:
                                 case 'end':

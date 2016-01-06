@@ -94,7 +94,7 @@ export class YLongitude extends YSensor
      */
     static FindLongitude(func)
     {
-        /** @type {YLongitude} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCache('Longitude', func);
         if (obj == null) {
@@ -130,7 +130,7 @@ export class YLongitude extends YSensor
      */
     static FindLongitudeInContext(yctx,func)
     {
-        /** @type {YLongitude} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCacheInContext(yctx,  'Longitude', func);
         if (obj == null) {
@@ -147,7 +147,7 @@ export class YLongitude extends YSensor
      *         a longitude sensor currently online, or a null pointer
      *         if there are no more longitude sensors to enumerate.
      */
-    /* */ nextLongitude()
+    nextLongitude()
     {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
@@ -200,7 +200,27 @@ export class YLongitude extends YSensor
 //--- (Longitude functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a longitude sensor for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the longitude sensor is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YLongitude.isOnline() to test if the longitude sensor is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a longitude sensor by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the longitude sensor
+ *
+ * @return {YLongitude} a YLongitude object allowing you to drive the longitude sensor.
  */
 export function yFindLongitude(func)
 {
@@ -208,7 +228,13 @@ export function yFindLongitude(func)
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of longitude sensors currently accessible.
+ * Use the method YLongitude.nextLongitude() to iterate on
+ * next longitude sensors.
+ *
+ * @return {YLongitude} a pointer to a YLongitude object, corresponding to
+ *         the first longitude sensor currently online, or a null pointer
+ *         if there are none.
  */
 export function yFirstLongitude()
 {

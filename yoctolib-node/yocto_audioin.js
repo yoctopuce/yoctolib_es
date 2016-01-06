@@ -290,7 +290,7 @@ class YAudioIn extends _yocto_api.YFunction {
      * @return {YAudioIn} a YAudioIn object allowing you to drive the audio input.
      */
     static FindAudioIn(func) {
-        /** @type {YAudioIn} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('AudioIn', func);
         if (obj == null) {
@@ -325,7 +325,7 @@ class YAudioIn extends _yocto_api.YFunction {
      * @return {YAudioIn} a YAudioIn object allowing you to drive the audio input.
      */
     static FindAudioInInContext(yctx, func) {
-        /** @type {YAudioIn} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'AudioIn', func);
         if (obj == null) {
@@ -342,7 +342,7 @@ class YAudioIn extends _yocto_api.YFunction {
      *         an audio input currently online, or a null pointer
      *         if there are no more audio inputs to enumerate.
      */
-    /* */nextAudioIn() {
+    nextAudioIn() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -392,7 +392,27 @@ class YAudioIn extends _yocto_api.YFunction {
 exports.YAudioIn = YAudioIn; //--- (AudioIn functions)
 
 /**
- * comment from .yc definition
+ * Retrieves an audio input for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the audio input is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YAudioIn.isOnline() to test if the audio input is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * an audio input by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the audio input
+ *
+ * @return {YAudioIn} a YAudioIn object allowing you to drive the audio input.
  */
 
 function yFindAudioIn(func) {
@@ -400,7 +420,13 @@ function yFindAudioIn(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of audio inputs currently accessible.
+ * Use the method YAudioIn.nextAudioIn() to iterate on
+ * next audio inputs.
+ *
+ * @return {YAudioIn} a pointer to a YAudioIn object, corresponding to
+ *         the first audio input currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstAudioIn() {
     return YAudioIn.FirstAudioIn();

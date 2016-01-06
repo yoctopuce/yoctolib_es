@@ -231,7 +231,7 @@ class YHubPort extends _yocto_api.YFunction {
      * @return {YHubPort} a YHubPort object allowing you to drive the Yocto-hub port.
      */
     static FindHubPort(func) {
-        /** @type {YHubPort} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('HubPort', func);
         if (obj == null) {
@@ -266,7 +266,7 @@ class YHubPort extends _yocto_api.YFunction {
      * @return {YHubPort} a YHubPort object allowing you to drive the Yocto-hub port.
      */
     static FindHubPortInContext(yctx, func) {
-        /** @type {YHubPort} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'HubPort', func);
         if (obj == null) {
@@ -283,7 +283,7 @@ class YHubPort extends _yocto_api.YFunction {
      *         a Yocto-hub port currently online, or a null pointer
      *         if there are no more Yocto-hub ports to enumerate.
      */
-    /* */nextHubPort() {
+    nextHubPort() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -333,7 +333,27 @@ class YHubPort extends _yocto_api.YFunction {
 exports.YHubPort = YHubPort; //--- (HubPort functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a Yocto-hub port for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the Yocto-hub port is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YHubPort.isOnline() to test if the Yocto-hub port is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a Yocto-hub port by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the Yocto-hub port
+ *
+ * @return {YHubPort} a YHubPort object allowing you to drive the Yocto-hub port.
  */
 
 function yFindHubPort(func) {
@@ -341,7 +361,13 @@ function yFindHubPort(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of Yocto-hub ports currently accessible.
+ * Use the method YHubPort.nextHubPort() to iterate on
+ * next Yocto-hub ports.
+ *
+ * @return {YHubPort} a pointer to a YHubPort object, corresponding to
+ *         the first Yocto-hub port currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstHubPort() {
     return YHubPort.FirstHubPort();

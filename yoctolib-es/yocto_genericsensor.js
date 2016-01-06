@@ -364,7 +364,7 @@ export class YGenericSensor extends YSensor
      */
     static FindGenericSensor(func)
     {
-        /** @type {YGenericSensor} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCache('GenericSensor', func);
         if (obj == null) {
@@ -400,7 +400,7 @@ export class YGenericSensor extends YSensor
      */
     static FindGenericSensorInContext(yctx,func)
     {
-        /** @type {YGenericSensor} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCacheInContext(yctx,  'GenericSensor', func);
         if (obj == null) {
@@ -436,7 +436,7 @@ export class YGenericSensor extends YSensor
      *         a generic sensor currently online, or a null pointer
      *         if there are no more generic sensors to enumerate.
      */
-    /* */ nextGenericSensor()
+    nextGenericSensor()
     {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
@@ -489,7 +489,27 @@ export class YGenericSensor extends YSensor
 //--- (GenericSensor functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a generic sensor for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the generic sensor is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YGenericSensor.isOnline() to test if the generic sensor is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a generic sensor by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the generic sensor
+ *
+ * @return {YGenericSensor} a YGenericSensor object allowing you to drive the generic sensor.
  */
 export function yFindGenericSensor(func)
 {
@@ -497,7 +517,13 @@ export function yFindGenericSensor(func)
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of generic sensors currently accessible.
+ * Use the method YGenericSensor.nextGenericSensor() to iterate on
+ * next generic sensors.
+ *
+ * @return {YGenericSensor} a pointer to a YGenericSensor object, corresponding to
+ *         the first generic sensor currently online, or a null pointer
+ *         if there are none.
  */
 export function yFirstGenericSensor()
 {

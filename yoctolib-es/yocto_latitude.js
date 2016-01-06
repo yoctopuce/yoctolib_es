@@ -94,7 +94,7 @@ export class YLatitude extends YSensor
      */
     static FindLatitude(func)
     {
-        /** @type {YLatitude} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCache('Latitude', func);
         if (obj == null) {
@@ -130,7 +130,7 @@ export class YLatitude extends YSensor
      */
     static FindLatitudeInContext(yctx,func)
     {
-        /** @type {YLatitude} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCacheInContext(yctx,  'Latitude', func);
         if (obj == null) {
@@ -147,7 +147,7 @@ export class YLatitude extends YSensor
      *         a latitude sensor currently online, or a null pointer
      *         if there are no more latitude sensors to enumerate.
      */
-    /* */ nextLatitude()
+    nextLatitude()
     {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
@@ -200,7 +200,27 @@ export class YLatitude extends YSensor
 //--- (Latitude functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a latitude sensor for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the latitude sensor is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YLatitude.isOnline() to test if the latitude sensor is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a latitude sensor by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the latitude sensor
+ *
+ * @return {YLatitude} a YLatitude object allowing you to drive the latitude sensor.
  */
 export function yFindLatitude(func)
 {
@@ -208,7 +228,13 @@ export function yFindLatitude(func)
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of latitude sensors currently accessible.
+ * Use the method YLatitude.nextLatitude() to iterate on
+ * next latitude sensors.
+ *
+ * @return {YLatitude} a pointer to a YLatitude object, corresponding to
+ *         the first latitude sensor currently online, or a null pointer
+ *         if there are none.
  */
 export function yFirstLatitude()
 {

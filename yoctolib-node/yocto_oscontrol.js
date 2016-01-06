@@ -149,7 +149,7 @@ class YOsControl extends _yocto_api.YFunction {
      * @return {YOsControl} a YOsControl object allowing you to drive the OS control.
      */
     static FindOsControl(func) {
-        /** @type {YOsControl} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('OsControl', func);
         if (obj == null) {
@@ -184,7 +184,7 @@ class YOsControl extends _yocto_api.YFunction {
      * @return {YOsControl} a YOsControl object allowing you to drive the OS control.
      */
     static FindOsControlInContext(yctx, func) {
-        /** @type {YOsControl} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'OsControl', func);
         if (obj == null) {
@@ -218,7 +218,7 @@ class YOsControl extends _yocto_api.YFunction {
      *         OS control currently online, or a null pointer
      *         if there are no more OS control to enumerate.
      */
-    /* */nextOsControl() {
+    nextOsControl() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -268,7 +268,27 @@ class YOsControl extends _yocto_api.YFunction {
 exports.YOsControl = YOsControl; //--- (OsControl functions)
 
 /**
- * comment from .yc definition
+ * Retrieves OS control for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the OS control is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YOsControl.isOnline() to test if the OS control is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * OS control by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the OS control
+ *
+ * @return {YOsControl} a YOsControl object allowing you to drive the OS control.
  */
 
 function yFindOsControl(func) {
@@ -276,7 +296,13 @@ function yFindOsControl(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of OS control currently accessible.
+ * Use the method YOsControl.nextOsControl() to iterate on
+ * next OS control.
+ *
+ * @return {YOsControl} a pointer to a YOsControl object, corresponding to
+ *         the first OS control currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstOsControl() {
     return YOsControl.FirstOsControl();

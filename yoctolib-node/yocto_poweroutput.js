@@ -167,7 +167,7 @@ class YPowerOutput extends _yocto_api.YFunction {
      * @return {YPowerOutput} a YPowerOutput object allowing you to drive the power ouput control.
      */
     static FindPowerOutput(func) {
-        /** @type {YPowerOutput} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('PowerOutput', func);
         if (obj == null) {
@@ -202,7 +202,7 @@ class YPowerOutput extends _yocto_api.YFunction {
      * @return {YPowerOutput} a YPowerOutput object allowing you to drive the power ouput control.
      */
     static FindPowerOutputInContext(yctx, func) {
-        /** @type {YPowerOutput} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'PowerOutput', func);
         if (obj == null) {
@@ -219,7 +219,7 @@ class YPowerOutput extends _yocto_api.YFunction {
      *         a dual power  ouput control currently online, or a null pointer
      *         if there are no more dual power ouput controls to enumerate.
      */
-    /* */nextPowerOutput() {
+    nextPowerOutput() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -269,7 +269,27 @@ class YPowerOutput extends _yocto_api.YFunction {
 exports.YPowerOutput = YPowerOutput; //--- (PowerOutput functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a dual power  ouput control for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the power ouput control is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YPowerOutput.isOnline() to test if the power ouput control is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a dual power  ouput control by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the power ouput control
+ *
+ * @return {YPowerOutput} a YPowerOutput object allowing you to drive the power ouput control.
  */
 
 function yFindPowerOutput(func) {
@@ -277,7 +297,13 @@ function yFindPowerOutput(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of dual power ouput controls currently accessible.
+ * Use the method YPowerOutput.nextPowerOutput() to iterate on
+ * next dual power ouput controls.
+ *
+ * @return {YPowerOutput} a pointer to a YPowerOutput object, corresponding to
+ *         the first dual power ouput control currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstPowerOutput() {
     return YPowerOutput.FirstPowerOutput();

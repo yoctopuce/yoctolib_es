@@ -259,7 +259,7 @@ class YTemperature extends _yocto_api.YSensor {
      * @return {YTemperature} a YTemperature object allowing you to drive the temperature sensor.
      */
     static FindTemperature(func) {
-        /** @type {YTemperature} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('Temperature', func);
         if (obj == null) {
@@ -294,7 +294,7 @@ class YTemperature extends _yocto_api.YSensor {
      * @return {YTemperature} a YTemperature object allowing you to drive the temperature sensor.
      */
     static FindTemperatureInContext(yctx, func) {
-        /** @type {YTemperature} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Temperature', func);
         if (obj == null) {
@@ -515,7 +515,7 @@ class YTemperature extends _yocto_api.YSensor {
      *         a temperature sensor currently online, or a null pointer
      *         if there are no more temperature sensors to enumerate.
      */
-    /* */nextTemperature() {
+    nextTemperature() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -565,7 +565,27 @@ class YTemperature extends _yocto_api.YSensor {
 exports.YTemperature = YTemperature; //--- (Temperature functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a temperature sensor for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the temperature sensor is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YTemperature.isOnline() to test if the temperature sensor is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a temperature sensor by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the temperature sensor
+ *
+ * @return {YTemperature} a YTemperature object allowing you to drive the temperature sensor.
  */
 
 function yFindTemperature(func) {
@@ -573,7 +593,13 @@ function yFindTemperature(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of temperature sensors currently accessible.
+ * Use the method YTemperature.nextTemperature() to iterate on
+ * next temperature sensors.
+ *
+ * @return {YTemperature} a pointer to a YTemperature object, corresponding to
+ *         the first temperature sensor currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstTemperature() {
     return YTemperature.FirstTemperature();

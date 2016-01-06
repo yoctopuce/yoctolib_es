@@ -244,7 +244,7 @@ export class YLed extends YFunction
      */
     static FindLed(func)
     {
-        /** @type {YLed} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCache('Led', func);
         if (obj == null) {
@@ -280,7 +280,7 @@ export class YLed extends YFunction
      */
     static FindLedInContext(yctx,func)
     {
-        /** @type {YLed} **/
+        /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCacheInContext(yctx,  'Led', func);
         if (obj == null) {
@@ -297,7 +297,7 @@ export class YLed extends YFunction
      *         a led currently online, or a null pointer
      *         if there are no more leds to enumerate.
      */
-    /* */ nextLed()
+    nextLed()
     {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
@@ -350,7 +350,27 @@ export class YLed extends YFunction
 //--- (Led functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a led for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the led is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YLed.isOnline() to test if the led is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a led by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the led
+ *
+ * @return {YLed} a YLed object allowing you to drive the led.
  */
 export function yFindLed(func)
 {
@@ -358,7 +378,13 @@ export function yFindLed(func)
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of leds currently accessible.
+ * Use the method YLed.nextLed() to iterate on
+ * next leds.
+ *
+ * @return {YLed} a pointer to a YLed object, corresponding to
+ *         the first led currently online, or a null pointer
+ *         if there are none.
  */
 export function yFirstLed()
 {

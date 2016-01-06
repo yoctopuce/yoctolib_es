@@ -233,7 +233,7 @@ class YAccelerometer extends _yocto_api.YSensor {
      * @return {YAccelerometer} a YAccelerometer object allowing you to drive the accelerometer.
      */
     static FindAccelerometer(func) {
-        /** @type {YAccelerometer} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('Accelerometer', func);
         if (obj == null) {
@@ -268,7 +268,7 @@ class YAccelerometer extends _yocto_api.YSensor {
      * @return {YAccelerometer} a YAccelerometer object allowing you to drive the accelerometer.
      */
     static FindAccelerometerInContext(yctx, func) {
-        /** @type {YAccelerometer} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Accelerometer', func);
         if (obj == null) {
@@ -285,7 +285,7 @@ class YAccelerometer extends _yocto_api.YSensor {
      *         an accelerometer currently online, or a null pointer
      *         if there are no more accelerometers to enumerate.
      */
-    /* */nextAccelerometer() {
+    nextAccelerometer() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -335,7 +335,27 @@ class YAccelerometer extends _yocto_api.YSensor {
 exports.YAccelerometer = YAccelerometer; //--- (Accelerometer functions)
 
 /**
- * comment from .yc definition
+ * Retrieves an accelerometer for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the accelerometer is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YAccelerometer.isOnline() to test if the accelerometer is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * an accelerometer by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the accelerometer
+ *
+ * @return {YAccelerometer} a YAccelerometer object allowing you to drive the accelerometer.
  */
 
 function yFindAccelerometer(func) {
@@ -343,7 +363,13 @@ function yFindAccelerometer(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of accelerometers currently accessible.
+ * Use the method YAccelerometer.nextAccelerometer() to iterate on
+ * next accelerometers.
+ *
+ * @return {YAccelerometer} a pointer to a YAccelerometer object, corresponding to
+ *         the first accelerometer currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstAccelerometer() {
     return YAccelerometer.FirstAccelerometer();

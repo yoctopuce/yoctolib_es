@@ -294,7 +294,7 @@ class YRefFrame extends _yocto_api.YFunction {
      * @return {YRefFrame} a YRefFrame object allowing you to drive the reference frame.
      */
     static FindRefFrame(func) {
-        /** @type {YRefFrame} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCache('RefFrame', func);
         if (obj == null) {
@@ -329,7 +329,7 @@ class YRefFrame extends _yocto_api.YFunction {
      * @return {YRefFrame} a YRefFrame object allowing you to drive the reference frame.
      */
     static FindRefFrameInContext(yctx, func) {
-        /** @type {YRefFrame} **/
+        /** @type {YFunction} **/
         let obj;
         obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'RefFrame', func);
         if (obj == null) {
@@ -927,7 +927,7 @@ class YRefFrame extends _yocto_api.YFunction {
      *         a reference frame currently online, or a null pointer
      *         if there are no more reference frames to enumerate.
      */
-    /* */nextRefFrame() {
+    nextRefFrame() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
         if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
@@ -977,7 +977,27 @@ class YRefFrame extends _yocto_api.YFunction {
 exports.YRefFrame = YRefFrame; //--- (RefFrame functions)
 
 /**
- * comment from .yc definition
+ * Retrieves a reference frame for a given identifier.
+ * The identifier can be specified using several formats:
+ * <ul>
+ * <li>FunctionLogicalName</li>
+ * <li>ModuleSerialNumber.FunctionIdentifier</li>
+ * <li>ModuleSerialNumber.FunctionLogicalName</li>
+ * <li>ModuleLogicalName.FunctionIdentifier</li>
+ * <li>ModuleLogicalName.FunctionLogicalName</li>
+ * </ul>
+ *
+ * This function does not require that the reference frame is online at the time
+ * it is invoked. The returned object is nevertheless valid.
+ * Use the method YRefFrame.isOnline() to test if the reference frame is
+ * indeed online at a given time. In case of ambiguity when looking for
+ * a reference frame by logical name, no error is notified: the first instance
+ * found is returned. The search is performed first by hardware name,
+ * then by logical name.
+ *
+ * @param func {string} : a string that uniquely characterizes the reference frame
+ *
+ * @return {YRefFrame} a YRefFrame object allowing you to drive the reference frame.
  */
 
 function yFindRefFrame(func) {
@@ -985,7 +1005,13 @@ function yFindRefFrame(func) {
 }
 
 /**
- * comment from .yc definition
+ * Starts the enumeration of reference frames currently accessible.
+ * Use the method YRefFrame.nextRefFrame() to iterate on
+ * next reference frames.
+ *
+ * @return {YRefFrame} a pointer to a YRefFrame object, corresponding to
+ *         the first reference frame currently online, or a null pointer
+ *         if there are none.
  */
 function yFirstRefFrame() {
     return YRefFrame.FirstRefFrame();
