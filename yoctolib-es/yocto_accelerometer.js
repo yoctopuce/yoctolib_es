@@ -126,7 +126,7 @@ export class YAccelerometer extends YSensor
     async get_xValue()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_XVALUE_INVALID;
             }
         }
@@ -144,7 +144,7 @@ export class YAccelerometer extends YSensor
     async get_yValue()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_YVALUE_INVALID;
             }
         }
@@ -162,7 +162,7 @@ export class YAccelerometer extends YSensor
     async get_zValue()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_ZVALUE_INVALID;
             }
         }
@@ -172,7 +172,7 @@ export class YAccelerometer extends YSensor
     async get_gravityCancellation()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_GRAVITYCANCELLATION_INVALID;
             }
         }

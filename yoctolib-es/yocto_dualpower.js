@@ -126,7 +126,7 @@ export class YDualPower extends YFunction
     async get_powerState()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_POWERSTATE_INVALID;
             }
         }
@@ -145,7 +145,7 @@ export class YDualPower extends YFunction
     async get_powerControl()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_POWERCONTROL_INVALID;
             }
         }
@@ -181,7 +181,7 @@ export class YDualPower extends YFunction
     async get_extVoltage()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_EXTVOLTAGE_INVALID;
             }
         }

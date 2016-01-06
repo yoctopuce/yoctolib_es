@@ -107,7 +107,7 @@ class YFileRecord
 
 export class YFiles extends YFunction
 {
-    constructor(str_func)
+    constructor(obj_yapi, str_func)
     {
         //--- (generated code: YFiles constructor)
         super(obj_yapi, str_func);
@@ -149,7 +149,7 @@ export class YFiles extends YFunction
     async get_filesCount()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_FILESCOUNT_INVALID;
             }
         }
@@ -166,7 +166,7 @@ export class YFiles extends YFunction
     async get_freeSpace()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_FREESPACE_INVALID;
             }
         }
@@ -270,9 +270,9 @@ export class YFiles extends YFunction
         json = await this.sendCommand('format');
         res = this.imm_json_get_key(json, 'res');
         if (!(res == 'ok')) {
-            return this._throw(YAPI_IO_ERROR,'format failed',YAPI_IO_ERROR);
+            return this._throw(this._yapi.IO_ERROR,'format failed',this._yapi.IO_ERROR);
         }
-        return YAPI_SUCCESS;
+        return this._yapi.SUCCESS;
     }
 
     /**
@@ -358,9 +358,9 @@ export class YFiles extends YFunction
         json = await this.sendCommand('del&f='+pathname);
         res  = this.imm_json_get_key(json, 'res');
         if (!(res == 'ok')) {
-            return this._throw(YAPI_IO_ERROR,'unable to remove file',YAPI_IO_ERROR);
+            return this._throw(this._yapi.IO_ERROR,'unable to remove file',this._yapi.IO_ERROR);
         }
-        return YAPI_SUCCESS;
+        return this._yapi.SUCCESS;
     }
 
     /**

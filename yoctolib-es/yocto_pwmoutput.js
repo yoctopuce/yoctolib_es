@@ -149,7 +149,7 @@ export class YPwmOutput extends YFunction
     async get_enabled()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_ENABLED_INVALID;
             }
         }
@@ -201,7 +201,7 @@ export class YPwmOutput extends YFunction
     async get_frequency()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_FREQUENCY_INVALID;
             }
         }
@@ -235,7 +235,7 @@ export class YPwmOutput extends YFunction
     async get_period()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_PERIOD_INVALID;
             }
         }
@@ -269,7 +269,7 @@ export class YPwmOutput extends YFunction
     async get_dutyCycle()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_DUTYCYCLE_INVALID;
             }
         }
@@ -305,7 +305,7 @@ export class YPwmOutput extends YFunction
     async get_pulseDuration()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_PULSEDURATION_INVALID;
             }
         }
@@ -315,7 +315,7 @@ export class YPwmOutput extends YFunction
     async get_pwmTransition()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_PWMTRANSITION_INVALID;
             }
         }
@@ -341,7 +341,7 @@ export class YPwmOutput extends YFunction
     async get_enabledAtPowerOn()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_ENABLEDATPOWERON_INVALID;
             }
         }
@@ -396,7 +396,7 @@ export class YPwmOutput extends YFunction
     async get_dutyCycleAtPowerOn()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_DUTYCYCLEATPOWERON_INVALID;
             }
         }

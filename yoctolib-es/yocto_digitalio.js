@@ -143,7 +143,7 @@ export class YDigitalIO extends YFunction
     async get_portState()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_PORTSTATE_INVALID;
             }
         }
@@ -180,7 +180,7 @@ export class YDigitalIO extends YFunction
     async get_portDirection()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_PORTDIRECTION_INVALID;
             }
         }
@@ -218,7 +218,7 @@ export class YDigitalIO extends YFunction
     async get_portOpenDrain()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_PORTOPENDRAIN_INVALID;
             }
         }
@@ -255,7 +255,7 @@ export class YDigitalIO extends YFunction
     async get_portPolarity()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_PORTPOLARITY_INVALID;
             }
         }
@@ -291,7 +291,7 @@ export class YDigitalIO extends YFunction
     async get_portSize()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_PORTSIZE_INVALID;
             }
         }
@@ -309,7 +309,7 @@ export class YDigitalIO extends YFunction
     async get_outputVoltage()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_OUTPUTVOLTAGE_INVALID;
             }
         }
@@ -339,7 +339,7 @@ export class YDigitalIO extends YFunction
     async get_command()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_COMMAND_INVALID;
             }
         }
@@ -438,10 +438,10 @@ export class YDigitalIO extends YFunction
     async set_bitState(bitno,bitstate)
     {
         if (!(bitstate >= 0)) {
-            return this._throw(YAPI_INVALID_ARGUMENT,'invalid bitstate',YAPI_INVALID_ARGUMENT);
+            return this._throw(this._yapi.INVALID_ARGUMENT,'invalid bitstate',this._yapi.INVALID_ARGUMENT);
         }
         if (!(bitstate <= 1)) {
-            return this._throw(YAPI_INVALID_ARGUMENT,'invalid bitstate',YAPI_INVALID_ARGUMENT);
+            return this._throw(this._yapi.INVALID_ARGUMENT,'invalid bitstate',this._yapi.INVALID_ARGUMENT);
         }
         return await this.set_command(String.fromCharCode(82+bitstate)+''+String(Math.round(bitno)));
     }
@@ -491,10 +491,10 @@ export class YDigitalIO extends YFunction
     async set_bitDirection(bitno,bitdirection)
     {
         if (!(bitdirection >= 0)) {
-            return this._throw(YAPI_INVALID_ARGUMENT,'invalid direction',YAPI_INVALID_ARGUMENT);
+            return this._throw(this._yapi.INVALID_ARGUMENT,'invalid direction',this._yapi.INVALID_ARGUMENT);
         }
         if (!(bitdirection <= 1)) {
-            return this._throw(YAPI_INVALID_ARGUMENT,'invalid direction',YAPI_INVALID_ARGUMENT);
+            return this._throw(this._yapi.INVALID_ARGUMENT,'invalid direction',this._yapi.INVALID_ARGUMENT);
         }
         return await this.set_command(String.fromCharCode(73+6*bitdirection)+''+String(Math.round(bitno)));
     }
@@ -531,10 +531,10 @@ export class YDigitalIO extends YFunction
     async set_bitPolarity(bitno,bitpolarity)
     {
         if (!(bitpolarity >= 0)) {
-            return this._throw(YAPI_INVALID_ARGUMENT,'invalid bitpolarity',YAPI_INVALID_ARGUMENT);
+            return this._throw(this._yapi.INVALID_ARGUMENT,'invalid bitpolarity',this._yapi.INVALID_ARGUMENT);
         }
         if (!(bitpolarity <= 1)) {
-            return this._throw(YAPI_INVALID_ARGUMENT,'invalid bitpolarity',YAPI_INVALID_ARGUMENT);
+            return this._throw(this._yapi.INVALID_ARGUMENT,'invalid bitpolarity',this._yapi.INVALID_ARGUMENT);
         }
         return await this.set_command(String.fromCharCode(110+4*bitpolarity)+''+String(Math.round(bitno)));
     }
@@ -572,10 +572,10 @@ export class YDigitalIO extends YFunction
     async set_bitOpenDrain(bitno,opendrain)
     {
         if (!(opendrain >= 0)) {
-            return this._throw(YAPI_INVALID_ARGUMENT,'invalid state',YAPI_INVALID_ARGUMENT);
+            return this._throw(this._yapi.INVALID_ARGUMENT,'invalid state',this._yapi.INVALID_ARGUMENT);
         }
         if (!(opendrain <= 1)) {
-            return this._throw(YAPI_INVALID_ARGUMENT,'invalid state',YAPI_INVALID_ARGUMENT);
+            return this._throw(this._yapi.INVALID_ARGUMENT,'invalid state',this._yapi.INVALID_ARGUMENT);
         }
         return await this.set_command(String.fromCharCode(100-32*opendrain)+''+String(Math.round(bitno)));
     }

@@ -154,7 +154,7 @@ const Y_COMMAND_INVALID = exports.Y_COMMAND_INVALID = _yocto_api.YAPI.INVALID_ST
 //--- (end of generated code: YCellular class start)
 
 class YCellular extends _yocto_api.YFunction {
-    constructor(str_func) {
+    constructor(obj_yapi, str_func) {
         //--- (generated code: YCellular constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
@@ -253,7 +253,7 @@ class YCellular extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
-                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
                     return Y_LINKQUALITY_INVALID;
                 }
             }
@@ -273,7 +273,7 @@ class YCellular extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this2._cacheExpiration <= _this2._yapi.GetTickCount()) {
-                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _this2._yapi.SUCCESS) {
                     return Y_CELLOPERATOR_INVALID;
                 }
             }
@@ -294,7 +294,7 @@ class YCellular extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
-                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
                     return Y_CELLIDENTIFIER_INVALID;
                 }
             }
@@ -319,7 +319,7 @@ class YCellular extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this4._cacheExpiration <= _this4._yapi.GetTickCount()) {
-                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _this4._yapi.SUCCESS) {
                     return Y_IMSI_INVALID;
                 }
             }
@@ -339,7 +339,7 @@ class YCellular extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this5._cacheExpiration <= _this5._yapi.GetTickCount()) {
-                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _this5._yapi.SUCCESS) {
                     return Y_MESSAGE_INVALID;
                 }
             }
@@ -364,7 +364,7 @@ class YCellular extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this6._cacheExpiration <= _this6._yapi.GetTickCount()) {
-                if ((yield _this6.load(_this6._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this6.load(_this6._yapi.defaultCacheValidity)) != _this6._yapi.SUCCESS) {
                     return Y_PIN_INVALID;
                 }
             }
@@ -419,7 +419,7 @@ class YCellular extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this8._cacheExpiration <= _this8._yapi.GetTickCount()) {
-                if ((yield _this8.load(_this8._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this8.load(_this8._yapi.defaultCacheValidity)) != _this8._yapi.SUCCESS) {
                     return Y_LOCKEDOPERATOR_INVALID;
                 }
             }
@@ -463,7 +463,7 @@ class YCellular extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this10._cacheExpiration <= _this10._yapi.GetTickCount()) {
-                if ((yield _this10.load(_this10._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this10.load(_this10._yapi.defaultCacheValidity)) != _this10._yapi.SUCCESS) {
                     return Y_ENABLEDATA_INVALID;
                 }
             }
@@ -511,7 +511,7 @@ class YCellular extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this12._cacheExpiration <= _this12._yapi.GetTickCount()) {
-                if ((yield _this12.load(_this12._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this12.load(_this12._yapi.defaultCacheValidity)) != _this12._yapi.SUCCESS) {
                     return Y_APN_INVALID;
                 }
             }
@@ -556,7 +556,7 @@ class YCellular extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this14._cacheExpiration <= _this14._yapi.GetTickCount()) {
-                if ((yield _this14.load(_this14._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this14.load(_this14._yapi.defaultCacheValidity)) != _this14._yapi.SUCCESS) {
                     return Y_APNSECRET_INVALID;
                 }
             }
@@ -580,7 +580,7 @@ class YCellular extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this16._cacheExpiration <= _this16._yapi.GetTickCount()) {
-                if ((yield _this16.load(_this16._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this16.load(_this16._yapi.defaultCacheValidity)) != _this16._yapi.SUCCESS) {
                     return Y_COMMAND_INVALID;
                 }
             }
@@ -690,7 +690,7 @@ class YCellular extends _yocto_api.YFunction {
             let gsmMsg;
             gsmMsg = yield _this18.get_message();
             if (!(gsmMsg == 'Enter SIM PUK')) {
-                return _this18._throw(YAPI_INVALID_ARGUMENT, 'PUK not expected at this time', YAPI_INVALID_ARGUMENT);
+                return _this18._throw(_this18._yapi.INVALID_ARGUMENT, 'PUK not expected at this time', _this18._yapi.INVALID_ARGUMENT);
             }
             if (newPin == '') {
                 return yield _this18.set_command('AT+CPIN=' + puk + ',0000;+CLCK=SC,0,0000');

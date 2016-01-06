@@ -171,7 +171,7 @@ class YGenericSensor extends _yocto_api.YSensor {
 
         return _asyncToGenerator(function* () {
             if (_this2._cacheExpiration <= _this2._yapi.GetTickCount()) {
-                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _this2._yapi.SUCCESS) {
                     return Y_SIGNALVALUE_INVALID;
                 }
             }
@@ -191,7 +191,7 @@ class YGenericSensor extends _yocto_api.YSensor {
 
         return _asyncToGenerator(function* () {
             if (_this3._cacheExpiration == 0) {
-                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
                     return Y_SIGNALUNIT_INVALID;
                 }
             }
@@ -211,7 +211,7 @@ class YGenericSensor extends _yocto_api.YSensor {
 
         return _asyncToGenerator(function* () {
             if (_this4._cacheExpiration <= _this4._yapi.GetTickCount()) {
-                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _this4._yapi.SUCCESS) {
                     return Y_SIGNALRANGE_INVALID;
                 }
             }
@@ -251,7 +251,7 @@ class YGenericSensor extends _yocto_api.YSensor {
 
         return _asyncToGenerator(function* () {
             if (_this6._cacheExpiration <= _this6._yapi.GetTickCount()) {
-                if ((yield _this6.load(_this6._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this6.load(_this6._yapi.defaultCacheValidity)) != _this6._yapi.SUCCESS) {
                     return Y_VALUERANGE_INVALID;
                 }
             }
@@ -317,7 +317,7 @@ class YGenericSensor extends _yocto_api.YSensor {
 
         return _asyncToGenerator(function* () {
             if (_this9._cacheExpiration <= _this9._yapi.GetTickCount()) {
-                if ((yield _this9.load(_this9._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this9.load(_this9._yapi.defaultCacheValidity)) != _this9._yapi.SUCCESS) {
                     return Y_SIGNALBIAS_INVALID;
                 }
             }
@@ -344,7 +344,7 @@ class YGenericSensor extends _yocto_api.YSensor {
 
         return _asyncToGenerator(function* () {
             if (_this10._cacheExpiration <= _this10._yapi.GetTickCount()) {
-                if ((yield _this10.load(_this10._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this10.load(_this10._yapi.defaultCacheValidity)) != _this10._yapi.SUCCESS) {
                     return Y_SIGNALSAMPLING_INVALID;
                 }
             }

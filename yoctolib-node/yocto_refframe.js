@@ -172,7 +172,7 @@ class YRefFrame extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
-                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
                     return Y_MOUNTPOS_INVALID;
                 }
             }
@@ -238,7 +238,7 @@ class YRefFrame extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this4._cacheExpiration <= _this4._yapi.GetTickCount()) {
-                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _this4._yapi.SUCCESS) {
                     return Y_BEARING_INVALID;
                 }
             }
@@ -251,7 +251,7 @@ class YRefFrame extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this5._cacheExpiration <= _this5._yapi.GetTickCount()) {
-                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _this5._yapi.SUCCESS) {
                     return Y_CALIBRATIONPARAM_INVALID;
                 }
             }
@@ -496,7 +496,7 @@ class YRefFrame extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (!(yield _this11.isOnline())) {
-                return YAPI_DEVICE_NOT_FOUND;
+                return _this11._yapi.DEVICE_NOT_FOUND;
             }
             if (_this11._calibStage != 0) {
                 yield _this11.cancel3DCalibration();
@@ -515,7 +515,7 @@ class YRefFrame extends _yocto_api.YFunction {
             _this11._calibDataAccY.length = 0;
             _this11._calibDataAccZ.length = 0;
             _this11._calibDataAcc.length = 0;
-            return _yocto_api.YAPI_SUCCESS;
+            return _this11._yapi.SUCCESS;
         })();
     }
 
@@ -561,15 +561,15 @@ class YRefFrame extends _yocto_api.YFunction {
             let err;
             // make sure calibration has been started
             if (_this12._calibStage == 0) {
-                return YAPI_INVALID_ARGUMENT;
+                return _this12._yapi.INVALID_ARGUMENT;
             }
             if (_this12._calibProgress == 100) {
-                return _yocto_api.YAPI_SUCCESS;
+                return _this12._yapi.SUCCESS;
             }
             // make sure we leave at least 160ms between samples
             currTick = _this12._yapi.GetTickCount() & 0x7FFFFFFF;
             if ((currTick - _this12._calibPrevTick & 0x7FFFFFFF) < 160) {
-                return _yocto_api.YAPI_SUCCESS;
+                return _this12._yapi.SUCCESS;
             }
             // load current accelerometer values, make sure we are on a straight angle
             // (default timeout to 0,5 sec without reading measure when out of range)
@@ -581,28 +581,28 @@ class YRefFrame extends _yocto_api.YFunction {
             zVal = _this12._yapi.imm_atoi(_this12.imm_json_get_key(jsonData, 'zValue')) / 65536.0;
             xSq = xVal * xVal;
             if (xSq >= 0.04 && xSq < 0.64) {
-                return _yocto_api.YAPI_SUCCESS;
+                return _this12._yapi.SUCCESS;
             }
             if (xSq >= 1.44) {
-                return _yocto_api.YAPI_SUCCESS;
+                return _this12._yapi.SUCCESS;
             }
             ySq = yVal * yVal;
             if (ySq >= 0.04 && ySq < 0.64) {
-                return _yocto_api.YAPI_SUCCESS;
+                return _this12._yapi.SUCCESS;
             }
             if (ySq >= 1.44) {
-                return _yocto_api.YAPI_SUCCESS;
+                return _this12._yapi.SUCCESS;
             }
             zSq = zVal * zVal;
             if (zSq >= 0.04 && zSq < 0.64) {
-                return _yocto_api.YAPI_SUCCESS;
+                return _this12._yapi.SUCCESS;
             }
             if (zSq >= 1.44) {
-                return _yocto_api.YAPI_SUCCESS;
+                return _this12._yapi.SUCCESS;
             }
             norm = Math.sqrt(xSq + ySq + zSq);
             if (norm < 0.8 || norm > 1.2) {
-                return _yocto_api.YAPI_SUCCESS;
+                return _this12._yapi.SUCCESS;
             }
             _this12._calibPrevTick = currTick;
             // Determine the device orientation index
@@ -640,13 +640,13 @@ class YRefFrame extends _yocto_api.YFunction {
                 }
                 if (err != 0) {
                     _this12._calibStageHint = 'Turn the device on another face';
-                    return _yocto_api.YAPI_SUCCESS;
+                    return _this12._yapi.SUCCESS;
                 }
                 _this12._calibOrient.push(orient);
             } else {
                 if (orient != _this12._calibOrient[_this12._calibStage - 1]) {
                     _this12._calibStageHint = 'Not yet done, please move back to the previous face';
-                    return _yocto_api.YAPI_SUCCESS;
+                    return _this12._yapi.SUCCESS;
                 }
             }
             // Save measure
@@ -659,7 +659,7 @@ class YRefFrame extends _yocto_api.YFunction {
             _this12._calibProgress = 1 + 16 * (_this12._calibStage - 1) + parseInt(16 * _this12._calibInternalPos / _this12._calibCount, 10);
             if (_this12._calibInternalPos < _this12._calibCount) {
                 _this12._calibStageProgress = 1 + parseInt(99 * _this12._calibInternalPos / _this12._calibCount, 10);
-                return _yocto_api.YAPI_SUCCESS;
+                return _this12._yapi.SUCCESS;
             }
             // Stage done, compute preliminary result
             intpos = (_this12._calibStage - 1) * _this12._calibCount;
@@ -673,7 +673,7 @@ class YRefFrame extends _yocto_api.YFunction {
                 _this12._calibPrevTick = currTick + 500 & 0x7FFFFFFF;
                 _this12._calibStageProgress = 0;
                 _this12._calibInternalPos = 0;
-                return _yocto_api.YAPI_SUCCESS;
+                return _this12._yapi.SUCCESS;
             }
             // Data collection completed, compute accelerometer shift
             xVal = 0;
@@ -738,7 +738,7 @@ class YRefFrame extends _yocto_api.YFunction {
             // Report completion
             _this12._calibProgress = 100;
             _this12._calibStageHint = 'Calibration data ready for saving';
-            return _yocto_api.YAPI_SUCCESS;
+            return _this12._yapi.SUCCESS;
         })();
     }
 
@@ -848,7 +848,7 @@ class YRefFrame extends _yocto_api.YFunction {
             /** @type {string} **/
             let newcalib;
             if (_this18._calibProgress != 100) {
-                return YAPI_INVALID_ARGUMENT;
+                return _this18._yapi.INVALID_ARGUMENT;
             }
             // Compute integer values (correction unit is 732ug/count)
             shiftX = -Math.round(_this18._calibAccXOfs / 0.000732);
@@ -912,7 +912,7 @@ class YRefFrame extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this19._calibStage == 0) {
-                return _yocto_api.YAPI_SUCCESS;
+                return _this19._yapi.SUCCESS;
             }
             // may throw an exception
             _this19._calibStage = 0;

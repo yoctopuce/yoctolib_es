@@ -175,7 +175,7 @@ export class YAnButton extends YFunction
     async get_calibratedValue()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_CALIBRATEDVALUE_INVALID;
             }
         }
@@ -193,7 +193,7 @@ export class YAnButton extends YFunction
     async get_rawValue()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_RAWVALUE_INVALID;
             }
         }
@@ -210,7 +210,7 @@ export class YAnButton extends YFunction
     async get_analogCalibration()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_ANALOGCALIBRATION_INVALID;
             }
         }
@@ -246,7 +246,7 @@ export class YAnButton extends YFunction
     async get_calibrationMax()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_CALIBRATIONMAX_INVALID;
             }
         }
@@ -285,7 +285,7 @@ export class YAnButton extends YFunction
     async get_calibrationMin()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_CALIBRATIONMIN_INVALID;
             }
         }
@@ -324,7 +324,7 @@ export class YAnButton extends YFunction
     async get_sensitivity()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_SENSITIVITY_INVALID;
             }
         }
@@ -365,7 +365,7 @@ export class YAnButton extends YFunction
     async get_isPressed()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_ISPRESSED_INVALID;
             }
         }
@@ -385,7 +385,7 @@ export class YAnButton extends YFunction
     async get_lastTimePressed()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_LASTTIMEPRESSED_INVALID;
             }
         }
@@ -405,7 +405,7 @@ export class YAnButton extends YFunction
     async get_lastTimeReleased()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_LASTTIMERELEASED_INVALID;
             }
         }
@@ -422,7 +422,7 @@ export class YAnButton extends YFunction
     async get_pulseCounter()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_PULSECOUNTER_INVALID;
             }
         }
@@ -447,7 +447,7 @@ export class YAnButton extends YFunction
     async get_pulseTimer()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_PULSETIMER_INVALID;
             }
         }

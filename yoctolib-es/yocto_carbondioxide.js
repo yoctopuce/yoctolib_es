@@ -103,7 +103,7 @@ export class YCarbonDioxide extends YSensor
     async get_abcPeriod()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_ABCPERIOD_INVALID;
             }
         }
@@ -134,7 +134,7 @@ export class YCarbonDioxide extends YSensor
     async get_command()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_COMMAND_INVALID;
             }
         }

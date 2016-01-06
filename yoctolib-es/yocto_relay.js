@@ -161,7 +161,7 @@ export class YRelay extends YFunction
     async get_state()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_STATE_INVALID;
             }
         }
@@ -199,7 +199,7 @@ export class YRelay extends YFunction
     async get_stateAtPowerOn()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_STATEATPOWERON_INVALID;
             }
         }
@@ -237,7 +237,7 @@ export class YRelay extends YFunction
     async get_maxTimeOnStateA()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_MAXTIMEONSTATEA_INVALID;
             }
         }
@@ -273,7 +273,7 @@ export class YRelay extends YFunction
     async get_maxTimeOnStateB()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_MAXTIMEONSTATEB_INVALID;
             }
         }
@@ -309,7 +309,7 @@ export class YRelay extends YFunction
     async get_output()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_OUTPUT_INVALID;
             }
         }
@@ -347,7 +347,7 @@ export class YRelay extends YFunction
     async get_pulseTimer()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_PULSETIMER_INVALID;
             }
         }
@@ -383,7 +383,7 @@ export class YRelay extends YFunction
     async get_delayedPulseTimer()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_DELAYEDPULSETIMER_INVALID;
             }
         }
@@ -429,7 +429,7 @@ export class YRelay extends YFunction
     async get_countdown()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_COUNTDOWN_INVALID;
             }
         }

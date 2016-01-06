@@ -121,7 +121,7 @@ class YWlanRecord
 //--- (end of generated code: YWireless class start)
 export class YWireless extends YFunction
 {
-    constructor(str_func)
+    constructor(obj_yapi,str_func)
     {
         //--- (generated code: YWireless constructor)
         super(obj_yapi, str_func);
@@ -192,7 +192,7 @@ export class YWireless extends YFunction
     async get_linkQuality()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_LINKQUALITY_INVALID;
             }
         }
@@ -209,7 +209,7 @@ export class YWireless extends YFunction
     async get_ssid()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_SSID_INVALID;
             }
         }
@@ -227,7 +227,7 @@ export class YWireless extends YFunction
     async get_channel()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_CHANNEL_INVALID;
             }
         }
@@ -246,7 +246,7 @@ export class YWireless extends YFunction
     async get_security()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_SECURITY_INVALID;
             }
         }
@@ -263,7 +263,7 @@ export class YWireless extends YFunction
     async get_message()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_MESSAGE_INVALID;
             }
         }
@@ -273,7 +273,7 @@ export class YWireless extends YFunction
     async get_wlanConfig()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_WLANCONFIG_INVALID;
             }
         }

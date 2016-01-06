@@ -181,7 +181,7 @@ export class YMotor extends YFunction
     async get_motorStatus()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_MOTORSTATUS_INVALID;
             }
         }
@@ -228,7 +228,7 @@ export class YMotor extends YFunction
     async get_drivingForce()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_DRIVINGFORCE_INVALID;
             }
         }
@@ -267,7 +267,7 @@ export class YMotor extends YFunction
     async get_brakingForce()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_BRAKINGFORCE_INVALID;
             }
         }
@@ -311,7 +311,7 @@ export class YMotor extends YFunction
     async get_cutOffVoltage()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_CUTOFFVOLTAGE_INVALID;
             }
         }
@@ -331,7 +331,7 @@ export class YMotor extends YFunction
     async get_overCurrentLimit()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_OVERCURRENTLIMIT_INVALID;
             }
         }
@@ -390,7 +390,7 @@ export class YMotor extends YFunction
     async get_frequency()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_FREQUENCY_INVALID;
             }
         }
@@ -410,7 +410,7 @@ export class YMotor extends YFunction
     async get_starterTime()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_STARTERTIME_INVALID;
             }
         }
@@ -452,7 +452,7 @@ export class YMotor extends YFunction
     async get_failSafeTimeout()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_FAILSAFETIMEOUT_INVALID;
             }
         }
@@ -484,7 +484,7 @@ export class YMotor extends YFunction
     async get_command()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_COMMAND_INVALID;
             }
         }

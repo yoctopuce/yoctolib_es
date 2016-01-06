@@ -121,7 +121,7 @@ class YFileRecord {
 //--- (end of generated code: YFiles class start)
 
 class YFiles extends _yocto_api.YFunction {
-    constructor(str_func) {
+    constructor(obj_yapi, str_func) {
         //--- (generated code: YFiles constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
@@ -163,7 +163,7 @@ class YFiles extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this4._cacheExpiration <= _this4._yapi.GetTickCount()) {
-                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _this4._yapi.SUCCESS) {
                     return Y_FILESCOUNT_INVALID;
                 }
             }
@@ -183,7 +183,7 @@ class YFiles extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this5._cacheExpiration <= _this5._yapi.GetTickCount()) {
-                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _this5._yapi.SUCCESS) {
                     return Y_FREESPACE_INVALID;
                 }
             }
@@ -291,9 +291,9 @@ class YFiles extends _yocto_api.YFunction {
             json = yield _this7.sendCommand('format');
             res = _this7.imm_json_get_key(json, 'res');
             if (!(res == 'ok')) {
-                return _this7._throw(YAPI_IO_ERROR, 'format failed', YAPI_IO_ERROR);
+                return _this7._throw(_this7._yapi.IO_ERROR, 'format failed', _this7._yapi.IO_ERROR);
             }
-            return _yocto_api.YAPI_SUCCESS;
+            return _this7._yapi.SUCCESS;
         })();
     }
 
@@ -391,9 +391,9 @@ class YFiles extends _yocto_api.YFunction {
             json = yield _this11.sendCommand('del&f=' + pathname);
             res = _this11.imm_json_get_key(json, 'res');
             if (!(res == 'ok')) {
-                return _this11._throw(YAPI_IO_ERROR, 'unable to remove file', YAPI_IO_ERROR);
+                return _this11._throw(_this11._yapi.IO_ERROR, 'unable to remove file', _this11._yapi.IO_ERROR);
             }
-            return _yocto_api.YAPI_SUCCESS;
+            return _this11._yapi.SUCCESS;
         })();
     }
 

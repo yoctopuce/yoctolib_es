@@ -160,7 +160,7 @@ class YColorLed extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
-                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
                     return Y_RGBCOLOR_INVALID;
                 }
             }
@@ -200,7 +200,7 @@ class YColorLed extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
-                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
                     return Y_HSLCOLOR_INVALID;
                 }
             }
@@ -233,7 +233,7 @@ class YColorLed extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this5._cacheExpiration <= _this5._yapi.GetTickCount()) {
-                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _this5._yapi.SUCCESS) {
                     return Y_RGBMOVE_INVALID;
                 }
             }
@@ -278,7 +278,7 @@ class YColorLed extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this8._cacheExpiration <= _this8._yapi.GetTickCount()) {
-                if ((yield _this8.load(_this8._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this8.load(_this8._yapi.defaultCacheValidity)) != _this8._yapi.SUCCESS) {
                     return Y_HSLMOVE_INVALID;
                 }
             }
@@ -330,7 +330,7 @@ class YColorLed extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this11._cacheExpiration <= _this11._yapi.GetTickCount()) {
-                if ((yield _this11.load(_this11._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this11.load(_this11._yapi.defaultCacheValidity)) != _this11._yapi.SUCCESS) {
                     return Y_RGBCOLORATPOWERON_INVALID;
                 }
             }
@@ -371,7 +371,7 @@ class YColorLed extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this13._cacheExpiration <= _this13._yapi.GetTickCount()) {
-                if ((yield _this13.load(_this13._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this13.load(_this13._yapi.defaultCacheValidity)) != _this13._yapi.SUCCESS) {
                     return Y_BLINKSEQSIZE_INVALID;
                 }
             }
@@ -391,7 +391,7 @@ class YColorLed extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this14._cacheExpiration == 0) {
-                if ((yield _this14.load(_this14._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this14.load(_this14._yapi.defaultCacheValidity)) != _this14._yapi.SUCCESS) {
                     return Y_BLINKSEQMAXSIZE_INVALID;
                 }
             }
@@ -414,7 +414,7 @@ class YColorLed extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this15._cacheExpiration <= _this15._yapi.GetTickCount()) {
-                if ((yield _this15.load(_this15._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this15.load(_this15._yapi.defaultCacheValidity)) != _this15._yapi.SUCCESS) {
                     return Y_BLINKSEQSIGNATURE_INVALID;
                 }
             }
@@ -427,7 +427,7 @@ class YColorLed extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this16._cacheExpiration <= _this16._yapi.GetTickCount()) {
-                if ((yield _this16.load(_this16._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this16.load(_this16._yapi.defaultCacheValidity)) != _this16._yapi.SUCCESS) {
                     return Y_COMMAND_INVALID;
                 }
             }

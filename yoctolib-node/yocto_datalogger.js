@@ -66,10 +66,10 @@ const Y_CURRENTRUNINDEX_INVALID = exports.Y_CURRENTRUNINDEX_INVALID = _yocto_api
 const Y_TIMEUTC_INVALID = exports.Y_TIMEUTC_INVALID = _yocto_api.YAPI.INVALID_LONG;
 //--- (end of generated code: YDataLogger definitions)
 
-const Y_DATA_INVALID = exports.Y_DATA_INVALID = YAPI_INVALID_DOUBLE;
-const Y_MINVALUE_INVALID = exports.Y_MINVALUE_INVALID = YAPI_INVALID_DOUBLE;
-const Y_AVERAGEVALUE_INVALID = exports.Y_AVERAGEVALUE_INVALID = YAPI_INVALID_DOUBLE;
-const Y_MAXVALUE_INVALID = exports.Y_MAXVALUE_INVALID = YAPI_INVALID_DOUBLE;
+const Y_DATA_INVALID = exports.Y_DATA_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
+const Y_MINVALUE_INVALID = exports.Y_MINVALUE_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
+const Y_AVERAGEVALUE_INVALID = exports.Y_AVERAGEVALUE_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
+const Y_MAXVALUE_INVALID = exports.Y_MAXVALUE_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
 
 /**
  * YOldDataStream Class: Sequence of measured data, returned by the data logger
@@ -79,7 +79,7 @@ const Y_MAXVALUE_INVALID = exports.Y_MAXVALUE_INVALID = YAPI_INVALID_DOUBLE;
  * (they are preloaded at instantiation time), while most other properties and
  * the actual data are loaded on demand when accessed for the first time.
  */
-class YOldDataStream extends YDataStream {
+class YOldDataStream extends _yocto_api.YDataStream {
     // Data preloaded on object instantiation
     constructor(obj_parent, int_run, int_stamp, int_utc, int_itv) {
         super(obj_parent);
@@ -126,7 +126,7 @@ class YOldDataStream extends YDataStream {
                     _this._nCols = _this._columnNames.length;
                 } else if (_this._nCols != _this._columnNames.length) {
                     _this._nCols = 0;
-                    return YAPI_IO_ERROR;
+                    return _yocto_api.YAPI.IO_ERROR;
                 }
             }
             if (loadval['div'] != null) {
@@ -135,7 +135,7 @@ class YOldDataStream extends YDataStream {
                     _this._nCols = coldiv.length;
                 } else if (_this._nCols != coldiv.length) {
                     _this._nCols = 0;
-                    return YAPI_IO_ERROR;
+                    return _yocto_api.YAPI.IO_ERROR;
                 }
             }
             if (loadval['type'] != null) {
@@ -144,7 +144,7 @@ class YOldDataStream extends YDataStream {
                     _this._nCols = coltyp.length;
                 } else if (_this._nCols != coltyp.length) {
                     _this._nCols = 0;
-                    return YAPI_IO_ERROR;
+                    return _yocto_api.YAPI.IO_ERROR;
                 }
             }
             if (loadval['scal'] != null) {
@@ -152,7 +152,7 @@ class YOldDataStream extends YDataStream {
                 colofs = [];
                 if (_this._nCols != colscl.length) {
                     _this._nCols = 0;
-                    return YAPI_IO_ERROR;
+                    return _yocto_api.YAPI.IO_ERROR;
                 }
                 for (i = 0; i < colscl.length; i++) {
                     colscl[i] /= 65536.0;
@@ -198,7 +198,7 @@ class YOldDataStream extends YDataStream {
             }
             if (loadval['data'] != null) {
                 if (_this._nCols == 0 || coldiv == null || coltyp == null) {
-                    return YAPI_IO_ERROR;
+                    return _yocto_api.YAPI.IO_ERROR;
                 }
                 _this._values = [];
                 var data = loadval['data'];
@@ -245,7 +245,7 @@ class YOldDataStream extends YDataStream {
      * is always positive.
      * If you need an absolute UTC timestamp, use get_startTimeUTC().
      * 
-     * @return an unsigned number corresponding to the number of seconds
+     * @return {number} an unsigned number corresponding to the number of seconds
      *         between the start of the run and the beginning of this data
      *         stream.
      */
@@ -290,7 +290,7 @@ exports.YOldDataStream = YOldDataStream; //--- (generated code: YDataLogger clas
 //--- (end of generated code: YDataLogger class start)
 
 class YDataLogger extends _yocto_api.YFunction {
-    constructor(str_func) {
+    constructor(obj_yapi, str_func) {
         //--- (generated code: YDataLogger constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
@@ -342,7 +342,7 @@ class YDataLogger extends _yocto_api.YFunction {
 
             // get the device serial number
             var devid = _this4.module().get_serialNumber();
-            if (devid == Y_SERIALNUMBER_INVALID) {
+            if (devid == _yocto_api.YModule.SERIALNUMBER_INVALID) {
                 return null;
             }
             var httpreq = 'GET ' + _this4.dataLoggerURL;
@@ -358,7 +358,7 @@ class YDataLogger extends _yocto_api.YFunction {
                 return _this4._throw(yreq.errorType, yreq.errorMsg, null);
             }
 
-            return JSON.parse(yreq.result, true);
+            return JSON.parse(yreq.result);
         })();
     }
 
@@ -395,8 +395,8 @@ class YDataLogger extends _yocto_api.YFunction {
                 for (var idx in loadval) {
                     var arr = loadval[idx];
                     if (arr.length < 4) {
-                        _throw(YAPI_IO_ERROR, 'Unexpected JSON reply format');
-                        return YAPI_IO_ERROR;
+                        _throw(_yocto_api.YAPI.IO_ERROR, 'Unexpected JSON reply format');
+                        return _yocto_api.YAPI.IO_ERROR;
                     }
                     v.push(new YOldDataStream(_this5, arr[0], arr[1], arr[2], arr[3]));
                 }
@@ -455,7 +455,7 @@ class YDataLogger extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this6._cacheExpiration <= _this6._yapi.GetTickCount()) {
-                if ((yield _this6.load(_this6._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this6.load(_this6._yapi.defaultCacheValidity)) != _this6._yapi.SUCCESS) {
                     return Y_CURRENTRUNINDEX_INVALID;
                 }
             }
@@ -475,7 +475,7 @@ class YDataLogger extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this7._cacheExpiration <= _this7._yapi.GetTickCount()) {
-                if ((yield _this7.load(_this7._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this7.load(_this7._yapi.defaultCacheValidity)) != _this7._yapi.SUCCESS) {
                     return Y_TIMEUTC_INVALID;
                 }
             }
@@ -516,7 +516,7 @@ class YDataLogger extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this9._cacheExpiration <= _this9._yapi.GetTickCount()) {
-                if ((yield _this9.load(_this9._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this9.load(_this9._yapi.defaultCacheValidity)) != _this9._yapi.SUCCESS) {
                     return Y_RECORDING_INVALID;
                 }
             }
@@ -559,7 +559,7 @@ class YDataLogger extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this11._cacheExpiration <= _this11._yapi.GetTickCount()) {
-                if ((yield _this11.load(_this11._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this11.load(_this11._yapi.defaultCacheValidity)) != _this11._yapi.SUCCESS) {
                     return Y_AUTOSTART_INVALID;
                 }
             }
@@ -602,7 +602,7 @@ class YDataLogger extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this13._cacheExpiration <= _this13._yapi.GetTickCount()) {
-                if ((yield _this13.load(_this13._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this13.load(_this13._yapi.defaultCacheValidity)) != _this13._yapi.SUCCESS) {
                     return Y_BEACONDRIVEN_INVALID;
                 }
             }
@@ -638,7 +638,7 @@ class YDataLogger extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this15._cacheExpiration <= _this15._yapi.GetTickCount()) {
-                if ((yield _this15.load(_this15._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this15.load(_this15._yapi.defaultCacheValidity)) != _this15._yapi.SUCCESS) {
                     return Y_CLEARHISTORY_INVALID;
                 }
             }

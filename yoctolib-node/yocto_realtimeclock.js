@@ -130,7 +130,7 @@ class YRealTimeClock extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
-                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
                     return Y_UNIXTIME_INVALID;
                 }
             }
@@ -170,7 +170,7 @@ class YRealTimeClock extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
-                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
                     return Y_DATETIME_INVALID;
                 }
             }
@@ -190,7 +190,7 @@ class YRealTimeClock extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this4._cacheExpiration <= _this4._yapi.GetTickCount()) {
-                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _this4._yapi.SUCCESS) {
                     return Y_UTCOFFSET_INVALID;
                 }
             }
@@ -233,7 +233,7 @@ class YRealTimeClock extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this6._cacheExpiration <= _this6._yapi.GetTickCount()) {
-                if ((yield _this6.load(_this6._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this6.load(_this6._yapi.defaultCacheValidity)) != _this6._yapi.SUCCESS) {
                     return Y_TIMESET_INVALID;
                 }
             }

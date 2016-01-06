@@ -63,7 +63,7 @@ export const Y_ZVALUE_INVALID                = YAPI.INVALID_DOUBLE;
 //--- (end of generated code: YQt class start)
 export class YQt extends YFunction
 {
-    constructor(str_func)
+    constructor(obj_yapi,str_func)
     {
         //--- (generated code: YQt constructor)
         super(obj_yapi, str_func);
@@ -273,7 +273,7 @@ function yInternalGyroCallback(YQt_obj, str_value)
 //--- (end of generated code: YGyro class start)
 export class YGyro extends YFunction
 {
-    constructor(str_func)
+    constructor(obj_yapi,str_func)
     {
         //--- (generated code: YGyro constructor)
         super(obj_yapi, str_func);
@@ -352,7 +352,7 @@ export class YGyro extends YFunction
     async get_xValue()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_XVALUE_INVALID;
             }
         }
@@ -370,7 +370,7 @@ export class YGyro extends YFunction
     async get_yValue()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_YVALUE_INVALID;
             }
         }
@@ -388,7 +388,7 @@ export class YGyro extends YFunction
     async get_zValue()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_ZVALUE_INVALID;
             }
         }
@@ -475,8 +475,8 @@ export class YGyro extends YFunction
         now_stamp = ((this._yapi.GetTickCount()) & (0x7FFFFFFF));
         age_ms = (((now_stamp - this._qt_stamp)) & (0x7FFFFFFF));
         if ((age_ms >= 10) || (this._qt_stamp == 0)) {
-            if (await this.load(10) != YAPI_SUCCESS) {
-                return YAPI_DEVICE_NOT_FOUND;
+            if (await this.load(10) != this._yapi.SUCCESS) {
+                return this._yapi.DEVICE_NOT_FOUND;
             }
             if (this._qt_stamp == 0) {
                 this._qt_w = await YQt.FindQtInContext(this._serial+'.qt1');
@@ -484,17 +484,17 @@ export class YGyro extends YFunction
                 this._qt_y = await YQt.FindQtInContext(this._serial+'.qt3');
                 this._qt_z = await YQt.FindQtInContext(this._serial+'.qt4');
             }
-            if (await this._qt_w.load(9) != YAPI_SUCCESS) {
-                return YAPI_DEVICE_NOT_FOUND;
+            if (await this._qt_w.load(9) != this._yapi.SUCCESS) {
+                return this._yapi.DEVICE_NOT_FOUND;
             }
-            if (await this._qt_x.load(9) != YAPI_SUCCESS) {
-                return YAPI_DEVICE_NOT_FOUND;
+            if (await this._qt_x.load(9) != this._yapi.SUCCESS) {
+                return this._yapi.DEVICE_NOT_FOUND;
             }
-            if (await this._qt_y.load(9) != YAPI_SUCCESS) {
-                return YAPI_DEVICE_NOT_FOUND;
+            if (await this._qt_y.load(9) != this._yapi.SUCCESS) {
+                return this._yapi.DEVICE_NOT_FOUND;
             }
-            if (await this._qt_z.load(9) != YAPI_SUCCESS) {
-                return YAPI_DEVICE_NOT_FOUND;
+            if (await this._qt_z.load(9) != this._yapi.SUCCESS) {
+                return this._yapi.DEVICE_NOT_FOUND;
             }
             this._w = await this._qt_w.get_currentValue();
             this._x = await this._qt_x.get_currentValue();
@@ -502,7 +502,7 @@ export class YGyro extends YFunction
             this._z = await this._qt_z.get_currentValue();
             this._qt_stamp = now_stamp;
         }
-        return YAPI_SUCCESS;
+        return this._yapi.SUCCESS;
     }
 
     async _loadAngles()
@@ -520,8 +520,8 @@ export class YGyro extends YFunction
         /** @type {number} **/
         let delta;
         // may throw an exception
-        if (await this._loadQuaternion() != YAPI_SUCCESS) {
-            return YAPI_DEVICE_NOT_FOUND;
+        if (await this._loadQuaternion() != this._yapi.SUCCESS) {
+            return this._yapi.DEVICE_NOT_FOUND;
         }
         if (this._angles_stamp != this._qt_stamp) {
             sqw = this._w * this._w;
@@ -545,7 +545,7 @@ export class YGyro extends YFunction
             }
             this._angles_stamp = this._qt_stamp;
         }
-        return YAPI_SUCCESS;
+        return this._yapi.SUCCESS;
     }
 
     /**
@@ -681,8 +681,8 @@ export class YGyro extends YFunction
     {
         this._quatCallback = callback;
         if (callback != null) {
-            if (await this._loadQuaternion() != YAPI_SUCCESS) {
-                return YAPI_DEVICE_NOT_FOUND;
+            if (await this._loadQuaternion() != this._yapi.SUCCESS) {
+                return this._yapi.DEVICE_NOT_FOUND;
             }
             await this._qt_w.set_userData(this);
             await this._qt_x.set_userData(this);
@@ -722,8 +722,8 @@ export class YGyro extends YFunction
     {
         this._anglesCallback = callback;
         if (callback != null) {
-            if (await this._loadQuaternion() != YAPI_SUCCESS) {
-                return YAPI_DEVICE_NOT_FOUND;
+            if (await this._loadQuaternion() != this._yapi.SUCCESS) {
+                return this._yapi.DEVICE_NOT_FOUND;
             }
             await this._qt_w.set_userData(this);
             await this._qt_x.set_userData(this);

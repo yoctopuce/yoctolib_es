@@ -156,7 +156,7 @@ class YWakeUpMonitor extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
-                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
                     return Y_POWERDURATION_INVALID;
                 }
             }
@@ -197,7 +197,7 @@ class YWakeUpMonitor extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
-                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
                     return Y_SLEEPCOUNTDOWN_INVALID;
                 }
             }
@@ -237,7 +237,7 @@ class YWakeUpMonitor extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this5._cacheExpiration <= _this5._yapi.GetTickCount()) {
-                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _this5._yapi.SUCCESS) {
                     return Y_NEXTWAKEUP_INVALID;
                 }
             }
@@ -280,7 +280,7 @@ class YWakeUpMonitor extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this7._cacheExpiration <= _this7._yapi.GetTickCount()) {
-                if ((yield _this7.load(_this7._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this7.load(_this7._yapi.defaultCacheValidity)) != _this7._yapi.SUCCESS) {
                     return Y_WAKEUPREASON_INVALID;
                 }
             }
@@ -301,7 +301,7 @@ class YWakeUpMonitor extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this8._cacheExpiration <= _this8._yapi.GetTickCount()) {
-                if ((yield _this8.load(_this8._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this8.load(_this8._yapi.defaultCacheValidity)) != _this8._yapi.SUCCESS) {
                     return Y_WAKEUPSTATE_INVALID;
                 }
             }
@@ -325,7 +325,7 @@ class YWakeUpMonitor extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this10._cacheExpiration <= _this10._yapi.GetTickCount()) {
-                if ((yield _this10.load(_this10._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this10.load(_this10._yapi.defaultCacheValidity)) != _this10._yapi.SUCCESS) {
                     return Y_RTCTIME_INVALID;
                 }
             }
@@ -431,11 +431,11 @@ class YWakeUpMonitor extends _yocto_api.YFunction {
             let currTime;
             currTime = yield _this12.get_rtcTime();
             if (!(currTime != 0)) {
-                return _this12._throw(YAPI_RTC_NOT_READY, 'RTC time not set', YAPI_RTC_NOT_READY);
+                return _this12._throw(_this12._yapi.RTC_NOT_READY, 'RTC time not set', _this12._yapi.RTC_NOT_READY);
             }
             yield _this12.set_nextWakeUp(_this12._endOfTime);
             yield _this12.set_sleepCountdown(secBeforeSleep);
-            return _yocto_api.YAPI_SUCCESS;
+            return _this12._yapi.SUCCESS;
         })();
     }
 
@@ -459,11 +459,11 @@ class YWakeUpMonitor extends _yocto_api.YFunction {
             let currTime;
             currTime = yield _this13.get_rtcTime();
             if (!(currTime != 0)) {
-                return _this13._throw(YAPI_RTC_NOT_READY, 'RTC time not set', YAPI_RTC_NOT_READY);
+                return _this13._throw(_this13._yapi.RTC_NOT_READY, 'RTC time not set', _this13._yapi.RTC_NOT_READY);
             }
             yield _this13.set_nextWakeUp(currTime + secUntilWakeUp);
             yield _this13.set_sleepCountdown(secBeforeSleep);
-            return _yocto_api.YAPI_SUCCESS;
+            return _this13._yapi.SUCCESS;
         })();
     }
 
@@ -487,11 +487,11 @@ class YWakeUpMonitor extends _yocto_api.YFunction {
             let currTime;
             currTime = yield _this14.get_rtcTime();
             if (!(currTime != 0)) {
-                return _this14._throw(YAPI_RTC_NOT_READY, 'RTC time not set', YAPI_RTC_NOT_READY);
+                return _this14._throw(_this14._yapi.RTC_NOT_READY, 'RTC time not set', _this14._yapi.RTC_NOT_READY);
             }
             yield _this14.set_nextWakeUp(wakeUpTime);
             yield _this14.set_sleepCountdown(secBeforeSleep);
-            return _yocto_api.YAPI_SUCCESS;
+            return _this14._yapi.SUCCESS;
         })();
     }
 
@@ -507,7 +507,7 @@ class YWakeUpMonitor extends _yocto_api.YFunction {
         return _asyncToGenerator(function* () {
             yield _this15.set_sleepCountdown(0);
             yield _this15.set_nextWakeUp(0);
-            return _yocto_api.YAPI_SUCCESS;
+            return _this15._yapi.SUCCESS;
         })();
     }
 

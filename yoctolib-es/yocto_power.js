@@ -112,7 +112,7 @@ export class YPower extends YSensor
     async get_cosPhi()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_COSPHI_INVALID;
             }
         }
@@ -139,7 +139,7 @@ export class YPower extends YSensor
     async get_meter()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_METER_INVALID;
             }
         }
@@ -156,7 +156,7 @@ export class YPower extends YSensor
     async get_meterTimer()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_METERTIMER_INVALID;
             }
         }

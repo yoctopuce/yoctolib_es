@@ -155,7 +155,7 @@ class YPwmInput extends _yocto_api.YSensor {
 
         return _asyncToGenerator(function* () {
             if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
-                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
                     return Y_DUTYCYCLE_INVALID;
                 }
             }
@@ -176,7 +176,7 @@ class YPwmInput extends _yocto_api.YSensor {
 
         return _asyncToGenerator(function* () {
             if (_this2._cacheExpiration <= _this2._yapi.GetTickCount()) {
-                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _this2._yapi.SUCCESS) {
                     return Y_PULSEDURATION_INVALID;
                 }
             }
@@ -196,7 +196,7 @@ class YPwmInput extends _yocto_api.YSensor {
 
         return _asyncToGenerator(function* () {
             if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
-                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
                     return Y_FREQUENCY_INVALID;
                 }
             }
@@ -216,7 +216,7 @@ class YPwmInput extends _yocto_api.YSensor {
 
         return _asyncToGenerator(function* () {
             if (_this4._cacheExpiration <= _this4._yapi.GetTickCount()) {
-                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _this4._yapi.SUCCESS) {
                     return Y_PERIOD_INVALID;
                 }
             }
@@ -238,7 +238,7 @@ class YPwmInput extends _yocto_api.YSensor {
 
         return _asyncToGenerator(function* () {
             if (_this5._cacheExpiration <= _this5._yapi.GetTickCount()) {
-                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _this5._yapi.SUCCESS) {
                     return Y_PULSECOUNTER_INVALID;
                 }
             }
@@ -269,7 +269,7 @@ class YPwmInput extends _yocto_api.YSensor {
 
         return _asyncToGenerator(function* () {
             if (_this7._cacheExpiration <= _this7._yapi.GetTickCount()) {
-                if ((yield _this7.load(_this7._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this7.load(_this7._yapi.defaultCacheValidity)) != _this7._yapi.SUCCESS) {
                     return Y_PULSETIMER_INVALID;
                 }
             }
@@ -293,7 +293,7 @@ class YPwmInput extends _yocto_api.YSensor {
 
         return _asyncToGenerator(function* () {
             if (_this8._cacheExpiration <= _this8._yapi.GetTickCount()) {
-                if ((yield _this8.load(_this8._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this8.load(_this8._yapi.defaultCacheValidity)) != _this8._yapi.SUCCESS) {
                     return Y_PWMREPORTMODE_INVALID;
                 }
             }

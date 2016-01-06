@@ -106,7 +106,7 @@ export class YCompass extends YSensor
     async get_axis()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_AXIS_INVALID;
             }
         }
@@ -124,7 +124,7 @@ export class YCompass extends YSensor
     async get_magneticHeading()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_MAGNETICHEADING_INVALID;
             }
         }

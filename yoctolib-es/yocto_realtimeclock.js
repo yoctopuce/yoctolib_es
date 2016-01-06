@@ -121,7 +121,7 @@ export class YRealTimeClock extends YFunction
     async get_unixTime()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_UNIXTIME_INVALID;
             }
         }
@@ -155,7 +155,7 @@ export class YRealTimeClock extends YFunction
     async get_dateTime()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_DATETIME_INVALID;
             }
         }
@@ -172,7 +172,7 @@ export class YRealTimeClock extends YFunction
     async get_utcOffset()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_UTCOFFSET_INVALID;
             }
         }
@@ -209,7 +209,7 @@ export class YRealTimeClock extends YFunction
     async get_timeSet()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_TIMESET_INVALID;
             }
         }

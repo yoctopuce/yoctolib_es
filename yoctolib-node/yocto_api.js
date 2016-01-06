@@ -5490,6 +5490,10 @@ class YDataStream {
         /** @member {number[][]} **/
         this._values = [];
         //--- (end of generated code: YDataStream constructor)
+        this.imm_setConst({
+            DATA_INVALID: Y_DATA_INVALID,
+            DURATION_INVALID: Y_DURATION_INVALID
+        });
 
         this._parent = obj_parent;
         this._calhdl = null;
@@ -6033,7 +6037,7 @@ class YDataStream {
     //--- (end of generated code: YDataStream implementation)
 }
 
-//--- (generated code: YDataSet definitions)
+exports.YDataStream = YDataStream; //--- (generated code: YDataSet definitions)
 //--- (end of generated code: YDataSet definitions)
 
 //--- (generated code: YDataSet class start)
@@ -6057,6 +6061,7 @@ class YDataStream {
  * as YDataSet objects are not supported by firmwares older than version 13000.
  */
 //--- (end of generated code: YDataSet class start)
+
 class YDataSet {
     constructor(obj_parent, str_functionId, str_unit, u32_startTime, u32_endTime) {
         //--- (generated code: YDataSet constructor)
@@ -8662,7 +8667,7 @@ class YAPIContext {
      */
     GetAPIVersion() {
         return _asyncToGenerator(function* () {
-            return (/* version number patched automatically */'1.10.22592-dev.43'
+            return (/* version number patched automatically */'1.10.22616'
             );
         })();
     }

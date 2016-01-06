@@ -191,7 +191,7 @@ export class YGps extends YFunction
     async get_isFixed()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_ISFIXED_INVALID;
             }
         }
@@ -208,7 +208,7 @@ export class YGps extends YFunction
     async get_satCount()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_SATCOUNT_INVALID;
             }
         }
@@ -226,7 +226,7 @@ export class YGps extends YFunction
     async get_coordSystem()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_COORDSYSTEM_INVALID;
             }
         }
@@ -261,7 +261,7 @@ export class YGps extends YFunction
     async get_latitude()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_LATITUDE_INVALID;
             }
         }
@@ -278,7 +278,7 @@ export class YGps extends YFunction
     async get_longitude()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_LONGITUDE_INVALID;
             }
         }
@@ -297,7 +297,7 @@ export class YGps extends YFunction
     async get_dilution()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_DILUTION_INVALID;
             }
         }
@@ -315,7 +315,7 @@ export class YGps extends YFunction
     async get_altitude()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_ALTITUDE_INVALID;
             }
         }
@@ -332,7 +332,7 @@ export class YGps extends YFunction
     async get_groundSpeed()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_GROUNDSPEED_INVALID;
             }
         }
@@ -351,7 +351,7 @@ export class YGps extends YFunction
     async get_direction()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_DIRECTION_INVALID;
             }
         }
@@ -370,7 +370,7 @@ export class YGps extends YFunction
     async get_unixTime()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_UNIXTIME_INVALID;
             }
         }
@@ -387,7 +387,7 @@ export class YGps extends YFunction
     async get_dateTime()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_DATETIME_INVALID;
             }
         }
@@ -404,7 +404,7 @@ export class YGps extends YFunction
     async get_utcOffset()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_UTCOFFSET_INVALID;
             }
         }
@@ -434,7 +434,7 @@ export class YGps extends YFunction
     async get_command()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_COMMAND_INVALID;
             }
         }

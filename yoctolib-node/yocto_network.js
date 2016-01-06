@@ -302,7 +302,7 @@ class YNetwork extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
-                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
                     return Y_READINESS_INVALID;
                 }
             }
@@ -323,7 +323,7 @@ class YNetwork extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this2._cacheExpiration == 0) {
-                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _this2._yapi.SUCCESS) {
                     return Y_MACADDRESS_INVALID;
                 }
             }
@@ -344,7 +344,7 @@ class YNetwork extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
-                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
                     return Y_IPADDRESS_INVALID;
                 }
             }
@@ -364,7 +364,7 @@ class YNetwork extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this4._cacheExpiration <= _this4._yapi.GetTickCount()) {
-                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _this4._yapi.SUCCESS) {
                     return Y_SUBNETMASK_INVALID;
                 }
             }
@@ -384,7 +384,7 @@ class YNetwork extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this5._cacheExpiration <= _this5._yapi.GetTickCount()) {
-                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _this5._yapi.SUCCESS) {
                     return Y_ROUTER_INVALID;
                 }
             }
@@ -397,7 +397,7 @@ class YNetwork extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this6._cacheExpiration <= _this6._yapi.GetTickCount()) {
-                if ((yield _this6.load(_this6._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this6.load(_this6._yapi.defaultCacheValidity)) != _this6._yapi.SUCCESS) {
                     return Y_IPCONFIG_INVALID;
                 }
             }
@@ -428,7 +428,7 @@ class YNetwork extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this8._cacheExpiration <= _this8._yapi.GetTickCount()) {
-                if ((yield _this8.load(_this8._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this8.load(_this8._yapi.defaultCacheValidity)) != _this8._yapi.SUCCESS) {
                     return Y_PRIMARYDNS_INVALID;
                 }
             }
@@ -471,7 +471,7 @@ class YNetwork extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this10._cacheExpiration <= _this10._yapi.GetTickCount()) {
-                if ((yield _this10.load(_this10._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this10.load(_this10._yapi.defaultCacheValidity)) != _this10._yapi.SUCCESS) {
                     return Y_SECONDARYDNS_INVALID;
                 }
             }
@@ -514,7 +514,7 @@ class YNetwork extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this12._cacheExpiration <= _this12._yapi.GetTickCount()) {
-                if ((yield _this12.load(_this12._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this12.load(_this12._yapi.defaultCacheValidity)) != _this12._yapi.SUCCESS) {
                     return Y_NTPSERVER_INVALID;
                 }
             }
@@ -557,7 +557,7 @@ class YNetwork extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this14._cacheExpiration <= _this14._yapi.GetTickCount()) {
-                if ((yield _this14.load(_this14._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this14.load(_this14._yapi.defaultCacheValidity)) != _this14._yapi.SUCCESS) {
                     return Y_USERPASSWORD_INVALID;
                 }
             }
@@ -603,7 +603,7 @@ class YNetwork extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this16._cacheExpiration <= _this16._yapi.GetTickCount()) {
-                if ((yield _this16.load(_this16._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this16.load(_this16._yapi.defaultCacheValidity)) != _this16._yapi.SUCCESS) {
                     return Y_ADMINPASSWORD_INVALID;
                 }
             }
@@ -647,7 +647,7 @@ class YNetwork extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this18._cacheExpiration <= _this18._yapi.GetTickCount()) {
-                if ((yield _this18.load(_this18._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this18.load(_this18._yapi.defaultCacheValidity)) != _this18._yapi.SUCCESS) {
                     return Y_HTTPPORT_INVALID;
                 }
             }
@@ -689,7 +689,7 @@ class YNetwork extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this20._cacheExpiration <= _this20._yapi.GetTickCount()) {
-                if ((yield _this20.load(_this20._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this20.load(_this20._yapi.defaultCacheValidity)) != _this20._yapi.SUCCESS) {
                     return Y_DEFAULTPAGE_INVALID;
                 }
             }
@@ -734,7 +734,7 @@ class YNetwork extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this22._cacheExpiration <= _this22._yapi.GetTickCount()) {
-                if ((yield _this22.load(_this22._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this22.load(_this22._yapi.defaultCacheValidity)) != _this22._yapi.SUCCESS) {
                     return Y_DISCOVERABLE_INVALID;
                 }
             }
@@ -781,7 +781,7 @@ class YNetwork extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this24._cacheExpiration <= _this24._yapi.GetTickCount()) {
-                if ((yield _this24.load(_this24._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this24.load(_this24._yapi.defaultCacheValidity)) != _this24._yapi.SUCCESS) {
                     return Y_WWWWATCHDOGDELAY_INVALID;
                 }
             }
@@ -826,7 +826,7 @@ class YNetwork extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this26._cacheExpiration <= _this26._yapi.GetTickCount()) {
-                if ((yield _this26.load(_this26._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this26.load(_this26._yapi.defaultCacheValidity)) != _this26._yapi.SUCCESS) {
                     return Y_CALLBACKURL_INVALID;
                 }
             }
@@ -869,7 +869,7 @@ class YNetwork extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this28._cacheExpiration <= _this28._yapi.GetTickCount()) {
-                if ((yield _this28.load(_this28._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this28.load(_this28._yapi.defaultCacheValidity)) != _this28._yapi.SUCCESS) {
                     return Y_CALLBACKMETHOD_INVALID;
                 }
             }
@@ -916,7 +916,7 @@ class YNetwork extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this30._cacheExpiration <= _this30._yapi.GetTickCount()) {
-                if ((yield _this30.load(_this30._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this30.load(_this30._yapi.defaultCacheValidity)) != _this30._yapi.SUCCESS) {
                     return Y_CALLBACKENCODING_INVALID;
                 }
             }
@@ -963,7 +963,7 @@ class YNetwork extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this32._cacheExpiration <= _this32._yapi.GetTickCount()) {
-                if ((yield _this32.load(_this32._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this32.load(_this32._yapi.defaultCacheValidity)) != _this32._yapi.SUCCESS) {
                     return Y_CALLBACKCREDENTIALS_INVALID;
                 }
             }
@@ -1036,7 +1036,7 @@ class YNetwork extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this35._cacheExpiration <= _this35._yapi.GetTickCount()) {
-                if ((yield _this35.load(_this35._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this35.load(_this35._yapi.defaultCacheValidity)) != _this35._yapi.SUCCESS) {
                     return Y_CALLBACKMINDELAY_INVALID;
                 }
             }
@@ -1078,7 +1078,7 @@ class YNetwork extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this37._cacheExpiration <= _this37._yapi.GetTickCount()) {
-                if ((yield _this37.load(_this37._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this37.load(_this37._yapi.defaultCacheValidity)) != _this37._yapi.SUCCESS) {
                     return Y_CALLBACKMAXDELAY_INVALID;
                 }
             }
@@ -1122,7 +1122,7 @@ class YNetwork extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this39._cacheExpiration <= _this39._yapi.GetTickCount()) {
-                if ((yield _this39.load(_this39._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this39.load(_this39._yapi.defaultCacheValidity)) != _this39._yapi.SUCCESS) {
                     return Y_POECURRENT_INVALID;
                 }
             }

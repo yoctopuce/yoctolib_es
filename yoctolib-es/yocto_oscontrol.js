@@ -97,7 +97,7 @@ export class YOsControl extends YFunction
     async get_shutdownCountdown()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_SHUTDOWNCOUNTDOWN_INVALID;
             }
         }

@@ -184,7 +184,7 @@ class YAnButton extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
-                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
                     return Y_CALIBRATEDVALUE_INVALID;
                 }
             }
@@ -205,7 +205,7 @@ class YAnButton extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this2._cacheExpiration <= _this2._yapi.GetTickCount()) {
-                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _this2._yapi.SUCCESS) {
                     return Y_RAWVALUE_INVALID;
                 }
             }
@@ -225,7 +225,7 @@ class YAnButton extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
-                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
                     return Y_ANALOGCALIBRATION_INVALID;
                 }
             }
@@ -267,7 +267,7 @@ class YAnButton extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this5._cacheExpiration <= _this5._yapi.GetTickCount()) {
-                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _this5._yapi.SUCCESS) {
                     return Y_CALIBRATIONMAX_INVALID;
                 }
             }
@@ -312,7 +312,7 @@ class YAnButton extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this7._cacheExpiration <= _this7._yapi.GetTickCount()) {
-                if ((yield _this7.load(_this7._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this7.load(_this7._yapi.defaultCacheValidity)) != _this7._yapi.SUCCESS) {
                     return Y_CALIBRATIONMIN_INVALID;
                 }
             }
@@ -357,7 +357,7 @@ class YAnButton extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this9._cacheExpiration <= _this9._yapi.GetTickCount()) {
-                if ((yield _this9.load(_this9._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this9.load(_this9._yapi.defaultCacheValidity)) != _this9._yapi.SUCCESS) {
                     return Y_SENSITIVITY_INVALID;
                 }
             }
@@ -404,7 +404,7 @@ class YAnButton extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this11._cacheExpiration <= _this11._yapi.GetTickCount()) {
-                if ((yield _this11.load(_this11._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this11.load(_this11._yapi.defaultCacheValidity)) != _this11._yapi.SUCCESS) {
                     return Y_ISPRESSED_INVALID;
                 }
             }
@@ -427,7 +427,7 @@ class YAnButton extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this12._cacheExpiration <= _this12._yapi.GetTickCount()) {
-                if ((yield _this12.load(_this12._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this12.load(_this12._yapi.defaultCacheValidity)) != _this12._yapi.SUCCESS) {
                     return Y_LASTTIMEPRESSED_INVALID;
                 }
             }
@@ -450,7 +450,7 @@ class YAnButton extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this13._cacheExpiration <= _this13._yapi.GetTickCount()) {
-                if ((yield _this13.load(_this13._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this13.load(_this13._yapi.defaultCacheValidity)) != _this13._yapi.SUCCESS) {
                     return Y_LASTTIMERELEASED_INVALID;
                 }
             }
@@ -470,7 +470,7 @@ class YAnButton extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this14._cacheExpiration <= _this14._yapi.GetTickCount()) {
-                if ((yield _this14.load(_this14._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this14.load(_this14._yapi.defaultCacheValidity)) != _this14._yapi.SUCCESS) {
                     return Y_PULSECOUNTER_INVALID;
                 }
             }
@@ -501,7 +501,7 @@ class YAnButton extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this16._cacheExpiration <= _this16._yapi.GetTickCount()) {
-                if ((yield _this16.load(_this16._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this16.load(_this16._yapi.defaultCacheValidity)) != _this16._yapi.SUCCESS) {
                     return Y_PULSETIMER_INVALID;
                 }
             }

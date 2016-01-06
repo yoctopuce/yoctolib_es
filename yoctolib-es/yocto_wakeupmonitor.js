@@ -147,7 +147,7 @@ export class YWakeUpMonitor extends YFunction
     async get_powerDuration()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_POWERDURATION_INVALID;
             }
         }
@@ -182,7 +182,7 @@ export class YWakeUpMonitor extends YFunction
     async get_sleepCountdown()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_SLEEPCOUNTDOWN_INVALID;
             }
         }
@@ -216,7 +216,7 @@ export class YWakeUpMonitor extends YFunction
     async get_nextWakeUp()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_NEXTWAKEUP_INVALID;
             }
         }
@@ -253,7 +253,7 @@ export class YWakeUpMonitor extends YFunction
     async get_wakeUpReason()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_WAKEUPREASON_INVALID;
             }
         }
@@ -271,7 +271,7 @@ export class YWakeUpMonitor extends YFunction
     async get_wakeUpState()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_WAKEUPSTATE_INVALID;
             }
         }
@@ -289,7 +289,7 @@ export class YWakeUpMonitor extends YFunction
     async get_rtcTime()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_RTCTIME_INVALID;
             }
         }
@@ -391,11 +391,11 @@ export class YWakeUpMonitor extends YFunction
         let currTime;
         currTime = await this.get_rtcTime();
         if (!(currTime != 0)) {
-            return this._throw(YAPI_RTC_NOT_READY,'RTC time not set',YAPI_RTC_NOT_READY);
+            return this._throw(this._yapi.RTC_NOT_READY,'RTC time not set',this._yapi.RTC_NOT_READY);
         }
         await this.set_nextWakeUp(this._endOfTime);
         await this.set_sleepCountdown(secBeforeSleep);
-        return YAPI_SUCCESS;
+        return this._yapi.SUCCESS;
     }
 
     /**
@@ -416,11 +416,11 @@ export class YWakeUpMonitor extends YFunction
         let currTime;
         currTime = await this.get_rtcTime();
         if (!(currTime != 0)) {
-            return this._throw(YAPI_RTC_NOT_READY,'RTC time not set',YAPI_RTC_NOT_READY);
+            return this._throw(this._yapi.RTC_NOT_READY,'RTC time not set',this._yapi.RTC_NOT_READY);
         }
         await this.set_nextWakeUp(currTime+secUntilWakeUp);
         await this.set_sleepCountdown(secBeforeSleep);
-        return YAPI_SUCCESS;
+        return this._yapi.SUCCESS;
     }
 
     /**
@@ -441,11 +441,11 @@ export class YWakeUpMonitor extends YFunction
         let currTime;
         currTime = await this.get_rtcTime();
         if (!(currTime != 0)) {
-            return this._throw(YAPI_RTC_NOT_READY,'RTC time not set',YAPI_RTC_NOT_READY);
+            return this._throw(this._yapi.RTC_NOT_READY,'RTC time not set',this._yapi.RTC_NOT_READY);
         }
         await this.set_nextWakeUp(wakeUpTime);
         await this.set_sleepCountdown(secBeforeSleep);
-        return YAPI_SUCCESS;
+        return this._yapi.SUCCESS;
     }
 
     /**
@@ -458,7 +458,7 @@ export class YWakeUpMonitor extends YFunction
     {
         await this.set_sleepCountdown(0);
         await this.set_nextWakeUp(0);
-        return YAPI_SUCCESS;
+        return this._yapi.SUCCESS;
     }
 
     /**

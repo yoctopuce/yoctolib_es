@@ -124,7 +124,7 @@ export class YHumidity extends YSensor
     async get_relHum()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_RELHUM_INVALID;
             }
         }
@@ -142,7 +142,7 @@ export class YHumidity extends YSensor
     async get_absHum()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_ABSHUM_INVALID;
             }
         }

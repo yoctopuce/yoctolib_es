@@ -124,7 +124,7 @@ export class YLed extends YFunction
     async get_power()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_POWER_INVALID;
             }
         }
@@ -158,7 +158,7 @@ export class YLed extends YFunction
     async get_luminosity()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_LUMINOSITY_INVALID;
             }
         }
@@ -193,7 +193,7 @@ export class YLed extends YFunction
     async get_blinking()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_BLINKING_INVALID;
             }
         }

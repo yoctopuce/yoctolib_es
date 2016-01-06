@@ -673,7 +673,7 @@ class YDisplayLayer
     async resetHiddenFlag()
     {
         this._hidden = false;
-        return YAPI_SUCCESS;
+        return this._yapi.SUCCESS;
     }
 
     //--- (end of generated code: YDisplayLayer implementation)
@@ -693,7 +693,7 @@ class YDisplayLayer
 //--- (end of generated code: YDisplay class start)
 export class YDisplay extends YFunction
 {
-    constructor(str_func)
+    constructor(obj_yapi,str_func)
     {
         //--- (generated code: YDisplay constructor)
         super(obj_yapi, str_func);
@@ -803,7 +803,7 @@ export class YDisplay extends YFunction
     async get_enabled()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_ENABLED_INVALID;
             }
         }
@@ -838,7 +838,7 @@ export class YDisplay extends YFunction
     async get_startupSeq()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_STARTUPSEQ_INVALID;
             }
         }
@@ -875,7 +875,7 @@ export class YDisplay extends YFunction
     async get_brightness()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_BRIGHTNESS_INVALID;
             }
         }
@@ -913,7 +913,7 @@ export class YDisplay extends YFunction
     async get_orientation()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_ORIENTATION_INVALID;
             }
         }
@@ -949,7 +949,7 @@ export class YDisplay extends YFunction
     async get_displayWidth()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_DISPLAYWIDTH_INVALID;
             }
         }
@@ -966,7 +966,7 @@ export class YDisplay extends YFunction
     async get_displayHeight()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_DISPLAYHEIGHT_INVALID;
             }
         }
@@ -984,7 +984,7 @@ export class YDisplay extends YFunction
     async get_displayType()
     {
         if (this._cacheExpiration == 0) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_DISPLAYTYPE_INVALID;
             }
         }
@@ -1001,7 +1001,7 @@ export class YDisplay extends YFunction
     async get_layerWidth()
     {
         if (this._cacheExpiration == 0) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_LAYERWIDTH_INVALID;
             }
         }
@@ -1018,7 +1018,7 @@ export class YDisplay extends YFunction
     async get_layerHeight()
     {
         if (this._cacheExpiration == 0) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_LAYERHEIGHT_INVALID;
             }
         }
@@ -1035,7 +1035,7 @@ export class YDisplay extends YFunction
     async get_layerCount()
     {
         if (this._cacheExpiration == 0) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_LAYERCOUNT_INVALID;
             }
         }
@@ -1045,7 +1045,7 @@ export class YDisplay extends YFunction
     async get_command()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_COMMAND_INVALID;
             }
         }
@@ -1178,7 +1178,7 @@ export class YDisplay extends YFunction
         await this.flushLayers();
         this._sequence = '';
         this._recording = true;
-        return YAPI_SUCCESS;
+        return this._yapi.SUCCESS;
     }
 
     /**
@@ -1199,7 +1199,7 @@ export class YDisplay extends YFunction
         await this._upload(sequenceName, this._yapi.imm_str2bin(this._sequence));
         //We need to use YPRINTF("") for Objective-C
         this._sequence = '';
-        return YAPI_SUCCESS;
+        return this._yapi.SUCCESS;
     }
 
     /**

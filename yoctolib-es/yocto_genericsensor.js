@@ -159,7 +159,7 @@ export class YGenericSensor extends YSensor
     async get_signalValue()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_SIGNALVALUE_INVALID;
             }
         }
@@ -176,7 +176,7 @@ export class YGenericSensor extends YSensor
     async get_signalUnit()
     {
         if (this._cacheExpiration == 0) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_SIGNALUNIT_INVALID;
             }
         }
@@ -193,7 +193,7 @@ export class YGenericSensor extends YSensor
     async get_signalRange()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_SIGNALRANGE_INVALID;
             }
         }
@@ -227,7 +227,7 @@ export class YGenericSensor extends YSensor
     async get_valueRange()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_VALUERANGE_INVALID;
             }
         }
@@ -284,7 +284,7 @@ export class YGenericSensor extends YSensor
     async get_signalBias()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_SIGNALBIAS_INVALID;
             }
         }
@@ -308,7 +308,7 @@ export class YGenericSensor extends YSensor
     async get_signalSampling()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_SIGNALSAMPLING_INVALID;
             }
         }

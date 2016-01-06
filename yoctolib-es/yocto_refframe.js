@@ -163,7 +163,7 @@ export class YRefFrame extends YFunction
     async get_mountPos()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_MOUNTPOS_INVALID;
             }
         }
@@ -220,7 +220,7 @@ export class YRefFrame extends YFunction
     async get_bearing()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_BEARING_INVALID;
             }
         }
@@ -230,7 +230,7 @@ export class YRefFrame extends YFunction
     async get_calibrationParam()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_CALIBRATIONPARAM_INVALID;
             }
         }
@@ -459,7 +459,7 @@ export class YRefFrame extends YFunction
     async start3DCalibration()
     {
         if (!(await this.isOnline())) {
-            return YAPI_DEVICE_NOT_FOUND;
+            return this._yapi.DEVICE_NOT_FOUND;
         }
         if (this._calibStage != 0) {
             await this.cancel3DCalibration();
@@ -478,7 +478,7 @@ export class YRefFrame extends YFunction
         this._calibDataAccY.length = 0;
         this._calibDataAccZ.length = 0;
         this._calibDataAcc.length = 0;
-        return YAPI_SUCCESS;
+        return this._yapi.SUCCESS;
     }
 
     /**
@@ -521,15 +521,15 @@ export class YRefFrame extends YFunction
         let err;
         // make sure calibration has been started
         if (this._calibStage == 0) {
-            return YAPI_INVALID_ARGUMENT;
+            return this._yapi.INVALID_ARGUMENT;
         }
         if (this._calibProgress == 100) {
-            return YAPI_SUCCESS;
+            return this._yapi.SUCCESS;
         }
         // make sure we leave at least 160ms between samples
         currTick =  ((this._yapi.GetTickCount()) & (0x7FFFFFFF));
         if (((currTick - this._calibPrevTick) & (0x7FFFFFFF)) < 160) {
-            return YAPI_SUCCESS;
+            return this._yapi.SUCCESS;
         }
         // load current accelerometer values, make sure we are on a straight angle
         // (default timeout to 0,5 sec without reading measure when out of range)
@@ -541,28 +541,28 @@ export class YRefFrame extends YFunction
         zVal = this._yapi.imm_atoi(this.imm_json_get_key(jsonData, 'zValue')) / 65536.0;
         xSq = xVal * xVal;
         if (xSq >= 0.04 && xSq < 0.64) {
-            return YAPI_SUCCESS;
+            return this._yapi.SUCCESS;
         }
         if (xSq >= 1.44) {
-            return YAPI_SUCCESS;
+            return this._yapi.SUCCESS;
         }
         ySq = yVal * yVal;
         if (ySq >= 0.04 && ySq < 0.64) {
-            return YAPI_SUCCESS;
+            return this._yapi.SUCCESS;
         }
         if (ySq >= 1.44) {
-            return YAPI_SUCCESS;
+            return this._yapi.SUCCESS;
         }
         zSq = zVal * zVal;
         if (zSq >= 0.04 && zSq < 0.64) {
-            return YAPI_SUCCESS;
+            return this._yapi.SUCCESS;
         }
         if (zSq >= 1.44) {
-            return YAPI_SUCCESS;
+            return this._yapi.SUCCESS;
         }
         norm = Math.sqrt(xSq + ySq + zSq);
         if (norm < 0.8 || norm > 1.2) {
-            return YAPI_SUCCESS;
+            return this._yapi.SUCCESS;
         }
         this._calibPrevTick = currTick;
         // Determine the device orientation index
@@ -600,13 +600,13 @@ export class YRefFrame extends YFunction
             }
             if (err != 0) {
                 this._calibStageHint = 'Turn the device on another face';
-                return YAPI_SUCCESS;
+                return this._yapi.SUCCESS;
             }
             this._calibOrient.push(orient);
         } else {
             if (orient != this._calibOrient[this._calibStage-1]) {
                 this._calibStageHint = 'Not yet done, please move back to the previous face';
-                return YAPI_SUCCESS;
+                return this._yapi.SUCCESS;
             }
         }
         // Save measure
@@ -619,7 +619,7 @@ export class YRefFrame extends YFunction
         this._calibProgress = 1 + 16 * (this._calibStage - 1) + parseInt((16 * this._calibInternalPos) / (this._calibCount), 10);
         if (this._calibInternalPos < this._calibCount) {
             this._calibStageProgress = 1 + parseInt((99 * this._calibInternalPos) / (this._calibCount), 10);
-            return YAPI_SUCCESS;
+            return this._yapi.SUCCESS;
         }
         // Stage done, compute preliminary result
         intpos = (this._calibStage - 1) * this._calibCount;
@@ -633,7 +633,7 @@ export class YRefFrame extends YFunction
             this._calibPrevTick = ((currTick + 500) & (0x7FFFFFFF));
             this._calibStageProgress = 0;
             this._calibInternalPos = 0;
-            return YAPI_SUCCESS;
+            return this._yapi.SUCCESS;
         }
         // Data collection completed, compute accelerometer shift
         xVal = 0;
@@ -698,7 +698,7 @@ export class YRefFrame extends YFunction
         // Report completion
         this._calibProgress = 100;
         this._calibStageHint = 'Calibration data ready for saving';
-        return YAPI_SUCCESS;
+        return this._yapi.SUCCESS;
     }
 
     /**
@@ -790,7 +790,7 @@ export class YRefFrame extends YFunction
         /** @type {string} **/
         let newcalib;
         if (this._calibProgress != 100) {
-            return YAPI_INVALID_ARGUMENT;
+            return this._yapi.INVALID_ARGUMENT;
         }
         // Compute integer values (correction unit is 732ug/count)
         shiftX = -Math.round(this._calibAccXOfs / 0.000732);
@@ -851,7 +851,7 @@ export class YRefFrame extends YFunction
     async cancel3DCalibration()
     {
         if (this._calibStage == 0) {
-            return YAPI_SUCCESS;
+            return this._yapi.SUCCESS;
         }
         // may throw an exception
         this._calibStage = 0;

@@ -195,7 +195,7 @@ export class YSerialPort extends YFunction
     async get_serialMode()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_SERIALMODE_INVALID;
             }
         }
@@ -242,7 +242,7 @@ export class YSerialPort extends YFunction
     async get_protocol()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_PROTOCOL_INVALID;
             }
         }
@@ -287,7 +287,7 @@ export class YSerialPort extends YFunction
     async get_voltageLevel()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_VOLTAGELEVEL_INVALID;
             }
         }
@@ -328,7 +328,7 @@ export class YSerialPort extends YFunction
     async get_rxCount()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_RXCOUNT_INVALID;
             }
         }
@@ -345,7 +345,7 @@ export class YSerialPort extends YFunction
     async get_txCount()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_TXCOUNT_INVALID;
             }
         }
@@ -362,7 +362,7 @@ export class YSerialPort extends YFunction
     async get_errCount()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_ERRCOUNT_INVALID;
             }
         }
@@ -379,7 +379,7 @@ export class YSerialPort extends YFunction
     async get_rxMsgCount()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_RXMSGCOUNT_INVALID;
             }
         }
@@ -396,7 +396,7 @@ export class YSerialPort extends YFunction
     async get_txMsgCount()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_TXMSGCOUNT_INVALID;
             }
         }
@@ -414,7 +414,7 @@ export class YSerialPort extends YFunction
     async get_lastMsg()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_LASTMSG_INVALID;
             }
         }
@@ -431,7 +431,7 @@ export class YSerialPort extends YFunction
     async get_currentJob()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_CURRENTJOB_INVALID;
             }
         }
@@ -467,7 +467,7 @@ export class YSerialPort extends YFunction
     async get_startupJob()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_STARTUPJOB_INVALID;
             }
         }
@@ -496,7 +496,7 @@ export class YSerialPort extends YFunction
     async get_command()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_COMMAND_INVALID;
             }
         }
@@ -633,7 +633,7 @@ export class YSerialPort extends YFunction
         // may throw an exception
         buff = await this._download('cts.txt');
         if (!((buff).length == 1)) {
-            return this._throw(YAPI_IO_ERROR,'invalid CTS reply',YAPI_IO_ERROR);
+            return this._throw(this._yapi.IO_ERROR,'invalid CTS reply',this._yapi.IO_ERROR);
         }
         res = buff[0] - 48;
         return res;
@@ -868,7 +868,7 @@ export class YSerialPort extends YFunction
         }
         this._rxptr = endpos;
         if (bufflen == 0) {
-            return YAPI_NO_MORE_DATA;
+            return this._yapi.NO_MORE_DATA;
         }
         res = buff[0];
         return res;
@@ -1175,7 +1175,7 @@ export class YSerialPort extends YFunction
     async read_seek(absPos)
     {
         this._rxptr = absPos;
-        return YAPI_SUCCESS;
+        return this._yapi.SUCCESS;
     }
 
     /**
@@ -1306,7 +1306,7 @@ export class YSerialPort extends YFunction
         msgs = await this._download(url);
         reps = this.imm_json_get_array(msgs);
         if (!(reps.length > 1)) {
-            return this._throw(YAPI_IO_ERROR,'no reply from slave',res);
+            return this._throw(this._yapi.IO_ERROR,'no reply from slave',res);
         }
         if (reps.length > 1) {
             rep = this.imm_json_get_string(this._yapi.imm_str2bin(reps[0]));
@@ -1320,16 +1320,16 @@ export class YSerialPort extends YFunction
             if (res[0] != funCode) {
                 i = res[1];
                 if (!(i > 1)) {
-                    return this._throw(YAPI_NOT_SUPPORTED,'MODBUS error: unsupported function code',res);
+                    return this._throw(this._yapi.NOT_SUPPORTED,'MODBUS error: unsupported function code',res);
                 }
                 if (!(i > 2)) {
-                    return this._throw(YAPI_INVALID_ARGUMENT,'MODBUS error: illegal data address',res);
+                    return this._throw(this._yapi.INVALID_ARGUMENT,'MODBUS error: illegal data address',res);
                 }
                 if (!(i > 3)) {
-                    return this._throw(YAPI_INVALID_ARGUMENT,'MODBUS error: illegal data value',res);
+                    return this._throw(this._yapi.INVALID_ARGUMENT,'MODBUS error: illegal data value',res);
                 }
                 if (!(i > 4)) {
-                    return this._throw(YAPI_INVALID_ARGUMENT,'MODBUS error: failed to execute function',res);
+                    return this._throw(this._yapi.INVALID_ARGUMENT,'MODBUS error: failed to execute function',res);
                 }
             }
         }
@@ -1863,7 +1863,7 @@ export class YSerialPort extends YFunction
     async uploadJob(jobfile,jsonDef)
     {
         await this._upload(jobfile, this._yapi.imm_str2bin(jsonDef));
-        return YAPI_SUCCESS;
+        return this._yapi.SUCCESS;
     }
 
     /**

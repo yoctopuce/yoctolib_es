@@ -146,7 +146,7 @@ export class YPwmInput extends YSensor
     async get_dutyCycle()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_DUTYCYCLE_INVALID;
             }
         }
@@ -164,7 +164,7 @@ export class YPwmInput extends YSensor
     async get_pulseDuration()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_PULSEDURATION_INVALID;
             }
         }
@@ -181,7 +181,7 @@ export class YPwmInput extends YSensor
     async get_frequency()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_FREQUENCY_INVALID;
             }
         }
@@ -198,7 +198,7 @@ export class YPwmInput extends YSensor
     async get_period()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_PERIOD_INVALID;
             }
         }
@@ -217,7 +217,7 @@ export class YPwmInput extends YSensor
     async get_pulseCounter()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_PULSECOUNTER_INVALID;
             }
         }
@@ -242,7 +242,7 @@ export class YPwmInput extends YSensor
     async get_pulseTimer()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_PULSETIMER_INVALID;
             }
         }
@@ -263,7 +263,7 @@ export class YPwmInput extends YSensor
     async get_pwmReportMode()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_PWMREPORTMODE_INVALID;
             }
         }

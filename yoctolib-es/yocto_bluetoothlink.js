@@ -173,7 +173,7 @@ export class YBluetoothLink extends YFunction
     async get_ownAddress()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_OWNADDRESS_INVALID;
             }
         }
@@ -195,7 +195,7 @@ export class YBluetoothLink extends YFunction
     async get_pairingPin()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_PAIRINGPIN_INVALID;
             }
         }
@@ -231,7 +231,7 @@ export class YBluetoothLink extends YFunction
     async get_remoteAddress()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_REMOTEADDRESS_INVALID;
             }
         }
@@ -266,7 +266,7 @@ export class YBluetoothLink extends YFunction
     async get_remoteName()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_REMOTENAME_INVALID;
             }
         }
@@ -284,7 +284,7 @@ export class YBluetoothLink extends YFunction
     async get_mute()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_MUTE_INVALID;
             }
         }
@@ -320,7 +320,7 @@ export class YBluetoothLink extends YFunction
     async get_preAmplifier()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_PREAMPLIFIER_INVALID;
             }
         }
@@ -354,7 +354,7 @@ export class YBluetoothLink extends YFunction
     async get_volume()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_VOLUME_INVALID;
             }
         }
@@ -390,7 +390,7 @@ export class YBluetoothLink extends YFunction
     async get_linkState()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_LINKSTATE_INVALID;
             }
         }
@@ -408,7 +408,7 @@ export class YBluetoothLink extends YFunction
     async get_linkQuality()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_LINKQUALITY_INVALID;
             }
         }
@@ -418,7 +418,7 @@ export class YBluetoothLink extends YFunction
     async get_command()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_COMMAND_INVALID;
             }
         }

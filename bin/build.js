@@ -38,7 +38,7 @@ function makeIndex()
     var index = 'export * from \'yoctolib-es/yocto_api\'\n';
     var lib = resolve(__dirname, '../yoctolib-es/');
     fs.readdirSync(lib).forEach(function (mod) {
-        if (mod.length > 3 && mod.slice(-3) == '.js' && mod != 'index.js') {
+        if (mod.length > 3 && mod.slice(-3) == '.js' && mod != 'index.js' && mod != 'yocto_api.js') {
             index += 'export * from \'yoctolib-es/' + mod.slice(0, -3) + '\'\n';
         }
     });
@@ -141,7 +141,7 @@ if(args.length == 0) {
         case "build":
             setVersion(args[1]);
             makeIndex();
-            build(args[1]);
+            build();
             break;
         case "unbuild":
             setVersion();

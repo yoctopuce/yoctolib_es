@@ -152,7 +152,7 @@ class YDigitalIO extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
-                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
                     return Y_PORTSTATE_INVALID;
                 }
             }
@@ -195,7 +195,7 @@ class YDigitalIO extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
-                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
                     return Y_PORTDIRECTION_INVALID;
                 }
             }
@@ -239,7 +239,7 @@ class YDigitalIO extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this5._cacheExpiration <= _this5._yapi.GetTickCount()) {
-                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _this5._yapi.SUCCESS) {
                     return Y_PORTOPENDRAIN_INVALID;
                 }
             }
@@ -282,7 +282,7 @@ class YDigitalIO extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this7._cacheExpiration <= _this7._yapi.GetTickCount()) {
-                if ((yield _this7.load(_this7._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this7.load(_this7._yapi.defaultCacheValidity)) != _this7._yapi.SUCCESS) {
                     return Y_PORTPOLARITY_INVALID;
                 }
             }
@@ -324,7 +324,7 @@ class YDigitalIO extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this9._cacheExpiration <= _this9._yapi.GetTickCount()) {
-                if ((yield _this9.load(_this9._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this9.load(_this9._yapi.defaultCacheValidity)) != _this9._yapi.SUCCESS) {
                     return Y_PORTSIZE_INVALID;
                 }
             }
@@ -345,7 +345,7 @@ class YDigitalIO extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this10._cacheExpiration <= _this10._yapi.GetTickCount()) {
-                if ((yield _this10.load(_this10._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this10.load(_this10._yapi.defaultCacheValidity)) != _this10._yapi.SUCCESS) {
                     return Y_OUTPUTVOLTAGE_INVALID;
                 }
             }
@@ -381,7 +381,7 @@ class YDigitalIO extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this12._cacheExpiration <= _this12._yapi.GetTickCount()) {
-                if ((yield _this12.load(_this12._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this12.load(_this12._yapi.defaultCacheValidity)) != _this12._yapi.SUCCESS) {
                     return Y_COMMAND_INVALID;
                 }
             }
@@ -484,10 +484,10 @@ class YDigitalIO extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (!(bitstate >= 0)) {
-                return _this14._throw(YAPI_INVALID_ARGUMENT, 'invalid bitstate', YAPI_INVALID_ARGUMENT);
+                return _this14._throw(_this14._yapi.INVALID_ARGUMENT, 'invalid bitstate', _this14._yapi.INVALID_ARGUMENT);
             }
             if (!(bitstate <= 1)) {
-                return _this14._throw(YAPI_INVALID_ARGUMENT, 'invalid bitstate', YAPI_INVALID_ARGUMENT);
+                return _this14._throw(_this14._yapi.INVALID_ARGUMENT, 'invalid bitstate', _this14._yapi.INVALID_ARGUMENT);
             }
             return yield _this14.set_command(String.fromCharCode(82 + bitstate) + '' + String(Math.round(bitno)));
         })();
@@ -546,10 +546,10 @@ class YDigitalIO extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (!(bitdirection >= 0)) {
-                return _this17._throw(YAPI_INVALID_ARGUMENT, 'invalid direction', YAPI_INVALID_ARGUMENT);
+                return _this17._throw(_this17._yapi.INVALID_ARGUMENT, 'invalid direction', _this17._yapi.INVALID_ARGUMENT);
             }
             if (!(bitdirection <= 1)) {
-                return _this17._throw(YAPI_INVALID_ARGUMENT, 'invalid direction', YAPI_INVALID_ARGUMENT);
+                return _this17._throw(_this17._yapi.INVALID_ARGUMENT, 'invalid direction', _this17._yapi.INVALID_ARGUMENT);
             }
             return yield _this17.set_command(String.fromCharCode(73 + 6 * bitdirection) + '' + String(Math.round(bitno)));
         })();
@@ -592,10 +592,10 @@ class YDigitalIO extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (!(bitpolarity >= 0)) {
-                return _this19._throw(YAPI_INVALID_ARGUMENT, 'invalid bitpolarity', YAPI_INVALID_ARGUMENT);
+                return _this19._throw(_this19._yapi.INVALID_ARGUMENT, 'invalid bitpolarity', _this19._yapi.INVALID_ARGUMENT);
             }
             if (!(bitpolarity <= 1)) {
-                return _this19._throw(YAPI_INVALID_ARGUMENT, 'invalid bitpolarity', YAPI_INVALID_ARGUMENT);
+                return _this19._throw(_this19._yapi.INVALID_ARGUMENT, 'invalid bitpolarity', _this19._yapi.INVALID_ARGUMENT);
             }
             return yield _this19.set_command(String.fromCharCode(110 + 4 * bitpolarity) + '' + String(Math.round(bitno)));
         })();
@@ -639,10 +639,10 @@ class YDigitalIO extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (!(opendrain >= 0)) {
-                return _this21._throw(YAPI_INVALID_ARGUMENT, 'invalid state', YAPI_INVALID_ARGUMENT);
+                return _this21._throw(_this21._yapi.INVALID_ARGUMENT, 'invalid state', _this21._yapi.INVALID_ARGUMENT);
             }
             if (!(opendrain <= 1)) {
-                return _this21._throw(YAPI_INVALID_ARGUMENT, 'invalid state', YAPI_INVALID_ARGUMENT);
+                return _this21._throw(_this21._yapi.INVALID_ARGUMENT, 'invalid state', _this21._yapi.INVALID_ARGUMENT);
             }
             return yield _this21.set_command(String.fromCharCode(100 - 32 * opendrain) + '' + String(Math.round(bitno)));
         })();

@@ -140,7 +140,7 @@ export class YCurrentLoopOutput extends YFunction
     async get_current()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_CURRENT_INVALID;
             }
         }
@@ -150,7 +150,7 @@ export class YCurrentLoopOutput extends YFunction
     async get_currentTransition()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_CURRENTTRANSITION_INVALID;
             }
         }
@@ -193,7 +193,7 @@ export class YCurrentLoopOutput extends YFunction
     async get_currentAtStartUp()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_CURRENTATSTARTUP_INVALID;
             }
         }
@@ -214,7 +214,7 @@ export class YCurrentLoopOutput extends YFunction
     async get_loopPower()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_LOOPPOWER_INVALID;
             }
         }

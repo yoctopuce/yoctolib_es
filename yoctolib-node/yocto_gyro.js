@@ -73,7 +73,7 @@ const Y_ZVALUE_INVALID = exports.Y_ZVALUE_INVALID = _yocto_api.YAPI.INVALID_DOUB
  */
 //--- (end of generated code: YQt class start)
 class YQt extends _yocto_api.YFunction {
-    constructor(str_func) {
+    constructor(obj_yapi, str_func) {
         //--- (generated code: YQt constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
@@ -274,7 +274,7 @@ function yInternalGyroCallback(YQt_obj, str_value) {
  */
 //--- (end of generated code: YGyro class start)
 class YGyro extends _yocto_api.YFunction {
-    constructor(str_func) {
+    constructor(obj_yapi, str_func) {
         //--- (generated code: YGyro constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
@@ -353,7 +353,7 @@ class YGyro extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
-                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
                     return Y_XVALUE_INVALID;
                 }
             }
@@ -374,7 +374,7 @@ class YGyro extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this2._cacheExpiration <= _this2._yapi.GetTickCount()) {
-                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _this2._yapi.SUCCESS) {
                     return Y_YVALUE_INVALID;
                 }
             }
@@ -395,7 +395,7 @@ class YGyro extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
-                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
                     return Y_ZVALUE_INVALID;
                 }
             }
@@ -483,8 +483,8 @@ class YGyro extends _yocto_api.YFunction {
             now_stamp = _this4._yapi.GetTickCount() & 0x7FFFFFFF;
             age_ms = now_stamp - _this4._qt_stamp & 0x7FFFFFFF;
             if (age_ms >= 10 || _this4._qt_stamp == 0) {
-                if ((yield _this4.load(10)) != _yocto_api.YAPI_SUCCESS) {
-                    return YAPI_DEVICE_NOT_FOUND;
+                if ((yield _this4.load(10)) != _this4._yapi.SUCCESS) {
+                    return _this4._yapi.DEVICE_NOT_FOUND;
                 }
                 if (_this4._qt_stamp == 0) {
                     _this4._qt_w = yield YQt.FindQtInContext(_this4._serial + '.qt1');
@@ -492,17 +492,17 @@ class YGyro extends _yocto_api.YFunction {
                     _this4._qt_y = yield YQt.FindQtInContext(_this4._serial + '.qt3');
                     _this4._qt_z = yield YQt.FindQtInContext(_this4._serial + '.qt4');
                 }
-                if ((yield _this4._qt_w.load(9)) != _yocto_api.YAPI_SUCCESS) {
-                    return YAPI_DEVICE_NOT_FOUND;
+                if ((yield _this4._qt_w.load(9)) != _this4._yapi.SUCCESS) {
+                    return _this4._yapi.DEVICE_NOT_FOUND;
                 }
-                if ((yield _this4._qt_x.load(9)) != _yocto_api.YAPI_SUCCESS) {
-                    return YAPI_DEVICE_NOT_FOUND;
+                if ((yield _this4._qt_x.load(9)) != _this4._yapi.SUCCESS) {
+                    return _this4._yapi.DEVICE_NOT_FOUND;
                 }
-                if ((yield _this4._qt_y.load(9)) != _yocto_api.YAPI_SUCCESS) {
-                    return YAPI_DEVICE_NOT_FOUND;
+                if ((yield _this4._qt_y.load(9)) != _this4._yapi.SUCCESS) {
+                    return _this4._yapi.DEVICE_NOT_FOUND;
                 }
-                if ((yield _this4._qt_z.load(9)) != _yocto_api.YAPI_SUCCESS) {
-                    return YAPI_DEVICE_NOT_FOUND;
+                if ((yield _this4._qt_z.load(9)) != _this4._yapi.SUCCESS) {
+                    return _this4._yapi.DEVICE_NOT_FOUND;
                 }
                 _this4._w = yield _this4._qt_w.get_currentValue();
                 _this4._x = yield _this4._qt_x.get_currentValue();
@@ -510,7 +510,7 @@ class YGyro extends _yocto_api.YFunction {
                 _this4._z = yield _this4._qt_z.get_currentValue();
                 _this4._qt_stamp = now_stamp;
             }
-            return _yocto_api.YAPI_SUCCESS;
+            return _this4._yapi.SUCCESS;
         })();
     }
 
@@ -531,8 +531,8 @@ class YGyro extends _yocto_api.YFunction {
             /** @type {number} **/
             let delta;
             // may throw an exception
-            if ((yield _this5._loadQuaternion()) != _yocto_api.YAPI_SUCCESS) {
-                return YAPI_DEVICE_NOT_FOUND;
+            if ((yield _this5._loadQuaternion()) != _this5._yapi.SUCCESS) {
+                return _this5._yapi.DEVICE_NOT_FOUND;
             }
             if (_this5._angles_stamp != _this5._qt_stamp) {
                 sqw = _this5._w * _this5._w;
@@ -556,7 +556,7 @@ class YGyro extends _yocto_api.YFunction {
                 }
                 _this5._angles_stamp = _this5._qt_stamp;
             }
-            return _yocto_api.YAPI_SUCCESS;
+            return _this5._yapi.SUCCESS;
         })();
     }
 
@@ -716,8 +716,8 @@ class YGyro extends _yocto_api.YFunction {
         return _asyncToGenerator(function* () {
             _this13._quatCallback = callback;
             if (callback != null) {
-                if ((yield _this13._loadQuaternion()) != _yocto_api.YAPI_SUCCESS) {
-                    return YAPI_DEVICE_NOT_FOUND;
+                if ((yield _this13._loadQuaternion()) != _this13._yapi.SUCCESS) {
+                    return _this13._yapi.DEVICE_NOT_FOUND;
                 }
                 yield _this13._qt_w.set_userData(_this13);
                 yield _this13._qt_x.set_userData(_this13);
@@ -760,8 +760,8 @@ class YGyro extends _yocto_api.YFunction {
         return _asyncToGenerator(function* () {
             _this14._anglesCallback = callback;
             if (callback != null) {
-                if ((yield _this14._loadQuaternion()) != _yocto_api.YAPI_SUCCESS) {
-                    return YAPI_DEVICE_NOT_FOUND;
+                if ((yield _this14._loadQuaternion()) != _this14._yapi.SUCCESS) {
+                    return _this14._yapi.DEVICE_NOT_FOUND;
                 }
                 yield _this14._qt_w.set_userData(_this14);
                 yield _this14._qt_x.set_userData(_this14);

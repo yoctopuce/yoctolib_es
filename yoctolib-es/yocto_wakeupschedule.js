@@ -137,7 +137,7 @@ export class YWakeUpSchedule extends YFunction
     async get_minutesA()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_MINUTESA_INVALID;
             }
         }
@@ -172,7 +172,7 @@ export class YWakeUpSchedule extends YFunction
     async get_minutesB()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_MINUTESB_INVALID;
             }
         }
@@ -207,7 +207,7 @@ export class YWakeUpSchedule extends YFunction
     async get_hours()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_HOURS_INVALID;
             }
         }
@@ -241,7 +241,7 @@ export class YWakeUpSchedule extends YFunction
     async get_weekDays()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_WEEKDAYS_INVALID;
             }
         }
@@ -275,7 +275,7 @@ export class YWakeUpSchedule extends YFunction
     async get_monthDays()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_MONTHDAYS_INVALID;
             }
         }
@@ -309,7 +309,7 @@ export class YWakeUpSchedule extends YFunction
     async get_months()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_MONTHS_INVALID;
             }
         }
@@ -343,7 +343,7 @@ export class YWakeUpSchedule extends YFunction
     async get_nextOccurence()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_NEXTOCCURENCE_INVALID;
             }
         }

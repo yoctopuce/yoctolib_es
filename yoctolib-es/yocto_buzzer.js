@@ -147,7 +147,7 @@ export class YBuzzer extends YFunction
     async get_frequency()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_FREQUENCY_INVALID;
             }
         }
@@ -164,7 +164,7 @@ export class YBuzzer extends YFunction
     async get_volume()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_VOLUME_INVALID;
             }
         }
@@ -198,7 +198,7 @@ export class YBuzzer extends YFunction
     async get_playSeqSize()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_PLAYSEQSIZE_INVALID;
             }
         }
@@ -215,7 +215,7 @@ export class YBuzzer extends YFunction
     async get_playSeqMaxSize()
     {
         if (this._cacheExpiration == 0) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_PLAYSEQMAXSIZE_INVALID;
             }
         }
@@ -235,7 +235,7 @@ export class YBuzzer extends YFunction
     async get_playSeqSignature()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_PLAYSEQSIGNATURE_INVALID;
             }
         }
@@ -245,7 +245,7 @@ export class YBuzzer extends YFunction
     async get_command()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_COMMAND_INVALID;
             }
         }

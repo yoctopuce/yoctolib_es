@@ -5187,7 +5187,7 @@ export class YMeasure
  * a more convenient interface.
  */
 //--- (end of generated code: YDataStream class start)
-class YDataStream
+export class YDataStream
 {
     constructor(obj_parent, obj_dataset, encoded)
     {
@@ -5243,6 +5243,10 @@ class YDataStream
         /** @member {number[][]} **/
         this._values                     = [];
         //--- (end of generated code: YDataStream constructor)
+        this.imm_setConst({
+            DATA_INVALID: Y_DATA_INVALID,
+            DURATION_INVALID: Y_DURATION_INVALID,
+        });
 
         this._parent = obj_parent;
         this._calhdl = null;
@@ -8321,7 +8325,7 @@ export class YAPIContext
      */
     async GetAPIVersion()
     {
-        return /* version number patched automatically */'1.10.22592-dev.43';
+        return /* version number patched automatically */'1.10.22616';
     }
 
     /**

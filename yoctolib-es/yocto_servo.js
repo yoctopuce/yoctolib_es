@@ -144,7 +144,7 @@ export class YServo extends YFunction
     async get_position()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_POSITION_INVALID;
             }
         }
@@ -178,7 +178,7 @@ export class YServo extends YFunction
     async get_enabled()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_ENABLED_INVALID;
             }
         }
@@ -212,7 +212,7 @@ export class YServo extends YFunction
     async get_range()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_RANGE_INVALID;
             }
         }
@@ -252,7 +252,7 @@ export class YServo extends YFunction
     async get_neutral()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_NEUTRAL_INVALID;
             }
         }
@@ -285,7 +285,7 @@ export class YServo extends YFunction
     async get_move()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_MOVE_INVALID;
             }
         }
@@ -328,7 +328,7 @@ export class YServo extends YFunction
     async get_positionAtPowerOn()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_POSITIONATPOWERON_INVALID;
             }
         }
@@ -364,7 +364,7 @@ export class YServo extends YFunction
     async get_enabledAtPowerOn()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_ENABLEDATPOWERON_INVALID;
             }
         }

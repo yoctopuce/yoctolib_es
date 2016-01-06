@@ -37,7 +37,7 @@
  *
  *********************************************************************/
 
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor, YDataStream } from 'yoctolib-es/yocto_api'
 
 //--- (generated code: YDataLogger definitions)
 export const Y_RECORDING_OFF                 = 0;
@@ -57,10 +57,10 @@ export const Y_CURRENTRUNINDEX_INVALID       = YAPI.INVALID_UINT;
 export const Y_TIMEUTC_INVALID               = YAPI.INVALID_LONG;
 //--- (end of generated code: YDataLogger definitions)
 
-export const Y_DATA_INVALID                  = YAPI_INVALID_DOUBLE;
-export const Y_MINVALUE_INVALID              = YAPI_INVALID_DOUBLE;
-export const Y_AVERAGEVALUE_INVALID          = YAPI_INVALID_DOUBLE;
-export const Y_MAXVALUE_INVALID              = YAPI_INVALID_DOUBLE;
+export const Y_DATA_INVALID                  = YAPI.INVALID_DOUBLE;
+export const Y_MINVALUE_INVALID              = YAPI.INVALID_DOUBLE;
+export const Y_AVERAGEVALUE_INVALID          = YAPI.INVALID_DOUBLE;
+export const Y_MAXVALUE_INVALID              = YAPI.INVALID_DOUBLE;
 
 /**
  * YOldDataStream Class: Sequence of measured data, returned by the data logger
@@ -117,7 +117,7 @@ export class YOldDataStream extends YDataStream
                 this._nCols = this._columnNames.length;
             } else if(this._nCols != this._columnNames.length) {
                 this._nCols = 0;
-                return YAPI_IO_ERROR;
+                return YAPI.IO_ERROR;
             }
         }
         if(loadval['div'] != null) {
@@ -126,7 +126,7 @@ export class YOldDataStream extends YDataStream
                 this._nCols = coldiv.length;
             } else if(this._nCols != coldiv.length) {
                 this._nCols = 0;
-                return YAPI_IO_ERROR;
+                return YAPI.IO_ERROR;
             }
         }
         if(loadval['type'] != null) {
@@ -135,7 +135,7 @@ export class YOldDataStream extends YDataStream
                 this._nCols = coltyp.length;
             } else if(this._nCols != coltyp.length) {
                 this._nCols = 0;
-                return YAPI_IO_ERROR;
+                return YAPI.IO_ERROR;
             }
         }
         if(loadval['scal'] != null) {
@@ -143,7 +143,7 @@ export class YOldDataStream extends YDataStream
             colofs = [];
             if(this._nCols != colscl.length) {
                 this._nCols = 0;
-                return YAPI_IO_ERROR;
+                return YAPI.IO_ERROR;
             }
             for(i = 0; i < colscl.length; i++) {
                 colscl[i] /= 65536.0;
@@ -189,7 +189,7 @@ export class YOldDataStream extends YDataStream
         }
         if(loadval['data'] != null) {
             if(this._nCols == 0 || coldiv == null || coltyp == null) {
-                return YAPI_IO_ERROR;
+                return YAPI.IO_ERROR;
             }
             this._values = [];
             var data = loadval['data'];
@@ -235,7 +235,7 @@ export class YOldDataStream extends YDataStream
      * is always positive.
      * If you need an absolute UTC timestamp, use get_startTimeUTC().
      * 
-     * @return an unsigned number corresponding to the number of seconds
+     * @return {number} an unsigned number corresponding to the number of seconds
      *         between the start of the run and the beginning of this data
      *         stream.
      */
@@ -274,7 +274,7 @@ export class YOldDataStream extends YDataStream
 //--- (end of generated code: YDataLogger class start)
 export class YDataLogger extends YFunction
 {
-    constructor(str_func)
+    constructor(obj_yapi,str_func)
     {
         //--- (generated code: YDataLogger constructor)
         super(obj_yapi, str_func);
@@ -325,7 +325,7 @@ export class YDataLogger extends YFunction
 
         // get the device serial number
         var devid = this.module().get_serialNumber();
-        if(devid == Y_SERIALNUMBER_INVALID) {
+        if(devid == YModule.SERIALNUMBER_INVALID) {
             return null;
         }
         var httpreq = 'GET '+this.dataLoggerURL;
@@ -341,7 +341,7 @@ export class YDataLogger extends YFunction
             return this._throw(yreq.errorType, yreq.errorMsg, null);
         }
 
-        return JSON.parse(yreq.result, true);
+        return JSON.parse(yreq.result);
     }
 
     /**
@@ -375,8 +375,8 @@ export class YDataLogger extends YFunction
             for(var idx in loadval) {
                 var arr = loadval[idx];
                 if(arr.length < 4) {
-                    _throw(YAPI_IO_ERROR, 'Unexpected JSON reply format');
-                    return YAPI_IO_ERROR;
+                    _throw(YAPI.IO_ERROR, 'Unexpected JSON reply format');
+                    return YAPI.IO_ERROR;
                 }
                 v.push(new YOldDataStream(this,arr[0],arr[1],arr[2],arr[3]));
             }
@@ -434,7 +434,7 @@ export class YDataLogger extends YFunction
     async get_currentRunIndex()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_CURRENTRUNINDEX_INVALID;
             }
         }
@@ -451,7 +451,7 @@ export class YDataLogger extends YFunction
     async get_timeUTC()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_TIMEUTC_INVALID;
             }
         }
@@ -486,7 +486,7 @@ export class YDataLogger extends YFunction
     async get_recording()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_RECORDING_INVALID;
             }
         }
@@ -523,7 +523,7 @@ export class YDataLogger extends YFunction
     async get_autoStart()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_AUTOSTART_INVALID;
             }
         }
@@ -560,7 +560,7 @@ export class YDataLogger extends YFunction
     async get_beaconDriven()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_BEACONDRIVEN_INVALID;
             }
         }
@@ -590,7 +590,7 @@ export class YDataLogger extends YFunction
     async get_clearHistory()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_CLEARHISTORY_INVALID;
             }
         }

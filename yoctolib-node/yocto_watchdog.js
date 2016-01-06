@@ -205,7 +205,7 @@ class YWatchdog extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
-                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
                     return Y_STATE_INVALID;
                 }
             }
@@ -249,7 +249,7 @@ class YWatchdog extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
-                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
                     return Y_STATEATPOWERON_INVALID;
                 }
             }
@@ -293,7 +293,7 @@ class YWatchdog extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this5._cacheExpiration <= _this5._yapi.GetTickCount()) {
-                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _this5._yapi.SUCCESS) {
                     return Y_MAXTIMEONSTATEA_INVALID;
                 }
             }
@@ -335,7 +335,7 @@ class YWatchdog extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this7._cacheExpiration <= _this7._yapi.GetTickCount()) {
-                if ((yield _this7.load(_this7._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this7.load(_this7._yapi.defaultCacheValidity)) != _this7._yapi.SUCCESS) {
                     return Y_MAXTIMEONSTATEB_INVALID;
                 }
             }
@@ -377,7 +377,7 @@ class YWatchdog extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this9._cacheExpiration <= _this9._yapi.GetTickCount()) {
-                if ((yield _this9.load(_this9._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this9.load(_this9._yapi.defaultCacheValidity)) != _this9._yapi.SUCCESS) {
                     return Y_OUTPUT_INVALID;
                 }
             }
@@ -421,7 +421,7 @@ class YWatchdog extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this11._cacheExpiration <= _this11._yapi.GetTickCount()) {
-                if ((yield _this11.load(_this11._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this11.load(_this11._yapi.defaultCacheValidity)) != _this11._yapi.SUCCESS) {
                     return Y_PULSETIMER_INVALID;
                 }
             }
@@ -466,7 +466,7 @@ class YWatchdog extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this14._cacheExpiration <= _this14._yapi.GetTickCount()) {
-                if ((yield _this14.load(_this14._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this14.load(_this14._yapi.defaultCacheValidity)) != _this14._yapi.SUCCESS) {
                     return Y_DELAYEDPULSETIMER_INVALID;
                 }
             }
@@ -521,7 +521,7 @@ class YWatchdog extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this17._cacheExpiration <= _this17._yapi.GetTickCount()) {
-                if ((yield _this17.load(_this17._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this17.load(_this17._yapi.defaultCacheValidity)) != _this17._yapi.SUCCESS) {
                     return Y_COUNTDOWN_INVALID;
                 }
             }
@@ -542,7 +542,7 @@ class YWatchdog extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this18._cacheExpiration <= _this18._yapi.GetTickCount()) {
-                if ((yield _this18.load(_this18._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this18.load(_this18._yapi.defaultCacheValidity)) != _this18._yapi.SUCCESS) {
                     return Y_AUTOSTART_INVALID;
                 }
             }
@@ -584,7 +584,7 @@ class YWatchdog extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this20._cacheExpiration <= _this20._yapi.GetTickCount()) {
-                if ((yield _this20.load(_this20._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this20.load(_this20._yapi.defaultCacheValidity)) != _this20._yapi.SUCCESS) {
                     return Y_RUNNING_INVALID;
                 }
             }
@@ -646,7 +646,7 @@ class YWatchdog extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this23._cacheExpiration <= _this23._yapi.GetTickCount()) {
-                if ((yield _this23.load(_this23._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this23.load(_this23._yapi.defaultCacheValidity)) != _this23._yapi.SUCCESS) {
                     return Y_TRIGGERDELAY_INVALID;
                 }
             }
@@ -687,7 +687,7 @@ class YWatchdog extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this25._cacheExpiration <= _this25._yapi.GetTickCount()) {
-                if ((yield _this25.load(_this25._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this25.load(_this25._yapi.defaultCacheValidity)) != _this25._yapi.SUCCESS) {
                     return Y_TRIGGERDURATION_INVALID;
                 }
             }

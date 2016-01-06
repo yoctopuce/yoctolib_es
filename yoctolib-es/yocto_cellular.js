@@ -155,7 +155,7 @@ export const Y_COMMAND_INVALID               = YAPI.INVALID_STRING;
 
 export class YCellular extends YFunction
 {
-    constructor(str_func)
+    constructor(obj_yapi,str_func)
     {
         //--- (generated code: YCellular constructor)
         super(obj_yapi, str_func);
@@ -254,7 +254,7 @@ export class YCellular extends YFunction
     async get_linkQuality()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_LINKQUALITY_INVALID;
             }
         }
@@ -271,7 +271,7 @@ export class YCellular extends YFunction
     async get_cellOperator()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_CELLOPERATOR_INVALID;
             }
         }
@@ -289,7 +289,7 @@ export class YCellular extends YFunction
     async get_cellIdentifier()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_CELLIDENTIFIER_INVALID;
             }
         }
@@ -311,7 +311,7 @@ export class YCellular extends YFunction
     async get_imsi()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_IMSI_INVALID;
             }
         }
@@ -328,7 +328,7 @@ export class YCellular extends YFunction
     async get_message()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_MESSAGE_INVALID;
             }
         }
@@ -350,7 +350,7 @@ export class YCellular extends YFunction
     async get_pin()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_PIN_INVALID;
             }
         }
@@ -399,7 +399,7 @@ export class YCellular extends YFunction
     async get_lockedOperator()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_LOCKEDOPERATOR_INVALID;
             }
         }
@@ -437,7 +437,7 @@ export class YCellular extends YFunction
     async get_enableData()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_ENABLEDATA_INVALID;
             }
         }
@@ -479,7 +479,7 @@ export class YCellular extends YFunction
     async get_apn()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_APN_INVALID;
             }
         }
@@ -518,7 +518,7 @@ export class YCellular extends YFunction
     async get_apnSecret()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_APNSECRET_INVALID;
             }
         }
@@ -536,7 +536,7 @@ export class YCellular extends YFunction
     async get_command()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_COMMAND_INVALID;
             }
         }
@@ -642,7 +642,7 @@ export class YCellular extends YFunction
         let gsmMsg;
         gsmMsg = await this.get_message();
         if (!(gsmMsg == 'Enter SIM PUK')) {
-            return this._throw(YAPI_INVALID_ARGUMENT,'PUK not expected at this time',YAPI_INVALID_ARGUMENT);
+            return this._throw(this._yapi.INVALID_ARGUMENT,'PUK not expected at this time',this._yapi.INVALID_ARGUMENT);
         }
         if (newPin == '') {
             return await this.set_command('AT+CPIN='+puk+',0000;+CLCK=SC,0,0000');

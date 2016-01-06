@@ -124,7 +124,7 @@ export class YAudioIn extends YFunction
     async get_volume()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_VOLUME_INVALID;
             }
         }
@@ -158,7 +158,7 @@ export class YAudioIn extends YFunction
     async get_mute()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_MUTE_INVALID;
             }
         }
@@ -197,7 +197,7 @@ export class YAudioIn extends YFunction
     async get_volumeRange()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_VOLUMERANGE_INVALID;
             }
         }
@@ -214,7 +214,7 @@ export class YAudioIn extends YFunction
     async get_signal()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_SIGNAL_INVALID;
             }
         }
@@ -231,7 +231,7 @@ export class YAudioIn extends YFunction
     async get_noSignalFor()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_NOSIGNALFOR_INVALID;
             }
         }

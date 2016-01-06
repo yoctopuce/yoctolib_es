@@ -121,7 +121,7 @@ System.register('yoctolib-es/yocto_accelerometer.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -155,7 +155,7 @@ System.register('yoctolib-es/yocto_accelerometer.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -189,7 +189,7 @@ System.register('yoctolib-es/yocto_accelerometer.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -223,7 +223,7 @@ System.register('yoctolib-es/yocto_accelerometer.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -455,7 +455,7 @@ System.register('yoctolib-es/yocto_altitude.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -489,7 +489,7 @@ System.register('yoctolib-es/yocto_altitude.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -765,7 +765,7 @@ System.register('yoctolib-es/yocto_anbutton.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -799,7 +799,7 @@ System.register('yoctolib-es/yocto_anbutton.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -833,7 +833,7 @@ System.register('yoctolib-es/yocto_anbutton.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -889,7 +889,7 @@ System.register('yoctolib-es/yocto_anbutton.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -945,7 +945,7 @@ System.register('yoctolib-es/yocto_anbutton.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -1001,7 +1001,7 @@ System.register('yoctolib-es/yocto_anbutton.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -1057,7 +1057,7 @@ System.register('yoctolib-es/yocto_anbutton.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -1091,7 +1091,7 @@ System.register('yoctolib-es/yocto_anbutton.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -1125,7 +1125,7 @@ System.register('yoctolib-es/yocto_anbutton.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -1159,7 +1159,7 @@ System.register('yoctolib-es/yocto_anbutton.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -1215,7 +1215,7 @@ System.register('yoctolib-es/yocto_anbutton.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -1439,7 +1439,7 @@ System.register('yoctolib-es/yocto_audioin.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -1495,7 +1495,7 @@ System.register('yoctolib-es/yocto_audioin.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -1551,7 +1551,7 @@ System.register('yoctolib-es/yocto_audioin.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -1585,7 +1585,7 @@ System.register('yoctolib-es/yocto_audioin.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -1619,7 +1619,7 @@ System.register('yoctolib-es/yocto_audioin.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -1825,7 +1825,7 @@ System.register('yoctolib-es/yocto_audioout.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -1881,7 +1881,7 @@ System.register('yoctolib-es/yocto_audioout.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -1937,7 +1937,7 @@ System.register('yoctolib-es/yocto_audioout.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -1971,7 +1971,7 @@ System.register('yoctolib-es/yocto_audioout.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -2005,7 +2005,7 @@ System.register('yoctolib-es/yocto_audioout.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -2291,7 +2291,7 @@ System.register('yoctolib-es/yocto_bluetoothlink.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -2325,7 +2325,7 @@ System.register('yoctolib-es/yocto_bluetoothlink.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -2381,7 +2381,7 @@ System.register('yoctolib-es/yocto_bluetoothlink.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -2437,7 +2437,7 @@ System.register('yoctolib-es/yocto_bluetoothlink.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -2471,7 +2471,7 @@ System.register('yoctolib-es/yocto_bluetoothlink.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -2527,7 +2527,7 @@ System.register('yoctolib-es/yocto_bluetoothlink.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -2583,7 +2583,7 @@ System.register('yoctolib-es/yocto_bluetoothlink.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -2639,7 +2639,7 @@ System.register('yoctolib-es/yocto_bluetoothlink.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -2673,7 +2673,7 @@ System.register('yoctolib-es/yocto_bluetoothlink.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -2707,7 +2707,7 @@ System.register('yoctolib-es/yocto_bluetoothlink.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -2993,7 +2993,7 @@ System.register('yoctolib-es/yocto_buzzer.js', ['npm:babel-runtime@5.8.34/helper
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -3027,7 +3027,7 @@ System.register('yoctolib-es/yocto_buzzer.js', ['npm:babel-runtime@5.8.34/helper
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -3083,7 +3083,7 @@ System.register('yoctolib-es/yocto_buzzer.js', ['npm:babel-runtime@5.8.34/helper
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -3117,7 +3117,7 @@ System.register('yoctolib-es/yocto_buzzer.js', ['npm:babel-runtime@5.8.34/helper
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -3151,7 +3151,7 @@ System.register('yoctolib-es/yocto_buzzer.js', ['npm:babel-runtime@5.8.34/helper
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -3185,7 +3185,7 @@ System.register('yoctolib-es/yocto_buzzer.js', ['npm:babel-runtime@5.8.34/helper
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -3553,7 +3553,7 @@ System.register('yoctolib-es/yocto_carbondioxide.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -3609,7 +3609,7 @@ System.register('yoctolib-es/yocto_carbondioxide.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -3904,7 +3904,7 @@ System.register('yoctolib-es/yocto_cellular.js', ['npm:babel-runtime@5.8.34/help
             YCellular = (function (_YFunction) {
                 _inherits(YCellular, _YFunction);
 
-                function YCellular(str_func) {
+                function YCellular(obj_yapi, str_func) {
                     _classCallCheck(this, YCellular);
 
                     _get(Object.getPrototypeOf(YCellular.prototype), 'constructor', this).call(this, obj_yapi, str_func);
@@ -4006,7 +4006,7 @@ System.register('yoctolib-es/yocto_cellular.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -4040,7 +4040,7 @@ System.register('yoctolib-es/yocto_cellular.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -4074,7 +4074,7 @@ System.register('yoctolib-es/yocto_cellular.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -4108,7 +4108,7 @@ System.register('yoctolib-es/yocto_cellular.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -4142,7 +4142,7 @@ System.register('yoctolib-es/yocto_cellular.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -4176,7 +4176,7 @@ System.register('yoctolib-es/yocto_cellular.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -4232,7 +4232,7 @@ System.register('yoctolib-es/yocto_cellular.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -4288,7 +4288,7 @@ System.register('yoctolib-es/yocto_cellular.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -4344,7 +4344,7 @@ System.register('yoctolib-es/yocto_cellular.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -4400,7 +4400,7 @@ System.register('yoctolib-es/yocto_cellular.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -4456,7 +4456,7 @@ System.register('yoctolib-es/yocto_cellular.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -4515,7 +4515,7 @@ System.register('yoctolib-es/yocto_cellular.js', ['npm:babel-runtime@5.8.34/help
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', this._throw(YAPI_INVALID_ARGUMENT, 'PUK not expected at this time', YAPI_INVALID_ARGUMENT));
+                                    return context$2$0.abrupt('return', this._throw(this._yapi.INVALID_ARGUMENT, 'PUK not expected at this time', this._yapi.INVALID_ARGUMENT));
 
                                 case 6:
                                     if (!(newPin == '')) {
@@ -4984,7 +4984,7 @@ System.register('yoctolib-es/yocto_colorled.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -5040,7 +5040,7 @@ System.register('yoctolib-es/yocto_colorled.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -5096,7 +5096,7 @@ System.register('yoctolib-es/yocto_colorled.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -5174,7 +5174,7 @@ System.register('yoctolib-es/yocto_colorled.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -5252,7 +5252,7 @@ System.register('yoctolib-es/yocto_colorled.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -5308,7 +5308,7 @@ System.register('yoctolib-es/yocto_colorled.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -5342,7 +5342,7 @@ System.register('yoctolib-es/yocto_colorled.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -5376,7 +5376,7 @@ System.register('yoctolib-es/yocto_colorled.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -5410,7 +5410,7 @@ System.register('yoctolib-es/yocto_colorled.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -5721,7 +5721,7 @@ System.register('yoctolib-es/yocto_compass.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -5755,7 +5755,7 @@ System.register('yoctolib-es/yocto_compass.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -6079,7 +6079,7 @@ System.register('yoctolib-es/yocto_currentloopoutput.js', ['npm:babel-runtime@5.
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -6113,7 +6113,7 @@ System.register('yoctolib-es/yocto_currentloopoutput.js', ['npm:babel-runtime@5.
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -6191,7 +6191,7 @@ System.register('yoctolib-es/yocto_currentloopoutput.js', ['npm:babel-runtime@5.
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -6225,7 +6225,7 @@ System.register('yoctolib-es/yocto_currentloopoutput.js', ['npm:babel-runtime@5.
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -6327,7 +6327,7 @@ System.register('yoctolib-es/yocto_currentloopoutput.js', ['npm:babel-runtime@5.
     };
 });
 System.register('yoctolib-es/yocto_datalogger.js', ['npm:babel-runtime@5.8.34/helpers/get', 'npm:babel-runtime@5.8.34/helpers/inherits', 'npm:babel-runtime@5.8.34/helpers/create-class', 'npm:babel-runtime@5.8.34/helpers/class-call-check', 'npm:babel-runtime@5.8.34/regenerator', 'yoctolib-es/yocto_api.js'], function (_export) {
-    var _get, _inherits, _createClass, _classCallCheck, _regeneratorRuntime, YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor, Y_RECORDING_OFF, Y_RECORDING_ON, Y_RECORDING_PENDING, Y_RECORDING_INVALID, Y_AUTOSTART_OFF, Y_AUTOSTART_ON, Y_AUTOSTART_INVALID, Y_BEACONDRIVEN_OFF, Y_BEACONDRIVEN_ON, Y_BEACONDRIVEN_INVALID, Y_CLEARHISTORY_FALSE, Y_CLEARHISTORY_TRUE, Y_CLEARHISTORY_INVALID, Y_CURRENTRUNINDEX_INVALID, Y_TIMEUTC_INVALID, Y_DATA_INVALID, Y_MINVALUE_INVALID, Y_AVERAGEVALUE_INVALID, Y_MAXVALUE_INVALID, YOldDataStream, YDataLogger;
+    var _get, _inherits, _createClass, _classCallCheck, _regeneratorRuntime, YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor, YDataStream, Y_RECORDING_OFF, Y_RECORDING_ON, Y_RECORDING_PENDING, Y_RECORDING_INVALID, Y_AUTOSTART_OFF, Y_AUTOSTART_ON, Y_AUTOSTART_INVALID, Y_BEACONDRIVEN_OFF, Y_BEACONDRIVEN_ON, Y_BEACONDRIVEN_INVALID, Y_CLEARHISTORY_FALSE, Y_CLEARHISTORY_TRUE, Y_CLEARHISTORY_INVALID, Y_CURRENTRUNINDEX_INVALID, Y_TIMEUTC_INVALID, Y_DATA_INVALID, Y_MINVALUE_INVALID, Y_AVERAGEVALUE_INVALID, Y_MAXVALUE_INVALID, YOldDataStream, YDataLogger;
 
     function yFindDataLogger(func) {
         return YDataLogger.FindDataLogger(func);
@@ -6354,6 +6354,7 @@ System.register('yoctolib-es/yocto_datalogger.js', ['npm:babel-runtime@5.8.34/he
             YFunction = _yoctolibEsYocto_apiJs.YFunction;
             YModule = _yoctolibEsYocto_apiJs.YModule;
             YSensor = _yoctolibEsYocto_apiJs.YSensor;
+            YDataStream = _yoctolibEsYocto_apiJs.YDataStream;
         }],
         execute: function () {
             'use strict';
@@ -6422,19 +6423,19 @@ System.register('yoctolib-es/yocto_datalogger.js', ['npm:babel-runtime@5.8.34/he
 
             _export('Y_TIMEUTC_INVALID', Y_TIMEUTC_INVALID);
 
-            Y_DATA_INVALID = YAPI_INVALID_DOUBLE;
+            Y_DATA_INVALID = YAPI.INVALID_DOUBLE;
 
             _export('Y_DATA_INVALID', Y_DATA_INVALID);
 
-            Y_MINVALUE_INVALID = YAPI_INVALID_DOUBLE;
+            Y_MINVALUE_INVALID = YAPI.INVALID_DOUBLE;
 
             _export('Y_MINVALUE_INVALID', Y_MINVALUE_INVALID);
 
-            Y_AVERAGEVALUE_INVALID = YAPI_INVALID_DOUBLE;
+            Y_AVERAGEVALUE_INVALID = YAPI.INVALID_DOUBLE;
 
             _export('Y_AVERAGEVALUE_INVALID', Y_AVERAGEVALUE_INVALID);
 
-            Y_MAXVALUE_INVALID = YAPI_INVALID_DOUBLE;
+            Y_MAXVALUE_INVALID = YAPI.INVALID_DOUBLE;
 
             _export('Y_MAXVALUE_INVALID', Y_MAXVALUE_INVALID);
 
@@ -6511,7 +6512,7 @@ System.register('yoctolib-es/yocto_datalogger.js', ['npm:babel-runtime@5.8.34/he
                                     }
 
                                     this._nCols = 0;
-                                    return context$2$0.abrupt('return', YAPI_IO_ERROR);
+                                    return context$2$0.abrupt('return', YAPI.IO_ERROR);
 
                                 case 25:
                                     if (!(loadval['div'] != null)) {
@@ -6537,7 +6538,7 @@ System.register('yoctolib-es/yocto_datalogger.js', ['npm:babel-runtime@5.8.34/he
                                     }
 
                                     this._nCols = 0;
-                                    return context$2$0.abrupt('return', YAPI_IO_ERROR);
+                                    return context$2$0.abrupt('return', YAPI.IO_ERROR);
 
                                 case 34:
                                     if (!(loadval['type'] != null)) {
@@ -6563,7 +6564,7 @@ System.register('yoctolib-es/yocto_datalogger.js', ['npm:babel-runtime@5.8.34/he
                                     }
 
                                     this._nCols = 0;
-                                    return context$2$0.abrupt('return', YAPI_IO_ERROR);
+                                    return context$2$0.abrupt('return', YAPI.IO_ERROR);
 
                                 case 43:
                                     if (!(loadval['scal'] != null)) {
@@ -6580,7 +6581,7 @@ System.register('yoctolib-es/yocto_datalogger.js', ['npm:babel-runtime@5.8.34/he
                                     }
 
                                     this._nCols = 0;
-                                    return context$2$0.abrupt('return', YAPI_IO_ERROR);
+                                    return context$2$0.abrupt('return', YAPI.IO_ERROR);
 
                                 case 49:
                                     for (i = 0; i < colscl.length; i++) {
@@ -6679,7 +6680,7 @@ System.register('yoctolib-es/yocto_datalogger.js', ['npm:babel-runtime@5.8.34/he
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', YAPI_IO_ERROR);
+                                    return context$2$0.abrupt('return', YAPI.IO_ERROR);
 
                                 case 83:
                                     this._values = [];
@@ -6768,7 +6769,7 @@ System.register('yoctolib-es/yocto_datalogger.js', ['npm:babel-runtime@5.8.34/he
             YDataLogger = (function (_YFunction) {
                 _inherits(YDataLogger, _YFunction);
 
-                function YDataLogger(str_func) {
+                function YDataLogger(obj_yapi, str_func) {
                     _classCallCheck(this, YDataLogger);
 
                     _get(Object.getPrototypeOf(YDataLogger.prototype), 'constructor', this).call(this, obj_yapi, str_func);
@@ -6821,7 +6822,7 @@ System.register('yoctolib-es/yocto_datalogger.js', ['npm:babel-runtime@5.8.34/he
 
                                     devid = this.module().get_serialNumber();
 
-                                    if (!(devid == Y_SERIALNUMBER_INVALID)) {
+                                    if (!(devid == YModule.SERIALNUMBER_INVALID)) {
                                         context$2$0.next = 4;
                                         break;
                                     }
@@ -6861,7 +6862,7 @@ System.register('yoctolib-es/yocto_datalogger.js', ['npm:babel-runtime@5.8.34/he
                                     return context$2$0.abrupt('return', this._throw(yreq.errorType, yreq.errorMsg, null));
 
                                 case 16:
-                                    return context$2$0.abrupt('return', JSON.parse(yreq.result, true));
+                                    return context$2$0.abrupt('return', JSON.parse(yreq.result));
 
                                 case 17:
                                 case 'end':
@@ -6919,8 +6920,8 @@ System.register('yoctolib-es/yocto_datalogger.js', ['npm:babel-runtime@5.8.34/he
                                         break;
                                     }
 
-                                    _throw(YAPI_IO_ERROR, 'Unexpected JSON reply format');
-                                    return context$2$0.abrupt('return', YAPI_IO_ERROR);
+                                    _throw(YAPI.IO_ERROR, 'Unexpected JSON reply format');
+                                    return context$2$0.abrupt('return', YAPI.IO_ERROR);
 
                                 case 15:
                                     v.push(new YOldDataStream(this, arr[0], arr[1], arr[2], arr[3]));
@@ -6992,7 +6993,7 @@ System.register('yoctolib-es/yocto_datalogger.js', ['npm:babel-runtime@5.8.34/he
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -7026,7 +7027,7 @@ System.register('yoctolib-es/yocto_datalogger.js', ['npm:babel-runtime@5.8.34/he
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -7082,7 +7083,7 @@ System.register('yoctolib-es/yocto_datalogger.js', ['npm:babel-runtime@5.8.34/he
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -7138,7 +7139,7 @@ System.register('yoctolib-es/yocto_datalogger.js', ['npm:babel-runtime@5.8.34/he
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -7194,7 +7195,7 @@ System.register('yoctolib-es/yocto_datalogger.js', ['npm:babel-runtime@5.8.34/he
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -7250,7 +7251,7 @@ System.register('yoctolib-es/yocto_datalogger.js', ['npm:babel-runtime@5.8.34/he
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -7588,7 +7589,7 @@ System.register('yoctolib-es/yocto_digitalio.js', ['npm:babel-runtime@5.8.34/hel
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -7644,7 +7645,7 @@ System.register('yoctolib-es/yocto_digitalio.js', ['npm:babel-runtime@5.8.34/hel
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -7700,7 +7701,7 @@ System.register('yoctolib-es/yocto_digitalio.js', ['npm:babel-runtime@5.8.34/hel
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -7756,7 +7757,7 @@ System.register('yoctolib-es/yocto_digitalio.js', ['npm:babel-runtime@5.8.34/hel
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -7812,7 +7813,7 @@ System.register('yoctolib-es/yocto_digitalio.js', ['npm:babel-runtime@5.8.34/hel
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -7846,7 +7847,7 @@ System.register('yoctolib-es/yocto_digitalio.js', ['npm:babel-runtime@5.8.34/hel
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -7902,7 +7903,7 @@ System.register('yoctolib-es/yocto_digitalio.js', ['npm:babel-runtime@5.8.34/hel
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -7953,7 +7954,7 @@ System.register('yoctolib-es/yocto_digitalio.js', ['npm:babel-runtime@5.8.34/hel
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', this._throw(YAPI_INVALID_ARGUMENT, 'invalid bitstate', YAPI_INVALID_ARGUMENT));
+                                    return context$2$0.abrupt('return', this._throw(this._yapi.INVALID_ARGUMENT, 'invalid bitstate', this._yapi.INVALID_ARGUMENT));
 
                                 case 2:
                                     if (bitstate <= 1) {
@@ -7961,7 +7962,7 @@ System.register('yoctolib-es/yocto_digitalio.js', ['npm:babel-runtime@5.8.34/hel
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', this._throw(YAPI_INVALID_ARGUMENT, 'invalid bitstate', YAPI_INVALID_ARGUMENT));
+                                    return context$2$0.abrupt('return', this._throw(this._yapi.INVALID_ARGUMENT, 'invalid bitstate', this._yapi.INVALID_ARGUMENT));
 
                                 case 4:
                                     context$2$0.next = 6;
@@ -8026,7 +8027,7 @@ System.register('yoctolib-es/yocto_digitalio.js', ['npm:babel-runtime@5.8.34/hel
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', this._throw(YAPI_INVALID_ARGUMENT, 'invalid direction', YAPI_INVALID_ARGUMENT));
+                                    return context$2$0.abrupt('return', this._throw(this._yapi.INVALID_ARGUMENT, 'invalid direction', this._yapi.INVALID_ARGUMENT));
 
                                 case 2:
                                     if (bitdirection <= 1) {
@@ -8034,7 +8035,7 @@ System.register('yoctolib-es/yocto_digitalio.js', ['npm:babel-runtime@5.8.34/hel
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', this._throw(YAPI_INVALID_ARGUMENT, 'invalid direction', YAPI_INVALID_ARGUMENT));
+                                    return context$2$0.abrupt('return', this._throw(this._yapi.INVALID_ARGUMENT, 'invalid direction', this._yapi.INVALID_ARGUMENT));
 
                                 case 4:
                                     context$2$0.next = 6;
@@ -8081,7 +8082,7 @@ System.register('yoctolib-es/yocto_digitalio.js', ['npm:babel-runtime@5.8.34/hel
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', this._throw(YAPI_INVALID_ARGUMENT, 'invalid bitpolarity', YAPI_INVALID_ARGUMENT));
+                                    return context$2$0.abrupt('return', this._throw(this._yapi.INVALID_ARGUMENT, 'invalid bitpolarity', this._yapi.INVALID_ARGUMENT));
 
                                 case 2:
                                     if (bitpolarity <= 1) {
@@ -8089,7 +8090,7 @@ System.register('yoctolib-es/yocto_digitalio.js', ['npm:babel-runtime@5.8.34/hel
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', this._throw(YAPI_INVALID_ARGUMENT, 'invalid bitpolarity', YAPI_INVALID_ARGUMENT));
+                                    return context$2$0.abrupt('return', this._throw(this._yapi.INVALID_ARGUMENT, 'invalid bitpolarity', this._yapi.INVALID_ARGUMENT));
 
                                 case 4:
                                     context$2$0.next = 6;
@@ -8136,7 +8137,7 @@ System.register('yoctolib-es/yocto_digitalio.js', ['npm:babel-runtime@5.8.34/hel
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', this._throw(YAPI_INVALID_ARGUMENT, 'invalid state', YAPI_INVALID_ARGUMENT));
+                                    return context$2$0.abrupt('return', this._throw(this._yapi.INVALID_ARGUMENT, 'invalid state', this._yapi.INVALID_ARGUMENT));
 
                                 case 2:
                                     if (opendrain <= 1) {
@@ -8144,7 +8145,7 @@ System.register('yoctolib-es/yocto_digitalio.js', ['npm:babel-runtime@5.8.34/hel
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', this._throw(YAPI_INVALID_ARGUMENT, 'invalid state', YAPI_INVALID_ARGUMENT));
+                                    return context$2$0.abrupt('return', this._throw(this._yapi.INVALID_ARGUMENT, 'invalid state', this._yapi.INVALID_ARGUMENT));
 
                                 case 4:
                                     context$2$0.next = 6;
@@ -9144,7 +9145,7 @@ System.register('yoctolib-es/yocto_display.js', ['npm:babel-runtime@5.8.34/helpe
                             while (1) switch (context$2$0.prev = context$2$0.next) {
                                 case 0:
                                     this._hidden = false;
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 2:
                                 case 'end':
@@ -9162,7 +9163,7 @@ System.register('yoctolib-es/yocto_display.js', ['npm:babel-runtime@5.8.34/helpe
             YDisplay = (function (_YFunction) {
                 _inherits(YDisplay, _YFunction);
 
-                function YDisplay(str_func) {
+                function YDisplay(obj_yapi, str_func) {
                     _classCallCheck(this, YDisplay);
 
                     _get(Object.getPrototypeOf(YDisplay.prototype), 'constructor', this).call(this, obj_yapi, str_func);
@@ -9274,7 +9275,7 @@ System.register('yoctolib-es/yocto_display.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -9330,7 +9331,7 @@ System.register('yoctolib-es/yocto_display.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -9386,7 +9387,7 @@ System.register('yoctolib-es/yocto_display.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -9442,7 +9443,7 @@ System.register('yoctolib-es/yocto_display.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -9498,7 +9499,7 @@ System.register('yoctolib-es/yocto_display.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -9532,7 +9533,7 @@ System.register('yoctolib-es/yocto_display.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -9566,7 +9567,7 @@ System.register('yoctolib-es/yocto_display.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -9600,7 +9601,7 @@ System.register('yoctolib-es/yocto_display.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -9634,7 +9635,7 @@ System.register('yoctolib-es/yocto_display.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -9668,7 +9669,7 @@ System.register('yoctolib-es/yocto_display.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -9702,7 +9703,7 @@ System.register('yoctolib-es/yocto_display.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -9802,7 +9803,7 @@ System.register('yoctolib-es/yocto_display.js', ['npm:babel-runtime@5.8.34/helpe
                                 case 2:
                                     this._sequence = '';
                                     this._recording = true;
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 5:
                                 case 'end':
@@ -9826,7 +9827,7 @@ System.register('yoctolib-es/yocto_display.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 5:
                                     this._sequence = '';
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 7:
                                 case 'end':
@@ -10293,7 +10294,7 @@ System.register('yoctolib-es/yocto_dualpower.js', ['npm:babel-runtime@5.8.34/hel
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -10327,7 +10328,7 @@ System.register('yoctolib-es/yocto_dualpower.js', ['npm:babel-runtime@5.8.34/hel
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -10383,7 +10384,7 @@ System.register('yoctolib-es/yocto_dualpower.js', ['npm:babel-runtime@5.8.34/hel
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -10566,7 +10567,7 @@ System.register('yoctolib-es/yocto_files.js', ['npm:babel-runtime@5.8.34/helpers
             YFiles = (function (_YFunction) {
                 _inherits(YFiles, _YFunction);
 
-                function YFiles(str_func) {
+                function YFiles(obj_yapi, str_func) {
                     _classCallCheck(this, YFiles);
 
                     _get(Object.getPrototypeOf(YFiles.prototype), 'constructor', this).call(this, obj_yapi, str_func);
@@ -10611,7 +10612,7 @@ System.register('yoctolib-es/yocto_files.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -10645,7 +10646,7 @@ System.register('yoctolib-es/yocto_files.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -10707,10 +10708,10 @@ System.register('yoctolib-es/yocto_files.js', ['npm:babel-runtime@5.8.34/helpers
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', this._throw(YAPI_IO_ERROR, 'format failed', YAPI_IO_ERROR));
+                                    return context$2$0.abrupt('return', this._throw(this._yapi.IO_ERROR, 'format failed', this._yapi.IO_ERROR));
 
                                 case 8:
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 9:
                                 case 'end':
@@ -10805,10 +10806,10 @@ System.register('yoctolib-es/yocto_files.js', ['npm:babel-runtime@5.8.34/helpers
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', this._throw(YAPI_IO_ERROR, 'unable to remove file', YAPI_IO_ERROR));
+                                    return context$2$0.abrupt('return', this._throw(this._yapi.IO_ERROR, 'unable to remove file', this._yapi.IO_ERROR));
 
                                 case 8:
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 9:
                                 case 'end':
@@ -11046,7 +11047,7 @@ System.register('yoctolib-es/yocto_genericsensor.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -11080,7 +11081,7 @@ System.register('yoctolib-es/yocto_genericsensor.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -11114,7 +11115,7 @@ System.register('yoctolib-es/yocto_genericsensor.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -11170,7 +11171,7 @@ System.register('yoctolib-es/yocto_genericsensor.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -11248,7 +11249,7 @@ System.register('yoctolib-es/yocto_genericsensor.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -11282,7 +11283,7 @@ System.register('yoctolib-es/yocto_genericsensor.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -11636,7 +11637,7 @@ System.register('yoctolib-es/yocto_gps.js', ['npm:babel-runtime@5.8.34/helpers/g
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -11670,7 +11671,7 @@ System.register('yoctolib-es/yocto_gps.js', ['npm:babel-runtime@5.8.34/helpers/g
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -11704,7 +11705,7 @@ System.register('yoctolib-es/yocto_gps.js', ['npm:babel-runtime@5.8.34/helpers/g
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -11760,7 +11761,7 @@ System.register('yoctolib-es/yocto_gps.js', ['npm:babel-runtime@5.8.34/helpers/g
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -11794,7 +11795,7 @@ System.register('yoctolib-es/yocto_gps.js', ['npm:babel-runtime@5.8.34/helpers/g
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -11828,7 +11829,7 @@ System.register('yoctolib-es/yocto_gps.js', ['npm:babel-runtime@5.8.34/helpers/g
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -11862,7 +11863,7 @@ System.register('yoctolib-es/yocto_gps.js', ['npm:babel-runtime@5.8.34/helpers/g
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -11896,7 +11897,7 @@ System.register('yoctolib-es/yocto_gps.js', ['npm:babel-runtime@5.8.34/helpers/g
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -11930,7 +11931,7 @@ System.register('yoctolib-es/yocto_gps.js', ['npm:babel-runtime@5.8.34/helpers/g
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -11964,7 +11965,7 @@ System.register('yoctolib-es/yocto_gps.js', ['npm:babel-runtime@5.8.34/helpers/g
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -11998,7 +11999,7 @@ System.register('yoctolib-es/yocto_gps.js', ['npm:babel-runtime@5.8.34/helpers/g
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -12032,7 +12033,7 @@ System.register('yoctolib-es/yocto_gps.js', ['npm:babel-runtime@5.8.34/helpers/g
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -12088,7 +12089,7 @@ System.register('yoctolib-es/yocto_gps.js', ['npm:babel-runtime@5.8.34/helpers/g
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -12354,7 +12355,7 @@ System.register('yoctolib-es/yocto_gyro.js', ['npm:babel-runtime@5.8.34/helpers/
             YQt = (function (_YFunction) {
                 _inherits(YQt, _YFunction);
 
-                function YQt(str_func) {
+                function YQt(obj_yapi, str_func) {
                     _classCallCheck(this, YQt);
 
                     _get(Object.getPrototypeOf(YQt.prototype), 'constructor', this).call(this, obj_yapi, str_func);
@@ -12418,7 +12419,7 @@ System.register('yoctolib-es/yocto_gyro.js', ['npm:babel-runtime@5.8.34/helpers/
             YGyro = (function (_YFunction2) {
                 _inherits(YGyro, _YFunction2);
 
-                function YGyro(str_func) {
+                function YGyro(obj_yapi, str_func) {
                     _classCallCheck(this, YGyro);
 
                     _get(Object.getPrototypeOf(YGyro.prototype), 'constructor', this).call(this, obj_yapi, str_func);
@@ -12499,7 +12500,7 @@ System.register('yoctolib-es/yocto_gyro.js', ['npm:babel-runtime@5.8.34/helpers/
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -12533,7 +12534,7 @@ System.register('yoctolib-es/yocto_gyro.js', ['npm:babel-runtime@5.8.34/helpers/
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -12567,7 +12568,7 @@ System.register('yoctolib-es/yocto_gyro.js', ['npm:babel-runtime@5.8.34/helpers/
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -12608,14 +12609,14 @@ System.register('yoctolib-es/yocto_gyro.js', ['npm:babel-runtime@5.8.34/helpers/
 
                                 case 7:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 11;
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', YAPI_DEVICE_NOT_FOUND);
+                                    return context$2$0.abrupt('return', this._yapi.DEVICE_NOT_FOUND);
 
                                 case 11:
                                     if (!(this._qt_stamp == 0)) {
@@ -12650,14 +12651,14 @@ System.register('yoctolib-es/yocto_gyro.js', ['npm:babel-runtime@5.8.34/helpers/
 
                                 case 26:
                                     context$2$0.t2 = context$2$0.sent;
-                                    context$2$0.t3 = YAPI_SUCCESS;
+                                    context$2$0.t3 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t2 != context$2$0.t3)) {
                                         context$2$0.next = 30;
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', YAPI_DEVICE_NOT_FOUND);
+                                    return context$2$0.abrupt('return', this._yapi.DEVICE_NOT_FOUND);
 
                                 case 30:
                                     context$2$0.next = 32;
@@ -12665,14 +12666,14 @@ System.register('yoctolib-es/yocto_gyro.js', ['npm:babel-runtime@5.8.34/helpers/
 
                                 case 32:
                                     context$2$0.t4 = context$2$0.sent;
-                                    context$2$0.t5 = YAPI_SUCCESS;
+                                    context$2$0.t5 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t4 != context$2$0.t5)) {
                                         context$2$0.next = 36;
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', YAPI_DEVICE_NOT_FOUND);
+                                    return context$2$0.abrupt('return', this._yapi.DEVICE_NOT_FOUND);
 
                                 case 36:
                                     context$2$0.next = 38;
@@ -12680,14 +12681,14 @@ System.register('yoctolib-es/yocto_gyro.js', ['npm:babel-runtime@5.8.34/helpers/
 
                                 case 38:
                                     context$2$0.t6 = context$2$0.sent;
-                                    context$2$0.t7 = YAPI_SUCCESS;
+                                    context$2$0.t7 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t6 != context$2$0.t7)) {
                                         context$2$0.next = 42;
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', YAPI_DEVICE_NOT_FOUND);
+                                    return context$2$0.abrupt('return', this._yapi.DEVICE_NOT_FOUND);
 
                                 case 42:
                                     context$2$0.next = 44;
@@ -12695,14 +12696,14 @@ System.register('yoctolib-es/yocto_gyro.js', ['npm:babel-runtime@5.8.34/helpers/
 
                                 case 44:
                                     context$2$0.t8 = context$2$0.sent;
-                                    context$2$0.t9 = YAPI_SUCCESS;
+                                    context$2$0.t9 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t8 != context$2$0.t9)) {
                                         context$2$0.next = 48;
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', YAPI_DEVICE_NOT_FOUND);
+                                    return context$2$0.abrupt('return', this._yapi.DEVICE_NOT_FOUND);
 
                                 case 48:
                                     context$2$0.next = 50;
@@ -12729,7 +12730,7 @@ System.register('yoctolib-es/yocto_gyro.js', ['npm:babel-runtime@5.8.34/helpers/
                                     this._qt_stamp = now_stamp;
 
                                 case 61:
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 62:
                                 case 'end':
@@ -12755,14 +12756,14 @@ System.register('yoctolib-es/yocto_gyro.js', ['npm:babel-runtime@5.8.34/helpers/
 
                                 case 8:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 12;
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', YAPI_DEVICE_NOT_FOUND);
+                                    return context$2$0.abrupt('return', this._yapi.DEVICE_NOT_FOUND);
 
                                 case 12:
                                     if (this._angles_stamp != this._qt_stamp) {
@@ -12787,7 +12788,7 @@ System.register('yoctolib-es/yocto_gyro.js', ['npm:babel-runtime@5.8.34/helpers/
                                         }
                                         this._angles_stamp = this._qt_stamp;
                                     }
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 14:
                                 case 'end':
@@ -12939,14 +12940,14 @@ System.register('yoctolib-es/yocto_gyro.js', ['npm:babel-runtime@5.8.34/helpers/
 
                                 case 4:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 8;
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', YAPI_DEVICE_NOT_FOUND);
+                                    return context$2$0.abrupt('return', this._yapi.DEVICE_NOT_FOUND);
 
                                 case 8:
                                     context$2$0.next = 10;
@@ -13032,14 +13033,14 @@ System.register('yoctolib-es/yocto_gyro.js', ['npm:babel-runtime@5.8.34/helpers/
 
                                 case 4:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 8;
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', YAPI_DEVICE_NOT_FOUND);
+                                    return context$2$0.abrupt('return', this._yapi.DEVICE_NOT_FOUND);
 
                                 case 8:
                                     context$2$0.next = 10;
@@ -13367,7 +13368,7 @@ System.register('yoctolib-es/yocto_hubport.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -13423,7 +13424,7 @@ System.register('yoctolib-es/yocto_hubport.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -13457,7 +13458,7 @@ System.register('yoctolib-es/yocto_hubport.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -13645,7 +13646,7 @@ System.register('yoctolib-es/yocto_humidity.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -13679,7 +13680,7 @@ System.register('yoctolib-es/yocto_humidity.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -13996,7 +13997,7 @@ System.register('yoctolib-es/yocto_led.js', ['npm:babel-runtime@5.8.34/helpers/g
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -14052,7 +14053,7 @@ System.register('yoctolib-es/yocto_led.js', ['npm:babel-runtime@5.8.34/helpers/g
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -14108,7 +14109,7 @@ System.register('yoctolib-es/yocto_led.js', ['npm:babel-runtime@5.8.34/helpers/g
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -14355,7 +14356,7 @@ System.register('yoctolib-es/yocto_lightsensor.js', ['npm:babel-runtime@5.8.34/h
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -14654,7 +14655,7 @@ System.register('yoctolib-es/yocto_magnetometer.js', ['npm:babel-runtime@5.8.34/
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -14688,7 +14689,7 @@ System.register('yoctolib-es/yocto_magnetometer.js', ['npm:babel-runtime@5.8.34/
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -14722,7 +14723,7 @@ System.register('yoctolib-es/yocto_magnetometer.js', ['npm:babel-runtime@5.8.34/
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -14998,7 +14999,7 @@ System.register('yoctolib-es/yocto_motor.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -15076,7 +15077,7 @@ System.register('yoctolib-es/yocto_motor.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -15132,7 +15133,7 @@ System.register('yoctolib-es/yocto_motor.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -15188,7 +15189,7 @@ System.register('yoctolib-es/yocto_motor.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -15222,7 +15223,7 @@ System.register('yoctolib-es/yocto_motor.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -15300,7 +15301,7 @@ System.register('yoctolib-es/yocto_motor.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -15334,7 +15335,7 @@ System.register('yoctolib-es/yocto_motor.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -15390,7 +15391,7 @@ System.register('yoctolib-es/yocto_motor.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -15446,7 +15447,7 @@ System.register('yoctolib-es/yocto_motor.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -16001,7 +16002,7 @@ System.register('yoctolib-es/yocto_network.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -16035,7 +16036,7 @@ System.register('yoctolib-es/yocto_network.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -16069,7 +16070,7 @@ System.register('yoctolib-es/yocto_network.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -16103,7 +16104,7 @@ System.register('yoctolib-es/yocto_network.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -16137,7 +16138,7 @@ System.register('yoctolib-es/yocto_network.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -16171,7 +16172,7 @@ System.register('yoctolib-es/yocto_network.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -16227,7 +16228,7 @@ System.register('yoctolib-es/yocto_network.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -16283,7 +16284,7 @@ System.register('yoctolib-es/yocto_network.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -16339,7 +16340,7 @@ System.register('yoctolib-es/yocto_network.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -16395,7 +16396,7 @@ System.register('yoctolib-es/yocto_network.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -16451,7 +16452,7 @@ System.register('yoctolib-es/yocto_network.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -16507,7 +16508,7 @@ System.register('yoctolib-es/yocto_network.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -16563,7 +16564,7 @@ System.register('yoctolib-es/yocto_network.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -16619,7 +16620,7 @@ System.register('yoctolib-es/yocto_network.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -16675,7 +16676,7 @@ System.register('yoctolib-es/yocto_network.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -16731,7 +16732,7 @@ System.register('yoctolib-es/yocto_network.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -16787,7 +16788,7 @@ System.register('yoctolib-es/yocto_network.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -16843,7 +16844,7 @@ System.register('yoctolib-es/yocto_network.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -16899,7 +16900,7 @@ System.register('yoctolib-es/yocto_network.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -16977,7 +16978,7 @@ System.register('yoctolib-es/yocto_network.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -17033,7 +17034,7 @@ System.register('yoctolib-es/yocto_network.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -17089,7 +17090,7 @@ System.register('yoctolib-es/yocto_network.js', ['npm:babel-runtime@5.8.34/helpe
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -17302,7 +17303,7 @@ System.register('yoctolib-es/yocto_oscontrol.js', ['npm:babel-runtime@5.8.34/hel
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -17518,7 +17519,7 @@ System.register('yoctolib-es/yocto_power.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -17574,7 +17575,7 @@ System.register('yoctolib-es/yocto_power.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -17608,7 +17609,7 @@ System.register('yoctolib-es/yocto_power.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -17797,7 +17798,7 @@ System.register('yoctolib-es/yocto_poweroutput.js', ['npm:babel-runtime@5.8.34/h
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -18156,7 +18157,7 @@ System.register('yoctolib-es/yocto_pwminput.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -18190,7 +18191,7 @@ System.register('yoctolib-es/yocto_pwminput.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -18224,7 +18225,7 @@ System.register('yoctolib-es/yocto_pwminput.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -18258,7 +18259,7 @@ System.register('yoctolib-es/yocto_pwminput.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -18292,7 +18293,7 @@ System.register('yoctolib-es/yocto_pwminput.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -18348,7 +18349,7 @@ System.register('yoctolib-es/yocto_pwminput.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -18382,7 +18383,7 @@ System.register('yoctolib-es/yocto_pwminput.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -18668,7 +18669,7 @@ System.register('yoctolib-es/yocto_pwmoutput.js', ['npm:babel-runtime@5.8.34/hel
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -18746,7 +18747,7 @@ System.register('yoctolib-es/yocto_pwmoutput.js', ['npm:babel-runtime@5.8.34/hel
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -18802,7 +18803,7 @@ System.register('yoctolib-es/yocto_pwmoutput.js', ['npm:babel-runtime@5.8.34/hel
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -18858,7 +18859,7 @@ System.register('yoctolib-es/yocto_pwmoutput.js', ['npm:babel-runtime@5.8.34/hel
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -18914,7 +18915,7 @@ System.register('yoctolib-es/yocto_pwmoutput.js', ['npm:babel-runtime@5.8.34/hel
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -18948,7 +18949,7 @@ System.register('yoctolib-es/yocto_pwmoutput.js', ['npm:babel-runtime@5.8.34/hel
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -19004,7 +19005,7 @@ System.register('yoctolib-es/yocto_pwmoutput.js', ['npm:babel-runtime@5.8.34/hel
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -19082,7 +19083,7 @@ System.register('yoctolib-es/yocto_pwmoutput.js', ['npm:babel-runtime@5.8.34/hel
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -19311,7 +19312,7 @@ System.register('yoctolib-es/yocto_pwmpowersource.js', ['npm:babel-runtime@5.8.3
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -19531,7 +19532,7 @@ System.register('yoctolib-es/yocto_quadraturedecoder.js', ['npm:babel-runtime@5.
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -19565,7 +19566,7 @@ System.register('yoctolib-es/yocto_quadraturedecoder.js', ['npm:babel-runtime@5.
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -19783,7 +19784,7 @@ System.register('yoctolib-es/yocto_realtimeclock.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -19839,7 +19840,7 @@ System.register('yoctolib-es/yocto_realtimeclock.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -19873,7 +19874,7 @@ System.register('yoctolib-es/yocto_realtimeclock.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -19929,7 +19930,7 @@ System.register('yoctolib-es/yocto_realtimeclock.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -20195,7 +20196,7 @@ System.register('yoctolib-es/yocto_refframe.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -20273,7 +20274,7 @@ System.register('yoctolib-es/yocto_refframe.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -20307,7 +20308,7 @@ System.register('yoctolib-es/yocto_refframe.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -20477,7 +20478,7 @@ System.register('yoctolib-es/yocto_refframe.js', ['npm:babel-runtime@5.8.34/help
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', YAPI_DEVICE_NOT_FOUND);
+                                    return context$2$0.abrupt('return', this._yapi.DEVICE_NOT_FOUND);
 
                                 case 4:
                                     if (!(this._calibStage != 0)) {
@@ -20510,7 +20511,7 @@ System.register('yoctolib-es/yocto_refframe.js', ['npm:babel-runtime@5.8.34/help
                                     this._calibDataAccY.length = 0;
                                     this._calibDataAccZ.length = 0;
                                     this._calibDataAcc.length = 0;
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 25:
                                 case 'end':
@@ -20544,7 +20545,7 @@ System.register('yoctolib-es/yocto_refframe.js', ['npm:babel-runtime@5.8.34/help
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', YAPI_INVALID_ARGUMENT);
+                                    return context$2$0.abrupt('return', this._yapi.INVALID_ARGUMENT);
 
                                 case 15:
                                     if (!(this._calibProgress == 100)) {
@@ -20552,7 +20553,7 @@ System.register('yoctolib-es/yocto_refframe.js', ['npm:babel-runtime@5.8.34/help
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 17:
                                     currTick = this._yapi.GetTickCount() & 0x7FFFFFFF;
@@ -20562,7 +20563,7 @@ System.register('yoctolib-es/yocto_refframe.js', ['npm:babel-runtime@5.8.34/help
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 20:
                                     this._calibStageHint = 'Set down the device on a steady horizontal surface';
@@ -20583,7 +20584,7 @@ System.register('yoctolib-es/yocto_refframe.js', ['npm:babel-runtime@5.8.34/help
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 31:
                                     if (!(xSq >= 1.44)) {
@@ -20591,7 +20592,7 @@ System.register('yoctolib-es/yocto_refframe.js', ['npm:babel-runtime@5.8.34/help
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 33:
                                     ySq = yVal * yVal;
@@ -20601,7 +20602,7 @@ System.register('yoctolib-es/yocto_refframe.js', ['npm:babel-runtime@5.8.34/help
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 36:
                                     if (!(ySq >= 1.44)) {
@@ -20609,7 +20610,7 @@ System.register('yoctolib-es/yocto_refframe.js', ['npm:babel-runtime@5.8.34/help
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 38:
                                     zSq = zVal * zVal;
@@ -20619,7 +20620,7 @@ System.register('yoctolib-es/yocto_refframe.js', ['npm:babel-runtime@5.8.34/help
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 41:
                                     if (!(zSq >= 1.44)) {
@@ -20627,7 +20628,7 @@ System.register('yoctolib-es/yocto_refframe.js', ['npm:babel-runtime@5.8.34/help
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 43:
                                     norm = Math.sqrt(xSq + ySq + zSq);
@@ -20637,7 +20638,7 @@ System.register('yoctolib-es/yocto_refframe.js', ['npm:babel-runtime@5.8.34/help
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 46:
                                     this._calibPrevTick = currTick;
@@ -20685,7 +20686,7 @@ System.register('yoctolib-es/yocto_refframe.js', ['npm:babel-runtime@5.8.34/help
                                     }
 
                                     this._calibStageHint = 'Turn the device on another face';
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 58:
                                     this._calibOrient.push(orient);
@@ -20699,7 +20700,7 @@ System.register('yoctolib-es/yocto_refframe.js', ['npm:babel-runtime@5.8.34/help
                                     }
 
                                     this._calibStageHint = 'Not yet done, please move back to the previous face';
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 64:
                                     this._calibStageHint = 'calibrating..';
@@ -20716,7 +20717,7 @@ System.register('yoctolib-es/yocto_refframe.js', ['npm:babel-runtime@5.8.34/help
                                     }
 
                                     this._calibStageProgress = 1 + parseInt(99 * this._calibInternalPos / this._calibCount, 10);
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 74:
                                     intpos = (this._calibStage - 1) * this._calibCount;
@@ -20738,7 +20739,7 @@ System.register('yoctolib-es/yocto_refframe.js', ['npm:babel-runtime@5.8.34/help
                                     this._calibPrevTick = currTick + 500 & 0x7FFFFFFF;
                                     this._calibStageProgress = 0;
                                     this._calibInternalPos = 0;
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 86:
                                     xVal = 0;
@@ -20814,7 +20815,7 @@ System.register('yoctolib-es/yocto_refframe.js', ['npm:babel-runtime@5.8.34/help
 
                                     this._calibProgress = 100;
                                     this._calibStageHint = 'Calibration data ready for saving';
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 115:
                                 case 'end':
@@ -20920,7 +20921,7 @@ System.register('yoctolib-es/yocto_refframe.js', ['npm:babel-runtime@5.8.34/help
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', YAPI_INVALID_ARGUMENT);
+                                    return context$2$0.abrupt('return', this._yapi.INVALID_ARGUMENT);
 
                                 case 12:
                                     shiftX = -Math.round(this._calibAccXOfs / 0.000732);
@@ -20993,7 +20994,7 @@ System.register('yoctolib-es/yocto_refframe.js', ['npm:babel-runtime@5.8.34/help
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 2:
                                     this._calibStage = 0;
@@ -21251,7 +21252,7 @@ System.register('yoctolib-es/yocto_relay.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -21307,7 +21308,7 @@ System.register('yoctolib-es/yocto_relay.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -21363,7 +21364,7 @@ System.register('yoctolib-es/yocto_relay.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -21419,7 +21420,7 @@ System.register('yoctolib-es/yocto_relay.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -21475,7 +21476,7 @@ System.register('yoctolib-es/yocto_relay.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -21531,7 +21532,7 @@ System.register('yoctolib-es/yocto_relay.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -21609,7 +21610,7 @@ System.register('yoctolib-es/yocto_relay.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -21687,7 +21688,7 @@ System.register('yoctolib-es/yocto_relay.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -21873,7 +21874,7 @@ System.register('yoctolib-es/yocto_segmenteddisplay.js', ['npm:babel-runtime@5.8
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -21929,7 +21930,7 @@ System.register('yoctolib-es/yocto_segmenteddisplay.js', ['npm:babel-runtime@5.8
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -22254,7 +22255,7 @@ System.register('yoctolib-es/yocto_serialport.js', ['npm:babel-runtime@5.8.34/he
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -22310,7 +22311,7 @@ System.register('yoctolib-es/yocto_serialport.js', ['npm:babel-runtime@5.8.34/he
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -22366,7 +22367,7 @@ System.register('yoctolib-es/yocto_serialport.js', ['npm:babel-runtime@5.8.34/he
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -22422,7 +22423,7 @@ System.register('yoctolib-es/yocto_serialport.js', ['npm:babel-runtime@5.8.34/he
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -22456,7 +22457,7 @@ System.register('yoctolib-es/yocto_serialport.js', ['npm:babel-runtime@5.8.34/he
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -22490,7 +22491,7 @@ System.register('yoctolib-es/yocto_serialport.js', ['npm:babel-runtime@5.8.34/he
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -22524,7 +22525,7 @@ System.register('yoctolib-es/yocto_serialport.js', ['npm:babel-runtime@5.8.34/he
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -22558,7 +22559,7 @@ System.register('yoctolib-es/yocto_serialport.js', ['npm:babel-runtime@5.8.34/he
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -22592,7 +22593,7 @@ System.register('yoctolib-es/yocto_serialport.js', ['npm:babel-runtime@5.8.34/he
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -22626,7 +22627,7 @@ System.register('yoctolib-es/yocto_serialport.js', ['npm:babel-runtime@5.8.34/he
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -22682,7 +22683,7 @@ System.register('yoctolib-es/yocto_serialport.js', ['npm:babel-runtime@5.8.34/he
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -22738,7 +22739,7 @@ System.register('yoctolib-es/yocto_serialport.js', ['npm:babel-runtime@5.8.34/he
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -22853,7 +22854,7 @@ System.register('yoctolib-es/yocto_serialport.js', ['npm:babel-runtime@5.8.34/he
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', this._throw(YAPI_IO_ERROR, 'invalid CTS reply', YAPI_IO_ERROR));
+                                    return context$2$0.abrupt('return', this._throw(this._yapi.IO_ERROR, 'invalid CTS reply', this._yapi.IO_ERROR));
 
                                 case 7:
                                     res = buff[0] - 48;
@@ -23144,7 +23145,7 @@ System.register('yoctolib-es/yocto_serialport.js', ['npm:babel-runtime@5.8.34/he
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', YAPI_NO_MORE_DATA);
+                                    return context$2$0.abrupt('return', this._yapi.NO_MORE_DATA);
 
                                 case 15:
                                     res = buff[0];
@@ -23445,7 +23446,7 @@ System.register('yoctolib-es/yocto_serialport.js', ['npm:babel-runtime@5.8.34/he
                             while (1) switch (context$2$0.prev = context$2$0.next) {
                                 case 0:
                                     this._rxptr = absPos;
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 2:
                                 case 'end':
@@ -23591,7 +23592,7 @@ System.register('yoctolib-es/yocto_serialport.js', ['npm:babel-runtime@5.8.34/he
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', this._throw(YAPI_IO_ERROR, 'no reply from slave', res));
+                                    return context$2$0.abrupt('return', this._throw(this._yapi.IO_ERROR, 'no reply from slave', res));
 
                                 case 25:
                                     if (!(reps.length > 1)) {
@@ -23620,7 +23621,7 @@ System.register('yoctolib-es/yocto_serialport.js', ['npm:babel-runtime@5.8.34/he
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', this._throw(YAPI_NOT_SUPPORTED, 'MODBUS error: unsupported function code', res));
+                                    return context$2$0.abrupt('return', this._throw(this._yapi.NOT_SUPPORTED, 'MODBUS error: unsupported function code', res));
 
                                 case 34:
                                     if (i > 2) {
@@ -23628,7 +23629,7 @@ System.register('yoctolib-es/yocto_serialport.js', ['npm:babel-runtime@5.8.34/he
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', this._throw(YAPI_INVALID_ARGUMENT, 'MODBUS error: illegal data address', res));
+                                    return context$2$0.abrupt('return', this._throw(this._yapi.INVALID_ARGUMENT, 'MODBUS error: illegal data address', res));
 
                                 case 36:
                                     if (i > 3) {
@@ -23636,7 +23637,7 @@ System.register('yoctolib-es/yocto_serialport.js', ['npm:babel-runtime@5.8.34/he
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', this._throw(YAPI_INVALID_ARGUMENT, 'MODBUS error: illegal data value', res));
+                                    return context$2$0.abrupt('return', this._throw(this._yapi.INVALID_ARGUMENT, 'MODBUS error: illegal data value', res));
 
                                 case 38:
                                     if (i > 4) {
@@ -23644,7 +23645,7 @@ System.register('yoctolib-es/yocto_serialport.js', ['npm:babel-runtime@5.8.34/he
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', this._throw(YAPI_INVALID_ARGUMENT, 'MODBUS error: failed to execute function', res));
+                                    return context$2$0.abrupt('return', this._throw(this._yapi.INVALID_ARGUMENT, 'MODBUS error: failed to execute function', res));
 
                                 case 40:
                                     return context$2$0.abrupt('return', res);
@@ -24237,7 +24238,7 @@ System.register('yoctolib-es/yocto_serialport.js', ['npm:babel-runtime@5.8.34/he
                                     return _regeneratorRuntime.awrap(this._upload(jobfile, this._yapi.imm_str2bin(jsonDef)));
 
                                 case 2:
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 3:
                                 case 'end':
@@ -24480,7 +24481,7 @@ System.register('yoctolib-es/yocto_servo.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -24536,7 +24537,7 @@ System.register('yoctolib-es/yocto_servo.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -24592,7 +24593,7 @@ System.register('yoctolib-es/yocto_servo.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -24648,7 +24649,7 @@ System.register('yoctolib-es/yocto_servo.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -24704,7 +24705,7 @@ System.register('yoctolib-es/yocto_servo.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -24782,7 +24783,7 @@ System.register('yoctolib-es/yocto_servo.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -24838,7 +24839,7 @@ System.register('yoctolib-es/yocto_servo.js', ['npm:babel-runtime@5.8.34/helpers
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -25118,7 +25119,7 @@ System.register('yoctolib-es/yocto_temperature.js', ['npm:babel-runtime@5.8.34/h
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -25174,7 +25175,7 @@ System.register('yoctolib-es/yocto_temperature.js', ['npm:babel-runtime@5.8.34/h
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -25271,7 +25272,7 @@ System.register('yoctolib-es/yocto_temperature.js', ['npm:babel-runtime@5.8.34/h
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', this._throw(YAPI_INVALID_ARGUMENT, 'thermistor response table must have at least two points', YAPI_INVALID_ARGUMENT));
+                                    return context$2$0.abrupt('return', this._throw(this._yapi.INVALID_ARGUMENT, 'thermistor response table must have at least two points', this._yapi.INVALID_ARGUMENT));
 
                                 case 11:
                                     if (siz == resValues.length) {
@@ -25279,7 +25280,7 @@ System.register('yoctolib-es/yocto_temperature.js', ['npm:babel-runtime@5.8.34/h
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', this._throw(YAPI_INVALID_ARGUMENT, 'table sizes mismatch', YAPI_INVALID_ARGUMENT));
+                                    return context$2$0.abrupt('return', this._throw(this._yapi.INVALID_ARGUMENT, 'table sizes mismatch', this._yapi.INVALID_ARGUMENT));
 
                                 case 13:
                                     context$2$0.next = 15;
@@ -25288,12 +25289,12 @@ System.register('yoctolib-es/yocto_temperature.js', ['npm:babel-runtime@5.8.34/h
                                 case 15:
                                     res = context$2$0.sent;
 
-                                    if (res == YAPI_SUCCESS) {
+                                    if (res == this._yapi.SUCCESS) {
                                         context$2$0.next = 18;
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', this._throw(YAPI_IO_ERROR, 'unable to reset thermistor parameters', YAPI_IO_ERROR));
+                                    return context$2$0.abrupt('return', this._throw(this._yapi.IO_ERROR, 'unable to reset thermistor parameters', this._yapi.IO_ERROR));
 
                                 case 18:
                                     found = 1;
@@ -25330,12 +25331,12 @@ System.register('yoctolib-es/yocto_temperature.js', ['npm:babel-runtime@5.8.34/h
                                 case 29:
                                     res = context$2$0.sent;
 
-                                    if (res == YAPI_SUCCESS) {
+                                    if (res == this._yapi.SUCCESS) {
                                         context$2$0.next = 32;
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', this._throw(YAPI_IO_ERROR, 'unable to reset thermistor parameters', YAPI_IO_ERROR));
+                                    return context$2$0.abrupt('return', this._throw(this._yapi.IO_ERROR, 'unable to reset thermistor parameters', this._yapi.IO_ERROR));
 
                                 case 32:
                                     prev = curr;
@@ -25345,7 +25346,7 @@ System.register('yoctolib-es/yocto_temperature.js', ['npm:babel-runtime@5.8.34/h
                                     break;
 
                                 case 35:
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 36:
                                 case 'end':
@@ -25422,7 +25423,7 @@ System.register('yoctolib-es/yocto_temperature.js', ['npm:babel-runtime@5.8.34/h
                                             prev = curr;
                                         }
                                     }
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 31:
                                 case 'end':
@@ -25583,7 +25584,7 @@ System.register('yoctolib-es/yocto_tilt.js', ['npm:babel-runtime@5.8.34/helpers/
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -26033,7 +26034,7 @@ System.register('yoctolib-es/yocto_wakeupmonitor.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -26089,7 +26090,7 @@ System.register('yoctolib-es/yocto_wakeupmonitor.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -26145,7 +26146,7 @@ System.register('yoctolib-es/yocto_wakeupmonitor.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -26201,7 +26202,7 @@ System.register('yoctolib-es/yocto_wakeupmonitor.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -26235,7 +26236,7 @@ System.register('yoctolib-es/yocto_wakeupmonitor.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -26291,7 +26292,7 @@ System.register('yoctolib-es/yocto_wakeupmonitor.js', ['npm:babel-runtime@5.8.34
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -26346,7 +26347,7 @@ System.register('yoctolib-es/yocto_wakeupmonitor.js', ['npm:babel-runtime@5.8.34
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', this._throw(YAPI_RTC_NOT_READY, 'RTC time not set', YAPI_RTC_NOT_READY));
+                                    return context$2$0.abrupt('return', this._throw(this._yapi.RTC_NOT_READY, 'RTC time not set', this._yapi.RTC_NOT_READY));
 
                                 case 6:
                                     context$2$0.next = 8;
@@ -26357,7 +26358,7 @@ System.register('yoctolib-es/yocto_wakeupmonitor.js', ['npm:babel-runtime@5.8.34
                                     return _regeneratorRuntime.awrap(this.set_sleepCountdown(secBeforeSleep));
 
                                 case 10:
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 11:
                                 case 'end':
@@ -26384,7 +26385,7 @@ System.register('yoctolib-es/yocto_wakeupmonitor.js', ['npm:babel-runtime@5.8.34
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', this._throw(YAPI_RTC_NOT_READY, 'RTC time not set', YAPI_RTC_NOT_READY));
+                                    return context$2$0.abrupt('return', this._throw(this._yapi.RTC_NOT_READY, 'RTC time not set', this._yapi.RTC_NOT_READY));
 
                                 case 6:
                                     context$2$0.next = 8;
@@ -26395,7 +26396,7 @@ System.register('yoctolib-es/yocto_wakeupmonitor.js', ['npm:babel-runtime@5.8.34
                                     return _regeneratorRuntime.awrap(this.set_sleepCountdown(secBeforeSleep));
 
                                 case 10:
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 11:
                                 case 'end':
@@ -26422,7 +26423,7 @@ System.register('yoctolib-es/yocto_wakeupmonitor.js', ['npm:babel-runtime@5.8.34
                                         break;
                                     }
 
-                                    return context$2$0.abrupt('return', this._throw(YAPI_RTC_NOT_READY, 'RTC time not set', YAPI_RTC_NOT_READY));
+                                    return context$2$0.abrupt('return', this._throw(this._yapi.RTC_NOT_READY, 'RTC time not set', this._yapi.RTC_NOT_READY));
 
                                 case 6:
                                     context$2$0.next = 8;
@@ -26433,7 +26434,7 @@ System.register('yoctolib-es/yocto_wakeupmonitor.js', ['npm:babel-runtime@5.8.34
                                     return _regeneratorRuntime.awrap(this.set_sleepCountdown(secBeforeSleep));
 
                                 case 10:
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 11:
                                 case 'end':
@@ -26455,7 +26456,7 @@ System.register('yoctolib-es/yocto_wakeupmonitor.js', ['npm:babel-runtime@5.8.34
                                     return _regeneratorRuntime.awrap(this.set_nextWakeUp(0));
 
                                 case 4:
-                                    return context$2$0.abrupt('return', YAPI_SUCCESS);
+                                    return context$2$0.abrupt('return', this._yapi.SUCCESS);
 
                                 case 5:
                                 case 'end':
@@ -26661,7 +26662,7 @@ System.register('yoctolib-es/yocto_wakeupschedule.js', ['npm:babel-runtime@5.8.3
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -26717,7 +26718,7 @@ System.register('yoctolib-es/yocto_wakeupschedule.js', ['npm:babel-runtime@5.8.3
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -26773,7 +26774,7 @@ System.register('yoctolib-es/yocto_wakeupschedule.js', ['npm:babel-runtime@5.8.3
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -26829,7 +26830,7 @@ System.register('yoctolib-es/yocto_wakeupschedule.js', ['npm:babel-runtime@5.8.3
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -26885,7 +26886,7 @@ System.register('yoctolib-es/yocto_wakeupschedule.js', ['npm:babel-runtime@5.8.3
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -26941,7 +26942,7 @@ System.register('yoctolib-es/yocto_wakeupschedule.js', ['npm:babel-runtime@5.8.3
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -26997,7 +26998,7 @@ System.register('yoctolib-es/yocto_wakeupschedule.js', ['npm:babel-runtime@5.8.3
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -27370,7 +27371,7 @@ System.register('yoctolib-es/yocto_watchdog.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -27426,7 +27427,7 @@ System.register('yoctolib-es/yocto_watchdog.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -27482,7 +27483,7 @@ System.register('yoctolib-es/yocto_watchdog.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -27538,7 +27539,7 @@ System.register('yoctolib-es/yocto_watchdog.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -27594,7 +27595,7 @@ System.register('yoctolib-es/yocto_watchdog.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -27650,7 +27651,7 @@ System.register('yoctolib-es/yocto_watchdog.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -27728,7 +27729,7 @@ System.register('yoctolib-es/yocto_watchdog.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -27806,7 +27807,7 @@ System.register('yoctolib-es/yocto_watchdog.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -27840,7 +27841,7 @@ System.register('yoctolib-es/yocto_watchdog.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -27896,7 +27897,7 @@ System.register('yoctolib-es/yocto_watchdog.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -27974,7 +27975,7 @@ System.register('yoctolib-es/yocto_watchdog.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -28030,7 +28031,7 @@ System.register('yoctolib-es/yocto_watchdog.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -37270,6 +37271,11 @@ System.register('yoctolib-es/yocto_api.js', ['npm:babel-runtime@5.8.34/helpers/c
 
                     this._values = [];
 
+                    this.imm_setConst({
+                        DATA_INVALID: Y_DATA_INVALID,
+                        DURATION_INVALID: Y_DURATION_INVALID
+                    });
+
                     this._parent = obj_parent;
                     this._calhdl = null;
                     if (typeof obj_dataset != 'undefined') {
@@ -37819,6 +37825,8 @@ System.register('yoctolib-es/yocto_api.js', ['npm:babel-runtime@5.8.34/helpers/c
 
                 return YDataStream;
             })();
+
+            _export('YDataStream', YDataStream);
 
             YDataSet = (function () {
                 function YDataSet(obj_parent, str_functionId, str_unit, u32_startTime, u32_endTime) {
@@ -41136,7 +41144,7 @@ System.register('yoctolib-es/yocto_api.js', ['npm:babel-runtime@5.8.34/helpers/c
                         return _regeneratorRuntime.async(function GetAPIVersion$(context$2$0) {
                             while (1) switch (context$2$0.prev = context$2$0.next) {
                                 case 0:
-                                    return context$2$0.abrupt('return', '1.10.22592-dev.43');
+                                    return context$2$0.abrupt('return', '1.10.22616');
 
                                 case 1:
                                 case 'end':
@@ -42127,7 +42135,7 @@ System.register('yoctolib-es/yocto_wireless.js', ['npm:babel-runtime@5.8.34/help
             YWireless = (function (_YFunction) {
                 _inherits(YWireless, _YFunction);
 
-                function YWireless(str_func) {
+                function YWireless(obj_yapi, str_func) {
                     _classCallCheck(this, YWireless);
 
                     _get(Object.getPrototypeOf(YWireless.prototype), 'constructor', this).call(this, obj_yapi, str_func);
@@ -42201,7 +42209,7 @@ System.register('yoctolib-es/yocto_wireless.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -42235,7 +42243,7 @@ System.register('yoctolib-es/yocto_wireless.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -42269,7 +42277,7 @@ System.register('yoctolib-es/yocto_wireless.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -42303,7 +42311,7 @@ System.register('yoctolib-es/yocto_wireless.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -42337,7 +42345,7 @@ System.register('yoctolib-es/yocto_wireless.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -42371,7 +42379,7 @@ System.register('yoctolib-es/yocto_wireless.js', ['npm:babel-runtime@5.8.34/help
 
                                 case 3:
                                     context$2$0.t0 = context$2$0.sent;
-                                    context$2$0.t1 = YAPI_SUCCESS;
+                                    context$2$0.t1 = this._yapi.SUCCESS;
 
                                     if (!(context$2$0.t0 != context$2$0.t1)) {
                                         context$2$0.next = 7;
@@ -42560,10 +42568,6 @@ System.register('yoctolib-es.js', ['yoctolib-es/yocto_api.js', 'yoctolib-es/yoct
         if (_key !== 'default') _exportObj[_key] = _yoctolibEsYocto_apiJs[_key];
       }
 
-      for (var _key5 in _yoctolibEsYocto_apiJs) {
-        if (_key5 !== 'default') _exportObj[_key5] = _yoctolibEsYocto_apiJs[_key5];
-      }
-
       _export(_exportObj);
     }, function (_yoctolibEsYocto_accelerometerJs) {
       var _exportObj2 = {};
@@ -42592,400 +42596,400 @@ System.register('yoctolib-es.js', ['yoctolib-es/yocto_api.js', 'yoctolib-es/yoct
     }, function (_yoctolibEsYocto_audioinJs) {
       var _exportObj5 = {};
 
-      for (var _key6 in _yoctolibEsYocto_audioinJs) {
-        if (_key6 !== 'default') _exportObj5[_key6] = _yoctolibEsYocto_audioinJs[_key6];
+      for (var _key5 in _yoctolibEsYocto_audioinJs) {
+        if (_key5 !== 'default') _exportObj5[_key5] = _yoctolibEsYocto_audioinJs[_key5];
       }
 
       _export(_exportObj5);
     }, function (_yoctolibEsYocto_audiooutJs) {
       var _exportObj6 = {};
 
-      for (var _key7 in _yoctolibEsYocto_audiooutJs) {
-        if (_key7 !== 'default') _exportObj6[_key7] = _yoctolibEsYocto_audiooutJs[_key7];
+      for (var _key6 in _yoctolibEsYocto_audiooutJs) {
+        if (_key6 !== 'default') _exportObj6[_key6] = _yoctolibEsYocto_audiooutJs[_key6];
       }
 
       _export(_exportObj6);
     }, function (_yoctolibEsYocto_bluetoothlinkJs) {
       var _exportObj7 = {};
 
-      for (var _key8 in _yoctolibEsYocto_bluetoothlinkJs) {
-        if (_key8 !== 'default') _exportObj7[_key8] = _yoctolibEsYocto_bluetoothlinkJs[_key8];
+      for (var _key7 in _yoctolibEsYocto_bluetoothlinkJs) {
+        if (_key7 !== 'default') _exportObj7[_key7] = _yoctolibEsYocto_bluetoothlinkJs[_key7];
       }
 
       _export(_exportObj7);
     }, function (_yoctolibEsYocto_buzzerJs) {
       var _exportObj8 = {};
 
-      for (var _key9 in _yoctolibEsYocto_buzzerJs) {
-        if (_key9 !== 'default') _exportObj8[_key9] = _yoctolibEsYocto_buzzerJs[_key9];
+      for (var _key8 in _yoctolibEsYocto_buzzerJs) {
+        if (_key8 !== 'default') _exportObj8[_key8] = _yoctolibEsYocto_buzzerJs[_key8];
       }
 
       _export(_exportObj8);
     }, function (_yoctolibEsYocto_carbondioxideJs) {
       var _exportObj9 = {};
 
-      for (var _key10 in _yoctolibEsYocto_carbondioxideJs) {
-        if (_key10 !== 'default') _exportObj9[_key10] = _yoctolibEsYocto_carbondioxideJs[_key10];
+      for (var _key9 in _yoctolibEsYocto_carbondioxideJs) {
+        if (_key9 !== 'default') _exportObj9[_key9] = _yoctolibEsYocto_carbondioxideJs[_key9];
       }
 
       _export(_exportObj9);
     }, function (_yoctolibEsYocto_cellularJs) {
       var _exportObj10 = {};
 
-      for (var _key11 in _yoctolibEsYocto_cellularJs) {
-        if (_key11 !== 'default') _exportObj10[_key11] = _yoctolibEsYocto_cellularJs[_key11];
+      for (var _key10 in _yoctolibEsYocto_cellularJs) {
+        if (_key10 !== 'default') _exportObj10[_key10] = _yoctolibEsYocto_cellularJs[_key10];
       }
 
       _export(_exportObj10);
     }, function (_yoctolibEsYocto_colorledJs) {
       var _exportObj11 = {};
 
-      for (var _key12 in _yoctolibEsYocto_colorledJs) {
-        if (_key12 !== 'default') _exportObj11[_key12] = _yoctolibEsYocto_colorledJs[_key12];
+      for (var _key11 in _yoctolibEsYocto_colorledJs) {
+        if (_key11 !== 'default') _exportObj11[_key11] = _yoctolibEsYocto_colorledJs[_key11];
       }
 
       _export(_exportObj11);
     }, function (_yoctolibEsYocto_compassJs) {
       var _exportObj12 = {};
 
-      for (var _key13 in _yoctolibEsYocto_compassJs) {
-        if (_key13 !== 'default') _exportObj12[_key13] = _yoctolibEsYocto_compassJs[_key13];
+      for (var _key12 in _yoctolibEsYocto_compassJs) {
+        if (_key12 !== 'default') _exportObj12[_key12] = _yoctolibEsYocto_compassJs[_key12];
       }
 
       _export(_exportObj12);
     }, function (_yoctolibEsYocto_currentJs) {
       var _exportObj13 = {};
 
-      for (var _key14 in _yoctolibEsYocto_currentJs) {
-        if (_key14 !== 'default') _exportObj13[_key14] = _yoctolibEsYocto_currentJs[_key14];
+      for (var _key13 in _yoctolibEsYocto_currentJs) {
+        if (_key13 !== 'default') _exportObj13[_key13] = _yoctolibEsYocto_currentJs[_key13];
       }
 
       _export(_exportObj13);
     }, function (_yoctolibEsYocto_currentloopoutputJs) {
       var _exportObj14 = {};
 
-      for (var _key15 in _yoctolibEsYocto_currentloopoutputJs) {
-        if (_key15 !== 'default') _exportObj14[_key15] = _yoctolibEsYocto_currentloopoutputJs[_key15];
+      for (var _key14 in _yoctolibEsYocto_currentloopoutputJs) {
+        if (_key14 !== 'default') _exportObj14[_key14] = _yoctolibEsYocto_currentloopoutputJs[_key14];
       }
 
       _export(_exportObj14);
     }, function (_yoctolibEsYocto_dataloggerJs) {
       var _exportObj15 = {};
 
-      for (var _key16 in _yoctolibEsYocto_dataloggerJs) {
-        if (_key16 !== 'default') _exportObj15[_key16] = _yoctolibEsYocto_dataloggerJs[_key16];
+      for (var _key15 in _yoctolibEsYocto_dataloggerJs) {
+        if (_key15 !== 'default') _exportObj15[_key15] = _yoctolibEsYocto_dataloggerJs[_key15];
       }
 
       _export(_exportObj15);
     }, function (_yoctolibEsYocto_digitalioJs) {
       var _exportObj16 = {};
 
-      for (var _key17 in _yoctolibEsYocto_digitalioJs) {
-        if (_key17 !== 'default') _exportObj16[_key17] = _yoctolibEsYocto_digitalioJs[_key17];
+      for (var _key16 in _yoctolibEsYocto_digitalioJs) {
+        if (_key16 !== 'default') _exportObj16[_key16] = _yoctolibEsYocto_digitalioJs[_key16];
       }
 
       _export(_exportObj16);
     }, function (_yoctolibEsYocto_displayJs) {
       var _exportObj17 = {};
 
-      for (var _key18 in _yoctolibEsYocto_displayJs) {
-        if (_key18 !== 'default') _exportObj17[_key18] = _yoctolibEsYocto_displayJs[_key18];
+      for (var _key17 in _yoctolibEsYocto_displayJs) {
+        if (_key17 !== 'default') _exportObj17[_key17] = _yoctolibEsYocto_displayJs[_key17];
       }
 
       _export(_exportObj17);
     }, function (_yoctolibEsYocto_dualpowerJs) {
       var _exportObj18 = {};
 
-      for (var _key19 in _yoctolibEsYocto_dualpowerJs) {
-        if (_key19 !== 'default') _exportObj18[_key19] = _yoctolibEsYocto_dualpowerJs[_key19];
+      for (var _key18 in _yoctolibEsYocto_dualpowerJs) {
+        if (_key18 !== 'default') _exportObj18[_key18] = _yoctolibEsYocto_dualpowerJs[_key18];
       }
 
       _export(_exportObj18);
     }, function (_yoctolibEsYocto_filesJs) {
       var _exportObj19 = {};
 
-      for (var _key20 in _yoctolibEsYocto_filesJs) {
-        if (_key20 !== 'default') _exportObj19[_key20] = _yoctolibEsYocto_filesJs[_key20];
+      for (var _key19 in _yoctolibEsYocto_filesJs) {
+        if (_key19 !== 'default') _exportObj19[_key19] = _yoctolibEsYocto_filesJs[_key19];
       }
 
       _export(_exportObj19);
     }, function (_yoctolibEsYocto_genericsensorJs) {
       var _exportObj20 = {};
 
-      for (var _key21 in _yoctolibEsYocto_genericsensorJs) {
-        if (_key21 !== 'default') _exportObj20[_key21] = _yoctolibEsYocto_genericsensorJs[_key21];
+      for (var _key20 in _yoctolibEsYocto_genericsensorJs) {
+        if (_key20 !== 'default') _exportObj20[_key20] = _yoctolibEsYocto_genericsensorJs[_key20];
       }
 
       _export(_exportObj20);
     }, function (_yoctolibEsYocto_gpsJs) {
       var _exportObj21 = {};
 
-      for (var _key22 in _yoctolibEsYocto_gpsJs) {
-        if (_key22 !== 'default') _exportObj21[_key22] = _yoctolibEsYocto_gpsJs[_key22];
+      for (var _key21 in _yoctolibEsYocto_gpsJs) {
+        if (_key21 !== 'default') _exportObj21[_key21] = _yoctolibEsYocto_gpsJs[_key21];
       }
 
       _export(_exportObj21);
     }, function (_yoctolibEsYocto_groundspeedJs) {
       var _exportObj22 = {};
 
-      for (var _key23 in _yoctolibEsYocto_groundspeedJs) {
-        if (_key23 !== 'default') _exportObj22[_key23] = _yoctolibEsYocto_groundspeedJs[_key23];
+      for (var _key22 in _yoctolibEsYocto_groundspeedJs) {
+        if (_key22 !== 'default') _exportObj22[_key22] = _yoctolibEsYocto_groundspeedJs[_key22];
       }
 
       _export(_exportObj22);
     }, function (_yoctolibEsYocto_gyroJs) {
       var _exportObj23 = {};
 
-      for (var _key24 in _yoctolibEsYocto_gyroJs) {
-        if (_key24 !== 'default') _exportObj23[_key24] = _yoctolibEsYocto_gyroJs[_key24];
+      for (var _key23 in _yoctolibEsYocto_gyroJs) {
+        if (_key23 !== 'default') _exportObj23[_key23] = _yoctolibEsYocto_gyroJs[_key23];
       }
 
       _export(_exportObj23);
     }, function (_yoctolibEsYocto_hubportJs) {
       var _exportObj24 = {};
 
-      for (var _key25 in _yoctolibEsYocto_hubportJs) {
-        if (_key25 !== 'default') _exportObj24[_key25] = _yoctolibEsYocto_hubportJs[_key25];
+      for (var _key24 in _yoctolibEsYocto_hubportJs) {
+        if (_key24 !== 'default') _exportObj24[_key24] = _yoctolibEsYocto_hubportJs[_key24];
       }
 
       _export(_exportObj24);
     }, function (_yoctolibEsYocto_humidityJs) {
       var _exportObj25 = {};
 
-      for (var _key26 in _yoctolibEsYocto_humidityJs) {
-        if (_key26 !== 'default') _exportObj25[_key26] = _yoctolibEsYocto_humidityJs[_key26];
+      for (var _key25 in _yoctolibEsYocto_humidityJs) {
+        if (_key25 !== 'default') _exportObj25[_key25] = _yoctolibEsYocto_humidityJs[_key25];
       }
 
       _export(_exportObj25);
     }, function (_yoctolibEsYocto_latitudeJs) {
       var _exportObj26 = {};
 
-      for (var _key27 in _yoctolibEsYocto_latitudeJs) {
-        if (_key27 !== 'default') _exportObj26[_key27] = _yoctolibEsYocto_latitudeJs[_key27];
+      for (var _key26 in _yoctolibEsYocto_latitudeJs) {
+        if (_key26 !== 'default') _exportObj26[_key26] = _yoctolibEsYocto_latitudeJs[_key26];
       }
 
       _export(_exportObj26);
     }, function (_yoctolibEsYocto_ledJs) {
       var _exportObj27 = {};
 
-      for (var _key28 in _yoctolibEsYocto_ledJs) {
-        if (_key28 !== 'default') _exportObj27[_key28] = _yoctolibEsYocto_ledJs[_key28];
+      for (var _key27 in _yoctolibEsYocto_ledJs) {
+        if (_key27 !== 'default') _exportObj27[_key27] = _yoctolibEsYocto_ledJs[_key27];
       }
 
       _export(_exportObj27);
     }, function (_yoctolibEsYocto_lightsensorJs) {
       var _exportObj28 = {};
 
-      for (var _key29 in _yoctolibEsYocto_lightsensorJs) {
-        if (_key29 !== 'default') _exportObj28[_key29] = _yoctolibEsYocto_lightsensorJs[_key29];
+      for (var _key28 in _yoctolibEsYocto_lightsensorJs) {
+        if (_key28 !== 'default') _exportObj28[_key28] = _yoctolibEsYocto_lightsensorJs[_key28];
       }
 
       _export(_exportObj28);
     }, function (_yoctolibEsYocto_longitudeJs) {
       var _exportObj29 = {};
 
-      for (var _key30 in _yoctolibEsYocto_longitudeJs) {
-        if (_key30 !== 'default') _exportObj29[_key30] = _yoctolibEsYocto_longitudeJs[_key30];
+      for (var _key29 in _yoctolibEsYocto_longitudeJs) {
+        if (_key29 !== 'default') _exportObj29[_key29] = _yoctolibEsYocto_longitudeJs[_key29];
       }
 
       _export(_exportObj29);
     }, function (_yoctolibEsYocto_magnetometerJs) {
       var _exportObj30 = {};
 
-      for (var _key31 in _yoctolibEsYocto_magnetometerJs) {
-        if (_key31 !== 'default') _exportObj30[_key31] = _yoctolibEsYocto_magnetometerJs[_key31];
+      for (var _key30 in _yoctolibEsYocto_magnetometerJs) {
+        if (_key30 !== 'default') _exportObj30[_key30] = _yoctolibEsYocto_magnetometerJs[_key30];
       }
 
       _export(_exportObj30);
     }, function (_yoctolibEsYocto_motorJs) {
       var _exportObj31 = {};
 
-      for (var _key32 in _yoctolibEsYocto_motorJs) {
-        if (_key32 !== 'default') _exportObj31[_key32] = _yoctolibEsYocto_motorJs[_key32];
+      for (var _key31 in _yoctolibEsYocto_motorJs) {
+        if (_key31 !== 'default') _exportObj31[_key31] = _yoctolibEsYocto_motorJs[_key31];
       }
 
       _export(_exportObj31);
     }, function (_yoctolibEsYocto_networkJs) {
       var _exportObj32 = {};
 
-      for (var _key33 in _yoctolibEsYocto_networkJs) {
-        if (_key33 !== 'default') _exportObj32[_key33] = _yoctolibEsYocto_networkJs[_key33];
+      for (var _key32 in _yoctolibEsYocto_networkJs) {
+        if (_key32 !== 'default') _exportObj32[_key32] = _yoctolibEsYocto_networkJs[_key32];
       }
 
       _export(_exportObj32);
     }, function (_yoctolibEsYocto_oscontrolJs) {
       var _exportObj33 = {};
 
-      for (var _key34 in _yoctolibEsYocto_oscontrolJs) {
-        if (_key34 !== 'default') _exportObj33[_key34] = _yoctolibEsYocto_oscontrolJs[_key34];
+      for (var _key33 in _yoctolibEsYocto_oscontrolJs) {
+        if (_key33 !== 'default') _exportObj33[_key33] = _yoctolibEsYocto_oscontrolJs[_key33];
       }
 
       _export(_exportObj33);
     }, function (_yoctolibEsYocto_powerJs) {
       var _exportObj34 = {};
 
-      for (var _key35 in _yoctolibEsYocto_powerJs) {
-        if (_key35 !== 'default') _exportObj34[_key35] = _yoctolibEsYocto_powerJs[_key35];
+      for (var _key34 in _yoctolibEsYocto_powerJs) {
+        if (_key34 !== 'default') _exportObj34[_key34] = _yoctolibEsYocto_powerJs[_key34];
       }
 
       _export(_exportObj34);
     }, function (_yoctolibEsYocto_poweroutputJs) {
       var _exportObj35 = {};
 
-      for (var _key36 in _yoctolibEsYocto_poweroutputJs) {
-        if (_key36 !== 'default') _exportObj35[_key36] = _yoctolibEsYocto_poweroutputJs[_key36];
+      for (var _key35 in _yoctolibEsYocto_poweroutputJs) {
+        if (_key35 !== 'default') _exportObj35[_key35] = _yoctolibEsYocto_poweroutputJs[_key35];
       }
 
       _export(_exportObj35);
     }, function (_yoctolibEsYocto_pressureJs) {
       var _exportObj36 = {};
 
-      for (var _key37 in _yoctolibEsYocto_pressureJs) {
-        if (_key37 !== 'default') _exportObj36[_key37] = _yoctolibEsYocto_pressureJs[_key37];
+      for (var _key36 in _yoctolibEsYocto_pressureJs) {
+        if (_key36 !== 'default') _exportObj36[_key36] = _yoctolibEsYocto_pressureJs[_key36];
       }
 
       _export(_exportObj36);
     }, function (_yoctolibEsYocto_pwminputJs) {
       var _exportObj37 = {};
 
-      for (var _key38 in _yoctolibEsYocto_pwminputJs) {
-        if (_key38 !== 'default') _exportObj37[_key38] = _yoctolibEsYocto_pwminputJs[_key38];
+      for (var _key37 in _yoctolibEsYocto_pwminputJs) {
+        if (_key37 !== 'default') _exportObj37[_key37] = _yoctolibEsYocto_pwminputJs[_key37];
       }
 
       _export(_exportObj37);
     }, function (_yoctolibEsYocto_pwmoutputJs) {
       var _exportObj38 = {};
 
-      for (var _key39 in _yoctolibEsYocto_pwmoutputJs) {
-        if (_key39 !== 'default') _exportObj38[_key39] = _yoctolibEsYocto_pwmoutputJs[_key39];
+      for (var _key38 in _yoctolibEsYocto_pwmoutputJs) {
+        if (_key38 !== 'default') _exportObj38[_key38] = _yoctolibEsYocto_pwmoutputJs[_key38];
       }
 
       _export(_exportObj38);
     }, function (_yoctolibEsYocto_pwmpowersourceJs) {
       var _exportObj39 = {};
 
-      for (var _key40 in _yoctolibEsYocto_pwmpowersourceJs) {
-        if (_key40 !== 'default') _exportObj39[_key40] = _yoctolibEsYocto_pwmpowersourceJs[_key40];
+      for (var _key39 in _yoctolibEsYocto_pwmpowersourceJs) {
+        if (_key39 !== 'default') _exportObj39[_key39] = _yoctolibEsYocto_pwmpowersourceJs[_key39];
       }
 
       _export(_exportObj39);
     }, function (_yoctolibEsYocto_quadraturedecoderJs) {
       var _exportObj40 = {};
 
-      for (var _key41 in _yoctolibEsYocto_quadraturedecoderJs) {
-        if (_key41 !== 'default') _exportObj40[_key41] = _yoctolibEsYocto_quadraturedecoderJs[_key41];
+      for (var _key40 in _yoctolibEsYocto_quadraturedecoderJs) {
+        if (_key40 !== 'default') _exportObj40[_key40] = _yoctolibEsYocto_quadraturedecoderJs[_key40];
       }
 
       _export(_exportObj40);
     }, function (_yoctolibEsYocto_realtimeclockJs) {
       var _exportObj41 = {};
 
-      for (var _key42 in _yoctolibEsYocto_realtimeclockJs) {
-        if (_key42 !== 'default') _exportObj41[_key42] = _yoctolibEsYocto_realtimeclockJs[_key42];
+      for (var _key41 in _yoctolibEsYocto_realtimeclockJs) {
+        if (_key41 !== 'default') _exportObj41[_key41] = _yoctolibEsYocto_realtimeclockJs[_key41];
       }
 
       _export(_exportObj41);
     }, function (_yoctolibEsYocto_refframeJs) {
       var _exportObj42 = {};
 
-      for (var _key43 in _yoctolibEsYocto_refframeJs) {
-        if (_key43 !== 'default') _exportObj42[_key43] = _yoctolibEsYocto_refframeJs[_key43];
+      for (var _key42 in _yoctolibEsYocto_refframeJs) {
+        if (_key42 !== 'default') _exportObj42[_key42] = _yoctolibEsYocto_refframeJs[_key42];
       }
 
       _export(_exportObj42);
     }, function (_yoctolibEsYocto_relayJs) {
       var _exportObj43 = {};
 
-      for (var _key44 in _yoctolibEsYocto_relayJs) {
-        if (_key44 !== 'default') _exportObj43[_key44] = _yoctolibEsYocto_relayJs[_key44];
+      for (var _key43 in _yoctolibEsYocto_relayJs) {
+        if (_key43 !== 'default') _exportObj43[_key43] = _yoctolibEsYocto_relayJs[_key43];
       }
 
       _export(_exportObj43);
     }, function (_yoctolibEsYocto_segmenteddisplayJs) {
       var _exportObj44 = {};
 
-      for (var _key45 in _yoctolibEsYocto_segmenteddisplayJs) {
-        if (_key45 !== 'default') _exportObj44[_key45] = _yoctolibEsYocto_segmenteddisplayJs[_key45];
+      for (var _key44 in _yoctolibEsYocto_segmenteddisplayJs) {
+        if (_key44 !== 'default') _exportObj44[_key44] = _yoctolibEsYocto_segmenteddisplayJs[_key44];
       }
 
       _export(_exportObj44);
     }, function (_yoctolibEsYocto_serialportJs) {
       var _exportObj45 = {};
 
-      for (var _key46 in _yoctolibEsYocto_serialportJs) {
-        if (_key46 !== 'default') _exportObj45[_key46] = _yoctolibEsYocto_serialportJs[_key46];
+      for (var _key45 in _yoctolibEsYocto_serialportJs) {
+        if (_key45 !== 'default') _exportObj45[_key45] = _yoctolibEsYocto_serialportJs[_key45];
       }
 
       _export(_exportObj45);
     }, function (_yoctolibEsYocto_servoJs) {
       var _exportObj46 = {};
 
-      for (var _key47 in _yoctolibEsYocto_servoJs) {
-        if (_key47 !== 'default') _exportObj46[_key47] = _yoctolibEsYocto_servoJs[_key47];
+      for (var _key46 in _yoctolibEsYocto_servoJs) {
+        if (_key46 !== 'default') _exportObj46[_key46] = _yoctolibEsYocto_servoJs[_key46];
       }
 
       _export(_exportObj46);
     }, function (_yoctolibEsYocto_temperatureJs) {
       var _exportObj47 = {};
 
-      for (var _key48 in _yoctolibEsYocto_temperatureJs) {
-        if (_key48 !== 'default') _exportObj47[_key48] = _yoctolibEsYocto_temperatureJs[_key48];
+      for (var _key47 in _yoctolibEsYocto_temperatureJs) {
+        if (_key47 !== 'default') _exportObj47[_key47] = _yoctolibEsYocto_temperatureJs[_key47];
       }
 
       _export(_exportObj47);
     }, function (_yoctolibEsYocto_tiltJs) {
       var _exportObj48 = {};
 
-      for (var _key49 in _yoctolibEsYocto_tiltJs) {
-        if (_key49 !== 'default') _exportObj48[_key49] = _yoctolibEsYocto_tiltJs[_key49];
+      for (var _key48 in _yoctolibEsYocto_tiltJs) {
+        if (_key48 !== 'default') _exportObj48[_key48] = _yoctolibEsYocto_tiltJs[_key48];
       }
 
       _export(_exportObj48);
     }, function (_yoctolibEsYocto_vocJs) {
       var _exportObj49 = {};
 
-      for (var _key50 in _yoctolibEsYocto_vocJs) {
-        if (_key50 !== 'default') _exportObj49[_key50] = _yoctolibEsYocto_vocJs[_key50];
+      for (var _key49 in _yoctolibEsYocto_vocJs) {
+        if (_key49 !== 'default') _exportObj49[_key49] = _yoctolibEsYocto_vocJs[_key49];
       }
 
       _export(_exportObj49);
     }, function (_yoctolibEsYocto_voltageJs) {
       var _exportObj50 = {};
 
-      for (var _key51 in _yoctolibEsYocto_voltageJs) {
-        if (_key51 !== 'default') _exportObj50[_key51] = _yoctolibEsYocto_voltageJs[_key51];
+      for (var _key50 in _yoctolibEsYocto_voltageJs) {
+        if (_key50 !== 'default') _exportObj50[_key50] = _yoctolibEsYocto_voltageJs[_key50];
       }
 
       _export(_exportObj50);
     }, function (_yoctolibEsYocto_wakeupmonitorJs) {
       var _exportObj51 = {};
 
-      for (var _key52 in _yoctolibEsYocto_wakeupmonitorJs) {
-        if (_key52 !== 'default') _exportObj51[_key52] = _yoctolibEsYocto_wakeupmonitorJs[_key52];
+      for (var _key51 in _yoctolibEsYocto_wakeupmonitorJs) {
+        if (_key51 !== 'default') _exportObj51[_key51] = _yoctolibEsYocto_wakeupmonitorJs[_key51];
       }
 
       _export(_exportObj51);
     }, function (_yoctolibEsYocto_wakeupscheduleJs) {
       var _exportObj52 = {};
 
-      for (var _key53 in _yoctolibEsYocto_wakeupscheduleJs) {
-        if (_key53 !== 'default') _exportObj52[_key53] = _yoctolibEsYocto_wakeupscheduleJs[_key53];
+      for (var _key52 in _yoctolibEsYocto_wakeupscheduleJs) {
+        if (_key52 !== 'default') _exportObj52[_key52] = _yoctolibEsYocto_wakeupscheduleJs[_key52];
       }
 
       _export(_exportObj52);
     }, function (_yoctolibEsYocto_watchdogJs) {
       var _exportObj53 = {};
 
-      for (var _key54 in _yoctolibEsYocto_watchdogJs) {
-        if (_key54 !== 'default') _exportObj53[_key54] = _yoctolibEsYocto_watchdogJs[_key54];
+      for (var _key53 in _yoctolibEsYocto_watchdogJs) {
+        if (_key53 !== 'default') _exportObj53[_key53] = _yoctolibEsYocto_watchdogJs[_key53];
       }
 
       _export(_exportObj53);
     }, function (_yoctolibEsYocto_wirelessJs) {
       var _exportObj54 = {};
 
-      for (var _key55 in _yoctolibEsYocto_wirelessJs) {
-        if (_key55 !== 'default') _exportObj54[_key55] = _yoctolibEsYocto_wirelessJs[_key55];
+      for (var _key54 in _yoctolibEsYocto_wirelessJs) {
+        if (_key54 !== 'default') _exportObj54[_key54] = _yoctolibEsYocto_wirelessJs[_key54];
       }
 
       _export(_exportObj54);

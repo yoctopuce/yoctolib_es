@@ -140,7 +140,7 @@ export class YLightSensor extends YSensor
     async get_measureType()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_MEASURETYPE_INVALID;
             }
         }

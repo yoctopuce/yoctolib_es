@@ -124,7 +124,7 @@ export class YHubPort extends YFunction
     async get_enabled()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_ENABLED_INVALID;
             }
         }
@@ -162,7 +162,7 @@ export class YHubPort extends YFunction
     async get_portState()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_PORTSTATE_INVALID;
             }
         }
@@ -181,7 +181,7 @@ export class YHubPort extends YFunction
     async get_baudRate()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_BAUDRATE_INVALID;
             }
         }

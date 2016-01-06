@@ -781,7 +781,7 @@ class YDisplayLayer {
 
         return _asyncToGenerator(function* () {
             _this34._hidden = false;
-            return _yocto_api.YAPI_SUCCESS;
+            return _this34._yapi.SUCCESS;
         })();
     }
 
@@ -800,7 +800,7 @@ class YDisplayLayer {
  */
 //--- (end of generated code: YDisplay class start)
 class YDisplay extends _yocto_api.YFunction {
-    constructor(str_func) {
+    constructor(obj_yapi, str_func) {
         //--- (generated code: YDisplay constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
@@ -910,7 +910,7 @@ class YDisplay extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this35._cacheExpiration <= _this35._yapi.GetTickCount()) {
-                if ((yield _this35.load(_this35._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this35.load(_this35._yapi.defaultCacheValidity)) != _this35._yapi.SUCCESS) {
                     return Y_ENABLED_INVALID;
                 }
             }
@@ -951,7 +951,7 @@ class YDisplay extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this37._cacheExpiration <= _this37._yapi.GetTickCount()) {
-                if ((yield _this37.load(_this37._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this37.load(_this37._yapi.defaultCacheValidity)) != _this37._yapi.SUCCESS) {
                     return Y_STARTUPSEQ_INVALID;
                 }
             }
@@ -994,7 +994,7 @@ class YDisplay extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this39._cacheExpiration <= _this39._yapi.GetTickCount()) {
-                if ((yield _this39.load(_this39._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this39.load(_this39._yapi.defaultCacheValidity)) != _this39._yapi.SUCCESS) {
                     return Y_BRIGHTNESS_INVALID;
                 }
             }
@@ -1038,7 +1038,7 @@ class YDisplay extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this41._cacheExpiration <= _this41._yapi.GetTickCount()) {
-                if ((yield _this41.load(_this41._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this41.load(_this41._yapi.defaultCacheValidity)) != _this41._yapi.SUCCESS) {
                     return Y_ORIENTATION_INVALID;
                 }
             }
@@ -1080,7 +1080,7 @@ class YDisplay extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this43._cacheExpiration <= _this43._yapi.GetTickCount()) {
-                if ((yield _this43.load(_this43._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this43.load(_this43._yapi.defaultCacheValidity)) != _this43._yapi.SUCCESS) {
                     return Y_DISPLAYWIDTH_INVALID;
                 }
             }
@@ -1100,7 +1100,7 @@ class YDisplay extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this44._cacheExpiration <= _this44._yapi.GetTickCount()) {
-                if ((yield _this44.load(_this44._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this44.load(_this44._yapi.defaultCacheValidity)) != _this44._yapi.SUCCESS) {
                     return Y_DISPLAYHEIGHT_INVALID;
                 }
             }
@@ -1121,7 +1121,7 @@ class YDisplay extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this45._cacheExpiration == 0) {
-                if ((yield _this45.load(_this45._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this45.load(_this45._yapi.defaultCacheValidity)) != _this45._yapi.SUCCESS) {
                     return Y_DISPLAYTYPE_INVALID;
                 }
             }
@@ -1141,7 +1141,7 @@ class YDisplay extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this46._cacheExpiration == 0) {
-                if ((yield _this46.load(_this46._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this46.load(_this46._yapi.defaultCacheValidity)) != _this46._yapi.SUCCESS) {
                     return Y_LAYERWIDTH_INVALID;
                 }
             }
@@ -1161,7 +1161,7 @@ class YDisplay extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this47._cacheExpiration == 0) {
-                if ((yield _this47.load(_this47._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this47.load(_this47._yapi.defaultCacheValidity)) != _this47._yapi.SUCCESS) {
                     return Y_LAYERHEIGHT_INVALID;
                 }
             }
@@ -1181,7 +1181,7 @@ class YDisplay extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this48._cacheExpiration == 0) {
-                if ((yield _this48.load(_this48._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this48.load(_this48._yapi.defaultCacheValidity)) != _this48._yapi.SUCCESS) {
                     return Y_LAYERCOUNT_INVALID;
                 }
             }
@@ -1194,7 +1194,7 @@ class YDisplay extends _yocto_api.YFunction {
 
         return _asyncToGenerator(function* () {
             if (_this49._cacheExpiration <= _this49._yapi.GetTickCount()) {
-                if ((yield _this49.load(_this49._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this49.load(_this49._yapi.defaultCacheValidity)) != _this49._yapi.SUCCESS) {
                     return Y_COMMAND_INVALID;
                 }
             }
@@ -1337,7 +1337,7 @@ class YDisplay extends _yocto_api.YFunction {
             yield _this53.flushLayers();
             _this53._sequence = '';
             _this53._recording = true;
-            return _yocto_api.YAPI_SUCCESS;
+            return _this53._yapi.SUCCESS;
         })();
     }
 
@@ -1361,7 +1361,7 @@ class YDisplay extends _yocto_api.YFunction {
             yield _this54._upload(sequenceName, _this54._yapi.imm_str2bin(_this54._sequence));
             //We need to use YPRINTF("") for Objective-C
             _this54._sequence = '';
-            return _yocto_api.YAPI_SUCCESS;
+            return _this54._yapi.SUCCESS;
         })();
     }
 

@@ -151,7 +151,7 @@ export class YColorLed extends YFunction
     async get_rgbColor()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_RGBCOLOR_INVALID;
             }
         }
@@ -185,7 +185,7 @@ export class YColorLed extends YFunction
     async get_hslColor()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_HSLCOLOR_INVALID;
             }
         }
@@ -212,7 +212,7 @@ export class YColorLed extends YFunction
     async get_rgbMove()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_RGBMOVE_INVALID;
             }
         }
@@ -248,7 +248,7 @@ export class YColorLed extends YFunction
     async get_hslMove()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_HSLMOVE_INVALID;
             }
         }
@@ -291,7 +291,7 @@ export class YColorLed extends YFunction
     async get_rgbColorAtPowerOn()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_RGBCOLORATPOWERON_INVALID;
             }
         }
@@ -326,7 +326,7 @@ export class YColorLed extends YFunction
     async get_blinkSeqSize()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_BLINKSEQSIZE_INVALID;
             }
         }
@@ -343,7 +343,7 @@ export class YColorLed extends YFunction
     async get_blinkSeqMaxSize()
     {
         if (this._cacheExpiration == 0) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_BLINKSEQMAXSIZE_INVALID;
             }
         }
@@ -363,7 +363,7 @@ export class YColorLed extends YFunction
     async get_blinkSeqSignature()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_BLINKSEQSIGNATURE_INVALID;
             }
         }
@@ -373,7 +373,7 @@ export class YColorLed extends YFunction
     async get_command()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_COMMAND_INVALID;
             }
         }

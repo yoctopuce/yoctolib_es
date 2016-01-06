@@ -293,7 +293,7 @@ export class YNetwork extends YFunction
     async get_readiness()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_READINESS_INVALID;
             }
         }
@@ -311,7 +311,7 @@ export class YNetwork extends YFunction
     async get_macAddress()
     {
         if (this._cacheExpiration == 0) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_MACADDRESS_INVALID;
             }
         }
@@ -329,7 +329,7 @@ export class YNetwork extends YFunction
     async get_ipAddress()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_IPADDRESS_INVALID;
             }
         }
@@ -346,7 +346,7 @@ export class YNetwork extends YFunction
     async get_subnetMask()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_SUBNETMASK_INVALID;
             }
         }
@@ -363,7 +363,7 @@ export class YNetwork extends YFunction
     async get_router()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_ROUTER_INVALID;
             }
         }
@@ -373,7 +373,7 @@ export class YNetwork extends YFunction
     async get_ipConfig()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_IPCONFIG_INVALID;
             }
         }
@@ -398,7 +398,7 @@ export class YNetwork extends YFunction
     async get_primaryDNS()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_PRIMARYDNS_INVALID;
             }
         }
@@ -435,7 +435,7 @@ export class YNetwork extends YFunction
     async get_secondaryDNS()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_SECONDARYDNS_INVALID;
             }
         }
@@ -472,7 +472,7 @@ export class YNetwork extends YFunction
     async get_ntpServer()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_NTPSERVER_INVALID;
             }
         }
@@ -509,7 +509,7 @@ export class YNetwork extends YFunction
     async get_userPassword()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_USERPASSWORD_INVALID;
             }
         }
@@ -549,7 +549,7 @@ export class YNetwork extends YFunction
     async get_adminPassword()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_ADMINPASSWORD_INVALID;
             }
         }
@@ -587,7 +587,7 @@ export class YNetwork extends YFunction
     async get_httpPort()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_HTTPPORT_INVALID;
             }
         }
@@ -623,7 +623,7 @@ export class YNetwork extends YFunction
     async get_defaultPage()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_DEFAULTPAGE_INVALID;
             }
         }
@@ -662,7 +662,7 @@ export class YNetwork extends YFunction
     async get_discoverable()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_DISCOVERABLE_INVALID;
             }
         }
@@ -703,7 +703,7 @@ export class YNetwork extends YFunction
     async get_wwwWatchdogDelay()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_WWWWATCHDOGDELAY_INVALID;
             }
         }
@@ -742,7 +742,7 @@ export class YNetwork extends YFunction
     async get_callbackUrl()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_CALLBACKURL_INVALID;
             }
         }
@@ -779,7 +779,7 @@ export class YNetwork extends YFunction
     async get_callbackMethod()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_CALLBACKMETHOD_INVALID;
             }
         }
@@ -820,7 +820,7 @@ export class YNetwork extends YFunction
     async get_callbackEncoding()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_CALLBACKENCODING_INVALID;
             }
         }
@@ -861,7 +861,7 @@ export class YNetwork extends YFunction
     async get_callbackCredentials()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_CALLBACKCREDENTIALS_INVALID;
             }
         }
@@ -925,7 +925,7 @@ export class YNetwork extends YFunction
     async get_callbackMinDelay()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_CALLBACKMINDELAY_INVALID;
             }
         }
@@ -961,7 +961,7 @@ export class YNetwork extends YFunction
     async get_callbackMaxDelay()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_CALLBACKMAXDELAY_INVALID;
             }
         }
@@ -999,7 +999,7 @@ export class YNetwork extends YFunction
     async get_poeCurrent()
     {
         if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
                 return Y_POECURRENT_INVALID;
             }
         }

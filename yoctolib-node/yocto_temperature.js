@@ -174,7 +174,7 @@ class YTemperature extends _yocto_api.YSensor {
 
         return _asyncToGenerator(function* () {
             if (_this2._cacheExpiration <= _this2._yapi.GetTickCount()) {
-                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _this2._yapi.SUCCESS) {
                     return Y_SENSORTYPE_INVALID;
                 }
             }
@@ -216,7 +216,7 @@ class YTemperature extends _yocto_api.YSensor {
 
         return _asyncToGenerator(function* () {
             if (_this4._cacheExpiration <= _this4._yapi.GetTickCount()) {
-                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _yocto_api.YAPI_SUCCESS) {
+                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _this4._yapi.SUCCESS) {
                     return Y_COMMAND_INVALID;
                 }
             }
@@ -382,15 +382,15 @@ class YTemperature extends _yocto_api.YSensor {
             let idxres;
             siz = tempValues.length;
             if (!(siz >= 2)) {
-                return _this7._throw(YAPI_INVALID_ARGUMENT, 'thermistor response table must have at least two points', YAPI_INVALID_ARGUMENT);
+                return _this7._throw(_this7._yapi.INVALID_ARGUMENT, 'thermistor response table must have at least two points', _this7._yapi.INVALID_ARGUMENT);
             }
             if (!(siz == resValues.length)) {
-                return _this7._throw(YAPI_INVALID_ARGUMENT, 'table sizes mismatch', YAPI_INVALID_ARGUMENT);
+                return _this7._throw(_this7._yapi.INVALID_ARGUMENT, 'table sizes mismatch', _this7._yapi.INVALID_ARGUMENT);
             }
             // may throw an exception
             res = yield _this7.set_command('Z');
-            if (!(res == _yocto_api.YAPI_SUCCESS)) {
-                return _this7._throw(YAPI_IO_ERROR, 'unable to reset thermistor parameters', YAPI_IO_ERROR);
+            if (!(res == _this7._yapi.SUCCESS)) {
+                return _this7._throw(_this7._yapi.IO_ERROR, 'unable to reset thermistor parameters', _this7._yapi.IO_ERROR);
             }
             // add records in growing resistance value
             found = 1;
@@ -411,13 +411,13 @@ class YTemperature extends _yocto_api.YSensor {
                 }
                 if (found > 0) {
                     res = yield _this7.set_command('m' + String(Math.round(Math.round(1000 * curr))) + ':' + String(Math.round(Math.round(1000 * currTemp))));
-                    if (!(res == _yocto_api.YAPI_SUCCESS)) {
-                        return _this7._throw(YAPI_IO_ERROR, 'unable to reset thermistor parameters', YAPI_IO_ERROR);
+                    if (!(res == _this7._yapi.SUCCESS)) {
+                        return _this7._throw(_this7._yapi.IO_ERROR, 'unable to reset thermistor parameters', _this7._yapi.IO_ERROR);
                     }
                     prev = curr;
                 }
             }
-            return _yocto_api.YAPI_SUCCESS;
+            return _this7._yapi.SUCCESS;
         })();
     }
 
@@ -504,7 +504,7 @@ class YTemperature extends _yocto_api.YSensor {
                     prev = curr;
                 }
             }
-            return _yocto_api.YAPI_SUCCESS;
+            return _this8._yapi.SUCCESS;
         })();
     }
 
