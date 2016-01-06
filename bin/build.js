@@ -96,7 +96,6 @@ function runBabel()
             "transform-es2015-destructuring",
             "transform-es2015-typeof-symbol",
             "transform-es2015-modules-commonjs",
-            "transform-es2015-object-super",
             "transform-async-to-generator"
         ],
         'compact': false
@@ -107,6 +106,9 @@ function runBabel()
             fs.writeFileSync('yoctolib-node/'+mod, res.code + '\n', 'utf-8');
         }
     });
+    let index = fs.readFileSync('yoctolib-node/index.js');
+    fs.writeFileSync("yoctolib-node.js", index, 'utf-8');
+    fs.unlinkSync('yoctolib-node/index.js');
     console.log('yoctolib-node version has been updated')
 }
 

@@ -8325,7 +8325,7 @@ export class YAPIContext
      */
     async GetAPIVersion()
     {
-        return /* version number patched automatically */'1.10.22616';
+        return /* version number patched automatically */'1.10.22617';
     }
 
     /**
