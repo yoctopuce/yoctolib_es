@@ -42,12 +42,13 @@
     "semver": "^5.1.0"
   },
   "jspm": {
-    "registry": "jspm",
-    "main": "index.js",
+    "jspmNodeConversion": false,
+    "registry": "npm",
     "format": "es6",
     "map": {
       "yoctolib-es": "."
     },
+    "main": "index.js",
     "dependencies": {},
     "devDependencies": {
       "babel": "babel-core@^5.8.24",
