@@ -46,7 +46,7 @@ exports.YPressure = undefined;
 exports.yFindPressure = yFindPressure;
 exports.yFirstPressure = yFirstPressure;
 
-var _yocto_api = require('yoctolib-es/yocto_api');
+var _yocto_api = require('./yocto_api');
 
 //--- (YPressure return codes)
 //--- (end of YPressure return codes)

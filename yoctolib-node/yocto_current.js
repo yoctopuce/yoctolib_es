@@ -46,7 +46,7 @@ exports.YCurrent = undefined;
 exports.yFindCurrent = yFindCurrent;
 exports.yFirstCurrent = yFirstCurrent;
 
-var _yocto_api = require('yoctolib-es/yocto_api');
+var _yocto_api = require('./yocto_api');
 
 //--- (YCurrent return codes)
 //--- (end of YCurrent return codes)

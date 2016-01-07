@@ -46,7 +46,7 @@ exports.YVoltage = undefined;
 exports.yFindVoltage = yFindVoltage;
 exports.yFirstVoltage = yFirstVoltage;
 
-var _yocto_api = require('yoctolib-es/yocto_api');
+var _yocto_api = require('./yocto_api');
 
 //--- (YVoltage return codes)
 //--- (end of YVoltage return codes)

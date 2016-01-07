@@ -46,7 +46,7 @@ exports.YTilt = exports.Y_AXIS_INVALID = exports.Y_AXIS_Z = exports.Y_AXIS_Y = e
 exports.yFindTilt = yFindTilt;
 exports.yFirstTilt = yFirstTilt;
 
-var _yocto_api = require('yoctolib-es/yocto_api');
+var _yocto_api = require('./yocto_api');
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 

@@ -38773,12 +38773,17 @@ System.register('yoctolib-es/yocto_api.js', ['npm:babel-runtime@5.8.34/helpers/c
                         }, null, this);
                     }
                 }, {
+                    key: 'imm_commonDisconnect',
+                    value: function imm_commonDisconnect() {
+                        this.disconnecting = true;
+                    }
+                }, {
                     key: 'disconnect',
                     value: function disconnect() {
                         return _regeneratorRuntime.async(function disconnect$(context$2$0) {
                             while (1) switch (context$2$0.prev = context$2$0.next) {
                                 case 0:
-                                    this.disconnecting = true;
+                                    this.imm_commonDisconnect();
 
                                 case 1:
                                 case 'end':
@@ -38916,13 +38921,10 @@ System.register('yoctolib-es/yocto_api.js', ['npm:babel-runtime@5.8.34/helpers/c
                         return _regeneratorRuntime.async(function disconnect$(context$2$0) {
                             while (1) switch (context$2$0.prev = context$2$0.next) {
                                 case 0:
-                                    context$2$0.next = 2;
-                                    return _regeneratorRuntime.awrap(_get(Object.getPrototypeOf(YHttpHub.prototype), 'disconnect', this).call(this));
-
-                                case 2:
+                                    this.imm_commonDisconnect();
                                     this.notbynRequest.abort();
 
-                                case 3:
+                                case 2:
                                 case 'end':
                                     return context$2$0.stop();
                             }
@@ -39076,13 +39078,10 @@ System.register('yoctolib-es/yocto_api.js', ['npm:babel-runtime@5.8.34/helpers/c
                         return _regeneratorRuntime.async(function disconnect$(context$2$0) {
                             while (1) switch (context$2$0.prev = context$2$0.next) {
                                 case 0:
-                                    context$2$0.next = 2;
-                                    return _regeneratorRuntime.awrap(_get(Object.getPrototypeOf(YHttpNodeHub.prototype), 'disconnect', this).call(this));
-
-                                case 2:
+                                    this.imm_commonDisconnect();
                                     this.notbynRequest.abort();
 
-                                case 3:
+                                case 2:
                                 case 'end':
                                     return context$2$0.stop();
                             }
@@ -39527,13 +39526,10 @@ System.register('yoctolib-es/yocto_api.js', ['npm:babel-runtime@5.8.34/helpers/c
                         return _regeneratorRuntime.async(function disconnect$(context$2$0) {
                             while (1) switch (context$2$0.prev = context$2$0.next) {
                                 case 0:
-                                    context$2$0.next = 2;
-                                    return _regeneratorRuntime.awrap(_get(Object.getPrototypeOf(YWebSocketHub.prototype), 'disconnect', this).call(this));
-
-                                case 2:
+                                    this.imm_commonDisconnect();
                                     this.websocket.close();
 
-                                case 3:
+                                case 2:
                                 case 'end':
                                     return context$2$0.stop();
                             }
@@ -41144,7 +41140,7 @@ System.register('yoctolib-es/yocto_api.js', ['npm:babel-runtime@5.8.34/helpers/c
                         return _regeneratorRuntime.async(function GetAPIVersion$(context$2$0) {
                             while (1) switch (context$2$0.prev = context$2$0.next) {
                                 case 0:
-                                    return context$2$0.abrupt('return', '1.10.22617');
+                                    return context$2$0.abrupt('return', '1.10.22620');
 
                                 case 1:
                                 case 'end':

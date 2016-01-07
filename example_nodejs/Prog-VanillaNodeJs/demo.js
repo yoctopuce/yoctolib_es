@@ -19,7 +19,7 @@ function startDemo()
     }).then((res) => {
         if(res != YAPI.SUCCESS) {
             console.log('Cannot contact VirtualHub on 127.0.0.1: '+errmsg.msg);
-            return;
+            process.exit(1);
         }
         // Select specified device, or use first available one
         let serial = process.argv[process.argv.length-1];
@@ -27,9 +27,10 @@ function startDemo()
             // by default use any connected module suitable for the demo
             let anyInput = YAnButton.FirstAnButton();
             if(anyInput) {
-                anyInput.module().then((module) => {
-                     module.get_serialNumber().then((snum) => { serial = snum; });
-                });
+                return anyInput.module().then((module) => { return module.get_serialNumber(); });
+            } else {
+                console.log('No Yocto-Knob connected, check cable');
+                process.exit(1);
             }
         }
         return serial;

@@ -46,7 +46,7 @@ exports.YVoc = undefined;
 exports.yFindVoc = yFindVoc;
 exports.yFirstVoc = yFirstVoc;
 
-var _yocto_api = require('yoctolib-es/yocto_api');
+var _yocto_api = require('./yocto_api');
 
 //--- (YVoc return codes)
 //--- (end of YVoc return codes)

@@ -6391,9 +6391,16 @@ export class YGenericHub
         return res;
     }
 
-    async disconnect()
+    imm_commonDisconnect()
     {
         this.disconnecting = true;
+    }
+
+    // default implementation of disconnect
+    // note: super.xxx() cannot be used in an async function !
+    async disconnect()
+    {
+        this.imm_commonDisconnect();
     }
 }
 
@@ -6500,7 +6507,7 @@ export class YHttpHub extends YGenericHub
 
     async disconnect()
     {
-        await super.disconnect();
+        this.imm_commonDisconnect();
         this.notbynRequest.abort();
     }
 }
@@ -6624,7 +6631,7 @@ export class YHttpNodeHub extends YGenericHub
 
     async disconnect()
     {
-        await super.disconnect();
+        this.imm_commonDisconnect();
         this.notbynRequest.abort();
     }
 }
@@ -6953,7 +6960,7 @@ export class YWebSocketHub extends YGenericHub
 
     async disconnect()
     {
-        await super.disconnect();
+        this.imm_commonDisconnect();
         this.websocket.close();
     }
 }
@@ -8325,7 +8332,7 @@ export class YAPIContext
      */
     async GetAPIVersion()
     {
-        return /* version number patched automatically */'1.10.22617';
+        return /* version number patched automatically */'1.10.22620';
     }
 
     /**

@@ -46,7 +46,7 @@ exports.YLongitude = undefined;
 exports.yFindLongitude = yFindLongitude;
 exports.yFirstLongitude = yFirstLongitude;
 
-var _yocto_api = require('yoctolib-es/yocto_api');
+var _yocto_api = require('./yocto_api');
 
 //--- (YLongitude return codes)
 //--- (end of YLongitude return codes)

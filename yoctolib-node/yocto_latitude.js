@@ -46,7 +46,7 @@ exports.YLatitude = undefined;
 exports.yFindLatitude = yFindLatitude;
 exports.yFirstLatitude = yFirstLatitude;
 
-var _yocto_api = require('yoctolib-es/yocto_api');
+var _yocto_api = require('./yocto_api');
 
 //--- (YLatitude return codes)
 //--- (end of YLatitude return codes)

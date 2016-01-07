@@ -7,6 +7,7 @@ async function startDemo()
     await YAPI.DisableExceptions();
     if (await YAPI.RegisterHub('http://127.0.0.1:4444/', errmsg) != YAPI.SUCCESS) {
         console.log('Cannot contact VirtualHub on 127.0.0.1');
+        return;
     }
     refresh();
 }

@@ -92,6 +92,7 @@ function runBabel()
     var babel_options = {
         'plugins': [
             "transform-strict-mode",
+            "transform-es2015-arrow-functions",
             "transform-es2015-parameters",
             "transform-es2015-destructuring",
             "transform-es2015-typeof-symbol",
@@ -100,15 +101,19 @@ function runBabel()
         ],
         'compact': false
     };
+    var index = 'module.exports = require("./yoctolib-node/yocto_api.js");\n'+
+            'function addExports(mod) { for(var key in mod) module.exports[key] = mod[key]; }\n';
     fs.readdirSync(lib).forEach(function (mod) {
-        if (mod.length > 3 && mod.slice(-3) == '.js') {
+        if (mod.length > 3 && mod.slice(-3) == '.js' && mod != 'index.js') {
             var res = babel.transformFileSync('yoctolib-es/'+mod, babel_options);
+            res.code = res.code.replace(/yoctolib-es\//g, './');
             fs.writeFileSync('yoctolib-node/'+mod, res.code + '\n', 'utf-8');
+            if(mod != 'yocto_api.js') {
+                index += 'addExports(require("./yoctolib-node/'+mod+'"));\n';
+            }
         }
     });
-    let index = fs.readFileSync('yoctolib-node/index.js');
-    fs.writeFileSync("yoctolib-node.js", index, 'utf-8');
-    fs.unlinkSync('yoctolib-node/index.js');
+    fs.writeFileSync('yoctolib-node.js', index, 'utf-8');
     console.log('yoctolib-node version has been updated')
 }
 

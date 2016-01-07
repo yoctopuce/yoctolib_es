@@ -46,7 +46,7 @@ exports.YGroundSpeed = undefined;
 exports.yFindGroundSpeed = yFindGroundSpeed;
 exports.yFirstGroundSpeed = yFirstGroundSpeed;
 
-var _yocto_api = require('yoctolib-es/yocto_api');
+var _yocto_api = require('./yocto_api');
 
 //--- (YGroundSpeed return codes)
 //--- (end of YGroundSpeed return codes)

@@ -11,6 +11,7 @@ async function startDemo()
     let errmsg = new YErrorMsg();
     if(await YAPI.RegisterHub('127.0.0.1', errmsg) != YAPI.SUCCESS) {
         console.log('Cannot contact VirtualHub on 127.0.0.1: '+errmsg.msg);
+        return;
     }
 
     // Select specified device, or use first available one
@@ -21,6 +22,9 @@ async function startDemo()
         if(anyInput) {
             let module = await anyInput.module();
             serial = await module.get_serialNumber();
+        } else {
+            console.log('No Yocto-Knob connected, check cable !');
+            return;
         }
     }
     console.log('Using device '+serial);
