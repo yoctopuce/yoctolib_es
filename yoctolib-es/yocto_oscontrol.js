@@ -38,12 +38,22 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YOsControl = exports.Y_SHUTDOWNCOUNTDOWN_INVALID = undefined;
+exports.yFindOsControl = yFindOsControl;
+exports.yFirstOsControl = yFirstOsControl;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YOsControl return codes)
 //--- (end of YOsControl return codes)
 //--- (YOsControl definitions)
-export const Y_SHUTDOWNCOUNTDOWN_INVALID     = YAPI.INVALID_UINT;
+const Y_SHUTDOWNCOUNTDOWN_INVALID = exports.Y_SHUTDOWNCOUNTDOWN_INVALID = _yocto_api.YAPI.INVALID_UINT;
 //--- (end of YOsControl definitions)
 
 //--- (YOsControl class start)
@@ -56,30 +66,27 @@ export const Y_SHUTDOWNCOUNTDOWN_INVALID     = YAPI.INVALID_UINT;
  */
 //--- (end of YOsControl class start)
 
-export class YOsControl extends YFunction
-{
-    constructor(obj_yapi, str_func)
-    {
+class YOsControl extends _yocto_api.YFunction {
+    constructor(obj_yapi, str_func) {
         //--- (YOsControl constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'OsControl';
+        this._className = 'OsControl';
         /** @member {number} **/
-        this._shutdownCountdown          = Y_SHUTDOWNCOUNTDOWN_INVALID;
+        this._shutdownCountdown = Y_SHUTDOWNCOUNTDOWN_INVALID;
         this.imm_setConst({
-            SHUTDOWNCOUNTDOWN_INVALID    : YAPI.INVALID_UINT
+            SHUTDOWNCOUNTDOWN_INVALID: _yocto_api.YAPI.INVALID_UINT
         });
         //--- (end of YOsControl constructor)
     }
 
     //--- (YOsControl implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'shutdownCountdown':
-            this._shutdownCountdown = parseInt(val);
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'shutdownCountdown':
+                this._shutdownCountdown = parseInt(val);
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -94,22 +101,28 @@ export class YOsControl extends YFunction
      *
      * On failure, throws an exception or returns YOsControl.SHUTDOWNCOUNTDOWN_INVALID.
      */
-    async get_shutdownCountdown()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_SHUTDOWNCOUNTDOWN_INVALID;
+    get_shutdownCountdown() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
+                    return Y_SHUTDOWNCOUNTDOWN_INVALID;
+                }
             }
-        }
-        return this._shutdownCountdown;
+            return _this._shutdownCountdown;
+        })();
     }
 
-    async set_shutdownCountdown(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('shutdownCountdown',rest_val);
+    set_shutdownCountdown(newval) {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this2._setAttr('shutdownCountdown', rest_val);
+        })();
     }
 
     /**
@@ -135,14 +148,13 @@ export class YOsControl extends YFunction
      *
      * @return {YOsControl} a YOsControl object allowing you to drive the OS control.
      */
-    static FindOsControl(func)
-    {
+    static FindOsControl(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('OsControl', func);
+        obj = _yocto_api.YFunction._FindFromCache('OsControl', func);
         if (obj == null) {
-            obj = new YOsControl(YAPI, func);
-            YFunction._AddToCache('OsControl',  func, obj);
+            obj = new YOsControl(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('OsControl', func, obj);
         }
         return obj;
     }
@@ -171,14 +183,13 @@ export class YOsControl extends YFunction
      *
      * @return {YOsControl} a YOsControl object allowing you to drive the OS control.
      */
-    static FindOsControlInContext(yctx,func)
-    {
+    static FindOsControlInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'OsControl', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'OsControl', func);
         if (obj == null) {
             obj = new YOsControl(yctx, func);
-            YFunction._AddToCache('OsControl',  func, obj);
+            _yocto_api.YFunction._AddToCache('OsControl', func, obj);
         }
         return obj;
     }
@@ -192,9 +203,12 @@ export class YOsControl extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async shutdown(secBeforeShutDown)
-    {
-        return await this.set_shutdownCountdown(secBeforeShutDown);
+    shutdown(secBeforeShutDown) {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this3.set_shutdownCountdown(secBeforeShutDown);
+        })();
     }
 
     /**
@@ -204,14 +218,13 @@ export class YOsControl extends YFunction
      *         OS control currently online, or a null pointer
      *         if there are no more OS control to enumerate.
      */
-    nextOsControl()
-    {
+    nextOsControl() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YOsControl.FindOsControlInContext(this._yapi, next_hwid);
     }
 
@@ -224,11 +237,10 @@ export class YOsControl extends YFunction
      *         the first OS control currently online, or a null pointer
      *         if there are none.
      */
-    static FirstOsControl()
-    {
+    static FirstOsControl() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('OsControl');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('OsControl');
+        if (next_hwid == null) return null;
         return YOsControl.FindOsControl(next_hwid);
     }
 
@@ -243,18 +255,17 @@ export class YOsControl extends YFunction
      *         the first OS control currently online, or a null pointer
      *         if there are none.
      */
-    static FirstOsControlInContext(yctx)
-    {
+    static FirstOsControlInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('OsControl');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YOsControl.FindOsControlInContext(yctx, next_hwid);
     }
 
     //--- (end of YOsControl implementation)
 }
 
-//--- (OsControl functions)
+exports.YOsControl = YOsControl; //--- (OsControl functions)
 
 /**
  * Retrieves OS control for a given identifier.
@@ -279,8 +290,8 @@ export class YOsControl extends YFunction
  *
  * @return {YOsControl} a YOsControl object allowing you to drive the OS control.
  */
-export function yFindOsControl(func)
-{
+
+function yFindOsControl(func) {
     return YOsControl.FindOsControl(func);
 }
 
@@ -293,8 +304,7 @@ export function yFindOsControl(func)
  *         the first OS control currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstOsControl()
-{
+function yFirstOsControl() {
     return YOsControl.FirstOsControl();
 }
 

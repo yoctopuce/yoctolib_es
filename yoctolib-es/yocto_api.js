@@ -40,79 +40,107 @@
 
 //--- (generated code: YFunction definitions)
 // Yoctopuce error codes, also used by default as function return value
-export const YAPI_SUCCESS                    = 0;       // everything worked all right
-export const YAPI_NOT_INITIALIZED            = -1;      // call yInitAPI() first !
-export const YAPI_INVALID_ARGUMENT           = -2;      // one of the arguments passed to the function is invalid
-export const YAPI_NOT_SUPPORTED              = -3;      // the operation attempted is (currently) not supported
-export const YAPI_DEVICE_NOT_FOUND           = -4;      // the requested device is not reachable
-export const YAPI_VERSION_MISMATCH           = -5;      // the device firmware is incompatible with this API version
-export const YAPI_DEVICE_BUSY                = -6;      // the device is busy with another task and cannot answer
-export const YAPI_TIMEOUT                    = -7;      // the device took too long to provide an answer
-export const YAPI_IO_ERROR                   = -8;      // there was an I/O problem while talking to the device
-export const YAPI_NO_MORE_DATA               = -9;      // there is no more data to read from
-export const YAPI_EXHAUSTED                  = -10;     // you have run out of a limited resource, check the documentation
-export const YAPI_DOUBLE_ACCES               = -11;     // you have two process that try to access to the same device
-export const YAPI_UNAUTHORIZED               = -12;     // unauthorized access to password-protected device
-export const YAPI_RTC_NOT_READY              = -13;     // real-time clock has not been initialized (or time was lost)
-export const YAPI_FILE_NOT_FOUND             = -14;     // the file is not found
 
-export const YAPI_INVALID_INT                = 0x7fffffff;
-export const YAPI_INVALID_UINT               = -1;
-export const YAPI_INVALID_LONG               = 0x7fffffffffffffff;
-export const YAPI_INVALID_DOUBLE             = -Number.MAX_VALUE;
-export const YAPI_INVALID_STRING             = '!INVALID!';
-export const Y_FUNCTIONDESCRIPTOR_INVALID    = YAPI_INVALID_STRING;
-export const Y_HARDWAREID_INVALID            = YAPI_INVALID_STRING;
-export const Y_FUNCTIONID_INVALID            = YAPI_INVALID_STRING;
-export const Y_FRIENDLYNAME_INVALID          = YAPI_INVALID_STRING;
-export const Y_LOGICALNAME_INVALID           = YAPI_INVALID_STRING;
-export const Y_ADVERTISEDVALUE_INVALID       = YAPI_INVALID_STRING;
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.yFindModule = yFindModule;
+exports.yFirstModule = yFirstModule;
+exports.yFindSensor = yFindSensor;
+exports.yFirstSensor = yFirstSensor;
+exports.yGetAPIVersion = yGetAPIVersion;
+exports.yInitAPI = yInitAPI;
+exports.yFreeAPI = yFreeAPI;
+exports.yDisableExceptions = yDisableExceptions;
+exports.yEnableExceptions = yEnableExceptions;
+exports.yRegisterHub = yRegisterHub;
+exports.yPreregisterHub = yPreregisterHub;
+exports.yUnregisterHub = yUnregisterHub;
+exports.yUpdateDeviceList = yUpdateDeviceList;
+exports.yHandleEvents = yHandleEvents;
+exports.ySleep = ySleep;
+exports.yGetTickCount = yGetTickCount;
+exports.yCheckLogicalName = yCheckLogicalName;
+exports.yRegisterDeviceArrivalCallback = yRegisterDeviceArrivalCallback;
+exports.yRegisterDeviceChangeCallback = yRegisterDeviceChangeCallback;
+exports.yRegisterDeviceRemovalCallback = yRegisterDeviceRemovalCallback;
+exports.yRegisterCalibrationHandler = yRegisterCalibrationHandler;
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
+
+const YAPI_SUCCESS = exports.YAPI_SUCCESS = 0; // everything worked all right
+const YAPI_NOT_INITIALIZED = exports.YAPI_NOT_INITIALIZED = -1; // call yInitAPI() first !
+const YAPI_INVALID_ARGUMENT = exports.YAPI_INVALID_ARGUMENT = -2; // one of the arguments passed to the function is invalid
+const YAPI_NOT_SUPPORTED = exports.YAPI_NOT_SUPPORTED = -3; // the operation attempted is (currently) not supported
+const YAPI_DEVICE_NOT_FOUND = exports.YAPI_DEVICE_NOT_FOUND = -4; // the requested device is not reachable
+const YAPI_VERSION_MISMATCH = exports.YAPI_VERSION_MISMATCH = -5; // the device firmware is incompatible with this API version
+const YAPI_DEVICE_BUSY = exports.YAPI_DEVICE_BUSY = -6; // the device is busy with another task and cannot answer
+const YAPI_TIMEOUT = exports.YAPI_TIMEOUT = -7; // the device took too long to provide an answer
+const YAPI_IO_ERROR = exports.YAPI_IO_ERROR = -8; // there was an I/O problem while talking to the device
+const YAPI_NO_MORE_DATA = exports.YAPI_NO_MORE_DATA = -9; // there is no more data to read from
+const YAPI_EXHAUSTED = exports.YAPI_EXHAUSTED = -10; // you have run out of a limited resource, check the documentation
+const YAPI_DOUBLE_ACCES = exports.YAPI_DOUBLE_ACCES = -11; // you have two process that try to access to the same device
+const YAPI_UNAUTHORIZED = exports.YAPI_UNAUTHORIZED = -12; // unauthorized access to password-protected device
+const YAPI_RTC_NOT_READY = exports.YAPI_RTC_NOT_READY = -13; // real-time clock has not been initialized (or time was lost)
+const YAPI_FILE_NOT_FOUND = exports.YAPI_FILE_NOT_FOUND = -14; // the file is not found
+
+const YAPI_INVALID_INT = exports.YAPI_INVALID_INT = 0x7fffffff;
+const YAPI_INVALID_UINT = exports.YAPI_INVALID_UINT = -1;
+const YAPI_INVALID_LONG = exports.YAPI_INVALID_LONG = 0x7fffffffffffffff;
+const YAPI_INVALID_DOUBLE = exports.YAPI_INVALID_DOUBLE = -Number.MAX_VALUE;
+const YAPI_INVALID_STRING = exports.YAPI_INVALID_STRING = '!INVALID!';
+const Y_FUNCTIONDESCRIPTOR_INVALID = exports.Y_FUNCTIONDESCRIPTOR_INVALID = YAPI_INVALID_STRING;
+const Y_HARDWAREID_INVALID = exports.Y_HARDWAREID_INVALID = YAPI_INVALID_STRING;
+const Y_FUNCTIONID_INVALID = exports.Y_FUNCTIONID_INVALID = YAPI_INVALID_STRING;
+const Y_FRIENDLYNAME_INVALID = exports.Y_FRIENDLYNAME_INVALID = YAPI_INVALID_STRING;
+const Y_LOGICALNAME_INVALID = exports.Y_LOGICALNAME_INVALID = YAPI_INVALID_STRING;
+const Y_ADVERTISEDVALUE_INVALID = exports.Y_ADVERTISEDVALUE_INVALID = YAPI_INVALID_STRING;
 //--- (end of generated code: YFunction definitions)
 
 //--- (generated code: YModule definitions)
-export const Y_PERSISTENTSETTINGS_LOADED     = 0;
-export const Y_PERSISTENTSETTINGS_SAVED      = 1;
-export const Y_PERSISTENTSETTINGS_MODIFIED   = 2;
-export const Y_PERSISTENTSETTINGS_INVALID    = -1;
-export const Y_BEACON_OFF                    = 0;
-export const Y_BEACON_ON                     = 1;
-export const Y_BEACON_INVALID                = -1;
-export const Y_PRODUCTNAME_INVALID           = YAPI_INVALID_STRING;
-export const Y_SERIALNUMBER_INVALID          = YAPI_INVALID_STRING;
-export const Y_PRODUCTID_INVALID             = YAPI_INVALID_UINT;
-export const Y_PRODUCTRELEASE_INVALID        = YAPI_INVALID_UINT;
-export const Y_FIRMWARERELEASE_INVALID       = YAPI_INVALID_STRING;
-export const Y_LUMINOSITY_INVALID            = YAPI_INVALID_UINT;
-export const Y_UPTIME_INVALID                = YAPI_INVALID_LONG;
-export const Y_USBCURRENT_INVALID            = YAPI_INVALID_UINT;
-export const Y_REBOOTCOUNTDOWN_INVALID       = YAPI_INVALID_INT;
-export const Y_USERVAR_INVALID               = YAPI_INVALID_INT;
+const Y_PERSISTENTSETTINGS_LOADED = exports.Y_PERSISTENTSETTINGS_LOADED = 0;
+const Y_PERSISTENTSETTINGS_SAVED = exports.Y_PERSISTENTSETTINGS_SAVED = 1;
+const Y_PERSISTENTSETTINGS_MODIFIED = exports.Y_PERSISTENTSETTINGS_MODIFIED = 2;
+const Y_PERSISTENTSETTINGS_INVALID = exports.Y_PERSISTENTSETTINGS_INVALID = -1;
+const Y_BEACON_OFF = exports.Y_BEACON_OFF = 0;
+const Y_BEACON_ON = exports.Y_BEACON_ON = 1;
+const Y_BEACON_INVALID = exports.Y_BEACON_INVALID = -1;
+const Y_PRODUCTNAME_INVALID = exports.Y_PRODUCTNAME_INVALID = YAPI_INVALID_STRING;
+const Y_SERIALNUMBER_INVALID = exports.Y_SERIALNUMBER_INVALID = YAPI_INVALID_STRING;
+const Y_PRODUCTID_INVALID = exports.Y_PRODUCTID_INVALID = YAPI_INVALID_UINT;
+const Y_PRODUCTRELEASE_INVALID = exports.Y_PRODUCTRELEASE_INVALID = YAPI_INVALID_UINT;
+const Y_FIRMWARERELEASE_INVALID = exports.Y_FIRMWARERELEASE_INVALID = YAPI_INVALID_STRING;
+const Y_LUMINOSITY_INVALID = exports.Y_LUMINOSITY_INVALID = YAPI_INVALID_UINT;
+const Y_UPTIME_INVALID = exports.Y_UPTIME_INVALID = YAPI_INVALID_LONG;
+const Y_USBCURRENT_INVALID = exports.Y_USBCURRENT_INVALID = YAPI_INVALID_UINT;
+const Y_REBOOTCOUNTDOWN_INVALID = exports.Y_REBOOTCOUNTDOWN_INVALID = YAPI_INVALID_INT;
+const Y_USERVAR_INVALID = exports.Y_USERVAR_INVALID = YAPI_INVALID_INT;
 //--- (end of generated code: YModule definitions)
 
 //--- (generated code: YSensor definitions)
-export const Y_UNIT_INVALID                  = YAPI_INVALID_STRING;
-export const Y_CURRENTVALUE_INVALID          = YAPI_INVALID_DOUBLE;
-export const Y_LOWESTVALUE_INVALID           = YAPI_INVALID_DOUBLE;
-export const Y_HIGHESTVALUE_INVALID          = YAPI_INVALID_DOUBLE;
-export const Y_CURRENTRAWVALUE_INVALID       = YAPI_INVALID_DOUBLE;
-export const Y_LOGFREQUENCY_INVALID          = YAPI_INVALID_STRING;
-export const Y_REPORTFREQUENCY_INVALID       = YAPI_INVALID_STRING;
-export const Y_CALIBRATIONPARAM_INVALID      = YAPI_INVALID_STRING;
-export const Y_RESOLUTION_INVALID            = YAPI_INVALID_DOUBLE;
-export const Y_SENSORSTATE_INVALID           = YAPI_INVALID_INT;
+const Y_UNIT_INVALID = exports.Y_UNIT_INVALID = YAPI_INVALID_STRING;
+const Y_CURRENTVALUE_INVALID = exports.Y_CURRENTVALUE_INVALID = YAPI_INVALID_DOUBLE;
+const Y_LOWESTVALUE_INVALID = exports.Y_LOWESTVALUE_INVALID = YAPI_INVALID_DOUBLE;
+const Y_HIGHESTVALUE_INVALID = exports.Y_HIGHESTVALUE_INVALID = YAPI_INVALID_DOUBLE;
+const Y_CURRENTRAWVALUE_INVALID = exports.Y_CURRENTRAWVALUE_INVALID = YAPI_INVALID_DOUBLE;
+const Y_LOGFREQUENCY_INVALID = exports.Y_LOGFREQUENCY_INVALID = YAPI_INVALID_STRING;
+const Y_REPORTFREQUENCY_INVALID = exports.Y_REPORTFREQUENCY_INVALID = YAPI_INVALID_STRING;
+const Y_CALIBRATIONPARAM_INVALID = exports.Y_CALIBRATIONPARAM_INVALID = YAPI_INVALID_STRING;
+const Y_RESOLUTION_INVALID = exports.Y_RESOLUTION_INVALID = YAPI_INVALID_DOUBLE;
+const Y_SENSORSTATE_INVALID = exports.Y_SENSORSTATE_INVALID = YAPI_INVALID_INT;
 //--- (end of generated code: YSensor definitions)
 
-export const Y_DATA_INVALID                  = YAPI_INVALID_DOUBLE;
-export const Y_DURATION_INVALID              = YAPI_INVALID_INT;
+const Y_DATA_INVALID = exports.Y_DATA_INVALID = YAPI_INVALID_DOUBLE;
+const Y_DURATION_INVALID = exports.Y_DURATION_INVALID = YAPI_INVALID_INT;
 
 // yInitAPI constants (not really useful in Javascript, but defined for code portability)
-export const Y_DETECT_NONE          = 0;
-export const Y_DETECT_USB           = 1;
-export const Y_DETECT_NET           = 2;
-export const Y_DETECT_ALL           = (Y_DETECT_USB | Y_DETECT_NET);
+const Y_DETECT_NONE = exports.Y_DETECT_NONE = 0;
+const Y_DETECT_USB = exports.Y_DETECT_USB = 1;
+const Y_DETECT_NET = exports.Y_DETECT_NET = 2;
+const Y_DETECT_ALL = exports.Y_DETECT_ALL = Y_DETECT_USB | Y_DETECT_NET;
 
 // calibration types
-const YOCTO_CALIB_TYPE_OFS          = 30;
+const YOCTO_CALIB_TYPE_OFS = 30;
 
 const NOTIFY_NETPKT_NAME = '0';
 const NOTIFY_NETPKT_CHILD = '2';
@@ -128,39 +156,39 @@ const NOTIFY_NETPKT_TIMEVALYDX = 'x';
 const NOTIFY_NETPKT_FUNCVALYDX = 'y';
 const NOTIFY_NETPKT_TIMEAVGYDX = 'z';
 const NOTIFY_NETPKT_NOT_SYNC = '@';
-const NOTIFY_NETPKT_STOP = 10;      // =\n
+const NOTIFY_NETPKT_STOP = 10; // =\n
 
-const NOTIFY_V2_LEGACY = 0;         // unused (reserved for compatibility with legacy notifications)
-const NOTIFY_V2_6RAWBYTES = 1;      // largest type: data is always 6 bytes
-const NOTIFY_V2_TYPEDDATA = 2;      // other types: first data byte holds the decoding format
-const NOTIFY_V2_FLUSHGROUP = 3;     // no data associated
+const NOTIFY_V2_LEGACY = 0; // unused (reserved for compatibility with legacy notifications)
+const NOTIFY_V2_6RAWBYTES = 1; // largest type: data is always 6 bytes
+const NOTIFY_V2_TYPEDDATA = 2; // other types: first data byte holds the decoding format
+const NOTIFY_V2_FLUSHGROUP = 3; // no data associated
 
-const PUBVAL_LEGACY = 0;            // 0-6 ASCII characters (normally sent as YSTREAM_NOTICE)
-const PUBVAL_1RAWBYTE = 1;          // 1 raw byte  (=2 characters)
-const PUBVAL_2RAWBYTES = 2;         // 2 raw bytes (=4 characters)
-const PUBVAL_3RAWBYTES = 3;         // 3 raw bytes (=6 characters)
-const PUBVAL_4RAWBYTES = 4;         // 4 raw bytes (=8 characters)
-const PUBVAL_5RAWBYTES = 5;         // 5 raw bytes (=10 characters)
-const PUBVAL_6RAWBYTES = 6;         // 6 hex bytes (=12 characters) (sent as V2_6RAWBYTES)
-const PUBVAL_C_LONG = 7;            // 32-bit C signed integer
-const PUBVAL_C_FLOAT = 8;           // 32-bit C float
-const PUBVAL_YOCTO_FLOAT_E3 = 9;    // 32-bit Yocto fixed-point format (e-3)
-const PUBVAL_YOCTO_FLOAT_E6 = 10;   // 32-bit Yocto fixed-point format (e-6)
+const PUBVAL_LEGACY = 0; // 0-6 ASCII characters (normally sent as YSTREAM_NOTICE)
+const PUBVAL_1RAWBYTE = 1; // 1 raw byte  (=2 characters)
+const PUBVAL_2RAWBYTES = 2; // 2 raw bytes (=4 characters)
+const PUBVAL_3RAWBYTES = 3; // 3 raw bytes (=6 characters)
+const PUBVAL_4RAWBYTES = 4; // 4 raw bytes (=8 characters)
+const PUBVAL_5RAWBYTES = 5; // 5 raw bytes (=10 characters)
+const PUBVAL_6RAWBYTES = 6; // 6 hex bytes (=12 characters) (sent as V2_6RAWBYTES)
+const PUBVAL_C_LONG = 7; // 32-bit C signed integer
+const PUBVAL_C_FLOAT = 8; // 32-bit C float
+const PUBVAL_YOCTO_FLOAT_E3 = 9; // 32-bit Yocto fixed-point format (e-3)
+const PUBVAL_YOCTO_FLOAT_E6 = 10; // 32-bit Yocto fixed-point format (e-6)
 
 const YOCTO_PUBVAL_LEN = 16;
 const YOCTO_PUBVAL_SIZE = 6;
 
-const Y_BASETYPES = { Function:0, Sensor:1 };
+const Y_BASETYPES = { Function: 0, Sensor: 1 };
 
-export class YErrorMsg
-{
-    constructor(str_msg = '')
-    {
+class YErrorMsg {
+    constructor() {
+        let str_msg = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
+
         this.msg = str_msg;
     }
 }
 
-//
+exports.YErrorMsg = YErrorMsg; //
 // YFunctionType Class (used internally)
 //
 // Instances of this class stores everything we know about a given type of function:
@@ -170,27 +198,26 @@ export class YErrorMsg
 // mechanism, implemented using the yellow pages, and the storage and retrieval of
 // existing YFunction instances.
 //
-class YFunctionType
-{
-    constructor(obj_yapi, str_classname)
-    { 
+
+class YFunctionType {
+    constructor(obj_yapi, str_classname) {
         // private
         /** @member {YAPIContext} **/
-        this._yapi          = obj_yapi;
+        this._yapi = obj_yapi;
         /** @member {string} **/
-        this._className     = str_classname;
+        this._className = str_classname;
         /** @member {Object} **/
-        this._connectedFns  = {};           // functions requested and available, by Hardware Id
+        this._connectedFns = {}; // functions requested and available, by Hardware Id
         /** @member {Object} **/
-        this._requestedFns  = {};           // functions requested but not yet known, by any type of name
+        this._requestedFns = {}; // functions requested but not yet known, by any type of name
         /** @member {Object} **/
-        this._hwIdByName    = {};           // hash table of function Hardware Id by logical name
+        this._hwIdByName = {}; // hash table of function Hardware Id by logical name
         /** @member {Object} **/
-        this._nameByHwId    = {};           // hash table of function logical name by Hardware Id
+        this._nameByHwId = {}; // hash table of function logical name by Hardware Id
         /** @member {Object} **/
-        this._valueByHwId   = {};           // hash table of function advertised value by logical name
+        this._valueByHwId = {}; // hash table of function advertised value by logical name
         /** @member {number} **/
-        this._baseType      = 0;            // default to no abstract base type (generic YFunction)
+        this._baseType = 0; // default to no abstract base type (generic YFunction)
     }
 
     /** Index a single function given by HardwareId and logical name; store any advertised value
@@ -201,37 +228,35 @@ class YFunctionType
      * @param {number|null} int_basetype
      * @returns {boolean} true iff there was a logical name discrepancy
      */
-    imm_reindexFunction(str_hwid, str_name, str_val, int_basetype)
-    {
+    imm_reindexFunction(str_hwid, str_name, str_val, int_basetype) {
         var currname = this._nameByHwId[str_hwid];
         var res = false;
-        if(currname == undefined || currname == '') {
-            if(str_name != '') {
+        if (currname == undefined || currname == '') {
+            if (str_name != '') {
                 this._nameByHwId[str_hwid] = str_name;
                 res = true;
             }
-        } else if(currname != str_name) {
-            if(this._hwIdByName[currname] == str_hwid)
-                delete this._hwIdByName[currname];
-            if(str_name != '') {
+        } else if (currname != str_name) {
+            if (this._hwIdByName[currname] == str_hwid) delete this._hwIdByName[currname];
+            if (str_name != '') {
                 this._nameByHwId[str_hwid] = str_name;
             } else {
                 delete this._nameByHwId[str_hwid];
             }
             res = true;
         }
-        if(str_name != '') {
+        if (str_name != '') {
             this._hwIdByName[str_name] = str_hwid;
         }
-        if(str_val != undefined) {
+        if (str_val != undefined) {
             this._valueByHwId[str_hwid] = str_val;
         } else {
-            if(this._valueByHwId[str_hwid] == undefined) {
+            if (this._valueByHwId[str_hwid] == undefined) {
                 this._valueByHwId[str_hwid] = '';
             }
         }
-        if(int_basetype != undefined) {
-            if(this._baseType == 0) {
+        if (int_basetype != undefined) {
+            if (this._baseType == 0) {
                 this._baseType = int_basetype;
             }
         }
@@ -242,16 +267,15 @@ class YFunctionType
      *
      * @param {string} str_hwid
      */
-    imm_forgetFunction(str_hwid)
-    {
+    imm_forgetFunction(str_hwid) {
         var currname = this._nameByHwId[str_hwid];
-        if(currname != undefined) {
-            if(currname != '' && this._hwIdByName[currname] == str_hwid) {
+        if (currname != undefined) {
+            if (currname != '' && this._hwIdByName[currname] == str_hwid) {
                 delete this._hwIdByName[currname];
             }
             delete this._nameByHwId[str_hwid];
         }
-        if(this._valueByHwId[str_hwid] != undefined) {
+        if (this._valueByHwId[str_hwid] != undefined) {
             delete this._valueByHwId[str_hwid];
         }
     }
@@ -263,77 +287,77 @@ class YFunctionType
      * @param {string} str_func
      * @return {object}
      */
-    imm_resolve(str_func)
-    {
+    imm_resolve(str_func) {
         var dotpos = str_func.indexOf('.');
         var res;
-        if(dotpos < 0) {
+        if (dotpos < 0) {
             // First case: str_func is the logicalname of a function
             res = this._hwIdByName[str_func];
-            if(res != undefined) {
-                return { errorType:YAPI_SUCCESS,
-                         errorMsg:'no error',
-                         result:String(res) };
+            if (res != undefined) {
+                return { errorType: YAPI_SUCCESS,
+                    errorMsg: 'no error',
+                    result: String(res) };
             }
 
             // fallback to assuming that str_func is a logicalname or serial number of a module
             // with an implicit function name (like serial.module for instance)
             dotpos = str_func.length;
-            str_func += '.'+this._className.substr(0,1).toLowerCase()+this._className.substr(1);
+            str_func += '.' + this._className.substr(0, 1).toLowerCase() + this._className.substr(1);
         }
 
         // Second case: str_func is in the form: device_id.function_id
 
         // quick lookup for a known pure hardware id
-        if(this._valueByHwId[str_func] != undefined) {
-            return { errorType:YAPI_SUCCESS,
-                     errorMsg:'no error',
-                     result:String(str_func) };
+        if (this._valueByHwId[str_func] != undefined) {
+            return { errorType: YAPI_SUCCESS,
+                errorMsg: 'no error',
+                result: String(str_func) };
         }
-        if(dotpos>0) {
+        if (dotpos > 0) {
             // either the device id is a logical name, or the function is unknown
-            var devid = str_func.substr(0,dotpos);
-            var funcid = str_func.substr(dotpos+1);
+            var devid = str_func.substr(0, dotpos);
+            var funcid = str_func.substr(dotpos + 1);
             var dev = this._yapi.imm_getDevice(devid);
-            if(!dev) {
-                return { errorType:YAPI_DEVICE_NOT_FOUND,
-                         errorMsg:'Device ['+devid+'] not online',
-                         result:null };
+            if (!dev) {
+                return { errorType: YAPI_DEVICE_NOT_FOUND,
+                    errorMsg: 'Device [' + devid + '] not online',
+                    result: null };
             }
             var serial = dev.imm_getSerialNumber();
-            res = serial+'.'+funcid;
-            if(this._valueByHwId[res] != undefined) {
-                return { errorType:YAPI_SUCCESS,
-                         errorMsg:'no error',
-                         result:String(res) };
+            res = serial + '.' + funcid;
+            if (this._valueByHwId[res] != undefined) {
+                return { errorType: YAPI_SUCCESS,
+                    errorMsg: 'no error',
+                    result: String(res) };
             }
 
             // not found neither, may be funcid is a function logicalname
-            var i, nfun = dev.imm_functionCount();
-            for(i = 0; i < nfun; i++) {
-                res = serial+'.'+dev.imm_functionId(i);
+            var i,
+                nfun = dev.imm_functionCount();
+            for (i = 0; i < nfun; i++) {
+                res = serial + '.' + dev.imm_functionId(i);
                 var name = this._nameByHwId[res];
-                if(name != undefined && name == funcid) {
-                    return { errorType:YAPI_SUCCESS,
-                             errorMsg:'no error',
-                             result:String(res) };
+                if (name != undefined && name == funcid) {
+                    return { errorType: YAPI_SUCCESS,
+                        errorMsg: 'no error',
+                        result: String(res) };
                 }
             }
         } else {
             funcid = str_func.substr(1);
-            for (var hwid_str in this._connectedFns){
+            for (var hwid_str in this._connectedFns) {
                 var pos = hwid_str.indexOf('.');
-                var str_function = hwid_str.substr(pos+1);
-                if(str_function == funcid) {
-                    return {errorType:YAPI_SUCCESS,
-                             errorMsg:'no error',
-                             result:String(hwid_str)};
+                var str_function = hwid_str.substr(pos + 1);
+                if (str_function == funcid) {
+                    return { errorType: YAPI_SUCCESS,
+                        errorMsg: 'no error',
+                        result: String(hwid_str) };
                 }
             }
         }
-        return { errorType:YAPI_DEVICE_NOT_FOUND,
-                 errorMsg:'No function ['+funcid+'] found on device ['+serial+']',
-                 result:null };
+        return { errorType: YAPI_DEVICE_NOT_FOUND,
+            errorMsg: 'No function [' + funcid + '] found on device [' + serial + ']',
+            result: null };
     }
 
     /** Find the friendly name (use logical name if available) of the specified function, if currently connected
@@ -343,37 +367,36 @@ class YFunctionType
      * @param {string} str_func
      * @return {object}
      */
-    imm_getFriendlyName(str_func)
-    {
+    imm_getFriendlyName(str_func) {
         var resolved = this.imm_resolve(str_func);
         var name;
         if (resolved.errorType != YAPI_SUCCESS) {
             return resolved;
         }
-        if (this._className == 'Module'){
+        if (this._className == 'Module') {
             var friend = resolved.result;
             name = this._nameByHwId[resolved.result];
-            if (name !=undefined && name !=''){
+            if (name != undefined && name != '') {
                 friend = this._nameByHwId[resolved.result];
             }
-            return { errorType:YAPI_SUCCESS,
-                     errorMsg:'no error',
-                     result:String(friend) };
+            return { errorType: YAPI_SUCCESS,
+                errorMsg: 'no error',
+                result: String(friend) };
         } else {
             var pos = resolved.result.indexOf('.');
-            var str_serialMod = resolved.result.substr(0,pos);
-            var str_friendModFull = this._yapi.imm_getFriendlyNameFunction('Module',str_serialMod).result;
+            var str_serialMod = resolved.result.substr(0, pos);
+            var str_friendModFull = this._yapi.imm_getFriendlyNameFunction('Module', str_serialMod).result;
             var int_friendModDot = str_friendModFull.indexOf('.');
-            var str_friendMod = (int_friendModDot > 0 ? str_friendModFull.substr(0,int_friendModDot) : str_friendModFull);
-            var str_friendFunc = resolved.result.substr(pos+1);
+            var str_friendMod = int_friendModDot > 0 ? str_friendModFull.substr(0, int_friendModDot) : str_friendModFull;
+            var str_friendFunc = resolved.result.substr(pos + 1);
             name = this._nameByHwId[resolved.result];
-            if(name != undefined && name!='') {
+            if (name != undefined && name != '') {
                 str_friendFunc = name;
             }
-            return { errorType:YAPI_SUCCESS,
-                     errorMsg:'no error',
-                     result:String(str_friendMod+'.'+str_friendFunc) };
-		}
+            return { errorType: YAPI_SUCCESS,
+                errorMsg: 'no error',
+                result: String(str_friendMod + '.' + str_friendFunc) };
+        }
     }
 
     /** Associates a given function object to a function id
@@ -381,10 +404,9 @@ class YFunctionType
      * @param {string} str_func
      * @param {YFunction} obj_func
      */
-    imm_setFunction(str_func, obj_func)
-    {
+    imm_setFunction(str_func, obj_func) {
         var funres = this.imm_resolve(str_func);
-        if(funres.result != undefined) {
+        if (funres.result != undefined) {
             // the function has been located on a device
             this._connectedFns[funres.result] = obj_func;
         } else {
@@ -398,16 +420,15 @@ class YFunctionType
      * @param {string} str_func
      * @return {YFunction}
      */
-    imm_getFunction(str_func)
-    {
+    imm_getFunction(str_func) {
         var funres = this.imm_resolve(str_func);
-        if(funres.errorType == YAPI_SUCCESS) {
+        if (funres.errorType == YAPI_SUCCESS) {
             // the function has been located on a device
             var conn_fn = this._connectedFns[funres.result];
-            if(conn_fn != undefined) return conn_fn;
+            if (conn_fn != undefined) return conn_fn;
 
             var req_fn = this._requestedFns[str_func];
-            if(req_fn != undefined) {
+            if (req_fn != undefined) {
                 this._connectedFns[funres.result] = req_fn;
                 delete this._requestedFns[str_func];
             }
@@ -424,10 +445,9 @@ class YFunctionType
      * @param {string} str_pubval
      * @return {boolean}
      */
-    imm_setFunctionValue(str_hwid, str_pubval)
-    {
+    imm_setFunctionValue(str_hwid, str_pubval) {
         var currval = this._valueByHwId[str_hwid];
-        if(!(currval == undefined) && currval == str_pubval) {
+        if (!(currval == undefined) && currval == str_pubval) {
             return false;
         }
         this._valueByHwId[str_hwid] = str_pubval;
@@ -439,8 +459,7 @@ class YFunctionType
      * @param {string} str_hwid
      * @return {string}
      */
-    imm_getFunctionValue(str_hwid)
-    {
+    imm_getFunctionValue(str_hwid) {
         return this._valueByHwId[str_hwid];
     }
 
@@ -448,8 +467,7 @@ class YFunctionType
      *
      * @return {string}
      */
-    imm_getBaseType()
-    {
+    imm_getBaseType() {
         return this._baseType;
     }
 
@@ -457,11 +475,10 @@ class YFunctionType
      *
      * @return {string|null}
      */
-    imm_getFirstHardwareId()
-    {
+    imm_getFirstHardwareId() {
         var res = null;
         //noinspection LoopStatementThatDoesntLoopJS
-        for(res in this._valueByHwId) break;
+        for (res in this._valueByHwId) break;
         return res;
     }
 
@@ -470,27 +487,26 @@ class YFunctionType
      * @param {string} str_hwid
      * @return {string|null}
      */
-    imm_getNextHardwareId(str_hwid)
-    {
-        for(var iter_hwid in this._valueByHwId) {
-            if(str_hwid == '!')
-                return iter_hwid;
-            if(str_hwid == iter_hwid)
-                str_hwid = '!';
+    imm_getNextHardwareId(str_hwid) {
+        for (var iter_hwid in this._valueByHwId) {
+            if (str_hwid == '!') return iter_hwid;
+            if (str_hwid == iter_hwid) str_hwid = '!';
         }
         return null; // no more instance found
     }
 }
 
-class YHTTPRequest
-{
+class YHTTPRequest {
     /** Object storing the result of any HTTP Query, with status code and error message
      *
      * @param bin_res {Uint8Array}
      * @param int_errType {number}
      * @param str_errMsg {string}
      */
-    constructor(bin_res, int_errType = YAPI_SUCCESS, str_errMsg = 'no error') {
+    constructor(bin_res) {
+        let int_errType = arguments.length <= 1 || arguments[1] === undefined ? YAPI_SUCCESS : arguments[1];
+        let str_errMsg = arguments.length <= 2 || arguments[2] === undefined ? 'no error' : arguments[2];
+
         /** @member {Uint8Array} **/
         this.bin_result = bin_res;
         /** @member {number} **/
@@ -502,15 +518,17 @@ class YHTTPRequest
     }
 }
 
-class YFuncRequest
-{
+class YFuncRequest {
     /** Object storing the result of a function request, with status code and error message
      *
      * @param obj_res {Object}
      * @param int_errType {number}
      * @param str_errMsg {string}
      */
-    constructor(obj_res, int_errType = YAPI_SUCCESS, str_errMsg = 'no error') {
+    constructor(obj_res) {
+        let int_errType = arguments.length <= 1 || arguments[1] === undefined ? YAPI_SUCCESS : arguments[1];
+        let str_errMsg = arguments.length <= 2 || arguments[2] === undefined ? 'no error' : arguments[2];
+
         /** @member {Object} **/
         this.obj_result = obj_res;
         /** @member {number} **/
@@ -521,37 +539,36 @@ class YFuncRequest
 }
 
 // Pseudo class to describe value parsed from JSON
-class _YY_LoadVal
-{
+class _YY_LoadVal {
     constructor() {
         // hub api
         /** @member {string} **/
         this.serialNumber = '';
         /** @member {string} **/
-        this.logicalName  = '';
+        this.logicalName = '';
         /** @member {string} **/
-        this.productName  = '';
+        this.productName = '';
         /** @member {number} **/
-        this.productId    = 0;
+        this.productId = 0;
         /** @member {number} **/
-        this.beacon       = 0;
+        this.beacon = 0;
         /** @member {Object} **/
-        this.services     = {
-            whitePages: [ { networkUrl: '' }],
-            yellowPages: [ ]
+        this.services = {
+            whitePages: [{ networkUrl: '' }],
+            yellowPages: []
         };
         // datalogger
         /** @member {string} **/
-        this.calib        = '';
+        this.calib = '';
         /** @member {string} **/
-        this.unit         = '';
+        this.unit = '';
         /** @member {string} **/
-        this.cal          = '';
+        this.cal = '';
         /** @member {string[]} **/
-        this.streams      = [];
+        this.streams = [];
         // node.js ServerResponse
         /** @member {number} **/
-        this.statusCode   = 0;
+        this.statusCode = 0;
     }
 }
 
@@ -569,51 +586,49 @@ class _YY_LoadVal
 // this class implements a device-wide API string cache (agnostic of API content).
 // This is in addition to the function-specific cache implemented in YFunction.
 //
-class YDevice
-{
+class YDevice {
     // Device constructor. Automatically call the YAPI functin to reindex device
-    constructor(obj_yapi, str_rooturl, obj_wpRec, obj_ypRecs)
-    {
+    constructor(obj_yapi, str_rooturl, obj_wpRec, obj_ypRecs) {
         // private attributes
         /** @member {YAPIContext} **/
-        this._yapi            = obj_yapi;
+        this._yapi = obj_yapi;
         /** @member {string} **/
-        this._rootUrl         = str_rooturl;
+        this._rootUrl = str_rooturl;
         /** @member {string} **/
-        this._serialNumber    = '';
+        this._serialNumber = '';
         /** @member {string} **/
-        this._logicalName     = '';
+        this._logicalName = '';
         /** @member {string} **/
-        this._productName     = '';
+        this._productName = '';
         /** @member {number} **/
-        this._productId       = 0;
+        this._productId = 0;
         /** @member {number} **/
-        this._beacon          = 0;
+        this._beacon = 0;
         /** @member {number} **/
-        this._devYdx          = -1;
+        this._devYdx = -1;
         /** @member {number} **/
-        this._lastErrorType   = YAPI_SUCCESS;
+        this._lastErrorType = YAPI_SUCCESS;
         /** @member {string} **/
-        this._lastErrorMsg    = 'no error';
+        this._lastErrorMsg = 'no error';
         /** @member {Object} **/
-        this._cache           = { _expiration:0, _json:new Uint8Array(0) };
+        this._cache = { _expiration: 0, _json: new Uint8Array(0) };
         /** @member {string[][]} **/
-        this._functions       = [];
+        this._functions = [];
         /** @member {number} **/
-        this._busy            = 0;
+        this._busy = 0;
         /** @member {Promise} **/
-        this._pendingQueries  = Promise.resolve();
+        this._pendingQueries = Promise.resolve();
         /** @member {number} **/
-        this._deviceTime      = 0;
+        this._deviceTime = 0;
 
-        if(obj_wpRec != undefined) {
+        if (obj_wpRec != undefined) {
             // preload values from white pages, if provided
             this._serialNumber = obj_wpRec.serialNumber;
-            this._logicalName  = obj_wpRec.logicalName;
-            this._productName  = obj_wpRec.productName;
-            this._productId    = obj_wpRec.productId;
-            this._beacon       = obj_wpRec.beacon;
-            this._devYdx       = (obj_wpRec.index == undefined ? -1 : obj_wpRec.index);
+            this._logicalName = obj_wpRec.logicalName;
+            this._productName = obj_wpRec.productName;
+            this._productId = obj_wpRec.productId;
+            this._beacon = obj_wpRec.beacon;
+            this._devYdx = obj_wpRec.index == undefined ? -1 : obj_wpRec.index;
             this.imm_updateFromYP(obj_ypRecs);
             this._yapi.imm_reindexDevice(this);
         }
@@ -621,8 +636,7 @@ class YDevice
         // call async method refresh()
     }
 
-    _throw(int_errType, str_errMsg, obj_retVal)
-    {
+    _throw(int_errType, str_errMsg, obj_retVal) {
         this._lastErrorType = int_errType;
         this._lastErrorMsg = str_errMsg;
         this._yapi._throw(int_errType, str_errMsg, obj_retVal);
@@ -632,8 +646,7 @@ class YDevice
      *
      * @returns {string}
      */
-    imm_getRootUrl()
-    {
+    imm_getRootUrl() {
         return this._rootUrl;
     }
 
@@ -641,8 +654,7 @@ class YDevice
      *
      * @returns {string}
      */
-    imm_getSerialNumber()
-    {
+    imm_getSerialNumber() {
         return this._serialNumber;
     }
 
@@ -650,8 +662,7 @@ class YDevice
      *
      * @returns {string}
      */
-    imm_getLogicalName()
-    {
+    imm_getLogicalName() {
         return this._logicalName;
     }
 
@@ -659,8 +670,7 @@ class YDevice
      *
      * @returns {string}
      */
-    imm_getProductName()
-    {
+    imm_getProductName() {
         return this._productName;
     }
 
@@ -668,8 +678,7 @@ class YDevice
      *
      * @returns {number}
      */
-    imm_getProductId()
-    {
+    imm_getProductId() {
         return this._productId;
     }
 
@@ -677,14 +686,12 @@ class YDevice
      *
      * @returns {number}
      */
-    imm_getBeacon()
-    {
+    imm_getBeacon() {
         return this._beacon;
     }
 
     // Return the value of the last timestamp sent by the device, if any
-    imm_getDeviceTime()
-    {
+    imm_getDeviceTime() {
         return this._deviceTime;
     }
 
@@ -692,8 +699,7 @@ class YDevice
      *
      * @param float_timestamp {number}
      */
-    imm_setDeviceTime(float_timestamp)
-    {
+    imm_setDeviceTime(float_timestamp) {
         this._deviceTime = float_timestamp;
     }
 
@@ -701,8 +707,7 @@ class YDevice
      *
      * @returns {number}
      */
-    imm_getDevYdx()
-    {
+    imm_getDevYdx() {
         return this._devYdx;
     }
 
@@ -710,34 +715,32 @@ class YDevice
      *
      * @returns {string}
      */
-    imm_describe()
-    {
+    imm_describe() {
         var res = this._rootUrl;
-        if(this._serialNumber != '') {
+        if (this._serialNumber != '') {
             res = this._serialNumber;
-            if(this._logicalName != '') {
+            if (this._logicalName != '') {
                 res = res + ' (' + this._logicalName + ')';
             }
         }
-        return this._productName+' '+res;
+        return this._productName + ' ' + res;
     }
 
     /** Update device cache and YAPI function lists from yp records
      *
      * @param obj_ypRecs {Object}
      */
-    imm_updateFromYP(obj_ypRecs)
-    {
+    imm_updateFromYP(obj_ypRecs) {
         var funidx = 0;
-        for(var categ in obj_ypRecs) {
-            for(var key in obj_ypRecs[categ]) {
+        for (var categ in obj_ypRecs) {
+            for (var key in obj_ypRecs[categ]) {
                 var rec = obj_ypRecs[categ][key];
                 var hwid = rec['hardwareId'];
                 var dotpos = hwid.indexOf('.');
-                if(hwid.substr(0,dotpos) == this._serialNumber) {
+                if (hwid.substr(0, dotpos) == this._serialNumber) {
                     var funydx = rec['index'];
-                    if(funydx == undefined) funydx = funidx;
-                    this._functions[funydx] = [hwid.substr(dotpos+1), rec['logicalName']];
+                    if (funydx == undefined) funydx = funidx;
+                    this._functions[funydx] = [hwid.substr(dotpos + 1), rec['logicalName']];
                     funidx++;
                 }
             }
@@ -749,23 +752,22 @@ class YDevice
      * @param yreq {YHTTPRequest}
      * @param loadval {Object}
      */
-    imm_updateFromReq(yreq, loadval)
-    {
+    imm_updateFromReq(yreq, loadval) {
         this._cache._expiration = this._yapi.GetTickCount() + this._yapi.defaultCacheValidity;
         this._cache._json = yreq.bin_result;
 
         var func;
         var reindex = false;
-        if(this._productName == '') {
+        if (this._productName == '') {
             // parse module and function names for the first time
-            for(func in loadval) {
-                if(func == 'module') {
+            for (func in loadval) {
+                if (func == 'module') {
                     this._serialNumber = loadval.module.serialNumber;
-                    this._logicalName  = loadval.module.logicalName;
-                    this._productName  = loadval.module.productName;
-                    this._productId    = loadval.module.productId;
-                    this._beacon       = loadval.module.beacon;
-                } else if(func == 'services') {
+                    this._logicalName = loadval.module.logicalName;
+                    this._productName = loadval.module.productName;
+                    this._productId = loadval.module.productId;
+                    this._beacon = loadval.module.beacon;
+                } else if (func == 'services') {
                     this.imm_updateFromYP(loadval.services.yellowPages);
                 }
             }
@@ -773,24 +775,24 @@ class YDevice
         } else {
             // parse module and refresh names if needed
             var renamed = false;
-            for(func in loadval) {
-                if(func == 'module') {
-                    if(this._logicalName != loadval.module.logicalName) {
+            for (func in loadval) {
+                if (func == 'module') {
+                    if (this._logicalName != loadval.module.logicalName) {
                         this._logicalName = loadval.module.logicalName;
                         reindex = true;
                     }
                     this._beacon = loadval.module.beacon;
-                } else if(func != 'services') {
+                } else if (func != 'services') {
                     var name = loadval[func]['logicalName'];
-                    if(name == undefined) name = loadval.module.logicalName;
+                    if (name == undefined) name = loadval.module.logicalName;
                     var pubval = loadval[func]['advertisedValue'];
-                    if(pubval != undefined) {
-                        this._yapi.imm_setFunctionValue(loadval.module.serialNumber+'.'+func, pubval);
+                    if (pubval != undefined) {
+                        this._yapi.imm_setFunctionValue(loadval.module.serialNumber + '.' + func, pubval);
                     }
                     var funydx;
-                    for(funydx in this._functions) {
-                        if(this._functions[funydx][0] == func) {
-                            if(this._functions[funydx][1] != name) {
+                    for (funydx in this._functions) {
+                        if (this._functions[funydx][0] == func) {
+                            if (this._functions[funydx][1] != name) {
                                 this._functions[funydx][1] = name;
                                 reindex = true;
                             }
@@ -800,14 +802,13 @@ class YDevice
                 }
             }
         }
-        if(reindex) {
+        if (reindex) {
             this._yapi.imm_reindexDevice(this);
         }
     }
 
     // Force the REST API string in cache to expire immediately
-    imm_dropCache()
-    {
+    imm_dropCache() {
         this._cache._expiration = 0;
     }
 
@@ -815,8 +816,7 @@ class YDevice
      *
      * @returns {Number}
      */
-    imm_functionCount()
-    {
+    imm_functionCount() {
         return this._functions.length;
     }
 
@@ -825,9 +825,8 @@ class YDevice
      * @param int_idx {number}
      * @returns {string}
      */
-    imm_functionId(int_idx)
-    {
-        if(int_idx < this._functions.length) {
+    imm_functionId(int_idx) {
+        if (int_idx < this._functions.length) {
             return this._functions[int_idx][0];
         }
         return '';
@@ -838,12 +837,11 @@ class YDevice
      * @param int_idx {number}
      * @returns {string}
      */
-    imm_functionBaseType(int_idx)
-    {
-        if(int_idx < this._functions.length) {
-            var ftype = this._yapi.imm_getFunctionBaseType(this._serialNumber+'.'+this._functions[int_idx][0]);
+    imm_functionBaseType(int_idx) {
+        if (int_idx < this._functions.length) {
+            var ftype = this._yapi.imm_getFunctionBaseType(this._serialNumber + '.' + this._functions[int_idx][0]);
             for (var name in Y_BASETYPES) {
-                if (Y_BASETYPES[name] == ftype){
+                if (Y_BASETYPES[name] == ftype) {
                     return name;
                 }
             }
@@ -856,9 +854,8 @@ class YDevice
      * @param int_idx {number}
      * @returns {string}
      */
-    imm_functionType(int_idx)
-    {
-        if(int_idx < this._functions.length) {
+    imm_functionType(int_idx) {
+        if (int_idx < this._functions.length) {
             var funid = this._functions[int_idx][0];
             var i;
             for (i = 0; i < funid.length; i++) {
@@ -876,9 +873,8 @@ class YDevice
      * @param int_idx {number}
      * @returns {string}
      */
-    imm_functionName(int_idx)
-    {
-        if(int_idx < this._functions.length) {
+    imm_functionName(int_idx) {
+        if (int_idx < this._functions.length) {
             return this._functions[int_idx][1];
         }
         return '';
@@ -889,10 +885,9 @@ class YDevice
      * @param int_idx {number}
      * @returns {string}
      */
-    imm_functionValue(int_idx)
-    {
-        if(int_idx < this._functions.length) {
-            return this._yapi.imm_getFunctionValue(this._serialNumber+'.'+this._functions[int_idx][0]);
+    imm_functionValue(int_idx) {
+        if (int_idx < this._functions.length) {
+            return this._yapi.imm_getFunctionValue(this._serialNumber + '.' + this._functions[int_idx][0]);
         }
         return '';
     }
@@ -902,45 +897,51 @@ class YDevice
      * @param int_msValidity {number}
      * @returns {YHTTPRequest}
      */
-    async requestAPI(int_msValidity)
-    {
-        if(this._cache._expiration > this._yapi.GetTickCount()) {
-            return new YHTTPRequest(this._cache._json);
-        }
-        /** @type {YHTTPRequest} **/
-        let yreq = await this._yapi.devRequest(this._rootUrl, 'GET /api.json');
-        if(yreq.errorType != YAPI_SUCCESS) return yreq;
-        if(!int_msValidity) {
-            int_msValidity = this._yapi.defaultCacheValidity;
-        }
-        this._cache._expiration = this._yapi.GetTickCount() + int_msValidity;
-        this._cache._json = yreq.bin_result;
-        return yreq;
+    requestAPI(int_msValidity) {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this._cache._expiration > _this._yapi.GetTickCount()) {
+                return new YHTTPRequest(_this._cache._json);
+            }
+            /** @type {YHTTPRequest} **/
+            let yreq = yield _this._yapi.devRequest(_this._rootUrl, 'GET /api.json');
+            if (yreq.errorType != YAPI_SUCCESS) return yreq;
+            if (!int_msValidity) {
+                int_msValidity = _this._yapi.defaultCacheValidity;
+            }
+            _this._cache._expiration = _this._yapi.GetTickCount() + int_msValidity;
+            _this._cache._json = yreq.bin_result;
+            return yreq;
+        })();
     }
 
     /** Reload a device API (store in cache), and update YAPI function lists accordingly
      *
      * @returns {number}
      */
-    async refresh()
-    {
-        /** @type {YHTTPRequest} **/
-        let yreq = await this.requestAPI(this._yapi.defaultCacheValidity);
-        if(yreq.errorType != YAPI_SUCCESS) {
-            return this._throw(yreq.errorType, yreq.errorMsg, yreq.errorType);
-        }
+    refresh() {
+        var _this2 = this;
 
-        let loadval = null;
-        try {loadval = JSON.parse(this._yapi.imm_bin2str(yreq.bin_result));} catch(err){}
-        if(!loadval) {
-            return this._throw(YAPI_IO_ERROR, 'Request failed, could not parse API result for '+this._rootUrl,
-                               YAPI_IO_ERROR);
-        }
-        this.imm_updateFromReq(yreq, loadval);
-        return YAPI_SUCCESS;
+        return _asyncToGenerator(function* () {
+            /** @type {YHTTPRequest} **/
+            let yreq = yield _this2.requestAPI(_this2._yapi.defaultCacheValidity);
+            if (yreq.errorType != YAPI_SUCCESS) {
+                return _this2._throw(yreq.errorType, yreq.errorMsg, yreq.errorType);
+            }
+
+            let loadval = null;
+            try {
+                loadval = JSON.parse(_this2._yapi.imm_bin2str(yreq.bin_result));
+            } catch (err) {}
+            if (!loadval) {
+                return _this2._throw(YAPI_IO_ERROR, 'Request failed, could not parse API result for ' + _this2._rootUrl, YAPI_IO_ERROR);
+            }
+            _this2.imm_updateFromReq(yreq, loadval);
+            return YAPI_SUCCESS;
+        })();
     }
 }
-
 
 //--- (generated code: YFirmwareUpdate definitions)
 //--- (end of generated code: YFirmwareUpdate definitions)
@@ -954,40 +955,41 @@ class YDevice
  * updateFirmware should be called to get an instance of YFirmwareUpdate.
  */
 //--- (end of generated code: YFirmwareUpdate class start)
-class YFirmwareUpdate
-{
-    constructor(obj_yapi, str_serial, str_path, bin_settings)
-    {
+class YFirmwareUpdate {
+    constructor(obj_yapi, str_serial, str_path, bin_settings) {
         /** @member {YAPIContext} **/
-        this._yapi                       = obj_yapi;
+        this._yapi = obj_yapi;
         //--- (generated code: YFirmwareUpdate constructor)
         /** @member {string} **/
-        this._serial                     = '';
+        this._serial = '';
         /** @member {Uint8Array} **/
-        this._settings                   = new Uint8Array(0);
+        this._settings = new Uint8Array(0);
         /** @member {string} **/
-        this._firmwarepath               = '';
+        this._firmwarepath = '';
         /** @member {string} **/
-        this._progress_msg               = '';
+        this._progress_msg = '';
         /** @member {number} **/
-        this._progress_c                 = 0;
+        this._progress_c = 0;
         /** @member {number} **/
-        this._progress                   = 0;
+        this._progress = 0;
         /** @member {number} **/
-        this._restore_step               = 0;
+        this._restore_step = 0;
         //--- (end of generated code: YFirmwareUpdate constructor)
         /** @member {string} **/
-        this._serial                     = str_serial;
+        this._serial = str_serial;
         /** @member {Uint8Array} **/
-        this._settings                   = bin_settings;
+        this._settings = bin_settings;
         /** @member {string} **/
-        this._firmwarepath               = str_path;
+        this._firmwarepath = str_path;
     }
 
-    async _processMore(i)
-    {
-        this._progress = -1;
-        this._progress_msg = 'not supported in JS';
+    _processMore(i) {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            _this3._progress = -1;
+            _this3._progress_msg = 'not supported in JS';
+        })();
     }
 
     /**
@@ -1003,16 +1005,18 @@ class YFirmwareUpdate
      *
      * On failure, returns a string that start with "error:".
      */
-    static async CheckFirmware(serial,path,minrelease)
-    {
-        // FIXME: to be implemented
-        return  'error: Not yet supported in Javascript';
+    static CheckFirmware(serial, path, minrelease) {
+        return _asyncToGenerator(function* () {
+            // FIXME: to be implemented
+            return 'error: Not yet supported in Javascript';
+        })();
     }
 
-    static async GetAllBootLoaders()
-    {
-        // FIXME: to be implemented
-        return [];
+    static GetAllBootLoaders() {
+        return _asyncToGenerator(function* () {
+            // FIXME: to be implemented
+            return [];
+        })();
     }
 
     //--- (generated code: YFirmwareUpdate implementation)
@@ -1039,12 +1043,15 @@ class YFirmwareUpdate
      * @return {number} an integer in the range 0 to 100 (percentage of completion)
      *         or a negative error code in case of failure.
      */
-    async get_progress()
-    {
-        if (this._progress >= 0) {
-            await this._processMore(0);
-        }
-        return this._progress;
+    get_progress() {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this4._progress >= 0) {
+                yield _this4._processMore(0);
+            }
+            return _this4._progress;
+        })();
     }
 
     /**
@@ -1053,9 +1060,12 @@ class YFirmwareUpdate
      *
      * @return {string} a string  with the latest progress message, or the error message.
      */
-    async get_progressMessage()
-    {
-        return this._progress_msg;
+    get_progressMessage() {
+        var _this5 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this5._progress_msg;
+        })();
     }
 
     /**
@@ -1068,23 +1078,26 @@ class YFirmwareUpdate
      *
      * On failure returns a negative error code.
      */
-    async startUpdate()
-    {
-        /** @type {string} **/
-        let err;
-        /** @type {number} **/
-        let leng;
-        err = this._yapi.imm_bin2str(this._settings);
-        leng = (err).length;
-        if (( leng >= 6) && ('error:' == (err).substr(0, 6))) {
-            this._progress = -1;
-            this._progress_msg = (err).substr( 6, leng - 6);
-        } else {
-            this._progress = 0;
-            this._progress_c = 0;
-            await this._processMore(1);
-        }
-        return this._progress;
+    startUpdate() {
+        var _this6 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let err;
+            /** @type {number} **/
+            let leng;
+            err = _this6._yapi.imm_bin2str(_this6._settings);
+            leng = err.length;
+            if (leng >= 6 && 'error:' == err.substr(0, 6)) {
+                _this6._progress = -1;
+                _this6._progress_msg = err.substr(6, leng - 6);
+            } else {
+                _this6._progress = 0;
+                _this6._progress_c = 0;
+                yield _this6._processMore(1);
+            }
+            return _this6._progress;
+        })();
     }
 
     //--- (end of generated code: YFirmwareUpdate implementation)
@@ -1108,67 +1121,63 @@ class YFirmwareUpdate
  * the specified function, pre-parsed from the REST API string.
  */
 //--- (end of generated code: YFunction class start)
-export class YFunction
-{
-    constructor(obj_yapi, str_func)
-    {
+class YFunction {
+    constructor(obj_yapi, str_func) {
         // private
         /** @member {YAPIContext} **/
-        this._yapi                       = obj_yapi;
+        this._yapi = obj_yapi;
         /** @member {string} **/
-        this._className                  = 'Function';
+        this._className = 'Function';
         /** @member {string} **/
-        this._func                       = str_func;
+        this._func = str_func;
         /** @member {number} **/
-        this._lastErrorType              = YAPI_SUCCESS;
+        this._lastErrorType = YAPI_SUCCESS;
         /** @member {string} **/
-        this._lastErrorMsg               = 'no error';
+        this._lastErrorMsg = 'no error';
         /** @member {Object} **/
-        this._dataStreams                = {};
+        this._dataStreams = {};
         /** @member {Object} **/
-        this._userData                   = null;
+        this._userData = null;
         /** @member {Object} **/
-        this._cache                      = {_expiration:0};
+        this._cache = { _expiration: 0 };
         //--- (generated code: YFunction constructor)
         /** @member {string} **/
-        this._logicalName                = Y_LOGICALNAME_INVALID;
+        this._logicalName = Y_LOGICALNAME_INVALID;
         /** @member {string} **/
-        this._advertisedValue            = Y_ADVERTISEDVALUE_INVALID;
+        this._advertisedValue = Y_ADVERTISEDVALUE_INVALID;
         /** @member {function} **/
-        this._valueCallbackFunction      = null;
+        this._valueCallbackFunction = null;
         /** @member {number} **/
-        this._cacheExpiration            = 0;
+        this._cacheExpiration = 0;
         /** @member {string} **/
-        this._serial                     = '';
+        this._serial = '';
         /** @member {string} **/
-        this._funId                      = '';
+        this._funId = '';
         /** @member {string} **/
-        this._hwId                       = '';
+        this._hwId = '';
         /** @member {string} **/
-        this.FUNCTIONDESCRIPTOR_INVALID  = YAPI_INVALID_STRING;
+        this.FUNCTIONDESCRIPTOR_INVALID = YAPI_INVALID_STRING;
         /** @member {string} **/
-        this.HARDWAREID_INVALID          = YAPI_INVALID_STRING;
+        this.HARDWAREID_INVALID = YAPI_INVALID_STRING;
         /** @member {string} **/
-        this.FUNCTIONID_INVALID          = YAPI_INVALID_STRING;
+        this.FUNCTIONID_INVALID = YAPI_INVALID_STRING;
         /** @member {string} **/
-        this.FRIENDLYNAME_INVALID        = YAPI_INVALID_STRING;
+        this.FRIENDLYNAME_INVALID = YAPI_INVALID_STRING;
         /** @member {string} **/
-        this.LOGICALNAME_INVALID         = YAPI_INVALID_STRING;
+        this.LOGICALNAME_INVALID = YAPI_INVALID_STRING;
         /** @member {string} **/
-        this.ADVERTISEDVALUE_INVALID     = YAPI_INVALID_STRING;
+        this.ADVERTISEDVALUE_INVALID = YAPI_INVALID_STRING;
         //--- (end of generated code: YFunction constructor)
     }
 
-    _throw(int_errType, str_errMsg, obj_retVal)
-    {
+    _throw(int_errType, str_errMsg, obj_retVal) {
         this._lastErrorType = int_errType;
         this._lastErrorMsg = str_errMsg;
         this._yapi._throw(int_errType, str_errMsg, obj_retVal);
     }
 
-    imm_setConst(obj)
-    {
-        for(let key in obj) {
+    imm_setConst(obj) {
+        for (let key in obj) {
             this[key] = obj[key];
             this.constructor[key] = obj[key];
         }
@@ -1176,18 +1185,17 @@ export class YFunction
 
     //--- (generated code: YFunction implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case '_expiration':
-            this._cacheExpiration = val;
-            return 1;
-        case 'logicalName':
-            this._logicalName = val;
-            return 1;
-        case 'advertisedValue':
-            this._advertisedValue = val;
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case '_expiration':
+                this._cacheExpiration = val;
+                return 1;
+            case 'logicalName':
+                this._logicalName = val;
+                return 1;
+            case 'advertisedValue':
+                this._advertisedValue = val;
+                return 1;
         }
         return 0;
     }
@@ -1199,14 +1207,17 @@ export class YFunction
      *
      * On failure, throws an exception or returns YFunction.LOGICALNAME_INVALID.
      */
-    async get_logicalName()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
-                return Y_LOGICALNAME_INVALID;
+    get_logicalName() {
+        var _this7 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this7._cacheExpiration <= _this7._yapi.GetTickCount()) {
+                if ((yield _this7.load(_this7._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return Y_LOGICALNAME_INVALID;
+                }
             }
-        }
-        return this._logicalName;
+            return _this7._logicalName;
+        })();
     }
 
     /**
@@ -1221,15 +1232,18 @@ export class YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_logicalName(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        if (!this._yapi.CheckLogicalName(newval)) {
-            return this._throw(this._yapi.INVALID_ARGUMENT, 'Invalid name :' + newval, this._yapi.INVALID_ARGUMENT);
-        }
-        rest_val = newval;
-        return await this._setAttr('logicalName',rest_val);
+    set_logicalName(newval) {
+        var _this8 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            if (!_this8._yapi.CheckLogicalName(newval)) {
+                return _this8._throw(_this8._yapi.INVALID_ARGUMENT, 'Invalid name :' + newval, _this8._yapi.INVALID_ARGUMENT);
+            }
+            rest_val = newval;
+            return yield _this8._setAttr('logicalName', rest_val);
+        })();
     }
 
     /**
@@ -1239,22 +1253,28 @@ export class YFunction
      *
      * On failure, throws an exception or returns YFunction.ADVERTISEDVALUE_INVALID.
      */
-    async get_advertisedValue()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
-                return Y_ADVERTISEDVALUE_INVALID;
+    get_advertisedValue() {
+        var _this9 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this9._cacheExpiration <= _this9._yapi.GetTickCount()) {
+                if ((yield _this9.load(_this9._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return Y_ADVERTISEDVALUE_INVALID;
+                }
             }
-        }
-        return this._advertisedValue;
+            return _this9._advertisedValue;
+        })();
     }
 
-    async set_advertisedValue(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('advertisedValue',rest_val);
+    set_advertisedValue(newval) {
+        var _this10 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this10._setAttr('advertisedValue', rest_val);
+        })();
     }
 
     /**
@@ -1280,14 +1300,13 @@ export class YFunction
      *
      * @return {YFunction} a YFunction object allowing you to drive the function.
      */
-    static FindFunction(func)
-    {
+    static FindFunction(func) {
         /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCache('Function', func);
         if (obj == null) {
             obj = new YFunction(YAPI, func);
-            YFunction._AddToCache('Function',  func, obj);
+            YFunction._AddToCache('Function', func, obj);
         }
         return obj;
     }
@@ -1316,14 +1335,13 @@ export class YFunction
      *
      * @return {YFunction} a YFunction object allowing you to drive the function.
      */
-    static FindFunctionInContext(yctx,func)
-    {
+    static FindFunctionInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'Function', func);
+        obj = YFunction._FindFromCacheInContext(yctx, 'Function', func);
         if (obj == null) {
             obj = new YFunction(yctx, func);
-            YFunction._AddToCache('Function',  func, obj);
+            YFunction._AddToCache('Function', func, obj);
         }
         return obj;
     }
@@ -1340,33 +1358,38 @@ export class YFunction
      *         the new advertised value.
      * @noreturn
      */
-    async registerValueCallback(callback)
-    {
-        /** @type {string} **/
-        let val;
-        if (callback != null) {
-            await YFunction._UpdateValueCallbackList(this, true);
-        } else {
-            await YFunction._UpdateValueCallbackList(this, false);
-        }
-        this._valueCallbackFunction = callback;
-        // Immediately invoke value callback with current value
-        if (callback != null && await this.isOnline()) {
-            val = this._advertisedValue;
-            if (!(val == '')) {
-                await this._invokeValueCallback(val);
+    registerValueCallback(callback) {
+        var _this11 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let val;
+            if (callback != null) {
+                yield YFunction._UpdateValueCallbackList(_this11, true);
+            } else {
+                yield YFunction._UpdateValueCallbackList(_this11, false);
             }
-        }
-        return 0;
+            _this11._valueCallbackFunction = callback;
+            // Immediately invoke value callback with current value
+            if (callback != null && (yield _this11.isOnline())) {
+                val = _this11._advertisedValue;
+                if (!(val == '')) {
+                    yield _this11._invokeValueCallback(val);
+                }
+            }
+            return 0;
+        })();
     }
 
-    async _invokeValueCallback(value)
-    {
-        if (this._valueCallbackFunction != null) {
-            await this._valueCallbackFunction(this, value);
-        } else {
-        }
-        return 0;
+    _invokeValueCallback(value) {
+        var _this12 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this12._valueCallbackFunction != null) {
+                yield _this12._valueCallbackFunction(_this12, value);
+            } else {}
+            return 0;
+        })();
     }
 
     /**
@@ -1380,9 +1403,12 @@ export class YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async muteValueCallbacks()
-    {
-        return await this.set_advertisedValue('SILENT');
+    muteValueCallbacks() {
+        var _this13 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this13.set_advertisedValue('SILENT');
+        })();
     }
 
     /**
@@ -1395,14 +1421,18 @@ export class YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async unmuteValueCallbacks()
-    {
-        return await this.set_advertisedValue('');
+    unmuteValueCallbacks() {
+        var _this14 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this14.set_advertisedValue('');
+        })();
     }
 
-    async _parserHelper()
-    {
-        return 0;
+    _parserHelper() {
+        return _asyncToGenerator(function* () {
+            return 0;
+        })();
     }
 
     /**
@@ -1410,14 +1440,13 @@ export class YFunction
      *
      * @returns {YFunction}
      */
-    nextFunction()
-    {
+    nextFunction() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YFunction.FindFunctionInContext(this._yapi, next_hwid);
     }
 
@@ -1426,11 +1455,10 @@ export class YFunction
      *
      * @returns {YFunction}
      */
-    static FirstFunction()
-    {
+    static FirstFunction() {
         /** @type {string|null} **/
         let next_hwid = YAPI.imm_getFirstHardwareId('Function');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YFunction.FindFunction(next_hwid);
     }
 
@@ -1441,11 +1469,10 @@ export class YFunction
      *
      * @returns {YFunction}
      */
-    static FirstFunctionInContext(yctx)
-    {
+    static FirstFunctionInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('Function');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YFunction.FindFunctionInContext(yctx, next_hwid);
     }
 
@@ -1458,8 +1485,7 @@ export class YFunction
      * @param func {string}
      * @returns {YFunction}
      */
-    static _FindFromCacheInContext(yctx, className, func)
-    {
+    static _FindFromCacheInContext(yctx, className, func) {
         return yctx.imm_getFunction(className, func);
     }
 
@@ -1469,8 +1495,7 @@ export class YFunction
      * @param func {string}
      * @returns {YFunction}
      */
-    static _FindFromCache(className, func)
-    {
+    static _FindFromCache(className, func) {
         return YAPI.imm_getFunction(className, func);
     }
 
@@ -1480,8 +1505,7 @@ export class YFunction
      * @param func {string}
      * @param obj {YFunction}
      */
-    static _AddToCache(className, func, obj)
-    {
+    static _AddToCache(className, func, obj) {
         obj._yapi.imm_setFunction(className, func, obj);
     }
 
@@ -1489,8 +1513,9 @@ export class YFunction
      *
      * @param obj_yapi {YAPIContext}
      */
-    static _ClearCache(obj_yapi = YAPI)
-    {
+    static _ClearCache() {
+        let obj_yapi = arguments.length <= 0 || arguments[0] === undefined ? YAPI : arguments[0];
+
         obj_yapi.imm_init();
     }
 
@@ -1499,9 +1524,10 @@ export class YFunction
      * @param obj_func {YFunction}
      * @param bool_add {Boolean}
      */
-    static async _UpdateValueCallbackList(obj_func, bool_add)
-    {
-        await obj_func._yapi._UpdateValueCallbackList(obj_func, bool_add);
+    static _UpdateValueCallbackList(obj_func, bool_add) {
+        return _asyncToGenerator(function* () {
+            yield obj_func._yapi._UpdateValueCallbackList(obj_func, bool_add);
+        })();
     }
 
     /** Add or remove a timed report callback
@@ -1509,9 +1535,10 @@ export class YFunction
      * @param obj_func {YFunction}
      * @param bool_add {Boolean}
      */
-    static async _UpdateTimedReportCallbackList(obj_func, bool_add)
-    {
-        await obj_func._yapi._UpdateTimedReportCallbackList(obj_func, bool_add);
+    static _UpdateTimedReportCallbackList(obj_func, bool_add) {
+        return _asyncToGenerator(function* () {
+            yield obj_func._yapi._UpdateTimedReportCallbackList(obj_func, bool_add);
+        })();
     }
 
     /**
@@ -1530,16 +1557,19 @@ export class YFunction
      * @return {string} a string that describes the function
      *         (ex: Relay(MyCustomName.relay1)=RELAYLO1-123456.relay1)
      */
-    async describe()
-    {
-        if(this._hwId != '') {
-            return this._className+'('+this._func+')='+this._hwId;
-        }
-        var resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS && resolve.result != this._func) {
-            return this._className+'('+this._func+')=unresolved';
-        }
-        return this._className+'('+this._func+')='+resolve.result;
+    describe() {
+        var _this15 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this15._hwId != '') {
+                return _this15._className + '(' + _this15._func + ')=' + _this15._hwId;
+            }
+            var resolve = _this15._yapi.imm_resolveFunction(_this15._className, _this15._func);
+            if (resolve.errorType != YAPI_SUCCESS && resolve.result != _this15._func) {
+                return _this15._className + '(' + _this15._func + ')=unresolved';
+            }
+            return _this15._className + '(' + _this15._func + ')=' + resolve.result;
+        })();
     }
 
     /**
@@ -1551,20 +1581,23 @@ export class YFunction
      *
      * On failure, throws an exception or returns  YFunction.HARDWAREID_INVALID.
      */
-    async get_hardwareId()
-    {
-        if(this._hwId != '') {
-            return this._hwId;
-        }
-        var resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) {
-            await this.isOnline();
-            resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-            if(resolve.errorType != YAPI_SUCCESS) {
-                return this._throw(resolve.errorType, resolve.errorMsg, Y_HARDWAREID_INVALID);
+    get_hardwareId() {
+        var _this16 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this16._hwId != '') {
+                return _this16._hwId;
             }
-        }
-        return resolve.result;
+            var resolve = _this16._yapi.imm_resolveFunction(_this16._className, _this16._func);
+            if (resolve.errorType != YAPI_SUCCESS) {
+                yield _this16.isOnline();
+                resolve = _this16._yapi.imm_resolveFunction(_this16._className, _this16._func);
+                if (resolve.errorType != YAPI_SUCCESS) {
+                    return _this16._throw(resolve.errorType, resolve.errorMsg, Y_HARDWAREID_INVALID);
+                }
+            }
+            return resolve.result;
+        })();
     }
 
     /**
@@ -1575,24 +1608,25 @@ export class YFunction
      *
      * On failure, throws an exception or returns  YFunction.FUNCTIONID_INVALID.
      */
-    async get_functionId()
-    {
-        if(this._funId != '') {
-            return this._funId;
-        }
-        var resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) {
-            await this.isOnline();
-            resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-            if(resolve.errorType != YAPI_SUCCESS) {
-                return this._throw(resolve.errorType, resolve.errorMsg, Y_FUNCTIONID_INVALID);
+    get_functionId() {
+        var _this17 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this17._funId != '') {
+                return _this17._funId;
             }
-        }
-        var pos = resolve.result.indexOf('.');
-        return resolve.result.substr(pos+1);
+            var resolve = _this17._yapi.imm_resolveFunction(_this17._className, _this17._func);
+            if (resolve.errorType != YAPI_SUCCESS) {
+                yield _this17.isOnline();
+                resolve = _this17._yapi.imm_resolveFunction(_this17._className, _this17._func);
+                if (resolve.errorType != YAPI_SUCCESS) {
+                    return _this17._throw(resolve.errorType, resolve.errorMsg, Y_FUNCTIONID_INVALID);
+                }
+            }
+            var pos = resolve.result.indexOf('.');
+            return resolve.result.substr(pos + 1);
+        })();
     }
-
-
 
     /**
      * Returns a global identifier of the function in the format MODULE_NAME&#46;FUNCTION_NAME.
@@ -1605,45 +1639,49 @@ export class YFunction
      *
      * On failure, throws an exception or returns  YFunction.FRIENDLYNAME_INVALID.
      */
-    async get_friendlyName()
-    {
-        var resolve = this._yapi.imm_getFriendlyNameFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) {
-            await this.isOnline();
-            resolve = this._yapi.imm_getFriendlyNameFunction(this._className, this._func);
-            if(resolve.errorType != YAPI_SUCCESS) {
-                return this._throw(resolve.errorType, resolve.errorMsg, Y_FRIENDLYNAME_INVALID);
-            }
-        }
-        return resolve.result;
-    }
+    get_friendlyName() {
+        var _this18 = this;
 
+        return _asyncToGenerator(function* () {
+            var resolve = _this18._yapi.imm_getFriendlyNameFunction(_this18._className, _this18._func);
+            if (resolve.errorType != YAPI_SUCCESS) {
+                yield _this18.isOnline();
+                resolve = _this18._yapi.imm_getFriendlyNameFunction(_this18._className, _this18._func);
+                if (resolve.errorType != YAPI_SUCCESS) {
+                    return _this18._throw(resolve.errorType, resolve.errorMsg, Y_FRIENDLYNAME_INVALID);
+                }
+            }
+            return resolve.result;
+        })();
+    }
 
     /** Store and parse a an API request for current function
      *
      * @param {YFuncRequest} yreq
      * @param {number} msValidity
      */
-    async _parse(yreq, msValidity)
-    {
-        // save the whole structure for backward-compatibility
-        yreq.obj_result['_expiration'] = this._yapi.GetTickCount() + msValidity;
-        this._serial = yreq.obj_result.deviceid;
-        this._funId  = yreq.obj_result.functionid;
-        this._hwId   = yreq.obj_result.hwid;
-        this._cache  = yreq.obj_result;
-        // process each attribute in turn for class-oriented processing
-        for(var key in yreq.obj_result) {
-            this.imm_parseAttr(key, yreq.obj_result[key]);
-        }
-        await this._parserHelper();
+    _parse(yreq, msValidity) {
+        var _this19 = this;
+
+        return _asyncToGenerator(function* () {
+            // save the whole structure for backward-compatibility
+            yreq.obj_result['_expiration'] = _this19._yapi.GetTickCount() + msValidity;
+            _this19._serial = yreq.obj_result.deviceid;
+            _this19._funId = yreq.obj_result.functionid;
+            _this19._hwId = yreq.obj_result.hwid;
+            _this19._cache = yreq.obj_result;
+            // process each attribute in turn for class-oriented processing
+            for (var key in yreq.obj_result) {
+                _this19.imm_parseAttr(key, yreq.obj_result[key]);
+            }
+            yield _this19._parserHelper();
+        })();
     }
 
     // Helper for the VirtualHub (backward-compatible)
-    _g(str_attr)
-    {
-        this.imm_parseAttr(str_attr,this._cache[str_attr]);
-        return this['_'+str_attr];
+    _g(str_attr) {
+        this.imm_parseAttr(str_attr, this._cache[str_attr]);
+        return this['_' + str_attr];
     }
 
     /** Return the value of an attribute from function cache, after reloading it from device if needed
@@ -1652,16 +1690,19 @@ export class YFunction
      * @param {string} str_attr
      * @return {string|null}
      */
-    async _getAttr(str_attr)
-    {
-        if(this._cacheExpiration <= this._yapi.GetTickCount()) {
-            // no valid cached value, reload from device
-            if(await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) return null;
-        }
-        if(typeof this._cache[str_attr] == 'undefined') {
-            this._throw(YAPI_VERSION_MISMATCH, 'No such attribute '+str_attr+' in function', null);
-        }
-        return this._cache[str_attr];
+    _getAttr(str_attr) {
+        var _this20 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this20._cacheExpiration <= _this20._yapi.GetTickCount()) {
+                // no valid cached value, reload from device
+                if ((yield _this20.load(_this20._yapi.defaultCacheValidity)) != YAPI_SUCCESS) return null;
+            }
+            if (typeof _this20._cache[str_attr] == 'undefined') {
+                _this20._throw(YAPI_VERSION_MISMATCH, 'No such attribute ' + str_attr + ' in function', null);
+            }
+            return _this20._cache[str_attr];
+        })();
     }
 
     /** Return the value of an attribute from function cache, after reloading it from device if needed
@@ -1670,16 +1711,19 @@ export class YFunction
      * @param {string} str_attr
      * @return {string|null}
      */
-    async _getFixedAttr(str_attr)
-    {
-        if(this._cacheExpiration == 0) {
-            // no cached value, load from device
-            if(await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) return null;
-        }
-        if(typeof this._cache[str_attr] == 'undefined') {
-            this._throw(YAPI_VERSION_MISMATCH, 'No such attribute '+str_attr+' in function', null);
-        }
-        return this._cache[str_attr];
+    _getFixedAttr(str_attr) {
+        var _this21 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this21._cacheExpiration == 0) {
+                // no cached value, load from device
+                if ((yield _this21.load(_this21._yapi.defaultCacheValidity)) != YAPI_SUCCESS) return null;
+            }
+            if (typeof _this21._cache[str_attr] == 'undefined') {
+                _this21._throw(YAPI_VERSION_MISMATCH, 'No such attribute ' + str_attr + ' in function', null);
+            }
+            return _this21._cache[str_attr];
+        })();
     }
 
     /** Escape a string for posting it as an URL
@@ -1687,19 +1731,11 @@ export class YFunction
      * @param {string} str_newval
      * @return {string}
      */
-    imm_escapeAttr(str_newval)
-    {
+    imm_escapeAttr(str_newval) {
         // We intentionally use escape here, because we want to encode non-ASCII
         // characters using single-byte ISO characters (not multi-byte UTF-8)
-        return escape(str_newval).replace(/[+]/g, '%2B')
-                        .replace(/%20/g, '+').replace(/%21/g, '!')
-                        .replace(/%24/g, '$')
-                        .replace(/%27/g, '\'').replace(/%28/g, '(').replace(/%29/g, ')')
-                        .replace(/%2[cC]/g, ',').replace(/%2[fF]/g, '/')
-                        .replace(/%3[aA]/g, ':').replace(/%3[bB]/g, ';').replace(/%3[fF]/g, '?')
-                        .replace(/%5[bB]/g, '[').replace(/%5[dD]/g, ']');
+        return escape(str_newval).replace(/[+]/g, '%2B').replace(/%20/g, '+').replace(/%21/g, '!').replace(/%24/g, '$').replace(/%27/g, '\'').replace(/%28/g, '(').replace(/%29/g, ')').replace(/%2[cC]/g, ',').replace(/%2[fF]/g, '/').replace(/%3[aA]/g, ':').replace(/%3[bB]/g, ';').replace(/%3[fF]/g, '?').replace(/%5[bB]/g, '[').replace(/%5[dD]/g, ']');
     }
-
 
     /** Change the value of an attribute on a device, and invalidate the cache
      *
@@ -1707,21 +1743,24 @@ export class YFunction
      * @param {string} str_newval
      * @return {number}
      */
-    async _setAttr(str_attr, str_newval)
-    {
-        if(str_newval == undefined) {
-            return this._throw(YAPI_INVALID_ARGUMENT, 'Undefined value to set for attribute '+str_attr, null);
-        }
-        var attrname = encodeURIComponent(str_attr);
-        var attrval = this.imm_escapeAttr(str_newval);
-        var extra = '/'+attrname+'?'+attrname+'='+attrval+'&.';
-        if(this._cacheExpiration != 0) {
-            this._cacheExpiration = this._yapi.GetTickCount();
-            this._cache._expiration = this._cacheExpiration;
-        }
-        await this._yapi.funcRequest(this._className, this._func, extra);
+    _setAttr(str_attr, str_newval) {
+        var _this22 = this;
 
-        return YAPI_SUCCESS;
+        return _asyncToGenerator(function* () {
+            if (str_newval == undefined) {
+                return _this22._throw(YAPI_INVALID_ARGUMENT, 'Undefined value to set for attribute ' + str_attr, null);
+            }
+            var attrname = encodeURIComponent(str_attr);
+            var attrval = _this22.imm_escapeAttr(str_newval);
+            var extra = '/' + attrname + '?' + attrname + '=' + attrval + '&.';
+            if (_this22._cacheExpiration != 0) {
+                _this22._cacheExpiration = _this22._yapi.GetTickCount();
+                _this22._cache._expiration = _this22._cacheExpiration;
+            }
+            yield _this22._yapi.funcRequest(_this22._className, _this22._func, extra);
+
+            return YAPI_SUCCESS;
+        })();
     }
 
     /** Execute an arbitrary HTTP GET request on the device and return the binary content
@@ -1729,23 +1768,26 @@ export class YFunction
      * @param {string} str_path
      * @return {Uint8Array}
      */
-    async _download(str_path)
-    {
-        // get the device serial number
-        /** @type {string} **/
-        let devid = this._serial;
-        if(devid == '') {
-            devid = await this.module().get_serialNumber();
-        }
-        if(devid == Y_SERIALNUMBER_INVALID) {
-            return new Uint8Array(0);
-        }
-        /** @type {YHTTPRequest} **/
-        let yreq = await this._yapi.devRequest(devid, 'GET /'+str_path);
-        if(yreq.errorType != YAPI_SUCCESS) {
-            return this._throw(yreq.errorType, yreq.errorMsg, '');
-        }
-        return yreq.bin_result;
+    _download(str_path) {
+        var _this23 = this;
+
+        return _asyncToGenerator(function* () {
+            // get the device serial number
+            /** @type {string} **/
+            let devid = _this23._serial;
+            if (devid == '') {
+                devid = yield _this23.module().get_serialNumber();
+            }
+            if (devid == Y_SERIALNUMBER_INVALID) {
+                return new Uint8Array(0);
+            }
+            /** @type {YHTTPRequest} **/
+            let yreq = yield _this23._yapi.devRequest(devid, 'GET /' + str_path);
+            if (yreq.errorType != YAPI_SUCCESS) {
+                return _this23._throw(yreq.errorType, yreq.errorMsg, '');
+            }
+            return yreq.bin_result;
+        })();
     }
 
     /** Upload a file to the filesystem, to the specified full path name.
@@ -1755,25 +1797,28 @@ export class YFunction
      * @param {Uint8Array|string|number[]} bin_content
      * @return {object}
      */
-    async _upload(str_path, bin_content)
-    {
-        // get the device serial number
-        var devid = this._serial;
-        if(devid == '') {
-            devid = await this.module().get_serialNumber();
-        }
-        if(devid == Y_SERIALNUMBER_INVALID) {
-            return this.get_errorType();
-        }
-        var httpreq = 'POST /upload.html';
-        var len = bin_content.length;
-        // convert to Uint8Array if needed
-        if(typeof bin_content == 'string' || bin_content instanceof String) {
-            bin_content = this._yapi.imm_str2bin(bin_content);
-        } else if(bin_content instanceof Array) {
-            bin_content = new Uint8Array(bin_content);
-        }
-        return await this._yapi.devRequest(devid, httpreq, bin_content);
+    _upload(str_path, bin_content) {
+        var _this24 = this;
+
+        return _asyncToGenerator(function* () {
+            // get the device serial number
+            var devid = _this24._serial;
+            if (devid == '') {
+                devid = yield _this24.module().get_serialNumber();
+            }
+            if (devid == Y_SERIALNUMBER_INVALID) {
+                return _this24.get_errorType();
+            }
+            var httpreq = 'POST /upload.html';
+            var len = bin_content.length;
+            // convert to Uint8Array if needed
+            if (typeof bin_content == 'string' || bin_content instanceof String) {
+                bin_content = _this24._yapi.imm_str2bin(bin_content);
+            } else if (bin_content instanceof Array) {
+                bin_content = new Uint8Array(bin_content);
+            }
+            return yield _this24._yapi.devRequest(devid, httpreq, bin_content);
+        })();
     }
 
     /**
@@ -1790,23 +1835,30 @@ export class YFunction
      *
      * @return nothing.
      */
-    wait_async(callback, context = null)
-    {
+    wait_async(callback) {
+        var _this25 = this;
+
+        let context = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
+
         // get the device serial number
         var devid = this._serial;
-        if(devid == '') {
+        if (devid == '') {
             // serial not yet known, get it then call wait_async again
-            this.module().get_serialNumber().then(() => this.wait_async(callback, context));
+            this.module().get_serialNumber().then(function () {
+                return _this25.wait_async(callback, context);
+            });
             return YAPI_SUCCESS;
         }
-        if(devid == Y_SERIALNUMBER_INVALID) {
+        if (devid == Y_SERIALNUMBER_INVALID) {
             callback(context, this);
             return YAPI_SUCCESS;
         }
         var lockdev = this._yapi.imm_getDevice(devid);
 
         // queue the call to user callback function in the pending queries promise chain
-        var delayedCode = (() => { callback(context, this); });
+        var delayedCode = function () {
+            callback(context, _this25);
+        };
         lockdev._pendingQueries = lockdev._pendingQueries.then(delayedCode, delayedCode);
         return YAPI_SUCCESS;
     }
@@ -1817,10 +1869,9 @@ export class YFunction
      * @param str_key {string}
      * @return {string}
      **/
-    imm_json_get_key(bin_jsonbuff, str_key)
-    {
+    imm_json_get_key(bin_jsonbuff, str_key) {
         var loadval = JSON.parse(this._yapi.imm_bin2str(bin_jsonbuff));
-        if(typeof loadval[str_key] != 'undefined') {
+        if (typeof loadval[str_key] != 'undefined') {
             return loadval[str_key];
         }
         return '';
@@ -1831,8 +1882,7 @@ export class YFunction
      * @param bin_jsonbuff {Uint8Array}
      * @return {string}
      **/
-    imm_json_get_string(bin_jsonbuff)
-    {
+    imm_json_get_string(bin_jsonbuff) {
         return JSON.parse(this._yapi.imm_bin2str(bin_jsonbuff));
     }
 
@@ -1841,11 +1891,10 @@ export class YFunction
      * @param bin_jsonbuff {Uint8Array}
      * @return {string[]}
      **/
-    imm_json_get_array(bin_jsonbuff)
-    {
+    imm_json_get_array(bin_jsonbuff) {
         var loadval = JSON.parse(this._yapi.imm_bin2str(bin_jsonbuff));
         var res = [];
-        for(var idx in loadval) {
+        for (var idx in loadval) {
             res.push(JSON.stringify(loadval[idx]));
         }
         return res;
@@ -1857,8 +1906,7 @@ export class YFunction
      * @param str_path {string}
      * @return {string}
      **/
-    imm_get_json_path(str_json, str_path)
-    {
+    imm_get_json_path(str_json, str_path) {
         var json = JSON.parse(str_json);
         var paths = str_path.split('|');
         for (var i = 0; i < paths.length; i++) {
@@ -1876,8 +1924,7 @@ export class YFunction
      * @param str_json {string}
      * @return {string}
      **/
-    imm_decode_json_string(str_json)
-    {
+    imm_decode_json_string(str_json) {
         return JSON.parse(str_json);
     }
 
@@ -1889,12 +1936,10 @@ export class YFunction
      * @param str_def {string}
      * @return {YDataStream}
      **/
-    imm_findDataStream(obj_dataset, str_def)
-    {
+    imm_findDataStream(obj_dataset, str_def) {
         /** @type {string} **/
-        let key = obj_dataset.imm_get_functionId()+':'+str_def;
-        if(this._dataStreams[key])
-            return this._dataStreams[key];
+        let key = obj_dataset.imm_get_functionId() + ':' + str_def;
+        if (this._dataStreams[key]) return this._dataStreams[key];
 
         /** @type {YDataStream} **/
         var newDataStream = new YDataStream(this, obj_dataset, this._yapi.imm_decodeWords(str_def));
@@ -1903,9 +1948,12 @@ export class YFunction
     }
 
     // Method used to clear cache of DataStream object (undocumented)
-    async clearDataStreamCache()
-    {
-        this._dataStreams = {};
+    clearDataStreamCache() {
+        var _this26 = this;
+
+        return _asyncToGenerator(function* () {
+            _this26._dataStreams = {};
+        })();
     }
 
     /**
@@ -1917,25 +1965,28 @@ export class YFunction
      *
      * @return {boolean} true if the function can be reached, and false otherwise
      */
-    async isOnline()
-    {
-        // A valid value in cache means that the device is online
-        if(this._cacheExpiration > this._yapi.GetTickCount()) return true;
+    isOnline() {
+        var _this27 = this;
 
-        // Check that the function is available without throwing exceptions
-        /** @type {YFuncRequest} **/
-        let yreq = await this._yapi.funcRequest(this._className, this._func, '', this._yapi.defaultCacheValidity);
-        if(yreq.errorType != YAPI_SUCCESS) {
-            if(yreq.errorType == YAPI_DEVICE_BUSY) {
-                return true;
-            } else {
-                return false;
+        return _asyncToGenerator(function* () {
+            // A valid value in cache means that the device is online
+            if (_this27._cacheExpiration > _this27._yapi.GetTickCount()) return true;
+
+            // Check that the function is available without throwing exceptions
+            /** @type {YFuncRequest} **/
+            let yreq = yield _this27._yapi.funcRequest(_this27._className, _this27._func, '', _this27._yapi.defaultCacheValidity);
+            if (yreq.errorType != YAPI_SUCCESS) {
+                if (yreq.errorType == YAPI_DEVICE_BUSY) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
-        }
-        // save result in cache anyway
-        await this._parse(yreq, this._yapi.defaultCacheValidity);
+            // save result in cache anyway
+            yield _this27._parse(yreq, _this27._yapi.defaultCacheValidity);
 
-        return true;
+            return true;
+        })();
     }
 
     /**
@@ -1946,8 +1997,7 @@ export class YFunction
      * @return {number} a number corresponding to the code of the latest error that occurred while
      *         using the function object
      */
-    get_errorType()
-    {
+    get_errorType() {
         return this._lastErrorType;
     }
 
@@ -1959,8 +2009,7 @@ export class YFunction
      * @return {string} a string corresponding to the latest error message that occured while
      *         using the function object
      */
-    get_errorMessage()
-    {
+    get_errorMessage() {
         return this._lastErrorMsg;
     }
 
@@ -1978,34 +2027,40 @@ export class YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async load(msValidity)
-    {
-        /** @type {YFuncRequest} **/
-        let yreq = await this._yapi.funcRequest(this._className, this._func, '', msValidity);
-        if(yreq.errorType != YAPI_SUCCESS) {
-            return this._throw(yreq.errorType, yreq.errorMsg, yreq.errorType);
-        }
-        await this._parse(yreq, msValidity);
+    load(msValidity) {
+        var _this28 = this;
 
-        return YAPI_SUCCESS;
+        return _asyncToGenerator(function* () {
+            /** @type {YFuncRequest} **/
+            let yreq = yield _this28._yapi.funcRequest(_this28._className, _this28._func, '', msValidity);
+            if (yreq.errorType != YAPI_SUCCESS) {
+                return _this28._throw(yreq.errorType, yreq.errorMsg, yreq.errorType);
+            }
+            yield _this28._parse(yreq, msValidity);
+
+            return YAPI_SUCCESS;
+        })();
     }
 
-     /**
-      * Invalidates the cache. Invalidates the cache of the function attributes. Forces the
-      * next call to get_xxx() or loadxxx() to use values that come from the device.
-      *
-      * @noreturn
-      */
-    async clearCache()
-    {
-        var devreq = await this._yapi._funcDev(this._className, this._func);
-        if(devreq.errorType != YAPI_SUCCESS) {
-            return;
-        }
-        devreq.result.device.imm_dropCache();
-        if (this._cacheExpiration > 0) {
-            this._cacheExpiration = this._yapi.GetTickCount();
-        }
+    /**
+     * Invalidates the cache. Invalidates the cache of the function attributes. Forces the
+     * next call to get_xxx() or loadxxx() to use values that come from the device.
+     *
+     * @noreturn
+     */
+    clearCache() {
+        var _this29 = this;
+
+        return _asyncToGenerator(function* () {
+            var devreq = yield _this29._yapi._funcDev(_this29._className, _this29._func);
+            if (devreq.errorType != YAPI_SUCCESS) {
+                return;
+            }
+            devreq.result.device.imm_dropCache();
+            if (_this29._cacheExpiration > 0) {
+                _this29._cacheExpiration = _this29._yapi.GetTickCount();
+            }
+        })();
     }
 
     /**
@@ -2015,36 +2070,39 @@ export class YFunction
      *
      * @return {YModule} an instance of YModule
      */
-    async module()
-    {
-        // try to resolve the function name to a device id without query
-        if(this._serial != '') {
-            return await yFindModuleInContext(this._yapi, this._serial + '.module');
-        }
-        var hwid = this._func;
-        var resolve;
-        if(hwid.indexOf('.') < 0) {
-            resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-            if(resolve.errorType == YAPI_SUCCESS) hwid = resolve.result;
-        }
-        var dotidx = hwid.indexOf('.');
-        if(dotidx >= 0) {
-            // resolution worked
-            return await YModule.FindModuleInContext(this._yapi, hwid.substr(0, dotidx) + '.module');
-        }
+    module() {
+        var _this30 = this;
 
-        // device not resolved for now, force a communication for a last chance resolution
-        if(await this.load(this._yapi.defaultCacheValidity) == YAPI_SUCCESS) {
-            resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-            if(resolve.result != undefined) hwid = resolve.result;
-        }
-        dotidx = hwid.indexOf('.');
-        if(dotidx >= 0) {
-            // resolution worked
-            return await YModule.FindModuleInContext(this._yapi, hwid.substr(0, dotidx) + '.module');
-        }
-        // return a true yFindModule object even if it is not a module valid for communicating
-        return await YModule.FindModuleInContext(this._yapi, 'module_of_'+this.className+'_'+this._func);
+        return _asyncToGenerator(function* () {
+            // try to resolve the function name to a device id without query
+            if (_this30._serial != '') {
+                return yield yFindModuleInContext(_this30._yapi, _this30._serial + '.module');
+            }
+            var hwid = _this30._func;
+            var resolve;
+            if (hwid.indexOf('.') < 0) {
+                resolve = _this30._yapi.imm_resolveFunction(_this30._className, _this30._func);
+                if (resolve.errorType == YAPI_SUCCESS) hwid = resolve.result;
+            }
+            var dotidx = hwid.indexOf('.');
+            if (dotidx >= 0) {
+                // resolution worked
+                return yield YModule.FindModuleInContext(_this30._yapi, hwid.substr(0, dotidx) + '.module');
+            }
+
+            // device not resolved for now, force a communication for a last chance resolution
+            if ((yield _this30.load(_this30._yapi.defaultCacheValidity)) == YAPI_SUCCESS) {
+                resolve = _this30._yapi.imm_resolveFunction(_this30._className, _this30._func);
+                if (resolve.result != undefined) hwid = resolve.result;
+            }
+            dotidx = hwid.indexOf('.');
+            if (dotidx >= 0) {
+                // resolution worked
+                return yield YModule.FindModuleInContext(_this30._yapi, hwid.substr(0, dotidx) + '.module');
+            }
+            // return a true yFindModule object even if it is not a module valid for communicating
+            return yield YModule.FindModuleInContext(_this30._yapi, 'module_of_' + _this30.className + '_' + _this30._func);
+        })();
     }
 
     /**
@@ -2054,9 +2112,12 @@ export class YFunction
      *
      * @return {YModule} an instance of YModule
      */
-    async get_module()
-    {
-        return await this.module();
+    get_module() {
+        var _this31 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this31.module();
+        })();
     }
 
     /**
@@ -2068,22 +2129,25 @@ export class YFunction
      *
      * If the function has never been contacted, the returned value is YFunction.FUNCTIONDESCRIPTOR_INVALID.
      */
-    async get_functionDescriptor()
-    {
-        // try to resolve the function name to a device id without query
-        if(this._hwId != '') {
-            return this._hwId;
-        }
-        var hwid = this._func;
-        if(hwid.indexOf('.') < 0) {
-            var resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-            if(resolve.errorType != YAPI_SUCCESS) hwid = resolve.result;
-        }
-        var dotidx = hwid.indexOf('.');
-        if(dotidx >= 0) {
-            return hwid;
-        }
-        return Y_FUNCTIONDESCRIPTOR_INVALID;
+    get_functionDescriptor() {
+        var _this32 = this;
+
+        return _asyncToGenerator(function* () {
+            // try to resolve the function name to a device id without query
+            if (_this32._hwId != '') {
+                return _this32._hwId;
+            }
+            var hwid = _this32._func;
+            if (hwid.indexOf('.') < 0) {
+                var resolve = _this32._yapi.imm_resolveFunction(_this32._className, _this32._func);
+                if (resolve.errorType != YAPI_SUCCESS) hwid = resolve.result;
+            }
+            var dotidx = hwid.indexOf('.');
+            if (dotidx >= 0) {
+                return hwid;
+            }
+            return Y_FUNCTIONDESCRIPTOR_INVALID;
+        })();
     }
 
     /**
@@ -2094,9 +2158,12 @@ export class YFunction
      *
      * @return {Object} the object stored previously by the caller.
      */
-    async get_userData()
-    {
-        return this._userData;
+    get_userData() {
+        var _this33 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this33._userData;
+        })();
     }
 
     /**
@@ -2106,14 +2173,17 @@ export class YFunction
      * @param data {Object} : any kind of object to be stored
      * @noreturn
      */
-    async set_userData(data)
-    {
-        this._userData = data;
+    set_userData(data) {
+        var _this34 = this;
+
+        return _asyncToGenerator(function* () {
+            _this34._userData = data;
+        })();
     }
 
 }
 
-//--- (generated code: YModule class start)
+exports.YFunction = YFunction; //--- (generated code: YModule class start)
 /**
  * YModule Class: Module control interface
  *
@@ -2123,58 +2193,57 @@ export class YFunction
  */
 //--- (end of generated code: YModule class start)
 /** @extends {YFunction} **/
-export class YModule extends YFunction
-{
-    constructor(obj_yapi, str_func)
-    {
+
+class YModule extends YFunction {
+    constructor(obj_yapi, str_func) {
         //--- (generated code: YModule constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'Module';
+        this._className = 'Module';
         /** @member {string} **/
-        this._productName                = Y_PRODUCTNAME_INVALID;
+        this._productName = Y_PRODUCTNAME_INVALID;
         /** @member {string} **/
-        this._serialNumber               = Y_SERIALNUMBER_INVALID;
+        this._serialNumber = Y_SERIALNUMBER_INVALID;
         /** @member {number} **/
-        this._productId                  = Y_PRODUCTID_INVALID;
+        this._productId = Y_PRODUCTID_INVALID;
         /** @member {number} **/
-        this._productRelease             = Y_PRODUCTRELEASE_INVALID;
+        this._productRelease = Y_PRODUCTRELEASE_INVALID;
         /** @member {string} **/
-        this._firmwareRelease            = Y_FIRMWARERELEASE_INVALID;
+        this._firmwareRelease = Y_FIRMWARERELEASE_INVALID;
         /** @member {number} **/
-        this._persistentSettings         = Y_PERSISTENTSETTINGS_INVALID;
+        this._persistentSettings = Y_PERSISTENTSETTINGS_INVALID;
         /** @member {number} **/
-        this._luminosity                 = Y_LUMINOSITY_INVALID;
+        this._luminosity = Y_LUMINOSITY_INVALID;
         /** @member {number} **/
-        this._beacon                     = Y_BEACON_INVALID;
+        this._beacon = Y_BEACON_INVALID;
         /** @member {number} **/
-        this._upTime                     = Y_UPTIME_INVALID;
+        this._upTime = Y_UPTIME_INVALID;
         /** @member {number} **/
-        this._usbCurrent                 = Y_USBCURRENT_INVALID;
+        this._usbCurrent = Y_USBCURRENT_INVALID;
         /** @member {number} **/
-        this._rebootCountdown            = Y_REBOOTCOUNTDOWN_INVALID;
+        this._rebootCountdown = Y_REBOOTCOUNTDOWN_INVALID;
         /** @member {number} **/
-        this._userVar                    = Y_USERVAR_INVALID;
+        this._userVar = Y_USERVAR_INVALID;
         /** @member {function} **/
-        this._logCallback                = null;
+        this._logCallback = null;
         this.imm_setConst({
-            PRODUCTNAME_INVALID          : YAPI_INVALID_STRING,
-            SERIALNUMBER_INVALID         : YAPI_INVALID_STRING,
-            PRODUCTID_INVALID            : YAPI_INVALID_UINT,
-            PRODUCTRELEASE_INVALID       : YAPI_INVALID_UINT,
-            FIRMWARERELEASE_INVALID      : YAPI_INVALID_STRING,
-            PERSISTENTSETTINGS_LOADED    : 0,
-            PERSISTENTSETTINGS_SAVED     : 1,
-            PERSISTENTSETTINGS_MODIFIED  : 2,
-            PERSISTENTSETTINGS_INVALID   : -1,
-            LUMINOSITY_INVALID           : YAPI_INVALID_UINT,
-            BEACON_OFF                   : 0,
-            BEACON_ON                    : 1,
-            BEACON_INVALID               : -1,
-            UPTIME_INVALID               : YAPI_INVALID_LONG,
-            USBCURRENT_INVALID           : YAPI_INVALID_UINT,
-            REBOOTCOUNTDOWN_INVALID      : YAPI_INVALID_INT,
-            USERVAR_INVALID              : YAPI_INVALID_INT
+            PRODUCTNAME_INVALID: YAPI_INVALID_STRING,
+            SERIALNUMBER_INVALID: YAPI_INVALID_STRING,
+            PRODUCTID_INVALID: YAPI_INVALID_UINT,
+            PRODUCTRELEASE_INVALID: YAPI_INVALID_UINT,
+            FIRMWARERELEASE_INVALID: YAPI_INVALID_STRING,
+            PERSISTENTSETTINGS_LOADED: 0,
+            PERSISTENTSETTINGS_SAVED: 1,
+            PERSISTENTSETTINGS_MODIFIED: 2,
+            PERSISTENTSETTINGS_INVALID: -1,
+            LUMINOSITY_INVALID: YAPI_INVALID_UINT,
+            BEACON_OFF: 0,
+            BEACON_ON: 1,
+            BEACON_INVALID: -1,
+            UPTIME_INVALID: YAPI_INVALID_LONG,
+            USBCURRENT_INVALID: YAPI_INVALID_UINT,
+            REBOOTCOUNTDOWN_INVALID: YAPI_INVALID_INT,
+            USERVAR_INVALID: YAPI_INVALID_INT
         });
         //--- (end of generated code: YModule constructor)
 
@@ -2182,17 +2251,16 @@ export class YModule extends YFunction
         // without any network access (getDevice does not cause network access)
         let devid = this._func;
         let dotidx = devid.indexOf('.');
-        if(dotidx > 0) devid = devid.substr(0, dotidx);
+        if (dotidx > 0) devid = devid.substr(0, dotidx);
         let dev = this._yapi.imm_getDevice(devid);
-        if(dev) {
+        if (dev) {
             this._serial = dev.imm_getSerialNumber();
-            this._funId  = 'module';
-            this._hwId   = this._serial+'.module';
+            this._funId = 'module';
+            this._hwId = this._serial + '.module';
         }
     }
 
-    _throw(int_errType, str_errMsg, obj_retVal)
-    {
+    _throw(int_errType, str_errMsg, obj_retVal) {
         this._lastErrorType = int_errType;
         this._lastErrorMsg = str_errMsg;
         this._yapi._throw(int_errType, str_errMsg, obj_retVal);
@@ -2204,17 +2272,16 @@ export class YModule extends YFunction
      *
      * Raise an error if not found
      */
-    imm_getDev()
-    {
+    imm_getDev() {
         /** @type {string} **/
         let devid = this._func;
         /** @type {number} **/
         let dotidx = devid.indexOf('.');
-        if(dotidx > 0) devid = devid.substr(0, dotidx);
+        if (dotidx > 0) devid = devid.substr(0, dotidx);
         /** @type {YDevice} **/
         let dev = this._yapi.imm_getDevice(devid);
-        if(!dev) {
-            this._throw(YAPI_DEVICE_NOT_FOUND, 'Device ['+devid+'] is not online', null);
+        if (!dev) {
+            this._throw(YAPI_DEVICE_NOT_FOUND, 'Device [' + devid + '] is not online', null);
         }
         return dev;
     }
@@ -2226,12 +2293,15 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async functionCount()
-    {
-        /** @type {YDevice} **/
-        let dev = this.imm_getDev();
-        if(!dev) return YAPI_DEVICE_NOT_FOUND;
-        return dev.imm_functionCount();
+    functionCount() {
+        var _this35 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {YDevice} **/
+            let dev = _this35.imm_getDev();
+            if (!dev) return YAPI_DEVICE_NOT_FOUND;
+            return dev.imm_functionCount();
+        })();
     }
 
     /**
@@ -2244,12 +2314,15 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns an empty string.
      */
-    async functionId(functionIndex)
-    {
-        /** @type {YDevice} **/
-        let dev = this.imm_getDev();
-        if(!dev) return '';
-        return dev.imm_functionId(functionIndex);
+    functionId(functionIndex) {
+        var _this36 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {YDevice} **/
+            let dev = _this36.imm_getDev();
+            if (!dev) return '';
+            return dev.imm_functionId(functionIndex);
+        })();
     }
 
     /**
@@ -2262,12 +2335,15 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns an empty string.
      */
-    async functionType(functionIndex)
-    {
-        /** @type {YDevice} **/
-        let dev = this.imm_getDev();
-        if(!dev) return '';
-        return dev.imm_functionType(functionIndex);
+    functionType(functionIndex) {
+        var _this37 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {YDevice} **/
+            let dev = _this37.imm_getDev();
+            if (!dev) return '';
+            return dev.imm_functionType(functionIndex);
+        })();
     }
 
     /**
@@ -2280,12 +2356,15 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns an empty string.
      */
-    async functionBaseType(functionIndex)
-    {
-        /** @type {YDevice} **/
-        let dev = this.imm_getDev();
-        if(!dev) return '';
-        return dev.imm_functionBaseType(functionIndex);
+    functionBaseType(functionIndex) {
+        var _this38 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {YDevice} **/
+            let dev = _this38.imm_getDev();
+            if (!dev) return '';
+            return dev.imm_functionBaseType(functionIndex);
+        })();
     }
 
     /**
@@ -2298,12 +2377,15 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns an empty string.
      */
-    async functionName(functionIndex)
-    {
-        /** @type {YDevice} **/
-        let dev = this.imm_getDev();
-        if(!dev) return '';
-        return dev.imm_functionName(functionIndex);
+    functionName(functionIndex) {
+        var _this39 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {YDevice} **/
+            let dev = _this39.imm_getDev();
+            if (!dev) return '';
+            return dev.imm_functionName(functionIndex);
+        })();
     }
 
     /**
@@ -2317,12 +2399,15 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns an empty string.
      */
-    async functionValue(functionIndex)
-    {
-        /** @type {YDevice} **/
-        let dev = this.imm_getDev();
-        if(!dev) return '';
-        return dev.imm_functionValue(functionIndex);
+    functionValue(functionIndex) {
+        var _this40 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {YDevice} **/
+            let dev = _this40.imm_getDev();
+            if (!dev) return '';
+            return dev.imm_functionValue(functionIndex);
+        })();
     }
 
     /** Download the specified URL from the device
@@ -2330,17 +2415,20 @@ export class YModule extends YFunction
      * @param str_url {string}
      * @return {Uint8Array}
      */
-    async loadUrl(str_url)
-    {
-        /** @type {YDevice} **/
-        let dev = this.imm_getDev();
-        if(!dev) return null;
-        /** @type {YHTTPRequest} **/
-        let yreq = await this._yapi.devRequest(dev.imm_getRootUrl(), 'GET '+str_url);
-        if(yreq.errorType != YAPI_SUCCESS) {
-            return this._throw(yreq.errorType, yreq.errorMsg, null);
-        }
-        return yreq.bin_result;
+    loadUrl(str_url) {
+        var _this41 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {YDevice} **/
+            let dev = _this41.imm_getDev();
+            if (!dev) return null;
+            /** @type {YHTTPRequest} **/
+            let yreq = yield _this41._yapi.devRequest(dev.imm_getRootUrl(), 'GET ' + str_url);
+            if (yreq.errorType != YAPI_SUCCESS) {
+                return _this41._throw(yreq.errorType, yreq.errorMsg, null);
+            }
+            return yreq.bin_result;
+        })();
     }
 
     /**
@@ -2350,27 +2438,28 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns YModule.LOGICALNAME_INVALID.
      */
-    async get_logicalName()
-    {
-        /** @type {YDevice} **/
-        var dev = this.imm_getDev();
-        if(dev != null && this._cache._expiration <= this._yapi.GetTickCount()) {
-            return dev._logicalName;
-        }
-        /** @type {string} **/
-        var json_val = await this._getAttr('logicalName');
-        return (json_val == null ? Y_LOGICALNAME_INVALID : json_val);
+    get_logicalName() {
+        var _this42 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {YDevice} **/
+            var dev = _this42.imm_getDev();
+            if (dev != null && _this42._cache._expiration <= _this42._yapi.GetTickCount()) {
+                return dev._logicalName;
+            }
+            /** @type {string} **/
+            var json_val = yield _this42._getAttr('logicalName');
+            return json_val == null ? Y_LOGICALNAME_INVALID : json_val;
+        })();
     }
 
-    imm_flattenJsonStruct(jsoncomplex)
-    {
+    imm_flattenJsonStruct(jsoncomplex) {
         var decoded = JSON.parse(jsoncomplex);
         var attrs = [];
-        for(var function_name in decoded) {
-            if (function_name ==  'services')
-                continue;
+        for (var function_name in decoded) {
+            if (function_name == 'services') continue;
             var function_attrs = decoded[function_name];
-            for(var attr_name in function_attrs) {
+            for (var attr_name in function_attrs) {
                 let attr_value = function_attrs[attr_name];
                 if (attr_value === null || typeof attr_value === 'object') {
                     continue;
@@ -2382,48 +2471,46 @@ export class YModule extends YFunction
         return JSON.stringify(attrs);
     }
 
-
     //--- (generated code: YModule implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'productName':
-            this._productName = val;
-            return 1;
-        case 'serialNumber':
-            this._serialNumber = val;
-            return 1;
-        case 'productId':
-            this._productId = parseInt(val);
-            return 1;
-        case 'productRelease':
-            this._productRelease = parseInt(val);
-            return 1;
-        case 'firmwareRelease':
-            this._firmwareRelease = val;
-            return 1;
-        case 'persistentSettings':
-            this._persistentSettings = parseInt(val);
-            return 1;
-        case 'luminosity':
-            this._luminosity = parseInt(val);
-            return 1;
-        case 'beacon':
-            this._beacon = parseInt(val);
-            return 1;
-        case 'upTime':
-            this._upTime = parseInt(val);
-            return 1;
-        case 'usbCurrent':
-            this._usbCurrent = parseInt(val);
-            return 1;
-        case 'rebootCountdown':
-            this._rebootCountdown = parseInt(val);
-            return 1;
-        case 'userVar':
-            this._userVar = parseInt(val);
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'productName':
+                this._productName = val;
+                return 1;
+            case 'serialNumber':
+                this._serialNumber = val;
+                return 1;
+            case 'productId':
+                this._productId = parseInt(val);
+                return 1;
+            case 'productRelease':
+                this._productRelease = parseInt(val);
+                return 1;
+            case 'firmwareRelease':
+                this._firmwareRelease = val;
+                return 1;
+            case 'persistentSettings':
+                this._persistentSettings = parseInt(val);
+                return 1;
+            case 'luminosity':
+                this._luminosity = parseInt(val);
+                return 1;
+            case 'beacon':
+                this._beacon = parseInt(val);
+                return 1;
+            case 'upTime':
+                this._upTime = parseInt(val);
+                return 1;
+            case 'usbCurrent':
+                this._usbCurrent = parseInt(val);
+                return 1;
+            case 'rebootCountdown':
+                this._rebootCountdown = parseInt(val);
+                return 1;
+            case 'userVar':
+                this._userVar = parseInt(val);
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -2435,20 +2522,23 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns YModule.PRODUCTNAME_INVALID.
      */
-    async get_productName()
-    {
-        /** @type {YDevice} **/
-        let dev;
-        if (this._cacheExpiration == 0) {
-            dev = this.imm_getDev();
-            if (!(dev == null)) {
-                return dev.imm_getProductName();
+    get_productName() {
+        var _this43 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {YDevice} **/
+            let dev;
+            if (_this43._cacheExpiration == 0) {
+                dev = _this43.imm_getDev();
+                if (!(dev == null)) {
+                    return dev.imm_getProductName();
+                }
+                if ((yield _this43.load(_this43._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return Y_PRODUCTNAME_INVALID;
+                }
             }
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
-                return Y_PRODUCTNAME_INVALID;
-            }
-        }
-        return this._productName;
+            return _this43._productName;
+        })();
     }
 
     /**
@@ -2458,20 +2548,23 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns YModule.SERIALNUMBER_INVALID.
      */
-    async get_serialNumber()
-    {
-        /** @type {YDevice} **/
-        let dev;
-        if (this._cacheExpiration == 0) {
-            dev = this.imm_getDev();
-            if (!(dev == null)) {
-                return dev.imm_getSerialNumber();
+    get_serialNumber() {
+        var _this44 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {YDevice} **/
+            let dev;
+            if (_this44._cacheExpiration == 0) {
+                dev = _this44.imm_getDev();
+                if (!(dev == null)) {
+                    return dev.imm_getSerialNumber();
+                }
+                if ((yield _this44.load(_this44._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return Y_SERIALNUMBER_INVALID;
+                }
             }
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
-                return Y_SERIALNUMBER_INVALID;
-            }
-        }
-        return this._serialNumber;
+            return _this44._serialNumber;
+        })();
     }
 
     /**
@@ -2481,20 +2574,23 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns YModule.PRODUCTID_INVALID.
      */
-    async get_productId()
-    {
-        /** @type {YDevice} **/
-        let dev;
-        if (this._cacheExpiration == 0) {
-            dev = this.imm_getDev();
-            if (!(dev == null)) {
-                return dev.imm_getProductId();
+    get_productId() {
+        var _this45 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {YDevice} **/
+            let dev;
+            if (_this45._cacheExpiration == 0) {
+                dev = _this45.imm_getDev();
+                if (!(dev == null)) {
+                    return dev.imm_getProductId();
+                }
+                if ((yield _this45.load(_this45._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return Y_PRODUCTID_INVALID;
+                }
             }
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
-                return Y_PRODUCTID_INVALID;
-            }
-        }
-        return this._productId;
+            return _this45._productId;
+        })();
     }
 
     /**
@@ -2504,14 +2600,17 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns YModule.PRODUCTRELEASE_INVALID.
      */
-    async get_productRelease()
-    {
-        if (this._cacheExpiration == 0) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
-                return Y_PRODUCTRELEASE_INVALID;
+    get_productRelease() {
+        var _this46 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this46._cacheExpiration == 0) {
+                if ((yield _this46.load(_this46._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return Y_PRODUCTRELEASE_INVALID;
+                }
             }
-        }
-        return this._productRelease;
+            return _this46._productRelease;
+        })();
     }
 
     /**
@@ -2521,14 +2620,17 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns YModule.FIRMWARERELEASE_INVALID.
      */
-    async get_firmwareRelease()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
-                return Y_FIRMWARERELEASE_INVALID;
+    get_firmwareRelease() {
+        var _this47 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this47._cacheExpiration <= _this47._yapi.GetTickCount()) {
+                if ((yield _this47.load(_this47._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return Y_FIRMWARERELEASE_INVALID;
+                }
             }
-        }
-        return this._firmwareRelease;
+            return _this47._firmwareRelease;
+        })();
     }
 
     /**
@@ -2539,22 +2641,28 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns YModule.PERSISTENTSETTINGS_INVALID.
      */
-    async get_persistentSettings()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
-                return Y_PERSISTENTSETTINGS_INVALID;
+    get_persistentSettings() {
+        var _this48 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this48._cacheExpiration <= _this48._yapi.GetTickCount()) {
+                if ((yield _this48.load(_this48._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return Y_PERSISTENTSETTINGS_INVALID;
+                }
             }
-        }
-        return this._persistentSettings;
+            return _this48._persistentSettings;
+        })();
     }
 
-    async set_persistentSettings(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('persistentSettings',rest_val);
+    set_persistentSettings(newval) {
+        var _this49 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this49._setAttr('persistentSettings', rest_val);
+        })();
     }
 
     /**
@@ -2564,14 +2672,17 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns YModule.LUMINOSITY_INVALID.
      */
-    async get_luminosity()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
-                return Y_LUMINOSITY_INVALID;
+    get_luminosity() {
+        var _this50 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this50._cacheExpiration <= _this50._yapi.GetTickCount()) {
+                if ((yield _this50.load(_this50._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return Y_LUMINOSITY_INVALID;
+                }
             }
-        }
-        return this._luminosity;
+            return _this50._luminosity;
+        })();
     }
 
     /**
@@ -2586,12 +2697,15 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_luminosity(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('luminosity',rest_val);
+    set_luminosity(newval) {
+        var _this51 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this51._setAttr('luminosity', rest_val);
+        })();
     }
 
     /**
@@ -2602,20 +2716,23 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns YModule.BEACON_INVALID.
      */
-    async get_beacon()
-    {
-        /** @type {YDevice} **/
-        let dev;
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            dev = this.imm_getDev();
-            if (!(dev == null)) {
-                return dev.imm_getBeacon();
+    get_beacon() {
+        var _this52 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {YDevice} **/
+            let dev;
+            if (_this52._cacheExpiration <= _this52._yapi.GetTickCount()) {
+                dev = _this52.imm_getDev();
+                if (!(dev == null)) {
+                    return dev.imm_getBeacon();
+                }
+                if ((yield _this52.load(_this52._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return Y_BEACON_INVALID;
+                }
             }
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
-                return Y_BEACON_INVALID;
-            }
-        }
-        return this._beacon;
+            return _this52._beacon;
+        })();
     }
 
     /**
@@ -2627,12 +2744,15 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_beacon(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('beacon',rest_val);
+    set_beacon(newval) {
+        var _this53 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this53._setAttr('beacon', rest_val);
+        })();
     }
 
     /**
@@ -2642,14 +2762,17 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns YModule.UPTIME_INVALID.
      */
-    async get_upTime()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
-                return Y_UPTIME_INVALID;
+    get_upTime() {
+        var _this54 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this54._cacheExpiration <= _this54._yapi.GetTickCount()) {
+                if ((yield _this54.load(_this54._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return Y_UPTIME_INVALID;
+                }
             }
-        }
-        return this._upTime;
+            return _this54._upTime;
+        })();
     }
 
     /**
@@ -2659,14 +2782,17 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns YModule.USBCURRENT_INVALID.
      */
-    async get_usbCurrent()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
-                return Y_USBCURRENT_INVALID;
+    get_usbCurrent() {
+        var _this55 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this55._cacheExpiration <= _this55._yapi.GetTickCount()) {
+                if ((yield _this55.load(_this55._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return Y_USBCURRENT_INVALID;
+                }
             }
-        }
-        return this._usbCurrent;
+            return _this55._usbCurrent;
+        })();
     }
 
     /**
@@ -2679,22 +2805,28 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns YModule.REBOOTCOUNTDOWN_INVALID.
      */
-    async get_rebootCountdown()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
-                return Y_REBOOTCOUNTDOWN_INVALID;
+    get_rebootCountdown() {
+        var _this56 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this56._cacheExpiration <= _this56._yapi.GetTickCount()) {
+                if ((yield _this56.load(_this56._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return Y_REBOOTCOUNTDOWN_INVALID;
+                }
             }
-        }
-        return this._rebootCountdown;
+            return _this56._rebootCountdown;
+        })();
     }
 
-    async set_rebootCountdown(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('rebootCountdown',rest_val);
+    set_rebootCountdown(newval) {
+        var _this57 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this57._setAttr('rebootCountdown', rest_val);
+        })();
     }
 
     /**
@@ -2705,14 +2837,17 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns YModule.USERVAR_INVALID.
      */
-    async get_userVar()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
-                return Y_USERVAR_INVALID;
+    get_userVar() {
+        var _this58 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this58._cacheExpiration <= _this58._yapi.GetTickCount()) {
+                if ((yield _this58.load(_this58._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return Y_USERVAR_INVALID;
+                }
             }
-        }
-        return this._userVar;
+            return _this58._userVar;
+        })();
     }
 
     /**
@@ -2725,12 +2860,15 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_userVar(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('userVar',rest_val);
+    set_userVar(newval) {
+        var _this59 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this59._setAttr('userVar', rest_val);
+        })();
     }
 
     /**
@@ -2750,14 +2888,13 @@ export class YModule extends YFunction
      * @return {YModule} a YModule object allowing you to drive the module
      *         or get additional information on the module.
      */
-    static FindModule(func)
-    {
+    static FindModule(func) {
         /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCache('Module', func);
         if (obj == null) {
             obj = new YModule(YAPI, func);
-            YFunction._AddToCache('Module',  func, obj);
+            YFunction._AddToCache('Module', func, obj);
         }
         return obj;
     }
@@ -2786,14 +2923,13 @@ export class YModule extends YFunction
      *
      * @return {YModule} a YModule object allowing you to drive the module.
      */
-    static FindModuleInContext(yctx,func)
-    {
+    static FindModuleInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'Module', func);
+        obj = YFunction._FindFromCacheInContext(yctx, 'Module', func);
         if (obj == null) {
             obj = new YModule(yctx, func);
-            YFunction._AddToCache('Module',  func, obj);
+            YFunction._AddToCache('Module', func, obj);
         }
         return obj;
     }
@@ -2807,9 +2943,12 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async saveToFlash()
-    {
-        return await this.set_persistentSettings(Y_PERSISTENTSETTINGS_SAVED);
+    saveToFlash() {
+        var _this60 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this60.set_persistentSettings(Y_PERSISTENTSETTINGS_SAVED);
+        })();
     }
 
     /**
@@ -2820,9 +2959,12 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async revertFromFlash()
-    {
-        return await this.set_persistentSettings(Y_PERSISTENTSETTINGS_LOADED);
+    revertFromFlash() {
+        var _this61 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this61.set_persistentSettings(Y_PERSISTENTSETTINGS_LOADED);
+        })();
     }
 
     /**
@@ -2834,9 +2976,12 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async reboot(secBeforeReboot)
-    {
-        return await this.set_rebootCountdown(secBeforeReboot);
+    reboot(secBeforeReboot) {
+        var _this62 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this62.set_rebootCountdown(secBeforeReboot);
+        })();
     }
 
     /**
@@ -2848,9 +2993,12 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async triggerFirmwareUpdate(secBeforeReboot)
-    {
-        return await this.set_rebootCountdown(-secBeforeReboot);
+    triggerFirmwareUpdate(secBeforeReboot) {
+        var _this63 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this63.set_rebootCountdown(-secBeforeReboot);
+        })();
     }
 
     /**
@@ -2869,26 +3017,29 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns a string that start with "error:".
      */
-    async checkFirmware(path,onlynew)
-    {
-        /** @type {string} **/
-        let serial;
-        /** @type {number} **/
-        let release;
-        /** @type {string} **/
-        let tmp_res;
-        if (onlynew) {
-            release = this._yapi.imm_atoi(await this.get_firmwareRelease());
-        } else {
-            release = 0;
-        }
-        //may throw an exception
-        serial = await this.get_serialNumber();
-        tmp_res = await YFirmwareUpdate.CheckFirmware(serial, path, release);
-        if ((tmp_res).indexOf('error:') == 0) {
-            this._throw(YAPI_INVALID_ARGUMENT, tmp_res);
-        }
-        return tmp_res;
+    checkFirmware(path, onlynew) {
+        var _this64 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let serial;
+            /** @type {number} **/
+            let release;
+            /** @type {string} **/
+            let tmp_res;
+            if (onlynew) {
+                release = _this64._yapi.imm_atoi((yield _this64.get_firmwareRelease()));
+            } else {
+                release = 0;
+            }
+            //may throw an exception
+            serial = yield _this64.get_serialNumber();
+            tmp_res = yield YFirmwareUpdate.CheckFirmware(serial, path, release);
+            if (tmp_res.indexOf('error:') == 0) {
+                _this64._throw(YAPI_INVALID_ARGUMENT, tmp_res);
+            }
+            return tmp_res;
+        })();
     }
 
     /**
@@ -2899,20 +3050,23 @@ export class YModule extends YFunction
      *
      * @return {YFirmwareUpdate} : A YFirmwareUpdate object or NULL on error.
      */
-    async updateFirmware(path)
-    {
-        /** @type {string} **/
-        let serial;
-        /** @type {Uint8Array} **/
-        let settings;
-        // may throw an exception
-        serial = await this.get_serialNumber();
-        settings = await this.get_allSettings();
-        if ((settings).length == 0) {
-            this._throw(YAPI_IO_ERROR, 'Unable to get device settings');
-            settings = this._yapi.imm_str2bin('error:Unable to get device settings');
-        }
-        return new YFirmwareUpdate(serial, path, settings);
+    updateFirmware(path) {
+        var _this65 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let serial;
+            /** @type {Uint8Array} **/
+            let settings;
+            // may throw an exception
+            serial = yield _this65.get_serialNumber();
+            settings = yield _this65.get_allSettings();
+            if (settings.length == 0) {
+                _this65._throw(YAPI_IO_ERROR, 'Unable to get device settings');
+                settings = _this65._yapi.imm_str2bin('error:Unable to get device settings');
+            }
+            return new YFirmwareUpdate(serial, path, settings);
+        })();
     }
 
     /**
@@ -2924,136 +3078,145 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns an binary object of size 0.
      */
-    async get_allSettings()
-    {
-        /** @type {Uint8Array} **/
-        let settings;
-        /** @type {Uint8Array} **/
-        let json;
-        /** @type {Uint8Array} **/
-        let res;
-        /** @type {string} **/
-        let sep;
-        /** @type {string} **/
-        let name;
-        /** @type {string} **/
-        let item;
-        /** @type {string} **/
-        let t_type;
-        /** @type {string} **/
-        let id;
-        /** @type {string} **/
-        let url;
-        /** @type {string} **/
-        let file_data;
-        /** @type {Uint8Array} **/
-        let file_data_bin;
-        /** @type {Uint8Array} **/
-        let temp_data_bin;
-        /** @type {string} **/
-        let ext_settings;
-        /** @type {string[]} **/
-        let filelist = [];
-        /** @type {string[]} **/
-        let templist = [];
-        // may throw an exception
-        settings = await this._download('api.json');
-        if ((settings).length == 0) {
-            return settings;
-        }
-        ext_settings = ', "extras":[';
-        templist = await this.get_functionIds('Temperature');
-        sep = '';
-        for (let ii in  templist) {
-            if (this._yapi.imm_atoi(await this.get_firmwareRelease()) > 9000) {
-                url = 'api/'+ templist[ii]+'/sensorType';
-                t_type = this._yapi.imm_bin2str(await this._download(url));
-                if (t_type == 'RES_NTC') {
-                    id = ( templist[ii]).substr( 11, ( templist[ii]).length - 11);
-                    temp_data_bin = await this._download('extra.json?page='+id);
-                    if ((temp_data_bin).length == 0) {
-                        return temp_data_bin;
-                    }
-                    item = sep+'{"fid":"'+ templist[ii]+'", "json":'+this._yapi.imm_bin2str(temp_data_bin)+'}\n';
-                    ext_settings = ext_settings + item;
-                    sep = ',';
-                }
+    get_allSettings() {
+        var _this66 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {Uint8Array} **/
+            let settings;
+            /** @type {Uint8Array} **/
+            let json;
+            /** @type {Uint8Array} **/
+            let res;
+            /** @type {string} **/
+            let sep;
+            /** @type {string} **/
+            let name;
+            /** @type {string} **/
+            let item;
+            /** @type {string} **/
+            let t_type;
+            /** @type {string} **/
+            let id;
+            /** @type {string} **/
+            let url;
+            /** @type {string} **/
+            let file_data;
+            /** @type {Uint8Array} **/
+            let file_data_bin;
+            /** @type {Uint8Array} **/
+            let temp_data_bin;
+            /** @type {string} **/
+            let ext_settings;
+            /** @type {string[]} **/
+            let filelist = [];
+            /** @type {string[]} **/
+            let templist = [];
+            // may throw an exception
+            settings = yield _this66._download('api.json');
+            if (settings.length == 0) {
+                return settings;
             }
-        }
-        ext_settings =  ext_settings + '],\n"files":[';
-        if (await this.hasFunction('files')) {
-            json = await this._download('files.json?a=dir&f=');
-            if ((json).length == 0) {
-                return json;
-            }
-            filelist = this.imm_json_get_array(json);
+            ext_settings = ', "extras":[';
+            templist = yield _this66.get_functionIds('Temperature');
             sep = '';
-            for (let ii in  filelist) {
-                name = this.imm_json_get_key(this._yapi.imm_str2bin( filelist[ii]), 'name');
-                if ((name).length == 0) {
-                    return this._yapi.imm_str2bin(name);
+            for (let ii in templist) {
+                if (_this66._yapi.imm_atoi((yield _this66.get_firmwareRelease())) > 9000) {
+                    url = 'api/' + templist[ii] + '/sensorType';
+                    t_type = _this66._yapi.imm_bin2str((yield _this66._download(url)));
+                    if (t_type == 'RES_NTC') {
+                        id = templist[ii].substr(11, templist[ii].length - 11);
+                        temp_data_bin = yield _this66._download('extra.json?page=' + id);
+                        if (temp_data_bin.length == 0) {
+                            return temp_data_bin;
+                        }
+                        item = sep + '{"fid":"' + templist[ii] + '", "json":' + _this66._yapi.imm_bin2str(temp_data_bin) + '}\n';
+                        ext_settings = ext_settings + item;
+                        sep = ',';
+                    }
                 }
-                file_data_bin = await this._download(this.imm_escapeAttr(name));
-                file_data = this._yapi.imm_bin2hexstr(file_data_bin);
-                item = sep+'{"name":"'+name+'", "data":"'+file_data+'"}\n';
-                ext_settings = ext_settings + item;
-                sep = ',';;
             }
-        }
-        ext_settings = ext_settings + ']}';
-        res = this._yapi.imm_str2bin('{ "api":') + settings + this._yapi.imm_str2bin(ext_settings);
-        return res;
+            ext_settings = ext_settings + '],\n"files":[';
+            if (yield _this66.hasFunction('files')) {
+                json = yield _this66._download('files.json?a=dir&f=');
+                if (json.length == 0) {
+                    return json;
+                }
+                filelist = _this66.imm_json_get_array(json);
+                sep = '';
+                for (let ii in filelist) {
+                    name = _this66.imm_json_get_key(_this66._yapi.imm_str2bin(filelist[ii]), 'name');
+                    if (name.length == 0) {
+                        return _this66._yapi.imm_str2bin(name);
+                    }
+                    file_data_bin = yield _this66._download(_this66.imm_escapeAttr(name));
+                    file_data = _this66._yapi.imm_bin2hexstr(file_data_bin);
+                    item = sep + '{"name":"' + name + '", "data":"' + file_data + '"}\n';
+                    ext_settings = ext_settings + item;
+                    sep = ',';;
+                }
+            }
+            ext_settings = ext_settings + ']}';
+            res = _this66._yapi.imm_str2bin('{ "api":') + settings + _this66._yapi.imm_str2bin(ext_settings);
+            return res;
+        })();
     }
 
-    async loadThermistorExtra(funcId,jsonExtra)
-    {
-        /** @type {string[]} **/
-        let values = [];
-        /** @type {string} **/
-        let url;
-        /** @type {string} **/
-        let curr;
-        /** @type {string} **/
-        let currTemp;
-        /** @type {number} **/
-        let ofs;
-        /** @type {number} **/
-        let size;
-        url = 'api/' + funcId + '.json?command=Z';
-        // may throw an exception
-        await this._download(url);
-        // add records in growing resistance value
-        values = this.imm_json_get_array(this._yapi.imm_str2bin(jsonExtra));
-        ofs = 0;
-        size = values.length;
-        while (ofs + 1 < size) {
-            curr = values[ofs];
-            currTemp = values[ofs + 1];
-            url = 'api/'+funcId+'/.json?command=m'+curr+':'+currTemp;
-            await this._download(url);
-            ofs = ofs + 2;
-        }
-        return YAPI_SUCCESS;
+    loadThermistorExtra(funcId, jsonExtra) {
+        var _this67 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string[]} **/
+            let values = [];
+            /** @type {string} **/
+            let url;
+            /** @type {string} **/
+            let curr;
+            /** @type {string} **/
+            let currTemp;
+            /** @type {number} **/
+            let ofs;
+            /** @type {number} **/
+            let size;
+            url = 'api/' + funcId + '.json?command=Z';
+            // may throw an exception
+            yield _this67._download(url);
+            // add records in growing resistance value
+            values = _this67.imm_json_get_array(_this67._yapi.imm_str2bin(jsonExtra));
+            ofs = 0;
+            size = values.length;
+            while (ofs + 1 < size) {
+                curr = values[ofs];
+                currTemp = values[ofs + 1];
+                url = 'api/' + funcId + '/.json?command=m' + curr + ':' + currTemp;
+                yield _this67._download(url);
+                ofs = ofs + 2;
+            }
+            return YAPI_SUCCESS;
+        })();
     }
 
-    async set_extraSettings(jsonExtra)
-    {
-        /** @type {string[]} **/
-        let extras = [];
-        /** @type {string} **/
-        let functionId;
-        /** @type {string} **/
-        let data;
-        extras = this.imm_json_get_array(this._yapi.imm_str2bin(jsonExtra));
-        for (let ii in  extras) {
-            functionId = this.imm_get_json_path( extras[ii], 'fid');
-            functionId = this.imm_decode_json_string(functionId);
-            data = this.imm_get_json_path( extras[ii], 'json');
-            if (await this.hasFunction(functionId)) {
-                await this.loadThermistorExtra(functionId, data);
+    set_extraSettings(jsonExtra) {
+        var _this68 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string[]} **/
+            let extras = [];
+            /** @type {string} **/
+            let functionId;
+            /** @type {string} **/
+            let data;
+            extras = _this68.imm_json_get_array(_this68._yapi.imm_str2bin(jsonExtra));
+            for (let ii in extras) {
+                functionId = _this68.imm_get_json_path(extras[ii], 'fid');
+                functionId = _this68.imm_decode_json_string(functionId);
+                data = _this68.imm_get_json_path(extras[ii], 'json');
+                if (yield _this68.hasFunction(functionId)) {
+                    yield _this68.loadThermistorExtra(functionId, data);
+                }
             }
-        }
-        return YAPI_SUCCESS;
+            return YAPI_SUCCESS;
+        })();
     }
 
     /**
@@ -3068,54 +3231,57 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_allSettingsAndFiles(settings)
-    {
-        /** @type {Uint8Array} **/
-        let down;
-        /** @type {string} **/
-        let json;
-        /** @type {string} **/
-        let json_api;
-        /** @type {string} **/
-        let json_files;
-        /** @type {string} **/
-        let json_extra;
-        json = this._yapi.imm_bin2str(settings);
-        json_api = this.imm_get_json_path(json, 'api');
-        if (json_api == '') {
-            return await this.set_allSettings(settings);
-        }
-        json_extra = this.imm_get_json_path(json, 'extras');
-        if (!(json_extra == '')) {
-            await this.set_extraSettings(json_extra);
-        }
-        await this.set_allSettings(this._yapi.imm_str2bin(json_api));
-        if (await this.hasFunction('files')) {
-            /** @type {string[]} **/
-            let files = [];
+    set_allSettingsAndFiles(settings) {
+        var _this69 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {Uint8Array} **/
+            let down;
             /** @type {string} **/
-            let res;
+            let json;
             /** @type {string} **/
-            let name;
+            let json_api;
             /** @type {string} **/
-            let data;
-            down = await this._download('files.json?a=format');
-            res = this.imm_get_json_path(this._yapi.imm_bin2str(down), 'res');
-            res = this.imm_decode_json_string(res);
-            if (!(res == 'ok')) {
-                return this._throw(YAPI_IO_ERROR,'format failed',YAPI_IO_ERROR);
+            let json_files;
+            /** @type {string} **/
+            let json_extra;
+            json = _this69._yapi.imm_bin2str(settings);
+            json_api = _this69.imm_get_json_path(json, 'api');
+            if (json_api == '') {
+                return yield _this69.set_allSettings(settings);
             }
-            json_files = this.imm_get_json_path(json, 'files');
-            files = this.imm_json_get_array(this._yapi.imm_str2bin(json_files));
-            for (let ii in  files) {
-                name = this.imm_get_json_path( files[ii], 'name');
-                name = this.imm_decode_json_string(name);
-                data = this.imm_get_json_path( files[ii], 'data');
-                data = this.imm_decode_json_string(data);
-                await this._upload(name, this._yapi.imm_hexstr2bin(data));;
+            json_extra = _this69.imm_get_json_path(json, 'extras');
+            if (!(json_extra == '')) {
+                yield _this69.set_extraSettings(json_extra);
             }
-        }
-        return YAPI_SUCCESS;
+            yield _this69.set_allSettings(_this69._yapi.imm_str2bin(json_api));
+            if (yield _this69.hasFunction('files')) {
+                /** @type {string[]} **/
+                let files = [];
+                /** @type {string} **/
+                let res;
+                /** @type {string} **/
+                let name;
+                /** @type {string} **/
+                let data;
+                down = yield _this69._download('files.json?a=format');
+                res = _this69.imm_get_json_path(_this69._yapi.imm_bin2str(down), 'res');
+                res = _this69.imm_decode_json_string(res);
+                if (!(res == 'ok')) {
+                    return _this69._throw(YAPI_IO_ERROR, 'format failed', YAPI_IO_ERROR);
+                }
+                json_files = _this69.imm_get_json_path(json, 'files');
+                files = _this69.imm_json_get_array(_this69._yapi.imm_str2bin(json_files));
+                for (let ii in files) {
+                    name = _this69.imm_get_json_path(files[ii], 'name');
+                    name = _this69.imm_decode_json_string(name);
+                    data = _this69.imm_get_json_path(files[ii], 'data');
+                    data = _this69.imm_decode_json_string(data);
+                    yield _this69._upload(name, _this69._yapi.imm_hexstr2bin(data));;
+                }
+            }
+            return YAPI_SUCCESS;
+        })();
     }
 
     /**
@@ -3126,25 +3292,28 @@ export class YModule extends YFunction
      *
      * @return {boolean} : true if the device has the function identifier
      */
-    async hasFunction(funcId)
-    {
-        /** @type {number} **/
-        let count;
-        /** @type {number} **/
-        let i;
-        /** @type {string} **/
-        let fid;
-        // may throw an exception
-        count  = await this.functionCount();
-        i = 0;
-        while (i < count) {
-            fid  = await this.functionId(i);
-            if (fid == funcId) {
-                return true;
+    hasFunction(funcId) {
+        var _this70 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let count;
+            /** @type {number} **/
+            let i;
+            /** @type {string} **/
+            let fid;
+            // may throw an exception
+            count = yield _this70.functionCount();
+            i = 0;
+            while (i < count) {
+                fid = yield _this70.functionId(i);
+                if (fid == funcId) {
+                    return true;
+                }
+                i = i + 1;
             }
-            i = i + 1;
-        }
-        return false;
+            return false;
+        })();
     }
 
     /**
@@ -3154,261 +3323,272 @@ export class YModule extends YFunction
      *
      * @return {string[]} : A array of string.
      */
-    async get_functionIds(funType)
-    {
-        /** @type {number} **/
-        let count;
-        /** @type {number} **/
-        let i;
-        /** @type {string} **/
-        let ftype;
-        /** @type {string[]} **/
-        let res = [];
-        // may throw an exception
-        count = await this.functionCount();
-        i = 0;
-        while (i < count) {
-            ftype = await this.functionType(i);
-            if (ftype == funType) {
-                res.push(await this.functionId(i));
-            } else {
-                ftype = await this.functionBaseType(i);
+    get_functionIds(funType) {
+        var _this71 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let count;
+            /** @type {number} **/
+            let i;
+            /** @type {string} **/
+            let ftype;
+            /** @type {string[]} **/
+            let res = [];
+            // may throw an exception
+            count = yield _this71.functionCount();
+            i = 0;
+            while (i < count) {
+                ftype = yield _this71.functionType(i);
                 if (ftype == funType) {
-                    res.push(await this.functionId(i));
+                    res.push((yield _this71.functionId(i)));
+                } else {
+                    ftype = yield _this71.functionBaseType(i);
+                    if (ftype == funType) {
+                        res.push((yield _this71.functionId(i)));
+                    }
                 }
+                i = i + 1;
             }
-            i = i + 1;
-        }
-        return res;
+            return res;
+        })();
     }
 
     // cannot be generated for JS:
     // imm_flattenJsonStruct(jsoncomplex)
 
-    async calibVersion(cparams)
-    {
-        if (cparams == '0,') {
-            return 3;
-        }
-        if ((cparams).indexOf(',') >= 0) {
-            if ((cparams).indexOf(' ') > 0) {
+    calibVersion(cparams) {
+        return _asyncToGenerator(function* () {
+            if (cparams == '0,') {
                 return 3;
-            } else {
+            }
+            if (cparams.indexOf(',') >= 0) {
+                if (cparams.indexOf(' ') > 0) {
+                    return 3;
+                } else {
+                    return 1;
+                }
+            }
+            if (cparams == '' || cparams == '0') {
                 return 1;
             }
-        }
-        if (cparams == '' || cparams == '0') {
+            if (cparams.length < 2 || cparams.indexOf('.') >= 0) {
+                return 0;
+            } else {
+                return 2;
+            }
+        })();
+    }
+
+    calibScale(unit_name, sensorType) {
+        var _this72 = this;
+
+        return _asyncToGenerator(function* () {
+            if (unit_name == 'g' || unit_name == 'gauss' || unit_name == 'W') {
+                return 1000;
+            }
+            if (unit_name == 'C') {
+                if (sensorType == '') {
+                    return 16;
+                }
+                if (_this72._yapi.imm_atoi(sensorType) < 8) {
+                    return 16;
+                } else {
+                    return 100;
+                }
+            }
+            if (unit_name == 'm' || unit_name == 'deg') {
+                return 10;
+            }
             return 1;
-        }
-        if (((cparams).length < 2) || ((cparams).indexOf('.') >= 0)) {
-            return 0;
-        } else {
-            return 2;
-        }
+        })();
     }
 
-    async calibScale(unit_name,sensorType)
-    {
-        if (unit_name == 'g' || unit_name == 'gauss' || unit_name == 'W') {
-            return 1000;
-        }
-        if (unit_name == 'C') {
-            if (sensorType == '') {
-                return 16;
+    calibOffset(unit_name) {
+        return _asyncToGenerator(function* () {
+            if (unit_name == '% RH' || unit_name == 'mbar' || unit_name == 'lx') {
+                return 0;
             }
-            if (this._yapi.imm_atoi(sensorType) < 8) {
-                return 16;
-            } else {
-                return 100;
-            }
-        }
-        if (unit_name == 'm' || unit_name == 'deg') {
-            return 10;
-        }
-        return 1;
+            return 32767;
+        })();
     }
 
-    async calibOffset(unit_name)
-    {
-        if (unit_name == '% RH' || unit_name == 'mbar' || unit_name == 'lx') {
-            return 0;
-        }
-        return 32767;
-    }
+    calibConvert(param, currentFuncValue, unit_name, sensorType) {
+        var _this73 = this;
 
-    async calibConvert(param,currentFuncValue,unit_name,sensorType)
-    {
-        /** @type {number} **/
-        let paramVer;
-        /** @type {number} **/
-        let funVer;
-        /** @type {number} **/
-        let funScale;
-        /** @type {number} **/
-        let funOffset;
-        /** @type {number} **/
-        let paramScale;
-        /** @type {number} **/
-        let paramOffset;
-        /** @type {number[]} **/
-        let words = [];
-        /** @type {string[]} **/
-        let words_str = [];
-        /** @type {number[]} **/
-        let calibData = [];
-        /** @type {number[]} **/
-        let iCalib = [];
-        /** @type {number} **/
-        let calibType;
-        /** @type {number} **/
-        let i;
-        /** @type {number} **/
-        let maxSize;
-        /** @type {number} **/
-        let ratio;
-        /** @type {number} **/
-        let nPoints;
-        /** @type {number} **/
-        let wordVal;
-        // Initial guess for parameter encoding
-        paramVer = await this.calibVersion(param);
-        funVer = await this.calibVersion(currentFuncValue);
-        funScale = await this.calibScale(unit_name, sensorType);
-        funOffset = await this.calibOffset(unit_name);
-        paramScale = funScale;
-        paramOffset = funOffset;
-        if (funVer < 3) {
-            if (funVer == 2) {
-                words = this._yapi.imm_decodeWords(currentFuncValue);
-                if ((words[0] == 1366) && (words[1] == 12500)) {
-                    funScale = 1;
-                    funOffset = 0;
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let paramVer;
+            /** @type {number} **/
+            let funVer;
+            /** @type {number} **/
+            let funScale;
+            /** @type {number} **/
+            let funOffset;
+            /** @type {number} **/
+            let paramScale;
+            /** @type {number} **/
+            let paramOffset;
+            /** @type {number[]} **/
+            let words = [];
+            /** @type {string[]} **/
+            let words_str = [];
+            /** @type {number[]} **/
+            let calibData = [];
+            /** @type {number[]} **/
+            let iCalib = [];
+            /** @type {number} **/
+            let calibType;
+            /** @type {number} **/
+            let i;
+            /** @type {number} **/
+            let maxSize;
+            /** @type {number} **/
+            let ratio;
+            /** @type {number} **/
+            let nPoints;
+            /** @type {number} **/
+            let wordVal;
+            // Initial guess for parameter encoding
+            paramVer = yield _this73.calibVersion(param);
+            funVer = yield _this73.calibVersion(currentFuncValue);
+            funScale = yield _this73.calibScale(unit_name, sensorType);
+            funOffset = yield _this73.calibOffset(unit_name);
+            paramScale = funScale;
+            paramOffset = funOffset;
+            if (funVer < 3) {
+                if (funVer == 2) {
+                    words = _this73._yapi.imm_decodeWords(currentFuncValue);
+                    if (words[0] == 1366 && words[1] == 12500) {
+                        funScale = 1;
+                        funOffset = 0;
+                    } else {
+                        funScale = words[1];
+                        funOffset = words[0];
+                    }
                 } else {
-                    funScale = words[1];
-                    funOffset = words[0];
-                }
-            } else {
-                if (funVer == 1) {
-                    if (currentFuncValue == '' || (this._yapi.imm_atoi(currentFuncValue) > 10)) {
-                        funScale = 0;
+                    if (funVer == 1) {
+                        if (currentFuncValue == '' || _this73._yapi.imm_atoi(currentFuncValue) > 10) {
+                            funScale = 0;
+                        }
                     }
                 }
             }
-        }
-        calibData.length = 0;
-        calibType = 0;
-        if (paramVer < 3) {
-            if (paramVer == 2) {
-                words = this._yapi.imm_decodeWords(param);
-                if ((words[0] == 1366) && (words[1] == 12500)) {
-                    paramScale = 1;
-                    paramOffset = 0;
-                } else {
-                    paramScale = words[1];
-                    paramOffset = words[0];
-                }
-                if ((words.length >= 3) && (words[2] > 0)) {
-                    maxSize = 3 + 2 * ((words[2]) % (10));
-                    if (maxSize > words.length) {
-                        maxSize = words.length;
+            calibData.length = 0;
+            calibType = 0;
+            if (paramVer < 3) {
+                if (paramVer == 2) {
+                    words = _this73._yapi.imm_decodeWords(param);
+                    if (words[0] == 1366 && words[1] == 12500) {
+                        paramScale = 1;
+                        paramOffset = 0;
+                    } else {
+                        paramScale = words[1];
+                        paramOffset = words[0];
                     }
-                    i = 3;
-                    while (i < maxSize) {
-                        calibData.push(words[i]);
-                        i = i + 1;
-                    }
-                }
-            } else {
-                if (paramVer == 1) {
-                    words_str = (param).split(',');
-                    for (let ii in words_str) {
-                        words.push(this._yapi.imm_atoi(words_str[ii]));
-                    }
-                    if (param == '' || (words[0] > 10)) {
-                        paramScale = 0;
-                    }
-                    if ((words.length > 0) && (words[0] > 0)) {
-                        maxSize = 1 + 2 * ((words[0]) % (10));
+                    if (words.length >= 3 && words[2] > 0) {
+                        maxSize = 3 + 2 * (words[2] % 10);
                         if (maxSize > words.length) {
                             maxSize = words.length;
                         }
-                        i = 1;
+                        i = 3;
                         while (i < maxSize) {
                             calibData.push(words[i]);
                             i = i + 1;
                         }
                     }
                 } else {
-                    if (paramVer == 0) {
-                        ratio = parseFloat(param);
-                        if (ratio > 0) {
-                            calibData.push(0.0);
-                            calibData.push(0.0);
-                            calibData.push(Math.round(65535 / ratio));
-                            calibData.push(65535.0);
+                    if (paramVer == 1) {
+                        words_str = param.split(',');
+                        for (let ii in words_str) {
+                            words.push(_this73._yapi.imm_atoi(words_str[ii]));
+                        }
+                        if (param == '' || words[0] > 10) {
+                            paramScale = 0;
+                        }
+                        if (words.length > 0 && words[0] > 0) {
+                            maxSize = 1 + 2 * (words[0] % 10);
+                            if (maxSize > words.length) {
+                                maxSize = words.length;
+                            }
+                            i = 1;
+                            while (i < maxSize) {
+                                calibData.push(words[i]);
+                                i = i + 1;
+                            }
+                        }
+                    } else {
+                        if (paramVer == 0) {
+                            ratio = parseFloat(param);
+                            if (ratio > 0) {
+                                calibData.push(0.0);
+                                calibData.push(0.0);
+                                calibData.push(Math.round(65535 / ratio));
+                                calibData.push(65535.0);
+                            }
                         }
                     }
                 }
-            }
-            i = 0;
-            while (i < calibData.length) {
-                if (paramScale > 0) {
-                    calibData[i] = (calibData[i] - paramOffset) / paramScale;
-                } else {
-                    calibData[i] = this._yapi.imm_decimalToDouble(Math.round(calibData[i]));
-                }
-                i = i + 1;
-            }
-        } else {
-            iCalib = this._yapi.imm_decodeFloats(param);
-            calibType = Math.round(iCalib[0] / 1000.0);
-            if (calibType >= 30) {
-                calibType = calibType - 30;
-            }
-            i = 1;
-            while (i < iCalib.length) {
-                calibData.push(iCalib[i] / 1000.0);
-                i = i + 1;
-            }
-        }
-        if (funVer >= 3) {
-            if (calibData.length == 0) {
-                param = '0,';
-            } else {
-                param = 30 + calibType;
                 i = 0;
                 while (i < calibData.length) {
-                    if (((i) & (1)) > 0) {
-                        param = param + ':';
+                    if (paramScale > 0) {
+                        calibData[i] = (calibData[i] - paramOffset) / paramScale;
                     } else {
-                        param = param + ' ';
+                        calibData[i] = _this73._yapi.imm_decimalToDouble(Math.round(calibData[i]));
                     }
-                    param = param + Math.round(calibData[i] * 1000.0 / 1000.0);
-                    i = i + 1;
-                }
-                param = param + ',';
-            }
-        } else {
-            if (funVer >= 1) {
-                nPoints = parseInt((calibData.length) / (2), 10);
-                param = nPoints;
-                i = 0;
-                while (i < 2 * nPoints) {
-                    if (funScale == 0) {
-                        wordVal = this._yapi.imm_doubleToDecimal(Math.round(calibData[i]));
-                    } else {
-                        wordVal = calibData[i] * funScale + funOffset;
-                    }
-                    param = param + ',' + Math.round(wordVal);
                     i = i + 1;
                 }
             } else {
-                if (calibData.length == 4) {
-                    param = Math.round(1000 * (calibData[3] - calibData[1]) / calibData[2] - calibData[0]);
+                iCalib = _this73._yapi.imm_decodeFloats(param);
+                calibType = Math.round(iCalib[0] / 1000.0);
+                if (calibType >= 30) {
+                    calibType = calibType - 30;
+                }
+                i = 1;
+                while (i < iCalib.length) {
+                    calibData.push(iCalib[i] / 1000.0);
+                    i = i + 1;
                 }
             }
-        }
-        return param;
+            if (funVer >= 3) {
+                if (calibData.length == 0) {
+                    param = '0,';
+                } else {
+                    param = 30 + calibType;
+                    i = 0;
+                    while (i < calibData.length) {
+                        if ((i & 1) > 0) {
+                            param = param + ':';
+                        } else {
+                            param = param + ' ';
+                        }
+                        param = param + Math.round(calibData[i] * 1000.0 / 1000.0);
+                        i = i + 1;
+                    }
+                    param = param + ',';
+                }
+            } else {
+                if (funVer >= 1) {
+                    nPoints = parseInt(calibData.length / 2, 10);
+                    param = nPoints;
+                    i = 0;
+                    while (i < 2 * nPoints) {
+                        if (funScale == 0) {
+                            wordVal = _this73._yapi.imm_doubleToDecimal(Math.round(calibData[i]));
+                        } else {
+                            wordVal = calibData[i] * funScale + funOffset;
+                        }
+                        param = param + ',' + Math.round(wordVal);
+                        i = i + 1;
+                    }
+                } else {
+                    if (calibData.length == 4) {
+                        param = Math.round(1000 * (calibData[3] - calibData[1]) / calibData[2] - calibData[0]);
+                    }
+                }
+            }
+            return param;
+        })();
     }
 
     /**
@@ -3422,307 +3602,310 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_allSettings(settings)
-    {
-        /** @type {string[]} **/
-        let restoreLast = [];
-        /** @type {Uint8Array} **/
-        let old_json_flat;
-        /** @type {string[]} **/
-        let old_dslist = [];
-        /** @type {string[]} **/
-        let old_jpath = [];
-        /** @type {number[]} **/
-        let old_jpath_len = [];
-        /** @type {string[]} **/
-        let old_val_arr = [];
-        /** @type {Uint8Array} **/
-        let actualSettings;
-        /** @type {string[]} **/
-        let new_dslist = [];
-        /** @type {string[]} **/
-        let new_jpath = [];
-        /** @type {number[]} **/
-        let new_jpath_len = [];
-        /** @type {string[]} **/
-        let new_val_arr = [];
-        /** @type {number} **/
-        let cpos;
-        /** @type {number} **/
-        let eqpos;
-        /** @type {number} **/
-        let leng;
-        /** @type {number} **/
-        let i;
-        /** @type {number} **/
-        let j;
-        /** @type {string} **/
-        let njpath;
-        /** @type {string} **/
-        let jpath;
-        /** @type {string} **/
-        let fun;
-        /** @type {string} **/
-        let attr;
-        /** @type {string} **/
-        let value;
-        /** @type {string} **/
-        let url;
-        /** @type {string} **/
-        let tmp;
-        /** @type {string} **/
-        let new_calib;
-        /** @type {string} **/
-        let sensorType;
-        /** @type {string} **/
-        let unit_name;
-        /** @type {string} **/
-        let newval;
-        /** @type {string} **/
-        let oldval;
-        /** @type {string} **/
-        let old_calib;
-        /** @type {string} **/
-        let each_str;
-        /** @type {boolean} **/
-        let do_update;
-        /** @type {boolean} **/
-        let found;
-        tmp = this._yapi.imm_bin2str(settings);
-        tmp = this.imm_get_json_path(tmp, 'api');
-        if (!(tmp == '')) {
-            settings = this._yapi.imm_str2bin(tmp);
-        }
-        oldval = '';
-        newval = '';
-        old_json_flat = this.imm_flattenJsonStruct(settings);
-        old_dslist = this.imm_json_get_array(old_json_flat);
-        for (let ii in old_dslist) {
-            each_str = this.imm_json_get_string(this._yapi.imm_str2bin(old_dslist[ii]));
-            leng = (each_str).length;
-            eqpos = (each_str).indexOf('=');
-            if ((eqpos < 0) || (leng == 0)) {
-                this._throw(YAPI_INVALID_ARGUMENT, 'Invalid settings');
-                return YAPI_INVALID_ARGUMENT;
+    set_allSettings(settings) {
+        var _this74 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string[]} **/
+            let restoreLast = [];
+            /** @type {Uint8Array} **/
+            let old_json_flat;
+            /** @type {string[]} **/
+            let old_dslist = [];
+            /** @type {string[]} **/
+            let old_jpath = [];
+            /** @type {number[]} **/
+            let old_jpath_len = [];
+            /** @type {string[]} **/
+            let old_val_arr = [];
+            /** @type {Uint8Array} **/
+            let actualSettings;
+            /** @type {string[]} **/
+            let new_dslist = [];
+            /** @type {string[]} **/
+            let new_jpath = [];
+            /** @type {number[]} **/
+            let new_jpath_len = [];
+            /** @type {string[]} **/
+            let new_val_arr = [];
+            /** @type {number} **/
+            let cpos;
+            /** @type {number} **/
+            let eqpos;
+            /** @type {number} **/
+            let leng;
+            /** @type {number} **/
+            let i;
+            /** @type {number} **/
+            let j;
+            /** @type {string} **/
+            let njpath;
+            /** @type {string} **/
+            let jpath;
+            /** @type {string} **/
+            let fun;
+            /** @type {string} **/
+            let attr;
+            /** @type {string} **/
+            let value;
+            /** @type {string} **/
+            let url;
+            /** @type {string} **/
+            let tmp;
+            /** @type {string} **/
+            let new_calib;
+            /** @type {string} **/
+            let sensorType;
+            /** @type {string} **/
+            let unit_name;
+            /** @type {string} **/
+            let newval;
+            /** @type {string} **/
+            let oldval;
+            /** @type {string} **/
+            let old_calib;
+            /** @type {string} **/
+            let each_str;
+            /** @type {boolean} **/
+            let do_update;
+            /** @type {boolean} **/
+            let found;
+            tmp = _this74._yapi.imm_bin2str(settings);
+            tmp = _this74.imm_get_json_path(tmp, 'api');
+            if (!(tmp == '')) {
+                settings = _this74._yapi.imm_str2bin(tmp);
             }
-            jpath = (each_str).substr( 0, eqpos);
-            eqpos = eqpos + 1;
-            value = (each_str).substr( eqpos, leng - eqpos);
-            old_jpath.push(jpath);
-            old_jpath_len.push((jpath).length);
-            old_val_arr.push(value);;
-        }
-        // may throw an exception
-        actualSettings = await this._download('api.json');
-        actualSettings = this.imm_flattenJsonStruct(actualSettings);
-        new_dslist = this.imm_json_get_array(actualSettings);
-        for (let ii in new_dslist) {
-            each_str = this.imm_json_get_string(this._yapi.imm_str2bin(new_dslist[ii]));
-            leng = (each_str).length;
-            eqpos = (each_str).indexOf('=');
-            if ((eqpos < 0) || (leng == 0)) {
-                this._throw(YAPI_INVALID_ARGUMENT, 'Invalid settings');
-                return YAPI_INVALID_ARGUMENT;
-            }
-            jpath = (each_str).substr( 0, eqpos);
-            eqpos = eqpos + 1;
-            value = (each_str).substr( eqpos, leng - eqpos);
-            new_jpath.push(jpath);
-            new_jpath_len.push((jpath).length);
-            new_val_arr.push(value);;
-        }
-        i = 0;
-        while (i < new_jpath.length) {
-            njpath = new_jpath[i];
-            leng = (njpath).length;
-            cpos = (njpath).indexOf('/');
-            if ((cpos < 0) || (leng == 0)) {
-                continue;
-            }
-            fun = (njpath).substr( 0, cpos);
-            cpos = cpos + 1;
-            attr = (njpath).substr( cpos, leng - cpos);
-            do_update = true;
-            if (fun == 'services') {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'firmwareRelease')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'usbCurrent')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'upTime')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'persistentSettings')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'adminPassword')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'userPassword')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'rebootCountdown')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'advertisedValue')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'poeCurrent')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'readiness')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'ipAddress')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'subnetMask')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'router')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'linkQuality')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'ssid')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'channel')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'security')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'message')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'currentValue')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'currentRawValue')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'currentRunIndex')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'pulseTimer')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'lastTimePressed')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'lastTimeReleased')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'filesCount')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'freeSpace')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'timeUTC')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'rtcTime')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'unixTime')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'dateTime')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'rawValue')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'lastMsg')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'delayedPulseTimer')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'rxCount')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'txCount')) {
-                do_update = false;
-            }
-            if ((do_update) && (attr == 'msgCount')) {
-                do_update = false;
-            }
-            if (do_update) {
-                do_update = false;
-                newval = new_val_arr[i];
-                j = 0;
-                found = false;
-                while ((j < old_jpath.length) && !(found)) {
-                    if ((new_jpath_len[i] == old_jpath_len[j]) && (new_jpath[i] == old_jpath[j])) {
-                        found = true;
-                        oldval = old_val_arr[j];
-                        if (!(newval == oldval)) {
-                            do_update = true;
-                        }
-                    }
-                    j = j + 1;
+            oldval = '';
+            newval = '';
+            old_json_flat = _this74.imm_flattenJsonStruct(settings);
+            old_dslist = _this74.imm_json_get_array(old_json_flat);
+            for (let ii in old_dslist) {
+                each_str = _this74.imm_json_get_string(_this74._yapi.imm_str2bin(old_dslist[ii]));
+                leng = each_str.length;
+                eqpos = each_str.indexOf('=');
+                if (eqpos < 0 || leng == 0) {
+                    _this74._throw(YAPI_INVALID_ARGUMENT, 'Invalid settings');
+                    return YAPI_INVALID_ARGUMENT;
                 }
+                jpath = each_str.substr(0, eqpos);
+                eqpos = eqpos + 1;
+                value = each_str.substr(eqpos, leng - eqpos);
+                old_jpath.push(jpath);
+                old_jpath_len.push(jpath.length);
+                old_val_arr.push(value);;
             }
-            if (do_update) {
-                if (attr == 'calibrationParam') {
-                    old_calib = '';
-                    unit_name = '';
-                    sensorType = '';
-                    new_calib = newval;
+            // may throw an exception
+            actualSettings = yield _this74._download('api.json');
+            actualSettings = _this74.imm_flattenJsonStruct(actualSettings);
+            new_dslist = _this74.imm_json_get_array(actualSettings);
+            for (let ii in new_dslist) {
+                each_str = _this74.imm_json_get_string(_this74._yapi.imm_str2bin(new_dslist[ii]));
+                leng = each_str.length;
+                eqpos = each_str.indexOf('=');
+                if (eqpos < 0 || leng == 0) {
+                    _this74._throw(YAPI_INVALID_ARGUMENT, 'Invalid settings');
+                    return YAPI_INVALID_ARGUMENT;
+                }
+                jpath = each_str.substr(0, eqpos);
+                eqpos = eqpos + 1;
+                value = each_str.substr(eqpos, leng - eqpos);
+                new_jpath.push(jpath);
+                new_jpath_len.push(jpath.length);
+                new_val_arr.push(value);;
+            }
+            i = 0;
+            while (i < new_jpath.length) {
+                njpath = new_jpath[i];
+                leng = njpath.length;
+                cpos = njpath.indexOf('/');
+                if (cpos < 0 || leng == 0) {
+                    continue;
+                }
+                fun = njpath.substr(0, cpos);
+                cpos = cpos + 1;
+                attr = njpath.substr(cpos, leng - cpos);
+                do_update = true;
+                if (fun == 'services') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'firmwareRelease') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'usbCurrent') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'upTime') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'persistentSettings') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'adminPassword') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'userPassword') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'rebootCountdown') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'advertisedValue') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'poeCurrent') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'readiness') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'ipAddress') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'subnetMask') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'router') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'linkQuality') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'ssid') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'channel') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'security') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'message') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'currentValue') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'currentRawValue') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'currentRunIndex') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'pulseTimer') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'lastTimePressed') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'lastTimeReleased') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'filesCount') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'freeSpace') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'timeUTC') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'rtcTime') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'unixTime') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'dateTime') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'rawValue') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'lastMsg') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'delayedPulseTimer') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'rxCount') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'txCount') {
+                    do_update = false;
+                }
+                if (do_update && attr == 'msgCount') {
+                    do_update = false;
+                }
+                if (do_update) {
+                    do_update = false;
+                    newval = new_val_arr[i];
                     j = 0;
                     found = false;
-                    while ((j < old_jpath.length) && !(found)) {
-                        if ((new_jpath_len[i] == old_jpath_len[j]) && (new_jpath[i] == old_jpath[j])) {
+                    while (j < old_jpath.length && !found) {
+                        if (new_jpath_len[i] == old_jpath_len[j] && new_jpath[i] == old_jpath[j]) {
                             found = true;
-                            old_calib = old_val_arr[j];
+                            oldval = old_val_arr[j];
+                            if (!(newval == oldval)) {
+                                do_update = true;
+                            }
                         }
                         j = j + 1;
                     }
-                    tmp = fun + '/unit';
-                    j = 0;
-                    found = false;
-                    while ((j < new_jpath.length) && !(found)) {
-                        if (tmp == new_jpath[j]) {
-                            found = true;
-                            unit_name = new_val_arr[j];
+                }
+                if (do_update) {
+                    if (attr == 'calibrationParam') {
+                        old_calib = '';
+                        unit_name = '';
+                        sensorType = '';
+                        new_calib = newval;
+                        j = 0;
+                        found = false;
+                        while (j < old_jpath.length && !found) {
+                            if (new_jpath_len[i] == old_jpath_len[j] && new_jpath[i] == old_jpath[j]) {
+                                found = true;
+                                old_calib = old_val_arr[j];
+                            }
+                            j = j + 1;
                         }
-                        j = j + 1;
-                    }
-                    tmp = fun + '/sensorType';
-                    j = 0;
-                    found = false;
-                    while ((j < new_jpath.length) && !(found)) {
-                        if (tmp == new_jpath[j]) {
-                            found = true;
-                            sensorType = new_val_arr[j];
+                        tmp = fun + '/unit';
+                        j = 0;
+                        found = false;
+                        while (j < new_jpath.length && !found) {
+                            if (tmp == new_jpath[j]) {
+                                found = true;
+                                unit_name = new_val_arr[j];
+                            }
+                            j = j + 1;
                         }
-                        j = j + 1;
-                    }
-                    newval = await this.calibConvert(old_calib,  new_val_arr[i],  unit_name, sensorType);
-                    url = 'api/' + fun + '.json?' + attr + '=' + this.imm_escapeAttr(newval);
-                    await this._download(url);
-                } else {
-                    url = 'api/' + fun + '.json?' + attr + '=' + this.imm_escapeAttr(oldval);
-                    if (attr == 'resolution') {
-                        restoreLast.push(url);
+                        tmp = fun + '/sensorType';
+                        j = 0;
+                        found = false;
+                        while (j < new_jpath.length && !found) {
+                            if (tmp == new_jpath[j]) {
+                                found = true;
+                                sensorType = new_val_arr[j];
+                            }
+                            j = j + 1;
+                        }
+                        newval = yield _this74.calibConvert(old_calib, new_val_arr[i], unit_name, sensorType);
+                        url = 'api/' + fun + '.json?' + attr + '=' + _this74.imm_escapeAttr(newval);
+                        yield _this74._download(url);
                     } else {
-                        await this._download(url);
+                        url = 'api/' + fun + '.json?' + attr + '=' + _this74.imm_escapeAttr(oldval);
+                        if (attr == 'resolution') {
+                            restoreLast.push(url);
+                        } else {
+                            yield _this74._download(url);
+                        }
                     }
                 }
+                i = i + 1;
             }
-            i = i + 1;
-        }
-        for (let ii in restoreLast) {
-            await this._download(restoreLast[ii]);;
-        }
-        return YAPI_SUCCESS;
+            for (let ii in restoreLast) {
+                yield _this74._download(restoreLast[ii]);;
+            }
+            return YAPI_SUCCESS;
+        })();
     }
 
     /**
@@ -3734,9 +3917,12 @@ export class YModule extends YFunction
      *
      * On failure, throws an exception or returns  YAPI.INVALID_STRING.
      */
-    async download(pathname)
-    {
-        return await this._download(pathname);
+    download(pathname) {
+        var _this75 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this75._download(pathname);
+        })();
     }
 
     /**
@@ -3746,9 +3932,12 @@ export class YModule extends YFunction
      * @return {Uint8Array} a binary buffer with module icon, in png format.
      *         On failure, throws an exception or returns  YAPI.INVALID_STRING.
      */
-    async get_icon2d()
-    {
-        return await this._download('icon2d.png');
+    get_icon2d() {
+        var _this76 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this76._download('icon2d.png');
+        })();
     }
 
     /**
@@ -3758,13 +3947,16 @@ export class YModule extends YFunction
      * @return {string} a string with last logs of the module.
      *         On failure, throws an exception or returns  YAPI.INVALID_STRING.
      */
-    async get_lastLogs()
-    {
-        /** @type {Uint8Array} **/
-        let content;
-        // may throw an exception
-        content = await this._download('logs.txt');
-        return this._yapi.imm_bin2str(content);
+    get_lastLogs() {
+        var _this77 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {Uint8Array} **/
+            let content;
+            // may throw an exception
+            content = yield _this77._download('logs.txt');
+            return _this77._yapi.imm_bin2str(content);
+        })();
     }
 
     // cannot be generated for JS:
@@ -3777,14 +3969,13 @@ export class YModule extends YFunction
      *         the next module found, or a null pointer
      *         if there are no more modules to enumerate.
      */
-    nextModule()
-    {
+    nextModule() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YModule.FindModuleInContext(this._yapi, next_hwid);
     }
 
@@ -3797,11 +3988,10 @@ export class YModule extends YFunction
      *         the first module currently online, or a null pointer
      *         if there are none.
      */
-    static FirstModule()
-    {
+    static FirstModule() {
         /** @type {string|null} **/
         let next_hwid = YAPI.imm_getFirstHardwareId('Module');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YModule.FindModule(next_hwid);
     }
 
@@ -3812,18 +4002,17 @@ export class YModule extends YFunction
      *
      * @returns {YModule}
      */
-    static FirstModuleInContext(yctx)
-    {
+    static FirstModuleInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('Module');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YModule.FindModuleInContext(yctx, next_hwid);
     }
 
     //--- (end of generated code: YModule implementation)
 }
 
-//--- (generated code: Module functions)
+exports.YModule = YModule; //--- (generated code: Module functions)
 
 /**
  * Allows you to find a module from its serial number or from its logical name.
@@ -3842,8 +4031,8 @@ export class YModule extends YFunction
  * @return {YModule} a YModule object allowing you to drive the module
  *         or get additional information on the module.
  */
-export function yFindModule(func)
-{
+
+function yFindModule(func) {
     return YModule.FindModule(func);
 }
 
@@ -3856,8 +4045,7 @@ export function yFindModule(func)
  *         the first module currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstModule()
-{
+function yFirstModule() {
     return YModule.FirstModule();
 }
 
@@ -3879,110 +4067,107 @@ export function yFirstModule()
  */
 //--- (end of generated code: YSensor class start)
 /** @extends {YFunction} **/
-export class YSensor extends YFunction
-{
-    constructor(obj_yapi, str_func)
-    {
+class YSensor extends YFunction {
+    constructor(obj_yapi, str_func) {
         //--- (generated code: YSensor constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'Sensor';
+        this._className = 'Sensor';
         /** @member {string} **/
-        this._unit                       = Y_UNIT_INVALID;
+        this._unit = Y_UNIT_INVALID;
         /** @member {number} **/
-        this._currentValue               = Y_CURRENTVALUE_INVALID;
+        this._currentValue = Y_CURRENTVALUE_INVALID;
         /** @member {number} **/
-        this._lowestValue                = Y_LOWESTVALUE_INVALID;
+        this._lowestValue = Y_LOWESTVALUE_INVALID;
         /** @member {number} **/
-        this._highestValue               = Y_HIGHESTVALUE_INVALID;
+        this._highestValue = Y_HIGHESTVALUE_INVALID;
         /** @member {number} **/
-        this._currentRawValue            = Y_CURRENTRAWVALUE_INVALID;
+        this._currentRawValue = Y_CURRENTRAWVALUE_INVALID;
         /** @member {string} **/
-        this._logFrequency               = Y_LOGFREQUENCY_INVALID;
+        this._logFrequency = Y_LOGFREQUENCY_INVALID;
         /** @member {string} **/
-        this._reportFrequency            = Y_REPORTFREQUENCY_INVALID;
+        this._reportFrequency = Y_REPORTFREQUENCY_INVALID;
         /** @member {string} **/
-        this._calibrationParam           = Y_CALIBRATIONPARAM_INVALID;
+        this._calibrationParam = Y_CALIBRATIONPARAM_INVALID;
         /** @member {number} **/
-        this._resolution                 = Y_RESOLUTION_INVALID;
+        this._resolution = Y_RESOLUTION_INVALID;
         /** @member {number} **/
-        this._sensorState                = Y_SENSORSTATE_INVALID;
+        this._sensorState = Y_SENSORSTATE_INVALID;
         /** @member {function} **/
-        this._timedReportCallbackSensor  = null;
+        this._timedReportCallbackSensor = null;
         /** @member {number} **/
-        this._prevTimedReport            = 0;
+        this._prevTimedReport = 0;
         /** @member {number} **/
-        this._iresol                     = 0;
+        this._iresol = 0;
         /** @member {number} **/
-        this._offset                     = 0;
+        this._offset = 0;
         /** @member {number} **/
-        this._scale                      = 0;
+        this._scale = 0;
         /** @member {number} **/
-        this._decexp                     = 0;
+        this._decexp = 0;
         /** @member {boolean} **/
-        this._isScal                     = 0;
+        this._isScal = 0;
         /** @member {boolean} **/
-        this._isScal32                   = 0;
+        this._isScal32 = 0;
         /** @member {number} **/
-        this._caltyp                     = 0;
+        this._caltyp = 0;
         /** @member {number[]} **/
-        this._calpar                     = [];
+        this._calpar = [];
         /** @member {number[]} **/
-        this._calraw                     = [];
+        this._calraw = [];
         /** @member {number[]} **/
-        this._calref                     = [];
+        this._calref = [];
         /** @member {function} **/
-        this._calhdl                     = null;
+        this._calhdl = null;
         this.imm_setConst({
-            UNIT_INVALID                 : YAPI_INVALID_STRING,
-            CURRENTVALUE_INVALID         : YAPI_INVALID_DOUBLE,
-            LOWESTVALUE_INVALID          : YAPI_INVALID_DOUBLE,
-            HIGHESTVALUE_INVALID         : YAPI_INVALID_DOUBLE,
-            CURRENTRAWVALUE_INVALID      : YAPI_INVALID_DOUBLE,
-            LOGFREQUENCY_INVALID         : YAPI_INVALID_STRING,
-            REPORTFREQUENCY_INVALID      : YAPI_INVALID_STRING,
-            CALIBRATIONPARAM_INVALID     : YAPI_INVALID_STRING,
-            RESOLUTION_INVALID           : YAPI_INVALID_DOUBLE,
-            SENSORSTATE_INVALID          : YAPI_INVALID_INT
+            UNIT_INVALID: YAPI_INVALID_STRING,
+            CURRENTVALUE_INVALID: YAPI_INVALID_DOUBLE,
+            LOWESTVALUE_INVALID: YAPI_INVALID_DOUBLE,
+            HIGHESTVALUE_INVALID: YAPI_INVALID_DOUBLE,
+            CURRENTRAWVALUE_INVALID: YAPI_INVALID_DOUBLE,
+            LOGFREQUENCY_INVALID: YAPI_INVALID_STRING,
+            REPORTFREQUENCY_INVALID: YAPI_INVALID_STRING,
+            CALIBRATIONPARAM_INVALID: YAPI_INVALID_STRING,
+            RESOLUTION_INVALID: YAPI_INVALID_DOUBLE,
+            SENSORSTATE_INVALID: YAPI_INVALID_INT
         });
         //--- (end of generated code: YSensor constructor)
     }
 
     //--- (generated code: YSensor implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'unit':
-            this._unit = val;
-            return 1;
-        case 'currentValue':
-            this._currentValue = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
-        case 'lowestValue':
-            this._lowestValue = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
-        case 'highestValue':
-            this._highestValue = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
-        case 'currentRawValue':
-            this._currentRawValue = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
-        case 'logFrequency':
-            this._logFrequency = val;
-            return 1;
-        case 'reportFrequency':
-            this._reportFrequency = val;
-            return 1;
-        case 'calibrationParam':
-            this._calibrationParam = val;
-            return 1;
-        case 'resolution':
-            this._resolution = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
-        case 'sensorState':
-            this._sensorState = parseInt(val);
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'unit':
+                this._unit = val;
+                return 1;
+            case 'currentValue':
+                this._currentValue = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
+            case 'lowestValue':
+                this._lowestValue = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
+            case 'highestValue':
+                this._highestValue = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
+            case 'currentRawValue':
+                this._currentRawValue = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
+            case 'logFrequency':
+                this._logFrequency = val;
+                return 1;
+            case 'reportFrequency':
+                this._reportFrequency = val;
+                return 1;
+            case 'calibrationParam':
+                this._calibrationParam = val;
+                return 1;
+            case 'resolution':
+                this._resolution = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
+            case 'sensorState':
+                this._sensorState = parseInt(val);
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -3994,14 +4179,17 @@ export class YSensor extends YFunction
      *
      * On failure, throws an exception or returns YSensor.UNIT_INVALID.
      */
-    async get_unit()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
-                return Y_UNIT_INVALID;
+    get_unit() {
+        var _this78 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this78._cacheExpiration <= _this78._yapi.GetTickCount()) {
+                if ((yield _this78.load(_this78._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return Y_UNIT_INVALID;
+                }
             }
-        }
-        return this._unit;
+            return _this78._unit;
+        })();
     }
 
     /**
@@ -4012,21 +4200,24 @@ export class YSensor extends YFunction
      *
      * On failure, throws an exception or returns YSensor.CURRENTVALUE_INVALID.
      */
-    async get_currentValue()
-    {
-        /** @type {number} **/
-        let res;
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
-                return Y_CURRENTVALUE_INVALID;
+    get_currentValue() {
+        var _this79 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let res;
+            if (_this79._cacheExpiration <= _this79._yapi.GetTickCount()) {
+                if ((yield _this79.load(_this79._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return Y_CURRENTVALUE_INVALID;
+                }
             }
-        }
-        res = await this._applyCalibration(this._currentRawValue);
-        if (res == Y_CURRENTVALUE_INVALID) {
-            res = this._currentValue;
-        }
-        res = res * this._iresol;
-        return Math.round(res) / this._iresol;
+            res = yield _this79._applyCalibration(_this79._currentRawValue);
+            if (res == Y_CURRENTVALUE_INVALID) {
+                res = _this79._currentValue;
+            }
+            res = res * _this79._iresol;
+            return Math.round(res) / _this79._iresol;
+        })();
     }
 
     /**
@@ -4038,12 +4229,15 @@ export class YSensor extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_lowestValue(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(Math.round(newval * 65536.0));
-        return await this._setAttr('lowestValue',rest_val);
+    set_lowestValue(newval) {
+        var _this80 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(Math.round(newval * 65536.0));
+            return yield _this80._setAttr('lowestValue', rest_val);
+        })();
     }
 
     /**
@@ -4054,17 +4248,20 @@ export class YSensor extends YFunction
      *
      * On failure, throws an exception or returns YSensor.LOWESTVALUE_INVALID.
      */
-    async get_lowestValue()
-    {
-        /** @type {number} **/
-        let res;
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
-                return Y_LOWESTVALUE_INVALID;
+    get_lowestValue() {
+        var _this81 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let res;
+            if (_this81._cacheExpiration <= _this81._yapi.GetTickCount()) {
+                if ((yield _this81.load(_this81._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return Y_LOWESTVALUE_INVALID;
+                }
             }
-        }
-        res = this._lowestValue * this._iresol;
-        return Math.round(res) / this._iresol;
+            res = _this81._lowestValue * _this81._iresol;
+            return Math.round(res) / _this81._iresol;
+        })();
     }
 
     /**
@@ -4076,12 +4273,15 @@ export class YSensor extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_highestValue(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(Math.round(newval * 65536.0));
-        return await this._setAttr('highestValue',rest_val);
+    set_highestValue(newval) {
+        var _this82 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(Math.round(newval * 65536.0));
+            return yield _this82._setAttr('highestValue', rest_val);
+        })();
     }
 
     /**
@@ -4092,17 +4292,20 @@ export class YSensor extends YFunction
      *
      * On failure, throws an exception or returns YSensor.HIGHESTVALUE_INVALID.
      */
-    async get_highestValue()
-    {
-        /** @type {number} **/
-        let res;
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
-                return Y_HIGHESTVALUE_INVALID;
+    get_highestValue() {
+        var _this83 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let res;
+            if (_this83._cacheExpiration <= _this83._yapi.GetTickCount()) {
+                if ((yield _this83.load(_this83._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return Y_HIGHESTVALUE_INVALID;
+                }
             }
-        }
-        res = this._highestValue * this._iresol;
-        return Math.round(res) / this._iresol;
+            res = _this83._highestValue * _this83._iresol;
+            return Math.round(res) / _this83._iresol;
+        })();
     }
 
     /**
@@ -4114,14 +4317,17 @@ export class YSensor extends YFunction
      *
      * On failure, throws an exception or returns YSensor.CURRENTRAWVALUE_INVALID.
      */
-    async get_currentRawValue()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
-                return Y_CURRENTRAWVALUE_INVALID;
+    get_currentRawValue() {
+        var _this84 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this84._cacheExpiration <= _this84._yapi.GetTickCount()) {
+                if ((yield _this84.load(_this84._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return Y_CURRENTRAWVALUE_INVALID;
+                }
             }
-        }
-        return this._currentRawValue;
+            return _this84._currentRawValue;
+        })();
     }
 
     /**
@@ -4133,14 +4339,17 @@ export class YSensor extends YFunction
      *
      * On failure, throws an exception or returns YSensor.LOGFREQUENCY_INVALID.
      */
-    async get_logFrequency()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
-                return Y_LOGFREQUENCY_INVALID;
+    get_logFrequency() {
+        var _this85 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this85._cacheExpiration <= _this85._yapi.GetTickCount()) {
+                if ((yield _this85.load(_this85._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return Y_LOGFREQUENCY_INVALID;
+                }
             }
-        }
-        return this._logFrequency;
+            return _this85._logFrequency;
+        })();
     }
 
     /**
@@ -4156,12 +4365,15 @@ export class YSensor extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_logFrequency(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('logFrequency',rest_val);
+    set_logFrequency(newval) {
+        var _this86 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this86._setAttr('logFrequency', rest_val);
+        })();
     }
 
     /**
@@ -4173,14 +4385,17 @@ export class YSensor extends YFunction
      *
      * On failure, throws an exception or returns YSensor.REPORTFREQUENCY_INVALID.
      */
-    async get_reportFrequency()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
-                return Y_REPORTFREQUENCY_INVALID;
+    get_reportFrequency() {
+        var _this87 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this87._cacheExpiration <= _this87._yapi.GetTickCount()) {
+                if ((yield _this87.load(_this87._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return Y_REPORTFREQUENCY_INVALID;
+                }
             }
-        }
-        return this._reportFrequency;
+            return _this87._reportFrequency;
+        })();
     }
 
     /**
@@ -4196,30 +4411,39 @@ export class YSensor extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_reportFrequency(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('reportFrequency',rest_val);
+    set_reportFrequency(newval) {
+        var _this88 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this88._setAttr('reportFrequency', rest_val);
+        })();
     }
 
-    async get_calibrationParam()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
-                return Y_CALIBRATIONPARAM_INVALID;
+    get_calibrationParam() {
+        var _this89 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this89._cacheExpiration <= _this89._yapi.GetTickCount()) {
+                if ((yield _this89.load(_this89._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return Y_CALIBRATIONPARAM_INVALID;
+                }
             }
-        }
-        return this._calibrationParam;
+            return _this89._calibrationParam;
+        })();
     }
 
-    async set_calibrationParam(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('calibrationParam',rest_val);
+    set_calibrationParam(newval) {
+        var _this90 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this90._setAttr('calibrationParam', rest_val);
+        })();
     }
 
     /**
@@ -4232,12 +4456,15 @@ export class YSensor extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_resolution(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(Math.round(newval * 65536.0));
-        return await this._setAttr('resolution',rest_val);
+    set_resolution(newval) {
+        var _this91 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(Math.round(newval * 65536.0));
+            return yield _this91._setAttr('resolution', rest_val);
+        })();
     }
 
     /**
@@ -4248,14 +4475,17 @@ export class YSensor extends YFunction
      *
      * On failure, throws an exception or returns YSensor.RESOLUTION_INVALID.
      */
-    async get_resolution()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
-                return Y_RESOLUTION_INVALID;
+    get_resolution() {
+        var _this92 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this92._cacheExpiration <= _this92._yapi.GetTickCount()) {
+                if ((yield _this92.load(_this92._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return Y_RESOLUTION_INVALID;
+                }
             }
-        }
-        return this._resolution;
+            return _this92._resolution;
+        })();
     }
 
     /**
@@ -4268,14 +4498,17 @@ export class YSensor extends YFunction
      *
      * On failure, throws an exception or returns YSensor.SENSORSTATE_INVALID.
      */
-    async get_sensorState()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
-                return Y_SENSORSTATE_INVALID;
+    get_sensorState() {
+        var _this93 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this93._cacheExpiration <= _this93._yapi.GetTickCount()) {
+                if ((yield _this93.load(_this93._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return Y_SENSORSTATE_INVALID;
+                }
             }
-        }
-        return this._sensorState;
+            return _this93._sensorState;
+        })();
     }
 
     /**
@@ -4301,14 +4534,13 @@ export class YSensor extends YFunction
      *
      * @return {YSensor} a YSensor object allowing you to drive the sensor.
      */
-    static FindSensor(func)
-    {
+    static FindSensor(func) {
         /** @type {YFunction} **/
         let obj;
         obj = YFunction._FindFromCache('Sensor', func);
         if (obj == null) {
             obj = new YSensor(YAPI, func);
-            YFunction._AddToCache('Sensor',  func, obj);
+            YFunction._AddToCache('Sensor', func, obj);
         }
         return obj;
     }
@@ -4337,156 +4569,158 @@ export class YSensor extends YFunction
      *
      * @return {YSensor} a YSensor object allowing you to drive the sensor.
      */
-    static FindSensorInContext(yctx,func)
-    {
+    static FindSensorInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'Sensor', func);
+        obj = YFunction._FindFromCacheInContext(yctx, 'Sensor', func);
         if (obj == null) {
             obj = new YSensor(yctx, func);
-            YFunction._AddToCache('Sensor',  func, obj);
+            YFunction._AddToCache('Sensor', func, obj);
         }
         return obj;
     }
 
-    async _parserHelper()
-    {
-        /** @type {number} **/
-        let position;
-        /** @type {number} **/
-        let maxpos;
-        /** @type {number[]} **/
-        let iCalib = [];
-        /** @type {number} **/
-        let iRaw;
-        /** @type {number} **/
-        let iRef;
-        /** @type {number} **/
-        let fRaw;
-        /** @type {number} **/
-        let fRef;
-        this._caltyp = -1;
-        this._scale = -1;
-        this._isScal32 = false;
-        this._calpar.length = 0;
-        this._calraw.length = 0;
-        this._calref.length = 0;
-        // Store inverted resolution, to provide better rounding
-        if (this._resolution > 0) {
-            this._iresol = Math.round(1.0 / this._resolution);
-        } else {
-            this._iresol = 10000;
-            this._resolution = 0.0001;
-        }
-        // Old format: supported when there is no calibration
-        if (this._calibrationParam == '' || this._calibrationParam == '0') {
-            this._caltyp = 0;
-            return 0;
-        }
-        if ((this._calibrationParam).indexOf(',') >= 0) {
-            iCalib = this._yapi.imm_decodeFloats(this._calibrationParam);
-            this._caltyp = parseInt((iCalib[0]) / (1000), 10);
-            if (this._caltyp > 0) {
-                if (this._caltyp < YOCTO_CALIB_TYPE_OFS) {
-                    this._caltyp = -1;
-                    return 0;
-                }
-                this.imm_calhdl = this._yapi.imm_getCalibrationHandler(this._caltyp);
-                if (!(this.imm_calhdl != null)) {
-                    this._caltyp = -1;
-                    return 0;
-                }
+    _parserHelper() {
+        var _this94 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let position;
+            /** @type {number} **/
+            let maxpos;
+            /** @type {number[]} **/
+            let iCalib = [];
+            /** @type {number} **/
+            let iRaw;
+            /** @type {number} **/
+            let iRef;
+            /** @type {number} **/
+            let fRaw;
+            /** @type {number} **/
+            let fRef;
+            _this94._caltyp = -1;
+            _this94._scale = -1;
+            _this94._isScal32 = false;
+            _this94._calpar.length = 0;
+            _this94._calraw.length = 0;
+            _this94._calref.length = 0;
+            // Store inverted resolution, to provide better rounding
+            if (_this94._resolution > 0) {
+                _this94._iresol = Math.round(1.0 / _this94._resolution);
+            } else {
+                _this94._iresol = 10000;
+                _this94._resolution = 0.0001;
             }
-            this._isScal = true;
-            this._isScal32 = true;
-            this._offset = 0;
-            this._scale = 1000;
-            maxpos = iCalib.length;
-            this._calpar.length = 0;
-            position = 1;
-            while (position < maxpos) {
-                this._calpar.push(iCalib[position]);
-                position = position + 1;
-            }
-            this._calraw.length = 0;
-            this._calref.length = 0;
-            position = 1;
-            while (position + 1 < maxpos) {
-                fRaw = iCalib[position];
-                fRaw = fRaw / 1000.0;
-                fRef = iCalib[position + 1];
-                fRef = fRef / 1000.0;
-                this._calraw.push(fRaw);
-                this._calref.push(fRef);
-                position = position + 2;
-            }
-        } else {
-            iCalib = this._yapi.imm_decodeWords(this._calibrationParam);
-            if (iCalib.length < 2) {
-                this._caltyp = -1;
+            // Old format: supported when there is no calibration
+            if (_this94._calibrationParam == '' || _this94._calibrationParam == '0') {
+                _this94._caltyp = 0;
                 return 0;
             }
-            this._isScal = (iCalib[1] > 0);
-            if (this._isScal) {
-                this._offset = iCalib[0];
-                if (this._offset > 32767) {
-                    this._offset = this._offset - 65536;
+            if (_this94._calibrationParam.indexOf(',') >= 0) {
+                iCalib = _this94._yapi.imm_decodeFloats(_this94._calibrationParam);
+                _this94._caltyp = parseInt(iCalib[0] / 1000, 10);
+                if (_this94._caltyp > 0) {
+                    if (_this94._caltyp < YOCTO_CALIB_TYPE_OFS) {
+                        _this94._caltyp = -1;
+                        return 0;
+                    }
+                    _this94.imm_calhdl = _this94._yapi.imm_getCalibrationHandler(_this94._caltyp);
+                    if (!(_this94.imm_calhdl != null)) {
+                        _this94._caltyp = -1;
+                        return 0;
+                    }
                 }
-                this._scale = iCalib[1];
-                this._decexp = 0;
-            } else {
-                this._offset = 0;
-                this._scale = 1;
-                this._decexp = 1.0;
-                position = iCalib[0];
-                while (position > 0) {
-                    this._decexp = this._decexp * 10;
-                    position = position - 1;
-                }
-            }
-            if (iCalib.length == 2) {
-                this._caltyp = 0;
-                return 0;
-            }
-            this._caltyp = iCalib[2];
-            this.imm_calhdl = this._yapi.imm_getCalibrationHandler(this._caltyp);
-            if (this._caltyp <= 10) {
-                maxpos = this._caltyp;
-            } else {
-                if (this._caltyp <= 20) {
-                    maxpos = this._caltyp - 10;
-                } else {
-                    maxpos = 5;
-                }
-            }
-            maxpos = 3 + 2 * maxpos;
-            if (maxpos > iCalib.length) {
+                _this94._isScal = true;
+                _this94._isScal32 = true;
+                _this94._offset = 0;
+                _this94._scale = 1000;
                 maxpos = iCalib.length;
-            }
-            this._calpar.length = 0;
-            this._calraw.length = 0;
-            this._calref.length = 0;
-            position = 3;
-            while (position + 1 < maxpos) {
-                iRaw = iCalib[position];
-                iRef = iCalib[position + 1];
-                this._calpar.push(iRaw);
-                this._calpar.push(iRef);
-                if (this._isScal) {
-                    fRaw = iRaw;
-                    fRaw = (fRaw - this._offset) / this._scale;
-                    fRef = iRef;
-                    fRef = (fRef - this._offset) / this._scale;
-                    this._calraw.push(fRaw);
-                    this._calref.push(fRef);
-                } else {
-                    this._calraw.push(this._yapi.imm_decimalToDouble(iRaw));
-                    this._calref.push(this._yapi.imm_decimalToDouble(iRef));
+                _this94._calpar.length = 0;
+                position = 1;
+                while (position < maxpos) {
+                    _this94._calpar.push(iCalib[position]);
+                    position = position + 1;
                 }
-                position = position + 2;
+                _this94._calraw.length = 0;
+                _this94._calref.length = 0;
+                position = 1;
+                while (position + 1 < maxpos) {
+                    fRaw = iCalib[position];
+                    fRaw = fRaw / 1000.0;
+                    fRef = iCalib[position + 1];
+                    fRef = fRef / 1000.0;
+                    _this94._calraw.push(fRaw);
+                    _this94._calref.push(fRef);
+                    position = position + 2;
+                }
+            } else {
+                iCalib = _this94._yapi.imm_decodeWords(_this94._calibrationParam);
+                if (iCalib.length < 2) {
+                    _this94._caltyp = -1;
+                    return 0;
+                }
+                _this94._isScal = iCalib[1] > 0;
+                if (_this94._isScal) {
+                    _this94._offset = iCalib[0];
+                    if (_this94._offset > 32767) {
+                        _this94._offset = _this94._offset - 65536;
+                    }
+                    _this94._scale = iCalib[1];
+                    _this94._decexp = 0;
+                } else {
+                    _this94._offset = 0;
+                    _this94._scale = 1;
+                    _this94._decexp = 1.0;
+                    position = iCalib[0];
+                    while (position > 0) {
+                        _this94._decexp = _this94._decexp * 10;
+                        position = position - 1;
+                    }
+                }
+                if (iCalib.length == 2) {
+                    _this94._caltyp = 0;
+                    return 0;
+                }
+                _this94._caltyp = iCalib[2];
+                _this94.imm_calhdl = _this94._yapi.imm_getCalibrationHandler(_this94._caltyp);
+                if (_this94._caltyp <= 10) {
+                    maxpos = _this94._caltyp;
+                } else {
+                    if (_this94._caltyp <= 20) {
+                        maxpos = _this94._caltyp - 10;
+                    } else {
+                        maxpos = 5;
+                    }
+                }
+                maxpos = 3 + 2 * maxpos;
+                if (maxpos > iCalib.length) {
+                    maxpos = iCalib.length;
+                }
+                _this94._calpar.length = 0;
+                _this94._calraw.length = 0;
+                _this94._calref.length = 0;
+                position = 3;
+                while (position + 1 < maxpos) {
+                    iRaw = iCalib[position];
+                    iRef = iCalib[position + 1];
+                    _this94._calpar.push(iRaw);
+                    _this94._calpar.push(iRef);
+                    if (_this94._isScal) {
+                        fRaw = iRaw;
+                        fRaw = (fRaw - _this94._offset) / _this94._scale;
+                        fRef = iRef;
+                        fRef = (fRef - _this94._offset) / _this94._scale;
+                        _this94._calraw.push(fRaw);
+                        _this94._calref.push(fRef);
+                    } else {
+                        _this94._calraw.push(_this94._yapi.imm_decimalToDouble(iRaw));
+                        _this94._calref.push(_this94._yapi.imm_decimalToDouble(iRef));
+                    }
+                    position = position + 2;
+                }
             }
-        }
-        return 0;
+            return 0;
+        })();
     }
 
     /**
@@ -4497,15 +4731,18 @@ export class YSensor extends YFunction
      *
      * @return {boolean} true if the sensor can provide an up-to-date measure, and false otherwise
      */
-    async isSensorReady()
-    {
-        if (!(await this.isOnline())) {
-            return false;
-        }
-        if (!(this._sensorState == 0)) {
-            return false;
-        }
-        return true;
+    isSensorReady() {
+        var _this95 = this;
+
+        return _asyncToGenerator(function* () {
+            if (!(yield _this95.isOnline())) {
+                return false;
+            }
+            if (!(_this95._sensorState == 0)) {
+                return false;
+            }
+            return true;
+        })();
     }
 
     /**
@@ -4515,16 +4752,19 @@ export class YSensor extends YFunction
      *
      * @return {number} YAPI.SUCCESS if the call succeeds.
      */
-    async startDataLogger()
-    {
-        /** @type {Uint8Array} **/
-        let res;
-        // may throw an exception
-        res = await this._download('api/dataLogger/recording?recording=1');
-        if (!((res).length>0)) {
-            return this._throw(YAPI_IO_ERROR,'unable to start datalogger',YAPI_IO_ERROR);
-        }
-        return YAPI_SUCCESS;
+    startDataLogger() {
+        var _this96 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {Uint8Array} **/
+            let res;
+            // may throw an exception
+            res = yield _this96._download('api/dataLogger/recording?recording=1');
+            if (!(res.length > 0)) {
+                return _this96._throw(YAPI_IO_ERROR, 'unable to start datalogger', YAPI_IO_ERROR);
+            }
+            return YAPI_SUCCESS;
+        })();
     }
 
     /**
@@ -4532,16 +4772,19 @@ export class YSensor extends YFunction
      *
      * @return {number} YAPI.SUCCESS if the call succeeds.
      */
-    async stopDataLogger()
-    {
-        /** @type {Uint8Array} **/
-        let res;
-        // may throw an exception
-        res = await this._download('api/dataLogger/recording?recording=0');
-        if (!((res).length>0)) {
-            return this._throw(YAPI_IO_ERROR,'unable to stop datalogger',YAPI_IO_ERROR);
-        }
-        return YAPI_SUCCESS;
+    stopDataLogger() {
+        var _this97 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {Uint8Array} **/
+            let res;
+            // may throw an exception
+            res = yield _this97._download('api/dataLogger/recording?recording=0');
+            if (!(res.length > 0)) {
+                return _this97._throw(YAPI_IO_ERROR, 'unable to stop datalogger', YAPI_IO_ERROR);
+            }
+            return YAPI_SUCCESS;
+        })();
     }
 
     /**
@@ -4570,16 +4813,19 @@ export class YSensor extends YFunction
      *         data. Past measures can be loaded progressively
      *         using methods from the YDataSet object.
      */
-    async get_recordedData(startTime,endTime)
-    {
-        /** @type {string} **/
-        let funcid;
-        /** @type {string} **/
-        let funit;
-        // may throw an exception
-        funcid = await this.get_functionId();
-        funit = await this.get_unit();
-        return new YDataSet(this, funcid, funit, startTime, endTime);
+    get_recordedData(startTime, endTime) {
+        var _this98 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let funcid;
+            /** @type {string} **/
+            let funit;
+            // may throw an exception
+            funcid = yield _this98.get_functionId();
+            funit = yield _this98.get_unit();
+            return new YDataSet(_this98, funcid, funit, startTime, endTime);
+        })();
     }
 
     /**
@@ -4594,27 +4840,32 @@ export class YSensor extends YFunction
      *         the new advertised value.
      * @noreturn
      */
-    async registerTimedReportCallback(callback)
-    {
-        /** @type {YFunction} **/
-        let sensor;
-        sensor = this;
-        if (callback != null) {
-            await YFunction._UpdateTimedReportCallbackList(sensor, true);
-        } else {
-            await YFunction._UpdateTimedReportCallbackList(sensor, false);
-        }
-        this._timedReportCallbackSensor = callback;
-        return 0;
+    registerTimedReportCallback(callback) {
+        var _this99 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {YFunction} **/
+            let sensor;
+            sensor = _this99;
+            if (callback != null) {
+                yield YFunction._UpdateTimedReportCallbackList(sensor, true);
+            } else {
+                yield YFunction._UpdateTimedReportCallbackList(sensor, false);
+            }
+            _this99._timedReportCallbackSensor = callback;
+            return 0;
+        })();
     }
 
-    async _invokeTimedReportCallback(value)
-    {
-        if (this._timedReportCallbackSensor != null) {
-            await this._timedReportCallbackSensor(this, value);
-        } else {
-        }
-        return 0;
+    _invokeTimedReportCallback(value) {
+        var _this100 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this100._timedReportCallbackSensor != null) {
+                yield _this100._timedReportCallbackSensor(_this100, value);
+            } else {}
+            return 0;
+        })();
     }
 
     /**
@@ -4638,13 +4889,16 @@ export class YSensor extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async calibrateFromPoints(rawValues,refValues)
-    {
-        /** @type {string} **/
-        let rest_val;
-        // may throw an exception
-        rest_val = await this._encodeCalibrationPoints(rawValues, refValues);
-        return await this._setAttr('calibrationParam', rest_val);
+    calibrateFromPoints(rawValues, refValues) {
+        var _this101 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            // may throw an exception
+            rest_val = yield _this101._encodeCalibrationPoints(rawValues, refValues);
+            return yield _this101._setAttr('calibrationParam', rest_val);
+        })();
     }
 
     /**
@@ -4660,259 +4914,270 @@ export class YSensor extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async loadCalibrationPoints(rawValues,refValues)
-    {
-        rawValues.length = 0;
-        refValues.length = 0;
-        // Load function parameters if not yet loaded
-        if (this._scale == 0) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
-                return YAPI_DEVICE_NOT_FOUND;
+    loadCalibrationPoints(rawValues, refValues) {
+        var _this102 = this;
+
+        return _asyncToGenerator(function* () {
+            rawValues.length = 0;
+            refValues.length = 0;
+            // Load function parameters if not yet loaded
+            if (_this102._scale == 0) {
+                if ((yield _this102.load(_this102._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return YAPI_DEVICE_NOT_FOUND;
+                }
             }
-        }
-        if (this._caltyp < 0) {
-            this._throw(YAPI_NOT_SUPPORTED, 'Calibration parameters format mismatch. Please upgrade your library or firmware.');
-            return YAPI_NOT_SUPPORTED;
-        }
-        rawValues.length = 0;
-        refValues.length = 0;
-        for (let ii in this._calraw) {
-            rawValues.push(this._calraw[ii]);
-        }
-        for (let ii in this._calref) {
-            refValues.push(this._calref[ii]);
-        }
-        return YAPI_SUCCESS;
+            if (_this102._caltyp < 0) {
+                _this102._throw(YAPI_NOT_SUPPORTED, 'Calibration parameters format mismatch. Please upgrade your library or firmware.');
+                return YAPI_NOT_SUPPORTED;
+            }
+            rawValues.length = 0;
+            refValues.length = 0;
+            for (let ii in _this102._calraw) {
+                rawValues.push(_this102._calraw[ii]);
+            }
+            for (let ii in _this102._calref) {
+                refValues.push(_this102._calref[ii]);
+            }
+            return YAPI_SUCCESS;
+        })();
     }
 
-    async _encodeCalibrationPoints(rawValues,refValues)
-    {
-        /** @type {string} **/
-        let res;
-        /** @type {number} **/
-        let npt;
-        /** @type {number} **/
-        let idx;
-        /** @type {number} **/
-        let iRaw;
-        /** @type {number} **/
-        let iRef;
-        npt = rawValues.length;
-        if (npt != refValues.length) {
-            this._throw(YAPI_INVALID_ARGUMENT, 'Invalid calibration parameters (size mismatch)');
-            return YAPI_INVALID_STRING;
-        }
-        // Shortcut when building empty calibration parameters
-        if (npt == 0) {
-            return '0';
-        }
-        // Load function parameters if not yet loaded
-        if (this._scale == 0) {
-            if (await this.load(this._yapi.defaultCacheValidity) != YAPI_SUCCESS) {
+    _encodeCalibrationPoints(rawValues, refValues) {
+        var _this103 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let res;
+            /** @type {number} **/
+            let npt;
+            /** @type {number} **/
+            let idx;
+            /** @type {number} **/
+            let iRaw;
+            /** @type {number} **/
+            let iRef;
+            npt = rawValues.length;
+            if (npt != refValues.length) {
+                _this103._throw(YAPI_INVALID_ARGUMENT, 'Invalid calibration parameters (size mismatch)');
                 return YAPI_INVALID_STRING;
             }
-        }
-        // Detect old firmware
-        if ((this._caltyp < 0) || (this._scale < 0)) {
-            this._throw(YAPI_NOT_SUPPORTED, 'Calibration parameters format mismatch. Please upgrade your library or firmware.');
-            return '0';
-        }
-        if (this._isScal32) {
-            res = String(Math.round(YOCTO_CALIB_TYPE_OFS));
-            idx = 0;
-            while (idx < npt) {
-                res = res+','+String(Math.round(rawValues[idx]*1000)/1000)+','+String(Math.round(refValues[idx]*1000)/1000);
-                idx = idx + 1;
+            // Shortcut when building empty calibration parameters
+            if (npt == 0) {
+                return '0';
             }
-        } else {
-            if (this._isScal) {
-                res = String(Math.round(npt));
+            // Load function parameters if not yet loaded
+            if (_this103._scale == 0) {
+                if ((yield _this103.load(_this103._yapi.defaultCacheValidity)) != YAPI_SUCCESS) {
+                    return YAPI_INVALID_STRING;
+                }
+            }
+            // Detect old firmware
+            if (_this103._caltyp < 0 || _this103._scale < 0) {
+                _this103._throw(YAPI_NOT_SUPPORTED, 'Calibration parameters format mismatch. Please upgrade your library or firmware.');
+                return '0';
+            }
+            if (_this103._isScal32) {
+                res = String(Math.round(YOCTO_CALIB_TYPE_OFS));
                 idx = 0;
                 while (idx < npt) {
-                    iRaw = Math.round(rawValues[idx] * this._scale + this._offset);
-                    iRef = Math.round(refValues[idx] * this._scale + this._offset);
-                    res = res+','+String(Math.round(iRaw))+','+String(Math.round(iRef));
+                    res = res + ',' + String(Math.round(rawValues[idx] * 1000) / 1000) + ',' + String(Math.round(refValues[idx] * 1000) / 1000);
                     idx = idx + 1;
                 }
             } else {
-                res = String(Math.round(10 + npt));
-                idx = 0;
-                while (idx < npt) {
-                    iRaw = this._yapi.imm_doubleToDecimal(rawValues[idx]);
-                    iRef = this._yapi.imm_doubleToDecimal(refValues[idx]);
-                    res = res+','+String(Math.round(iRaw))+','+String(Math.round(iRef));
-                    idx = idx + 1;
-                }
-            }
-        }
-        return res;
-    }
-
-    async _applyCalibration(rawValue)
-    {
-        if (rawValue == Y_CURRENTVALUE_INVALID) {
-            return Y_CURRENTVALUE_INVALID;
-        }
-        if (this._caltyp == 0) {
-            return rawValue;
-        }
-        if (this._caltyp < 0) {
-            return Y_CURRENTVALUE_INVALID;
-        }
-        if (!(this.imm_calhdl != null)) {
-            return Y_CURRENTVALUE_INVALID;
-        }
-        return this.imm_calhdl(rawValue, this._caltyp, this._calpar, this._calraw, this._calref);
-    }
-
-    async _decodeTimedReport(timestamp,report)
-    {
-        /** @type {number} **/
-        let i;
-        /** @type {number} **/
-        let byteVal;
-        /** @type {number} **/
-        let poww;
-        /** @type {number} **/
-        let minRaw;
-        /** @type {number} **/
-        let avgRaw;
-        /** @type {number} **/
-        let maxRaw;
-        /** @type {number} **/
-        let sublen;
-        /** @type {number} **/
-        let difRaw;
-        /** @type {number} **/
-        let startTime;
-        /** @type {number} **/
-        let endTime;
-        /** @type {number} **/
-        let minVal;
-        /** @type {number} **/
-        let avgVal;
-        /** @type {number} **/
-        let maxVal;
-        startTime = this._prevTimedReport;
-        endTime = timestamp;
-        this._prevTimedReport = endTime;
-        if (startTime == 0) {
-            startTime = endTime;
-        }
-        if (report[0] == 2) {
-            if (report.length <= 5) {
-                poww = 1;
-                avgRaw = 0;
-                byteVal = 0;
-                i = 1;
-                while (i < report.length) {
-                    byteVal = report[i];
-                    avgRaw = avgRaw + poww * byteVal;
-                    poww = poww * 0x100;
-                    i = i + 1;
-                }
-                if (((byteVal) & (0x80)) != 0) {
-                    avgRaw = avgRaw - poww;
-                }
-                avgVal = avgRaw / 1000.0;
-                if (this._caltyp != 0) {
-                    if (this.imm_calhdl != null) {
-                        avgVal = this.imm_calhdl(avgVal, this._caltyp, this._calpar, this._calraw, this._calref);
+                if (_this103._isScal) {
+                    res = String(Math.round(npt));
+                    idx = 0;
+                    while (idx < npt) {
+                        iRaw = Math.round(rawValues[idx] * _this103._scale + _this103._offset);
+                        iRef = Math.round(refValues[idx] * _this103._scale + _this103._offset);
+                        res = res + ',' + String(Math.round(iRaw)) + ',' + String(Math.round(iRef));
+                        idx = idx + 1;
                     }
-                }
-                minVal = avgVal;
-                maxVal = avgVal;
-            } else {
-                sublen = 1 + ((report[1]) & (3));
-                poww = 1;
-                avgRaw = 0;
-                byteVal = 0;
-                i = 2;
-                while ((sublen > 0) && (i < report.length)) {
-                    byteVal = report[i];
-                    avgRaw = avgRaw + poww * byteVal;
-                    poww = poww * 0x100;
-                    i = i + 1;
-                    sublen = sublen - 1;
-                }
-                if (((byteVal) & (0x80)) != 0) {
-                    avgRaw = avgRaw - poww;
-                }
-                sublen = 1 + ((((report[1]) >> (2))) & (3));
-                poww = 1;
-                difRaw = 0;
-                while ((sublen > 0) && (i < report.length)) {
-                    byteVal = report[i];
-                    difRaw = difRaw + poww * byteVal;
-                    poww = poww * 0x100;
-                    i = i + 1;
-                    sublen = sublen - 1;
-                }
-                minRaw = avgRaw - difRaw;
-                sublen = 1 + ((((report[1]) >> (4))) & (3));
-                poww = 1;
-                difRaw = 0;
-                while ((sublen > 0) && (i < report.length)) {
-                    byteVal = report[i];
-                    difRaw = difRaw + poww * byteVal;
-                    poww = poww * 0x100;
-                    i = i + 1;
-                    sublen = sublen - 1;
-                }
-                maxRaw = avgRaw + difRaw;
-                avgVal = avgRaw / 1000.0;
-                minVal = minRaw / 1000.0;
-                maxVal = maxRaw / 1000.0;
-                if (this._caltyp != 0) {
-                    if (this.imm_calhdl != null) {
-                        avgVal = this.imm_calhdl(avgVal, this._caltyp, this._calpar, this._calraw, this._calref);
-                        minVal = this.imm_calhdl(minVal, this._caltyp, this._calpar, this._calraw, this._calref);
-                        maxVal = this.imm_calhdl(maxVal, this._caltyp, this._calpar, this._calraw, this._calref);
-                    }
-                }
-            }
-        } else {
-            if (report[0] == 0) {
-                poww = 1;
-                avgRaw = 0;
-                byteVal = 0;
-                i = 1;
-                while (i < report.length) {
-                    byteVal = report[i];
-                    avgRaw = avgRaw + poww * byteVal;
-                    poww = poww * 0x100;
-                    i = i + 1;
-                }
-                if (this._isScal) {
-                    avgVal = this.imm_decodeVal(avgRaw);
                 } else {
-                    if (((byteVal) & (0x80)) != 0) {
+                    res = String(Math.round(10 + npt));
+                    idx = 0;
+                    while (idx < npt) {
+                        iRaw = _this103._yapi.imm_doubleToDecimal(rawValues[idx]);
+                        iRef = _this103._yapi.imm_doubleToDecimal(refValues[idx]);
+                        res = res + ',' + String(Math.round(iRaw)) + ',' + String(Math.round(iRef));
+                        idx = idx + 1;
+                    }
+                }
+            }
+            return res;
+        })();
+    }
+
+    _applyCalibration(rawValue) {
+        var _this104 = this;
+
+        return _asyncToGenerator(function* () {
+            if (rawValue == Y_CURRENTVALUE_INVALID) {
+                return Y_CURRENTVALUE_INVALID;
+            }
+            if (_this104._caltyp == 0) {
+                return rawValue;
+            }
+            if (_this104._caltyp < 0) {
+                return Y_CURRENTVALUE_INVALID;
+            }
+            if (!(_this104.imm_calhdl != null)) {
+                return Y_CURRENTVALUE_INVALID;
+            }
+            return _this104.imm_calhdl(rawValue, _this104._caltyp, _this104._calpar, _this104._calraw, _this104._calref);
+        })();
+    }
+
+    _decodeTimedReport(timestamp, report) {
+        var _this105 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let i;
+            /** @type {number} **/
+            let byteVal;
+            /** @type {number} **/
+            let poww;
+            /** @type {number} **/
+            let minRaw;
+            /** @type {number} **/
+            let avgRaw;
+            /** @type {number} **/
+            let maxRaw;
+            /** @type {number} **/
+            let sublen;
+            /** @type {number} **/
+            let difRaw;
+            /** @type {number} **/
+            let startTime;
+            /** @type {number} **/
+            let endTime;
+            /** @type {number} **/
+            let minVal;
+            /** @type {number} **/
+            let avgVal;
+            /** @type {number} **/
+            let maxVal;
+            startTime = _this105._prevTimedReport;
+            endTime = timestamp;
+            _this105._prevTimedReport = endTime;
+            if (startTime == 0) {
+                startTime = endTime;
+            }
+            if (report[0] == 2) {
+                if (report.length <= 5) {
+                    poww = 1;
+                    avgRaw = 0;
+                    byteVal = 0;
+                    i = 1;
+                    while (i < report.length) {
+                        byteVal = report[i];
+                        avgRaw = avgRaw + poww * byteVal;
+                        poww = poww * 0x100;
+                        i = i + 1;
+                    }
+                    if ((byteVal & 0x80) != 0) {
                         avgRaw = avgRaw - poww;
                     }
-                    avgVal = this.imm_decodeAvg(avgRaw);
-                }
-                minVal = avgVal;
-                maxVal = avgVal;
-            } else {
-                minRaw = report[1] + 0x100 * report[2];
-                maxRaw = report[3] + 0x100 * report[4];
-                avgRaw = report[5] + 0x100 * report[6] + 0x10000 * report[7];
-                byteVal = report[8];
-                if (((byteVal) & (0x80)) == 0) {
-                    avgRaw = avgRaw + 0x1000000 * byteVal;
+                    avgVal = avgRaw / 1000.0;
+                    if (_this105._caltyp != 0) {
+                        if (_this105.imm_calhdl != null) {
+                            avgVal = _this105.imm_calhdl(avgVal, _this105._caltyp, _this105._calpar, _this105._calraw, _this105._calref);
+                        }
+                    }
+                    minVal = avgVal;
+                    maxVal = avgVal;
                 } else {
-                    avgRaw = avgRaw - 0x1000000 * (0x100 - byteVal);
+                    sublen = 1 + (report[1] & 3);
+                    poww = 1;
+                    avgRaw = 0;
+                    byteVal = 0;
+                    i = 2;
+                    while (sublen > 0 && i < report.length) {
+                        byteVal = report[i];
+                        avgRaw = avgRaw + poww * byteVal;
+                        poww = poww * 0x100;
+                        i = i + 1;
+                        sublen = sublen - 1;
+                    }
+                    if ((byteVal & 0x80) != 0) {
+                        avgRaw = avgRaw - poww;
+                    }
+                    sublen = 1 + (report[1] >> 2 & 3);
+                    poww = 1;
+                    difRaw = 0;
+                    while (sublen > 0 && i < report.length) {
+                        byteVal = report[i];
+                        difRaw = difRaw + poww * byteVal;
+                        poww = poww * 0x100;
+                        i = i + 1;
+                        sublen = sublen - 1;
+                    }
+                    minRaw = avgRaw - difRaw;
+                    sublen = 1 + (report[1] >> 4 & 3);
+                    poww = 1;
+                    difRaw = 0;
+                    while (sublen > 0 && i < report.length) {
+                        byteVal = report[i];
+                        difRaw = difRaw + poww * byteVal;
+                        poww = poww * 0x100;
+                        i = i + 1;
+                        sublen = sublen - 1;
+                    }
+                    maxRaw = avgRaw + difRaw;
+                    avgVal = avgRaw / 1000.0;
+                    minVal = minRaw / 1000.0;
+                    maxVal = maxRaw / 1000.0;
+                    if (_this105._caltyp != 0) {
+                        if (_this105.imm_calhdl != null) {
+                            avgVal = _this105.imm_calhdl(avgVal, _this105._caltyp, _this105._calpar, _this105._calraw, _this105._calref);
+                            minVal = _this105.imm_calhdl(minVal, _this105._caltyp, _this105._calpar, _this105._calraw, _this105._calref);
+                            maxVal = _this105.imm_calhdl(maxVal, _this105._caltyp, _this105._calpar, _this105._calraw, _this105._calref);
+                        }
+                    }
                 }
-                minVal = this.imm_decodeVal(minRaw);
-                avgVal = this.imm_decodeAvg(avgRaw);
-                maxVal = this.imm_decodeVal(maxRaw);
+            } else {
+                if (report[0] == 0) {
+                    poww = 1;
+                    avgRaw = 0;
+                    byteVal = 0;
+                    i = 1;
+                    while (i < report.length) {
+                        byteVal = report[i];
+                        avgRaw = avgRaw + poww * byteVal;
+                        poww = poww * 0x100;
+                        i = i + 1;
+                    }
+                    if (_this105._isScal) {
+                        avgVal = _this105.imm_decodeVal(avgRaw);
+                    } else {
+                        if ((byteVal & 0x80) != 0) {
+                            avgRaw = avgRaw - poww;
+                        }
+                        avgVal = _this105.imm_decodeAvg(avgRaw);
+                    }
+                    minVal = avgVal;
+                    maxVal = avgVal;
+                } else {
+                    minRaw = report[1] + 0x100 * report[2];
+                    maxRaw = report[3] + 0x100 * report[4];
+                    avgRaw = report[5] + 0x100 * report[6] + 0x10000 * report[7];
+                    byteVal = report[8];
+                    if ((byteVal & 0x80) == 0) {
+                        avgRaw = avgRaw + 0x1000000 * byteVal;
+                    } else {
+                        avgRaw = avgRaw - 0x1000000 * (0x100 - byteVal);
+                    }
+                    minVal = _this105.imm_decodeVal(minRaw);
+                    avgVal = _this105.imm_decodeAvg(avgRaw);
+                    maxVal = _this105.imm_decodeVal(maxRaw);
+                }
             }
-        }
-        return new YMeasure(startTime, endTime, minVal, avgVal, maxVal);
+            return new YMeasure(startTime, endTime, minVal, avgVal, maxVal);
+        })();
     }
 
-    imm_decodeVal(w)
-    {
+    imm_decodeVal(w) {
         /** @type {number} **/
         let val;
         val = w;
@@ -4929,8 +5194,7 @@ export class YSensor extends YFunction
         return val;
     }
 
-    imm_decodeAvg(dw)
-    {
+    imm_decodeAvg(dw) {
         /** @type {number} **/
         let val;
         val = dw;
@@ -4954,14 +5218,13 @@ export class YSensor extends YFunction
      *         a sensor currently online, or a null pointer
      *         if there are no more sensors to enumerate.
      */
-    nextSensor()
-    {
+    nextSensor() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YSensor.FindSensorInContext(this._yapi, next_hwid);
     }
 
@@ -4974,11 +5237,10 @@ export class YSensor extends YFunction
      *         the first sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstSensor()
-    {
+    static FirstSensor() {
         /** @type {string|null} **/
         let next_hwid = YAPI.imm_getFirstHardwareId('Sensor');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YSensor.FindSensor(next_hwid);
     }
 
@@ -4993,18 +5255,17 @@ export class YSensor extends YFunction
      *         the first sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstSensorInContext(yctx)
-    {
+    static FirstSensorInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('Sensor');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YSensor.FindSensorInContext(yctx, next_hwid);
     }
 
     //--- (end of generated code: YSensor implementation)
 }
 
-//--- (generated code: Sensor functions)
+exports.YSensor = YSensor; //--- (generated code: Sensor functions)
 
 /**
  * Retrieves a sensor for a given identifier.
@@ -5029,8 +5290,8 @@ export class YSensor extends YFunction
  *
  * @return {YSensor} a YSensor object allowing you to drive the sensor.
  */
-export function yFindSensor(func)
-{
+
+function yFindSensor(func) {
     return YSensor.FindSensor(func);
 }
 
@@ -5043,8 +5304,7 @@ export function yFindSensor(func)
  *         the first sensor currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstSensor()
-{
+function yFirstSensor() {
     return YSensor.FirstSensor();
 }
 
@@ -5052,7 +5312,6 @@ export function yFirstSensor()
 
 //--- (generated code: YMeasure definitions)
 //--- (end of generated code: YMeasure definitions)
-
 
 //--- (generated code: YMeasure class start)
 /**
@@ -5063,27 +5322,25 @@ export function yFirstSensor()
  * used in particular in conjunction with the YDataSet class.
  */
 //--- (end of generated code: YMeasure class start)
-export class YMeasure
-{
-    constructor(float_start, float_end, float_minVal, float_avgVal, float_maxVal)
-    {
+class YMeasure {
+    constructor(float_start, float_end, float_minVal, float_avgVal, float_maxVal) {
         //--- (generated code: YMeasure constructor)
         /** @member {number} **/
-        this._start                      = 0;
+        this._start = 0;
         /** @member {number} **/
-        this._end                        = 0;
+        this._end = 0;
         /** @member {number} **/
-        this._minVal                     = 0;
+        this._minVal = 0;
         /** @member {number} **/
-        this._avgVal                     = 0;
+        this._avgVal = 0;
         /** @member {number} **/
-        this._maxVal                     = 0;
+        this._maxVal = 0;
         //--- (end of generated code: YMeasure constructor)
-        this._start                          = float_start;
-        this._end                            = float_end;
-        this._minVal                         = float_minVal;
-        this._avgVal                         = float_avgVal;
-        this._maxVal                         = float_maxVal;
+        this._start = float_start;
+        this._end = float_end;
+        this._minVal = float_minVal;
+        this._avgVal = float_avgVal;
+        this._maxVal = float_maxVal;
     }
     //--- (generated code: YMeasure implementation)
 
@@ -5095,8 +5352,7 @@ export class YMeasure
      * @return {number} an floating point number corresponding to the number of seconds
      *         between the Jan 1, 1970 UTC and the beginning of this measure.
      */
-    get_startTimeUTC()
-    {
+    get_startTimeUTC() {
         return this._start;
     }
 
@@ -5108,8 +5364,7 @@ export class YMeasure
      * @return {number} an floating point number corresponding to the number of seconds
      *         between the Jan 1, 1970 UTC and the end of this measure.
      */
-    get_endTimeUTC()
-    {
+    get_endTimeUTC() {
         return this._end;
     }
 
@@ -5119,8 +5374,7 @@ export class YMeasure
      *
      * @return {number} a floating-point number corresponding to the smallest value observed.
      */
-    get_minValue()
-    {
+    get_minValue() {
         return this._minVal;
     }
 
@@ -5130,8 +5384,7 @@ export class YMeasure
      *
      * @return {number} a floating-point number corresponding to the average value observed.
      */
-    get_averageValue()
-    {
+    get_averageValue() {
         return this._avgVal;
     }
 
@@ -5141,8 +5394,7 @@ export class YMeasure
      *
      * @return {number} a floating-point number corresponding to the largest value observed.
      */
-    get_maxValue()
-    {
+    get_maxValue() {
         return this._maxVal;
     }
 
@@ -5153,8 +5405,7 @@ export class YMeasure
      *
      * @return {Date} a Date object corresponding to the beginning of this measure
      */
-    get_startTimeUTC_asDate()
-    {
+    get_startTimeUTC_asDate() {
         return new Date(Math.round(this._start * 1000));
     }
 
@@ -5163,13 +5414,12 @@ export class YMeasure
      *
      * @return {Date} a Date object corresponding to the end of this measure
      */
-    get_endTimeUTC_asDate()
-    {
+    get_endTimeUTC_asDate() {
         return new Date(Math.round(this._end * 1000));
     }
 }
 
-//--- (generated code: YDataStream definitions)
+exports.YMeasure = YMeasure; //--- (generated code: YDataStream definitions)
 //--- (end of generated code: YDataStream definitions)
 
 //--- (generated code: YDataStream class start)
@@ -5187,78 +5437,76 @@ export class YMeasure
  * a more convenient interface.
  */
 //--- (end of generated code: YDataStream class start)
-export class YDataStream
-{
-    constructor(obj_parent, obj_dataset, encoded)
-    {
+
+class YDataStream {
+    constructor(obj_parent, obj_dataset, encoded) {
         //--- (generated code: YDataStream constructor)
         /** @member {YFunction} **/
-        this._parent                     = null;
+        this._parent = null;
         /** @member {number} **/
-        this._runNo                      = 0;
+        this._runNo = 0;
         /** @member {number} **/
-        this._utcStamp                   = 0;
+        this._utcStamp = 0;
         /** @member {number} **/
-        this._nCols                      = 0;
+        this._nCols = 0;
         /** @member {number} **/
-        this._nRows                      = 0;
+        this._nRows = 0;
         /** @member {number} **/
-        this._duration                   = 0;
+        this._duration = 0;
         /** @member {string[]} **/
-        this._columnNames                = [];
+        this._columnNames = [];
         /** @member {string} **/
-        this._functionId                 = '';
+        this._functionId = '';
         /** @member {boolean} **/
-        this._isClosed                   = 0;
+        this._isClosed = 0;
         /** @member {boolean} **/
-        this._isAvg                      = 0;
+        this._isAvg = 0;
         /** @member {boolean} **/
-        this._isScal                     = 0;
+        this._isScal = 0;
         /** @member {boolean} **/
-        this._isScal32                   = 0;
+        this._isScal32 = 0;
         /** @member {number} **/
-        this._decimals                   = 0;
+        this._decimals = 0;
         /** @member {number} **/
-        this._offset                     = 0;
+        this._offset = 0;
         /** @member {number} **/
-        this._scale                      = 0;
+        this._scale = 0;
         /** @member {number} **/
-        this._samplesPerHour             = 0;
+        this._samplesPerHour = 0;
         /** @member {number} **/
-        this._minVal                     = 0;
+        this._minVal = 0;
         /** @member {number} **/
-        this._avgVal                     = 0;
+        this._avgVal = 0;
         /** @member {number} **/
-        this._maxVal                     = 0;
+        this._maxVal = 0;
         /** @member {number} **/
-        this._decexp                     = 0;
+        this._decexp = 0;
         /** @member {number} **/
-        this._caltyp                     = 0;
+        this._caltyp = 0;
         /** @member {number[]} **/
-        this._calpar                     = [];
+        this._calpar = [];
         /** @member {number[]} **/
-        this._calraw                     = [];
+        this._calraw = [];
         /** @member {number[]} **/
-        this._calref                     = [];
+        this._calref = [];
         /** @member {number[][]} **/
-        this._values                     = [];
+        this._values = [];
         //--- (end of generated code: YDataStream constructor)
         this.imm_setConst({
             DATA_INVALID: Y_DATA_INVALID,
-            DURATION_INVALID: Y_DURATION_INVALID,
+            DURATION_INVALID: Y_DURATION_INVALID
         });
 
         this._parent = obj_parent;
         this._calhdl = null;
-        if(typeof obj_dataset != 'undefined') {
+        if (typeof obj_dataset != 'undefined') {
             this.imm_initFromDataSet(obj_dataset, encoded);
         }
     }
 
     //--- (generated code: YDataStream implementation)
 
-    imm_initFromDataSet(dataset,encoded)
-    {
+    imm_initFromDataSet(dataset, encoded) {
         /** @type {number} **/
         let val;
         /** @type {number} **/
@@ -5278,15 +5526,15 @@ export class YDataStream
         /** @type {number[]} **/
         let iCalib = [];
         // decode sequence header to extract data
-        this._runNo = encoded[0] + (((encoded[1]) << (16)));
-        this._utcStamp = encoded[2] + (((encoded[3]) << (16)));
+        this._runNo = encoded[0] + (encoded[1] << 16);
+        this._utcStamp = encoded[2] + (encoded[3] << 16);
         val = encoded[4];
-        this._isAvg = (((val) & (0x100)) == 0);
-        this._samplesPerHour = ((val) & (0xff));
-        if (((val) & (0x100)) != 0) {
+        this._isAvg = (val & 0x100) == 0;
+        this._samplesPerHour = val & 0xff;
+        if ((val & 0x100) != 0) {
             this._samplesPerHour = this._samplesPerHour * 3600;
         } else {
-            if (((val) & (0x200)) != 0) {
+            if ((val & 0x200) != 0) {
                 this._samplesPerHour = this._samplesPerHour * 60;
             }
         }
@@ -5297,10 +5545,10 @@ export class YDataStream
         this._decimals = val;
         this._offset = val;
         this._scale = encoded[6];
-        this._isScal = (this._scale != 0);
-        this._isScal32 = (encoded.length >= 14);
+        this._isScal = this._scale != 0;
+        this._isScal32 = encoded.length >= 14;
         val = encoded[7];
-        this._isClosed = (val != 0xffff);
+        this._isClosed = val != 0xffff;
         if (val == 0xffff) {
             val = 0;
         }
@@ -5366,9 +5614,9 @@ export class YDataStream
         this._functionId = dataset.imm_get_functionId();
         if (this._isAvg) {
             this._columnNames.length = 0;
-            this._columnNames.push(this._functionId+'_min');
-            this._columnNames.push(this._functionId+'_avg');
-            this._columnNames.push(this._functionId+'_max');
+            this._columnNames.push(this._functionId + '_min');
+            this._columnNames.push(this._functionId + '_avg');
+            this._columnNames.push(this._functionId + '_max');
             this._nCols = 3;
         } else {
             this._columnNames.length = 0;
@@ -5378,27 +5626,26 @@ export class YDataStream
         // decode min/avg/max values for the sequence
         if (this._nRows > 0) {
             if (this._isScal32) {
-                this._avgVal = this.imm_decodeAvg(encoded[8] + (((((encoded[9]) ^ (0x8000))) << (16))), 1);
-                this._minVal = this.imm_decodeVal(encoded[10] + (((encoded[11]) << (16))));
-                this._maxVal = this.imm_decodeVal(encoded[12] + (((encoded[13]) << (16))));
+                this._avgVal = this.imm_decodeAvg(encoded[8] + ((encoded[9] ^ 0x8000) << 16), 1);
+                this._minVal = this.imm_decodeVal(encoded[10] + (encoded[11] << 16));
+                this._maxVal = this.imm_decodeVal(encoded[12] + (encoded[13] << 16));
             } else {
                 this._minVal = this.imm_decodeVal(encoded[8]);
                 this._maxVal = this.imm_decodeVal(encoded[9]);
-                this._avgVal = this.imm_decodeAvg(encoded[10] + (((encoded[11]) << (16))), this._nRows);
+                this._avgVal = this.imm_decodeAvg(encoded[10] + (encoded[11] << 16), this._nRows);
             }
         }
         return 0;
     }
 
-    imm_parseStream(sdata)
-    {
+    imm_parseStream(sdata) {
         /** @type {number} **/
         let idx;
         /** @type {number[]} **/
         let udat = [];
         /** @type {number[]} **/
         let dat = [];
-        if ((sdata).length == 0) {
+        if (sdata.length == 0) {
             this._nRows = 0;
             return YAPI_SUCCESS;
         }
@@ -5410,20 +5657,20 @@ export class YDataStream
             while (idx + 3 < udat.length) {
                 dat.length = 0;
                 if (this._isScal32) {
-                    dat.push(this.imm_decodeVal(udat[idx + 2] + (((udat[idx + 3]) << (16)))));
-                    dat.push(this.imm_decodeAvg(udat[idx] + (((((udat[idx + 1]) ^ (0x8000))) << (16))), 1));
-                    dat.push(this.imm_decodeVal(udat[idx + 4] + (((udat[idx + 5]) << (16)))));
+                    dat.push(this.imm_decodeVal(udat[idx + 2] + (udat[idx + 3] << 16)));
+                    dat.push(this.imm_decodeAvg(udat[idx] + ((udat[idx + 1] ^ 0x8000) << 16), 1));
+                    dat.push(this.imm_decodeVal(udat[idx + 4] + (udat[idx + 5] << 16)));
                     idx = idx + 6;
                 } else {
                     dat.push(this.imm_decodeVal(udat[idx]));
-                    dat.push(this.imm_decodeAvg(udat[idx + 2] + (((udat[idx + 3]) << (16))), 1));
+                    dat.push(this.imm_decodeAvg(udat[idx + 2] + (udat[idx + 3] << 16), 1));
                     dat.push(this.imm_decodeVal(udat[idx + 1]));
                     idx = idx + 4;
                 }
                 this._values.push(dat.slice());
             }
         } else {
-            if (this._isScal && !(this._isScal32)) {
+            if (this._isScal && !this._isScal32) {
                 while (idx < udat.length) {
                     dat.length = 0;
                     dat.push(this.imm_decodeVal(udat[idx]));
@@ -5433,32 +5680,33 @@ export class YDataStream
             } else {
                 while (idx + 1 < udat.length) {
                     dat.length = 0;
-                    dat.push(this.imm_decodeAvg(udat[idx] + (((((udat[idx + 1]) ^ (0x8000))) << (16))), 1));
+                    dat.push(this.imm_decodeAvg(udat[idx] + ((udat[idx + 1] ^ 0x8000) << 16), 1));
                     this._values.push(dat.slice());
                     idx = idx + 2;
                 }
             }
         }
-        
+
         this._nRows = this._values.length;
         return YAPI_SUCCESS;
     }
 
-    imm_get_url()
-    {
+    imm_get_url() {
         /** @type {string} **/
         let url;
-        url = 'logger.json?id='+this._functionId+'&run='+String(Math.round(this._runNo))+'&utc='+String(Math.round(this._utcStamp));
+        url = 'logger.json?id=' + this._functionId + '&run=' + String(Math.round(this._runNo)) + '&utc=' + String(Math.round(this._utcStamp));
         return url;
     }
 
-    async loadStream()
-    {
-        return this.imm_parseStream(await this._parent._download(this.imm_get_url()));
+    loadStream() {
+        var _this106 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this106.imm_parseStream((yield _this106._parent._download(_this106.imm_get_url())));
+        })();
     }
 
-    imm_decodeVal(w)
-    {
+    imm_decodeVal(w) {
         /** @type {number} **/
         let val;
         val = w;
@@ -5477,8 +5725,7 @@ export class YDataStream
         return val;
     }
 
-    imm_decodeAvg(dw,count)
-    {
+    imm_decodeAvg(dw, count) {
         /** @type {number} **/
         let val;
         val = dw;
@@ -5497,9 +5744,12 @@ export class YDataStream
         return val;
     }
 
-    async isClosed()
-    {
-        return this._isClosed;
+    isClosed() {
+        var _this107 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this107._isClosed;
+        })();
     }
 
     /**
@@ -5508,9 +5758,12 @@ export class YDataStream
      *
      * @return {number} an unsigned number corresponding to the run index.
      */
-    async get_runIndex()
-    {
-        return this._runNo;
+    get_runIndex() {
+        var _this108 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this108._runNo;
+        })();
     }
 
     /**
@@ -5526,9 +5779,12 @@ export class YDataStream
      *         between the start of the run and the beginning of this data
      *         stream.
      */
-    async get_startTime()
-    {
-        return this._utcStamp - parseInt(+new Date()/1000, 10);
+    get_startTime() {
+        var _this109 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this109._utcStamp - parseInt(+new Date() / 1000, 10);
+        })();
     }
 
     /**
@@ -5540,9 +5796,12 @@ export class YDataStream
      *         between the Jan 1, 1970 and the beginning of this data
      *         stream (i.e. Unix time representation of the absolute time).
      */
-    async get_startTimeUTC()
-    {
-        return this._utcStamp;
+    get_startTimeUTC() {
+        var _this110 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this110._utcStamp;
+        })();
     }
 
     /**
@@ -5553,14 +5812,20 @@ export class YDataStream
      *
      * @return {number} an unsigned number corresponding to a number of milliseconds.
      */
-    async get_dataSamplesIntervalMs()
-    {
-        return parseInt((3600000) / (this._samplesPerHour), 10);
+    get_dataSamplesIntervalMs() {
+        var _this111 = this;
+
+        return _asyncToGenerator(function* () {
+            return parseInt(3600000 / _this111._samplesPerHour, 10);
+        })();
     }
 
-    async get_dataSamplesInterval()
-    {
-        return 3600.0 / this._samplesPerHour;
+    get_dataSamplesInterval() {
+        var _this112 = this;
+
+        return _asyncToGenerator(function* () {
+            return 3600.0 / _this112._samplesPerHour;
+        })();
     }
 
     /**
@@ -5574,13 +5839,16 @@ export class YDataStream
      *
      * On failure, throws an exception or returns zero.
      */
-    async get_rowCount()
-    {
-        if ((this._nRows != 0) && this._isClosed) {
-            return this._nRows;
-        }
-        await this.loadStream();
-        return this._nRows;
+    get_rowCount() {
+        var _this113 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this113._nRows != 0 && _this113._isClosed) {
+                return _this113._nRows;
+            }
+            yield _this113.loadStream();
+            return _this113._nRows;
+        })();
     }
 
     /**
@@ -5596,13 +5864,16 @@ export class YDataStream
      *
      * On failure, throws an exception or returns zero.
      */
-    async get_columnCount()
-    {
-        if (this._nCols != 0) {
-            return this._nCols;
-        }
-        await this.loadStream();
-        return this._nCols;
+    get_columnCount() {
+        var _this114 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this114._nCols != 0) {
+                return _this114._nCols;
+            }
+            yield _this114.loadStream();
+            return _this114._nCols;
+        })();
     }
 
     /**
@@ -5622,13 +5893,16 @@ export class YDataStream
      *
      * On failure, throws an exception or returns an empty array.
      */
-    async get_columnNames()
-    {
-        if (this._columnNames.length != 0) {
-            return this._columnNames;
-        }
-        await this.loadStream();
-        return this._columnNames;
+    get_columnNames() {
+        var _this115 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this115._columnNames.length != 0) {
+                return _this115._columnNames;
+            }
+            yield _this115.loadStream();
+            return _this115._columnNames;
+        })();
     }
 
     /**
@@ -5641,9 +5915,12 @@ export class YDataStream
      *
      * On failure, throws an exception or returns YDataStream.DATA_INVALID.
      */
-    async get_minValue()
-    {
-        return this._minVal;
+    get_minValue() {
+        var _this116 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this116._minVal;
+        })();
     }
 
     /**
@@ -5656,9 +5933,12 @@ export class YDataStream
      *
      * On failure, throws an exception or returns YDataStream.DATA_INVALID.
      */
-    async get_averageValue()
-    {
-        return this._avgVal;
+    get_averageValue() {
+        var _this117 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this117._avgVal;
+        })();
     }
 
     /**
@@ -5671,9 +5951,12 @@ export class YDataStream
      *
      * On failure, throws an exception or returns YDataStream.DATA_INVALID.
      */
-    async get_maxValue()
-    {
-        return this._maxVal;
+    get_maxValue() {
+        var _this118 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this118._maxVal;
+        })();
     }
 
     /**
@@ -5683,12 +5966,15 @@ export class YDataStream
      *
      * On failure, throws an exception or returns YDataStream.DURATION_INVALID.
      */
-    async get_duration()
-    {
-        if (this._isClosed) {
-            return this._duration;
-        }
-        return parseInt(+new Date()/1000, 10) - this._utcStamp;
+    get_duration() {
+        var _this119 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this119._isClosed) {
+                return _this119._duration;
+            }
+            return parseInt(+new Date() / 1000, 10) - _this119._utcStamp;
+        })();
     }
 
     /**
@@ -5706,12 +5992,15 @@ export class YDataStream
      *
      * On failure, throws an exception or returns an empty array.
      */
-    async get_dataRows()
-    {
-        if ((this._values.length == 0) || !(this._isClosed)) {
-            await this.loadStream();
-        }
-        return this._values;
+    get_dataRows() {
+        var _this120 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this120._values.length == 0 || !_this120._isClosed) {
+                yield _this120.loadStream();
+            }
+            return _this120._values;
+        })();
     }
 
     /**
@@ -5730,24 +6019,27 @@ export class YDataStream
      *
      * On failure, throws an exception or returns YDataStream.DATA_INVALID.
      */
-    async get_data(row,col)
-    {
-        if ((this._values.length == 0) || !(this._isClosed)) {
-            await this.loadStream();
-        }
-        if (row >= this._values.length) {
-            return Y_DATA_INVALID;
-        }
-        if (col >= this._values[row].length) {
-            return Y_DATA_INVALID;
-        }
-        return this._values[row][col];
+    get_data(row, col) {
+        var _this121 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this121._values.length == 0 || !_this121._isClosed) {
+                yield _this121.loadStream();
+            }
+            if (row >= _this121._values.length) {
+                return Y_DATA_INVALID;
+            }
+            if (col >= _this121._values[row].length) {
+                return Y_DATA_INVALID;
+            }
+            return _this121._values[row][col];
+        })();
     }
 
     //--- (end of generated code: YDataStream implementation)
 }
 
-//--- (generated code: YDataSet definitions)
+exports.YDataStream = YDataStream; //--- (generated code: YDataSet definitions)
 //--- (end of generated code: YDataSet definitions)
 
 //--- (generated code: YDataSet class start)
@@ -5771,143 +6063,146 @@ export class YDataStream
  * as YDataSet objects are not supported by firmwares older than version 13000.
  */
 //--- (end of generated code: YDataSet class start)
-class YDataSet
-{
-    constructor(obj_parent, str_functionId, str_unit, u32_startTime, u32_endTime)
-    {
+
+class YDataSet {
+    constructor(obj_parent, str_functionId, str_unit, u32_startTime, u32_endTime) {
         //--- (generated code: YDataSet constructor)
         /** @member {YFunction} **/
-        this._parent                     = null;
+        this._parent = null;
         /** @member {string} **/
-        this._hardwareId                 = '';
+        this._hardwareId = '';
         /** @member {string} **/
-        this._functionId                 = '';
+        this._functionId = '';
         /** @member {string} **/
-        this._unit                       = '';
+        this._unit = '';
         /** @member {number} **/
-        this._startTime                  = 0;
+        this._startTime = 0;
         /** @member {number} **/
-        this._endTime                    = 0;
+        this._endTime = 0;
         /** @member {number} **/
-        this._progress                   = 0;
+        this._progress = 0;
         /** @member {number[]} **/
-        this._calib                      = [];
+        this._calib = [];
         /** @member {YDataStream[]} **/
-        this._streams                    = [];
+        this._streams = [];
         /** @member {YMeasure} **/
-        this._summary                    = null;
+        this._summary = null;
         /** @member {YMeasure[]} **/
-        this._preview                    = [];
+        this._preview = [];
         /** @member {YMeasure[]} **/
-        this._measures                   = [];
+        this._measures = [];
         //--- (end of generated code: YDataSet constructor)
         // init _summary with dummy value
         this._summary = new YMeasure(0, 0, 0, 0, 0);
-        if(typeof str_unit === 'undefined') {
+        if (typeof str_unit === 'undefined') {
             // 1st version of constructor, called from YDataLogger
             /** @member {YFunction} **/
-            this._parent     = obj_parent;
+            this._parent = obj_parent;
             /** @member {YAPIContext} **/
-            this._yapi       = obj_parent._yapi;
-            this._startTime  = 0;
-            this._endTime    = 0;
+            this._yapi = obj_parent._yapi;
+            this._startTime = 0;
+            this._endTime = 0;
             // caller must call method async parse() just afterwards
         } else {
-            // 2nd version of constructor, called from YFunction
-            /** @member {YFunction} **/
-            this._parent     = obj_parent;
-            /** @member {YAPIContext} **/
-            this._yapi       = obj_parent._yapi;
-            this._functionId = str_functionId;
-            this._unit       = str_unit;
-            this._startTime  = u32_startTime;
-            this._endTime    = u32_endTime;
-            this._progress   = -1;
-        }
+                // 2nd version of constructor, called from YFunction
+                /** @member {YFunction} **/
+                this._parent = obj_parent;
+                /** @member {YAPIContext} **/
+                this._yapi = obj_parent._yapi;
+                this._functionId = str_functionId;
+                this._unit = str_unit;
+                this._startTime = u32_startTime;
+                this._endTime = u32_endTime;
+                this._progress = -1;
+            }
     }
 
-    imm_get_functionId()
-    {
+    imm_get_functionId() {
         return this._functionId;
     }
 
     //--- (generated code: YDataSet implementation)
 
-    imm_get_calibration()
-    {
+    imm_get_calibration() {
         return this._calib;
     }
 
-    async processMore(progress,data)
-    {
-        /** @type {YDataStream} **/
-        let stream;
-        /** @type {number[][]} **/
-        let dataRows = [];
-        /** @type {string} **/
-        let strdata;
-        /** @type {number} **/
-        let tim;
-        /** @type {number} **/
-        let itv;
-        /** @type {number} **/
-        let nCols;
-        /** @type {number} **/
-        let minCol;
-        /** @type {number} **/
-        let avgCol;
-        /** @type {number} **/
-        let maxCol;
-        // may throw an exception
-        if (progress != this._progress) {
-            return this._progress;
-        }
-        if (this._progress < 0) {
-            strdata = this._yapi.imm_bin2str(data);
-            if (strdata == '{}') {
-                this._parent._throw(YAPI_VERSION_MISMATCH, 'device firmware is too old');
-                return YAPI_VERSION_MISMATCH;
+    processMore(progress, data) {
+        var _this122 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {YDataStream} **/
+            let stream;
+            /** @type {number[][]} **/
+            let dataRows = [];
+            /** @type {string} **/
+            let strdata;
+            /** @type {number} **/
+            let tim;
+            /** @type {number} **/
+            let itv;
+            /** @type {number} **/
+            let nCols;
+            /** @type {number} **/
+            let minCol;
+            /** @type {number} **/
+            let avgCol;
+            /** @type {number} **/
+            let maxCol;
+            // may throw an exception
+            if (progress != _this122._progress) {
+                return _this122._progress;
             }
-            return await this._parse(strdata);
-        }
-        stream = this._streams[this._progress];
-        stream.imm_parseStream(data);
-        dataRows = await stream.get_dataRows();
-        this._progress = this._progress + 1;
-        if (dataRows.length == 0) {
-            return await this.get_progress();
-        }
-        tim = await stream.get_startTimeUTC();
-        itv = await stream.get_dataSamplesInterval();
-        if (tim < itv) {
-            tim = itv;
-        }
-        nCols = dataRows[0].length;
-        minCol = 0;
-        if (nCols > 2) {
-            avgCol = 1;
-        } else {
-            avgCol = 0;
-        }
-        if (nCols > 2) {
-            maxCol = 2;
-        } else {
-            maxCol = 0;
-        }
-        
-        for (let ii in dataRows) {
-            if ((tim >= this._startTime) && ((this._endTime == 0) || (tim <= this._endTime))) {
-                this._measures.push(new YMeasure(tim - itv, tim, dataRows[ii][minCol], dataRows[ii][avgCol], dataRows[ii][maxCol]));
+            if (_this122._progress < 0) {
+                strdata = _this122._yapi.imm_bin2str(data);
+                if (strdata == '{}') {
+                    _this122._parent._throw(YAPI_VERSION_MISMATCH, 'device firmware is too old');
+                    return YAPI_VERSION_MISMATCH;
+                }
+                return yield _this122._parse(strdata);
             }
-            tim = tim + itv;
-        }
-        
-        return await this.get_progress();
+            stream = _this122._streams[_this122._progress];
+            stream.imm_parseStream(data);
+            dataRows = yield stream.get_dataRows();
+            _this122._progress = _this122._progress + 1;
+            if (dataRows.length == 0) {
+                return yield _this122.get_progress();
+            }
+            tim = yield stream.get_startTimeUTC();
+            itv = yield stream.get_dataSamplesInterval();
+            if (tim < itv) {
+                tim = itv;
+            }
+            nCols = dataRows[0].length;
+            minCol = 0;
+            if (nCols > 2) {
+                avgCol = 1;
+            } else {
+                avgCol = 0;
+            }
+            if (nCols > 2) {
+                maxCol = 2;
+            } else {
+                maxCol = 0;
+            }
+
+            for (let ii in dataRows) {
+                if (tim >= _this122._startTime && (_this122._endTime == 0 || tim <= _this122._endTime)) {
+                    _this122._measures.push(new YMeasure(tim - itv, tim, dataRows[ii][minCol], dataRows[ii][avgCol], dataRows[ii][maxCol]));
+                }
+                tim = tim + itv;
+            }
+
+            return yield _this122.get_progress();
+        })();
     }
 
-    async get_privateDataStreams()
-    {
-        return this._streams;
+    get_privateDataStreams() {
+        var _this123 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this123._streams;
+        })();
     }
 
     /**
@@ -5920,16 +6215,19 @@ class YDataSet
      *
      * On failure, throws an exception or returns  YDataSet.HARDWAREID_INVALID.
      */
-    async get_hardwareId()
-    {
-        /** @type {YModule} **/
-        let mo;
-        if (!(this._hardwareId == '')) {
-            return this._hardwareId;
-        }
-        mo = await this._parent.get_module();
-        this._hardwareId = await mo.get_serialNumber()+'.'+await this.get_functionId();
-        return this._hardwareId;
+    get_hardwareId() {
+        var _this124 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {YModule} **/
+            let mo;
+            if (!(_this124._hardwareId == '')) {
+                return _this124._hardwareId;
+            }
+            mo = yield _this124._parent.get_module();
+            _this124._hardwareId = (yield mo.get_serialNumber()) + '.' + (yield _this124.get_functionId());
+            return _this124._hardwareId;
+        })();
     }
 
     /**
@@ -5938,9 +6236,12 @@ class YDataSet
      *
      * @return {string} a string that identifies the function (ex: temperature1)
      */
-    async get_functionId()
-    {
-        return this._functionId;
+    get_functionId() {
+        var _this125 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this125._functionId;
+        })();
     }
 
     /**
@@ -5950,9 +6251,12 @@ class YDataSet
      *
      * On failure, throws an exception or returns  YDataSet.UNIT_INVALID.
      */
-    async get_unit()
-    {
-        return this._unit;
+    get_unit() {
+        var _this126 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this126._unit;
+        })();
     }
 
     /**
@@ -5967,9 +6271,12 @@ class YDataSet
      *         between the Jan 1, 1970 and the beginning of this data
      *         set (i.e. Unix time representation of the absolute time).
      */
-    async get_startTimeUTC()
-    {
-        return this._startTime;
+    get_startTimeUTC() {
+        var _this127 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this127._startTime;
+        })();
     }
 
     /**
@@ -5984,9 +6291,12 @@ class YDataSet
      *         between the Jan 1, 1970 and the end of this data
      *         set (i.e. Unix time representation of the absolute time).
      */
-    async get_endTimeUTC()
-    {
-        return this._endTime;
+    get_endTimeUTC() {
+        var _this128 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this128._endTime;
+        })();
     }
 
     /**
@@ -5997,16 +6307,19 @@ class YDataSet
      *
      * @return {number} an integer in the range 0 to 100 (percentage of completion).
      */
-    async get_progress()
-    {
-        if (this._progress < 0) {
-            return 0;
-        }
-        // index not yet loaded
-        if (this._progress >= this._streams.length) {
-            return 100;
-        }
-        return parseInt((1 + (1 + this._progress) * 98 ) / ((1 + this._streams.length)), 10);
+    get_progress() {
+        var _this129 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this129._progress < 0) {
+                return 0;
+            }
+            // index not yet loaded
+            if (_this129._progress >= _this129._streams.length) {
+                return 100;
+            }
+            return parseInt((1 + (1 + _this129._progress) * 98) / (1 + _this129._streams.length), 10);
+        })();
     }
 
     /**
@@ -6018,23 +6331,26 @@ class YDataSet
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async loadMore()
-    {
-        /** @type {string} **/
-        let url;
-        /** @type {YDataStream} **/
-        let stream;
-        if (this._progress < 0) {
-            url = 'logger.json?id='+this._functionId;
-        } else {
-            if (this._progress >= this._streams.length) {
-                return 100;
+    loadMore() {
+        var _this130 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let url;
+            /** @type {YDataStream} **/
+            let stream;
+            if (_this130._progress < 0) {
+                url = 'logger.json?id=' + _this130._functionId;
             } else {
-                stream = this._streams[this._progress];
-                url = stream.imm_get_url();
+                if (_this130._progress >= _this130._streams.length) {
+                    return 100;
+                } else {
+                    stream = _this130._streams[_this130._progress];
+                    url = stream.imm_get_url();
+                }
             }
-        }
-        return await this.processMore(this._progress, await this._parent._download(url));
+            return yield _this130.processMore(_this130._progress, (yield _this130._parent._download(url)));
+        })();
     }
 
     /**
@@ -6051,9 +6367,12 @@ class YDataSet
      *
      * @return {YMeasure} an YMeasure object
      */
-    async get_summary()
-    {
-        return this._summary;
+    get_summary() {
+        var _this131 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this131._summary;
+        })();
     }
 
     /**
@@ -6074,9 +6393,12 @@ class YDataSet
      *
      * On failure, throws an exception or returns an empty array.
      */
-    async get_preview()
-    {
-        return this._preview;
+    get_preview() {
+        var _this132 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this132._preview;
+        })();
     }
 
     /**
@@ -6092,69 +6414,72 @@ class YDataSet
      *
      * On failure, throws an exception or returns an empty array.
      */
-    async get_measuresAt(measure)
-    {
-        /** @type {number} **/
-        let startUtc;
-        /** @type {YDataStream} **/
-        let stream;
-        /** @type {number[][]} **/
-        let dataRows = [];
-        /** @type {YMeasure[]} **/
-        let measures = [];
-        /** @type {number} **/
-        let tim;
-        /** @type {number} **/
-        let itv;
-        /** @type {number} **/
-        let nCols;
-        /** @type {number} **/
-        let minCol;
-        /** @type {number} **/
-        let avgCol;
-        /** @type {number} **/
-        let maxCol;
-        // may throw an exception
-        startUtc = Math.round(measure.get_startTimeUTC());
-        stream = null;
-        for (let ii in this._streams) {
-            if (await this._streams[ii].get_startTimeUTC() == startUtc) {
-                stream = this._streams[ii];
+    get_measuresAt(measure) {
+        var _this133 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let startUtc;
+            /** @type {YDataStream} **/
+            let stream;
+            /** @type {number[][]} **/
+            let dataRows = [];
+            /** @type {YMeasure[]} **/
+            let measures = [];
+            /** @type {number} **/
+            let tim;
+            /** @type {number} **/
+            let itv;
+            /** @type {number} **/
+            let nCols;
+            /** @type {number} **/
+            let minCol;
+            /** @type {number} **/
+            let avgCol;
+            /** @type {number} **/
+            let maxCol;
+            // may throw an exception
+            startUtc = Math.round(measure.get_startTimeUTC());
+            stream = null;
+            for (let ii in _this133._streams) {
+                if ((yield _this133._streams[ii].get_startTimeUTC()) == startUtc) {
+                    stream = _this133._streams[ii];
+                }
+                ;;
             }
-            ;;
-        }
-        if (stream == null) {
-            return measures;
-        }
-        dataRows = await stream.get_dataRows();
-        if (dataRows.length == 0) {
-            return measures;
-        }
-        tim = await stream.get_startTimeUTC();
-        itv = await stream.get_dataSamplesInterval();
-        if (tim < itv) {
-            tim = itv;
-        }
-        nCols = dataRows[0].length;
-        minCol = 0;
-        if (nCols > 2) {
-            avgCol = 1;
-        } else {
-            avgCol = 0;
-        }
-        if (nCols > 2) {
-            maxCol = 2;
-        } else {
-            maxCol = 0;
-        }
-        
-        for (let ii in dataRows) {
-            if ((tim >= this._startTime) && ((this._endTime == 0) || (tim <= this._endTime))) {
-                measures.push(new YMeasure(tim - itv, tim, dataRows[ii][minCol], dataRows[ii][avgCol], dataRows[ii][maxCol]));
+            if (stream == null) {
+                return measures;
             }
-            tim = tim + itv;;
-        }
-        return measures;
+            dataRows = yield stream.get_dataRows();
+            if (dataRows.length == 0) {
+                return measures;
+            }
+            tim = yield stream.get_startTimeUTC();
+            itv = yield stream.get_dataSamplesInterval();
+            if (tim < itv) {
+                tim = itv;
+            }
+            nCols = dataRows[0].length;
+            minCol = 0;
+            if (nCols > 2) {
+                avgCol = 1;
+            } else {
+                avgCol = 0;
+            }
+            if (nCols > 2) {
+                maxCol = 2;
+            } else {
+                maxCol = 0;
+            }
+
+            for (let ii in dataRows) {
+                if (tim >= _this133._startTime && (_this133._endTime == 0 || tim <= _this133._endTime)) {
+                    measures.push(new YMeasure(tim - itv, tim, dataRows[ii][minCol], dataRows[ii][avgCol], dataRows[ii][maxCol]));
+                }
+                tim = tim + itv;;
+            }
+            return measures;
+        })();
     }
 
     /**
@@ -6182,90 +6507,90 @@ class YDataSet
      *
      * On failure, throws an exception or returns an empty array.
      */
-    async get_measures()
-    {
-        return this._measures;
+    get_measures() {
+        var _this134 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this134._measures;
+        })();
     }
 
     //--- (end of generated code: YDataSet implementation)
 
     // YDataSet parser for stream list
-    async _parse(str_json)
-    {
-        var summaryMinVal    = Number.MAX_VALUE;
-        var summaryMaxVal    = -Number.MAX_VALUE;
-        var summaryTotalTime = 0;
-        var summaryTotalAvg  = 0;
-        var startTime        = 0x7fffffff;
-        var endTime          = 0;
-        var loadval;
+    _parse(str_json) {
+        var _this135 = this;
 
-        try {loadval = JSON.parse(str_json);} catch(err){}
-        if(!loadval) {
-            // no data available
-            this._progress = 0;
-            return this;
-        }
+        return _asyncToGenerator(function* () {
+            var summaryMinVal = Number.MAX_VALUE;
+            var summaryMaxVal = -Number.MAX_VALUE;
+            var summaryTotalTime = 0;
+            var summaryTotalAvg = 0;
+            var startTime = 0x7fffffff;
+            var endTime = 0;
+            var loadval;
 
-        this._functionId = loadval.id;
-        this._unit       = loadval.unit;
-        if(loadval.calib) {
-            this._calib  = this._yapi.imm_decodeFloats(loadval.calib);
-            this._calib[0] = parseInt(this._calib[0] / 1000);
-        } else {
-            this._calib  = this._yapi.imm_decodeWords(loadval.cal);
-        }
-        this._summary    = new YMeasure(0,0,0,0,0);
-        this._streams    = [];
-        this._preview    = [];
-        this._measures   = [];
-        for(var i = 0; i < loadval.streams.length; i++) {
-            var stream = this._parent.imm_findDataStream(this, loadval.streams[i]);
-            var streamEndTime = await stream.get_startTimeUTC() + await stream.get_duration();
-            var streamStartTime = await stream.get_startTimeUTC() - parseInt(await stream.get_dataSamplesIntervalMs()/1000);
-            if(this._startTime > 0 && streamEndTime <= this._startTime) {
-                // this stream is too early, drop it
-            } else if(this._endTime > 0 && await stream.get_startTimeUTC() > this._endTime) {
-                // this stream is too late, drop it
+            try {
+                loadval = JSON.parse(str_json);
+            } catch (err) {}
+            if (!loadval) {
+                // no data available
+                _this135._progress = 0;
+                return _this135;
+            }
+
+            _this135._functionId = loadval.id;
+            _this135._unit = loadval.unit;
+            if (loadval.calib) {
+                _this135._calib = _this135._yapi.imm_decodeFloats(loadval.calib);
+                _this135._calib[0] = parseInt(_this135._calib[0] / 1000);
             } else {
-                this._streams.push(stream);
-                if(startTime > streamStartTime) {
-                    startTime = streamStartTime;
-                }
-                if(endTime < streamEndTime) {
-                    endTime = streamEndTime;
-                }
-                if(stream.isClosed() && await stream.get_startTimeUTC() >= this._startTime &&
-                (this._endTime == 0 || streamEndTime <= this._endTime)) {
-                    if (summaryMinVal > await stream.get_minValue())
-                        summaryMinVal = await stream.get_minValue();
-                    if (summaryMaxVal < await stream.get_maxValue())
-                        summaryMaxVal = await stream.get_maxValue();
-                    summaryTotalAvg  += await stream.get_averageValue() * await stream.get_duration();
-                    summaryTotalTime += await stream.get_duration();
+                _this135._calib = _this135._yapi.imm_decodeWords(loadval.cal);
+            }
+            _this135._summary = new YMeasure(0, 0, 0, 0, 0);
+            _this135._streams = [];
+            _this135._preview = [];
+            _this135._measures = [];
+            for (var i = 0; i < loadval.streams.length; i++) {
+                var stream = _this135._parent.imm_findDataStream(_this135, loadval.streams[i]);
+                var streamEndTime = (yield stream.get_startTimeUTC()) + (yield stream.get_duration());
+                var streamStartTime = (yield stream.get_startTimeUTC()) - parseInt((yield stream.get_dataSamplesIntervalMs()) / 1000);
+                if (_this135._startTime > 0 && streamEndTime <= _this135._startTime) {
+                    // this stream is too early, drop it
+                } else if (_this135._endTime > 0 && (yield stream.get_startTimeUTC()) > _this135._endTime) {
+                        // this stream is too late, drop it
+                    } else {
+                            _this135._streams.push(stream);
+                            if (startTime > streamStartTime) {
+                                startTime = streamStartTime;
+                            }
+                            if (endTime < streamEndTime) {
+                                endTime = streamEndTime;
+                            }
+                            if (stream.isClosed() && (yield stream.get_startTimeUTC()) >= _this135._startTime && (_this135._endTime == 0 || streamEndTime <= _this135._endTime)) {
+                                if (summaryMinVal > (yield stream.get_minValue())) summaryMinVal = yield stream.get_minValue();
+                                if (summaryMaxVal < (yield stream.get_maxValue())) summaryMaxVal = yield stream.get_maxValue();
+                                summaryTotalAvg += (yield stream.get_averageValue()) * (yield stream.get_duration());
+                                summaryTotalTime += yield stream.get_duration();
 
-                    var rec = new YMeasure(await stream.get_startTimeUTC(),
-                                           streamEndTime,
-                                           await stream.get_minValue(),
-                                           await stream.get_averageValue(),
-                                           await stream.get_maxValue());
-                    this._preview.push(rec);
+                                var rec = new YMeasure((yield stream.get_startTimeUTC()), streamEndTime, (yield stream.get_minValue()), (yield stream.get_averageValue()), (yield stream.get_maxValue()));
+                                _this135._preview.push(rec);
+                            }
+                        }
+            }
+            if (_this135._streams.length > 0 && summaryTotalTime > 0) {
+                // update time boundaries with actual data
+                if (_this135._startTime < startTime) {
+                    _this135._startTime = startTime;
                 }
+                if (_this135._endTime == 0 || _this135._endTime > endTime) {
+                    _this135._endTime = endTime;
+                }
+                _this135._summary = new YMeasure(_this135._startTime, _this135._endTime, summaryMinVal, summaryTotalAvg / summaryTotalTime, summaryMaxVal);
             }
-        }
-        if((this._streams.length > 0) && (summaryTotalTime>0)) {
-            // update time boundaries with actual data
-            if(this._startTime < startTime) {
-                this._startTime = startTime;
-            }
-            if(this._endTime == 0 || this._endTime > endTime) {
-                this._endTime = endTime;
-            }
-            this._summary = new YMeasure(this._startTime,this._endTime,
-                                         summaryMinVal,summaryTotalAvg/summaryTotalTime,summaryMaxVal);
-        }
-        this._progress = 0;
-        return this;
+            _this135._progress = 0;
+            return _this135;
+        })();
     }
 
 }
@@ -6276,46 +6601,42 @@ class YDataSet
 // This class provides the high-level entry points to access Functions, stores
 // an indexes instances of the Device object and of FunctionType collections.
 //
-export class YGenericHub
-{   
-    constructor(obj_yapi, var_urlInfo)
-    {
+class YGenericHub {
+    constructor(obj_yapi, var_urlInfo) {
         /** @member {YAPIContext} **/
-        this._yapi           = obj_yapi;
+        this._yapi = obj_yapi;
         /** @member {number} **/
-        this._lastErrorType  = YAPI_SUCCESS;
+        this._lastErrorType = YAPI_SUCCESS;
         /** @member {string} **/
-        this._lastErrorMsg   = 'no error';
+        this._lastErrorMsg = 'no error';
         /** @member {Object} **/
-        this.urlInfo         = var_urlInfo;         // structure that describe the root URL of the hub
+        this.urlInfo = var_urlInfo; // structure that describe the root URL of the hub
         /** @member {number} **/
-        this.notiflen        = 32000;               // notification message length before forced disconnection
+        this.notiflen = 32000; // notification message length before forced disconnection
         /** @member {number} **/
-        this.devListValidity = 500;                 // default validity of updateDeviceList
+        this.devListValidity = 500; // default validity of updateDeviceList
         /** @member {number} **/
-        this.devListExpires  = 0;                   // timestamp of next useful updateDeviceList
-        this.serialByYdx     = [];                  // serials by hub-specific devYdx
+        this.devListExpires = 0; // timestamp of next useful updateDeviceList
+        this.serialByYdx = []; // serials by hub-specific devYdx
         /** @member {number} **/
-        this.retryDelay      = 15;                  // delay before reconnecting in case of error: initially 15ms
+        this.retryDelay = 15; // delay before reconnecting in case of error: initially 15ms
         /** @member {number} **/
-        this.notifPos        = -1;                  // current absolute position in hub notification stream
+        this.notifPos = -1; // current absolute position in hub notification stream
         /** @member {number} **/
-        this.currPos         = 0;                   // current position in data stream
+        this.currPos = 0; // current position in data stream
         /** @member {Object} **/
-        this.missing         = {};                  // used during UpdateDeviceList
+        this.missing = {}; // used during UpdateDeviceList
         /** @member {boolean} **/
-        this.disconnecting   = false;               // set to true when requested to disconnect
+        this.disconnecting = false; // set to true when requested to disconnect
     }
 
-    _throw(int_errType, str_errMsg, obj_retVal)
-    {
+    _throw(int_errType, str_errMsg, obj_retVal) {
         this._lastErrorType = int_errType;
         this._lastErrorMsg = str_errMsg;
         this._yapi._throw(int_errType, str_errMsg, obj_retVal);
     }
 
-    imm_forceUpdate()
-    {
+    imm_forceUpdate() {
         this.devListExpires = this._yapi.GetTickCount();
     }
 
@@ -6324,54 +6645,60 @@ export class YGenericHub
      * @param errmsg {YErrorMsg}
      * @returns {number}
      */
-    async testHub(errmsg)
-    {
-        // default test method is to issue a small request
-        /** @type {YHTTPRequest} **/
-        let yreq = await this.request('GET', this.urlInfo.url, '/api/module.json', null);
-        if(yreq.errorType != YAPI_SUCCESS) {
-            errmsg.msg = yreq.errorMsg;
-            return yreq.errorType;
-        }
+    testHub(errmsg) {
+        var _this136 = this;
 
-        return YAPI_SUCCESS;
+        return _asyncToGenerator(function* () {
+            // default test method is to issue a small request
+            /** @type {YHTTPRequest} **/
+            let yreq = yield _this136.request('GET', _this136.urlInfo.url, '/api/module.json', null);
+            if (yreq.errorType != YAPI_SUCCESS) {
+                errmsg.msg = yreq.errorMsg;
+                return yreq.errorType;
+            }
+
+            return YAPI_SUCCESS;
+        })();
     }
 
-    async hubUpdateDeviceList()
-    {
-        // load hub API, process white pages and yellow pages
-        /** @type {YDevice} **/
-        let hubDev = this._yapi.imm_getDevice(this.urlInfo.url);
-        /** @type {number} **/
-        let retcode = await hubDev.refresh();
-        if(retcode != YAPI_SUCCESS) {
-            return this._throw(retcode, hubDev._lastErrorMsg, retcode);
-        }
-        /** @type {YHTTPRequest} **/
-        let yreq = await hubDev.requestAPI(this._yapi.defaultCacheValidity);
-        if(yreq.errorType != YAPI_SUCCESS) {
-            return yreq;
-        }
-        let loadval = null;
-        try {loadval = JSON.parse(this._yapi.imm_bin2str(yreq.bin_result));} catch (err) {}
-        if(!loadval) {
-            return this._throw(YAPI_IO_ERROR, 'Request failed, could not parse API result for '+hubDev.imm_describe(),
-                YAPI_IO_ERROR);
-        }
-        let whitePages = loadval['services']['whitePages'];
-        let yellowPages = loadval['services']['yellowPages'];
-        if(whitePages == undefined) {
-            return this._throw(YAPI_INVALID_ARGUMENT, 'Device '+hubDev.imm_describe()+' is not a hub',
-                YAPI_INVALID_ARGUMENT);
-        }
-        retcode = await this._yapi.updateDeviceList_process(this, hubDev, whitePages, yellowPages);
-        if(retcode != YAPI_SUCCESS) {
-            return this._throw(this._yapi._lastErrorType, this._yapi._lastErrorMsg, this._yapi._lastErrorType);
-        }
+    hubUpdateDeviceList() {
+        var _this137 = this;
 
-        // reset device list cache timeout for this hub
-        this.devListExpires = this._yapi.GetTickCount() + this.devListValidity;
-        return YAPI_SUCCESS;
+        return _asyncToGenerator(function* () {
+            // load hub API, process white pages and yellow pages
+            /** @type {YDevice} **/
+            let hubDev = _this137._yapi.imm_getDevice(_this137.urlInfo.url);
+            /** @type {number} **/
+            let retcode = yield hubDev.refresh();
+            if (retcode != YAPI_SUCCESS) {
+                return _this137._throw(retcode, hubDev._lastErrorMsg, retcode);
+            }
+            /** @type {YHTTPRequest} **/
+            let yreq = yield hubDev.requestAPI(_this137._yapi.defaultCacheValidity);
+            if (yreq.errorType != YAPI_SUCCESS) {
+                return yreq;
+            }
+            let loadval = null;
+            try {
+                loadval = JSON.parse(_this137._yapi.imm_bin2str(yreq.bin_result));
+            } catch (err) {}
+            if (!loadval) {
+                return _this137._throw(YAPI_IO_ERROR, 'Request failed, could not parse API result for ' + hubDev.imm_describe(), YAPI_IO_ERROR);
+            }
+            let whitePages = loadval['services']['whitePages'];
+            let yellowPages = loadval['services']['yellowPages'];
+            if (whitePages == undefined) {
+                return _this137._throw(YAPI_INVALID_ARGUMENT, 'Device ' + hubDev.imm_describe() + ' is not a hub', YAPI_INVALID_ARGUMENT);
+            }
+            retcode = yield _this137._yapi.updateDeviceList_process(_this137, hubDev, whitePages, yellowPages);
+            if (retcode != YAPI_SUCCESS) {
+                return _this137._throw(_this137._yapi._lastErrorType, _this137._yapi._lastErrorMsg, _this137._yapi._lastErrorType);
+            }
+
+            // reset device list cache timeout for this hub
+            _this137.devListExpires = _this137._yapi.GetTickCount() + _this137.devListValidity;
+            return YAPI_SUCCESS;
+        })();
     }
 
     /** Perform an HTTP query on the hub
@@ -6382,35 +6709,37 @@ export class YGenericHub
      * @param obj_body {Uint8Array}
      * @returns {YHTTPRequest}
      */
-    async request(method, baseUrl, devUrl, obj_body)
-    {
-        // must be overriden by subclasses
-        var res = new YHTTPRequest(null);
-        res.errorType = YAPI_NOT_SUPPORTED;
-        res.errorMsg = 'GenericHub subclass expected';
-        return res;
+    request(method, baseUrl, devUrl, obj_body) {
+        return _asyncToGenerator(function* () {
+            // must be overriden by subclasses
+            var res = new YHTTPRequest(null);
+            res.errorType = YAPI_NOT_SUPPORTED;
+            res.errorMsg = 'GenericHub subclass expected';
+            return res;
+        })();
     }
 
-    imm_commonDisconnect()
-    {
+    imm_commonDisconnect() {
         this.disconnecting = true;
     }
 
     // default implementation of disconnect
     // note: super.xxx() cannot be used in an async function !
-    async disconnect()
-    {
-        this.imm_commonDisconnect();
+    disconnect() {
+        var _this138 = this;
+
+        return _asyncToGenerator(function* () {
+            _this138.imm_commonDisconnect();
+        })();
     }
 }
 
-export class YHttpHub extends YGenericHub
-{
-    constructor(obj_yapi, var_urlInfo)
-    {
+exports.YGenericHub = YGenericHub;
+class YHttpHub extends YGenericHub {
+    constructor(obj_yapi, var_urlInfo) {
         super(obj_yapi, var_urlInfo);
         /** @member {XMLHttpRequest} **/
-        this.notbynRequest     = null;
+        this.notbynRequest = null;
         /** @member {Promise} **/
         this.notbynOpenPromise = null;
     }
@@ -6420,56 +6749,57 @@ export class YHttpHub extends YGenericHub
      * @param errmsg {YErrorMsg}
      * @returns {number}
      */
-    async testHub(errmsg)
-    {
-        if (this.disconnecting) {
-            return YAPI_IO_ERROR;
-        }
-        let args = '?len=' + this.notiflen.toString();
-        if (this.notifPos > 0) {
-            args += '&abs=' + this.notifPos.toString();
-        }
-        this.notbynOpenPromise = new Promise(
-            (resolve, reject) => {
-                this.notbynRequest = new XMLHttpRequest();
-                this.notbynRequest.open('GET', this.urlInfo.url+'not.byn'+args, true, '', '');
-                this.notbynRequest.overrideMimeType('text/plain; charset=x-user-defined');
-                this.notbynRequest.onreadystatechange = (() => {
-                    if (this.disconnecting) {
+    testHub(errmsg) {
+        var _this139 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this139.disconnecting) {
+                return YAPI_IO_ERROR;
+            }
+            let args = '?len=' + _this139.notiflen.toString();
+            if (_this139.notifPos > 0) {
+                args += '&abs=' + _this139.notifPos.toString();
+            }
+            _this139.notbynOpenPromise = new Promise(function (resolve, reject) {
+                _this139.notbynRequest = new XMLHttpRequest();
+                _this139.notbynRequest.open('GET', _this139.urlInfo.url + 'not.byn' + args, true, '', '');
+                _this139.notbynRequest.overrideMimeType('text/plain; charset=x-user-defined');
+                _this139.notbynRequest.onreadystatechange = function () {
+                    if (_this139.disconnecting) {
                         return;
                     }
-                    if (this.notbynRequest.readyState >= 3) {
+                    if (_this139.notbynRequest.readyState >= 3) {
                         resolve(YAPI_SUCCESS);
-                        if (this.notbynRequest.readyState == 4 &&
-                            parseInt(this.notbynRequest.status) != 200 &&
-                            parseInt(this.notbynRequest.status) != 304) {
+                        if (_this139.notbynRequest.readyState == 4 && parseInt(_this139.notbynRequest.status) != 200 && parseInt(_this139.notbynRequest.status) != 304) {
                             // connection error
-                            if (this.retryDelay < 15000) this.retryDelay *= 2;
-                            this.devListValidity = 500;
-                            this.devListExpires = 0;
-                            setTimeout(()=> { this.testHub(new YErrorMsg()); }, this.retryDelay);
+                            if (_this139.retryDelay < 15000) _this139.retryDelay *= 2;
+                            _this139.devListValidity = 500;
+                            _this139.devListExpires = 0;
+                            setTimeout(function () {
+                                _this139.testHub(new YErrorMsg());
+                            }, _this139.retryDelay);
                         } else {
                             // receiving data properly
-                            if (this.notbynRequest.readyState == 3) {
+                            if (_this139.notbynRequest.readyState == 3) {
                                 // when using reconnection mode, ignore state 3
-                                if (this.notiflen == 1) return;
+                                if (_this139.notiflen == 1) return;
                             }
-                            let newlen = this.notbynRequest.responseText.length;
-                            if (newlen > this.currPos) {
-                                this._yapi.parseEvents(this, this.notbynRequest.responseText.substr(this.currPos, newlen - this.currPos));
+                            let newlen = _this139.notbynRequest.responseText.length;
+                            if (newlen > _this139.currPos) {
+                                _this139._yapi.parseEvents(_this139, _this139.notbynRequest.responseText.substr(_this139.currPos, newlen - _this139.currPos));
                             }
                             // trigger immediately a new connection if closed in success
-                            if (this.notbynRequest.readyState == 4 && parseInt(this.notbynRequest.status) != 0) {
-                                this.currPos = 0;
-                                this.testHub(new YErrorMsg());
+                            if (_this139.notbynRequest.readyState == 4 && parseInt(_this139.notbynRequest.status) != 0) {
+                                _this139.currPos = 0;
+                                _this139.testHub(new YErrorMsg());
                             }
                         }
                     }
-                });
-                this.notbynRequest.send('');
-            }
-        );
-        return await this.notbynOpenPromise;
+                };
+                _this139.notbynRequest.send('');
+            });
+            return yield _this139.notbynOpenPromise;
+        })();
     }
 
     /** Perform an HTTP query on the hub
@@ -6480,46 +6810,49 @@ export class YHttpHub extends YGenericHub
      * @param obj_body {Uint8Array}
      * @returns {YHTTPRequest}
      */
-    async request(method, baseUrl, devUrl, obj_body)
-    {
-        let httpPromise = new Promise(
-            (resolve, reject) => {
+    request(method, baseUrl, devUrl, obj_body) {
+        var _this140 = this;
+
+        return _asyncToGenerator(function* () {
+            let httpPromise = new Promise(function (resolve, reject) {
                 let httpRequest = new XMLHttpRequest();
                 httpRequest.open(method, baseUrl + devUrl, true, '', '');
-                httpRequest.onreadystatechange = (() => {
+                httpRequest.onreadystatechange = function () {
                     if (httpRequest.readyState == 4) {
                         let yreq = new YHTTPRequest(null);
-                        if(httpRequest.status != 200 && httpRequest.status != 304) {
+                        if (httpRequest.status != 200 && httpRequest.status != 304) {
                             yreq.errorType = YAPI_NOT_SUPPORTED;
-                            yreq.errorMsg = 'HTTP Error '+httpRequest.status;
+                            yreq.errorMsg = 'HTTP Error ' + httpRequest.status;
                         } else {
-                            yreq.bin_result = this._yapi.imm_str2bin(httpRequest.responseText);
+                            yreq.bin_result = _this140._yapi.imm_str2bin(httpRequest.responseText);
                         }
                         resolve(yreq);
                     }
-                });
+                };
                 // FIXME: convert body to FormData if needed
                 httpRequest.send(obj_body || '');
-            }
-        );
-        return httpPromise;
+            });
+            return httpPromise;
+        })();
     }
 
-    async disconnect()
-    {
-        this.imm_commonDisconnect();
-        this.notbynRequest.abort();
+    disconnect() {
+        var _this141 = this;
+
+        return _asyncToGenerator(function* () {
+            _this141.imm_commonDisconnect();
+            _this141.notbynRequest.abort();
+        })();
     }
 }
 
-export class YHttpNodeHub extends YGenericHub
-{
-    constructor(obj_yapi, var_urlInfo)
-    {
+exports.YHttpHub = YHttpHub;
+class YHttpNodeHub extends YGenericHub {
+    constructor(obj_yapi, var_urlInfo) {
         super(obj_yapi, var_urlInfo);
         this.http = this._yapi._nodeRequire('http');
         /** @member {ClientRequest} **/
-        this.notbynRequest     = null;
+        this.notbynRequest = null;
         /** @member {Promise} **/
         this.notbynOpenPromise = null;
     }
@@ -6529,56 +6862,61 @@ export class YHttpNodeHub extends YGenericHub
      * @param errmsg {YErrorMsg}
      * @returns {number}
      */
-    async testHub(errmsg)
-    {
-        if (this.disconnecting) {
-            return YAPI_IO_ERROR;
-        }
-        let args = '';
-        if (this.notifPos > 0) {
-            args = '?abs=' + this.notifPos.toString();
-        }
-        let options = {
-            method: 'GET',
-            hostname: this.urlInfo.host,
-            port: this.urlInfo.port,
-            path: '/not.byn'+args
-        };
-        this.notbynOpenPromise = new Promise(
-            (resolve, reject) => {
-                this.notbynRequest = this.http.request(options, (res) => {
-                    if (this.disconnecting) {
+    testHub(errmsg) {
+        var _this142 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this142.disconnecting) {
+                return YAPI_IO_ERROR;
+            }
+            let args = '';
+            if (_this142.notifPos > 0) {
+                args = '?abs=' + _this142.notifPos.toString();
+            }
+            let options = {
+                method: 'GET',
+                hostname: _this142.urlInfo.host,
+                port: _this142.urlInfo.port,
+                path: '/not.byn' + args
+            };
+            _this142.notbynOpenPromise = new Promise(function (resolve, reject) {
+                _this142.notbynRequest = _this142.http.request(options, function (res) {
+                    if (_this142.disconnecting) {
                         return;
                     }
-                    if(res.statusCode != 200 && res.statusCode != 304) {
+                    if (res.statusCode != 200 && res.statusCode != 304) {
                         // connection error
-                        if (this.retryDelay < 15000) this.retryDelay *= 2;
-                        this.devListValidity = 500;
-                        this.devListExpires = 0;
-                        setTimeout(()=> { this.testHub(new YErrorMsg()); }, this.retryDelay);
+                        if (_this142.retryDelay < 15000) _this142.retryDelay *= 2;
+                        _this142.devListValidity = 500;
+                        _this142.devListExpires = 0;
+                        setTimeout(function () {
+                            _this142.testHub(new YErrorMsg());
+                        }, _this142.retryDelay);
                     } else {
                         resolve(YAPI_SUCCESS);
-                        res.on('data', (chunk) => {
+                        res.on('data', function (chunk) {
                             // receiving data properly
-                            this._yapi.parseEvents(this, this._yapi.imm_bin2str(chunk));
+                            _this142._yapi.parseEvents(_this142, _this142._yapi.imm_bin2str(chunk));
                         });
-                        res.on('end', () => {
+                        res.on('end', function () {
                             // trigger immediately a new connection if closed in success
-                            this.currPos = 0;
-                            this.testHub(new YErrorMsg());
+                            _this142.currPos = 0;
+                            _this142.testHub(new YErrorMsg());
                         });
                     }
                 });
-                this.notbynRequest.on('error', () => {
+                _this142.notbynRequest.on('error', function () {
                     // connection aborted, need to reconnect
-                    this.devListValidity = 500;
-                    this.devListExpires = 0;
-                    setTimeout(()=> { this.testHub(new YErrorMsg()); }, 50);
+                    _this142.devListValidity = 500;
+                    _this142.devListExpires = 0;
+                    setTimeout(function () {
+                        _this142.testHub(new YErrorMsg());
+                    }, 50);
                 });
-                this.notbynRequest.end();
-            }
-        );
-        return await this.notbynOpenPromise;
+                _this142.notbynRequest.end();
+            });
+            return yield _this142.notbynOpenPromise;
+        })();
     }
 
     /** Perform an HTTP query on the hub
@@ -6589,58 +6927,62 @@ export class YHttpNodeHub extends YGenericHub
      * @param obj_body {Uint8Array}
      * @returns {YHTTPRequest}
      */
-    async request(str_method, baseUrl, devUrl, obj_body)
-    {
-        let options = {
-            method: str_method,
-            hostname: this.urlInfo.host,
-            port: this.urlInfo.port,
-            path: devUrl
-        };
-        let httpPromise = new Promise(
-            (resolve, reject) => {
+    request(str_method, baseUrl, devUrl, obj_body) {
+        var _this143 = this;
+
+        return _asyncToGenerator(function* () {
+            let options = {
+                method: str_method,
+                hostname: _this143.urlInfo.host,
+                port: _this143.urlInfo.port,
+                path: devUrl
+            };
+            let httpPromise = new Promise(function (resolve, reject) {
                 let response = new Buffer(0);
-                let httpRequest = this.http.request(options, (res) => {
-                    if(res.statusCode != 200 && res.statusCode != 304) {
+                let httpRequest = _this143.http.request(options, function (res) {
+                    if (res.statusCode != 200 && res.statusCode != 304) {
                         // connection error
                         let yreq = new YHTTPRequest(null);
                         yreq.errorType = YAPI_NOT_SUPPORTED;
-                        yreq.errorMsg = 'HTTP Error '+res.statusCode.toString();
+                        yreq.errorMsg = 'HTTP Error ' + res.statusCode.toString();
                         resolve(yreq);
                     } else {
-                        res.on('data', (chunk) => {
+                        res.on('data', function (chunk) {
                             // receiving data properly
-                            response = Buffer.concat([response,chunk]);
+                            response = Buffer.concat([response, chunk]);
                         });
-                        res.on('end', () => {
+                        res.on('end', function () {
                             resolve(new YHTTPRequest(new Uint8Array(response)));
-                        })
+                        });
                     }
                 });
-                httpRequest.on('error', (err) => {
+                httpRequest.on('error', function (err) {
                     let yreq = new YHTTPRequest(null);
                     yreq.errorType = YAPI_IO_ERROR;
                     yreq.errorMsg = err.errorMsg;
                     resolve(yreq);
                 });
                 httpRequest.end();
-            }
-        );
-        return httpPromise;
+            });
+            return httpPromise;
+        })();
     }
 
-    async disconnect()
-    {
-        this.imm_commonDisconnect();
-        this.notbynRequest.abort();
+    disconnect() {
+        var _this144 = this;
+
+        return _asyncToGenerator(function* () {
+            _this144.imm_commonDisconnect();
+            _this144.notbynRequest.abort();
+        })();
     }
 }
 
-export class YHttpCallbackHub extends YGenericHub
-{
-    constructor(obj_yapi, var_urlInfo, incomingMessage, serverResponse)
-    {
+exports.YHttpNodeHub = YHttpNodeHub;
+class YHttpCallbackHub extends YGenericHub {
+    constructor(obj_yapi, var_urlInfo, incomingMessage, serverResponse) {
         super(obj_yapi, var_urlInfo);
+        var cbhub = this;
         this.crypto = this._yapi._nodeRequire('crypto');
         /** @member {IncomingMessage} **/
         this._incomingMessage = incomingMessage;
@@ -6651,18 +6993,16 @@ export class YHttpCallbackHub extends YGenericHub
         /** @member {Object} **/
         this._callbackCache = null;
         /** @member {Promise} **/
-        this.httpCallbackPromise = new Promise(
-            (resolve, reject) => {
-                this._incomingMessage.on('data', (chunk) => {
-                    this._callbackData = Buffer.concat([this._callbackData,chunk]);
-                });
-                this._incomingMessage.on('end', () => {
-                    this._callbackData = new Uint8Array(this._callbackData);
-                    this._callbackCache = JSON.parse(this._yapi.imm_bin2str(this._callbackData));
-                    resolve(true);
-                });
-            }
-        );
+        this.httpCallbackPromise = new Promise(function (resolve, reject) {
+            cbhub._incomingMessage.on('data', function (chunk) {
+                cbhub._callbackData = Buffer.concat([cbhub._callbackData, chunk]);
+            });
+            cbhub._incomingMessage.on('end', function () {
+                cbhub._callbackData = new Uint8Array(cbhub._callbackData);
+                cbhub._callbackCache = JSON.parse(cbhub._yapi.imm_bin2str(cbhub._callbackData));
+                resolve(true);
+            });
+        });
     }
 
     /** Test input data for a HTTP callback hub
@@ -6670,43 +7010,46 @@ export class YHttpCallbackHub extends YGenericHub
      * @param errmsg {YErrorMsg}
      * @returns {number}
      */
-    async testHub(errmsg)
-    {
-        await this.httpCallbackPromise;
-        if(this._incomingMessage.method != 'POST') {
-            errmsg.msg = 'HTTP POST expected';
-            return YAPI_INVALID_ARGUMENT;
-        }
-        if(this._callbackData.length == 0) {
-            errmsg.msg = 'Empty POST body';
-            return YAPI_NO_MORE_DATA;
-        }
-        if (this.urlInfo.pass != '') {
-            // callback data signed, verify signature
-            if (!this._callbackCache.sign) {
-                errmsg.msg = 'missing signature from incoming YoctoHub (callback password required)';
-                this._callbackCache = [];
+    testHub(errmsg) {
+        var _this145 = this;
+
+        return _asyncToGenerator(function* () {
+            yield _this145.httpCallbackPromise;
+            if (_this145._incomingMessage.method != 'POST') {
+                errmsg.msg = 'HTTP POST expected';
+                return YAPI_INVALID_ARGUMENT;
+            }
+            if (_this145._callbackData.length == 0) {
+                errmsg.msg = 'Empty POST body';
                 return YAPI_NO_MORE_DATA;
             }
-            let sign = this._callbackCache['sign'];
-            let pass = this.urlInfo.pass;
-            let salt;
-            if (pass.length == 32) {
-                salt = this._yapi.imm_str2bin(pass.toLowerCase());
-            } else {
-                salt = this._yapi.imm_str2bin(this.crypto.createHash('md5').update(pass).digest('hex'));
+            if (_this145.urlInfo.pass != '') {
+                // callback data signed, verify signature
+                if (!_this145._callbackCache.sign) {
+                    errmsg.msg = 'missing signature from incoming YoctoHub (callback password required)';
+                    _this145._callbackCache = [];
+                    return YAPI_NO_MORE_DATA;
+                }
+                let sign = _this145._callbackCache['sign'];
+                let pass = _this145.urlInfo.pass;
+                let salt;
+                if (pass.length == 32) {
+                    salt = _this145._yapi.imm_str2bin(pass.toLowerCase());
+                } else {
+                    salt = _this145._yapi.imm_str2bin(_this145.crypto.createHash('md5').update(pass).digest('hex'));
+                }
+                let patched = _this145._yapi.imm_bin2str(_this145._callbackData).replace(sign, salt);
+                let check = _this145.crypto.createHash('md5').update(patched).digest('hex');
+                if (check.toLowerCase() != sign.toLowerCase()) {
+                    //console.log('Computed signature: '+ check);
+                    //console.log('Received signature: '+ sign);
+                    errmsg.msg = 'invalid signature from incoming YoctoHub (invalid callback password)';
+                    _this145._callbackCache = [];
+                    return YAPI_UNAUTHORIZED;
+                }
             }
-            let patched = this._yapi.imm_bin2str(this._callbackData).replace(sign, salt);
-            let check = this.crypto.createHash('md5').update(patched).digest('hex');
-            if (check.toLowerCase() != sign.toLowerCase()) {
-                //console.log('Computed signature: '+ check);
-                //console.log('Received signature: '+ sign);
-                errmsg.msg = 'invalid signature from incoming YoctoHub (invalid callback password)';
-                this._callbackCache = [];
-                return YAPI_UNAUTHORIZED;
-            }
-        }
-        return YAPI_SUCCESS;
+            return YAPI_SUCCESS;
+        })();
     }
 
     /** Perform an HTTP query on the hub
@@ -6717,79 +7060,76 @@ export class YHttpCallbackHub extends YGenericHub
      * @param obj_body {Uint8Array}
      * @returns {YHTTPRequest}
      */
-    async request(str_method, baseUrl, devUrl, obj_body)
-    {
-        let yreq = new YHTTPRequest(null);
-        if(str_method == 'POST' && obj_body.length > 2) {
-            var boundary = '???';
-            for(var endb = 0; endb < obj_body.length; endb++) {
-                if(obj_body[endb] == 13) break;
-            }
+    request(str_method, baseUrl, devUrl, obj_body) {
+        var _this146 = this;
 
-            if(endb > 2 && endb < 20 && obj_body[0] == 45 && obj_body[1] == 45) {
-                boundary = this._yapi.imm_bin2str(obj_body.subarray(2,endb));
-            }
-            this._serverResponse.write('\n@YoctoAPI:'+str_method+' '+devUrl+' '+obj_body.length+':'+boundary+'\n');
-            this._serverResponse.write(obj_body);
-        } else if(str_method == 'GET') {
-            var jzon = devUrl.indexOf('?fw=');
-            if(jzon != -1 && devUrl.indexOf('&', jzon) == -1) {
-                devUrl = devUrl.slice(0, jzon);
-            }
-            if(devUrl.indexOf('?') == -1 ||
-                devUrl.indexOf('/logs.txt') != -1 ||
-                devUrl.indexOf('/logger.json') != -1 ||
-                devUrl.indexOf('/ping.txt') != -1 ||
-                devUrl.indexOf('/files.json?a=dir') != -1) {
-                // read request, load from cache
-                var subfun = /\/api\/([a-z][A-Za-z0-9]*)[.]json$/.exec(devUrl);
-                if(subfun) {
-                    devUrl = devUrl.slice(0,subfun.index)+'/api.json';
+        return _asyncToGenerator(function* () {
+            let yreq = new YHTTPRequest(null);
+            if (str_method == 'POST' && obj_body.length > 2) {
+                var boundary = '???';
+                for (var endb = 0; endb < obj_body.length; endb++) {
+                    if (obj_body[endb] == 13) break;
                 }
-                if(!this._callbackCache[devUrl]) {
-                    this._serverResponse.write('\n!YoctoAPI:'+devUrl+' is not preloaded, adding to list');
-                    this._serverResponse.write('\n@YoctoAPI:+'+devUrl+'\n');
-                    yreq.errorType = YAPI_NO_MORE_DATA;
-                    yreq.errorMsg = 'URL '+devUrl+' not preloaded, adding to list';
-                } else {
-                    var jsonres = this._callbackCache[devUrl];
-                    if(subfun) {
-                        jsonres = jsonres[subfun[1]];
+
+                if (endb > 2 && endb < 20 && obj_body[0] == 45 && obj_body[1] == 45) {
+                    boundary = _this146._yapi.imm_bin2str(obj_body.subarray(2, endb));
+                }
+                _this146._serverResponse.write('\n@YoctoAPI:' + str_method + ' ' + devUrl + ' ' + obj_body.length + ':' + boundary + '\n');
+                _this146._serverResponse.write(obj_body);
+            } else if (str_method == 'GET') {
+                var jzon = devUrl.indexOf('?fw=');
+                if (jzon != -1 && devUrl.indexOf('&', jzon) == -1) {
+                    devUrl = devUrl.slice(0, jzon);
+                }
+                if (devUrl.indexOf('?') == -1 || devUrl.indexOf('/logs.txt') != -1 || devUrl.indexOf('/logger.json') != -1 || devUrl.indexOf('/ping.txt') != -1 || devUrl.indexOf('/files.json?a=dir') != -1) {
+                    // read request, load from cache
+                    var subfun = /\/api\/([a-z][A-Za-z0-9]*)[.]json$/.exec(devUrl);
+                    if (subfun) {
+                        devUrl = devUrl.slice(0, subfun.index) + '/api.json';
                     }
-                    yreq.bin_result = this._yapi.imm_str2bin(JSON.stringify(jsonres));
+                    if (!_this146._callbackCache[devUrl]) {
+                        _this146._serverResponse.write('\n!YoctoAPI:' + devUrl + ' is not preloaded, adding to list');
+                        _this146._serverResponse.write('\n@YoctoAPI:+' + devUrl + '\n');
+                        yreq.errorType = YAPI_NO_MORE_DATA;
+                        yreq.errorMsg = 'URL ' + devUrl + ' not preloaded, adding to list';
+                    } else {
+                        var jsonres = _this146._callbackCache[devUrl];
+                        if (subfun) {
+                            jsonres = jsonres[subfun[1]];
+                        }
+                        yreq.bin_result = _this146._yapi.imm_str2bin(JSON.stringify(jsonres));
+                    }
+                } else {
+                    // change request, print to output stream
+                    _this146._serverResponse.write('\n@YoctoAPI:' + str_method + ' ' + devUrl + '\n');
+                    yreq.bin_result = new Uint8Array(0);
                 }
             } else {
-                // change request, print to output stream
-                this._serverResponse.write('\n@YoctoAPI:'+str_method+' '+devUrl+'\n');
-                yreq.bin_result = new Uint8Array(0);
+                yreq.errorType = YAPI_NOT_SUPPORTED;
+                yreq.errorMsg = 'Unsupported HTTP method';
             }
-        } else {
-            yreq.errorType = YAPI_NOT_SUPPORTED;
-            yreq.errorMsg = 'Unsupported HTTP method';
-        }
-        return yreq;
+            return yreq;
+        })();
     }
 }
 
-export class YWebSocketHub extends YGenericHub
-{
-    constructor(obj_yapi, var_urlInfo)
-    {
+exports.YHttpCallbackHub = YHttpCallbackHub;
+class YWebSocketHub extends YGenericHub {
+    constructor(obj_yapi, var_urlInfo) {
         super(obj_yapi, var_urlInfo);
         /** @member {WebSocket} **/
-        this.websocket            = null;
+        this.websocket = null;
         /** @member {Promise} **/
         this.websocketOpenPromise = null;
         /** @member {YHTTPRequest[]} **/
-        this.tcpChan              = [];
+        this.tcpChan = [];
     }
 
     /** Open an outgoing websocket
      *
      * @param str_url {string}
      **/
-    imm_webSocketOpen(str_url)
-    {
+    imm_webSocketOpen(str_url) {
         this.websocket = new WebSocket(str_url);
         this.websocket.binaryType = 'arraybuffer';
     }
@@ -6799,113 +7139,125 @@ export class YWebSocketHub extends YGenericHub
      * @param errmsg {YErrorMsg}
      * @returns {number}
      */
-    async testHub(errmsg)
-    {
-        if (this.disconnecting) {
-            return YAPI_IO_ERROR;
-        }
-        // Open WebSocket connection
-        this.imm_webSocketOpen(this.urlInfo.url+'not.byn');
-        this.websocketOpenPromise = new Promise((resolve, reject) => {
-            this.websocket.onmessage = ((evt) => {
-                resolve(YAPI_SUCCESS);
-                this._webSocketMsg(new Uint8Array(evt.data));
+    testHub(errmsg) {
+        var _this147 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this147.disconnecting) {
+                return YAPI_IO_ERROR;
+            }
+            // Open WebSocket connection
+            _this147.imm_webSocketOpen(_this147.urlInfo.url + 'not.byn');
+            _this147.websocketOpenPromise = new Promise(function (resolve, reject) {
+                _this147.websocket.onmessage = function (evt) {
+                    resolve(YAPI_SUCCESS);
+                    _this147._webSocketMsg(new Uint8Array(evt.data));
+                };
             });
-        });
-        this.websocket.onclose   = ((evt) => {
-            this.websocket = null;
-            if (this.disconnecting) {
-                return;
-            }
-            // connection error
-            if (this.retryDelay < 15000) this.retryDelay *= 2;
-            this.devListValidity = 500;
-            this.devListExpires = 0;
-            setTimeout(()=> { this.testHub(new YErrorMsg()); }, this.retryDelay);
-        });
-        this.websocket.onerror   = ((evt) => {
-            console.log('WebSocket error: ', evt);
-            this.websocket = null;
-            if (this.disconnecting) {
-                return;
-            }
-            // connection error
-            if (this.retryDelay < 15000) this.retryDelay *= 2;
-            this.devListValidity = 500;
-            this.devListExpires = 0;
-            setTimeout(()=> { this.testHub(new YErrorMsg()); }, this.retryDelay);
-        });
-        return await this.websocketOpenPromise;
+            _this147.websocket.onclose = function (evt) {
+                _this147.websocket = null;
+                if (_this147.disconnecting) {
+                    return;
+                }
+                // connection error
+                if (_this147.retryDelay < 15000) _this147.retryDelay *= 2;
+                _this147.devListValidity = 500;
+                _this147.devListExpires = 0;
+                setTimeout(function () {
+                    _this147.testHub(new YErrorMsg());
+                }, _this147.retryDelay);
+            };
+            _this147.websocket.onerror = function (evt) {
+                console.log('WebSocket error: ', evt);
+                _this147.websocket = null;
+                if (_this147.disconnecting) {
+                    return;
+                }
+                // connection error
+                if (_this147.retryDelay < 15000) _this147.retryDelay *= 2;
+                _this147.devListValidity = 500;
+                _this147.devListExpires = 0;
+                setTimeout(function () {
+                    _this147.testHub(new YErrorMsg());
+                }, _this147.retryDelay);
+            };
+            return yield _this147.websocketOpenPromise;
+        })();
     }
 
     /** Handle an incoming packet
      *
      * @param arr_bytes {Uint8Array}
      **/
-    async _webSocketMsg(arr_bytes)
-    {
-        var text = '';
-        if(arr_bytes[0] == 8*8) { // YSTREAM_TCP_NOTIF
-            for(let i = 1; i < arr_bytes.length; i++) {
-                text += String.fromCharCode(arr_bytes[i]);
-            }
-            await this._yapi.parseEvents(this, text);
-            return;
-        }
-        // Other types of messages
-        var ws = this.websocket;
-        var ystream = arr_bytes[0] >> 3;
-        var tcpchan = arr_bytes[0] & 7;
-        if(ystream == 1 || ystream == 2) { // YSTREAM_TCP or YSTREAM_TCP_CLOSE
-            if(!this.tcpChan[tcpchan]) {
-                console.log('WS: Drop frame for closed tcpChan '+tcpchan);
+    _webSocketMsg(arr_bytes) {
+        var _this148 = this;
+
+        return _asyncToGenerator(function* () {
+            var text = '';
+            if (arr_bytes[0] == 8 * 8) {
+                // YSTREAM_TCP_NOTIF
+                for (let i = 1; i < arr_bytes.length; i++) {
+                    text += String.fromCharCode(arr_bytes[i]);
+                }
+                yield _this148._yapi.parseEvents(_this148, text);
                 return;
             }
-            let oldArr = this.tcpChan[tcpchan].bin_result;
-            let newArr = new Uint8Array(oldArr.length + arr_bytes.length-1);
-            newArr.set(oldArr, 0);
-            newArr.set(arr_bytes.subarray(1), oldArr.length);
-            this.tcpChan[tcpchan].bin_result = newArr;
-            if(ystream == 2) { // YSTREAM_TCP_CLOSE
-                // send YSTREAM_TCP_CLOSE
-                let frame = new Uint8Array(1);
-                frame[0] = 8*2 + tcpchan;
-                this.websocket.send(frame);
-                // free tcp channel
-                let yreq = this.tcpChan[tcpchan];
-                this.tcpChan[tcpchan] = null;
-                // process incoming reply
-                let pos = yreq.bin_result.indexOf(13);
-                if(pos < 0) {
-                    yreq.errorType = YAPI_IO_ERROR;
-                    yreq.errorMsg = 'Bad response header';
-                } else {
-                    let header = this._yapi.imm_bin2str(yreq.bin_result.subarray(0, pos));
-                    let words = header.split(' ');
-                    if (words[0] == 'OK') {
-                        yreq.errorType = YAPI_SUCCESS;
-                        yreq.bin_result = yreq.bin_result.subarray(4);
-                    } else if (words[0] == '0K') {
-                        yreq.errorType = YAPI_IO_ERROR;
-                        yreq.errorMsg = 'Unexpected persistent connection';
-                    } else {
-                        yreq.errorType = YAPI_IO_ERROR;
-                        yreq.errorMsg = 'HTTP error '+header.slice(words[0].length+1);
-                    }
+            // Other types of messages
+            var ws = _this148.websocket;
+            var ystream = arr_bytes[0] >> 3;
+            var tcpchan = arr_bytes[0] & 7;
+            if (ystream == 1 || ystream == 2) {
+                // YSTREAM_TCP or YSTREAM_TCP_CLOSE
+                if (!_this148.tcpChan[tcpchan]) {
+                    console.log('WS: Drop frame for closed tcpChan ' + tcpchan);
+                    return;
                 }
-                yreq.acceptor(yreq);
+                let oldArr = _this148.tcpChan[tcpchan].bin_result;
+                let newArr = new Uint8Array(oldArr.length + arr_bytes.length - 1);
+                newArr.set(oldArr, 0);
+                newArr.set(arr_bytes.subarray(1), oldArr.length);
+                _this148.tcpChan[tcpchan].bin_result = newArr;
+                if (ystream == 2) {
+                    // YSTREAM_TCP_CLOSE
+                    // send YSTREAM_TCP_CLOSE
+                    let frame = new Uint8Array(1);
+                    frame[0] = 8 * 2 + tcpchan;
+                    _this148.websocket.send(frame);
+                    // free tcp channel
+                    let yreq = _this148.tcpChan[tcpchan];
+                    _this148.tcpChan[tcpchan] = null;
+                    // process incoming reply
+                    let pos = yreq.bin_result.indexOf(13);
+                    if (pos < 0) {
+                        yreq.errorType = YAPI_IO_ERROR;
+                        yreq.errorMsg = 'Bad response header';
+                    } else {
+                        let header = _this148._yapi.imm_bin2str(yreq.bin_result.subarray(0, pos));
+                        let words = header.split(' ');
+                        if (words[0] == 'OK') {
+                            yreq.errorType = YAPI_SUCCESS;
+                            yreq.bin_result = yreq.bin_result.subarray(4);
+                        } else if (words[0] == '0K') {
+                            yreq.errorType = YAPI_IO_ERROR;
+                            yreq.errorMsg = 'Unexpected persistent connection';
+                        } else {
+                            yreq.errorType = YAPI_IO_ERROR;
+                            yreq.errorMsg = 'HTTP error ' + header.slice(words[0].length + 1);
+                        }
+                    }
+                    yreq.acceptor(yreq);
+                }
+                return;
             }
-            return;
-        }
-        console.log('WS: Unsupported message', arr_bytes);
+            console.log('WS: Unsupported message', arr_bytes);
+        })();
     }
 
     /** Send an outgoing packet
      *
      * @param arr_bytes {Uint8Array}
      **/
-    imm_webSocketSend(arr_bytes)
-    {
+    imm_webSocketSend(arr_bytes) {
         this.websocket.send(arr_bytes);
     }
 
@@ -6917,15 +7269,16 @@ export class YWebSocketHub extends YGenericHub
      * @param obj_body {Uint8Array}
      * @returns {YHTTPRequest}
      */
-    async request(method, baseUrl, devUrl, obj_body)
-    {
-        let httpPromise = new Promise(
-            (resolve, reject) => {
+    request(method, baseUrl, devUrl, obj_body) {
+        var _this149 = this;
+
+        return _asyncToGenerator(function* () {
+            let httpPromise = new Promise(function (resolve, reject) {
                 var subReq = method + ' ' + devUrl + ' \r\n\r\n';
-                var ws = this.websocket;
+                var ws = _this149.websocket;
                 var tcpchan = 0;
 
-                while (this.tcpChan[tcpchan]) {
+                while (_this149.tcpChan[tcpchan]) {
                     tcpchan++;
                 }
                 if (tcpchan > 2) {
@@ -6933,15 +7286,16 @@ export class YWebSocketHub extends YGenericHub
                     console.log('WebSocket: TOO MANY CONCURRENT TCP CHANNELS');
                     return;
                 }
-                this.tcpChan[tcpchan] = new YHTTPRequest(new Uint8Array(0));
-                this.tcpChan[tcpchan].acceptor = resolve;
+                _this149.tcpChan[tcpchan] = new YHTTPRequest(new Uint8Array(0));
+                _this149.tcpChan[tcpchan].acceptor = resolve;
 
                 var pos = 0;
                 while (pos < subReq.length) {
                     var framelen = 1 + subReq.length - pos;
                     if (framelen > 125) framelen = 125;
                     var datalen = framelen - 1;
-                    var i, frame = new Uint8Array(framelen);
+                    var i,
+                        frame = new Uint8Array(framelen);
 
                     // use YSTREAM_TCP
                     frame[0] = 8 + tcpchan;
@@ -6949,24 +7303,27 @@ export class YWebSocketHub extends YGenericHub
                         frame[1 + i] = subReq.charCodeAt(pos + i);
                     }
                     pos += framelen - 1;
-                    this.imm_webSocketSend(frame);
+                    _this149.imm_webSocketSend(frame);
                     // FIXME: send body as well !
                 }
-            }
-        );
-        //noinspection JSValidateTypes
-        return httpPromise;
+            });
+            //noinspection JSValidateTypes
+            return httpPromise;
+        })();
     }
 
-    async disconnect()
-    {
-        this.imm_commonDisconnect();
-        this.websocket.close();
+    disconnect() {
+        var _this150 = this;
+
+        return _asyncToGenerator(function* () {
+            _this150.imm_commonDisconnect();
+            _this150.websocket.close();
+        })();
     }
 }
 
-export class YWebSocketNodeHub extends YWebSocketHub
-{
+exports.YWebSocketHub = YWebSocketHub;
+class YWebSocketNodeHub extends YWebSocketHub {
     constructor(obj_yapi, var_urlInfo) {
         super(obj_yapi, var_urlInfo);
         this.wsWebSocket = this._yapi._nodeRequire('ws');
@@ -6976,8 +7333,7 @@ export class YWebSocketNodeHub extends YWebSocketHub
      *
      * @param str_url {string}
      **/
-    imm_webSocketOpen(str_url)
-    {
+    imm_webSocketOpen(str_url) {
         this.websocket = new this.wsWebSocket(this.urlInfo.url + 'not.byn');
     }
 
@@ -6985,16 +7341,14 @@ export class YWebSocketNodeHub extends YWebSocketHub
      *
      * @param arr_bytes {Uint8Array}
      **/
-    imm_webSocketSend(arr_bytes)
-    {
+    imm_webSocketSend(arr_bytes) {
         this.websocket.send(arr_bytes, { binary: true, mask: false });
     }
 }
 
-export class YWebSocketCallbackHub extends YWebSocketNodeHub
-{
-    constructor(obj_yapi, var_urlInfo, ws)
-    {
+exports.YWebSocketNodeHub = YWebSocketNodeHub;
+class YWebSocketCallbackHub extends YWebSocketNodeHub {
+    constructor(obj_yapi, var_urlInfo, ws) {
         super(obj_yapi, var_urlInfo);
         this.websocket = ws;
     }
@@ -7003,136 +7357,131 @@ export class YWebSocketCallbackHub extends YWebSocketNodeHub
      *
      * @param str_url {string}
      **/
-    imm_webSocketOpen(str_url)
-    {
+    imm_webSocketOpen(str_url) {
         // nothing to do, the ws is already open !
     }
 }
 
-
-//
+exports.YWebSocketCallbackHub = YWebSocketCallbackHub; //
 // YAPI Context
 //
 // This class provides the high-level entry points to access Functions, stores
 // an indexes instances of the Device object and of FunctionType collections.
 //
-export class YAPIContext
-{   
-    constructor()
-    {
-//--- (generated code: YFunction return codes)
-        this.SUCCESS               = 0;       // everything worked all right
-        this.NOT_INITIALIZED       = -1;      // call yInitAPI() first !
-        this.INVALID_ARGUMENT      = -2;      // one of the arguments passed to the function is invalid
-        this.NOT_SUPPORTED         = -3;      // the operation attempted is (currently) not supported
-        this.DEVICE_NOT_FOUND      = -4;      // the requested device is not reachable
-        this.VERSION_MISMATCH      = -5;      // the device firmware is incompatible with this API version
-        this.DEVICE_BUSY           = -6;      // the device is busy with another task and cannot answer
-        this.TIMEOUT               = -7;      // the device took too long to provide an answer
-        this.IO_ERROR              = -8;      // there was an I/O problem while talking to the device
-        this.NO_MORE_DATA          = -9;      // there is no more data to read from
-        this.EXHAUSTED             = -10;     // you have run out of a limited resource, check the documentation
-        this.DOUBLE_ACCES          = -11;     // you have two process that try to access to the same device
-        this.UNAUTHORIZED          = -12;     // unauthorized access to password-protected device
-        this.RTC_NOT_READY         = -13;     // real-time clock has not been initialized (or time was lost)
-        this.FILE_NOT_FOUND        = -14;     // the file is not found
-//--- (end of generated code: YFunction return codes)
-        this.INVALID_INT           = YAPI_INVALID_INT;
-        this.INVALID_UINT          = YAPI_INVALID_UINT;
-        this.INVALID_LONG          = YAPI_INVALID_LONG;
-        this.INVALID_DOUBLE        = YAPI_INVALID_DOUBLE;
-        this.INVALID_STRING        = YAPI_INVALID_STRING;
+
+class YAPIContext {
+    constructor() {
+        //--- (generated code: YFunction return codes)
+        this.SUCCESS = 0; // everything worked all right
+        this.NOT_INITIALIZED = -1; // call yInitAPI() first !
+        this.INVALID_ARGUMENT = -2; // one of the arguments passed to the function is invalid
+        this.NOT_SUPPORTED = -3; // the operation attempted is (currently) not supported
+        this.DEVICE_NOT_FOUND = -4; // the requested device is not reachable
+        this.VERSION_MISMATCH = -5; // the device firmware is incompatible with this API version
+        this.DEVICE_BUSY = -6; // the device is busy with another task and cannot answer
+        this.TIMEOUT = -7; // the device took too long to provide an answer
+        this.IO_ERROR = -8; // there was an I/O problem while talking to the device
+        this.NO_MORE_DATA = -9; // there is no more data to read from
+        this.EXHAUSTED = -10; // you have run out of a limited resource, check the documentation
+        this.DOUBLE_ACCES = -11; // you have two process that try to access to the same device
+        this.UNAUTHORIZED = -12; // unauthorized access to password-protected device
+        this.RTC_NOT_READY = -13; // real-time clock has not been initialized (or time was lost)
+        this.FILE_NOT_FOUND = -14; // the file is not found
+        //--- (end of generated code: YFunction return codes)
+        this.INVALID_INT = YAPI_INVALID_INT;
+        this.INVALID_UINT = YAPI_INVALID_UINT;
+        this.INVALID_LONG = YAPI_INVALID_LONG;
+        this.INVALID_DOUBLE = YAPI_INVALID_DOUBLE;
+        this.INVALID_STRING = YAPI_INVALID_STRING;
 
         // yInitAPI constants (not really useful in JavaScript)
-        this.DETECT_NONE           = 0;
-        this.DETECT_USB            = 1;
-        this.DETECT_NET            = 2;
-        this.DETECT_ALL            = (this.DETECT_USB | this.DETECT_NET);
+        this.DETECT_NONE = 0;
+        this.DETECT_USB = 1;
+        this.DETECT_NET = 2;
+        this.DETECT_ALL = this.DETECT_USB | this.DETECT_NET;
 
         // Default string encoding used in the library
-        this.defaultEncoding       = 'binary';
+        this.defaultEncoding = 'binary';
 
         // Default cache validity (in [ms]) before reloading data from device. This saves a lots of trafic.
         // Note that a value under 2 ms makes little sense since a USB bus itself has a 2ms roundtrip period
         /** @member {number} **/
-        this.defaultCacheValidity  = 5;
+        this.defaultCacheValidity = 5;
         // Switch to turn off exceptions and use return codes instead, for source-code compatibility
         // with languages without exception support like C
         /** @member {boolean} **/
-        this.exceptionsDisabled    = false;
+        this.exceptionsDisabled = false;
 
         this.imm_init();
 
-        for(var i = 1; i <= 20; i++) {
-            this.RegisterCalibrationHandler(i,this.LinearCalibrationHandler);
+        for (var i = 1; i <= 20; i++) {
+            this.RegisterCalibrationHandler(i, this.LinearCalibrationHandler);
         }
-        this.RegisterCalibrationHandler(YOCTO_CALIB_TYPE_OFS,this.LinearCalibrationHandler);
+        this.RegisterCalibrationHandler(YOCTO_CALIB_TYPE_OFS, this.LinearCalibrationHandler);
     }
 
-    imm_init() 
-    {
+    imm_init() {
         /** @member {YGenericHub[]} **/
-        this._hubs                      = []; // array of root urls
+        this._hubs = []; // array of root urls
         /** @member {Object} **/
-        this._devs                      = {}; // hash table of known devices, by serial number
+        this._devs = {}; // hash table of known devices, by serial number
         /** @member {Object} **/
-        this._snByUrl                   = {}; // serial number for each known device, by URL
+        this._snByUrl = {}; // serial number for each known device, by URL
         /** @member {Object} **/
-        this._snByName                  = {}; // serial number for each known device, by name
+        this._snByName = {}; // serial number for each known device, by name
         /** @member {Object} **/
-        this._fnByType                  = {}; // functions by type
-        this._fnByType.Module           = new YFunctionType(this, 'Module');
+        this._fnByType = {}; // functions by type
+        this._fnByType.Module = new YFunctionType(this, 'Module');
         /** @member {number} **/
-        this._lastErrorType             = YAPI_SUCCESS;
+        this._lastErrorType = YAPI_SUCCESS;
         /** @member {string} **/
-        this._lastErrorMsg              = 'no error';
+        this._lastErrorMsg = 'no error';
         /** @member {boolean} **/
-        this._firstArrival              = true;
+        this._firstArrival = true;
         /** @member {boolean} **/
-        this._updateDevListStarted      = false;
+        this._updateDevListStarted = false;
         /** @member {Object[]} **/
-        this._pendingCallbacks          = [];
+        this._pendingCallbacks = [];
         /** @member {Function} **/
-        this._arrivalCallback           = null;
+        this._arrivalCallback = null;
         /** @member {Function} **/
-        this._namechgCallback           = null;
+        this._namechgCallback = null;
         /** @member {Function} **/
-        this._removalCallback           = null;
+        this._removalCallback = null;
         /** @member {Object[]} **/
-        this._data_events               = [];
+        this._data_events = [];
         /** @member {number} **/
-        this._forwardValues             = 0;
+        this._forwardValues = 0;
         /** @member {Object} **/
-        this._calibHandlers             = {};
+        this._calibHandlers = {};
         /** @member {Object[]} **/
-        this._ValueCallbackList         = [];
+        this._ValueCallbackList = [];
         /** @member {Object[]} **/
-        this._TimedReportCallbackList   = [];
+        this._TimedReportCallbackList = [];
         /** @member {boolean} **/
-        this._isNodeJS                  = false;
+        this._isNodeJS = false;
         /** @member {function} **/
-        this._nodeRequire               = null;
-        if(typeof System != 'undefined') {
+        this._nodeRequire = null;
+        if (typeof System != 'undefined') {
             // SystemJS detected
-            if(System._nodeRequire) {
+            if (System._nodeRequire) {
                 this._isNodeJS = true;
                 this._nodeRequire = System._nodeRequire;
             }
         } else {
             // Node.js without SystemJS, or running in browserify SFX bundle
-            if(typeof require != 'undefined') {
+            if (typeof require != 'undefined') {
                 this._isNodeJS = true;
                 this._nodeRequire = require;
             }
         }
     }
-    
-    _throw(int_errType, str_errMsg, obj_retVal)
-    {
+
+    _throw(int_errType, str_errMsg, obj_retVal) {
         this._lastErrorType = int_errType;
         this._lastErrorMsg = str_errMsg;
 
-        if(!this.exceptionsDisabled) {
+        if (!this.exceptionsDisabled) {
             // create a well-formed exception object including stack
             try {
                 // note: The function Trigger_Yocto_Error below does intentionally not exist !
@@ -7141,15 +7490,15 @@ export class YAPIContext
                 //noinspection JSUnresolvedFunction
                 Trigger_Yocto_Error(int_errType, str_errMsg);
             } catch (e) {
-                var key, exc = new Error(str_errMsg);
-                for(key in e) {
-                    if(key != 'name' && key != 'number' && key != 'message')
-                        exc[key] = e[key];
+                var key,
+                    exc = new Error(str_errMsg);
+                for (key in e) {
+                    if (key != 'name' && key != 'number' && key != 'message') exc[key] = e[key];
                 }
-                exc['name']        = 'YoctoError';
-                exc['message']     = str_errMsg;
+                exc['name'] = 'YoctoError';
+                exc['message'] = str_errMsg;
                 exc['description'] = str_errMsg;
-                exc['number']      = int_errType;
+                exc['number'] = int_errType;
                 throw exc;
             }
         }
@@ -7157,27 +7506,29 @@ export class YAPIContext
     }
 
     // Add a hub object to the list of known hub
-    async _addHub(newhub)
-    {
-        // Add hub to known list
-        this._hubs.push(newhub);
+    _addHub(newhub) {
+        var _this151 = this;
 
-        // If hub is not yet known, create a device object (synchronous call)
-        var serial = this._snByUrl[newhub.urlInfo.url];
-        if(!serial) {
-            let dev = new YDevice(this, newhub.urlInfo.url, null, null);
-            await dev.refresh();
-        }
+        return _asyncToGenerator(function* () {
+            // Add hub to known list
+            _this151._hubs.push(newhub);
+
+            // If hub is not yet known, create a device object (synchronous call)
+            var serial = _this151._snByUrl[newhub.urlInfo.url];
+            if (!serial) {
+                let dev = new YDevice(_this151, newhub.urlInfo.url, null, null);
+                yield dev.refresh();
+            }
+        })();
     }
 
     // Search for an existing a hub object for a given URL
-    imm_getHub(str_rootUrl)
-    {
+    imm_getHub(str_rootUrl) {
         var i, hubUrl;
 
-        for(i = 0; i < this._hubs.length; i++) {
+        for (i = 0; i < this._hubs.length; i++) {
             hubUrl = this._hubs[i].urlInfo.url;
-            if(str_rootUrl.slice(0,hubUrl.length) == hubUrl) {
+            if (str_rootUrl.slice(0, hubUrl.length) == hubUrl) {
                 return this._hubs[i];
             }
         }
@@ -7185,165 +7536,172 @@ export class YAPIContext
     }
 
     // Trigger an update of connected devices by querying all hubs
-    async _updateDeviceList_internal(bool_forceupdate, bool_invokecallbacks)
-    {
-        if(this._firstArrival && bool_invokecallbacks && this._arrivalCallback) {
-            bool_forceupdate = true;
-        }
-        if(bool_forceupdate) {
-            for(let i = 0; i < this._hubs.length; i++) {
-                this._hubs[i].imm_forceUpdate();
+    _updateDeviceList_internal(bool_forceupdate, bool_invokecallbacks) {
+        var _this152 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this152._firstArrival && bool_invokecallbacks && _this152._arrivalCallback) {
+                bool_forceupdate = true;
             }
-        }
-        if(this._updateDevListStarted && this.GetTickCount() - this._updateDevListStarted < 30*1000) {
+            if (bool_forceupdate) {
+                for (let i = 0; i < _this152._hubs.length; i++) {
+                    _this152._hubs[i].imm_forceUpdate();
+                }
+            }
+            if (_this152._updateDevListStarted && _this152.GetTickCount() - _this152._updateDevListStarted < 30 * 1000) {
+                return {
+                    errorType: YAPI_SUCCESS,
+                    errorMsg: 'no error',
+                    result: YAPI_SUCCESS
+                };
+            }
+
+            try {
+                // mark updateDeviceList in progress to avoid concurrent asynchronous runs
+                _this152._updateDevListStarted = _this152.GetTickCount();
+
+                // collect list of hubs which should be checked
+                let hubs = [];
+                for (let i = 0; i < _this152._hubs.length; i++) {
+                    let hub = _this152._hubs[i];
+                    let rootUrl = hub.urlInfo.url;
+                    let hubDev = _this152.imm_getDevice(rootUrl);
+                    if (!hubDev) continue;
+                    if (hub.devListExpires <= _this152.GetTickCount()) {
+                        hub.missing = [];
+                        hubs.push(hub);
+                    }
+                }
+
+                // assume all device are unplugged, unless proved wrong
+                for (let serial in _this152._devs) {
+                    let rooturl = _this152._devs[serial].imm_getRootUrl();
+                    for (let i = 0; i < hubs.length; i++) {
+                        let huburl = hubs[i].urlInfo.url;
+                        if (rooturl.substr(0, huburl.length) == huburl) {
+                            hubs[i].missing[serial] = true;
+                        }
+                    }
+                }
+
+                // Rescan all hubs and update list of online devices
+                yield Promise.all(Array.from(hubs, function (hub) {
+                    return hub.hubUpdateDeviceList();
+                }));
+
+                // after processing all hubs, invoke pending callbacks if required
+                if (bool_invokecallbacks) {
+                    let nbEvents = _this152._pendingCallbacks.length;
+                    for (let i = 0; i < nbEvents; i++) {
+                        let evt = _this152._pendingCallbacks[i];
+                        let serial = evt.slice(1);
+                        switch (evt.charAt(0)) {
+                            case '+':
+                                if (_this152._arrivalCallback != undefined) {
+                                    yield _this152._arrivalCallback(yFindModule(serial + '.module'));
+                                }
+                                break;
+                            case '/':
+                                if (_this152._namechgCallback != undefined) {
+                                    yield _this152._namechgCallback(yFindModule(serial + '.module'));
+                                }
+                                break;
+                            case '-':
+                                if (_this152._removalCallback != undefined) {
+                                    yield _this152._removalCallback(yFindModule(serial + '.module'));
+                                }
+                                _this152.imm_forgetDevice(_this152._devs[serial]);
+                                break;
+                        }
+                    }
+                    _this152._pendingCallbacks = _this152._pendingCallbacks.slice(nbEvents);
+                    if (_this152._arrivalCallback != undefined && _this152._firstArrival) {
+                        _this152._firstArrival = false;
+                    }
+                }
+            } finally {
+                _this152._updateDevListStarted = false;
+            }
+
             return {
-                errorType:YAPI_SUCCESS,
-                errorMsg:'no error',
-                result:YAPI_SUCCESS
+                errorType: YAPI_SUCCESS,
+                errorMsg: 'no error',
+                result: YAPI_SUCCESS
             };
-        }
-
-        try {
-            // mark updateDeviceList in progress to avoid concurrent asynchronous runs
-            this._updateDevListStarted = this.GetTickCount();
-
-            // collect list of hubs which should be checked
-            let hubs = [];
-            for (let i = 0; i < this._hubs.length; i++) {
-                let hub = this._hubs[i];
-                let rootUrl = hub.urlInfo.url;
-                let hubDev = this.imm_getDevice(rootUrl);
-                if (!hubDev) continue;
-                if (hub.devListExpires <= this.GetTickCount()) {
-                    hub.missing = [];
-                    hubs.push(hub);
-                }
-            }
-
-            // assume all device are unplugged, unless proved wrong
-            for (let serial in this._devs) {
-                let rooturl = this._devs[serial].imm_getRootUrl();
-                for (let i = 0; i < hubs.length; i++) {
-                    let huburl = hubs[i].urlInfo.url;
-                    if (rooturl.substr(0, huburl.length) == huburl) {
-                        hubs[i].missing[serial] = true;
-                    }
-                }
-            }
-
-            // Rescan all hubs and update list of online devices
-            await Promise.all(Array.from(hubs, hub => hub.hubUpdateDeviceList()));
-
-            // after processing all hubs, invoke pending callbacks if required
-            if (bool_invokecallbacks) {
-                let nbEvents = this._pendingCallbacks.length;
-                for (let i = 0; i < nbEvents; i++) {
-                    let evt = this._pendingCallbacks[i];
-                    let serial = evt.slice(1);
-                    switch (evt.charAt(0)) {
-                        case '+':
-                            if (this._arrivalCallback != undefined) {
-                                await this._arrivalCallback(yFindModule(serial + '.module'));
-                            }
-                            break;
-                        case '/':
-                            if (this._namechgCallback != undefined) {
-                                await this._namechgCallback(yFindModule(serial + '.module'));
-                            }
-                            break;
-                        case '-':
-                            if (this._removalCallback != undefined) {
-                                await this._removalCallback(yFindModule(serial + '.module'));
-                            }
-                            this.imm_forgetDevice(this._devs[serial]);
-                            break;
-                    }
-                }
-                this._pendingCallbacks = this._pendingCallbacks.slice(nbEvents);
-                if (this._arrivalCallback != undefined && this._firstArrival) {
-                    this._firstArrival = false;
-                }
-            }
-        } finally {
-            this._updateDevListStarted = false;
-        }
-
-        return {
-            errorType:YAPI_SUCCESS,
-            errorMsg:'no error',
-            result:YAPI_SUCCESS
-        };
+        })();
     }
 
     // process a hub white-pages/yellow-pages records to update the device data
-    async updateDeviceList_process(hub, hubDev, whitePages, yellowPages)
-    {
-        // Reindex all functions from yellow pages
-        let refresh = {};
-        let serial = null;
-        for(let classname in yellowPages) {
-            let obj_yprecs = yellowPages[classname];
-            let ftype = this._fnByType[classname];
-            if(ftype == undefined) {
-                ftype = new YFunctionType(this, classname);
-                this._fnByType[classname] = ftype;
-            }
-            for(var key in obj_yprecs) {
-                var yprec = obj_yprecs[key];
-                var hwid = yprec['hardwareId'];
-                var basetype = yprec['baseType'];
-                if(ftype.imm_reindexFunction(hwid, yprec['logicalName'], yprec['advertisedValue'], basetype)) {
-                    // logical name discrepency detected, force a refresh from device
-                    serial = hwid.substr(0,hwid.indexOf('.'));
-                    refresh[serial] = true;
-                }
-            }
-        }
-        // Reindex all devices from white pages
-        for(let devkey in whitePages) {
-            var devinfo = whitePages[devkey];
-            serial  = devinfo['serialNumber'];
-            var devydx  = devinfo['index'];
-            var rooturl = devinfo.networkUrl.slice(0,-3);
-            if(rooturl.charAt(0) == '/') rooturl = hubDev.imm_getRootUrl()+rooturl.substr(1);
-            var currdev = this._devs[serial];
-            if(currdev && this._arrivalCallback != undefined && this._firstArrival) {
-                this._pendingCallbacks.push('+'+serial);
-            }
-            hub.serialByYdx[devydx] = serial;
-            if(!currdev) {
-                // Add new device
-                //noinspection ObjectAllocationIgnored
-                new YDevice(this, rooturl, devinfo, yellowPages);
-                if(this._arrivalCallback != undefined) {
-                    this._pendingCallbacks.push('+'+serial);
-                }
-            } else if(currdev.imm_getLogicalName() != devinfo['logicalName']) {
-                // Reindex device from its own data
-                await currdev.refresh();
-                if(this._namechgCallback != undefined) {
-                    this._pendingCallbacks.push('/'+serial);
-                }
-            } else if(refresh[serial] || currdev.imm_getRootUrl() != rooturl ||
-                      currdev.imm_getBeacon() != devinfo['beacon']) {
-                // Reindex device from its own data in case of discrepency
-                await currdev.refresh();
-            }
-            hub.missing[serial] = false;
-        }
+    updateDeviceList_process(hub, hubDev, whitePages, yellowPages) {
+        var _this153 = this;
 
-        // Keep track of all unplugged devices on this hub
-        for(serial in hub.missing) {
-            if(hub.missing[serial]) {
-                if(this._removalCallback != undefined) {
-                    this._pendingCallbacks.push('-'+serial);
-                } else {
-                    this.imm_forgetDevice(this._devs[serial]);
+        return _asyncToGenerator(function* () {
+            // Reindex all functions from yellow pages
+            let refresh = {};
+            let serial = null;
+            for (let classname in yellowPages) {
+                let obj_yprecs = yellowPages[classname];
+                let ftype = _this153._fnByType[classname];
+                if (ftype == undefined) {
+                    ftype = new YFunctionType(_this153, classname);
+                    _this153._fnByType[classname] = ftype;
+                }
+                for (var key in obj_yprecs) {
+                    var yprec = obj_yprecs[key];
+                    var hwid = yprec['hardwareId'];
+                    var basetype = yprec['baseType'];
+                    if (ftype.imm_reindexFunction(hwid, yprec['logicalName'], yprec['advertisedValue'], basetype)) {
+                        // logical name discrepency detected, force a refresh from device
+                        serial = hwid.substr(0, hwid.indexOf('.'));
+                        refresh[serial] = true;
+                    }
                 }
             }
-        }
+            // Reindex all devices from white pages
+            for (let devkey in whitePages) {
+                var devinfo = whitePages[devkey];
+                serial = devinfo['serialNumber'];
+                var devydx = devinfo['index'];
+                var rooturl = devinfo.networkUrl.slice(0, -3);
+                if (rooturl.charAt(0) == '/') rooturl = hubDev.imm_getRootUrl() + rooturl.substr(1);
+                var currdev = _this153._devs[serial];
+                if (currdev && _this153._arrivalCallback != undefined && _this153._firstArrival) {
+                    _this153._pendingCallbacks.push('+' + serial);
+                }
+                hub.serialByYdx[devydx] = serial;
+                if (!currdev) {
+                    // Add new device
+                    //noinspection ObjectAllocationIgnored
+                    new YDevice(_this153, rooturl, devinfo, yellowPages);
+                    if (_this153._arrivalCallback != undefined) {
+                        _this153._pendingCallbacks.push('+' + serial);
+                    }
+                } else if (currdev.imm_getLogicalName() != devinfo['logicalName']) {
+                    // Reindex device from its own data
+                    yield currdev.refresh();
+                    if (_this153._namechgCallback != undefined) {
+                        _this153._pendingCallbacks.push('/' + serial);
+                    }
+                } else if (refresh[serial] || currdev.imm_getRootUrl() != rooturl || currdev.imm_getBeacon() != devinfo['beacon']) {
+                    // Reindex device from its own data in case of discrepency
+                    yield currdev.refresh();
+                }
+                hub.missing[serial] = false;
+            }
 
-        return YAPI_SUCCESS;
+            // Keep track of all unplugged devices on this hub
+            for (serial in hub.missing) {
+                if (hub.missing[serial]) {
+                    if (_this153._removalCallback != undefined) {
+                        _this153._pendingCallbacks.push('-' + serial);
+                    } else {
+                        _this153.imm_forgetDevice(_this153._devs[serial]);
+                    }
+                }
+            }
+
+            return YAPI_SUCCESS;
+        })();
     }
 
     /** process event data produced by a hub
@@ -7351,106 +7709,113 @@ export class YAPIContext
      * @param hub {Object}
      * @param str_lines {string}
      */
-    async parseEvents(hub, str_lines)
-    {
-        hub.devListValidity = 10000; // 10s validity when notification are working properly
-        
-        var rows = str_lines.split('\n');
-        var nrows = rows.length;
-        var value;
-        // in continuous mode, last line is either empty or a partial event
-        nrows--;
-        for(var idx = 0; idx < nrows; idx++) {
-            var ev = rows[idx];
-            if(ev.length == 0) continue;
-            var firstCode = ev.charAt(0);
-            if(ev.length >= 3 && firstCode >= NOTIFY_NETPKT_FLUSHV2YDX && firstCode <= NOTIFY_NETPKT_TIMEAVGYDX) {
-                hub.retryDelay = 15;
-                if(hub.notifPos>=0) hub.notifPos += ev.length+1;
-                var devydx = ev.charCodeAt(1) - 65; // from 'A'
-                var funydx = ev.charCodeAt(2) - 48; // from '0'
-                if(funydx >= 64) { // high bit of devydx is on second character
-                    funydx -= 64;
-                    devydx += 128;
-                }
-                var serial = hub.serialByYdx[devydx];
-                if(serial && this._devs[serial]) {
-                    var funcid = (funydx == 0xf ? 'time' : this._devs[serial].imm_functionId(funydx));
-                    if(funcid != '') {
-                        value = ev.slice(3);
-                        switch (firstCode) {
-                            case NOTIFY_NETPKT_FUNCVALYDX:
-                                if (value != '') value = value.split('\0')[0];
-                                // function value ydx (tiny notification)
-                                this.imm_setFunctionValue(serial + '.' + funcid, value);
-                                break;
-                            case NOTIFY_NETPKT_DEVLOGYDX:
-                                // log notification
-                                break;
-                            case NOTIFY_NETPKT_TIMEVALYDX:
-                            case NOTIFY_NETPKT_TIMEAVGYDX:
-                            case NOTIFY_NETPKT_TIMEV2YDX:
+    parseEvents(hub, str_lines) {
+        var _this154 = this;
 
-                                // timed value report
-                                var pos, arr = [(firstCode == 'x' ? 0 : (firstCode == 'z' ? 1 : 2))];
-                                for (pos = 0; pos < value.length; pos += 2) {
-                                    arr.push(parseInt(value.substr(pos, 2), 16));
-                                }
-                                var dev = this._devs[serial];
-                                if (funcid == 'time') {
-                                    var time = arr[1] + 0x100 * arr[2] + 0x10000 * arr[3] + 0x1000000 * arr[4];
-                                    dev.imm_setDeviceTime(time + arr[5] / 250.0);
-                                } else {
-                                    this.imm_setTimedReport(serial + '.' + funcid, dev.imm_getDeviceTime(), arr);
-                                }
-                                break;
-                            case NOTIFY_NETPKT_FUNCV2YDX:
-                                var rawval = this.imm_decodeNetFuncValV2(value);
-                                if (rawval != null) {
-                                    var decodedval = this.imm_decodePubVal(rawval[0], rawval, 1, 6);
-                                    this.imm_setFunctionValue(serial + '.' + funcid, decodedval);
-                                }
-                                break;
-                            case NOTIFY_NETPKT_FLUSHV2YDX:
-                            // To be implemented later
-                            default:
-                                break;
+        return _asyncToGenerator(function* () {
+            hub.devListValidity = 10000; // 10s validity when notification are working properly
+
+            var rows = str_lines.split('\n');
+            var nrows = rows.length;
+            var value;
+            // in continuous mode, last line is either empty or a partial event
+            nrows--;
+            for (var idx = 0; idx < nrows; idx++) {
+                var ev = rows[idx];
+                if (ev.length == 0) continue;
+                var firstCode = ev.charAt(0);
+                if (ev.length >= 3 && firstCode >= NOTIFY_NETPKT_FLUSHV2YDX && firstCode <= NOTIFY_NETPKT_TIMEAVGYDX) {
+                    hub.retryDelay = 15;
+                    if (hub.notifPos >= 0) hub.notifPos += ev.length + 1;
+                    var devydx = ev.charCodeAt(1) - 65; // from 'A'
+                    var funydx = ev.charCodeAt(2) - 48; // from '0'
+                    if (funydx >= 64) {
+                        // high bit of devydx is on second character
+                        funydx -= 64;
+                        devydx += 128;
+                    }
+                    var serial = hub.serialByYdx[devydx];
+                    if (serial && _this154._devs[serial]) {
+                        var funcid = funydx == 0xf ? 'time' : _this154._devs[serial].imm_functionId(funydx);
+                        if (funcid != '') {
+                            value = ev.slice(3);
+                            switch (firstCode) {
+                                case NOTIFY_NETPKT_FUNCVALYDX:
+                                    if (value != '') value = value.split('\0')[0];
+                                    // function value ydx (tiny notification)
+                                    _this154.imm_setFunctionValue(serial + '.' + funcid, value);
+                                    break;
+                                case NOTIFY_NETPKT_DEVLOGYDX:
+                                    // log notification
+                                    break;
+                                case NOTIFY_NETPKT_TIMEVALYDX:
+                                case NOTIFY_NETPKT_TIMEAVGYDX:
+                                case NOTIFY_NETPKT_TIMEV2YDX:
+
+                                    // timed value report
+                                    var pos,
+                                        arr = [firstCode == 'x' ? 0 : firstCode == 'z' ? 1 : 2];
+                                    for (pos = 0; pos < value.length; pos += 2) {
+                                        arr.push(parseInt(value.substr(pos, 2), 16));
+                                    }
+                                    var dev = _this154._devs[serial];
+                                    if (funcid == 'time') {
+                                        var time = arr[1] + 0x100 * arr[2] + 0x10000 * arr[3] + 0x1000000 * arr[4];
+                                        dev.imm_setDeviceTime(time + arr[5] / 250.0);
+                                    } else {
+                                        _this154.imm_setTimedReport(serial + '.' + funcid, dev.imm_getDeviceTime(), arr);
+                                    }
+                                    break;
+                                case NOTIFY_NETPKT_FUNCV2YDX:
+                                    var rawval = _this154.imm_decodeNetFuncValV2(value);
+                                    if (rawval != null) {
+                                        var decodedval = _this154.imm_decodePubVal(rawval[0], rawval, 1, 6);
+                                        _this154.imm_setFunctionValue(serial + '.' + funcid, decodedval);
+                                    }
+                                    break;
+                                case NOTIFY_NETPKT_FLUSHV2YDX:
+                                // To be implemented later
+                                default:
+                                    break;
+                            }
                         }
                     }
-                }
-            } else if(ev.length > 5 && ev.substr(0,4) == 'YN01') {
-                hub.retryDelay = 15;
-                if(hub.notifPos>=0) hub.notifPos += ev.length+1;
-                var notype = ev.substr(4,1);
-                if(notype == '@') {
-                    hub.notifPos = parseInt(ev.slice(5));
-                } else switch(parseInt(notype)) {
-                case 0: // device name change, or arrival
-                case 2: // device plug/unplug
-                case 4: // function name change
-                case 8: // function name change (ydx)
-                    hub.devListExpires = 0;
-                    break;
-                case 5: // function value (long notification)
-                    var parts = ev.slice(5).split(',');
-                    if(parts.length > 2) {
-                        value = parts[2].split('\0');
-                        this.imm_setFunctionValue(parts[0]+'.'+parts[1], value[0]);
+                } else if (ev.length > 5 && ev.substr(0, 4) == 'YN01') {
+                    hub.retryDelay = 15;
+                    if (hub.notifPos >= 0) hub.notifPos += ev.length + 1;
+                    var notype = ev.substr(4, 1);
+                    if (notype == '@') {
+                        hub.notifPos = parseInt(ev.slice(5));
+                    } else switch (parseInt(notype)) {
+                        case 0: // device name change, or arrival
+                        case 2: // device plug/unplug
+                        case 4: // function name change
+                        case 8:
+                            // function name change (ydx)
+                            hub.devListExpires = 0;
+                            break;
+                        case 5:
+                            // function value (long notification)
+                            var parts = ev.slice(5).split(',');
+                            if (parts.length > 2) {
+                                value = parts[2].split('\0');
+                                _this154.imm_setFunctionValue(parts[0] + '.' + parts[1], value[0]);
+                            }
+                            break;
                     }
-                    break;
+                } else {
+                    // oops, bad notification ? be safe until a good one comes
+                    hub.devListValidity = 500;
+                    hub.devListExpires = 0;
+                    //alert('bad event on line '+idx+'/'+nrows+' : '+ev);
+                    hub.notifPos = -1;
                 }
-            } else {
-                // oops, bad notification ? be safe until a good one comes
-                hub.devListValidity = 500;
-                hub.devListExpires = 0;
-                //alert('bad event on line '+idx+'/'+nrows+' : '+ev);
-                hub.notifPos = -1;
+                hub.currPos += ev.length + 1;
             }
-            hub.currPos += ev.length + 1;
-        }
-        if(this._forwardValues > 0) {
-            await this.HandleEvents(new YErrorMsg());
-        }
+            if (_this154._forwardValues > 0) {
+                yield _this154.HandleEvents(new YErrorMsg());
+            }
+        })();
     }
 
     /** Network notification format: 7x7bit (mapped to 7 chars in range 32..159)
@@ -7461,35 +7826,33 @@ export class YAPIContext
      *
      * @return {number[]}
      */
-    imm_decodeNetFuncValV2(p) 
-    {
+    imm_decodeNetFuncValV2(p) {
         var p_ofs = 0;
         var ch = p.charCodeAt(p_ofs) & 0xff;
         var len = 0;
-        var funcVal = [0,0,0,0,0,0,0];
+        var funcVal = [0, 0, 0, 0, 0, 0, 0];
 
-        if(ch < 32 || ch > 32 + 127) {
+        if (ch < 32 || ch > 32 + 127) {
             return null;
         }
         // get the 7 first bits
         ch -= 32;
-        funcVal[0] = ((ch & 0x40) != 0 ? NOTIFY_V2_6RAWBYTES : NOTIFY_V2_TYPEDDATA);
+        funcVal[0] = (ch & 0x40) != 0 ? NOTIFY_V2_6RAWBYTES : NOTIFY_V2_TYPEDDATA;
         // clear flag
         ch &= 0x3f;
-        while(len < YOCTO_PUBVAL_SIZE) {
+        while (len < YOCTO_PUBVAL_SIZE) {
             p_ofs++;
-            if (p_ofs >= p.length)
-                break;
+            if (p_ofs >= p.length) break;
             var newCh = p.charCodeAt(p_ofs) & 0xff;
             if (newCh == NOTIFY_NETPKT_STOP) {
                 break;
             }
-            if(newCh < 32 || newCh > 32+127) {
+            if (newCh < 32 || newCh > 32 + 127) {
                 return null;
             }
             newCh -= 32;
             ch = (ch << 7) + newCh;
-            funcVal[len + 1] = (ch >> (5 - len)) & 0xff;
+            funcVal[len + 1] = ch >> 5 - len & 0xff;
             len++;
         }
         return funcVal;
@@ -7503,8 +7866,7 @@ export class YAPIContext
      * @param int_funcvalen {number}
      * @returns {string}
      */
-    imm_decodePubVal(int_typeV2, arr_funcval, int_ofs, int_funcvalen) 
-    {
+    imm_decodePubVal(int_typeV2, arr_funcval, int_ofs, int_funcvalen) {
         var buffer = '';
         var endp;
         if (int_typeV2 == NOTIFY_V2_6RAWBYTES || int_typeV2 == NOTIFY_V2_TYPEDDATA) {
@@ -7543,7 +7905,7 @@ export class YAPIContext
                     if (funcValType == PUBVAL_C_LONG) {
                         return String(Math.round(numVal));
                     } else {
-                        buffer = String(Math.round(numVal*1000) / 1000000.0);
+                        buffer = String(Math.round(numVal * 1000) / 1000000.0);
                         endp = buffer.length;
                         while (endp > 0 && buffer[endp - 1] == '0') {
                             --endp;
@@ -7560,10 +7922,10 @@ export class YAPIContext
                     v += arr_funcval[int_ofs++] << 8;
                     v += arr_funcval[int_ofs++] << 16;
                     v += arr_funcval[int_ofs++] << 24;
-                    var fraction = (v & ((1 << 23) - 1)) + (1 << 23) * (v >> 31 | 1);
+                    var fraction = (v & (1 << 23) - 1) + (1 << 23) * (v >> 31 | 1);
                     var exp = (v >> 23 & 0xFF) - 127;
                     var floatVal = fraction * Math.pow(2, exp - 23);
-                    buffer = String(Math.round(floatVal*1000000)/1000000);
+                    buffer = String(Math.round(floatVal * 1000000) / 1000000);
                     endp = buffer.length;
                     while (endp > 0 && buffer[endp - 1] == '0') {
                         --endp;
@@ -7581,8 +7943,7 @@ export class YAPIContext
             var len = 0;
             buffer = '';
             while (len < YOCTO_PUBVAL_SIZE && len < int_funcvalen) {
-                if (arr_funcval[len] == 0)
-                    break;
+                if (arr_funcval[len] == 0) break;
                 buffer += String.fromCharCode(arr_funcval[len]);
                 len++;
             }
@@ -7590,103 +7951,93 @@ export class YAPIContext
         return buffer;
     }
 
-    imm_decExp(int_pow)
-    {
-        const arr = [ 1.0e-6, 1.0e-5, 1.0e-4, 1.0e-3, 1.0e-2, 1.0e-1, 1.0,
-            1.0e1, 1.0e2, 1.0e3, 1.0e4, 1.0e5, 1.0e6, 1.0e7, 1.0e8, 1.0e9 
-        ];
+    imm_decExp(int_pow) {
+        const arr = [1.0e-6, 1.0e-5, 1.0e-4, 1.0e-3, 1.0e-2, 1.0e-1, 1.0, 1.0e1, 1.0e2, 1.0e3, 1.0e4, 1.0e5, 1.0e6, 1.0e7, 1.0e8, 1.0e9];
         return arr[int_pow];
     }
 
     // Convert Yoctopuce 16-bit decimal floats to standard double-precision floats
     //
-    imm_decimalToDouble(val)
-    {
+    imm_decimalToDouble(val) {
         var negate = false;
         var res;
         var mantis = val & 2047;
-        if(mantis == 0) return 0.0;
-        if(val > 32767) {
+        if (mantis == 0) return 0.0;
+        if (val > 32767) {
             negate = true;
-            val = 65536-val;
-        } else if(val < 0) {
+            val = 65536 - val;
+        } else if (val < 0) {
             negate = true;
             val = -val;
         }
         var decexp = this.imm_decExp(val >> 11);
-        if(decexp >= 1.0) {
-            res = (mantis) * decexp;
-        } else { // fix rounding issue
-            res = (mantis) / Math.round(1/decexp);
+        if (decexp >= 1.0) {
+            res = mantis * decexp;
+        } else {
+            // fix rounding issue
+            res = mantis / Math.round(1 / decexp);
         }
 
-        return (negate ? -res : res);
+        return negate ? -res : res;
     }
 
     // Convert standard double-precision floats to Yoctopuce 16-bit decimal floats
     //
-    imm_doubleToDecimal(val)
-    {
-        var     negate = false;
-        var     comp, mant;
-        var     decpow;
-        var     res;
+    imm_doubleToDecimal(val) {
+        var negate = false;
+        var comp, mant;
+        var decpow;
+        var res;
 
-        if(val == 0.0) {
+        if (val == 0.0) {
             return 0;
         }
-        if(val < 0) {
+        if (val < 0) {
             negate = true;
             val = -val;
         }
         comp = val / 1999.0;
         decpow = 0;
-        while(comp > this.imm_decExp(decpow) && decpow < 15) {
+        while (comp > this.imm_decExp(decpow) && decpow < 15) {
             decpow++;
         }
         mant = val / this.imm_decExp(decpow);
-        if(decpow == 15 && mant > 2047.0) {
+        if (decpow == 15 && mant > 2047.0) {
             res = (15 << 11) + 2047; // overflow
         } else {
-            res = (decpow << 11) + Math.round(mant);
-        }
-        return (negate ? -res : res);
+                res = (decpow << 11) + Math.round(mant);
+            }
+        return negate ? -res : res;
     }
 
-    imm_getCalibrationHandler(calibType)
-    {
+    imm_getCalibrationHandler(calibType) {
         return this._calibHandlers[calibType];
     }
 
     // Parse an array of u16 encoded in a base64-like string with memory-based compression
-    imm_decodeWords(data)
-    {
+    imm_decodeWords(data) {
         var udata = [];
-        for(var i = 0; i < data.length;) {
+        for (var i = 0; i < data.length;) {
             var c = data[i];
-            if(c == '*') {
+            if (c == '*') {
                 val = 0;
                 i++;
-            } else if(c == 'X') {
+            } else if (c == 'X') {
                 val = 0xffff;
                 i++;
-            } else if(c == 'Y') {
+            } else if (c == 'Y') {
                 val = 0x7fff;
                 i++;
-            } else if(c >= 'a') {
-                var srcpos = udata.length-1-(data.charCodeAt(i++)-97);
-                if(srcpos < 0)
-                    val = 0;
-                else
-                    val = udata[srcpos];
+            } else if (c >= 'a') {
+                var srcpos = udata.length - 1 - (data.charCodeAt(i++) - 97);
+                if (srcpos < 0) val = 0;else val = udata[srcpos];
             } else {
-                if(i+3 > data.length)
-                    return udata;
-                var val = (data.charCodeAt(i++) - 48);
-                val += (data.charCodeAt(i++) - 48) << 5;
+                if (i + 3 > data.length) return udata;
+                var val = data.charCodeAt(i++) - 48;
+                val += data.charCodeAt(i++) - 48 << 5;
                 var lastcode = data.charCodeAt(i++);
-                if(lastcode == 122) lastcode = 92;
-                val += (lastcode - 48) << 10;
+                if (lastcode == 122) lastcode = 92;
+                val += lastcode - 48 << 10;
             }
             udata.push(val);
         }
@@ -7694,8 +8045,7 @@ export class YAPIContext
     }
 
     // Parse an array of u16 encoded in a base64-like string with memory-based compresssion
-    imm_decodeFloats(data)
-    {
+    imm_decodeFloats(data) {
         var idata = [];
         var p = 0;
         var datalen = data.length;
@@ -7705,38 +8055,36 @@ export class YAPIContext
             var dec = 0;
             var decInc = 0;
             var c = data[p++];
-            while(c != '-' && (c < '0' || c > '9')) {
-                if(p >= datalen) {
+            while (c != '-' && (c < '0' || c > '9')) {
+                if (p >= datalen) {
                     return idata;
                 }
                 c = data[p++];
             }
-            if(c == '-') {
-                if(p >= datalen) {
+            if (c == '-') {
+                if (p >= datalen) {
                     return idata;
                 }
                 sign = -sign;
                 c = data[p++];
             }
-            while((c >= '0' && c <= '9') || c == '.') {
-                if(c == '.') {
+            while (c >= '0' && c <= '9' || c == '.') {
+                if (c == '.') {
                     decInc = 1;
-                } else if(dec < 3) {
+                } else if (dec < 3) {
                     val = val * 10 + (c.charCodeAt(0) - 48);
                     dec += decInc;
                 }
-                if(p < datalen) {
+                if (p < datalen) {
                     c = data[p++];
                 } else {
                     c = '\0';
                 }
             }
-            if(dec < 3) {
-                if(dec == 0) val *= 1000;
-                else if(dec == 1) val *= 100;
-                else val *= 10;
+            if (dec < 3) {
+                if (dec == 0) val *= 1000;else if (dec == 1) val *= 100;else val *= 10;
             }
-            idata.push(sign*val);
+            idata.push(sign * val);
         }
         return idata;
     }
@@ -7746,8 +8094,7 @@ export class YAPIContext
      * @param str_data {string}
      * @return {number}
      */
-    imm_atoi(str_data)
-    {
+    imm_atoi(str_data) {
         var num = parseInt(str_data);
         if (isNaN(num)) {
             return 0;
@@ -7760,14 +8107,13 @@ export class YAPIContext
      * @param bin_data {Uint8Array|Buffer}
      * @return {string}
      */
-    imm_bin2str(bin_data)
-    {
+    imm_bin2str(bin_data) {
         /** @type {number} **/
         let len = bin_data.length;
         /** @type {string} **/
         let res = '';
-        for(let i = 0; i < len; i += 20) {
-            let subdata = bin_data.subarray(i, Math.min(i+20,len));
+        for (let i = 0; i < len; i += 20) {
+            let subdata = bin_data.subarray(i, Math.min(i + 20, len));
             res += String.fromCharCode.apply(null, subdata);
         }
         return res;
@@ -7778,13 +8124,12 @@ export class YAPIContext
      * @param str_data {string}
      * @return {Uint8Array}
      */
-    imm_str2bin(str_data)
-    {
+    imm_str2bin(str_data) {
         /** @type {number} **/
         let len = str_data.length;
         /** @type {Uint8Array} **/
         let res = new Uint8Array(len);
-        for(let i = 0; i < len; i++) {
+        for (let i = 0; i < len; i++) {
             res[i] = str_data.charCodeAt(i);
         }
         return res;
@@ -7795,13 +8140,12 @@ export class YAPIContext
      * @param bin_data {Uint8Array}
      * @return {string}
      */
-    imm_bin2hexstr(bin_data)
-    {
+    imm_bin2hexstr(bin_data) {
         /** @type {number} **/
         let len = bin_data.length;
         /** @type {string} **/
         let res = '';
-        for(let i = 0; i < len; i++) {
+        for (let i = 0; i < len; i++) {
             let n = bin_data[i].toString(16);
             res += n.length < 2 ? '0' + n : n;
         }
@@ -7813,14 +8157,13 @@ export class YAPIContext
      * @param str_data {string}
      * @return {Uint8Array}
      */
-    imm_hexstr2bin(str_data)
-    {
+    imm_hexstr2bin(str_data) {
         /** @type {number} **/
-        let len = (str_data.length >> 1);
+        let len = str_data.length >> 1;
         /** @type {Uint8Array} **/
         let res = new Uint8Array(len);
-        for(let i = 0; i < len; i++) {
-            res[i] = parseInt(str_data.substr(2*i, 2), 16);
+        for (let i = 0; i < len; i++) {
+            res[i] = parseInt(str_data.substr(2 * i, 2), 16);
         }
         return res;
     }
@@ -7832,23 +8175,22 @@ export class YAPIContext
      *
      * This function will not cause any network access (not async !)
      */
-    imm_getDevice(str_device)
-    {
+    imm_getDevice(str_device) {
         var dev = null;
         var serial;
 
-        if(str_device.substr(0,7) == 'http://' || str_device.substr(0,5) == 'ws://') {
+        if (str_device.substr(0, 7) == 'http://' || str_device.substr(0, 5) == 'ws://') {
             // lookup by url
             serial = this._snByUrl[str_device];
-            if(serial != undefined) dev = this._devs[serial];
+            if (serial != undefined) dev = this._devs[serial];
         } else {
             // lookup by serial
-            if(this._devs[str_device]) {
+            if (this._devs[str_device]) {
                 dev = this._devs[str_device];
             } else {
                 // fallback to lookup by logical name
                 serial = this._snByName[str_device];
-                if(serial) {
+                if (serial) {
                     dev = this._devs[serial];
                 }
             }
@@ -7861,18 +8203,21 @@ export class YAPIContext
      * @param obj_func {YFunction}
      * @param bool_add {Boolean}
      */
-    async _UpdateValueCallbackList(obj_func, bool_add)
-    {
-        /** @type {number} **/
-        let index = this._ValueCallbackList.indexOf(obj_func);
-        if (bool_add) {
-            await obj_func.isOnline();
-            if(index < 0) {
-                this._ValueCallbackList.push(obj_func);
+    _UpdateValueCallbackList(obj_func, bool_add) {
+        var _this155 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let index = _this155._ValueCallbackList.indexOf(obj_func);
+            if (bool_add) {
+                yield obj_func.isOnline();
+                if (index < 0) {
+                    _this155._ValueCallbackList.push(obj_func);
+                }
+            } else if (index >= 0) {
+                _this155._ValueCallbackList.splice(index, 1);
             }
-        } else if(index >= 0) {
-            this._ValueCallbackList.splice(index, 1);
-        }
+        })();
     }
 
     /** Add or remove a timed report callback
@@ -7880,146 +8225,138 @@ export class YAPIContext
      * @param obj_func {YFunction}
      * @param bool_add {Boolean}
      */
-    async _UpdateTimedReportCallbackList(obj_func, bool_add)
-    {
-        /** @type {number} **/
-        let index = this._TimedReportCallbackList.indexOf(obj_func);
-        if (bool_add) {
-            await obj_func.isOnline();
-            if(index < 0) {
-                this._TimedReportCallbackList.push(obj_func);
+    _UpdateTimedReportCallbackList(obj_func, bool_add) {
+        var _this156 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let index = _this156._TimedReportCallbackList.indexOf(obj_func);
+            if (bool_add) {
+                yield obj_func.isOnline();
+                if (index < 0) {
+                    _this156._TimedReportCallbackList.push(obj_func);
+                }
+            } else if (index >= 0) {
+                _this156._TimedReportCallbackList.splice(index, 1);
             }
-        } else if(index >= 0) {
-            this._TimedReportCallbackList.splice(index, 1);
-        }
+        })();
     }
 
     // Return the class name for a given function ID or full Hardware Id
     // Also make sure that the function type is registered in the API
-    imm_functionClass(str_funcid)
-    {
+    imm_functionClass(str_funcid) {
         var dotpos = str_funcid.indexOf('.');
-        if(dotpos >= 0) str_funcid = str_funcid.substr(dotpos+1);
+        if (dotpos >= 0) str_funcid = str_funcid.substr(dotpos + 1);
         var classlen = str_funcid.length;
-        while(str_funcid.substr(classlen-1,1) <= '9') classlen--;
-        var classname = str_funcid.substr(0,1).toUpperCase()+str_funcid.substr(1,classlen-1);
-        if(this._fnByType[classname] == undefined)
-            this._fnByType[classname] = new YFunctionType(this, classname);
+        while (str_funcid.substr(classlen - 1, 1) <= '9') classlen--;
+        var classname = str_funcid.substr(0, 1).toUpperCase() + str_funcid.substr(1, classlen - 1);
+        if (this._fnByType[classname] == undefined) this._fnByType[classname] = new YFunctionType(this, classname);
 
         return classname;
     }
 
     // Reindex a device in YAPI after a name change detected by device refresh
-    imm_reindexDevice(obj_dev)
-    {
+    imm_reindexDevice(obj_dev) {
         var rootUrl = obj_dev.imm_getRootUrl();
         var serial = obj_dev.imm_getSerialNumber();
-        var lname  = obj_dev.imm_getLogicalName();
+        var lname = obj_dev.imm_getLogicalName();
         this._devs[serial] = obj_dev;
         this._snByUrl[rootUrl] = serial;
-        if(lname != '') this._snByName[lname] = serial;
-        this._fnByType['Module'].imm_reindexFunction(serial+'.module', lname, null, null);
-        var i, count = obj_dev.imm_functionCount();
-        for(i = 0; i < count; i++) {
+        if (lname != '') this._snByName[lname] = serial;
+        this._fnByType['Module'].imm_reindexFunction(serial + '.module', lname, null, null);
+        var i,
+            count = obj_dev.imm_functionCount();
+        for (i = 0; i < count; i++) {
             var funcid = obj_dev.imm_functionId(i);
             var funcname = obj_dev.imm_functionName(i);
             var classname = this.imm_functionClass(funcid);
-            this._fnByType[classname].imm_reindexFunction(serial+'.'+funcid, funcname, null, null);
+            this._fnByType[classname].imm_reindexFunction(serial + '.' + funcid, funcname, null, null);
         }
     }
 
     // Remove a device from YAPI after an unplug detected by device refresh
-    imm_forgetDevice(obj_dev)
-    {
+    imm_forgetDevice(obj_dev) {
         var rootUrl = obj_dev.imm_getRootUrl();
         var serial = obj_dev.imm_getSerialNumber();
         var lname = obj_dev.imm_getLogicalName();
         delete this._devs[serial];
         delete this._snByUrl[rootUrl];
-        if(this._snByName[lname] == serial) {
+        if (this._snByName[lname] == serial) {
             delete this._snByName[lname];
         }
-        this._fnByType['Module'].imm_forgetFunction(serial+'.module');
-        var i, count = obj_dev.imm_functionCount();
-        for(i = 0; i < count; i++) {
+        this._fnByType['Module'].imm_forgetFunction(serial + '.module');
+        var i,
+            count = obj_dev.imm_functionCount();
+        for (i = 0; i < count; i++) {
             var funcid = obj_dev.imm_functionId(i);
             var classname = this.imm_functionClass(funcid);
-            this._fnByType[classname].imm_forgetFunction(serial+'.'+funcid);
+            this._fnByType[classname].imm_forgetFunction(serial + '.' + funcid);
         }
     }
 
     // Find the best known identifier (hardware Id) for a given function
-    imm_resolveFunction(str_className, str_func)
-    {
-        if(Y_BASETYPES[str_className] == undefined) {
+    imm_resolveFunction(str_className, str_func) {
+        if (Y_BASETYPES[str_className] == undefined) {
             // using a regular function type
-            if(this._fnByType[str_className] == undefined)
-                this._fnByType[str_className] = new YFunctionType(this, str_className);
+            if (this._fnByType[str_className] == undefined) this._fnByType[str_className] = new YFunctionType(this, str_className);
             return this._fnByType[str_className].imm_resolve(str_func);
         }
         // using an abstract baseType
         var baseType = Y_BASETYPES[str_className];
         var res;
-        for(str_className in this._fnByType) {
-            if(this._fnByType[str_className].imm_getBaseType() == baseType) {
+        for (str_className in this._fnByType) {
+            if (this._fnByType[str_className].imm_getBaseType() == baseType) {
                 res = this._fnByType[str_className].imm_resolve(str_func);
-                if(res.errorType == YAPI_SUCCESS) return res;
+                if (res.errorType == YAPI_SUCCESS) return res;
             }
         }
-        return {errorType:YAPI_DEVICE_NOT_FOUND,
-                errorMsg:'No '+str_className+' ['+str_func+'] found (old firmware?)',
-                result:null};
+        return { errorType: YAPI_DEVICE_NOT_FOUND,
+            errorMsg: 'No ' + str_className + ' [' + str_func + '] found (old firmware?)',
+            result: null };
     }
 
     // Find the best known identifier (hardware Id) for a given function
-    imm_getFriendlyNameFunction(str_className, str_func)
-    {
-        if(Y_BASETYPES[str_className] == undefined) {
+    imm_getFriendlyNameFunction(str_className, str_func) {
+        if (Y_BASETYPES[str_className] == undefined) {
             // using a regular function type
-            if(this._fnByType[str_className] == undefined)
-                this._fnByType[str_className] = new YFunctionType(this, str_className);
+            if (this._fnByType[str_className] == undefined) this._fnByType[str_className] = new YFunctionType(this, str_className);
             return this._fnByType[str_className].imm_getFriendlyName(str_func);
         }
         // using an abstract baseType
         var baseType = Y_BASETYPES[str_className];
         var res;
-        for(str_className in this._fnByType) {
-            if(this._fnByType[str_className].imm_getBaseType() == baseType) {
+        for (str_className in this._fnByType) {
+            if (this._fnByType[str_className].imm_getBaseType() == baseType) {
                 res = this._fnByType[str_className].imm_getFriendlyName(str_func);
-                if(res.errorType == YAPI_SUCCESS) return res;
+                if (res.errorType == YAPI_SUCCESS) return res;
             }
         }
-        return {errorType:YAPI_DEVICE_NOT_FOUND,
-                errorMsg:'No '+str_className+' ['+str_func+'] found (old firmware?)',
-                result:null};
+        return { errorType: YAPI_DEVICE_NOT_FOUND,
+            errorMsg: 'No ' + str_className + ' [' + str_func + '] found (old firmware?)',
+            result: null };
     }
 
     // Retrieve a function object by hardware id, updating the indexes on the fly if needed
-    imm_setFunction(str_className, str_func, obj_func)
-    {
-        if(this._fnByType[str_className] == undefined)
-            this._fnByType[str_className] = new YFunctionType(this, str_className);
+    imm_setFunction(str_className, str_func, obj_func) {
+        if (this._fnByType[str_className] == undefined) this._fnByType[str_className] = new YFunctionType(this, str_className);
         return this._fnByType[str_className].imm_setFunction(str_func, obj_func);
     }
 
     // Retrieve a function object by hardware id, updating the indexes on the fly if needed
-    imm_getFunction(str_className, str_func)
-    {
-        if(this._fnByType[str_className] == undefined)
-            this._fnByType[str_className] = new YFunctionType(this, str_className);
+    imm_getFunction(str_className, str_func) {
+        if (this._fnByType[str_className] == undefined) this._fnByType[str_className] = new YFunctionType(this, str_className);
         return this._fnByType[str_className].imm_getFunction(str_func);
     }
 
     // Set a function advertised value by hardware id
-    imm_setFunctionValue(str_hwid, str_pubval)
-    {
+    imm_setFunctionValue(str_hwid, str_pubval) {
         let classname = this.imm_functionClass(str_hwid);
-        if(this._fnByType[classname].imm_setFunctionValue(str_hwid, str_pubval)) {
+        if (this._fnByType[classname].imm_setFunctionValue(str_hwid, str_pubval)) {
             let receivers = this._ValueCallbackList;
-            for(let i = 0; i < receivers.length; i++) {
+            for (let i = 0; i < receivers.length; i++) {
                 let fun = receivers[i];
-                if(!fun._hwId) continue;
-                if(fun._hwId == str_hwid) {
+                if (!fun._hwId) continue;
+                if (fun._hwId == str_hwid) {
                     this._data_events.push([fun, str_pubval]);
                 }
             }
@@ -8027,58 +8364,52 @@ export class YAPIContext
     }
 
     // Set add a timed value report for a function
-    imm_setTimedReport(str_hwid, float_timestamp, arr_report)
-    {
+    imm_setTimedReport(str_hwid, float_timestamp, arr_report) {
         let classname = this.imm_functionClass(str_hwid);
         let receivers = this._TimedReportCallbackList;
-        for(let i = 0; i < receivers.length; i++) {
+        for (let i = 0; i < receivers.length; i++) {
             let fun = receivers[i];
-            if(!fun._hwId) continue;
-            if(fun._hwId == str_hwid) {
+            if (!fun._hwId) continue;
+            if (fun._hwId == str_hwid) {
                 this._data_events.push([fun, float_timestamp, arr_report]);
             }
         }
     }
 
     // Retrieve a function advertised value by hardware id
-    imm_getFunctionValue(str_hwid)
-    {
+    imm_getFunctionValue(str_hwid) {
         var classname = this.imm_functionClass(str_hwid);
         return this._fnByType[classname].imm_getFunctionValue(str_hwid);
     }
 
     // Retrieve a function advertised value by hardware id
-    imm_getFunctionBaseType(str_hwid)
-    {
+    imm_getFunctionBaseType(str_hwid) {
         var classname = this.imm_functionClass(str_hwid);
         return this._fnByType[classname].imm_getBaseType();
     }
 
     // Find the hardwareId for the first instance of a given function class
-    imm_getFirstHardwareId(str_className)
-    {
-        if(Y_BASETYPES[str_className] == undefined) {
+    imm_getFirstHardwareId(str_className) {
+        if (Y_BASETYPES[str_className] == undefined) {
             // enumeration of a regular function type
-            if(this._fnByType[str_className] == undefined)
-                this._fnByType[str_className] = new YFunctionType(this, str_className);
+            if (this._fnByType[str_className] == undefined) this._fnByType[str_className] = new YFunctionType(this, str_className);
             return this._fnByType[str_className].imm_getFirstHardwareId();
         }
         // enumeration of an abstract class
         var baseType = Y_BASETYPES[str_className];
         var res;
-        for(str_className in this._fnByType) {
-            if(this._fnByType[str_className].imm_getBaseType() == baseType) {
+        for (str_className in this._fnByType) {
+            if (this._fnByType[str_className].imm_getBaseType() == baseType) {
                 res = this._fnByType[str_className].imm_getFirstHardwareId();
-                if(res != undefined) return res;
+                if (res != undefined) return res;
             }
         }
         return null;
     }
 
     // Find the hardwareId for the next instance of a given function class
-    imm_getNextHardwareId(str_className, str_hwid)
-    {
-        if(Y_BASETYPES[str_className] == undefined) {
+    imm_getNextHardwareId(str_className, str_hwid) {
+        if (Y_BASETYPES[str_className] == undefined) {
             // enumeration of a regular function type
             return this._fnByType[str_className].imm_getNextHardwareId(str_hwid);
         }
@@ -8086,16 +8417,16 @@ export class YAPIContext
         var baseType = Y_BASETYPES[str_className];
         var prevclass = this.imm_functionClass(str_hwid);
         var res = this._fnByType[prevclass].imm_getNextHardwareId(str_hwid);
-        if(res != undefined) return res;
-        for(str_className in this._fnByType) {
-            if(prevclass != '') {
-                if(str_className != prevclass) continue;
+        if (res != undefined) return res;
+        for (str_className in this._fnByType) {
+            if (prevclass != '') {
+                if (str_className != prevclass) continue;
                 prevclass = '';
                 continue;
             }
-            if(this._fnByType[str_className].imm_getBaseType() == baseType) {
+            if (this._fnByType[str_className].imm_getBaseType() == baseType) {
                 res = this._fnByType[str_className].imm_getFirstHardwareId();
-                if(res != undefined) return res;
+                if (res != undefined) return res;
             }
         }
         return null;
@@ -8109,75 +8440,81 @@ export class YAPIContext
      * @param obj_body {Uint8Array|string}
      * @returns {YHTTPRequest}
      */
-    async devRequest(str_device, str_request, obj_body = '')
-    {
-        /** @type {string[]} **/
-        let lines = str_request.split('\n');
-        /** @type {YHTTPRequest} **/
-        let res = new YHTTPRequest(null);
-        /** @type {YDevice} **/
-        let lockdev;
-        /** @type {string} **/
-        let baseUrl;
-        if(str_device.substr(0,7) == 'http://' || str_device.substr(0,5) == 'ws://') {
-            baseUrl = str_device;
-            if (baseUrl.slice(-1) != '/') baseUrl = baseUrl + '/';
-            if(lines[0].substr(0,12) != 'GET /not.byn') {
-                /** @type {string} **/
-                let serial = this._snByUrl[baseUrl];
-                if(serial) {
-                    lockdev = this._devs[serial];
+    devRequest(str_device, str_request) {
+        var _this157 = this;
+
+        let obj_body = arguments.length <= 2 || arguments[2] === undefined ? '' : arguments[2];
+        return _asyncToGenerator(function* () {
+            /** @type {string[]} **/
+            let lines = str_request.split('\n');
+            /** @type {YHTTPRequest} **/
+            let res = new YHTTPRequest(null);
+            /** @type {YDevice} **/
+            let lockdev;
+            /** @type {string} **/
+            let baseUrl;
+            if (str_device.substr(0, 7) == 'http://' || str_device.substr(0, 5) == 'ws://') {
+                baseUrl = str_device;
+                if (baseUrl.slice(-1) != '/') baseUrl = baseUrl + '/';
+                if (lines[0].substr(0, 12) != 'GET /not.byn') {
+                    /** @type {string} **/
+                    let serial = _this157._snByUrl[baseUrl];
+                    if (serial) {
+                        lockdev = _this157._devs[serial];
+                    }
                 }
+            } else {
+                lockdev = _this157.imm_getDevice(str_device);
+                if (!lockdev) {
+                    res.errorType = YAPI_DEVICE_NOT_FOUND;
+                    res.errorMsg = 'Device [' + str_device + '] not online';
+                    return res;
+                }
+                // use the device cache when loading the whole API
+                if (lines[0] == 'GET /api.json') {
+                    return yield lockdev.requestAPI(_this157.defaultCacheValidity);
+                }
+                baseUrl = lockdev.imm_getRootUrl();
             }
-        } else {
-            lockdev = this.imm_getDevice(str_device);
-            if(!lockdev) {
-                res.errorType = YAPI_DEVICE_NOT_FOUND;
-                res.errorMsg = 'Device ['+str_device+'] not online';
+            // map str_device to a URL
+            /** @type {string[]} **/
+            let words = lines[0].split(' ');
+            if (words.length < 2) {
+                res.errorType = YAPI_INVALID_ARGUMENT;
+                res.errorMsg = 'Invalid request, not enough words; expected a method name and a URL';
+                return res;
+            } else if (words.length > 2) {
+                res.errorType = YAPI_INVALID_ARGUMENT;
+                res.errorMsg = 'Invalid request, too many words; make sure the URL is URI-encoded';
                 return res;
             }
-            // use the device cache when loading the whole API
-            if(lines[0] == 'GET /api.json') {
-                return await lockdev.requestAPI(this.defaultCacheValidity);
-            }
-            baseUrl = lockdev.imm_getRootUrl();
-        }
-        // map str_device to a URL
-        /** @type {string[]} **/
-        let words = lines[0].split(' ');
-        if(words.length < 2) {
-            res.errorType = YAPI_INVALID_ARGUMENT;
-            res.errorMsg = 'Invalid request, not enough words; expected a method name and a URL';
-            return res;
-        } else if(words.length > 2) {
-            res.errorType = YAPI_INVALID_ARGUMENT;
-            res.errorMsg = 'Invalid request, too many words; make sure the URL is URI-encoded';
-            return res;
-        }
-        /** @type {YGenericHub} **/
-        let hub = this.imm_getHub(baseUrl);
-        /** @type {string} **/
-        let method = words[0];
-        /** @type {string} **/
-        let devUrl = words[1];
-        if(devUrl.substr(0,1) == '/') devUrl = devUrl.substr(1);
-        // keep only root URL in baseUrl, move the rest to devUrl
-        let pos = baseUrl.indexOf('//');
-        pos = baseUrl.indexOf('/',pos+3);
-        devUrl = baseUrl.slice(pos)+devUrl;
-        baseUrl = baseUrl.slice(0,pos);
-        if (!obj_body) obj_body = '';
+            /** @type {YGenericHub} **/
+            let hub = _this157.imm_getHub(baseUrl);
+            /** @type {string} **/
+            let method = words[0];
+            /** @type {string} **/
+            let devUrl = words[1];
+            if (devUrl.substr(0, 1) == '/') devUrl = devUrl.substr(1);
+            // keep only root URL in baseUrl, move the rest to devUrl
+            let pos = baseUrl.indexOf('//');
+            pos = baseUrl.indexOf('/', pos + 3);
+            devUrl = baseUrl.slice(pos) + devUrl;
+            baseUrl = baseUrl.slice(0, pos);
+            if (!obj_body) obj_body = '';
 
-        // queue the call to user callback function in the pending queries promise chain
-        let delayedCode = (() => { return hub.request(method, baseUrl, devUrl, obj_body); });
-        if(lockdev) {
-            let newPromise = lockdev._pendingQueries.then(delayedCode, delayedCode);
-            lockdev._pendingQueries = newPromise;
-            res = await newPromise;
-        } else {
-            res = await delayedCode();
-        }
-        return res;
+            // queue the call to user callback function in the pending queries promise chain
+            let delayedCode = function () {
+                return hub.request(method, baseUrl, devUrl, obj_body);
+            };
+            if (lockdev) {
+                let newPromise = lockdev._pendingQueries.then(delayedCode, delayedCode);
+                lockdev._pendingQueries = newPromise;
+                res = yield newPromise;
+            } else {
+                res = yield delayedCode();
+            }
+            return res;
+        })();
     }
 
     /** Locate the device to access a specified function, without causing any I/O
@@ -8186,13 +8523,12 @@ export class YAPIContext
      * @param str_func {string}
      * @returns {YFuncRequest}
      */
-    imm_funcDev_internal(str_className, str_func)
-    {
+    imm_funcDev_internal(str_className, str_func) {
         var res = new YFuncRequest(null);
         var resolve = this.imm_resolveFunction(str_className, str_func);
-        if(resolve.errorType != YAPI_SUCCESS) {
+        if (resolve.errorType != YAPI_SUCCESS) {
             res.errorType = resolve.errorType;
-            res.errorMsg  = resolve.errorMsg;
+            res.errorMsg = resolve.errorMsg;
         } else {
             str_func = resolve.result;
             let dotpos = str_func.indexOf('.');
@@ -8203,7 +8539,7 @@ export class YAPIContext
                 res.errorType = YAPI_DEVICE_NOT_FOUND;
                 res.errorMsg = 'Device [' + devid + '] not found';
             } else {
-                res.obj_result = { device:dev, deviceid:devid, functionid:funcid, hwid:str_func };
+                res.obj_result = { device: dev, deviceid: devid, functionid: funcid, hwid: str_func };
             }
         }
         return res;
@@ -8215,23 +8551,26 @@ export class YAPIContext
      * @param str_func {string}
      * @returns {YFuncRequest}
      */
-    async _funcDev(str_className, str_func)
-    {
-        var resolve = this.imm_funcDev_internal(str_className, str_func);
-        if(resolve.errorType == YAPI_SUCCESS) {
-            return resolve;
-        } else if(resolve.errorType == YAPI_DEVICE_NOT_FOUND && this._hubs.length == 0) {
-            // when USB is supported, check if no USB device is connected before outputing this message
-            resolve.errorMsg = 'Impossible to contact any device because no hub has been registered';
-            return resolve;
-        }
-        var updRes = await this._updateDeviceList_internal(true, false);
-        if(updRes.errorType != YAPI_SUCCESS) {
-            resolve.errorType = updRes.errorType;
-            resolve.errorMsg = updRes.errorMsg;
-            return resolve;
-        }
-        return this.imm_funcDev_internal(str_className, str_func);
+    _funcDev(str_className, str_func) {
+        var _this158 = this;
+
+        return _asyncToGenerator(function* () {
+            var resolve = _this158.imm_funcDev_internal(str_className, str_func);
+            if (resolve.errorType == YAPI_SUCCESS) {
+                return resolve;
+            } else if (resolve.errorType == YAPI_DEVICE_NOT_FOUND && _this158._hubs.length == 0) {
+                // when USB is supported, check if no USB device is connected before outputing this message
+                resolve.errorMsg = 'Impossible to contact any device because no hub has been registered';
+                return resolve;
+            }
+            var updRes = yield _this158._updateDeviceList_internal(true, false);
+            if (updRes.errorType != YAPI_SUCCESS) {
+                resolve.errorType = updRes.errorType;
+                resolve.errorMsg = updRes.errorMsg;
+                return resolve;
+            }
+            return _this158.imm_funcDev_internal(str_className, str_func);
+        })();
     }
 
     /** Load and parse the REST API for a function given by class name and identifier, possibly applying changes
@@ -8243,59 +8582,63 @@ export class YAPIContext
      * @param int_msValidity {number}
      * @returns {YFuncRequest}
      */
-    async funcRequest(str_className, str_func, str_extra, int_msValidity = null)
-    {
-        /** @type {YFuncRequest} **/
-        let funcreq = await this._funcDev(str_className, str_func);
-        if(funcreq.errorType != YAPI_SUCCESS) {
-            return funcreq;
-        }
-        let devreq = funcreq.obj_result;
-        let loadval = null;
-        let yreq;
-        if(str_extra == '') {
-            // use a cached API string (reload if needed)
-            /** @type {YHTTPRequest} **/
-            yreq = await devreq.device.requestAPI(int_msValidity);
-            if(yreq != null) {
+    funcRequest(str_className, str_func, str_extra) {
+        var _this159 = this;
+
+        let int_msValidity = arguments.length <= 3 || arguments[3] === undefined ? null : arguments[3];
+        return _asyncToGenerator(function* () {
+            /** @type {YFuncRequest} **/
+            let funcreq = yield _this159._funcDev(str_className, str_func);
+            if (funcreq.errorType != YAPI_SUCCESS) {
+                return funcreq;
+            }
+            let devreq = funcreq.obj_result;
+            let loadval = null;
+            let yreq;
+            if (str_extra == '') {
+                // use a cached API string (reload if needed)
+                /** @type {YHTTPRequest} **/
+                yreq = yield devreq.device.requestAPI(int_msValidity);
+                if (yreq != null) {
+                    if (yreq.errorType != YAPI_SUCCESS) return yreq;
+                    try {
+                        let jsonData = JSON.parse(_this159.imm_bin2str(yreq.bin_result));
+                        loadval = jsonData[devreq.functionid];
+                    } catch (err) {
+                        //console.log('RequestAPI parse error: ', err);
+                    }
+                }
+            } else {
+                    devreq.device.imm_dropCache();
+                }
+            if (!loadval) {
+                // request specified function only to minimize traffic
+                if (str_extra == '') str_extra = '.json';
+                let httpreq = 'GET /api/' + devreq.functionid + str_extra;
+                /** @type {YHTTPRequest} **/
+                yreq = yield _this159.devRequest(devreq.deviceid, httpreq);
                 if (yreq.errorType != YAPI_SUCCESS) return yreq;
+                if (yreq.bin_result.length == 0 && httpreq.indexOf('?') >= 0) {
+                    funcreq.obj_result = yreq.bin_result;
+                    return funcreq;
+                }
                 try {
-                    let jsonData = JSON.parse(this.imm_bin2str(yreq.bin_result));
-                    loadval = jsonData[devreq.functionid];
+                    loadval = JSON.parse(_this159.imm_bin2str(yreq.bin_result));
                 } catch (err) {
                     //console.log('RequestAPI parse error: ', err);
                 }
             }
-        } else {
-            devreq.device.imm_dropCache();
-        }
-        if(!loadval) {
-            // request specified function only to minimize traffic
-            if(str_extra == '') str_extra = '.json';
-            let httpreq = 'GET /api/'+devreq.functionid+str_extra;
-            /** @type {YHTTPRequest} **/
-            yreq = await this.devRequest(devreq.deviceid, httpreq);
-            if(yreq.errorType != YAPI_SUCCESS) return yreq;
-            if(yreq.bin_result.length == 0 && httpreq.indexOf('?') >= 0) {
-                funcreq.obj_result = yreq.bin_result;
-                return funcreq;
+            if (!loadval) {
+                funcreq.errorType = YAPI_IO_ERROR;
+                funcreq.errorMsg = 'Request failed, could not parse API value for function ' + devreq.hwid;
+            } else {
+                for (let key in devreq) {
+                    loadval[key] = devreq[key];
+                }
+                funcreq.obj_result = loadval;
             }
-            try {
-                loadval = JSON.parse(this.imm_bin2str(yreq.bin_result));
-            } catch (err) {
-                //console.log('RequestAPI parse error: ', err);
-            }
-        }
-        if(!loadval) {
-            funcreq.errorType = YAPI_IO_ERROR;
-            funcreq.errorMsg = 'Request failed, could not parse API value for function '+devreq.hwid;
-        } else {
-            for(let key in devreq) {
-                loadval[key] = devreq[key];
-            }
-            funcreq.obj_result = loadval;
-        }
-        return funcreq;
+            return funcreq;
+        })();
     }
 
     /** Perform an HTTP request on a device and return the result string
@@ -8304,14 +8647,17 @@ export class YAPIContext
      * @param str_request {string}
      * @returns {Uint8Array}
      */
-    async HTTPRequest(str_device, str_request)
-    {
-        /** @type {YHTTPRequest} **/
-        let yreq = await this.devRequest(str_device, str_request);
-        if(yreq.errorType != YAPI_SUCCESS) {
-            return this._throw(yreq.errorType, yreq.errorMsg, null);
-        }
-        return yreq.bin_result;
+    HTTPRequest(str_device, str_request) {
+        var _this160 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {YHTTPRequest} **/
+            let yreq = yield _this160.devRequest(str_device, str_request);
+            if (yreq.errorType != YAPI_SUCCESS) {
+                return _this160._throw(yreq.errorType, yreq.errorMsg, null);
+            }
+            return yreq.bin_result;
+        })();
     }
 
     /**
@@ -8330,9 +8676,11 @@ export class YAPIContext
      *
      * @return {string} a character string describing the library version.
      */
-    async GetAPIVersion()
-    {
-        return /* version number patched automatically */'1.10.22620';
+    GetAPIVersion() {
+        return _asyncToGenerator(function* () {
+            return (/* version number patched automatically */'1.10.22622'
+            );
+        })();
     }
 
     /**
@@ -8355,10 +8703,11 @@ export class YAPIContext
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async InitAPI(mode,errmsg)
-    {
-        // nothing to be done for now
-        return YAPI_SUCCESS;
+    InitAPI(mode, errmsg) {
+        return _asyncToGenerator(function* () {
+            // nothing to be done for now
+            return YAPI_SUCCESS;
+        })();
     }
 
     /**
@@ -8369,15 +8718,18 @@ export class YAPIContext
      * You should not call any other library function after calling
      * yFreeAPI(), or your program will crash.
      */
-    async FreeAPI()
-    {
-        // when invoked in callback mode, close connection
-        for(let i = 0; i < this._hubs.length; i++) {
-            this._hubs[i].disconnect();
-        }
+    FreeAPI() {
+        var _this161 = this;
 
-        // clear all caches
-        this.imm_init();
+        return _asyncToGenerator(function* () {
+            // when invoked in callback mode, close connection
+            for (let i = 0; i < _this161._hubs.length; i++) {
+                _this161._hubs[i].disconnect();
+            }
+
+            // clear all caches
+            _this161.imm_init();
+        })();
     }
 
     /**
@@ -8386,9 +8738,12 @@ export class YAPIContext
      * error value which depends on its type and which is documented in
      * this reference manual.
      */
-    async DisableExceptions()
-    {
-        this.exceptionsDisabled = true;
+    DisableExceptions() {
+        var _this162 = this;
+
+        return _asyncToGenerator(function* () {
+            _this162.exceptionsDisabled = true;
+        })();
     }
 
     /**
@@ -8398,9 +8753,12 @@ export class YAPIContext
      * it  either fires the debugger or aborts (i.e. crash) the program.
      * On failure, throws an exception or returns a negative error code.
      */
-    async EnableExceptions()
-    {
-        this.exceptionsDisabled = false;
+    EnableExceptions() {
+        var _this163 = this;
+
+        return _asyncToGenerator(function* () {
+            _this163.exceptionsDisabled = false;
+        })();
     }
 
     /**
@@ -8410,32 +8768,33 @@ export class YAPIContext
      * to find out and since the code differs depending on the environment,
      * we provide it here for convenience.
      */
-    async LogUnhandledPromiseRejections()
-    {
-        if(this._isNodeJS) {
-            process.on('unhandledRejection', function(reason, p) {
-                console.log("Unhandled Rejection at: Promise ", p, " reason: ", reason);
-            });
-        } else {
-            window.addEventListener('onunhandledrejection', function(event) {
-                console.error('Unhandled rejection (promise: ', event.promise, ', reason: ', event.reason, ').');
-            });
-        }
+    LogUnhandledPromiseRejections() {
+        var _this164 = this;
 
+        return _asyncToGenerator(function* () {
+            if (_this164._isNodeJS) {
+                process.on('unhandledRejection', function (reason, p) {
+                    console.log("Unhandled Rejection at: Promise ", p, " reason: ", reason);
+                });
+            } else {
+                window.addEventListener('onunhandledrejection', function (event) {
+                    console.error('Unhandled rejection (promise: ', event.promise, ', reason: ', event.reason, ').');
+                });
+            }
+        })();
     }
 
     // Parse a hub URL
-    imm_parseRegisteredUrl(str_url)
-    {
+    imm_parseRegisteredUrl(str_url) {
         var user = '';
         var pass = '';
         var port = '4444';
         var host;
         var url = 'http://';
 
-        if(str_url.slice(0,7) == 'http://') {
+        if (str_url.slice(0, 7) == 'http://') {
             str_url = str_url.slice(7);
-        } else if(str_url.slice(0,5) == 'ws://') {
+        } else if (str_url.slice(0, 5) == 'ws://') {
             url = 'ws://';
             str_url = str_url.slice(5);
         }
@@ -8451,21 +8810,21 @@ export class YAPIContext
                 user = auth.slice(0, passpos);
                 pass = auth.slice(passpos + 1);
                 url += user + ':' + pass + '@';
-            }else{
+            } else {
                 user = auth;
                 url += user + '@';
             }
             str_url = str_url.slice(authpos + 1);
         }
         pos = str_url.indexOf(':');
-        if(pos < 0) {
+        if (pos < 0) {
             host = str_url;
         } else {
-            host = str_url.slice(0,pos);
+            host = str_url.slice(0, pos);
             port = str_url.slice(pos + 1);
         }
         if (host == 'callback') {
-            if(url.slice(0,3) == 'ws:') {
+            if (url.slice(0, 3) == 'ws:') {
                 url = 'ws://callback:4444/';
             } else {
                 url = 'http://callback:4444/';
@@ -8473,22 +8832,20 @@ export class YAPIContext
         } else {
             url += host + ':' + port + '/';
         }
-        var res = {'user':user, 'pass':pass, 'host':host, 'port':port, 'url':url};
+        var res = { 'user': user, 'pass': pass, 'host': host, 'port': port, 'url': url };
         return res;
-
     }
 
-    imm_registerHub_internal(urlInfo)
-    {
+    imm_registerHub_internal(urlInfo) {
         let newhub;
-        if(urlInfo.url.slice(0,3) == 'ws:') {
-            if(this._isNodeJS) {
+        if (urlInfo.url.slice(0, 3) == 'ws:') {
+            if (this._isNodeJS) {
                 newhub = new YWebSocketNodeHub(this, urlInfo);
             } else {
                 newhub = new YWebSocketHub(this, urlInfo);
             }
         } else {
-            if(this._isNodeJS) {
+            if (this._isNodeJS) {
                 newhub = new YHttpNodeHub(this, urlInfo);
             } else {
                 newhub = new YHttpHub(this, urlInfo);
@@ -8541,30 +8898,33 @@ export class YAPIContext
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async RegisterHub(url, errmsg)
-    {
-        let urlInfo = this.imm_parseRegisteredUrl(url);
-        let newhub = this.imm_getHub(urlInfo.url);
-        if(newhub) {
-            return YAPI_SUCCESS;
-        }
-        newhub = this.imm_registerHub_internal(urlInfo);
-        let retcode = await newhub.testHub(errmsg);
-        if(retcode != YAPI_SUCCESS) {
-            return this._throw(retcode, errmsg.msg, retcode);
-        }
-        await this._addHub(newhub);
+    RegisterHub(url, errmsg) {
+        var _this165 = this;
 
-        // Update known device list
-        let yreq = await this._updateDeviceList_internal(true, false);
-        if(yreq.errorType != YAPI_SUCCESS) {
-            if(errmsg != undefined) {
-                errmsg.msg = yreq.errorMsg;
-                this._serverResponse.write('\n!YoctoAPI:'+errmsg.msg+'\n');
+        return _asyncToGenerator(function* () {
+            let urlInfo = _this165.imm_parseRegisteredUrl(url);
+            let newhub = _this165.imm_getHub(urlInfo.url);
+            if (newhub) {
+                return YAPI_SUCCESS;
             }
-            return this._throw(yreq.errorType, yreq.errorMsg, yreq.errorType);
-        }
-        return YAPI_SUCCESS;
+            newhub = _this165.imm_registerHub_internal(urlInfo);
+            let retcode = yield newhub.testHub(errmsg);
+            if (retcode != YAPI_SUCCESS) {
+                return _this165._throw(retcode, errmsg.msg, retcode);
+            }
+            yield _this165._addHub(newhub);
+
+            // Update known device list
+            let yreq = yield _this165._updateDeviceList_internal(true, false);
+            if (yreq.errorType != YAPI_SUCCESS) {
+                if (errmsg != undefined) {
+                    errmsg.msg = yreq.errorMsg;
+                    _this165._serverResponse.write('\n!YoctoAPI:' + errmsg.msg + '\n');
+                }
+                return _this165._throw(yreq.errorType, yreq.errorMsg, yreq.errorType);
+            }
+            return YAPI_SUCCESS;
+        })();
     }
 
     /**
@@ -8582,20 +8942,23 @@ export class YAPIContext
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async PreregisterHub(url, errmsg)
-    {
-        let urlInfo = this.imm_parseRegisteredUrl(url);
-        let newhub = this.imm_getHub(urlInfo.url);
-        if(newhub) {
+    PreregisterHub(url, errmsg) {
+        var _this166 = this;
+
+        return _asyncToGenerator(function* () {
+            let urlInfo = _this166.imm_parseRegisteredUrl(url);
+            let newhub = _this166.imm_getHub(urlInfo.url);
+            if (newhub) {
+                return YAPI_SUCCESS;
+            }
+            newhub = _this166.imm_registerHub_internal(urlInfo);
+            _this166._addHub(newhub);
+
+            // trigger testHub, but don't wait for the result
+            newhub.testHub(errmsg);
+
             return YAPI_SUCCESS;
-        }
-        newhub = this.imm_registerHub_internal(urlInfo);
-        this._addHub(newhub);
-
-        // trigger testHub, but don't wait for the result
-        newhub.testHub(errmsg);
-
-        return YAPI_SUCCESS;
+        })();
     }
 
     /**
@@ -8610,32 +8973,35 @@ export class YAPIContext
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async RegisterHubHttpCallback(incomingMessage, serverResponse, errmsg)
-    {
-        let urlInfo = this.imm_parseRegisteredUrl('http://callback:4444');
-        let newhub = this.imm_getHub(urlInfo.url);
-        if(newhub) {
-            return YAPI_SUCCESS;
-        }
-        newhub = new YHttpCallbackHub(this, urlInfo, incomingMessage, serverResponse);
-        await newhub.httpCallbackPromise;
-        let retcode = await newhub.testHub(errmsg);
-        if(retcode != YAPI_SUCCESS) {
-            this._serverResponse.write('\n!YoctoAPI:'+errmsg.msg+'\n');
-            return this._throw(retcode, errmsg.msg, retcode);
-        }
-        await this._addHub(newhub);
+    RegisterHubHttpCallback(incomingMessage, serverResponse, errmsg) {
+        var _this167 = this;
 
-        // Update known device list
-        let yreq = await this._updateDeviceList_internal(true, false);
-        if(yreq.errorType != YAPI_SUCCESS) {
-            if(errmsg != undefined) {
-                errmsg.msg = yreq.errorMsg;
-                this._serverResponse.write('\n!YoctoAPI:'+errmsg.msg+'\n');
+        return _asyncToGenerator(function* () {
+            let urlInfo = _this167.imm_parseRegisteredUrl('http://callback:4444');
+            let newhub = _this167.imm_getHub(urlInfo.url);
+            if (newhub) {
+                return YAPI_SUCCESS;
             }
-            return this._throw(yreq.errorType, yreq.errorMsg, yreq.errorType);
-        }
-        return YAPI_SUCCESS;
+            newhub = new YHttpCallbackHub(_this167, urlInfo, incomingMessage, serverResponse);
+            yield newhub.httpCallbackPromise;
+            let retcode = yield newhub.testHub(errmsg);
+            if (retcode != YAPI_SUCCESS) {
+                _this167._serverResponse.write('\n!YoctoAPI:' + errmsg.msg + '\n');
+                return _this167._throw(retcode, errmsg.msg, retcode);
+            }
+            yield _this167._addHub(newhub);
+
+            // Update known device list
+            let yreq = yield _this167._updateDeviceList_internal(true, false);
+            if (yreq.errorType != YAPI_SUCCESS) {
+                if (errmsg != undefined) {
+                    errmsg.msg = yreq.errorMsg;
+                    _this167._serverResponse.write('\n!YoctoAPI:' + errmsg.msg + '\n');
+                }
+                return _this167._throw(yreq.errorType, yreq.errorMsg, yreq.errorType);
+            }
+            return YAPI_SUCCESS;
+        })();
     }
 
     /**
@@ -8649,29 +9015,32 @@ export class YAPIContext
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async RegisterHubWebSocketCallback(ws, errmsg)
-    {
-        let urlInfo = this.imm_parseRegisteredUrl('http://callback:4444');
-        let newhub = this.imm_getHub(urlInfo.url);
-        if(newhub) {
-            return YAPI_SUCCESS;
-        }
-        newhub = new YWebSocketCallbackHub(this, urlInfo, ws);
-        let retcode = await newhub.testHub(errmsg);
-        if(retcode != YAPI_SUCCESS) {
-            return this._throw(retcode, errmsg.msg, retcode);
-        }
-        await this._addHub(newhub);
+    RegisterHubWebSocketCallback(ws, errmsg) {
+        var _this168 = this;
 
-        // Update known device list
-        let yreq = await this._updateDeviceList_internal(true, false);
-        if(yreq.errorType != YAPI_SUCCESS) {
-            if(errmsg != undefined) {
-                errmsg.msg = yreq.errorMsg;
+        return _asyncToGenerator(function* () {
+            let urlInfo = _this168.imm_parseRegisteredUrl('http://callback:4444');
+            let newhub = _this168.imm_getHub(urlInfo.url);
+            if (newhub) {
+                return YAPI_SUCCESS;
             }
-            return this._throw(yreq.errorType, yreq.errorMsg, yreq.errorType);
-        }
-        return YAPI_SUCCESS;
+            newhub = new YWebSocketCallbackHub(_this168, urlInfo, ws);
+            let retcode = yield newhub.testHub(errmsg);
+            if (retcode != YAPI_SUCCESS) {
+                return _this168._throw(retcode, errmsg.msg, retcode);
+            }
+            yield _this168._addHub(newhub);
+
+            // Update known device list
+            let yreq = yield _this168._updateDeviceList_internal(true, false);
+            if (yreq.errorType != YAPI_SUCCESS) {
+                if (errmsg != undefined) {
+                    errmsg.msg = yreq.errorMsg;
+                }
+                return _this168._throw(yreq.errorType, yreq.errorMsg, yreq.errorType);
+            }
+            return YAPI_SUCCESS;
+        })();
     }
 
     /**
@@ -8681,27 +9050,30 @@ export class YAPIContext
      * @param url {string} : a string containing either "usb" or the
      *         root URL of the hub to monitor
      */
-    async UnregisterHub(url)
-    {
-        var urlInfo = this.imm_parseRegisteredUrl(url);
-        var i,j;
+    UnregisterHub(url) {
+        var _this169 = this;
 
-        for(i = 0; i < this._hubs.length; i++) {
-            if(this._hubs[i].urlInfo.url == urlInfo.url)  {
-                this._hubs[i].disconnect();
-            	for (j = 0; j < this._hubs[i].serialByYdx.length ; j++) {
-            		var serial = this._hubs[i].serialByYdx[j];
-	            	this.imm_forgetDevice(this._devs[serial]);
-            	}
-                var before = this._hubs.slice(0,i);
-                if(i+1 < this._hubs.length) {
-                    var after = this._hubs.slice(i+1);
-                    this._hubs = before.concat(after);
+        return _asyncToGenerator(function* () {
+            var urlInfo = _this169.imm_parseRegisteredUrl(url);
+            var i, j;
+
+            for (i = 0; i < _this169._hubs.length; i++) {
+                if (_this169._hubs[i].urlInfo.url == urlInfo.url) {
+                    _this169._hubs[i].disconnect();
+                    for (j = 0; j < _this169._hubs[i].serialByYdx.length; j++) {
+                        var serial = _this169._hubs[i].serialByYdx[j];
+                        _this169.imm_forgetDevice(_this169._devs[serial]);
+                    }
+                    var before = _this169._hubs.slice(0, i);
+                    if (i + 1 < _this169._hubs.length) {
+                        var after = _this169._hubs.slice(i + 1);
+                        _this169._hubs = before.concat(after);
+                    }
+                    _this169._hubs = before;
+                    return;
                 }
-                this._hubs = before;
-                return;
             }
-        }
+        })();
     }
 
     /**
@@ -8719,14 +9091,17 @@ export class YAPIContext
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async UpdateDeviceList(errmsg)
-    {
-        var yreq = await this._updateDeviceList_internal(false, true);
-        if(yreq.errorType != YAPI_SUCCESS) {
-            if(errmsg!=undefined) errmsg.msg = yreq.errorMsg;
-            return this._throw(yreq.errorType, yreq.errorMsg, yreq.errorType);
-        }
-        return YAPI_SUCCESS;
+    UpdateDeviceList(errmsg) {
+        var _this170 = this;
+
+        return _asyncToGenerator(function* () {
+            var yreq = yield _this170._updateDeviceList_internal(false, true);
+            if (yreq.errorType != YAPI_SUCCESS) {
+                if (errmsg != undefined) errmsg.msg = yreq.errorMsg;
+                return _this170._throw(yreq.errorType, yreq.errorMsg, yreq.errorType);
+            }
+            return YAPI_SUCCESS;
+        })();
     }
 
     /**
@@ -8746,26 +9121,29 @@ export class YAPIContext
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async HandleEvents(errmsg)
-    {
-        var nEvents = this._data_events.length;
-        for(var i = 0; i < nEvents; i++) {
-            var evt = this._data_events[i];
-            if(typeof evt[1] == 'string') {
-                // event object is an advertised value
-                await evt[0]._invokeValueCallback(evt[1]);
-            } else {
-                // event object is an array of bytes (encoded timed report)
-                var dev = this.imm_getDevice(evt[0]._serial);
-                if(dev) {
-                    var report = await evt[0]._decodeTimedReport(evt[1], evt[2]);
-                    await evt[0]._invokeTimedReportCallback(report);
+    HandleEvents(errmsg) {
+        var _this171 = this;
+
+        return _asyncToGenerator(function* () {
+            var nEvents = _this171._data_events.length;
+            for (var i = 0; i < nEvents; i++) {
+                var evt = _this171._data_events[i];
+                if (typeof evt[1] == 'string') {
+                    // event object is an advertised value
+                    yield evt[0]._invokeValueCallback(evt[1]);
+                } else {
+                    // event object is an array of bytes (encoded timed report)
+                    var dev = _this171.imm_getDevice(evt[0]._serial);
+                    if (dev) {
+                        var report = yield evt[0]._decodeTimedReport(evt[1], evt[2]);
+                        yield evt[0]._invokeTimedReportCallback(report);
+                    }
                 }
             }
-        }
-        this._data_events = this._data_events.slice(nEvents);
+            _this171._data_events = _this171._data_events.slice(nEvents);
 
-        return YAPI_SUCCESS;
+            return YAPI_SUCCESS;
+        })();
     }
 
     /**
@@ -8787,22 +9165,24 @@ export class YAPIContext
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async Sleep(ms_duration, errmsg)
-    {
-        var end = this.GetTickCount() + ms_duration;
-        await this.HandleEvents(errmsg);
-        while(this.GetTickCount() < end) {
-            await this._microSleep_internal();
-            await this.HandleEvents(errmsg);
-        }
-        return YAPI_SUCCESS;
+    Sleep(ms_duration, errmsg) {
+        var _this172 = this;
+
+        return _asyncToGenerator(function* () {
+            var end = _this172.GetTickCount() + ms_duration;
+            yield _this172.HandleEvents(errmsg);
+            while (_this172.GetTickCount() < end) {
+                yield _this172._microSleep_internal();
+                yield _this172.HandleEvents(errmsg);
+            }
+            return YAPI_SUCCESS;
+        })();
     }
 
     // internal async function to wait for a very short period
-    _microSleep_internal()
-    {
-        return new Promise(function(resolve,reject) {
-            setTimeout(resolve,3) ;
+    _microSleep_internal() {
+        return new Promise(function (resolve, reject) {
+            setTimeout(resolve, 3);
         });
     }
 
@@ -8813,8 +9193,7 @@ export class YAPIContext
      *
      * @return {number} a long integer corresponding to the millisecond counter.
      */
-    GetTickCount()
-    {
+    GetTickCount() {
         return +new Date();
     }
 
@@ -8829,12 +9208,14 @@ export class YAPIContext
      *
      * @return {boolean} true if the name is valid, false otherwise.
      */
-    async CheckLogicalName(name)
-    {
-        if(name == '') return true;
-        if(!name) return false;
-        if(name.length > 19) return false;
-        return /^[A-Za-z0-9_\-]*$/.test(name);
+    CheckLogicalName(name) {
+        return _asyncToGenerator(function* () {
+            if (name == '') return true;
+            if (!name) return false;
+            if (name.length > 19) return false;
+            return (/^[A-Za-z0-9_\-]*$/.test(name)
+            );
+        })();
     }
 
     /**
@@ -8845,14 +9226,20 @@ export class YAPIContext
      * @param arrivalCallback {function} : a procedure taking a YModule parameter, or null
      *         to unregister a previously registered  callback.
      */
-    async RegisterDeviceArrivalCallback(arrivalCallback)
-    {
-        this._arrivalCallback = arrivalCallback;
+    RegisterDeviceArrivalCallback(arrivalCallback) {
+        var _this173 = this;
+
+        return _asyncToGenerator(function* () {
+            _this173._arrivalCallback = arrivalCallback;
+        })();
     }
 
-    async RegisterDeviceChangeCallback(changeCallback)
-    {
-        this._namechgCallback = changeCallback;
+    RegisterDeviceChangeCallback(changeCallback) {
+        var _this174 = this;
+
+        return _asyncToGenerator(function* () {
+            _this174._namechgCallback = changeCallback;
+        })();
     }
 
     /**
@@ -8863,41 +9250,46 @@ export class YAPIContext
      * @param removalCallback {function} : a procedure taking a YModule parameter, or null
      *         to unregister a previously registered  callback.
      */
-    async RegisterDeviceRemovalCallback(removalCallback)
-    {
-        this._removalCallback = removalCallback;
+    RegisterDeviceRemovalCallback(removalCallback) {
+        var _this175 = this;
+
+        return _asyncToGenerator(function* () {
+            _this175._removalCallback = removalCallback;
+        })();
     }
 
     // Register a new value calibration handler for a given calibration type
     //
-    async RegisterCalibrationHandler(calibrationType, calibrationHandler)
-    {
-        this._calibHandlers[calibrationType.toString()] = calibrationHandler;
+    RegisterCalibrationHandler(calibrationType, calibrationHandler) {
+        var _this176 = this;
+
+        return _asyncToGenerator(function* () {
+            _this176._calibHandlers[calibrationType.toString()] = calibrationHandler;
+        })();
     }
 
     // Standard value calibration handler (n-point linear error correction)
     //
-    LinearCalibrationHandler(float_rawValue, int_calibType, arr_calibParams,arr_calibRawValues, arr_calibRefValues)
-    {
+    LinearCalibrationHandler(float_rawValue, int_calibType, arr_calibParams, arr_calibRawValues, arr_calibRefValues) {
         // calibration types n=1..10 and 11..20 are meant for linear calibration using n points
         var npt;
-        var x   = arr_calibRawValues[0];
+        var x = arr_calibRawValues[0];
         var adj = arr_calibRefValues[0] - x;
-        var i   = 0;
+        var i = 0;
 
-        if(int_calibType < YOCTO_CALIB_TYPE_OFS) {
+        if (int_calibType < YOCTO_CALIB_TYPE_OFS) {
             npt = Math.min(int_calibType % 10, arr_calibRawValues.length, arr_calibRefValues.length);
         } else {
             npt = arr_calibRefValues.length;
         }
-        while(float_rawValue > arr_calibRawValues[i] && ++i < npt) {
-            var x2   = x;
+        while (float_rawValue > arr_calibRawValues[i] && ++i < npt) {
+            var x2 = x;
             var adj2 = adj;
 
-            x   = arr_calibRawValues[i];
+            x = arr_calibRawValues[i];
             adj = arr_calibRefValues[i] - x;
 
-            if(float_rawValue < x && x > x2) {
+            if (float_rawValue < x && x > x2) {
                 adj = adj2 + (adj - adj2) * (float_rawValue - x2) / (x - x2);
             }
         }
@@ -8906,18 +9298,18 @@ export class YAPIContext
 
     // WPA preshared-key computation
     //
-    imm_initshaw(str_s, int_pad, int_xinit, _shaw)
-    {
-        var i, j = -1, k = 0;
+    imm_initshaw(str_s, int_pad, int_xinit, _shaw) {
+        var i,
+            j = -1,
+            k = 0;
         var n = str_s.length;
 
-        for(i = 0; i < 64; i++) {
+        for (i = 0; i < 64; i++) {
             var c = 0;
             if (i < n) {
                 c = str_s.charCodeAt(i);
             } else if (int_pad != 0) {
-                if (i == n + 3) c = int_pad;
-                else if (i == n + 4) c = 0x80;
+                if (i == n + 3) c = int_pad;else if (i == n + 4) c = 0x80;
             }
             if (k == 0) {
                 j++;
@@ -8925,21 +9317,20 @@ export class YAPIContext
                 k = 32;
             }
             k -= 8;
-            _shaw[j] |= (c << k);
+            _shaw[j] |= c << k;
         }
-        if(int_pad != 0) {
+        if (int_pad != 0) {
             _shaw[15] = 8 * (64 + n + 4);
         }
-        if(int_xinit != 0) {
-            var xdw = (int_xinit << 16) | int_xinit;
+        if (int_xinit != 0) {
+            var xdw = int_xinit << 16 | int_xinit;
             for (j = 0; j < 16; j++) {
                 _shaw[j] ^= xdw;
             }
         }
     }
 
-    imm_itershaw(s, _shaw)
-    {
+    imm_itershaw(s, _shaw) {
         var a, b, c, d, e, t, k;
 
         a = s[0];
@@ -8949,45 +9340,45 @@ export class YAPIContext
         e = s[4];
         for (k = 16; k < 80; k++) {
             t = _shaw[k - 3] ^ _shaw[k - 8] ^ _shaw[k - 14] ^ _shaw[k - 16];
-            _shaw[k] = (t << 1) | (t >>> 31);
+            _shaw[k] = t << 1 | t >>> 31;
         }
         for (k = 0; k < 20; k++) {
-            t = ((a << 5) | (a >>> 27)) + e + _shaw[k] + 0x5A827999 + ((b & c) | ((~b) & d));
+            t = (a << 5 | a >>> 27) + e + _shaw[k] + 0x5A827999 + (b & c | ~b & d);
             e = d;
             d = c;
-            c = (b << 30) | (b >>> 2);
+            c = b << 30 | b >>> 2;
             b = a;
             a = t & 0xffffffff;
         }
         for (k = 20; k < 40; k++) {
-            t = ((a << 5) | (a >>> 27)) + e + _shaw[k] + 0x6ED9EBA1 + (b^c^d);
+            t = (a << 5 | a >>> 27) + e + _shaw[k] + 0x6ED9EBA1 + (b ^ c ^ d);
             e = d;
             d = c;
-            c = (b << 30) | (b >>> 2);
+            c = b << 30 | b >>> 2;
             b = a;
             a = t & 0xffffffff;
         }
         for (k = 40; k < 60; k++) {
-            t = ((a << 5) | (a >>> 27)) + e + _shaw[k] + 0x8F1BBCDC + ((b & c) | (b & d) | (c & d));
+            t = (a << 5 | a >>> 27) + e + _shaw[k] + 0x8F1BBCDC + (b & c | b & d | c & d);
             e = d;
             d = c;
-            c = (b << 30) | (b >>> 2);
+            c = b << 30 | b >>> 2;
             b = a;
             a = t & 0xffffffff;
         }
         for (k = 60; k < 80; k++) {
-            t = ((a << 5) | (a >>> 27)) + e + _shaw[k] + 0xCA62C1D6 + (b^c^d);
+            t = (a << 5 | a >>> 27) + e + _shaw[k] + 0xCA62C1D6 + (b ^ c ^ d);
             e = d;
             d = c;
-            c = (b << 30) | (b >>> 2);
+            c = b << 30 | b >>> 2;
             b = a;
             a = t & 0xffffffff;
         }
-        _shaw[0] = (s[0] + a) & 0xffffffff;
-        _shaw[1] = (s[1] + b) & 0xffffffff;
-        _shaw[2] = (s[2] + c) & 0xffffffff;
-        _shaw[3] = (s[3] + d) & 0xffffffff;
-        _shaw[4] = (s[4] + e) & 0xffffffff;
+        _shaw[0] = s[0] + a & 0xffffffff;
+        _shaw[1] = s[1] + b & 0xffffffff;
+        _shaw[2] = s[2] + c & 0xffffffff;
+        _shaw[3] = s[3] + d & 0xffffffff;
+        _shaw[4] = s[4] + e & 0xffffffff;
     }
 
     /**
@@ -8998,70 +9389,77 @@ export class YAPIContext
      *
      * @return {string} an hexadecimal string for the preshared key
      */
-    async ComputePSK(ssid, pass)
-    {
-        var sha1_init = [ 0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0 ];
-        var inner=[], outer=[], shau=[], res=[];
-        var iter, pos, k, _shaw;
+    ComputePSK(ssid, pass) {
+        var _this177 = this;
 
-        // precompute part of sha used in the loops
-        _shaw = new Array(80);
-        this.imm_initshaw(pass, 0, 0x3636, _shaw);
-        this.imm_itershaw(sha1_init, _shaw);
-        for(k = 0; k < 5; k++) inner[k] = _shaw[k];
-        _shaw = new Array(80);
-        this.imm_initshaw(pass, 0, 0x5c5c, _shaw);
-        this.imm_itershaw(sha1_init, _shaw);
-        for(k = 0; k < 5; k++) outer[k] = _shaw[k];
+        return _asyncToGenerator(function* () {
+            var sha1_init = [0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0];
+            var inner = [],
+                outer = [],
+                shau = [],
+                res = [];
+            var iter, pos, k, _shaw;
 
-        // prepare to compute first 20 bytes
-        pos = 0;
-        for(k = 0; k < 5; k++) shau[k] = 0;
-        _shaw = new Array(80);
-        this.imm_initshaw(ssid, 1, 0, _shaw);
+            // precompute part of sha used in the loops
+            _shaw = new Array(80);
+            _this177.imm_initshaw(pass, 0, 0x3636, _shaw);
+            _this177.imm_itershaw(sha1_init, _shaw);
+            for (k = 0; k < 5; k++) inner[k] = _shaw[k];
+            _shaw = new Array(80);
+            _this177.imm_initshaw(pass, 0, 0x5c5c, _shaw);
+            _this177.imm_itershaw(sha1_init, _shaw);
+            for (k = 0; k < 5; k++) outer[k] = _shaw[k];
 
-        for(iter = 0; iter < 8192;) {
-            this.imm_itershaw(inner, _shaw);
-            _shaw[5] = 0x80000000;
-            for (k = 6; k < 15; k++) {
-                _shaw[k] = 0;
-            }
-            _shaw[15] = 8 * (64 + 20);
-            this.imm_itershaw(outer, _shaw);
-            shau[0] ^= _shaw[0];
-            shau[1] ^= _shaw[1];
-            shau[2] ^= _shaw[2];
-            shau[3] ^= _shaw[3];
-            shau[4] ^= _shaw[4];
-            iter++;
-            // after 4096 loops, move to 2nd half of sha1
-            if((iter & 4095) == 0) {
-                for(k = 0; k < 5 && pos < 32; k++) {
-                    res[pos++] = (shau[k] >>> 24) & 0xff;
-                    res[pos++] = (shau[k] >>> 16) & 0xff;
-                    res[pos++] = (shau[k] >>> 8) & 0xff;
-                    res[pos++] = shau[k] & 0xff;
+            // prepare to compute first 20 bytes
+            pos = 0;
+            for (k = 0; k < 5; k++) shau[k] = 0;
+            _shaw = new Array(80);
+            _this177.imm_initshaw(ssid, 1, 0, _shaw);
+
+            for (iter = 0; iter < 8192;) {
+                _this177.imm_itershaw(inner, _shaw);
+                _shaw[5] = 0x80000000;
+                for (k = 6; k < 15; k++) {
+                    _shaw[k] = 0;
                 }
-                if(iter == 4096) {
-                    for(k = 0; k < 5; k++) shau[k] = 0;
-                    _shaw = new Array(80);
-                    this.imm_initshaw(ssid, 2, 0, _shaw);
+                _shaw[15] = 8 * (64 + 20);
+                _this177.imm_itershaw(outer, _shaw);
+                shau[0] ^= _shaw[0];
+                shau[1] ^= _shaw[1];
+                shau[2] ^= _shaw[2];
+                shau[3] ^= _shaw[3];
+                shau[4] ^= _shaw[4];
+                iter++;
+                // after 4096 loops, move to 2nd half of sha1
+                if ((iter & 4095) == 0) {
+                    for (k = 0; k < 5 && pos < 32; k++) {
+                        res[pos++] = shau[k] >>> 24 & 0xff;
+                        res[pos++] = shau[k] >>> 16 & 0xff;
+                        res[pos++] = shau[k] >>> 8 & 0xff;
+                        res[pos++] = shau[k] & 0xff;
+                    }
+                    if (iter == 4096) {
+                        for (k = 0; k < 5; k++) shau[k] = 0;
+                        _shaw = new Array(80);
+                        _this177.imm_initshaw(ssid, 2, 0, _shaw);
+                    }
                 }
             }
-        }
-        var hex = '';
-        for(k = 0; k < 32; k++) {
-            hex += ('0'+Number(res[k]).toString(16)).slice(-2);
-        }
-        return hex;
+            var hex = '';
+            for (k = 0; k < 32; k++) {
+                hex += ('0' + Number(res[k]).toString(16)).slice(-2);
+            }
+            return hex;
+        })();
     }
 }
 
-export var YAPI = new YAPIContext();
+exports.YAPIContext = YAPIContext;
+var YAPI = exports.YAPI = new YAPIContext();
 
 // Standard value calibration handler (n-point linear error correction)
 //
-export var yLinearCalibrationHandler = YAPI.LinearCalibrationHandler;
+var yLinearCalibrationHandler = exports.yLinearCalibrationHandler = YAPI.LinearCalibrationHandler;
 
 /**
  * Returns the version identifier for the Yoctopuce library in use.
@@ -9079,8 +9477,7 @@ export var yLinearCalibrationHandler = YAPI.LinearCalibrationHandler;
  *
  * @return {string} a character string describing the library version.
  */
-export function yGetAPIVersion()
-{
+function yGetAPIVersion() {
     return YAPI.GetAPIVersion();
 }
 
@@ -9104,9 +9501,8 @@ export function yGetAPIVersion()
  *
  * On failure, throws an exception or returns a negative error code.
  */
-export function yInitAPI(mode,errmsg)
-{
-    return YAPI.InitAPI(mode,errmsg);
+function yInitAPI(mode, errmsg) {
+    return YAPI.InitAPI(mode, errmsg);
 }
 
 /**
@@ -9117,8 +9513,7 @@ export function yInitAPI(mode,errmsg)
  * You should not call any other library function after calling
  * yFreeAPI(), or your program will crash.
  */
-export function yFreeAPI()
-{
+function yFreeAPI() {
     YAPI.FreeAPI();
 }
 
@@ -9128,8 +9523,7 @@ export function yFreeAPI()
  * error value which depends on its type and which is documented in
  * this reference manual.
  */
-export function yDisableExceptions()
-{
+function yDisableExceptions() {
     YAPI.DisableExceptions();
 }
 
@@ -9140,8 +9534,7 @@ export function yDisableExceptions()
  * it  either fires the debugger or aborts (i.e. crash) the program.
  * On failure, throws an exception or returns a negative error code.
  */
-export function yEnableExceptions()
-{
+function yEnableExceptions() {
     YAPI.EnableExceptions();
 }
 
@@ -9189,9 +9582,8 @@ export function yEnableExceptions()
  *
  * On failure, throws an exception or returns a negative error code.
  */
-export function yRegisterHub(url,errmsg)
-{
-    return YAPI.RegisterHub(url,errmsg);
+function yRegisterHub(url, errmsg) {
+    return YAPI.RegisterHub(url, errmsg);
 }
 
 /**
@@ -9209,9 +9601,8 @@ export function yRegisterHub(url,errmsg)
  *
  * On failure, throws an exception or returns a negative error code.
  */
-export function yPreregisterHub(url,errmsg)
-{
-    return YAPI.PreregisterHub(url,errmsg);
+function yPreregisterHub(url, errmsg) {
+    return YAPI.PreregisterHub(url, errmsg);
 }
 
 /**
@@ -9221,8 +9612,7 @@ export function yPreregisterHub(url,errmsg)
  * @param url {string} : a string containing either "usb" or the
  *         root URL of the hub to monitor
  */
-export function yUnregisterHub(url)
-{
+function yUnregisterHub(url) {
     YAPI.UnregisterHub(url);
 }
 
@@ -9241,8 +9631,7 @@ export function yUnregisterHub(url)
  *
  * On failure, throws an exception or returns a negative error code.
  */
-export function yUpdateDeviceList(errmsg)
-{
+function yUpdateDeviceList(errmsg) {
     return YAPI.UpdateDeviceList(errmsg);
 }
 
@@ -9263,8 +9652,7 @@ export function yUpdateDeviceList(errmsg)
  *
  * On failure, throws an exception or returns a negative error code.
  */
-export function yHandleEvents(errmsg)
-{
+function yHandleEvents(errmsg) {
     return YAPI.HandleEvents(errmsg);
 }
 
@@ -9287,8 +9675,7 @@ export function yHandleEvents(errmsg)
  *
  * On failure, throws an exception or returns a negative error code.
  */
-export function ySleep(ms_duration, errmsg)
-{
+function ySleep(ms_duration, errmsg) {
     return YAPI.Sleep(ms_duration, errmsg);
 }
 
@@ -9299,8 +9686,7 @@ export function ySleep(ms_duration, errmsg)
  *
  * @return {number} a long integer corresponding to the millisecond counter.
  */
-export function yGetTickCount()
-{
+function yGetTickCount() {
     return YAPI.GetTickCount();
 }
 
@@ -9315,8 +9701,7 @@ export function yGetTickCount()
  *
  * @return {boolean} true if the name is valid, false otherwise.
  */
-export function yCheckLogicalName(name)
-{
+function yCheckLogicalName(name) {
     return YAPI.CheckLogicalName(name);
 }
 
@@ -9328,13 +9713,11 @@ export function yCheckLogicalName(name)
  * @param arrivalCallback {function} : a procedure taking a YModule parameter, or null
  *         to unregister a previously registered  callback.
  */
-export function yRegisterDeviceArrivalCallback(arrivalCallback)
-{
+function yRegisterDeviceArrivalCallback(arrivalCallback) {
     return YAPI.RegisterDeviceArrivalCallback(arrivalCallback);
 }
 
-export function yRegisterDeviceChangeCallback(changeCallback)
-{
+function yRegisterDeviceChangeCallback(changeCallback) {
     return YAPI.RegisterDeviceChangeCallback(changeCallback);
 }
 
@@ -9346,15 +9729,12 @@ export function yRegisterDeviceChangeCallback(changeCallback)
  * @param removalCallback {function} : a procedure taking a YModule parameter, or null
  *         to unregister a previously registered  callback.
  */
-export function yRegisterDeviceRemovalCallback(removalCallback)
-{
+function yRegisterDeviceRemovalCallback(removalCallback) {
     return YAPI.RegisterDeviceRemovalCallback(removalCallback);
 }
 
 // Register a new value calibration handler for a given calibration type
 //
-export function yRegisterCalibrationHandler(calibrationType, calibrationHandler)
-{
+function yRegisterCalibrationHandler(calibrationType, calibrationHandler) {
     return YAPI.RegisterCalibrationHandler(calibrationType, calibrationHandler);
 }
-

@@ -38,13 +38,23 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YCarbonDioxide = exports.Y_COMMAND_INVALID = exports.Y_ABCPERIOD_INVALID = undefined;
+exports.yFindCarbonDioxide = yFindCarbonDioxide;
+exports.yFirstCarbonDioxide = yFirstCarbonDioxide;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YCarbonDioxide return codes)
 //--- (end of YCarbonDioxide return codes)
 //--- (YCarbonDioxide definitions)
-export const Y_ABCPERIOD_INVALID             = YAPI.INVALID_INT;
-export const Y_COMMAND_INVALID               = YAPI.INVALID_STRING;
+const Y_ABCPERIOD_INVALID = exports.Y_ABCPERIOD_INVALID = _yocto_api.YAPI.INVALID_INT;
+const Y_COMMAND_INVALID = exports.Y_COMMAND_INVALID = _yocto_api.YAPI.INVALID_STRING;
 //--- (end of YCarbonDioxide definitions)
 
 //--- (YCarbonDioxide class start)
@@ -58,36 +68,33 @@ export const Y_COMMAND_INVALID               = YAPI.INVALID_STRING;
  */
 //--- (end of YCarbonDioxide class start)
 
-export class YCarbonDioxide extends YSensor
-{
-    constructor(obj_yapi, str_func)
-    {
+class YCarbonDioxide extends _yocto_api.YSensor {
+    constructor(obj_yapi, str_func) {
         //--- (YCarbonDioxide constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'CarbonDioxide';
+        this._className = 'CarbonDioxide';
         /** @member {number} **/
-        this._abcPeriod                  = Y_ABCPERIOD_INVALID;
+        this._abcPeriod = Y_ABCPERIOD_INVALID;
         /** @member {string} **/
-        this._command                    = Y_COMMAND_INVALID;
+        this._command = Y_COMMAND_INVALID;
         this.imm_setConst({
-            ABCPERIOD_INVALID            : YAPI.INVALID_INT,
-            COMMAND_INVALID              : YAPI.INVALID_STRING
+            ABCPERIOD_INVALID: _yocto_api.YAPI.INVALID_INT,
+            COMMAND_INVALID: _yocto_api.YAPI.INVALID_STRING
         });
         //--- (end of YCarbonDioxide constructor)
     }
 
     //--- (YCarbonDioxide implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'abcPeriod':
-            this._abcPeriod = parseInt(val);
-            return 1;
-        case 'command':
-            this._command = val;
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'abcPeriod':
+                this._abcPeriod = parseInt(val);
+                return 1;
+            case 'command':
+                this._command = val;
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -100,14 +107,17 @@ export class YCarbonDioxide extends YSensor
      *
      * On failure, throws an exception or returns YCarbonDioxide.ABCPERIOD_INVALID.
      */
-    async get_abcPeriod()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_ABCPERIOD_INVALID;
+    get_abcPeriod() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
+                    return Y_ABCPERIOD_INVALID;
+                }
             }
-        }
-        return this._abcPeriod;
+            return _this._abcPeriod;
+        })();
     }
 
     /**
@@ -123,30 +133,39 @@ export class YCarbonDioxide extends YSensor
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_abcPeriod(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('abcPeriod',rest_val);
+    set_abcPeriod(newval) {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this2._setAttr('abcPeriod', rest_val);
+        })();
     }
 
-    async get_command()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_COMMAND_INVALID;
+    get_command() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
+                    return Y_COMMAND_INVALID;
+                }
             }
-        }
-        return this._command;
+            return _this3._command;
+        })();
     }
 
-    async set_command(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('command',rest_val);
+    set_command(newval) {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this4._setAttr('command', rest_val);
+        })();
     }
 
     /**
@@ -172,14 +191,13 @@ export class YCarbonDioxide extends YSensor
      *
      * @return {YCarbonDioxide} a YCarbonDioxide object allowing you to drive the CO2 sensor.
      */
-    static FindCarbonDioxide(func)
-    {
+    static FindCarbonDioxide(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('CarbonDioxide', func);
+        obj = _yocto_api.YFunction._FindFromCache('CarbonDioxide', func);
         if (obj == null) {
-            obj = new YCarbonDioxide(YAPI, func);
-            YFunction._AddToCache('CarbonDioxide',  func, obj);
+            obj = new YCarbonDioxide(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('CarbonDioxide', func, obj);
         }
         return obj;
     }
@@ -208,14 +226,13 @@ export class YCarbonDioxide extends YSensor
      *
      * @return {YCarbonDioxide} a YCarbonDioxide object allowing you to drive the CO2 sensor.
      */
-    static FindCarbonDioxideInContext(yctx,func)
-    {
+    static FindCarbonDioxideInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'CarbonDioxide', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'CarbonDioxide', func);
         if (obj == null) {
             obj = new YCarbonDioxide(yctx, func);
-            YFunction._AddToCache('CarbonDioxide',  func, obj);
+            _yocto_api.YFunction._AddToCache('CarbonDioxide', func, obj);
         }
         return obj;
     }
@@ -234,9 +251,12 @@ export class YCarbonDioxide extends YSensor
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async triggetBaselineCalibration()
-    {
-        return await this.set_command('BC');
+    triggetBaselineCalibration() {
+        var _this5 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this5.set_command('BC');
+        })();
     }
 
     /**
@@ -255,9 +275,12 @@ export class YCarbonDioxide extends YSensor
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async triggetZeroCalibration()
-    {
-        return await this.set_command('ZC');
+    triggetZeroCalibration() {
+        var _this6 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this6.set_command('ZC');
+        })();
     }
 
     /**
@@ -267,14 +290,13 @@ export class YCarbonDioxide extends YSensor
      *         a CO2 sensor currently online, or a null pointer
      *         if there are no more CO2 sensors to enumerate.
      */
-    nextCarbonDioxide()
-    {
+    nextCarbonDioxide() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YCarbonDioxide.FindCarbonDioxideInContext(this._yapi, next_hwid);
     }
 
@@ -287,11 +309,10 @@ export class YCarbonDioxide extends YSensor
      *         the first CO2 sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstCarbonDioxide()
-    {
+    static FirstCarbonDioxide() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('CarbonDioxide');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('CarbonDioxide');
+        if (next_hwid == null) return null;
         return YCarbonDioxide.FindCarbonDioxide(next_hwid);
     }
 
@@ -306,18 +327,17 @@ export class YCarbonDioxide extends YSensor
      *         the first CO2 sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstCarbonDioxideInContext(yctx)
-    {
+    static FirstCarbonDioxideInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('CarbonDioxide');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YCarbonDioxide.FindCarbonDioxideInContext(yctx, next_hwid);
     }
 
     //--- (end of YCarbonDioxide implementation)
 }
 
-//--- (CarbonDioxide functions)
+exports.YCarbonDioxide = YCarbonDioxide; //--- (CarbonDioxide functions)
 
 /**
  * Retrieves a CO2 sensor for a given identifier.
@@ -342,8 +362,8 @@ export class YCarbonDioxide extends YSensor
  *
  * @return {YCarbonDioxide} a YCarbonDioxide object allowing you to drive the CO2 sensor.
  */
-export function yFindCarbonDioxide(func)
-{
+
+function yFindCarbonDioxide(func) {
     return YCarbonDioxide.FindCarbonDioxide(func);
 }
 
@@ -356,8 +376,7 @@ export function yFindCarbonDioxide(func)
  *         the first CO2 sensor currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstCarbonDioxide()
-{
+function yFirstCarbonDioxide() {
     return YCarbonDioxide.FirstCarbonDioxide();
 }
 

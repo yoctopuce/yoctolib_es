@@ -38,52 +38,62 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YNetwork = exports.Y_POECURRENT_INVALID = exports.Y_CALLBACKMAXDELAY_INVALID = exports.Y_CALLBACKMINDELAY_INVALID = exports.Y_CALLBACKCREDENTIALS_INVALID = exports.Y_CALLBACKURL_INVALID = exports.Y_WWWWATCHDOGDELAY_INVALID = exports.Y_DEFAULTPAGE_INVALID = exports.Y_HTTPPORT_INVALID = exports.Y_ADMINPASSWORD_INVALID = exports.Y_USERPASSWORD_INVALID = exports.Y_NTPSERVER_INVALID = exports.Y_SECONDARYDNS_INVALID = exports.Y_PRIMARYDNS_INVALID = exports.Y_IPCONFIG_INVALID = exports.Y_ROUTER_INVALID = exports.Y_SUBNETMASK_INVALID = exports.Y_IPADDRESS_INVALID = exports.Y_MACADDRESS_INVALID = exports.Y_CALLBACKENCODING_INVALID = exports.Y_CALLBACKENCODING_INFLUXDB = exports.Y_CALLBACKENCODING_AZURE = exports.Y_CALLBACKENCODING_EMONCMS = exports.Y_CALLBACKENCODING_JSON_NUM = exports.Y_CALLBACKENCODING_YOCTO_API = exports.Y_CALLBACKENCODING_CSV = exports.Y_CALLBACKENCODING_JSON_ARRAY = exports.Y_CALLBACKENCODING_JSON = exports.Y_CALLBACKENCODING_FORM = exports.Y_CALLBACKMETHOD_INVALID = exports.Y_CALLBACKMETHOD_PUT = exports.Y_CALLBACKMETHOD_GET = exports.Y_CALLBACKMETHOD_POST = exports.Y_DISCOVERABLE_INVALID = exports.Y_DISCOVERABLE_TRUE = exports.Y_DISCOVERABLE_FALSE = exports.Y_READINESS_INVALID = exports.Y_READINESS_WWW_OK = exports.Y_READINESS_LAN_OK = exports.Y_READINESS_LINKED = exports.Y_READINESS_EXISTS = exports.Y_READINESS_DOWN = undefined;
+exports.yFindNetwork = yFindNetwork;
+exports.yFirstNetwork = yFirstNetwork;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YNetwork return codes)
 //--- (end of YNetwork return codes)
 //--- (YNetwork definitions)
-export const Y_READINESS_DOWN                = 0;
-export const Y_READINESS_EXISTS              = 1;
-export const Y_READINESS_LINKED              = 2;
-export const Y_READINESS_LAN_OK              = 3;
-export const Y_READINESS_WWW_OK              = 4;
-export const Y_READINESS_INVALID             = -1;
-export const Y_DISCOVERABLE_FALSE            = 0;
-export const Y_DISCOVERABLE_TRUE             = 1;
-export const Y_DISCOVERABLE_INVALID          = -1;
-export const Y_CALLBACKMETHOD_POST           = 0;
-export const Y_CALLBACKMETHOD_GET            = 1;
-export const Y_CALLBACKMETHOD_PUT            = 2;
-export const Y_CALLBACKMETHOD_INVALID        = -1;
-export const Y_CALLBACKENCODING_FORM         = 0;
-export const Y_CALLBACKENCODING_JSON         = 1;
-export const Y_CALLBACKENCODING_JSON_ARRAY   = 2;
-export const Y_CALLBACKENCODING_CSV          = 3;
-export const Y_CALLBACKENCODING_YOCTO_API    = 4;
-export const Y_CALLBACKENCODING_JSON_NUM     = 5;
-export const Y_CALLBACKENCODING_EMONCMS      = 6;
-export const Y_CALLBACKENCODING_AZURE        = 7;
-export const Y_CALLBACKENCODING_INFLUXDB     = 8;
-export const Y_CALLBACKENCODING_INVALID      = -1;
-export const Y_MACADDRESS_INVALID            = YAPI.INVALID_STRING;
-export const Y_IPADDRESS_INVALID             = YAPI.INVALID_STRING;
-export const Y_SUBNETMASK_INVALID            = YAPI.INVALID_STRING;
-export const Y_ROUTER_INVALID                = YAPI.INVALID_STRING;
-export const Y_IPCONFIG_INVALID              = YAPI.INVALID_STRING;
-export const Y_PRIMARYDNS_INVALID            = YAPI.INVALID_STRING;
-export const Y_SECONDARYDNS_INVALID          = YAPI.INVALID_STRING;
-export const Y_NTPSERVER_INVALID             = YAPI.INVALID_STRING;
-export const Y_USERPASSWORD_INVALID          = YAPI.INVALID_STRING;
-export const Y_ADMINPASSWORD_INVALID         = YAPI.INVALID_STRING;
-export const Y_HTTPPORT_INVALID              = YAPI.INVALID_UINT;
-export const Y_DEFAULTPAGE_INVALID           = YAPI.INVALID_STRING;
-export const Y_WWWWATCHDOGDELAY_INVALID      = YAPI.INVALID_UINT;
-export const Y_CALLBACKURL_INVALID           = YAPI.INVALID_STRING;
-export const Y_CALLBACKCREDENTIALS_INVALID   = YAPI.INVALID_STRING;
-export const Y_CALLBACKMINDELAY_INVALID      = YAPI.INVALID_UINT;
-export const Y_CALLBACKMAXDELAY_INVALID      = YAPI.INVALID_UINT;
-export const Y_POECURRENT_INVALID            = YAPI.INVALID_UINT;
+const Y_READINESS_DOWN = exports.Y_READINESS_DOWN = 0;
+const Y_READINESS_EXISTS = exports.Y_READINESS_EXISTS = 1;
+const Y_READINESS_LINKED = exports.Y_READINESS_LINKED = 2;
+const Y_READINESS_LAN_OK = exports.Y_READINESS_LAN_OK = 3;
+const Y_READINESS_WWW_OK = exports.Y_READINESS_WWW_OK = 4;
+const Y_READINESS_INVALID = exports.Y_READINESS_INVALID = -1;
+const Y_DISCOVERABLE_FALSE = exports.Y_DISCOVERABLE_FALSE = 0;
+const Y_DISCOVERABLE_TRUE = exports.Y_DISCOVERABLE_TRUE = 1;
+const Y_DISCOVERABLE_INVALID = exports.Y_DISCOVERABLE_INVALID = -1;
+const Y_CALLBACKMETHOD_POST = exports.Y_CALLBACKMETHOD_POST = 0;
+const Y_CALLBACKMETHOD_GET = exports.Y_CALLBACKMETHOD_GET = 1;
+const Y_CALLBACKMETHOD_PUT = exports.Y_CALLBACKMETHOD_PUT = 2;
+const Y_CALLBACKMETHOD_INVALID = exports.Y_CALLBACKMETHOD_INVALID = -1;
+const Y_CALLBACKENCODING_FORM = exports.Y_CALLBACKENCODING_FORM = 0;
+const Y_CALLBACKENCODING_JSON = exports.Y_CALLBACKENCODING_JSON = 1;
+const Y_CALLBACKENCODING_JSON_ARRAY = exports.Y_CALLBACKENCODING_JSON_ARRAY = 2;
+const Y_CALLBACKENCODING_CSV = exports.Y_CALLBACKENCODING_CSV = 3;
+const Y_CALLBACKENCODING_YOCTO_API = exports.Y_CALLBACKENCODING_YOCTO_API = 4;
+const Y_CALLBACKENCODING_JSON_NUM = exports.Y_CALLBACKENCODING_JSON_NUM = 5;
+const Y_CALLBACKENCODING_EMONCMS = exports.Y_CALLBACKENCODING_EMONCMS = 6;
+const Y_CALLBACKENCODING_AZURE = exports.Y_CALLBACKENCODING_AZURE = 7;
+const Y_CALLBACKENCODING_INFLUXDB = exports.Y_CALLBACKENCODING_INFLUXDB = 8;
+const Y_CALLBACKENCODING_INVALID = exports.Y_CALLBACKENCODING_INVALID = -1;
+const Y_MACADDRESS_INVALID = exports.Y_MACADDRESS_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_IPADDRESS_INVALID = exports.Y_IPADDRESS_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_SUBNETMASK_INVALID = exports.Y_SUBNETMASK_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_ROUTER_INVALID = exports.Y_ROUTER_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_IPCONFIG_INVALID = exports.Y_IPCONFIG_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_PRIMARYDNS_INVALID = exports.Y_PRIMARYDNS_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_SECONDARYDNS_INVALID = exports.Y_SECONDARYDNS_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_NTPSERVER_INVALID = exports.Y_NTPSERVER_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_USERPASSWORD_INVALID = exports.Y_USERPASSWORD_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_ADMINPASSWORD_INVALID = exports.Y_ADMINPASSWORD_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_HTTPPORT_INVALID = exports.Y_HTTPPORT_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_DEFAULTPAGE_INVALID = exports.Y_DEFAULTPAGE_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_WWWWATCHDOGDELAY_INVALID = exports.Y_WWWWATCHDOGDELAY_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_CALLBACKURL_INVALID = exports.Y_CALLBACKURL_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_CALLBACKCREDENTIALS_INVALID = exports.Y_CALLBACKCREDENTIALS_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_CALLBACKMINDELAY_INVALID = exports.Y_CALLBACKMINDELAY_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_CALLBACKMAXDELAY_INVALID = exports.Y_CALLBACKMAXDELAY_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_POECURRENT_INVALID = exports.Y_POECURRENT_INVALID = _yocto_api.YAPI.INVALID_UINT;
 //--- (end of YNetwork definitions)
 
 //--- (YNetwork class start)
@@ -95,175 +105,172 @@ export const Y_POECURRENT_INVALID            = YAPI.INVALID_UINT;
  */
 //--- (end of YNetwork class start)
 
-export class YNetwork extends YFunction
-{
-    constructor(obj_yapi, str_func)
-    {
+class YNetwork extends _yocto_api.YFunction {
+    constructor(obj_yapi, str_func) {
         //--- (YNetwork constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'Network';
+        this._className = 'Network';
         /** @member {number} **/
-        this._readiness                  = Y_READINESS_INVALID;
+        this._readiness = Y_READINESS_INVALID;
         /** @member {string} **/
-        this._macAddress                 = Y_MACADDRESS_INVALID;
+        this._macAddress = Y_MACADDRESS_INVALID;
         /** @member {string} **/
-        this._ipAddress                  = Y_IPADDRESS_INVALID;
+        this._ipAddress = Y_IPADDRESS_INVALID;
         /** @member {string} **/
-        this._subnetMask                 = Y_SUBNETMASK_INVALID;
+        this._subnetMask = Y_SUBNETMASK_INVALID;
         /** @member {string} **/
-        this._router                     = Y_ROUTER_INVALID;
+        this._router = Y_ROUTER_INVALID;
         /** @member {string} **/
-        this._ipConfig                   = Y_IPCONFIG_INVALID;
+        this._ipConfig = Y_IPCONFIG_INVALID;
         /** @member {string} **/
-        this._primaryDNS                 = Y_PRIMARYDNS_INVALID;
+        this._primaryDNS = Y_PRIMARYDNS_INVALID;
         /** @member {string} **/
-        this._secondaryDNS               = Y_SECONDARYDNS_INVALID;
+        this._secondaryDNS = Y_SECONDARYDNS_INVALID;
         /** @member {string} **/
-        this._ntpServer                  = Y_NTPSERVER_INVALID;
+        this._ntpServer = Y_NTPSERVER_INVALID;
         /** @member {string} **/
-        this._userPassword               = Y_USERPASSWORD_INVALID;
+        this._userPassword = Y_USERPASSWORD_INVALID;
         /** @member {string} **/
-        this._adminPassword              = Y_ADMINPASSWORD_INVALID;
+        this._adminPassword = Y_ADMINPASSWORD_INVALID;
         /** @member {number} **/
-        this._httpPort                   = Y_HTTPPORT_INVALID;
+        this._httpPort = Y_HTTPPORT_INVALID;
         /** @member {string} **/
-        this._defaultPage                = Y_DEFAULTPAGE_INVALID;
+        this._defaultPage = Y_DEFAULTPAGE_INVALID;
         /** @member {number} **/
-        this._discoverable               = Y_DISCOVERABLE_INVALID;
+        this._discoverable = Y_DISCOVERABLE_INVALID;
         /** @member {number} **/
-        this._wwwWatchdogDelay           = Y_WWWWATCHDOGDELAY_INVALID;
+        this._wwwWatchdogDelay = Y_WWWWATCHDOGDELAY_INVALID;
         /** @member {string} **/
-        this._callbackUrl                = Y_CALLBACKURL_INVALID;
+        this._callbackUrl = Y_CALLBACKURL_INVALID;
         /** @member {number} **/
-        this._callbackMethod             = Y_CALLBACKMETHOD_INVALID;
+        this._callbackMethod = Y_CALLBACKMETHOD_INVALID;
         /** @member {number} **/
-        this._callbackEncoding           = Y_CALLBACKENCODING_INVALID;
+        this._callbackEncoding = Y_CALLBACKENCODING_INVALID;
         /** @member {string} **/
-        this._callbackCredentials        = Y_CALLBACKCREDENTIALS_INVALID;
+        this._callbackCredentials = Y_CALLBACKCREDENTIALS_INVALID;
         /** @member {number} **/
-        this._callbackMinDelay           = Y_CALLBACKMINDELAY_INVALID;
+        this._callbackMinDelay = Y_CALLBACKMINDELAY_INVALID;
         /** @member {number} **/
-        this._callbackMaxDelay           = Y_CALLBACKMAXDELAY_INVALID;
+        this._callbackMaxDelay = Y_CALLBACKMAXDELAY_INVALID;
         /** @member {number} **/
-        this._poeCurrent                 = Y_POECURRENT_INVALID;
+        this._poeCurrent = Y_POECURRENT_INVALID;
         this.imm_setConst({
-            READINESS_DOWN               : 0,
-            READINESS_EXISTS             : 1,
-            READINESS_LINKED             : 2,
-            READINESS_LAN_OK             : 3,
-            READINESS_WWW_OK             : 4,
-            READINESS_INVALID            : -1,
-            MACADDRESS_INVALID           : YAPI.INVALID_STRING,
-            IPADDRESS_INVALID            : YAPI.INVALID_STRING,
-            SUBNETMASK_INVALID           : YAPI.INVALID_STRING,
-            ROUTER_INVALID               : YAPI.INVALID_STRING,
-            IPCONFIG_INVALID             : YAPI.INVALID_STRING,
-            PRIMARYDNS_INVALID           : YAPI.INVALID_STRING,
-            SECONDARYDNS_INVALID         : YAPI.INVALID_STRING,
-            NTPSERVER_INVALID            : YAPI.INVALID_STRING,
-            USERPASSWORD_INVALID         : YAPI.INVALID_STRING,
-            ADMINPASSWORD_INVALID        : YAPI.INVALID_STRING,
-            HTTPPORT_INVALID             : YAPI.INVALID_UINT,
-            DEFAULTPAGE_INVALID          : YAPI.INVALID_STRING,
-            DISCOVERABLE_FALSE           : 0,
-            DISCOVERABLE_TRUE            : 1,
-            DISCOVERABLE_INVALID         : -1,
-            WWWWATCHDOGDELAY_INVALID     : YAPI.INVALID_UINT,
-            CALLBACKURL_INVALID          : YAPI.INVALID_STRING,
-            CALLBACKMETHOD_POST          : 0,
-            CALLBACKMETHOD_GET           : 1,
-            CALLBACKMETHOD_PUT           : 2,
-            CALLBACKMETHOD_INVALID       : -1,
-            CALLBACKENCODING_FORM        : 0,
-            CALLBACKENCODING_JSON        : 1,
-            CALLBACKENCODING_JSON_ARRAY  : 2,
-            CALLBACKENCODING_CSV         : 3,
-            CALLBACKENCODING_YOCTO_API   : 4,
-            CALLBACKENCODING_JSON_NUM    : 5,
-            CALLBACKENCODING_EMONCMS     : 6,
-            CALLBACKENCODING_AZURE       : 7,
-            CALLBACKENCODING_INFLUXDB    : 8,
-            CALLBACKENCODING_INVALID     : -1,
-            CALLBACKCREDENTIALS_INVALID  : YAPI.INVALID_STRING,
-            CALLBACKMINDELAY_INVALID     : YAPI.INVALID_UINT,
-            CALLBACKMAXDELAY_INVALID     : YAPI.INVALID_UINT,
-            POECURRENT_INVALID           : YAPI.INVALID_UINT
+            READINESS_DOWN: 0,
+            READINESS_EXISTS: 1,
+            READINESS_LINKED: 2,
+            READINESS_LAN_OK: 3,
+            READINESS_WWW_OK: 4,
+            READINESS_INVALID: -1,
+            MACADDRESS_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            IPADDRESS_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            SUBNETMASK_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            ROUTER_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            IPCONFIG_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            PRIMARYDNS_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            SECONDARYDNS_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            NTPSERVER_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            USERPASSWORD_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            ADMINPASSWORD_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            HTTPPORT_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            DEFAULTPAGE_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            DISCOVERABLE_FALSE: 0,
+            DISCOVERABLE_TRUE: 1,
+            DISCOVERABLE_INVALID: -1,
+            WWWWATCHDOGDELAY_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            CALLBACKURL_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            CALLBACKMETHOD_POST: 0,
+            CALLBACKMETHOD_GET: 1,
+            CALLBACKMETHOD_PUT: 2,
+            CALLBACKMETHOD_INVALID: -1,
+            CALLBACKENCODING_FORM: 0,
+            CALLBACKENCODING_JSON: 1,
+            CALLBACKENCODING_JSON_ARRAY: 2,
+            CALLBACKENCODING_CSV: 3,
+            CALLBACKENCODING_YOCTO_API: 4,
+            CALLBACKENCODING_JSON_NUM: 5,
+            CALLBACKENCODING_EMONCMS: 6,
+            CALLBACKENCODING_AZURE: 7,
+            CALLBACKENCODING_INFLUXDB: 8,
+            CALLBACKENCODING_INVALID: -1,
+            CALLBACKCREDENTIALS_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            CALLBACKMINDELAY_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            CALLBACKMAXDELAY_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            POECURRENT_INVALID: _yocto_api.YAPI.INVALID_UINT
         });
         //--- (end of YNetwork constructor)
     }
 
     //--- (YNetwork implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'readiness':
-            this._readiness = parseInt(val);
-            return 1;
-        case 'macAddress':
-            this._macAddress = val;
-            return 1;
-        case 'ipAddress':
-            this._ipAddress = val;
-            return 1;
-        case 'subnetMask':
-            this._subnetMask = val;
-            return 1;
-        case 'router':
-            this._router = val;
-            return 1;
-        case 'ipConfig':
-            this._ipConfig = val;
-            return 1;
-        case 'primaryDNS':
-            this._primaryDNS = val;
-            return 1;
-        case 'secondaryDNS':
-            this._secondaryDNS = val;
-            return 1;
-        case 'ntpServer':
-            this._ntpServer = val;
-            return 1;
-        case 'userPassword':
-            this._userPassword = val;
-            return 1;
-        case 'adminPassword':
-            this._adminPassword = val;
-            return 1;
-        case 'httpPort':
-            this._httpPort = parseInt(val);
-            return 1;
-        case 'defaultPage':
-            this._defaultPage = val;
-            return 1;
-        case 'discoverable':
-            this._discoverable = parseInt(val);
-            return 1;
-        case 'wwwWatchdogDelay':
-            this._wwwWatchdogDelay = parseInt(val);
-            return 1;
-        case 'callbackUrl':
-            this._callbackUrl = val;
-            return 1;
-        case 'callbackMethod':
-            this._callbackMethod = parseInt(val);
-            return 1;
-        case 'callbackEncoding':
-            this._callbackEncoding = parseInt(val);
-            return 1;
-        case 'callbackCredentials':
-            this._callbackCredentials = val;
-            return 1;
-        case 'callbackMinDelay':
-            this._callbackMinDelay = parseInt(val);
-            return 1;
-        case 'callbackMaxDelay':
-            this._callbackMaxDelay = parseInt(val);
-            return 1;
-        case 'poeCurrent':
-            this._poeCurrent = parseInt(val);
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'readiness':
+                this._readiness = parseInt(val);
+                return 1;
+            case 'macAddress':
+                this._macAddress = val;
+                return 1;
+            case 'ipAddress':
+                this._ipAddress = val;
+                return 1;
+            case 'subnetMask':
+                this._subnetMask = val;
+                return 1;
+            case 'router':
+                this._router = val;
+                return 1;
+            case 'ipConfig':
+                this._ipConfig = val;
+                return 1;
+            case 'primaryDNS':
+                this._primaryDNS = val;
+                return 1;
+            case 'secondaryDNS':
+                this._secondaryDNS = val;
+                return 1;
+            case 'ntpServer':
+                this._ntpServer = val;
+                return 1;
+            case 'userPassword':
+                this._userPassword = val;
+                return 1;
+            case 'adminPassword':
+                this._adminPassword = val;
+                return 1;
+            case 'httpPort':
+                this._httpPort = parseInt(val);
+                return 1;
+            case 'defaultPage':
+                this._defaultPage = val;
+                return 1;
+            case 'discoverable':
+                this._discoverable = parseInt(val);
+                return 1;
+            case 'wwwWatchdogDelay':
+                this._wwwWatchdogDelay = parseInt(val);
+                return 1;
+            case 'callbackUrl':
+                this._callbackUrl = val;
+                return 1;
+            case 'callbackMethod':
+                this._callbackMethod = parseInt(val);
+                return 1;
+            case 'callbackEncoding':
+                this._callbackEncoding = parseInt(val);
+                return 1;
+            case 'callbackCredentials':
+                this._callbackCredentials = val;
+                return 1;
+            case 'callbackMinDelay':
+                this._callbackMinDelay = parseInt(val);
+                return 1;
+            case 'callbackMaxDelay':
+                this._callbackMaxDelay = parseInt(val);
+                return 1;
+            case 'poeCurrent':
+                this._poeCurrent = parseInt(val);
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -290,14 +297,17 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns YNetwork.READINESS_INVALID.
      */
-    async get_readiness()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_READINESS_INVALID;
+    get_readiness() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
+                    return Y_READINESS_INVALID;
+                }
             }
-        }
-        return this._readiness;
+            return _this._readiness;
+        })();
     }
 
     /**
@@ -308,14 +318,17 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns YNetwork.MACADDRESS_INVALID.
      */
-    async get_macAddress()
-    {
-        if (this._cacheExpiration == 0) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_MACADDRESS_INVALID;
+    get_macAddress() {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this2._cacheExpiration == 0) {
+                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _this2._yapi.SUCCESS) {
+                    return Y_MACADDRESS_INVALID;
+                }
             }
-        }
-        return this._macAddress;
+            return _this2._macAddress;
+        })();
     }
 
     /**
@@ -326,14 +339,17 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns YNetwork.IPADDRESS_INVALID.
      */
-    async get_ipAddress()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_IPADDRESS_INVALID;
+    get_ipAddress() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
+                    return Y_IPADDRESS_INVALID;
+                }
             }
-        }
-        return this._ipAddress;
+            return _this3._ipAddress;
+        })();
     }
 
     /**
@@ -343,14 +359,17 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns YNetwork.SUBNETMASK_INVALID.
      */
-    async get_subnetMask()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_SUBNETMASK_INVALID;
+    get_subnetMask() {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this4._cacheExpiration <= _this4._yapi.GetTickCount()) {
+                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _this4._yapi.SUCCESS) {
+                    return Y_SUBNETMASK_INVALID;
+                }
             }
-        }
-        return this._subnetMask;
+            return _this4._subnetMask;
+        })();
     }
 
     /**
@@ -360,32 +379,41 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns YNetwork.ROUTER_INVALID.
      */
-    async get_router()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_ROUTER_INVALID;
+    get_router() {
+        var _this5 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this5._cacheExpiration <= _this5._yapi.GetTickCount()) {
+                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _this5._yapi.SUCCESS) {
+                    return Y_ROUTER_INVALID;
+                }
             }
-        }
-        return this._router;
+            return _this5._router;
+        })();
     }
 
-    async get_ipConfig()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_IPCONFIG_INVALID;
+    get_ipConfig() {
+        var _this6 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this6._cacheExpiration <= _this6._yapi.GetTickCount()) {
+                if ((yield _this6.load(_this6._yapi.defaultCacheValidity)) != _this6._yapi.SUCCESS) {
+                    return Y_IPCONFIG_INVALID;
+                }
             }
-        }
-        return this._ipConfig;
+            return _this6._ipConfig;
+        })();
     }
 
-    async set_ipConfig(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('ipConfig',rest_val);
+    set_ipConfig(newval) {
+        var _this7 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this7._setAttr('ipConfig', rest_val);
+        })();
     }
 
     /**
@@ -395,14 +423,17 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns YNetwork.PRIMARYDNS_INVALID.
      */
-    async get_primaryDNS()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_PRIMARYDNS_INVALID;
+    get_primaryDNS() {
+        var _this8 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this8._cacheExpiration <= _this8._yapi.GetTickCount()) {
+                if ((yield _this8.load(_this8._yapi.defaultCacheValidity)) != _this8._yapi.SUCCESS) {
+                    return Y_PRIMARYDNS_INVALID;
+                }
             }
-        }
-        return this._primaryDNS;
+            return _this8._primaryDNS;
+        })();
     }
 
     /**
@@ -417,12 +448,15 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_primaryDNS(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('primaryDNS',rest_val);
+    set_primaryDNS(newval) {
+        var _this9 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this9._setAttr('primaryDNS', rest_val);
+        })();
     }
 
     /**
@@ -432,14 +466,17 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns YNetwork.SECONDARYDNS_INVALID.
      */
-    async get_secondaryDNS()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_SECONDARYDNS_INVALID;
+    get_secondaryDNS() {
+        var _this10 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this10._cacheExpiration <= _this10._yapi.GetTickCount()) {
+                if ((yield _this10.load(_this10._yapi.defaultCacheValidity)) != _this10._yapi.SUCCESS) {
+                    return Y_SECONDARYDNS_INVALID;
+                }
             }
-        }
-        return this._secondaryDNS;
+            return _this10._secondaryDNS;
+        })();
     }
 
     /**
@@ -454,12 +491,15 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_secondaryDNS(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('secondaryDNS',rest_val);
+    set_secondaryDNS(newval) {
+        var _this11 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this11._setAttr('secondaryDNS', rest_val);
+        })();
     }
 
     /**
@@ -469,14 +509,17 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns YNetwork.NTPSERVER_INVALID.
      */
-    async get_ntpServer()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_NTPSERVER_INVALID;
+    get_ntpServer() {
+        var _this12 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this12._cacheExpiration <= _this12._yapi.GetTickCount()) {
+                if ((yield _this12.load(_this12._yapi.defaultCacheValidity)) != _this12._yapi.SUCCESS) {
+                    return Y_NTPSERVER_INVALID;
+                }
             }
-        }
-        return this._ntpServer;
+            return _this12._ntpServer;
+        })();
     }
 
     /**
@@ -489,12 +532,15 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_ntpServer(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('ntpServer',rest_val);
+    set_ntpServer(newval) {
+        var _this13 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this13._setAttr('ntpServer', rest_val);
+        })();
     }
 
     /**
@@ -506,14 +552,17 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns YNetwork.USERPASSWORD_INVALID.
      */
-    async get_userPassword()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_USERPASSWORD_INVALID;
+    get_userPassword() {
+        var _this14 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this14._cacheExpiration <= _this14._yapi.GetTickCount()) {
+                if ((yield _this14.load(_this14._yapi.defaultCacheValidity)) != _this14._yapi.SUCCESS) {
+                    return Y_USERPASSWORD_INVALID;
+                }
             }
-        }
-        return this._userPassword;
+            return _this14._userPassword;
+        })();
     }
 
     /**
@@ -529,12 +578,15 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_userPassword(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('userPassword',rest_val);
+    set_userPassword(newval) {
+        var _this15 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this15._setAttr('userPassword', rest_val);
+        })();
     }
 
     /**
@@ -546,14 +598,17 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns YNetwork.ADMINPASSWORD_INVALID.
      */
-    async get_adminPassword()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_ADMINPASSWORD_INVALID;
+    get_adminPassword() {
+        var _this16 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this16._cacheExpiration <= _this16._yapi.GetTickCount()) {
+                if ((yield _this16.load(_this16._yapi.defaultCacheValidity)) != _this16._yapi.SUCCESS) {
+                    return Y_ADMINPASSWORD_INVALID;
+                }
             }
-        }
-        return this._adminPassword;
+            return _this16._adminPassword;
+        })();
     }
 
     /**
@@ -569,12 +624,15 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_adminPassword(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('adminPassword',rest_val);
+    set_adminPassword(newval) {
+        var _this17 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this17._setAttr('adminPassword', rest_val);
+        })();
     }
 
     /**
@@ -584,14 +642,17 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns YNetwork.HTTPPORT_INVALID.
      */
-    async get_httpPort()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_HTTPPORT_INVALID;
+    get_httpPort() {
+        var _this18 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this18._cacheExpiration <= _this18._yapi.GetTickCount()) {
+                if ((yield _this18.load(_this18._yapi.defaultCacheValidity)) != _this18._yapi.SUCCESS) {
+                    return Y_HTTPPORT_INVALID;
+                }
             }
-        }
-        return this._httpPort;
+            return _this18._httpPort;
+        })();
     }
 
     /**
@@ -605,12 +666,15 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_httpPort(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('httpPort',rest_val);
+    set_httpPort(newval) {
+        var _this19 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this19._setAttr('httpPort', rest_val);
+        })();
     }
 
     /**
@@ -620,14 +684,17 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns YNetwork.DEFAULTPAGE_INVALID.
      */
-    async get_defaultPage()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_DEFAULTPAGE_INVALID;
+    get_defaultPage() {
+        var _this20 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this20._cacheExpiration <= _this20._yapi.GetTickCount()) {
+                if ((yield _this20.load(_this20._yapi.defaultCacheValidity)) != _this20._yapi.SUCCESS) {
+                    return Y_DEFAULTPAGE_INVALID;
+                }
             }
-        }
-        return this._defaultPage;
+            return _this20._defaultPage;
+        })();
     }
 
     /**
@@ -641,12 +708,15 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_defaultPage(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('defaultPage',rest_val);
+    set_defaultPage(newval) {
+        var _this21 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this21._setAttr('defaultPage', rest_val);
+        })();
     }
 
     /**
@@ -659,14 +729,17 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns YNetwork.DISCOVERABLE_INVALID.
      */
-    async get_discoverable()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_DISCOVERABLE_INVALID;
+    get_discoverable() {
+        var _this22 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this22._cacheExpiration <= _this22._yapi.GetTickCount()) {
+                if ((yield _this22.load(_this22._yapi.defaultCacheValidity)) != _this22._yapi.SUCCESS) {
+                    return Y_DISCOVERABLE_INVALID;
+                }
             }
-        }
-        return this._discoverable;
+            return _this22._discoverable;
+        })();
     }
 
     /**
@@ -681,12 +754,15 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_discoverable(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('discoverable',rest_val);
+    set_discoverable(newval) {
+        var _this23 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this23._setAttr('discoverable', rest_val);
+        })();
     }
 
     /**
@@ -700,14 +776,17 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns YNetwork.WWWWATCHDOGDELAY_INVALID.
      */
-    async get_wwwWatchdogDelay()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_WWWWATCHDOGDELAY_INVALID;
+    get_wwwWatchdogDelay() {
+        var _this24 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this24._cacheExpiration <= _this24._yapi.GetTickCount()) {
+                if ((yield _this24.load(_this24._yapi.defaultCacheValidity)) != _this24._yapi.SUCCESS) {
+                    return Y_WWWWATCHDOGDELAY_INVALID;
+                }
             }
-        }
-        return this._wwwWatchdogDelay;
+            return _this24._wwwWatchdogDelay;
+        })();
     }
 
     /**
@@ -724,12 +803,15 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_wwwWatchdogDelay(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('wwwWatchdogDelay',rest_val);
+    set_wwwWatchdogDelay(newval) {
+        var _this25 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this25._setAttr('wwwWatchdogDelay', rest_val);
+        })();
     }
 
     /**
@@ -739,14 +821,17 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns YNetwork.CALLBACKURL_INVALID.
      */
-    async get_callbackUrl()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_CALLBACKURL_INVALID;
+    get_callbackUrl() {
+        var _this26 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this26._cacheExpiration <= _this26._yapi.GetTickCount()) {
+                if ((yield _this26.load(_this26._yapi.defaultCacheValidity)) != _this26._yapi.SUCCESS) {
+                    return Y_CALLBACKURL_INVALID;
+                }
             }
-        }
-        return this._callbackUrl;
+            return _this26._callbackUrl;
+        })();
     }
 
     /**
@@ -759,12 +844,15 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_callbackUrl(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('callbackUrl',rest_val);
+    set_callbackUrl(newval) {
+        var _this27 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this27._setAttr('callbackUrl', rest_val);
+        })();
     }
 
     /**
@@ -776,14 +864,17 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns YNetwork.CALLBACKMETHOD_INVALID.
      */
-    async get_callbackMethod()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_CALLBACKMETHOD_INVALID;
+    get_callbackMethod() {
+        var _this28 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this28._cacheExpiration <= _this28._yapi.GetTickCount()) {
+                if ((yield _this28.load(_this28._yapi.defaultCacheValidity)) != _this28._yapi.SUCCESS) {
+                    return Y_CALLBACKMETHOD_INVALID;
+                }
             }
-        }
-        return this._callbackMethod;
+            return _this28._callbackMethod;
+        })();
     }
 
     /**
@@ -797,12 +888,15 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_callbackMethod(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('callbackMethod',rest_val);
+    set_callbackMethod(newval) {
+        var _this29 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this29._setAttr('callbackMethod', rest_val);
+        })();
     }
 
     /**
@@ -817,14 +911,17 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns YNetwork.CALLBACKENCODING_INVALID.
      */
-    async get_callbackEncoding()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_CALLBACKENCODING_INVALID;
+    get_callbackEncoding() {
+        var _this30 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this30._cacheExpiration <= _this30._yapi.GetTickCount()) {
+                if ((yield _this30.load(_this30._yapi.defaultCacheValidity)) != _this30._yapi.SUCCESS) {
+                    return Y_CALLBACKENCODING_INVALID;
+                }
             }
-        }
-        return this._callbackEncoding;
+            return _this30._callbackEncoding;
+        })();
     }
 
     /**
@@ -841,12 +938,15 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_callbackEncoding(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('callbackEncoding',rest_val);
+    set_callbackEncoding(newval) {
+        var _this31 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this31._setAttr('callbackEncoding', rest_val);
+        })();
     }
 
     /**
@@ -858,14 +958,17 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns YNetwork.CALLBACKCREDENTIALS_INVALID.
      */
-    async get_callbackCredentials()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_CALLBACKCREDENTIALS_INVALID;
+    get_callbackCredentials() {
+        var _this32 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this32._cacheExpiration <= _this32._yapi.GetTickCount()) {
+                if ((yield _this32.load(_this32._yapi.defaultCacheValidity)) != _this32._yapi.SUCCESS) {
+                    return Y_CALLBACKCREDENTIALS_INVALID;
+                }
             }
-        }
-        return this._callbackCredentials;
+            return _this32._callbackCredentials;
+        })();
     }
 
     /**
@@ -885,12 +988,15 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_callbackCredentials(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('callbackCredentials',rest_val);
+    set_callbackCredentials(newval) {
+        var _this33 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this33._setAttr('callbackCredentials', rest_val);
+        })();
     }
 
     /**
@@ -906,12 +1012,15 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async callbackLogin(username,password)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = username+':'+password;
-        return await this._setAttr('callbackCredentials',rest_val);
+    callbackLogin(username, password) {
+        var _this34 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = username + ':' + password;
+            return yield _this34._setAttr('callbackCredentials', rest_val);
+        })();
     }
 
     /**
@@ -922,14 +1031,17 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns YNetwork.CALLBACKMINDELAY_INVALID.
      */
-    async get_callbackMinDelay()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_CALLBACKMINDELAY_INVALID;
+    get_callbackMinDelay() {
+        var _this35 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this35._cacheExpiration <= _this35._yapi.GetTickCount()) {
+                if ((yield _this35.load(_this35._yapi.defaultCacheValidity)) != _this35._yapi.SUCCESS) {
+                    return Y_CALLBACKMINDELAY_INVALID;
+                }
             }
-        }
-        return this._callbackMinDelay;
+            return _this35._callbackMinDelay;
+        })();
     }
 
     /**
@@ -942,12 +1054,15 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_callbackMinDelay(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('callbackMinDelay',rest_val);
+    set_callbackMinDelay(newval) {
+        var _this36 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this36._setAttr('callbackMinDelay', rest_val);
+        })();
     }
 
     /**
@@ -958,14 +1073,17 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns YNetwork.CALLBACKMAXDELAY_INVALID.
      */
-    async get_callbackMaxDelay()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_CALLBACKMAXDELAY_INVALID;
+    get_callbackMaxDelay() {
+        var _this37 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this37._cacheExpiration <= _this37._yapi.GetTickCount()) {
+                if ((yield _this37.load(_this37._yapi.defaultCacheValidity)) != _this37._yapi.SUCCESS) {
+                    return Y_CALLBACKMAXDELAY_INVALID;
+                }
             }
-        }
-        return this._callbackMaxDelay;
+            return _this37._callbackMaxDelay;
+        })();
     }
 
     /**
@@ -978,12 +1096,15 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_callbackMaxDelay(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('callbackMaxDelay',rest_val);
+    set_callbackMaxDelay(newval) {
+        var _this38 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this38._setAttr('callbackMaxDelay', rest_val);
+        })();
     }
 
     /**
@@ -996,14 +1117,17 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns YNetwork.POECURRENT_INVALID.
      */
-    async get_poeCurrent()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_POECURRENT_INVALID;
+    get_poeCurrent() {
+        var _this39 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this39._cacheExpiration <= _this39._yapi.GetTickCount()) {
+                if ((yield _this39.load(_this39._yapi.defaultCacheValidity)) != _this39._yapi.SUCCESS) {
+                    return Y_POECURRENT_INVALID;
+                }
             }
-        }
-        return this._poeCurrent;
+            return _this39._poeCurrent;
+        })();
     }
 
     /**
@@ -1029,14 +1153,13 @@ export class YNetwork extends YFunction
      *
      * @return {YNetwork} a YNetwork object allowing you to drive the network interface.
      */
-    static FindNetwork(func)
-    {
+    static FindNetwork(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('Network', func);
+        obj = _yocto_api.YFunction._FindFromCache('Network', func);
         if (obj == null) {
-            obj = new YNetwork(YAPI, func);
-            YFunction._AddToCache('Network',  func, obj);
+            obj = new YNetwork(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('Network', func, obj);
         }
         return obj;
     }
@@ -1065,14 +1188,13 @@ export class YNetwork extends YFunction
      *
      * @return {YNetwork} a YNetwork object allowing you to drive the network interface.
      */
-    static FindNetworkInContext(yctx,func)
-    {
+    static FindNetworkInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'Network', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Network', func);
         if (obj == null) {
             obj = new YNetwork(yctx, func);
-            YFunction._AddToCache('Network',  func, obj);
+            _yocto_api.YFunction._AddToCache('Network', func, obj);
         }
         return obj;
     }
@@ -1092,9 +1214,12 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async useDHCP(fallbackIpAddr,fallbackSubnetMaskLen,fallbackRouter)
-    {
-        return await this.set_ipConfig('DHCP:'+fallbackIpAddr+'/'+String(Math.round(fallbackSubnetMaskLen))+'/'+fallbackRouter);
+    useDHCP(fallbackIpAddr, fallbackSubnetMaskLen, fallbackRouter) {
+        var _this40 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this40.set_ipConfig('DHCP:' + fallbackIpAddr + '/' + String(Math.round(fallbackSubnetMaskLen)) + '/' + fallbackRouter);
+        })();
     }
 
     /**
@@ -1109,9 +1234,12 @@ export class YNetwork extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async useStaticIP(ipAddress,subnetMaskLen,router)
-    {
-        return await this.set_ipConfig('STATIC:'+ipAddress+'/'+String(Math.round(subnetMaskLen))+'/'+router);
+    useStaticIP(ipAddress, subnetMaskLen, router) {
+        var _this41 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this41.set_ipConfig('STATIC:' + ipAddress + '/' + String(Math.round(subnetMaskLen)) + '/' + router);
+        })();
     }
 
     /**
@@ -1123,13 +1251,16 @@ export class YNetwork extends YFunction
      *
      * @return {string} a string with the result of the ping.
      */
-    async ping(host)
-    {
-        /** @type {Uint8Array} **/
-        let content;
-        // may throw an exception
-        content = await this._download('ping.txt?host='+host);
-        return this._yapi.imm_bin2str(content);
+    ping(host) {
+        var _this42 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {Uint8Array} **/
+            let content;
+            // may throw an exception
+            content = yield _this42._download('ping.txt?host=' + host);
+            return _this42._yapi.imm_bin2str(content);
+        })();
     }
 
     /**
@@ -1139,14 +1270,13 @@ export class YNetwork extends YFunction
      *         a network interface currently online, or a null pointer
      *         if there are no more network interfaces to enumerate.
      */
-    nextNetwork()
-    {
+    nextNetwork() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YNetwork.FindNetworkInContext(this._yapi, next_hwid);
     }
 
@@ -1159,11 +1289,10 @@ export class YNetwork extends YFunction
      *         the first network interface currently online, or a null pointer
      *         if there are none.
      */
-    static FirstNetwork()
-    {
+    static FirstNetwork() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('Network');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('Network');
+        if (next_hwid == null) return null;
         return YNetwork.FindNetwork(next_hwid);
     }
 
@@ -1178,18 +1307,17 @@ export class YNetwork extends YFunction
      *         the first network interface currently online, or a null pointer
      *         if there are none.
      */
-    static FirstNetworkInContext(yctx)
-    {
+    static FirstNetworkInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('Network');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YNetwork.FindNetworkInContext(yctx, next_hwid);
     }
 
     //--- (end of YNetwork implementation)
 }
 
-//--- (Network functions)
+exports.YNetwork = YNetwork; //--- (Network functions)
 
 /**
  * Retrieves a network interface for a given identifier.
@@ -1214,8 +1342,8 @@ export class YNetwork extends YFunction
  *
  * @return {YNetwork} a YNetwork object allowing you to drive the network interface.
  */
-export function yFindNetwork(func)
-{
+
+function yFindNetwork(func) {
     return YNetwork.FindNetwork(func);
 }
 
@@ -1228,8 +1356,7 @@ export function yFindNetwork(func)
  *         the first network interface currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstNetwork()
-{
+function yFirstNetwork() {
     return YNetwork.FirstNetwork();
 }
 

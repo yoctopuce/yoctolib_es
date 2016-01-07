@@ -38,7 +38,15 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YVoltage = undefined;
+exports.yFindVoltage = yFindVoltage;
+exports.yFirstVoltage = yFirstVoltage;
+
+var _yocto_api = require('./yocto_api');
 
 //--- (YVoltage return codes)
 //--- (end of YVoltage return codes)
@@ -55,14 +63,12 @@ import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yoc
  */
 //--- (end of YVoltage class start)
 
-export class YVoltage extends YSensor
-{
-    constructor(obj_yapi, str_func)
-    {
+class YVoltage extends _yocto_api.YSensor {
+    constructor(obj_yapi, str_func) {
         //--- (YVoltage constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'Voltage';
+        this._className = 'Voltage';
         //--- (end of YVoltage constructor)
     }
 
@@ -91,14 +97,13 @@ export class YVoltage extends YSensor
      *
      * @return {YVoltage} a YVoltage object allowing you to drive the voltage sensor.
      */
-    static FindVoltage(func)
-    {
+    static FindVoltage(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('Voltage', func);
+        obj = _yocto_api.YFunction._FindFromCache('Voltage', func);
         if (obj == null) {
-            obj = new YVoltage(YAPI, func);
-            YFunction._AddToCache('Voltage',  func, obj);
+            obj = new YVoltage(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('Voltage', func, obj);
         }
         return obj;
     }
@@ -127,14 +132,13 @@ export class YVoltage extends YSensor
      *
      * @return {YVoltage} a YVoltage object allowing you to drive the voltage sensor.
      */
-    static FindVoltageInContext(yctx,func)
-    {
+    static FindVoltageInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'Voltage', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Voltage', func);
         if (obj == null) {
             obj = new YVoltage(yctx, func);
-            YFunction._AddToCache('Voltage',  func, obj);
+            _yocto_api.YFunction._AddToCache('Voltage', func, obj);
         }
         return obj;
     }
@@ -146,14 +150,13 @@ export class YVoltage extends YSensor
      *         a voltage sensor currently online, or a null pointer
      *         if there are no more voltage sensors to enumerate.
      */
-    nextVoltage()
-    {
+    nextVoltage() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YVoltage.FindVoltageInContext(this._yapi, next_hwid);
     }
 
@@ -166,11 +169,10 @@ export class YVoltage extends YSensor
      *         the first voltage sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstVoltage()
-    {
+    static FirstVoltage() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('Voltage');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('Voltage');
+        if (next_hwid == null) return null;
         return YVoltage.FindVoltage(next_hwid);
     }
 
@@ -185,18 +187,17 @@ export class YVoltage extends YSensor
      *         the first voltage sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstVoltageInContext(yctx)
-    {
+    static FirstVoltageInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('Voltage');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YVoltage.FindVoltageInContext(yctx, next_hwid);
     }
 
     //--- (end of YVoltage implementation)
 }
 
-//--- (Voltage functions)
+exports.YVoltage = YVoltage; //--- (Voltage functions)
 
 /**
  * Retrieves a voltage sensor for a given identifier.
@@ -221,8 +222,8 @@ export class YVoltage extends YSensor
  *
  * @return {YVoltage} a YVoltage object allowing you to drive the voltage sensor.
  */
-export function yFindVoltage(func)
-{
+
+function yFindVoltage(func) {
     return YVoltage.FindVoltage(func);
 }
 
@@ -235,8 +236,7 @@ export function yFindVoltage(func)
  *         the first voltage sensor currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstVoltage()
-{
+function yFirstVoltage() {
     return YVoltage.FirstVoltage();
 }
 

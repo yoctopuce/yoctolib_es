@@ -38,24 +38,34 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YRefFrame = exports.Y_CALIBRATIONPARAM_INVALID = exports.Y_BEARING_INVALID = exports.Y_MOUNTPOS_INVALID = exports.Y_MOUNTORIENTATION_NINE = exports.Y_MOUNTORIENTATION_SIX = exports.Y_MOUNTORIENTATION_THREE = exports.Y_MOUNTORIENTATION_TWELVE = exports.Y_MOUNTPOSITION_LEFT = exports.Y_MOUNTPOSITION_RIGHT = exports.Y_MOUNTPOSITION_REAR = exports.Y_MOUNTPOSITION_FRONT = exports.Y_MOUNTPOSITION_TOP = exports.Y_MOUNTPOSITION_BOTTOM = undefined;
+exports.yFindRefFrame = yFindRefFrame;
+exports.yFirstRefFrame = yFirstRefFrame;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YRefFrame return codes)
 //--- (end of YRefFrame return codes)
 //--- (YRefFrame definitions)
-export const Y_MOUNTPOSITION_BOTTOM          = 0;
-export const Y_MOUNTPOSITION_TOP             = 1;
-export const Y_MOUNTPOSITION_FRONT           = 2;
-export const Y_MOUNTPOSITION_REAR            = 3;
-export const Y_MOUNTPOSITION_RIGHT           = 4;
-export const Y_MOUNTPOSITION_LEFT            = 5;
-export const Y_MOUNTORIENTATION_TWELVE       = 0;
-export const Y_MOUNTORIENTATION_THREE        = 1;
-export const Y_MOUNTORIENTATION_SIX          = 2;
-export const Y_MOUNTORIENTATION_NINE         = 3;
-export const Y_MOUNTPOS_INVALID              = YAPI.INVALID_UINT;
-export const Y_BEARING_INVALID               = YAPI.INVALID_DOUBLE;
-export const Y_CALIBRATIONPARAM_INVALID      = YAPI.INVALID_STRING;
+const Y_MOUNTPOSITION_BOTTOM = exports.Y_MOUNTPOSITION_BOTTOM = 0;
+const Y_MOUNTPOSITION_TOP = exports.Y_MOUNTPOSITION_TOP = 1;
+const Y_MOUNTPOSITION_FRONT = exports.Y_MOUNTPOSITION_FRONT = 2;
+const Y_MOUNTPOSITION_REAR = exports.Y_MOUNTPOSITION_REAR = 3;
+const Y_MOUNTPOSITION_RIGHT = exports.Y_MOUNTPOSITION_RIGHT = 4;
+const Y_MOUNTPOSITION_LEFT = exports.Y_MOUNTPOSITION_LEFT = 5;
+const Y_MOUNTORIENTATION_TWELVE = exports.Y_MOUNTORIENTATION_TWELVE = 0;
+const Y_MOUNTORIENTATION_THREE = exports.Y_MOUNTORIENTATION_THREE = 1;
+const Y_MOUNTORIENTATION_SIX = exports.Y_MOUNTORIENTATION_SIX = 2;
+const Y_MOUNTORIENTATION_NINE = exports.Y_MOUNTORIENTATION_NINE = 3;
+const Y_MOUNTPOS_INVALID = exports.Y_MOUNTPOS_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_BEARING_INVALID = exports.Y_BEARING_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
+const Y_CALIBRATIONPARAM_INVALID = exports.Y_CALIBRATIONPARAM_INVALID = _yocto_api.YAPI.INVALID_STRING;
 //--- (end of YRefFrame definitions)
 
 //--- (YRefFrame class start)
@@ -70,112 +80,115 @@ export const Y_CALIBRATIONPARAM_INVALID      = YAPI.INVALID_STRING;
  */
 //--- (end of YRefFrame class start)
 
-export class YRefFrame extends YFunction
-{
-    constructor(obj_yapi, str_func)
-    {
+class YRefFrame extends _yocto_api.YFunction {
+    constructor(obj_yapi, str_func) {
         //--- (YRefFrame constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'RefFrame';
+        this._className = 'RefFrame';
         /** @member {number} **/
-        this._mountPos                   = Y_MOUNTPOS_INVALID;
+        this._mountPos = Y_MOUNTPOS_INVALID;
         /** @member {number} **/
-        this._bearing                    = Y_BEARING_INVALID;
+        this._bearing = Y_BEARING_INVALID;
         /** @member {string} **/
-        this._calibrationParam           = Y_CALIBRATIONPARAM_INVALID;
+        this._calibrationParam = Y_CALIBRATIONPARAM_INVALID;
         /** @member {number} **/
-        this._calibStage                 = 0;
+        this._calibStage = 0;
         /** @member {string} **/
-        this._calibStageHint             = '';
+        this._calibStageHint = '';
         /** @member {number} **/
-        this._calibStageProgress         = 0;
+        this._calibStageProgress = 0;
         /** @member {number} **/
-        this._calibProgress              = 0;
+        this._calibProgress = 0;
         /** @member {string} **/
-        this._calibLogMsg                = '';
+        this._calibLogMsg = '';
         /** @member {string} **/
-        this._calibSavedParams           = '';
+        this._calibSavedParams = '';
         /** @member {number} **/
-        this._calibCount                 = 0;
+        this._calibCount = 0;
         /** @member {number} **/
-        this._calibInternalPos           = 0;
+        this._calibInternalPos = 0;
         /** @member {number} **/
-        this._calibPrevTick              = 0;
+        this._calibPrevTick = 0;
         /** @member {number[]} **/
-        this._calibOrient                = [];
+        this._calibOrient = [];
         /** @member {number[]} **/
-        this._calibDataAccX              = [];
+        this._calibDataAccX = [];
         /** @member {number[]} **/
-        this._calibDataAccY              = [];
+        this._calibDataAccY = [];
         /** @member {number[]} **/
-        this._calibDataAccZ              = [];
+        this._calibDataAccZ = [];
         /** @member {number[]} **/
-        this._calibDataAcc               = [];
+        this._calibDataAcc = [];
         /** @member {number} **/
-        this._calibAccXOfs               = 0;
+        this._calibAccXOfs = 0;
         /** @member {number} **/
-        this._calibAccYOfs               = 0;
+        this._calibAccYOfs = 0;
         /** @member {number} **/
-        this._calibAccZOfs               = 0;
+        this._calibAccZOfs = 0;
         /** @member {number} **/
-        this._calibAccXScale             = 0;
+        this._calibAccXScale = 0;
         /** @member {number} **/
-        this._calibAccYScale             = 0;
+        this._calibAccYScale = 0;
         /** @member {number} **/
-        this._calibAccZScale             = 0;
+        this._calibAccZScale = 0;
         this.imm_setConst({
-            MOUNTPOS_INVALID             : YAPI.INVALID_UINT,
-            BEARING_INVALID              : YAPI.INVALID_DOUBLE,
-            CALIBRATIONPARAM_INVALID     : YAPI.INVALID_STRING,
-            MOUNTPOSITION_BOTTOM         : 0,
-            MOUNTPOSITION_TOP            : 1,
-            MOUNTPOSITION_FRONT          : 2,
-            MOUNTPOSITION_REAR           : 3,
-            MOUNTPOSITION_RIGHT          : 4,
-            MOUNTPOSITION_LEFT           : 5,
-            MOUNTORIENTATION_TWELVE      : 0,
-            MOUNTORIENTATION_THREE       : 1,
-            MOUNTORIENTATION_SIX         : 2,
-            MOUNTORIENTATION_NINE        : 3
+            MOUNTPOS_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            BEARING_INVALID: _yocto_api.YAPI.INVALID_DOUBLE,
+            CALIBRATIONPARAM_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            MOUNTPOSITION_BOTTOM: 0,
+            MOUNTPOSITION_TOP: 1,
+            MOUNTPOSITION_FRONT: 2,
+            MOUNTPOSITION_REAR: 3,
+            MOUNTPOSITION_RIGHT: 4,
+            MOUNTPOSITION_LEFT: 5,
+            MOUNTORIENTATION_TWELVE: 0,
+            MOUNTORIENTATION_THREE: 1,
+            MOUNTORIENTATION_SIX: 2,
+            MOUNTORIENTATION_NINE: 3
         });
         //--- (end of YRefFrame constructor)
     }
 
     //--- (YRefFrame implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'mountPos':
-            this._mountPos = parseInt(val);
-            return 1;
-        case 'bearing':
-            this._bearing = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
-        case 'calibrationParam':
-            this._calibrationParam = val;
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'mountPos':
+                this._mountPos = parseInt(val);
+                return 1;
+            case 'bearing':
+                this._bearing = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
+            case 'calibrationParam':
+                this._calibrationParam = val;
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
 
-    async get_mountPos()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_MOUNTPOS_INVALID;
+    get_mountPos() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
+                    return Y_MOUNTPOS_INVALID;
+                }
             }
-        }
-        return this._mountPos;
+            return _this._mountPos;
+        })();
     }
 
-    async set_mountPos(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('mountPos',rest_val);
+    set_mountPos(newval) {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this2._setAttr('mountPos', rest_val);
+        })();
     }
 
     /**
@@ -200,12 +213,15 @@ export class YRefFrame extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_bearing(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(Math.round(newval * 65536.0));
-        return await this._setAttr('bearing',rest_val);
+    set_bearing(newval) {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(Math.round(newval * 65536.0));
+            return yield _this3._setAttr('bearing', rest_val);
+        })();
     }
 
     /**
@@ -217,32 +233,41 @@ export class YRefFrame extends YFunction
      *
      * On failure, throws an exception or returns YRefFrame.BEARING_INVALID.
      */
-    async get_bearing()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_BEARING_INVALID;
+    get_bearing() {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this4._cacheExpiration <= _this4._yapi.GetTickCount()) {
+                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _this4._yapi.SUCCESS) {
+                    return Y_BEARING_INVALID;
+                }
             }
-        }
-        return this._bearing;
+            return _this4._bearing;
+        })();
     }
 
-    async get_calibrationParam()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_CALIBRATIONPARAM_INVALID;
+    get_calibrationParam() {
+        var _this5 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this5._cacheExpiration <= _this5._yapi.GetTickCount()) {
+                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _this5._yapi.SUCCESS) {
+                    return Y_CALIBRATIONPARAM_INVALID;
+                }
             }
-        }
-        return this._calibrationParam;
+            return _this5._calibrationParam;
+        })();
     }
 
-    async set_calibrationParam(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('calibrationParam',rest_val);
+    set_calibrationParam(newval) {
+        var _this6 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this6._setAttr('calibrationParam', rest_val);
+        })();
     }
 
     /**
@@ -268,14 +293,13 @@ export class YRefFrame extends YFunction
      *
      * @return {YRefFrame} a YRefFrame object allowing you to drive the reference frame.
      */
-    static FindRefFrame(func)
-    {
+    static FindRefFrame(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('RefFrame', func);
+        obj = _yocto_api.YFunction._FindFromCache('RefFrame', func);
         if (obj == null) {
-            obj = new YRefFrame(YAPI, func);
-            YFunction._AddToCache('RefFrame',  func, obj);
+            obj = new YRefFrame(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('RefFrame', func, obj);
         }
         return obj;
     }
@@ -304,14 +328,13 @@ export class YRefFrame extends YFunction
      *
      * @return {YRefFrame} a YRefFrame object allowing you to drive the reference frame.
      */
-    static FindRefFrameInContext(yctx,func)
-    {
+    static FindRefFrameInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'RefFrame', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'RefFrame', func);
         if (obj == null) {
             obj = new YRefFrame(yctx, func);
-            YFunction._AddToCache('RefFrame',  func, obj);
+            _yocto_api.YFunction._AddToCache('RefFrame', func, obj);
         }
         return obj;
     }
@@ -329,12 +352,15 @@ export class YRefFrame extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async get_mountPosition()
-    {
-        /** @type {number} **/
-        let position;
-        position = await this.get_mountPos();
-        return ((position) >> (2));
+    get_mountPosition() {
+        var _this7 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let position;
+            position = yield _this7.get_mountPos();
+            return position >> 2;
+        })();
     }
 
     /**
@@ -352,12 +378,15 @@ export class YRefFrame extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async get_mountOrientation()
-    {
-        /** @type {number} **/
-        let position;
-        position = await this.get_mountPos();
-        return ((position) & (3));
+    get_mountOrientation() {
+        var _this8 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let position;
+            position = yield _this8.get_mountPos();
+            return position & 3;
+        })();
     }
 
     /**
@@ -385,59 +414,65 @@ export class YRefFrame extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_mountPosition(position,orientation)
-    {
-        /** @type {number} **/
-        let mixedPos;
-        mixedPos = ((position) << (2)) + orientation;
-        return await this.set_mountPos(mixedPos);
+    set_mountPosition(position, orientation) {
+        var _this9 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let mixedPos;
+            mixedPos = (position << 2) + orientation;
+            return yield _this9.set_mountPos(mixedPos);
+        })();
     }
 
-    async _calibSort(start,stopidx)
-    {
-        /** @type {number} **/
-        let idx;
-        /** @type {number} **/
-        let changed;
-        /** @type {number} **/
-        let a;
-        /** @type {number} **/
-        let b;
-        /** @type {number} **/
-        let xa;
-        /** @type {number} **/
-        let xb;
-        // bubble sort is good since we will re-sort again after offset adjustment
-        changed = 1;
-        while (changed > 0) {
-            changed = 0;
-            a = this._calibDataAcc[start];
-            idx = start + 1;
-            while (idx < stopidx) {
-                b = this._calibDataAcc[idx];
-                if (a > b) {
-                    this._calibDataAcc[idx-1] = b;
-                    this._calibDataAcc[idx] = a;
-                    xa = this._calibDataAccX[idx-1];
-                    xb = this._calibDataAccX[idx];
-                    this._calibDataAccX[idx-1] = xb;
-                    this._calibDataAccX[idx] = xa;
-                    xa = this._calibDataAccY[idx-1];
-                    xb = this._calibDataAccY[idx];
-                    this._calibDataAccY[idx-1] = xb;
-                    this._calibDataAccY[idx] = xa;
-                    xa = this._calibDataAccZ[idx-1];
-                    xb = this._calibDataAccZ[idx];
-                    this._calibDataAccZ[idx-1] = xb;
-                    this._calibDataAccZ[idx] = xa;
-                    changed = changed + 1;
-                } else {
-                    a = b;
+    _calibSort(start, stopidx) {
+        var _this10 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let idx;
+            /** @type {number} **/
+            let changed;
+            /** @type {number} **/
+            let a;
+            /** @type {number} **/
+            let b;
+            /** @type {number} **/
+            let xa;
+            /** @type {number} **/
+            let xb;
+            // bubble sort is good since we will re-sort again after offset adjustment
+            changed = 1;
+            while (changed > 0) {
+                changed = 0;
+                a = _this10._calibDataAcc[start];
+                idx = start + 1;
+                while (idx < stopidx) {
+                    b = _this10._calibDataAcc[idx];
+                    if (a > b) {
+                        _this10._calibDataAcc[idx - 1] = b;
+                        _this10._calibDataAcc[idx] = a;
+                        xa = _this10._calibDataAccX[idx - 1];
+                        xb = _this10._calibDataAccX[idx];
+                        _this10._calibDataAccX[idx - 1] = xb;
+                        _this10._calibDataAccX[idx] = xa;
+                        xa = _this10._calibDataAccY[idx - 1];
+                        xb = _this10._calibDataAccY[idx];
+                        _this10._calibDataAccY[idx - 1] = xb;
+                        _this10._calibDataAccY[idx] = xa;
+                        xa = _this10._calibDataAccZ[idx - 1];
+                        xb = _this10._calibDataAccZ[idx];
+                        _this10._calibDataAccZ[idx - 1] = xb;
+                        _this10._calibDataAccZ[idx] = xa;
+                        changed = changed + 1;
+                    } else {
+                        a = b;
+                    }
+                    idx = idx + 1;
                 }
-                idx = idx + 1;
             }
-        }
-        return 0;
+            return 0;
+        })();
     }
 
     /**
@@ -456,29 +491,32 @@ export class YRefFrame extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async start3DCalibration()
-    {
-        if (!(await this.isOnline())) {
-            return this._yapi.DEVICE_NOT_FOUND;
-        }
-        if (this._calibStage != 0) {
-            await this.cancel3DCalibration();
-        }
-        this._calibSavedParams = await this.get_calibrationParam();
-        await this.set_calibrationParam('0');
-        this._calibCount = 50;
-        this._calibStage = 1;
-        this._calibStageHint = 'Set down the device on a steady horizontal surface';
-        this._calibStageProgress = 0;
-        this._calibProgress = 1;
-        this._calibInternalPos = 0;
-        this._calibPrevTick = ((this._yapi.GetTickCount()) & (0x7FFFFFFF));
-        this._calibOrient.length = 0;
-        this._calibDataAccX.length = 0;
-        this._calibDataAccY.length = 0;
-        this._calibDataAccZ.length = 0;
-        this._calibDataAcc.length = 0;
-        return this._yapi.SUCCESS;
+    start3DCalibration() {
+        var _this11 = this;
+
+        return _asyncToGenerator(function* () {
+            if (!(yield _this11.isOnline())) {
+                return _this11._yapi.DEVICE_NOT_FOUND;
+            }
+            if (_this11._calibStage != 0) {
+                yield _this11.cancel3DCalibration();
+            }
+            _this11._calibSavedParams = yield _this11.get_calibrationParam();
+            yield _this11.set_calibrationParam('0');
+            _this11._calibCount = 50;
+            _this11._calibStage = 1;
+            _this11._calibStageHint = 'Set down the device on a steady horizontal surface';
+            _this11._calibStageProgress = 0;
+            _this11._calibProgress = 1;
+            _this11._calibInternalPos = 0;
+            _this11._calibPrevTick = _this11._yapi.GetTickCount() & 0x7FFFFFFF;
+            _this11._calibOrient.length = 0;
+            _this11._calibDataAccX.length = 0;
+            _this11._calibDataAccY.length = 0;
+            _this11._calibDataAccZ.length = 0;
+            _this11._calibDataAcc.length = 0;
+            return _this11._yapi.SUCCESS;
+        })();
     }
 
     /**
@@ -491,214 +529,217 @@ export class YRefFrame extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async more3DCalibration()
-    {
-        /** @type {number} **/
-        let currTick;
-        /** @type {Uint8Array} **/
-        let jsonData;
-        /** @type {number} **/
-        let xVal;
-        /** @type {number} **/
-        let yVal;
-        /** @type {number} **/
-        let zVal;
-        /** @type {number} **/
-        let xSq;
-        /** @type {number} **/
-        let ySq;
-        /** @type {number} **/
-        let zSq;
-        /** @type {number} **/
-        let norm;
-        /** @type {number} **/
-        let orient;
-        /** @type {number} **/
-        let idx;
-        /** @type {number} **/
-        let intpos;
-        /** @type {number} **/
-        let err;
-        // make sure calibration has been started
-        if (this._calibStage == 0) {
-            return this._yapi.INVALID_ARGUMENT;
-        }
-        if (this._calibProgress == 100) {
-            return this._yapi.SUCCESS;
-        }
-        // make sure we leave at least 160ms between samples
-        currTick =  ((this._yapi.GetTickCount()) & (0x7FFFFFFF));
-        if (((currTick - this._calibPrevTick) & (0x7FFFFFFF)) < 160) {
-            return this._yapi.SUCCESS;
-        }
-        // load current accelerometer values, make sure we are on a straight angle
-        // (default timeout to 0,5 sec without reading measure when out of range)
-        this._calibStageHint = 'Set down the device on a steady horizontal surface';
-        this._calibPrevTick = ((currTick + 500) & (0x7FFFFFFF));
-        jsonData = await this._download('api/accelerometer.json');
-        xVal = this._yapi.imm_atoi(this.imm_json_get_key(jsonData, 'xValue')) / 65536.0;
-        yVal = this._yapi.imm_atoi(this.imm_json_get_key(jsonData, 'yValue')) / 65536.0;
-        zVal = this._yapi.imm_atoi(this.imm_json_get_key(jsonData, 'zValue')) / 65536.0;
-        xSq = xVal * xVal;
-        if (xSq >= 0.04 && xSq < 0.64) {
-            return this._yapi.SUCCESS;
-        }
-        if (xSq >= 1.44) {
-            return this._yapi.SUCCESS;
-        }
-        ySq = yVal * yVal;
-        if (ySq >= 0.04 && ySq < 0.64) {
-            return this._yapi.SUCCESS;
-        }
-        if (ySq >= 1.44) {
-            return this._yapi.SUCCESS;
-        }
-        zSq = zVal * zVal;
-        if (zSq >= 0.04 && zSq < 0.64) {
-            return this._yapi.SUCCESS;
-        }
-        if (zSq >= 1.44) {
-            return this._yapi.SUCCESS;
-        }
-        norm = Math.sqrt(xSq + ySq + zSq);
-        if (norm < 0.8 || norm > 1.2) {
-            return this._yapi.SUCCESS;
-        }
-        this._calibPrevTick = currTick;
-        // Determine the device orientation index
-        orient = 0;
-        if (zSq > 0.5) {
-            if (zVal > 0) {
-                orient = 0;
-            } else {
-                orient = 1;
+    more3DCalibration() {
+        var _this12 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let currTick;
+            /** @type {Uint8Array} **/
+            let jsonData;
+            /** @type {number} **/
+            let xVal;
+            /** @type {number} **/
+            let yVal;
+            /** @type {number} **/
+            let zVal;
+            /** @type {number} **/
+            let xSq;
+            /** @type {number} **/
+            let ySq;
+            /** @type {number} **/
+            let zSq;
+            /** @type {number} **/
+            let norm;
+            /** @type {number} **/
+            let orient;
+            /** @type {number} **/
+            let idx;
+            /** @type {number} **/
+            let intpos;
+            /** @type {number} **/
+            let err;
+            // make sure calibration has been started
+            if (_this12._calibStage == 0) {
+                return _this12._yapi.INVALID_ARGUMENT;
             }
-        }
-        if (xSq > 0.5) {
-            if (xVal > 0) {
-                orient = 2;
-            } else {
-                orient = 3;
+            if (_this12._calibProgress == 100) {
+                return _this12._yapi.SUCCESS;
             }
-        }
-        if (ySq > 0.5) {
-            if (yVal > 0) {
-                orient = 4;
-            } else {
-                orient = 5;
+            // make sure we leave at least 160ms between samples
+            currTick = _this12._yapi.GetTickCount() & 0x7FFFFFFF;
+            if ((currTick - _this12._calibPrevTick & 0x7FFFFFFF) < 160) {
+                return _this12._yapi.SUCCESS;
             }
-        }
-        // Discard measures that are not in the proper orientation
-        if (this._calibStageProgress == 0) {
+            // load current accelerometer values, make sure we are on a straight angle
+            // (default timeout to 0,5 sec without reading measure when out of range)
+            _this12._calibStageHint = 'Set down the device on a steady horizontal surface';
+            _this12._calibPrevTick = currTick + 500 & 0x7FFFFFFF;
+            jsonData = yield _this12._download('api/accelerometer.json');
+            xVal = _this12._yapi.imm_atoi(_this12.imm_json_get_key(jsonData, 'xValue')) / 65536.0;
+            yVal = _this12._yapi.imm_atoi(_this12.imm_json_get_key(jsonData, 'yValue')) / 65536.0;
+            zVal = _this12._yapi.imm_atoi(_this12.imm_json_get_key(jsonData, 'zValue')) / 65536.0;
+            xSq = xVal * xVal;
+            if (xSq >= 0.04 && xSq < 0.64) {
+                return _this12._yapi.SUCCESS;
+            }
+            if (xSq >= 1.44) {
+                return _this12._yapi.SUCCESS;
+            }
+            ySq = yVal * yVal;
+            if (ySq >= 0.04 && ySq < 0.64) {
+                return _this12._yapi.SUCCESS;
+            }
+            if (ySq >= 1.44) {
+                return _this12._yapi.SUCCESS;
+            }
+            zSq = zVal * zVal;
+            if (zSq >= 0.04 && zSq < 0.64) {
+                return _this12._yapi.SUCCESS;
+            }
+            if (zSq >= 1.44) {
+                return _this12._yapi.SUCCESS;
+            }
+            norm = Math.sqrt(xSq + ySq + zSq);
+            if (norm < 0.8 || norm > 1.2) {
+                return _this12._yapi.SUCCESS;
+            }
+            _this12._calibPrevTick = currTick;
+            // Determine the device orientation index
+            orient = 0;
+            if (zSq > 0.5) {
+                if (zVal > 0) {
+                    orient = 0;
+                } else {
+                    orient = 1;
+                }
+            }
+            if (xSq > 0.5) {
+                if (xVal > 0) {
+                    orient = 2;
+                } else {
+                    orient = 3;
+                }
+            }
+            if (ySq > 0.5) {
+                if (yVal > 0) {
+                    orient = 4;
+                } else {
+                    orient = 5;
+                }
+            }
+            // Discard measures that are not in the proper orientation
+            if (_this12._calibStageProgress == 0) {
+                idx = 0;
+                err = 0;
+                while (idx + 1 < _this12._calibStage) {
+                    if (_this12._calibOrient[idx] == orient) {
+                        err = 1;
+                    }
+                    idx = idx + 1;
+                }
+                if (err != 0) {
+                    _this12._calibStageHint = 'Turn the device on another face';
+                    return _this12._yapi.SUCCESS;
+                }
+                _this12._calibOrient.push(orient);
+            } else {
+                if (orient != _this12._calibOrient[_this12._calibStage - 1]) {
+                    _this12._calibStageHint = 'Not yet done, please move back to the previous face';
+                    return _this12._yapi.SUCCESS;
+                }
+            }
+            // Save measure
+            _this12._calibStageHint = 'calibrating..';
+            _this12._calibDataAccX.push(xVal);
+            _this12._calibDataAccY.push(yVal);
+            _this12._calibDataAccZ.push(zVal);
+            _this12._calibDataAcc.push(norm);
+            _this12._calibInternalPos = _this12._calibInternalPos + 1;
+            _this12._calibProgress = 1 + 16 * (_this12._calibStage - 1) + parseInt(16 * _this12._calibInternalPos / _this12._calibCount, 10);
+            if (_this12._calibInternalPos < _this12._calibCount) {
+                _this12._calibStageProgress = 1 + parseInt(99 * _this12._calibInternalPos / _this12._calibCount, 10);
+                return _this12._yapi.SUCCESS;
+            }
+            // Stage done, compute preliminary result
+            intpos = (_this12._calibStage - 1) * _this12._calibCount;
+            yield _this12._calibSort(intpos, intpos + _this12._calibCount);
+            intpos = intpos + parseInt(_this12._calibCount / 2, 10);
+            _this12._calibLogMsg = 'Stage ' + String(Math.round(_this12._calibStage)) + ': median is ' + String(Math.round(Math.round(1000 * _this12._calibDataAccX[intpos]))) + ',' + String(Math.round(Math.round(1000 * _this12._calibDataAccY[intpos]))) + ',' + String(Math.round(Math.round(1000 * _this12._calibDataAccZ[intpos])));
+            // move to next stage
+            _this12._calibStage = _this12._calibStage + 1;
+            if (_this12._calibStage < 7) {
+                _this12._calibStageHint = 'Turn the device on another face';
+                _this12._calibPrevTick = currTick + 500 & 0x7FFFFFFF;
+                _this12._calibStageProgress = 0;
+                _this12._calibInternalPos = 0;
+                return _this12._yapi.SUCCESS;
+            }
+            // Data collection completed, compute accelerometer shift
+            xVal = 0;
+            yVal = 0;
+            zVal = 0;
             idx = 0;
-            err = 0;
-            while (idx + 1 < this._calibStage) {
-                if (this._calibOrient[idx] == orient) {
-                    err = 1;
+            while (idx < 6) {
+                intpos = idx * _this12._calibCount + parseInt(_this12._calibCount / 2, 10);
+                orient = _this12._calibOrient[idx];
+                if (orient == 0 || orient == 1) {
+                    zVal = zVal + _this12._calibDataAccZ[intpos];
+                }
+                if (orient == 2 || orient == 3) {
+                    xVal = xVal + _this12._calibDataAccX[intpos];
+                }
+                if (orient == 4 || orient == 5) {
+                    yVal = yVal + _this12._calibDataAccY[intpos];
                 }
                 idx = idx + 1;
             }
-            if (err != 0) {
-                this._calibStageHint = 'Turn the device on another face';
-                return this._yapi.SUCCESS;
+            _this12._calibAccXOfs = xVal / 2.0;
+            _this12._calibAccYOfs = yVal / 2.0;
+            _this12._calibAccZOfs = zVal / 2.0;
+            // Recompute all norms, taking into account the computed shift, and re-sort
+            intpos = 0;
+            while (intpos < _this12._calibDataAcc.length) {
+                xVal = _this12._calibDataAccX[intpos] - _this12._calibAccXOfs;
+                yVal = _this12._calibDataAccY[intpos] - _this12._calibAccYOfs;
+                zVal = _this12._calibDataAccZ[intpos] - _this12._calibAccZOfs;
+                norm = Math.sqrt(xVal * xVal + yVal * yVal + zVal * zVal);
+                _this12._calibDataAcc[intpos] = norm;
+                intpos = intpos + 1;
             }
-            this._calibOrient.push(orient);
-        } else {
-            if (orient != this._calibOrient[this._calibStage-1]) {
-                this._calibStageHint = 'Not yet done, please move back to the previous face';
-                return this._yapi.SUCCESS;
+            idx = 0;
+            while (idx < 6) {
+                intpos = idx * _this12._calibCount;
+                yield _this12._calibSort(intpos, intpos + _this12._calibCount);
+                idx = idx + 1;
             }
-        }
-        // Save measure
-        this._calibStageHint = 'calibrating..';
-        this._calibDataAccX.push(xVal);
-        this._calibDataAccY.push(yVal);
-        this._calibDataAccZ.push(zVal);
-        this._calibDataAcc.push(norm);
-        this._calibInternalPos = this._calibInternalPos + 1;
-        this._calibProgress = 1 + 16 * (this._calibStage - 1) + parseInt((16 * this._calibInternalPos) / (this._calibCount), 10);
-        if (this._calibInternalPos < this._calibCount) {
-            this._calibStageProgress = 1 + parseInt((99 * this._calibInternalPos) / (this._calibCount), 10);
-            return this._yapi.SUCCESS;
-        }
-        // Stage done, compute preliminary result
-        intpos = (this._calibStage - 1) * this._calibCount;
-        await this._calibSort(intpos, intpos + this._calibCount);
-        intpos = intpos + parseInt((this._calibCount) / (2), 10);
-        this._calibLogMsg = 'Stage '+String(Math.round(this._calibStage))+': median is '+String(Math.round(Math.round(1000*this._calibDataAccX[intpos])))+','+String(Math.round(Math.round(1000*this._calibDataAccY[intpos])))+','+String(Math.round(Math.round(1000*this._calibDataAccZ[intpos])));
-        // move to next stage
-        this._calibStage = this._calibStage + 1;
-        if (this._calibStage < 7) {
-            this._calibStageHint = 'Turn the device on another face';
-            this._calibPrevTick = ((currTick + 500) & (0x7FFFFFFF));
-            this._calibStageProgress = 0;
-            this._calibInternalPos = 0;
-            return this._yapi.SUCCESS;
-        }
-        // Data collection completed, compute accelerometer shift
-        xVal = 0;
-        yVal = 0;
-        zVal = 0;
-        idx = 0;
-        while (idx < 6) {
-            intpos = idx * this._calibCount + parseInt((this._calibCount) / (2), 10);
-            orient = this._calibOrient[idx];
-            if (orient == 0 || orient == 1) {
-                zVal = zVal + this._calibDataAccZ[intpos];
+            // Compute the scaling factor for each axis
+            xVal = 0;
+            yVal = 0;
+            zVal = 0;
+            idx = 0;
+            while (idx < 6) {
+                intpos = idx * _this12._calibCount + parseInt(_this12._calibCount / 2, 10);
+                orient = _this12._calibOrient[idx];
+                if (orient == 0 || orient == 1) {
+                    zVal = zVal + _this12._calibDataAcc[intpos];
+                }
+                if (orient == 2 || orient == 3) {
+                    xVal = xVal + _this12._calibDataAcc[intpos];
+                }
+                if (orient == 4 || orient == 5) {
+                    yVal = yVal + _this12._calibDataAcc[intpos];
+                }
+                idx = idx + 1;
             }
-            if (orient == 2 || orient == 3) {
-                xVal = xVal + this._calibDataAccX[intpos];
-            }
-            if (orient == 4 || orient == 5) {
-                yVal = yVal + this._calibDataAccY[intpos];
-            }
-            idx = idx + 1;
-        }
-        this._calibAccXOfs = xVal / 2.0;
-        this._calibAccYOfs = yVal / 2.0;
-        this._calibAccZOfs = zVal / 2.0;
-        // Recompute all norms, taking into account the computed shift, and re-sort
-        intpos = 0;
-        while (intpos < this._calibDataAcc.length) {
-            xVal = this._calibDataAccX[intpos] - this._calibAccXOfs;
-            yVal = this._calibDataAccY[intpos] - this._calibAccYOfs;
-            zVal = this._calibDataAccZ[intpos] - this._calibAccZOfs;
-            norm = Math.sqrt(xVal * xVal + yVal * yVal + zVal * zVal);
-            this._calibDataAcc[intpos] = norm;
-            intpos = intpos + 1;
-        }
-        idx = 0;
-        while (idx < 6) {
-            intpos = idx * this._calibCount;
-            await this._calibSort(intpos, intpos + this._calibCount);
-            idx = idx + 1;
-        }
-        // Compute the scaling factor for each axis
-        xVal = 0;
-        yVal = 0;
-        zVal = 0;
-        idx = 0;
-        while (idx < 6) {
-            intpos = idx * this._calibCount + parseInt((this._calibCount) / (2), 10);
-            orient = this._calibOrient[idx];
-            if (orient == 0 || orient == 1) {
-                zVal = zVal + this._calibDataAcc[intpos];
-            }
-            if (orient == 2 || orient == 3) {
-                xVal = xVal + this._calibDataAcc[intpos];
-            }
-            if (orient == 4 || orient == 5) {
-                yVal = yVal + this._calibDataAcc[intpos];
-            }
-            idx = idx + 1;
-        }
-        this._calibAccXScale = xVal / 2.0;
-        this._calibAccYScale = yVal / 2.0;
-        this._calibAccZScale = zVal / 2.0;
-        // Report completion
-        this._calibProgress = 100;
-        this._calibStageHint = 'Calibration data ready for saving';
-        return this._yapi.SUCCESS;
+            _this12._calibAccXScale = xVal / 2.0;
+            _this12._calibAccYScale = yVal / 2.0;
+            _this12._calibAccZScale = zVal / 2.0;
+            // Report completion
+            _this12._calibProgress = 100;
+            _this12._calibStageHint = 'Calibration data ready for saving';
+            return _this12._yapi.SUCCESS;
+        })();
     }
 
     /**
@@ -707,9 +748,12 @@ export class YRefFrame extends YFunction
      *
      * @return {string} a character string.
      */
-    async get_3DCalibrationHint()
-    {
-        return this._calibStageHint;
+    get_3DCalibrationHint() {
+        var _this13 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this13._calibStageHint;
+        })();
     }
 
     /**
@@ -718,9 +762,12 @@ export class YRefFrame extends YFunction
      *
      * @return {number} an integer between 0 (not started) and 100 (stage completed).
      */
-    async get_3DCalibrationProgress()
-    {
-        return this._calibProgress;
+    get_3DCalibrationProgress() {
+        var _this14 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this14._calibProgress;
+        })();
     }
 
     /**
@@ -729,9 +776,12 @@ export class YRefFrame extends YFunction
      *
      * @return {number} an integer, growing each time a calibration stage is completed.
      */
-    async get_3DCalibrationStage()
-    {
-        return this._calibStage;
+    get_3DCalibrationStage() {
+        var _this15 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this15._calibStage;
+        })();
     }
 
     /**
@@ -740,9 +790,12 @@ export class YRefFrame extends YFunction
      *
      * @return {number} an integer between 0 (not started) and 100 (stage completed).
      */
-    async get_3DCalibrationStageProgress()
-    {
-        return this._calibStageProgress;
+    get_3DCalibrationStageProgress() {
+        var _this16 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this16._calibStageProgress;
+        })();
     }
 
     /**
@@ -751,13 +804,16 @@ export class YRefFrame extends YFunction
      *
      * @return {string} a character string.
      */
-    async get_3DCalibrationLogMsg()
-    {
-        /** @type {string} **/
-        let msg;
-        msg = this._calibLogMsg;
-        this._calibLogMsg = '';
-        return msg;
+    get_3DCalibrationLogMsg() {
+        var _this17 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let msg;
+            msg = _this17._calibLogMsg;
+            _this17._calibLogMsg = '';
+            return msg;
+        })();
     }
 
     /**
@@ -767,80 +823,83 @@ export class YRefFrame extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async save3DCalibration()
-    {
-        /** @type {number} **/
-        let shiftX;
-        /** @type {number} **/
-        let shiftY;
-        /** @type {number} **/
-        let shiftZ;
-        /** @type {number} **/
-        let scaleExp;
-        /** @type {number} **/
-        let scaleX;
-        /** @type {number} **/
-        let scaleY;
-        /** @type {number} **/
-        let scaleZ;
-        /** @type {number} **/
-        let scaleLo;
-        /** @type {number} **/
-        let scaleHi;
-        /** @type {string} **/
-        let newcalib;
-        if (this._calibProgress != 100) {
-            return this._yapi.INVALID_ARGUMENT;
-        }
-        // Compute integer values (correction unit is 732ug/count)
-        shiftX = -Math.round(this._calibAccXOfs / 0.000732);
-        if (shiftX < 0) {
-            shiftX = shiftX + 65536;
-        }
-        shiftY = -Math.round(this._calibAccYOfs / 0.000732);
-        if (shiftY < 0) {
-            shiftY = shiftY + 65536;
-        }
-        shiftZ = -Math.round(this._calibAccZOfs / 0.000732);
-        if (shiftZ < 0) {
-            shiftZ = shiftZ + 65536;
-        }
-        scaleX = Math.round(2048.0 / this._calibAccXScale) - 2048;
-        scaleY = Math.round(2048.0 / this._calibAccYScale) - 2048;
-        scaleZ = Math.round(2048.0 / this._calibAccZScale) - 2048;
-        if (scaleX < -2048 || scaleX >= 2048 || scaleY < -2048 || scaleY >= 2048 || scaleZ < -2048 || scaleZ >= 2048) {
-            scaleExp = 3;
-        } else {
-            if (scaleX < -1024 || scaleX >= 1024 || scaleY < -1024 || scaleY >= 1024 || scaleZ < -1024 || scaleZ >= 1024) {
-                scaleExp = 2;
+    save3DCalibration() {
+        var _this18 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let shiftX;
+            /** @type {number} **/
+            let shiftY;
+            /** @type {number} **/
+            let shiftZ;
+            /** @type {number} **/
+            let scaleExp;
+            /** @type {number} **/
+            let scaleX;
+            /** @type {number} **/
+            let scaleY;
+            /** @type {number} **/
+            let scaleZ;
+            /** @type {number} **/
+            let scaleLo;
+            /** @type {number} **/
+            let scaleHi;
+            /** @type {string} **/
+            let newcalib;
+            if (_this18._calibProgress != 100) {
+                return _this18._yapi.INVALID_ARGUMENT;
+            }
+            // Compute integer values (correction unit is 732ug/count)
+            shiftX = -Math.round(_this18._calibAccXOfs / 0.000732);
+            if (shiftX < 0) {
+                shiftX = shiftX + 65536;
+            }
+            shiftY = -Math.round(_this18._calibAccYOfs / 0.000732);
+            if (shiftY < 0) {
+                shiftY = shiftY + 65536;
+            }
+            shiftZ = -Math.round(_this18._calibAccZOfs / 0.000732);
+            if (shiftZ < 0) {
+                shiftZ = shiftZ + 65536;
+            }
+            scaleX = Math.round(2048.0 / _this18._calibAccXScale) - 2048;
+            scaleY = Math.round(2048.0 / _this18._calibAccYScale) - 2048;
+            scaleZ = Math.round(2048.0 / _this18._calibAccZScale) - 2048;
+            if (scaleX < -2048 || scaleX >= 2048 || scaleY < -2048 || scaleY >= 2048 || scaleZ < -2048 || scaleZ >= 2048) {
+                scaleExp = 3;
             } else {
-                if (scaleX < -512 || scaleX >= 512 || scaleY < -512 || scaleY >= 512 || scaleZ < -512 || scaleZ >= 512) {
-                    scaleExp = 1;
+                if (scaleX < -1024 || scaleX >= 1024 || scaleY < -1024 || scaleY >= 1024 || scaleZ < -1024 || scaleZ >= 1024) {
+                    scaleExp = 2;
                 } else {
-                    scaleExp = 0;
+                    if (scaleX < -512 || scaleX >= 512 || scaleY < -512 || scaleY >= 512 || scaleZ < -512 || scaleZ >= 512) {
+                        scaleExp = 1;
+                    } else {
+                        scaleExp = 0;
+                    }
                 }
             }
-        }
-        if (scaleExp > 0) {
-            scaleX = ((scaleX) >> (scaleExp));
-            scaleY = ((scaleY) >> (scaleExp));
-            scaleZ = ((scaleZ) >> (scaleExp));
-        }
-        if (scaleX < 0) {
-            scaleX = scaleX + 1024;
-        }
-        if (scaleY < 0) {
-            scaleY = scaleY + 1024;
-        }
-        if (scaleZ < 0) {
-            scaleZ = scaleZ + 1024;
-        }
-        scaleLo = ((((scaleY) & (15))) << (12)) + ((scaleX) << (2)) + scaleExp;
-        scaleHi = ((scaleZ) << (6)) + ((scaleY) >> (4));
-        // Save calibration parameters
-        newcalib = '5,'+String(Math.round(shiftX))+','+String(Math.round(shiftY))+','+String(Math.round(shiftZ))+','+String(Math.round(scaleLo))+','+String(Math.round(scaleHi));
-        this._calibStage = 0;
-        return await this.set_calibrationParam(newcalib);
+            if (scaleExp > 0) {
+                scaleX = scaleX >> scaleExp;
+                scaleY = scaleY >> scaleExp;
+                scaleZ = scaleZ >> scaleExp;
+            }
+            if (scaleX < 0) {
+                scaleX = scaleX + 1024;
+            }
+            if (scaleY < 0) {
+                scaleY = scaleY + 1024;
+            }
+            if (scaleZ < 0) {
+                scaleZ = scaleZ + 1024;
+            }
+            scaleLo = ((scaleY & 15) << 12) + (scaleX << 2) + scaleExp;
+            scaleHi = (scaleZ << 6) + (scaleY >> 4);
+            // Save calibration parameters
+            newcalib = '5,' + String(Math.round(shiftX)) + ',' + String(Math.round(shiftY)) + ',' + String(Math.round(shiftZ)) + ',' + String(Math.round(scaleLo)) + ',' + String(Math.round(scaleHi));
+            _this18._calibStage = 0;
+            return yield _this18.set_calibrationParam(newcalib);
+        })();
     }
 
     /**
@@ -848,14 +907,17 @@ export class YRefFrame extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async cancel3DCalibration()
-    {
-        if (this._calibStage == 0) {
-            return this._yapi.SUCCESS;
-        }
-        // may throw an exception
-        this._calibStage = 0;
-        return await this.set_calibrationParam(this._calibSavedParams);
+    cancel3DCalibration() {
+        var _this19 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this19._calibStage == 0) {
+                return _this19._yapi.SUCCESS;
+            }
+            // may throw an exception
+            _this19._calibStage = 0;
+            return yield _this19.set_calibrationParam(_this19._calibSavedParams);
+        })();
     }
 
     /**
@@ -865,14 +927,13 @@ export class YRefFrame extends YFunction
      *         a reference frame currently online, or a null pointer
      *         if there are no more reference frames to enumerate.
      */
-    nextRefFrame()
-    {
+    nextRefFrame() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YRefFrame.FindRefFrameInContext(this._yapi, next_hwid);
     }
 
@@ -885,11 +946,10 @@ export class YRefFrame extends YFunction
      *         the first reference frame currently online, or a null pointer
      *         if there are none.
      */
-    static FirstRefFrame()
-    {
+    static FirstRefFrame() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('RefFrame');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('RefFrame');
+        if (next_hwid == null) return null;
         return YRefFrame.FindRefFrame(next_hwid);
     }
 
@@ -904,18 +964,17 @@ export class YRefFrame extends YFunction
      *         the first reference frame currently online, or a null pointer
      *         if there are none.
      */
-    static FirstRefFrameInContext(yctx)
-    {
+    static FirstRefFrameInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('RefFrame');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YRefFrame.FindRefFrameInContext(yctx, next_hwid);
     }
 
     //--- (end of YRefFrame implementation)
 }
 
-//--- (RefFrame functions)
+exports.YRefFrame = YRefFrame; //--- (RefFrame functions)
 
 /**
  * Retrieves a reference frame for a given identifier.
@@ -940,8 +999,8 @@ export class YRefFrame extends YFunction
  *
  * @return {YRefFrame} a YRefFrame object allowing you to drive the reference frame.
  */
-export function yFindRefFrame(func)
-{
+
+function yFindRefFrame(func) {
     return YRefFrame.FindRefFrame(func);
 }
 
@@ -954,8 +1013,7 @@ export function yFindRefFrame(func)
  *         the first reference frame currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstRefFrame()
-{
+function yFirstRefFrame() {
     return YRefFrame.FirstRefFrame();
 }
 

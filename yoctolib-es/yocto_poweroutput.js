@@ -38,15 +38,25 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YPowerOutput = exports.Y_VOLTAGE_INVALID = exports.Y_VOLTAGE_OUT5V = exports.Y_VOLTAGE_OUT3V3 = exports.Y_VOLTAGE_OFF = undefined;
+exports.yFindPowerOutput = yFindPowerOutput;
+exports.yFirstPowerOutput = yFirstPowerOutput;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YPowerOutput return codes)
 //--- (end of YPowerOutput return codes)
 //--- (YPowerOutput definitions)
-export const Y_VOLTAGE_OFF                   = 0;
-export const Y_VOLTAGE_OUT3V3                = 1;
-export const Y_VOLTAGE_OUT5V                 = 2;
-export const Y_VOLTAGE_INVALID               = -1;
+const Y_VOLTAGE_OFF = exports.Y_VOLTAGE_OFF = 0;
+const Y_VOLTAGE_OUT3V3 = exports.Y_VOLTAGE_OUT3V3 = 1;
+const Y_VOLTAGE_OUT5V = exports.Y_VOLTAGE_OUT5V = 2;
+const Y_VOLTAGE_INVALID = exports.Y_VOLTAGE_INVALID = -1;
 //--- (end of YPowerOutput definitions)
 
 //--- (YPowerOutput class start)
@@ -58,33 +68,30 @@ export const Y_VOLTAGE_INVALID               = -1;
  */
 //--- (end of YPowerOutput class start)
 
-export class YPowerOutput extends YFunction
-{
-    constructor(obj_yapi, str_func)
-    {
+class YPowerOutput extends _yocto_api.YFunction {
+    constructor(obj_yapi, str_func) {
         //--- (YPowerOutput constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'PowerOutput';
+        this._className = 'PowerOutput';
         /** @member {number} **/
-        this._voltage                    = Y_VOLTAGE_INVALID;
+        this._voltage = Y_VOLTAGE_INVALID;
         this.imm_setConst({
-            VOLTAGE_OFF                  : 0,
-            VOLTAGE_OUT3V3               : 1,
-            VOLTAGE_OUT5V                : 2,
-            VOLTAGE_INVALID              : -1
+            VOLTAGE_OFF: 0,
+            VOLTAGE_OUT3V3: 1,
+            VOLTAGE_OUT5V: 2,
+            VOLTAGE_INVALID: -1
         });
         //--- (end of YPowerOutput constructor)
     }
 
     //--- (YPowerOutput implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'voltage':
-            this._voltage = parseInt(val);
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'voltage':
+                this._voltage = parseInt(val);
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -99,14 +106,17 @@ export class YPowerOutput extends YFunction
      *
      * On failure, throws an exception or returns YPowerOutput.VOLTAGE_INVALID.
      */
-    async get_voltage()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_VOLTAGE_INVALID;
+    get_voltage() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
+                    return Y_VOLTAGE_INVALID;
+                }
             }
-        }
-        return this._voltage;
+            return _this._voltage;
+        })();
     }
 
     /**
@@ -122,12 +132,15 @@ export class YPowerOutput extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_voltage(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('voltage',rest_val);
+    set_voltage(newval) {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this2._setAttr('voltage', rest_val);
+        })();
     }
 
     /**
@@ -153,14 +166,13 @@ export class YPowerOutput extends YFunction
      *
      * @return {YPowerOutput} a YPowerOutput object allowing you to drive the power ouput control.
      */
-    static FindPowerOutput(func)
-    {
+    static FindPowerOutput(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('PowerOutput', func);
+        obj = _yocto_api.YFunction._FindFromCache('PowerOutput', func);
         if (obj == null) {
-            obj = new YPowerOutput(YAPI, func);
-            YFunction._AddToCache('PowerOutput',  func, obj);
+            obj = new YPowerOutput(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('PowerOutput', func, obj);
         }
         return obj;
     }
@@ -189,14 +201,13 @@ export class YPowerOutput extends YFunction
      *
      * @return {YPowerOutput} a YPowerOutput object allowing you to drive the power ouput control.
      */
-    static FindPowerOutputInContext(yctx,func)
-    {
+    static FindPowerOutputInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'PowerOutput', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'PowerOutput', func);
         if (obj == null) {
             obj = new YPowerOutput(yctx, func);
-            YFunction._AddToCache('PowerOutput',  func, obj);
+            _yocto_api.YFunction._AddToCache('PowerOutput', func, obj);
         }
         return obj;
     }
@@ -208,14 +219,13 @@ export class YPowerOutput extends YFunction
      *         a dual power  ouput control currently online, or a null pointer
      *         if there are no more dual power ouput controls to enumerate.
      */
-    nextPowerOutput()
-    {
+    nextPowerOutput() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YPowerOutput.FindPowerOutputInContext(this._yapi, next_hwid);
     }
 
@@ -228,11 +238,10 @@ export class YPowerOutput extends YFunction
      *         the first dual power ouput control currently online, or a null pointer
      *         if there are none.
      */
-    static FirstPowerOutput()
-    {
+    static FirstPowerOutput() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('PowerOutput');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('PowerOutput');
+        if (next_hwid == null) return null;
         return YPowerOutput.FindPowerOutput(next_hwid);
     }
 
@@ -247,18 +256,17 @@ export class YPowerOutput extends YFunction
      *         the first dual power ouput control currently online, or a null pointer
      *         if there are none.
      */
-    static FirstPowerOutputInContext(yctx)
-    {
+    static FirstPowerOutputInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('PowerOutput');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YPowerOutput.FindPowerOutputInContext(yctx, next_hwid);
     }
 
     //--- (end of YPowerOutput implementation)
 }
 
-//--- (PowerOutput functions)
+exports.YPowerOutput = YPowerOutput; //--- (PowerOutput functions)
 
 /**
  * Retrieves a dual power  ouput control for a given identifier.
@@ -283,8 +291,8 @@ export class YPowerOutput extends YFunction
  *
  * @return {YPowerOutput} a YPowerOutput object allowing you to drive the power ouput control.
  */
-export function yFindPowerOutput(func)
-{
+
+function yFindPowerOutput(func) {
     return YPowerOutput.FindPowerOutput(func);
 }
 
@@ -297,8 +305,7 @@ export function yFindPowerOutput(func)
  *         the first dual power ouput control currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstPowerOutput()
-{
+function yFirstPowerOutput() {
     return YPowerOutput.FirstPowerOutput();
 }
 

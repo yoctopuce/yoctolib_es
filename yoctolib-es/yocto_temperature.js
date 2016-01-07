@@ -38,27 +38,37 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YTemperature = exports.Y_COMMAND_INVALID = exports.Y_SENSORTYPE_INVALID = exports.Y_SENSORTYPE_RES_LINEAR = exports.Y_SENSORTYPE_RES_NTC = exports.Y_SENSORTYPE_RES_OHM = exports.Y_SENSORTYPE_PT100_2WIRES = exports.Y_SENSORTYPE_PT100_3WIRES = exports.Y_SENSORTYPE_PT100_4WIRES = exports.Y_SENSORTYPE_TYPE_T = exports.Y_SENSORTYPE_TYPE_S = exports.Y_SENSORTYPE_TYPE_R = exports.Y_SENSORTYPE_TYPE_N = exports.Y_SENSORTYPE_TYPE_J = exports.Y_SENSORTYPE_TYPE_E = exports.Y_SENSORTYPE_TYPE_K = exports.Y_SENSORTYPE_DIGITAL = undefined;
+exports.yFindTemperature = yFindTemperature;
+exports.yFirstTemperature = yFirstTemperature;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YTemperature return codes)
 //--- (end of YTemperature return codes)
 //--- (YTemperature definitions)
-export const Y_SENSORTYPE_DIGITAL            = 0;
-export const Y_SENSORTYPE_TYPE_K             = 1;
-export const Y_SENSORTYPE_TYPE_E             = 2;
-export const Y_SENSORTYPE_TYPE_J             = 3;
-export const Y_SENSORTYPE_TYPE_N             = 4;
-export const Y_SENSORTYPE_TYPE_R             = 5;
-export const Y_SENSORTYPE_TYPE_S             = 6;
-export const Y_SENSORTYPE_TYPE_T             = 7;
-export const Y_SENSORTYPE_PT100_4WIRES       = 8;
-export const Y_SENSORTYPE_PT100_3WIRES       = 9;
-export const Y_SENSORTYPE_PT100_2WIRES       = 10;
-export const Y_SENSORTYPE_RES_OHM            = 11;
-export const Y_SENSORTYPE_RES_NTC            = 12;
-export const Y_SENSORTYPE_RES_LINEAR         = 13;
-export const Y_SENSORTYPE_INVALID            = -1;
-export const Y_COMMAND_INVALID               = YAPI.INVALID_STRING;
+const Y_SENSORTYPE_DIGITAL = exports.Y_SENSORTYPE_DIGITAL = 0;
+const Y_SENSORTYPE_TYPE_K = exports.Y_SENSORTYPE_TYPE_K = 1;
+const Y_SENSORTYPE_TYPE_E = exports.Y_SENSORTYPE_TYPE_E = 2;
+const Y_SENSORTYPE_TYPE_J = exports.Y_SENSORTYPE_TYPE_J = 3;
+const Y_SENSORTYPE_TYPE_N = exports.Y_SENSORTYPE_TYPE_N = 4;
+const Y_SENSORTYPE_TYPE_R = exports.Y_SENSORTYPE_TYPE_R = 5;
+const Y_SENSORTYPE_TYPE_S = exports.Y_SENSORTYPE_TYPE_S = 6;
+const Y_SENSORTYPE_TYPE_T = exports.Y_SENSORTYPE_TYPE_T = 7;
+const Y_SENSORTYPE_PT100_4WIRES = exports.Y_SENSORTYPE_PT100_4WIRES = 8;
+const Y_SENSORTYPE_PT100_3WIRES = exports.Y_SENSORTYPE_PT100_3WIRES = 9;
+const Y_SENSORTYPE_PT100_2WIRES = exports.Y_SENSORTYPE_PT100_2WIRES = 10;
+const Y_SENSORTYPE_RES_OHM = exports.Y_SENSORTYPE_RES_OHM = 11;
+const Y_SENSORTYPE_RES_NTC = exports.Y_SENSORTYPE_RES_NTC = 12;
+const Y_SENSORTYPE_RES_LINEAR = exports.Y_SENSORTYPE_RES_LINEAR = 13;
+const Y_SENSORTYPE_INVALID = exports.Y_SENSORTYPE_INVALID = -1;
+const Y_COMMAND_INVALID = exports.Y_COMMAND_INVALID = _yocto_api.YAPI.INVALID_STRING;
 //--- (end of YTemperature definitions)
 
 //--- (YTemperature class start)
@@ -73,50 +83,47 @@ export const Y_COMMAND_INVALID               = YAPI.INVALID_STRING;
  */
 //--- (end of YTemperature class start)
 
-export class YTemperature extends YSensor
-{
-    constructor(obj_yapi, str_func)
-    {
+class YTemperature extends _yocto_api.YSensor {
+    constructor(obj_yapi, str_func) {
         //--- (YTemperature constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'Temperature';
+        this._className = 'Temperature';
         /** @member {number} **/
-        this._sensorType                 = Y_SENSORTYPE_INVALID;
+        this._sensorType = Y_SENSORTYPE_INVALID;
         /** @member {string} **/
-        this._command                    = Y_COMMAND_INVALID;
+        this._command = Y_COMMAND_INVALID;
         this.imm_setConst({
-            SENSORTYPE_DIGITAL           : 0,
-            SENSORTYPE_TYPE_K            : 1,
-            SENSORTYPE_TYPE_E            : 2,
-            SENSORTYPE_TYPE_J            : 3,
-            SENSORTYPE_TYPE_N            : 4,
-            SENSORTYPE_TYPE_R            : 5,
-            SENSORTYPE_TYPE_S            : 6,
-            SENSORTYPE_TYPE_T            : 7,
-            SENSORTYPE_PT100_4WIRES      : 8,
-            SENSORTYPE_PT100_3WIRES      : 9,
-            SENSORTYPE_PT100_2WIRES      : 10,
-            SENSORTYPE_RES_OHM           : 11,
-            SENSORTYPE_RES_NTC           : 12,
-            SENSORTYPE_RES_LINEAR        : 13,
-            SENSORTYPE_INVALID           : -1,
-            COMMAND_INVALID              : YAPI.INVALID_STRING
+            SENSORTYPE_DIGITAL: 0,
+            SENSORTYPE_TYPE_K: 1,
+            SENSORTYPE_TYPE_E: 2,
+            SENSORTYPE_TYPE_J: 3,
+            SENSORTYPE_TYPE_N: 4,
+            SENSORTYPE_TYPE_R: 5,
+            SENSORTYPE_TYPE_S: 6,
+            SENSORTYPE_TYPE_T: 7,
+            SENSORTYPE_PT100_4WIRES: 8,
+            SENSORTYPE_PT100_3WIRES: 9,
+            SENSORTYPE_PT100_2WIRES: 10,
+            SENSORTYPE_RES_OHM: 11,
+            SENSORTYPE_RES_NTC: 12,
+            SENSORTYPE_RES_LINEAR: 13,
+            SENSORTYPE_INVALID: -1,
+            COMMAND_INVALID: _yocto_api.YAPI.INVALID_STRING
         });
         //--- (end of YTemperature constructor)
     }
 
     //--- (YTemperature implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'sensorType':
-            this._sensorType = parseInt(val);
-            return 1;
-        case 'command':
-            this._command = val;
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'sensorType':
+                this._sensorType = parseInt(val);
+                return 1;
+            case 'command':
+                this._command = val;
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -138,12 +145,15 @@ export class YTemperature extends YSensor
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_unit(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('unit',rest_val);
+    set_unit(newval) {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this._setAttr('unit', rest_val);
+        })();
     }
 
     /**
@@ -159,14 +169,17 @@ export class YTemperature extends YSensor
      *
      * On failure, throws an exception or returns YTemperature.SENSORTYPE_INVALID.
      */
-    async get_sensorType()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_SENSORTYPE_INVALID;
+    get_sensorType() {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this2._cacheExpiration <= _this2._yapi.GetTickCount()) {
+                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _this2._yapi.SUCCESS) {
+                    return Y_SENSORTYPE_INVALID;
+                }
             }
-        }
-        return this._sensorType;
+            return _this2._sensorType;
+        })();
     }
 
     /**
@@ -187,30 +200,39 @@ export class YTemperature extends YSensor
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_sensorType(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('sensorType',rest_val);
+    set_sensorType(newval) {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this3._setAttr('sensorType', rest_val);
+        })();
     }
 
-    async get_command()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_COMMAND_INVALID;
+    get_command() {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this4._cacheExpiration <= _this4._yapi.GetTickCount()) {
+                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _this4._yapi.SUCCESS) {
+                    return Y_COMMAND_INVALID;
+                }
             }
-        }
-        return this._command;
+            return _this4._command;
+        })();
     }
 
-    async set_command(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('command',rest_val);
+    set_command(newval) {
+        var _this5 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this5._setAttr('command', rest_val);
+        })();
     }
 
     /**
@@ -236,14 +258,13 @@ export class YTemperature extends YSensor
      *
      * @return {YTemperature} a YTemperature object allowing you to drive the temperature sensor.
      */
-    static FindTemperature(func)
-    {
+    static FindTemperature(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('Temperature', func);
+        obj = _yocto_api.YFunction._FindFromCache('Temperature', func);
         if (obj == null) {
-            obj = new YTemperature(YAPI, func);
-            YFunction._AddToCache('Temperature',  func, obj);
+            obj = new YTemperature(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('Temperature', func, obj);
         }
         return obj;
     }
@@ -272,14 +293,13 @@ export class YTemperature extends YSensor
      *
      * @return {YTemperature} a YTemperature object allowing you to drive the temperature sensor.
      */
-    static FindTemperatureInContext(yctx,func)
-    {
+    static FindTemperatureInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'Temperature', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Temperature', func);
         if (obj == null) {
             obj = new YTemperature(yctx, func);
-            YFunction._AddToCache('Temperature',  func, obj);
+            _yocto_api.YFunction._AddToCache('Temperature', func, obj);
         }
         return obj;
     }
@@ -297,28 +317,31 @@ export class YTemperature extends YSensor
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_ntcParameters(res25,beta)
-    {
-        /** @type {number} **/
-        let t0;
-        /** @type {number} **/
-        let t1;
-        /** @type {number} **/
-        let res100;
-        /** @type {number[]} **/
-        let tempValues = [];
-        /** @type {number[]} **/
-        let resValues = [];
-        t0 = 25.0+275.15;
-        t1 = 100.0+275.15;
-        res100 = res25 * Math.exp(beta*(1.0/t1 - 1.0/t0));
-        tempValues.length = 0;
-        resValues.length = 0;
-        tempValues.push(25.0);
-        resValues.push(res25);
-        tempValues.push(100.0);
-        resValues.push(res100);
-        return await this.set_thermistorResponseTable(tempValues, resValues);
+    set_ntcParameters(res25, beta) {
+        var _this6 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let t0;
+            /** @type {number} **/
+            let t1;
+            /** @type {number} **/
+            let res100;
+            /** @type {number[]} **/
+            let tempValues = [];
+            /** @type {number[]} **/
+            let resValues = [];
+            t0 = 25.0 + 275.15;
+            t1 = 100.0 + 275.15;
+            res100 = res25 * Math.exp(beta * (1.0 / t1 - 1.0 / t0));
+            tempValues.length = 0;
+            resValues.length = 0;
+            tempValues.push(25.0);
+            resValues.push(res25);
+            tempValues.push(100.0);
+            resValues.push(res100);
+            return yield _this6.set_thermistorResponseTable(tempValues, resValues);
+        })();
     }
 
     /**
@@ -337,62 +360,65 @@ export class YTemperature extends YSensor
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_thermistorResponseTable(tempValues,resValues)
-    {
-        /** @type {number} **/
-        let siz;
-        /** @type {number} **/
-        let res;
-        /** @type {number} **/
-        let idx;
-        /** @type {number} **/
-        let found;
-        /** @type {number} **/
-        let prev;
-        /** @type {number} **/
-        let curr;
-        /** @type {number} **/
-        let currTemp;
-        /** @type {number} **/
-        let idxres;
-        siz = tempValues.length;
-        if (!(siz >= 2)) {
-            return this._throw(this._yapi.INVALID_ARGUMENT,'thermistor response table must have at least two points',this._yapi.INVALID_ARGUMENT);
-        }
-        if (!(siz == resValues.length)) {
-            return this._throw(this._yapi.INVALID_ARGUMENT,'table sizes mismatch',this._yapi.INVALID_ARGUMENT);
-        }
-        // may throw an exception
-        res = await this.set_command('Z');
-        if (!(res==this._yapi.SUCCESS)) {
-            return this._throw(this._yapi.IO_ERROR,'unable to reset thermistor parameters',this._yapi.IO_ERROR);
-        }
-        // add records in growing resistance value
-        found = 1;
-        prev = 0.0;
-        while (found > 0) {
-            found = 0;
-            curr = 99999999.0;
-            currTemp = -999999.0;
-            idx = 0;
-            while (idx < siz) {
-                idxres = resValues[idx];
-                if ((idxres > prev) && (idxres < curr)) {
-                    curr = idxres;
-                    currTemp = tempValues[idx];
-                    found = 1;
-                }
-                idx = idx + 1;
+    set_thermistorResponseTable(tempValues, resValues) {
+        var _this7 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let siz;
+            /** @type {number} **/
+            let res;
+            /** @type {number} **/
+            let idx;
+            /** @type {number} **/
+            let found;
+            /** @type {number} **/
+            let prev;
+            /** @type {number} **/
+            let curr;
+            /** @type {number} **/
+            let currTemp;
+            /** @type {number} **/
+            let idxres;
+            siz = tempValues.length;
+            if (!(siz >= 2)) {
+                return _this7._throw(_this7._yapi.INVALID_ARGUMENT, 'thermistor response table must have at least two points', _this7._yapi.INVALID_ARGUMENT);
             }
-            if (found > 0) {
-                res = await this.set_command('m'+String(Math.round(Math.round(1000*curr)))+':'+String(Math.round(Math.round(1000*currTemp))));
-                if (!(res==this._yapi.SUCCESS)) {
-                    return this._throw(this._yapi.IO_ERROR,'unable to reset thermistor parameters',this._yapi.IO_ERROR);
-                }
-                prev = curr;
+            if (!(siz == resValues.length)) {
+                return _this7._throw(_this7._yapi.INVALID_ARGUMENT, 'table sizes mismatch', _this7._yapi.INVALID_ARGUMENT);
             }
-        }
-        return this._yapi.SUCCESS;
+            // may throw an exception
+            res = yield _this7.set_command('Z');
+            if (!(res == _this7._yapi.SUCCESS)) {
+                return _this7._throw(_this7._yapi.IO_ERROR, 'unable to reset thermistor parameters', _this7._yapi.IO_ERROR);
+            }
+            // add records in growing resistance value
+            found = 1;
+            prev = 0.0;
+            while (found > 0) {
+                found = 0;
+                curr = 99999999.0;
+                currTemp = -999999.0;
+                idx = 0;
+                while (idx < siz) {
+                    idxres = resValues[idx];
+                    if (idxres > prev && idxres < curr) {
+                        curr = idxres;
+                        currTemp = tempValues[idx];
+                        found = 1;
+                    }
+                    idx = idx + 1;
+                }
+                if (found > 0) {
+                    res = yield _this7.set_command('m' + String(Math.round(Math.round(1000 * curr))) + ':' + String(Math.round(Math.round(1000 * currTemp))));
+                    if (!(res == _this7._yapi.SUCCESS)) {
+                        return _this7._throw(_this7._yapi.IO_ERROR, 'unable to reset thermistor parameters', _this7._yapi.IO_ERROR);
+                    }
+                    prev = curr;
+                }
+            }
+            return _this7._yapi.SUCCESS;
+        })();
     }
 
     /**
@@ -411,72 +437,75 @@ export class YTemperature extends YSensor
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async loadThermistorResponseTable(tempValues,resValues)
-    {
-        /** @type {string} **/
-        let id;
-        /** @type {Uint8Array} **/
-        let bin_json;
-        /** @type {string[]} **/
-        let paramlist = [];
-        /** @type {number[]} **/
-        let templist = [];
-        /** @type {number} **/
-        let siz;
-        /** @type {number} **/
-        let idx;
-        /** @type {number} **/
-        let temp;
-        /** @type {number} **/
-        let found;
-        /** @type {number} **/
-        let prev;
-        /** @type {number} **/
-        let curr;
-        /** @type {number} **/
-        let currRes;
-        tempValues.length = 0;
-        resValues.length = 0;
-        // may throw an exception
-        id = await this.get_functionId();
-        id = (id).substr( 11, (id).length - 11);
-        bin_json = await this._download('extra.json?page='+id);
-        paramlist = this.imm_json_get_array(bin_json);
-        // first convert all temperatures to float
-        siz = ((paramlist.length) >> (1));
-        templist.length = 0;
-        idx = 0;
-        while (idx < siz) {
-            temp = parseFloat(paramlist[2*idx+1])/1000.0;
-            templist.push(temp);
-            idx = idx + 1;
-        }
-        // then add records in growing temperature value
-        tempValues.length = 0;
-        resValues.length = 0;
-        found = 1;
-        prev = -999999.0;
-        while (found > 0) {
-            found = 0;
-            curr = 999999.0;
-            currRes = -999999.0;
+    loadThermistorResponseTable(tempValues, resValues) {
+        var _this8 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let id;
+            /** @type {Uint8Array} **/
+            let bin_json;
+            /** @type {string[]} **/
+            let paramlist = [];
+            /** @type {number[]} **/
+            let templist = [];
+            /** @type {number} **/
+            let siz;
+            /** @type {number} **/
+            let idx;
+            /** @type {number} **/
+            let temp;
+            /** @type {number} **/
+            let found;
+            /** @type {number} **/
+            let prev;
+            /** @type {number} **/
+            let curr;
+            /** @type {number} **/
+            let currRes;
+            tempValues.length = 0;
+            resValues.length = 0;
+            // may throw an exception
+            id = yield _this8.get_functionId();
+            id = id.substr(11, id.length - 11);
+            bin_json = yield _this8._download('extra.json?page=' + id);
+            paramlist = _this8.imm_json_get_array(bin_json);
+            // first convert all temperatures to float
+            siz = paramlist.length >> 1;
+            templist.length = 0;
             idx = 0;
             while (idx < siz) {
-                temp = templist[idx];
-                if ((temp > prev) && (temp < curr)) {
-                    curr = temp;
-                    currRes = parseFloat(paramlist[2*idx])/1000.0;
-                    found = 1;
-                }
+                temp = parseFloat(paramlist[2 * idx + 1]) / 1000.0;
+                templist.push(temp);
                 idx = idx + 1;
             }
-            if (found > 0) {
-                tempValues.push(curr);
-                resValues.push(currRes);
-                prev = curr;
+            // then add records in growing temperature value
+            tempValues.length = 0;
+            resValues.length = 0;
+            found = 1;
+            prev = -999999.0;
+            while (found > 0) {
+                found = 0;
+                curr = 999999.0;
+                currRes = -999999.0;
+                idx = 0;
+                while (idx < siz) {
+                    temp = templist[idx];
+                    if (temp > prev && temp < curr) {
+                        curr = temp;
+                        currRes = parseFloat(paramlist[2 * idx]) / 1000.0;
+                        found = 1;
+                    }
+                    idx = idx + 1;
+                }
+                if (found > 0) {
+                    tempValues.push(curr);
+                    resValues.push(currRes);
+                    prev = curr;
+                }
             }
-        }
-        return this._yapi.SUCCESS;
+            return _this8._yapi.SUCCESS;
+        })();
     }
 
     /**
@@ -486,14 +515,13 @@ export class YTemperature extends YSensor
      *         a temperature sensor currently online, or a null pointer
      *         if there are no more temperature sensors to enumerate.
      */
-    nextTemperature()
-    {
+    nextTemperature() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YTemperature.FindTemperatureInContext(this._yapi, next_hwid);
     }
 
@@ -506,11 +534,10 @@ export class YTemperature extends YSensor
      *         the first temperature sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstTemperature()
-    {
+    static FirstTemperature() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('Temperature');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('Temperature');
+        if (next_hwid == null) return null;
         return YTemperature.FindTemperature(next_hwid);
     }
 
@@ -525,18 +552,17 @@ export class YTemperature extends YSensor
      *         the first temperature sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstTemperatureInContext(yctx)
-    {
+    static FirstTemperatureInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('Temperature');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YTemperature.FindTemperatureInContext(yctx, next_hwid);
     }
 
     //--- (end of YTemperature implementation)
 }
 
-//--- (Temperature functions)
+exports.YTemperature = YTemperature; //--- (Temperature functions)
 
 /**
  * Retrieves a temperature sensor for a given identifier.
@@ -561,8 +587,8 @@ export class YTemperature extends YSensor
  *
  * @return {YTemperature} a YTemperature object allowing you to drive the temperature sensor.
  */
-export function yFindTemperature(func)
-{
+
+function yFindTemperature(func) {
     return YTemperature.FindTemperature(func);
 }
 
@@ -575,8 +601,7 @@ export function yFindTemperature(func)
  *         the first temperature sensor currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstTemperature()
-{
+function yFirstTemperature() {
     return YTemperature.FirstTemperature();
 }
 

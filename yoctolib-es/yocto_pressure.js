@@ -38,7 +38,15 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YPressure = undefined;
+exports.yFindPressure = yFindPressure;
+exports.yFirstPressure = yFirstPressure;
+
+var _yocto_api = require('./yocto_api');
 
 //--- (YPressure return codes)
 //--- (end of YPressure return codes)
@@ -55,14 +63,12 @@ import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yoc
  */
 //--- (end of YPressure class start)
 
-export class YPressure extends YSensor
-{
-    constructor(obj_yapi, str_func)
-    {
+class YPressure extends _yocto_api.YSensor {
+    constructor(obj_yapi, str_func) {
         //--- (YPressure constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'Pressure';
+        this._className = 'Pressure';
         //--- (end of YPressure constructor)
     }
 
@@ -91,14 +97,13 @@ export class YPressure extends YSensor
      *
      * @return {YPressure} a YPressure object allowing you to drive the pressure sensor.
      */
-    static FindPressure(func)
-    {
+    static FindPressure(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('Pressure', func);
+        obj = _yocto_api.YFunction._FindFromCache('Pressure', func);
         if (obj == null) {
-            obj = new YPressure(YAPI, func);
-            YFunction._AddToCache('Pressure',  func, obj);
+            obj = new YPressure(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('Pressure', func, obj);
         }
         return obj;
     }
@@ -127,14 +132,13 @@ export class YPressure extends YSensor
      *
      * @return {YPressure} a YPressure object allowing you to drive the pressure sensor.
      */
-    static FindPressureInContext(yctx,func)
-    {
+    static FindPressureInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'Pressure', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Pressure', func);
         if (obj == null) {
             obj = new YPressure(yctx, func);
-            YFunction._AddToCache('Pressure',  func, obj);
+            _yocto_api.YFunction._AddToCache('Pressure', func, obj);
         }
         return obj;
     }
@@ -146,14 +150,13 @@ export class YPressure extends YSensor
      *         a pressure sensor currently online, or a null pointer
      *         if there are no more pressure sensors to enumerate.
      */
-    nextPressure()
-    {
+    nextPressure() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YPressure.FindPressureInContext(this._yapi, next_hwid);
     }
 
@@ -166,11 +169,10 @@ export class YPressure extends YSensor
      *         the first pressure sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstPressure()
-    {
+    static FirstPressure() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('Pressure');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('Pressure');
+        if (next_hwid == null) return null;
         return YPressure.FindPressure(next_hwid);
     }
 
@@ -185,18 +187,17 @@ export class YPressure extends YSensor
      *         the first pressure sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstPressureInContext(yctx)
-    {
+    static FirstPressureInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('Pressure');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YPressure.FindPressureInContext(yctx, next_hwid);
     }
 
     //--- (end of YPressure implementation)
 }
 
-//--- (Pressure functions)
+exports.YPressure = YPressure; //--- (Pressure functions)
 
 /**
  * Retrieves a pressure sensor for a given identifier.
@@ -221,8 +222,8 @@ export class YPressure extends YSensor
  *
  * @return {YPressure} a YPressure object allowing you to drive the pressure sensor.
  */
-export function yFindPressure(func)
-{
+
+function yFindPressure(func) {
     return YPressure.FindPressure(func);
 }
 
@@ -235,8 +236,7 @@ export function yFindPressure(func)
  *         the first pressure sensor currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstPressure()
-{
+function yFirstPressure() {
     return YPressure.FirstPressure();
 }
 

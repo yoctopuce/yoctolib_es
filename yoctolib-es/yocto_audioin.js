@@ -38,18 +38,28 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YAudioIn = exports.Y_NOSIGNALFOR_INVALID = exports.Y_SIGNAL_INVALID = exports.Y_VOLUMERANGE_INVALID = exports.Y_VOLUME_INVALID = exports.Y_MUTE_INVALID = exports.Y_MUTE_TRUE = exports.Y_MUTE_FALSE = undefined;
+exports.yFindAudioIn = yFindAudioIn;
+exports.yFirstAudioIn = yFirstAudioIn;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YAudioIn return codes)
 //--- (end of YAudioIn return codes)
 //--- (YAudioIn definitions)
-export const Y_MUTE_FALSE                    = 0;
-export const Y_MUTE_TRUE                     = 1;
-export const Y_MUTE_INVALID                  = -1;
-export const Y_VOLUME_INVALID                = YAPI.INVALID_UINT;
-export const Y_VOLUMERANGE_INVALID           = YAPI.INVALID_STRING;
-export const Y_SIGNAL_INVALID                = YAPI.INVALID_INT;
-export const Y_NOSIGNALFOR_INVALID           = YAPI.INVALID_INT;
+const Y_MUTE_FALSE = exports.Y_MUTE_FALSE = 0;
+const Y_MUTE_TRUE = exports.Y_MUTE_TRUE = 1;
+const Y_MUTE_INVALID = exports.Y_MUTE_INVALID = -1;
+const Y_VOLUME_INVALID = exports.Y_VOLUME_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_VOLUMERANGE_INVALID = exports.Y_VOLUMERANGE_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_SIGNAL_INVALID = exports.Y_SIGNAL_INVALID = _yocto_api.YAPI.INVALID_INT;
+const Y_NOSIGNALFOR_INVALID = exports.Y_NOSIGNALFOR_INVALID = _yocto_api.YAPI.INVALID_INT;
 //--- (end of YAudioIn definitions)
 
 //--- (YAudioIn class start)
@@ -60,56 +70,53 @@ export const Y_NOSIGNALFOR_INVALID           = YAPI.INVALID_INT;
  */
 //--- (end of YAudioIn class start)
 
-export class YAudioIn extends YFunction
-{
-    constructor(obj_yapi, str_func)
-    {
+class YAudioIn extends _yocto_api.YFunction {
+    constructor(obj_yapi, str_func) {
         //--- (YAudioIn constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'AudioIn';
+        this._className = 'AudioIn';
         /** @member {number} **/
-        this._volume                     = Y_VOLUME_INVALID;
+        this._volume = Y_VOLUME_INVALID;
         /** @member {number} **/
-        this._mute                       = Y_MUTE_INVALID;
+        this._mute = Y_MUTE_INVALID;
         /** @member {string} **/
-        this._volumeRange                = Y_VOLUMERANGE_INVALID;
+        this._volumeRange = Y_VOLUMERANGE_INVALID;
         /** @member {number} **/
-        this._signal                     = Y_SIGNAL_INVALID;
+        this._signal = Y_SIGNAL_INVALID;
         /** @member {number} **/
-        this._noSignalFor                = Y_NOSIGNALFOR_INVALID;
+        this._noSignalFor = Y_NOSIGNALFOR_INVALID;
         this.imm_setConst({
-            VOLUME_INVALID               : YAPI.INVALID_UINT,
-            MUTE_FALSE                   : 0,
-            MUTE_TRUE                    : 1,
-            MUTE_INVALID                 : -1,
-            VOLUMERANGE_INVALID          : YAPI.INVALID_STRING,
-            SIGNAL_INVALID               : YAPI.INVALID_INT,
-            NOSIGNALFOR_INVALID          : YAPI.INVALID_INT
+            VOLUME_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            MUTE_FALSE: 0,
+            MUTE_TRUE: 1,
+            MUTE_INVALID: -1,
+            VOLUMERANGE_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            SIGNAL_INVALID: _yocto_api.YAPI.INVALID_INT,
+            NOSIGNALFOR_INVALID: _yocto_api.YAPI.INVALID_INT
         });
         //--- (end of YAudioIn constructor)
     }
 
     //--- (YAudioIn implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'volume':
-            this._volume = parseInt(val);
-            return 1;
-        case 'mute':
-            this._mute = parseInt(val);
-            return 1;
-        case 'volumeRange':
-            this._volumeRange = val;
-            return 1;
-        case 'signal':
-            this._signal = parseInt(val);
-            return 1;
-        case 'noSignalFor':
-            this._noSignalFor = parseInt(val);
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'volume':
+                this._volume = parseInt(val);
+                return 1;
+            case 'mute':
+                this._mute = parseInt(val);
+                return 1;
+            case 'volumeRange':
+                this._volumeRange = val;
+                return 1;
+            case 'signal':
+                this._signal = parseInt(val);
+                return 1;
+            case 'noSignalFor':
+                this._noSignalFor = parseInt(val);
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -121,14 +128,17 @@ export class YAudioIn extends YFunction
      *
      * On failure, throws an exception or returns YAudioIn.VOLUME_INVALID.
      */
-    async get_volume()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_VOLUME_INVALID;
+    get_volume() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
+                    return Y_VOLUME_INVALID;
+                }
             }
-        }
-        return this._volume;
+            return _this._volume;
+        })();
     }
 
     /**
@@ -140,12 +150,15 @@ export class YAudioIn extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_volume(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('volume',rest_val);
+    set_volume(newval) {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this2._setAttr('volume', rest_val);
+        })();
     }
 
     /**
@@ -155,14 +168,17 @@ export class YAudioIn extends YFunction
      *
      * On failure, throws an exception or returns YAudioIn.MUTE_INVALID.
      */
-    async get_mute()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_MUTE_INVALID;
+    get_mute() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
+                    return Y_MUTE_INVALID;
+                }
             }
-        }
-        return this._mute;
+            return _this3._mute;
+        })();
     }
 
     /**
@@ -176,12 +192,15 @@ export class YAudioIn extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_mute(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('mute',rest_val);
+    set_mute(newval) {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this4._setAttr('mute', rest_val);
+        })();
     }
 
     /**
@@ -194,14 +213,17 @@ export class YAudioIn extends YFunction
      *
      * On failure, throws an exception or returns YAudioIn.VOLUMERANGE_INVALID.
      */
-    async get_volumeRange()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_VOLUMERANGE_INVALID;
+    get_volumeRange() {
+        var _this5 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this5._cacheExpiration <= _this5._yapi.GetTickCount()) {
+                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _this5._yapi.SUCCESS) {
+                    return Y_VOLUMERANGE_INVALID;
+                }
             }
-        }
-        return this._volumeRange;
+            return _this5._volumeRange;
+        })();
     }
 
     /**
@@ -211,14 +233,17 @@ export class YAudioIn extends YFunction
      *
      * On failure, throws an exception or returns YAudioIn.SIGNAL_INVALID.
      */
-    async get_signal()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_SIGNAL_INVALID;
+    get_signal() {
+        var _this6 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this6._cacheExpiration <= _this6._yapi.GetTickCount()) {
+                if ((yield _this6.load(_this6._yapi.defaultCacheValidity)) != _this6._yapi.SUCCESS) {
+                    return Y_SIGNAL_INVALID;
+                }
             }
-        }
-        return this._signal;
+            return _this6._signal;
+        })();
     }
 
     /**
@@ -228,14 +253,17 @@ export class YAudioIn extends YFunction
      *
      * On failure, throws an exception or returns YAudioIn.NOSIGNALFOR_INVALID.
      */
-    async get_noSignalFor()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_NOSIGNALFOR_INVALID;
+    get_noSignalFor() {
+        var _this7 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this7._cacheExpiration <= _this7._yapi.GetTickCount()) {
+                if ((yield _this7.load(_this7._yapi.defaultCacheValidity)) != _this7._yapi.SUCCESS) {
+                    return Y_NOSIGNALFOR_INVALID;
+                }
             }
-        }
-        return this._noSignalFor;
+            return _this7._noSignalFor;
+        })();
     }
 
     /**
@@ -261,14 +289,13 @@ export class YAudioIn extends YFunction
      *
      * @return {YAudioIn} a YAudioIn object allowing you to drive the audio input.
      */
-    static FindAudioIn(func)
-    {
+    static FindAudioIn(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('AudioIn', func);
+        obj = _yocto_api.YFunction._FindFromCache('AudioIn', func);
         if (obj == null) {
-            obj = new YAudioIn(YAPI, func);
-            YFunction._AddToCache('AudioIn',  func, obj);
+            obj = new YAudioIn(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('AudioIn', func, obj);
         }
         return obj;
     }
@@ -297,14 +324,13 @@ export class YAudioIn extends YFunction
      *
      * @return {YAudioIn} a YAudioIn object allowing you to drive the audio input.
      */
-    static FindAudioInInContext(yctx,func)
-    {
+    static FindAudioInInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'AudioIn', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'AudioIn', func);
         if (obj == null) {
             obj = new YAudioIn(yctx, func);
-            YFunction._AddToCache('AudioIn',  func, obj);
+            _yocto_api.YFunction._AddToCache('AudioIn', func, obj);
         }
         return obj;
     }
@@ -316,14 +342,13 @@ export class YAudioIn extends YFunction
      *         an audio input currently online, or a null pointer
      *         if there are no more audio inputs to enumerate.
      */
-    nextAudioIn()
-    {
+    nextAudioIn() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YAudioIn.FindAudioInInContext(this._yapi, next_hwid);
     }
 
@@ -336,11 +361,10 @@ export class YAudioIn extends YFunction
      *         the first audio input currently online, or a null pointer
      *         if there are none.
      */
-    static FirstAudioIn()
-    {
+    static FirstAudioIn() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('AudioIn');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('AudioIn');
+        if (next_hwid == null) return null;
         return YAudioIn.FindAudioIn(next_hwid);
     }
 
@@ -355,18 +379,17 @@ export class YAudioIn extends YFunction
      *         the first audio input currently online, or a null pointer
      *         if there are none.
      */
-    static FirstAudioInInContext(yctx)
-    {
+    static FirstAudioInInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('AudioIn');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YAudioIn.FindAudioInInContext(yctx, next_hwid);
     }
 
     //--- (end of YAudioIn implementation)
 }
 
-//--- (AudioIn functions)
+exports.YAudioIn = YAudioIn; //--- (AudioIn functions)
 
 /**
  * Retrieves an audio input for a given identifier.
@@ -391,8 +414,8 @@ export class YAudioIn extends YFunction
  *
  * @return {YAudioIn} a YAudioIn object allowing you to drive the audio input.
  */
-export function yFindAudioIn(func)
-{
+
+function yFindAudioIn(func) {
     return YAudioIn.FindAudioIn(func);
 }
 
@@ -405,8 +428,7 @@ export function yFindAudioIn(func)
  *         the first audio input currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstAudioIn()
-{
+function yFirstAudioIn() {
     return YAudioIn.FirstAudioIn();
 }
 

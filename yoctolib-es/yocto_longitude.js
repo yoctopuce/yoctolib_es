@@ -38,7 +38,15 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YLongitude = undefined;
+exports.yFindLongitude = yFindLongitude;
+exports.yFirstLongitude = yFirstLongitude;
+
+var _yocto_api = require('./yocto_api');
 
 //--- (YLongitude return codes)
 //--- (end of YLongitude return codes)
@@ -56,14 +64,12 @@ import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yoc
  */
 //--- (end of YLongitude class start)
 
-export class YLongitude extends YSensor
-{
-    constructor(obj_yapi, str_func)
-    {
+class YLongitude extends _yocto_api.YSensor {
+    constructor(obj_yapi, str_func) {
         //--- (YLongitude constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'Longitude';
+        this._className = 'Longitude';
         //--- (end of YLongitude constructor)
     }
 
@@ -92,14 +98,13 @@ export class YLongitude extends YSensor
      *
      * @return {YLongitude} a YLongitude object allowing you to drive the longitude sensor.
      */
-    static FindLongitude(func)
-    {
+    static FindLongitude(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('Longitude', func);
+        obj = _yocto_api.YFunction._FindFromCache('Longitude', func);
         if (obj == null) {
-            obj = new YLongitude(YAPI, func);
-            YFunction._AddToCache('Longitude',  func, obj);
+            obj = new YLongitude(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('Longitude', func, obj);
         }
         return obj;
     }
@@ -128,14 +133,13 @@ export class YLongitude extends YSensor
      *
      * @return {YLongitude} a YLongitude object allowing you to drive the longitude sensor.
      */
-    static FindLongitudeInContext(yctx,func)
-    {
+    static FindLongitudeInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'Longitude', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Longitude', func);
         if (obj == null) {
             obj = new YLongitude(yctx, func);
-            YFunction._AddToCache('Longitude',  func, obj);
+            _yocto_api.YFunction._AddToCache('Longitude', func, obj);
         }
         return obj;
     }
@@ -147,14 +151,13 @@ export class YLongitude extends YSensor
      *         a longitude sensor currently online, or a null pointer
      *         if there are no more longitude sensors to enumerate.
      */
-    nextLongitude()
-    {
+    nextLongitude() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YLongitude.FindLongitudeInContext(this._yapi, next_hwid);
     }
 
@@ -167,11 +170,10 @@ export class YLongitude extends YSensor
      *         the first longitude sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstLongitude()
-    {
+    static FirstLongitude() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('Longitude');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('Longitude');
+        if (next_hwid == null) return null;
         return YLongitude.FindLongitude(next_hwid);
     }
 
@@ -186,18 +188,17 @@ export class YLongitude extends YSensor
      *         the first longitude sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstLongitudeInContext(yctx)
-    {
+    static FirstLongitudeInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('Longitude');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YLongitude.FindLongitudeInContext(yctx, next_hwid);
     }
 
     //--- (end of YLongitude implementation)
 }
 
-//--- (Longitude functions)
+exports.YLongitude = YLongitude; //--- (Longitude functions)
 
 /**
  * Retrieves a longitude sensor for a given identifier.
@@ -222,8 +223,8 @@ export class YLongitude extends YSensor
  *
  * @return {YLongitude} a YLongitude object allowing you to drive the longitude sensor.
  */
-export function yFindLongitude(func)
-{
+
+function yFindLongitude(func) {
     return YLongitude.FindLongitude(func);
 }
 
@@ -236,8 +237,7 @@ export function yFindLongitude(func)
  *         the first longitude sensor currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstLongitude()
-{
+function yFirstLongitude() {
     return YLongitude.FirstLongitude();
 }
 

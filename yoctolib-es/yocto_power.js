@@ -38,14 +38,24 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YPower = exports.Y_METERTIMER_INVALID = exports.Y_METER_INVALID = exports.Y_COSPHI_INVALID = undefined;
+exports.yFindPower = yFindPower;
+exports.yFirstPower = yFirstPower;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YPower return codes)
 //--- (end of YPower return codes)
 //--- (YPower definitions)
-export const Y_COSPHI_INVALID                = YAPI.INVALID_DOUBLE;
-export const Y_METER_INVALID                 = YAPI.INVALID_DOUBLE;
-export const Y_METERTIMER_INVALID            = YAPI.INVALID_UINT;
+const Y_COSPHI_INVALID = exports.Y_COSPHI_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
+const Y_METER_INVALID = exports.Y_METER_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
+const Y_METERTIMER_INVALID = exports.Y_METERTIMER_INVALID = _yocto_api.YAPI.INVALID_UINT;
 //--- (end of YPower definitions)
 
 //--- (YPower class start)
@@ -59,42 +69,39 @@ export const Y_METERTIMER_INVALID            = YAPI.INVALID_UINT;
  */
 //--- (end of YPower class start)
 
-export class YPower extends YSensor
-{
-    constructor(obj_yapi, str_func)
-    {
+class YPower extends _yocto_api.YSensor {
+    constructor(obj_yapi, str_func) {
         //--- (YPower constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'Power';
+        this._className = 'Power';
         /** @member {number} **/
-        this._cosPhi                     = Y_COSPHI_INVALID;
+        this._cosPhi = Y_COSPHI_INVALID;
         /** @member {number} **/
-        this._meter                      = Y_METER_INVALID;
+        this._meter = Y_METER_INVALID;
         /** @member {number} **/
-        this._meterTimer                 = Y_METERTIMER_INVALID;
+        this._meterTimer = Y_METERTIMER_INVALID;
         this.imm_setConst({
-            COSPHI_INVALID               : YAPI.INVALID_DOUBLE,
-            METER_INVALID                : YAPI.INVALID_DOUBLE,
-            METERTIMER_INVALID           : YAPI.INVALID_UINT
+            COSPHI_INVALID: _yocto_api.YAPI.INVALID_DOUBLE,
+            METER_INVALID: _yocto_api.YAPI.INVALID_DOUBLE,
+            METERTIMER_INVALID: _yocto_api.YAPI.INVALID_UINT
         });
         //--- (end of YPower constructor)
     }
 
     //--- (YPower implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'cosPhi':
-            this._cosPhi = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
-        case 'meter':
-            this._meter = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
-        case 'meterTimer':
-            this._meterTimer = parseInt(val);
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'cosPhi':
+                this._cosPhi = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
+            case 'meter':
+                this._meter = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
+            case 'meterTimer':
+                this._meterTimer = parseInt(val);
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -109,22 +116,28 @@ export class YPower extends YSensor
      *
      * On failure, throws an exception or returns YPower.COSPHI_INVALID.
      */
-    async get_cosPhi()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_COSPHI_INVALID;
+    get_cosPhi() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
+                    return Y_COSPHI_INVALID;
+                }
             }
-        }
-        return this._cosPhi;
+            return _this._cosPhi;
+        })();
     }
 
-    async set_meter(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(Math.round(newval * 65536.0));
-        return await this._setAttr('meter',rest_val);
+    set_meter(newval) {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(Math.round(newval * 65536.0));
+            return yield _this2._setAttr('meter', rest_val);
+        })();
     }
 
     /**
@@ -136,14 +149,17 @@ export class YPower extends YSensor
      *
      * On failure, throws an exception or returns YPower.METER_INVALID.
      */
-    async get_meter()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_METER_INVALID;
+    get_meter() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
+                    return Y_METER_INVALID;
+                }
             }
-        }
-        return this._meter;
+            return _this3._meter;
+        })();
     }
 
     /**
@@ -153,14 +169,17 @@ export class YPower extends YSensor
      *
      * On failure, throws an exception or returns YPower.METERTIMER_INVALID.
      */
-    async get_meterTimer()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_METERTIMER_INVALID;
+    get_meterTimer() {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this4._cacheExpiration <= _this4._yapi.GetTickCount()) {
+                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _this4._yapi.SUCCESS) {
+                    return Y_METERTIMER_INVALID;
+                }
             }
-        }
-        return this._meterTimer;
+            return _this4._meterTimer;
+        })();
     }
 
     /**
@@ -186,14 +205,13 @@ export class YPower extends YSensor
      *
      * @return {YPower} a YPower object allowing you to drive the electrical power sensor.
      */
-    static FindPower(func)
-    {
+    static FindPower(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('Power', func);
+        obj = _yocto_api.YFunction._FindFromCache('Power', func);
         if (obj == null) {
-            obj = new YPower(YAPI, func);
-            YFunction._AddToCache('Power',  func, obj);
+            obj = new YPower(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('Power', func, obj);
         }
         return obj;
     }
@@ -222,14 +240,13 @@ export class YPower extends YSensor
      *
      * @return {YPower} a YPower object allowing you to drive the electrical power sensor.
      */
-    static FindPowerInContext(yctx,func)
-    {
+    static FindPowerInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'Power', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Power', func);
         if (obj == null) {
             obj = new YPower(yctx, func);
-            YFunction._AddToCache('Power',  func, obj);
+            _yocto_api.YFunction._AddToCache('Power', func, obj);
         }
         return obj;
     }
@@ -241,9 +258,12 @@ export class YPower extends YSensor
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async reset()
-    {
-        return await this.set_meter(0);
+    reset() {
+        var _this5 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this5.set_meter(0);
+        })();
     }
 
     /**
@@ -253,14 +273,13 @@ export class YPower extends YSensor
      *         a electrical power sensor currently online, or a null pointer
      *         if there are no more electrical power sensors to enumerate.
      */
-    nextPower()
-    {
+    nextPower() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YPower.FindPowerInContext(this._yapi, next_hwid);
     }
 
@@ -273,11 +292,10 @@ export class YPower extends YSensor
      *         the first electrical power sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstPower()
-    {
+    static FirstPower() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('Power');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('Power');
+        if (next_hwid == null) return null;
         return YPower.FindPower(next_hwid);
     }
 
@@ -292,18 +310,17 @@ export class YPower extends YSensor
      *         the first electrical power sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstPowerInContext(yctx)
-    {
+    static FirstPowerInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('Power');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YPower.FindPowerInContext(yctx, next_hwid);
     }
 
     //--- (end of YPower implementation)
 }
 
-//--- (Power functions)
+exports.YPower = YPower; //--- (Power functions)
 
 /**
  * Retrieves a electrical power sensor for a given identifier.
@@ -328,8 +345,8 @@ export class YPower extends YSensor
  *
  * @return {YPower} a YPower object allowing you to drive the electrical power sensor.
  */
-export function yFindPower(func)
-{
+
+function yFindPower(func) {
     return YPower.FindPower(func);
 }
 
@@ -342,8 +359,7 @@ export function yFindPower(func)
  *         the first electrical power sensor currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstPower()
-{
+function yFirstPower() {
     return YPower.FirstPower();
 }
 

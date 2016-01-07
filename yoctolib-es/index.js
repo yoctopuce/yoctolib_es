@@ -1,54 +1,55 @@
-export * from 'yoctolib-es/yocto_api'
-export * from 'yoctolib-es/yocto_accelerometer'
-export * from 'yoctolib-es/yocto_altitude'
-export * from 'yoctolib-es/yocto_anbutton'
-export * from 'yoctolib-es/yocto_audioin'
-export * from 'yoctolib-es/yocto_audioout'
-export * from 'yoctolib-es/yocto_bluetoothlink'
-export * from 'yoctolib-es/yocto_buzzer'
-export * from 'yoctolib-es/yocto_carbondioxide'
-export * from 'yoctolib-es/yocto_cellular'
-export * from 'yoctolib-es/yocto_colorled'
-export * from 'yoctolib-es/yocto_compass'
-export * from 'yoctolib-es/yocto_current'
-export * from 'yoctolib-es/yocto_currentloopoutput'
-export * from 'yoctolib-es/yocto_datalogger'
-export * from 'yoctolib-es/yocto_digitalio'
-export * from 'yoctolib-es/yocto_display'
-export * from 'yoctolib-es/yocto_dualpower'
-export * from 'yoctolib-es/yocto_files'
-export * from 'yoctolib-es/yocto_genericsensor'
-export * from 'yoctolib-es/yocto_gps'
-export * from 'yoctolib-es/yocto_groundspeed'
-export * from 'yoctolib-es/yocto_gyro'
-export * from 'yoctolib-es/yocto_hubport'
-export * from 'yoctolib-es/yocto_humidity'
-export * from 'yoctolib-es/yocto_latitude'
-export * from 'yoctolib-es/yocto_led'
-export * from 'yoctolib-es/yocto_lightsensor'
-export * from 'yoctolib-es/yocto_longitude'
-export * from 'yoctolib-es/yocto_magnetometer'
-export * from 'yoctolib-es/yocto_motor'
-export * from 'yoctolib-es/yocto_network'
-export * from 'yoctolib-es/yocto_oscontrol'
-export * from 'yoctolib-es/yocto_power'
-export * from 'yoctolib-es/yocto_poweroutput'
-export * from 'yoctolib-es/yocto_pressure'
-export * from 'yoctolib-es/yocto_pwminput'
-export * from 'yoctolib-es/yocto_pwmoutput'
-export * from 'yoctolib-es/yocto_pwmpowersource'
-export * from 'yoctolib-es/yocto_quadraturedecoder'
-export * from 'yoctolib-es/yocto_realtimeclock'
-export * from 'yoctolib-es/yocto_refframe'
-export * from 'yoctolib-es/yocto_relay'
-export * from 'yoctolib-es/yocto_segmenteddisplay'
-export * from 'yoctolib-es/yocto_serialport'
-export * from 'yoctolib-es/yocto_servo'
-export * from 'yoctolib-es/yocto_temperature'
-export * from 'yoctolib-es/yocto_tilt'
-export * from 'yoctolib-es/yocto_voc'
-export * from 'yoctolib-es/yocto_voltage'
-export * from 'yoctolib-es/yocto_wakeupmonitor'
-export * from 'yoctolib-es/yocto_wakeupschedule'
-export * from 'yoctolib-es/yocto_watchdog'
-export * from 'yoctolib-es/yocto_wireless'
+module.exports = require("./yoctolib-es/yocto_api.js");
+function addExports(mod) { for(var key in mod) module.exports[key] = mod[key]; }
+addExports(require("./yoctolib-es/yocto_accelerometer.js"));
+addExports(require("./yoctolib-es/yocto_altitude.js"));
+addExports(require("./yoctolib-es/yocto_anbutton.js"));
+addExports(require("./yoctolib-es/yocto_audioin.js"));
+addExports(require("./yoctolib-es/yocto_audioout.js"));
+addExports(require("./yoctolib-es/yocto_bluetoothlink.js"));
+addExports(require("./yoctolib-es/yocto_buzzer.js"));
+addExports(require("./yoctolib-es/yocto_carbondioxide.js"));
+addExports(require("./yoctolib-es/yocto_cellular.js"));
+addExports(require("./yoctolib-es/yocto_colorled.js"));
+addExports(require("./yoctolib-es/yocto_compass.js"));
+addExports(require("./yoctolib-es/yocto_current.js"));
+addExports(require("./yoctolib-es/yocto_currentloopoutput.js"));
+addExports(require("./yoctolib-es/yocto_datalogger.js"));
+addExports(require("./yoctolib-es/yocto_digitalio.js"));
+addExports(require("./yoctolib-es/yocto_display.js"));
+addExports(require("./yoctolib-es/yocto_dualpower.js"));
+addExports(require("./yoctolib-es/yocto_files.js"));
+addExports(require("./yoctolib-es/yocto_genericsensor.js"));
+addExports(require("./yoctolib-es/yocto_gps.js"));
+addExports(require("./yoctolib-es/yocto_groundspeed.js"));
+addExports(require("./yoctolib-es/yocto_gyro.js"));
+addExports(require("./yoctolib-es/yocto_hubport.js"));
+addExports(require("./yoctolib-es/yocto_humidity.js"));
+addExports(require("./yoctolib-es/yocto_latitude.js"));
+addExports(require("./yoctolib-es/yocto_led.js"));
+addExports(require("./yoctolib-es/yocto_lightsensor.js"));
+addExports(require("./yoctolib-es/yocto_longitude.js"));
+addExports(require("./yoctolib-es/yocto_magnetometer.js"));
+addExports(require("./yoctolib-es/yocto_motor.js"));
+addExports(require("./yoctolib-es/yocto_network.js"));
+addExports(require("./yoctolib-es/yocto_oscontrol.js"));
+addExports(require("./yoctolib-es/yocto_power.js"));
+addExports(require("./yoctolib-es/yocto_poweroutput.js"));
+addExports(require("./yoctolib-es/yocto_pressure.js"));
+addExports(require("./yoctolib-es/yocto_pwminput.js"));
+addExports(require("./yoctolib-es/yocto_pwmoutput.js"));
+addExports(require("./yoctolib-es/yocto_pwmpowersource.js"));
+addExports(require("./yoctolib-es/yocto_quadraturedecoder.js"));
+addExports(require("./yoctolib-es/yocto_realtimeclock.js"));
+addExports(require("./yoctolib-es/yocto_refframe.js"));
+addExports(require("./yoctolib-es/yocto_relay.js"));
+addExports(require("./yoctolib-es/yocto_segmenteddisplay.js"));
+addExports(require("./yoctolib-es/yocto_serialport.js"));
+addExports(require("./yoctolib-es/yocto_servo.js"));
+addExports(require("./yoctolib-es/yocto_temperature.js"));
+addExports(require("./yoctolib-es/yocto_tilt.js"));
+addExports(require("./yoctolib-es/yocto_voc.js"));
+addExports(require("./yoctolib-es/yocto_voltage.js"));
+addExports(require("./yoctolib-es/yocto_wakeupmonitor.js"));
+addExports(require("./yoctolib-es/yocto_wakeupschedule.js"));
+addExports(require("./yoctolib-es/yocto_watchdog.js"));
+addExports(require("./yoctolib-es/yocto_wireless.js"));

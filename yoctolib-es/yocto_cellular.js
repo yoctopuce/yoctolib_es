@@ -1,43 +1,52 @@
-/*********************************************************************
- *
- * $Id: yocto_cellular.js 21680 2015-10-02 13:42:44Z seb $
- *
- * Implements the high-level API for Cellular functions
- *
- * - - - - - - - - - License information: - - - - - - - - -
- *
- *  Copyright (C) 2011 and beyond by Yoctopuce Sarl, Switzerland.
- *
- *  Yoctopuce Sarl (hereafter Licensor) grants to you a perpetual
- *  non-exclusive license to use, modify, copy and integrate this
- *  file into your software for the sole purpose of interfacing
- *  with Yoctopuce products.
- *
- *  You may reproduce and distribute copies of this file in
- *  source or object form, as long as the sole purpose of this
- *  code is to interface with Yoctopuce products. You must retain
- *  this notice in the distributed source file.
- *
- *  You should refer to Yoctopuce General Terms and Conditions
- *  for additional information regarding your rights and
- *  obligations.
- *
- *  THE SOFTWARE AND DOCUMENTATION ARE PROVIDED 'AS IS' WITHOUT
- *  WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING
- *  WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, FITNESS
- *  FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO
- *  EVENT SHALL LICENSOR BE LIABLE FOR ANY INCIDENTAL, SPECIAL,
- *  INDIRECT OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA,
- *  COST OF PROCUREMENT OF SUBSTITUTE GOODS, TECHNOLOGY OR
- *  SERVICES, ANY CLAIMS BY THIRD PARTIES (INCLUDING BUT NOT
- *  LIMITED TO ANY DEFENSE THEREOF), ANY CLAIMS FOR INDEMNITY OR
- *  CONTRIBUTION, OR OTHER SIMILAR COSTS, WHETHER ASSERTED ON THE
- *  BASIS OF CONTRACT, TORT (INCLUDING NEGLIGENCE), BREACH OF
- *  WARRANTY, OR OTHERWISE.
- *
- *********************************************************************/
+'use strict';
 
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YCellular = exports.Y_COMMAND_INVALID = exports.Y_APNSECRET_INVALID = exports.Y_APN_INVALID = exports.Y_LOCKEDOPERATOR_INVALID = exports.Y_PIN_INVALID = exports.Y_MESSAGE_INVALID = exports.Y_IMSI_INVALID = exports.Y_CELLIDENTIFIER_INVALID = exports.Y_CELLOPERATOR_INVALID = exports.Y_LINKQUALITY_INVALID = exports.Y_ENABLEDATA_INVALID = exports.Y_ENABLEDATA_NEVER = exports.Y_ENABLEDATA_ROAMING = exports.Y_ENABLEDATA_HOMENETWORK = exports.YCellRecord = undefined;
+exports.yFindCellular = yFindCellular;
+exports.yFirstCellular = yFirstCellular;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; } /*********************************************************************
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              * $Id: yocto_cellular.js 21680 2015-10-02 13:42:44Z seb $
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              * Implements the high-level API for Cellular functions
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              * - - - - - - - - - License information: - - - - - - - - -
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  Copyright (C) 2011 and beyond by Yoctopuce Sarl, Switzerland.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  Yoctopuce Sarl (hereafter Licensor) grants to you a perpetual
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  non-exclusive license to use, modify, copy and integrate this
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  file into your software for the sole purpose of interfacing
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  with Yoctopuce products.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  You may reproduce and distribute copies of this file in
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  source or object form, as long as the sole purpose of this
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  code is to interface with Yoctopuce products. You must retain
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  this notice in the distributed source file.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  You should refer to Yoctopuce General Terms and Conditions
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  for additional information regarding your rights and
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  obligations.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  THE SOFTWARE AND DOCUMENTATION ARE PROVIDED 'AS IS' WITHOUT
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, FITNESS
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  EVENT SHALL LICENSOR BE LIABLE FOR ANY INCIDENTAL, SPECIAL,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  INDIRECT OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  COST OF PROCUREMENT OF SUBSTITUTE GOODS, TECHNOLOGY OR
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  SERVICES, ANY CLAIMS BY THIRD PARTIES (INCLUDING BUT NOT
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  LIMITED TO ANY DEFENSE THEREOF), ANY CLAIMS FOR INDEMNITY OR
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  CONTRIBUTION, OR OTHER SIMILAR COSTS, WHETHER ASSERTED ON THE
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  BASIS OF CONTRACT, TORT (INCLUDING NEGLIGENCE), BREACH OF
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  WARRANTY, OR OTHERWISE.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *********************************************************************/
 
 //--- (generated code: YCellRecord return codes)
 //--- (end of generated code: YCellRecord return codes)
@@ -52,25 +61,23 @@ import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yoc
  */
 //--- (end of generated code: YCellRecord class start)
 
-export class YCellRecord
-{
-    constructor(int_mcc,int_mnc,int_lac,int_cellId,int_dbm,int_tad,str_oper)
-    {
+class YCellRecord {
+    constructor(int_mcc, int_mnc, int_lac, int_cellId, int_dbm, int_tad, str_oper) {
         //--- (generated code: YCellRecord constructor)
         /** @member {string} **/
-        this._oper                       = '';
+        this._oper = '';
         /** @member {number} **/
-        this._mcc                        = 0;
+        this._mcc = 0;
         /** @member {number} **/
-        this._mnc                        = 0;
+        this._mnc = 0;
         /** @member {number} **/
-        this._lac                        = 0;
+        this._lac = 0;
         /** @member {number} **/
-        this._cid                        = 0;
+        this._cid = 0;
         /** @member {number} **/
-        this._dbm                        = 0;
+        this._dbm = 0;
         /** @member {number} **/
-        this._tad                        = 0;
+        this._tad = 0;
         //--- (end of generated code: YCellRecord constructor)
         this._oper = str_oper;
         this._mcc = int_mcc;
@@ -83,65 +90,58 @@ export class YCellRecord
 
     //--- (generated code: YCellRecord implementation)
 
-    get_cellOperator()
-    {
+    get_cellOperator() {
         return this._oper;
     }
 
-    get_mobileCountryCode()
-    {
+    get_mobileCountryCode() {
         return this._mcc;
     }
 
-    get_mobileNetworkCode()
-    {
+    get_mobileNetworkCode() {
         return this._mnc;
     }
 
-    get_locationAreaCode()
-    {
+    get_locationAreaCode() {
         return this._lac;
     }
 
-    get_cellId()
-    {
+    get_cellId() {
         return this._cid;
     }
 
-    get_signalStrength()
-    {
+    get_signalStrength() {
         return this._dbm;
     }
 
-    get_timingAdvance()
-    {
+    get_timingAdvance() {
         return this._tad;
     }
 
     //--- (end of generated code: YCellRecord implementation)
 }
 
-//--- (generated code: CellRecord functions)
+exports.YCellRecord = YCellRecord; //--- (generated code: CellRecord functions)
 //--- (end of generated code: CellRecord functions)
-
 
 //--- (generated code: YCellular return codes)
 //--- (end of generated code: YCellular return codes)
 //--- (generated code: YCellular definitions)
-export const Y_ENABLEDATA_HOMENETWORK        = 0;
-export const Y_ENABLEDATA_ROAMING            = 1;
-export const Y_ENABLEDATA_NEVER              = 2;
-export const Y_ENABLEDATA_INVALID            = -1;
-export const Y_LINKQUALITY_INVALID           = YAPI.INVALID_UINT;
-export const Y_CELLOPERATOR_INVALID          = YAPI.INVALID_STRING;
-export const Y_CELLIDENTIFIER_INVALID        = YAPI.INVALID_STRING;
-export const Y_IMSI_INVALID                  = YAPI.INVALID_STRING;
-export const Y_MESSAGE_INVALID               = YAPI.INVALID_STRING;
-export const Y_PIN_INVALID                   = YAPI.INVALID_STRING;
-export const Y_LOCKEDOPERATOR_INVALID        = YAPI.INVALID_STRING;
-export const Y_APN_INVALID                   = YAPI.INVALID_STRING;
-export const Y_APNSECRET_INVALID             = YAPI.INVALID_STRING;
-export const Y_COMMAND_INVALID               = YAPI.INVALID_STRING;
+
+const Y_ENABLEDATA_HOMENETWORK = exports.Y_ENABLEDATA_HOMENETWORK = 0;
+const Y_ENABLEDATA_ROAMING = exports.Y_ENABLEDATA_ROAMING = 1;
+const Y_ENABLEDATA_NEVER = exports.Y_ENABLEDATA_NEVER = 2;
+const Y_ENABLEDATA_INVALID = exports.Y_ENABLEDATA_INVALID = -1;
+const Y_LINKQUALITY_INVALID = exports.Y_LINKQUALITY_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_CELLOPERATOR_INVALID = exports.Y_CELLOPERATOR_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_CELLIDENTIFIER_INVALID = exports.Y_CELLIDENTIFIER_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_IMSI_INVALID = exports.Y_IMSI_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_MESSAGE_INVALID = exports.Y_MESSAGE_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_PIN_INVALID = exports.Y_PIN_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_LOCKEDOPERATOR_INVALID = exports.Y_LOCKEDOPERATOR_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_APN_INVALID = exports.Y_APN_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_APNSECRET_INVALID = exports.Y_APNSECRET_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_COMMAND_INVALID = exports.Y_COMMAND_INVALID = _yocto_api.YAPI.INVALID_STRING;
 //--- (end of generated code: YCellular definitions)
 
 //--- (generated code: YCellular class start)
@@ -153,93 +153,90 @@ export const Y_COMMAND_INVALID               = YAPI.INVALID_STRING;
  */
 //--- (end of generated code: YCellular class start)
 
-export class YCellular extends YFunction
-{
-    constructor(obj_yapi,str_func)
-    {
+class YCellular extends _yocto_api.YFunction {
+    constructor(obj_yapi, str_func) {
         //--- (generated code: YCellular constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'Cellular';
+        this._className = 'Cellular';
         /** @member {number} **/
-        this._linkQuality                = Y_LINKQUALITY_INVALID;
+        this._linkQuality = Y_LINKQUALITY_INVALID;
         /** @member {string} **/
-        this._cellOperator               = Y_CELLOPERATOR_INVALID;
+        this._cellOperator = Y_CELLOPERATOR_INVALID;
         /** @member {string} **/
-        this._cellIdentifier             = Y_CELLIDENTIFIER_INVALID;
+        this._cellIdentifier = Y_CELLIDENTIFIER_INVALID;
         /** @member {string} **/
-        this._imsi                       = Y_IMSI_INVALID;
+        this._imsi = Y_IMSI_INVALID;
         /** @member {string} **/
-        this._message                    = Y_MESSAGE_INVALID;
+        this._message = Y_MESSAGE_INVALID;
         /** @member {string} **/
-        this._pin                        = Y_PIN_INVALID;
+        this._pin = Y_PIN_INVALID;
         /** @member {string} **/
-        this._lockedOperator             = Y_LOCKEDOPERATOR_INVALID;
+        this._lockedOperator = Y_LOCKEDOPERATOR_INVALID;
         /** @member {number} **/
-        this._enableData                 = Y_ENABLEDATA_INVALID;
+        this._enableData = Y_ENABLEDATA_INVALID;
         /** @member {string} **/
-        this._apn                        = Y_APN_INVALID;
+        this._apn = Y_APN_INVALID;
         /** @member {string} **/
-        this._apnSecret                  = Y_APNSECRET_INVALID;
+        this._apnSecret = Y_APNSECRET_INVALID;
         /** @member {string} **/
-        this._command                    = Y_COMMAND_INVALID;
+        this._command = Y_COMMAND_INVALID;
         this.imm_setConst({
-            LINKQUALITY_INVALID          : YAPI.INVALID_UINT,
-            CELLOPERATOR_INVALID         : YAPI.INVALID_STRING,
-            CELLIDENTIFIER_INVALID       : YAPI.INVALID_STRING,
-            IMSI_INVALID                 : YAPI.INVALID_STRING,
-            MESSAGE_INVALID              : YAPI.INVALID_STRING,
-            PIN_INVALID                  : YAPI.INVALID_STRING,
-            LOCKEDOPERATOR_INVALID       : YAPI.INVALID_STRING,
-            ENABLEDATA_HOMENETWORK       : 0,
-            ENABLEDATA_ROAMING           : 1,
-            ENABLEDATA_NEVER             : 2,
-            ENABLEDATA_INVALID           : -1,
-            APN_INVALID                  : YAPI.INVALID_STRING,
-            APNSECRET_INVALID            : YAPI.INVALID_STRING,
-            COMMAND_INVALID              : YAPI.INVALID_STRING
+            LINKQUALITY_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            CELLOPERATOR_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            CELLIDENTIFIER_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            IMSI_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            MESSAGE_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            PIN_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            LOCKEDOPERATOR_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            ENABLEDATA_HOMENETWORK: 0,
+            ENABLEDATA_ROAMING: 1,
+            ENABLEDATA_NEVER: 2,
+            ENABLEDATA_INVALID: -1,
+            APN_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            APNSECRET_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            COMMAND_INVALID: _yocto_api.YAPI.INVALID_STRING
         });
         //--- (end of generated code: YCellular constructor)
     }
 
     //--- (generated code: YCellular implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'linkQuality':
-            this._linkQuality = parseInt(val);
-            return 1;
-        case 'cellOperator':
-            this._cellOperator = val;
-            return 1;
-        case 'cellIdentifier':
-            this._cellIdentifier = val;
-            return 1;
-        case 'imsi':
-            this._imsi = val;
-            return 1;
-        case 'message':
-            this._message = val;
-            return 1;
-        case 'pin':
-            this._pin = val;
-            return 1;
-        case 'lockedOperator':
-            this._lockedOperator = val;
-            return 1;
-        case 'enableData':
-            this._enableData = parseInt(val);
-            return 1;
-        case 'apn':
-            this._apn = val;
-            return 1;
-        case 'apnSecret':
-            this._apnSecret = val;
-            return 1;
-        case 'command':
-            this._command = val;
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'linkQuality':
+                this._linkQuality = parseInt(val);
+                return 1;
+            case 'cellOperator':
+                this._cellOperator = val;
+                return 1;
+            case 'cellIdentifier':
+                this._cellIdentifier = val;
+                return 1;
+            case 'imsi':
+                this._imsi = val;
+                return 1;
+            case 'message':
+                this._message = val;
+                return 1;
+            case 'pin':
+                this._pin = val;
+                return 1;
+            case 'lockedOperator':
+                this._lockedOperator = val;
+                return 1;
+            case 'enableData':
+                this._enableData = parseInt(val);
+                return 1;
+            case 'apn':
+                this._apn = val;
+                return 1;
+            case 'apnSecret':
+                this._apnSecret = val;
+                return 1;
+            case 'command':
+                this._command = val;
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -251,14 +248,17 @@ export class YCellular extends YFunction
      *
      * On failure, throws an exception or returns YCellular.LINKQUALITY_INVALID.
      */
-    async get_linkQuality()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_LINKQUALITY_INVALID;
+    get_linkQuality() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
+                    return Y_LINKQUALITY_INVALID;
+                }
             }
-        }
-        return this._linkQuality;
+            return _this._linkQuality;
+        })();
     }
 
     /**
@@ -268,14 +268,17 @@ export class YCellular extends YFunction
      *
      * On failure, throws an exception or returns YCellular.CELLOPERATOR_INVALID.
      */
-    async get_cellOperator()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_CELLOPERATOR_INVALID;
+    get_cellOperator() {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this2._cacheExpiration <= _this2._yapi.GetTickCount()) {
+                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _this2._yapi.SUCCESS) {
+                    return Y_CELLOPERATOR_INVALID;
+                }
             }
-        }
-        return this._cellOperator;
+            return _this2._cellOperator;
+        })();
     }
 
     /**
@@ -286,14 +289,17 @@ export class YCellular extends YFunction
      *
      * On failure, throws an exception or returns YCellular.CELLIDENTIFIER_INVALID.
      */
-    async get_cellIdentifier()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_CELLIDENTIFIER_INVALID;
+    get_cellIdentifier() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
+                    return Y_CELLIDENTIFIER_INVALID;
+                }
             }
-        }
-        return this._cellIdentifier;
+            return _this3._cellIdentifier;
+        })();
     }
 
     /**
@@ -308,14 +314,17 @@ export class YCellular extends YFunction
      *
      * On failure, throws an exception or returns YCellular.IMSI_INVALID.
      */
-    async get_imsi()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_IMSI_INVALID;
+    get_imsi() {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this4._cacheExpiration <= _this4._yapi.GetTickCount()) {
+                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _this4._yapi.SUCCESS) {
+                    return Y_IMSI_INVALID;
+                }
             }
-        }
-        return this._imsi;
+            return _this4._imsi;
+        })();
     }
 
     /**
@@ -325,14 +334,17 @@ export class YCellular extends YFunction
      *
      * On failure, throws an exception or returns YCellular.MESSAGE_INVALID.
      */
-    async get_message()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_MESSAGE_INVALID;
+    get_message() {
+        var _this5 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this5._cacheExpiration <= _this5._yapi.GetTickCount()) {
+                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _this5._yapi.SUCCESS) {
+                    return Y_MESSAGE_INVALID;
+                }
             }
-        }
-        return this._message;
+            return _this5._message;
+        })();
     }
 
     /**
@@ -347,14 +359,17 @@ export class YCellular extends YFunction
      *
      * On failure, throws an exception or returns YCellular.PIN_INVALID.
      */
-    async get_pin()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_PIN_INVALID;
+    get_pin() {
+        var _this6 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this6._cacheExpiration <= _this6._yapi.GetTickCount()) {
+                if ((yield _this6.load(_this6._yapi.defaultCacheValidity)) != _this6._yapi.SUCCESS) {
+                    return Y_PIN_INVALID;
+                }
             }
-        }
-        return this._pin;
+            return _this6._pin;
+        })();
     }
 
     /**
@@ -376,12 +391,15 @@ export class YCellular extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_pin(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('pin',rest_val);
+    set_pin(newval) {
+        var _this7 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this7._setAttr('pin', rest_val);
+        })();
     }
 
     /**
@@ -396,14 +414,17 @@ export class YCellular extends YFunction
      *
      * On failure, throws an exception or returns YCellular.LOCKEDOPERATOR_INVALID.
      */
-    async get_lockedOperator()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_LOCKEDOPERATOR_INVALID;
+    get_lockedOperator() {
+        var _this8 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this8._cacheExpiration <= _this8._yapi.GetTickCount()) {
+                if ((yield _this8.load(_this8._yapi.defaultCacheValidity)) != _this8._yapi.SUCCESS) {
+                    return Y_LOCKEDOPERATOR_INVALID;
+                }
             }
-        }
-        return this._lockedOperator;
+            return _this8._lockedOperator;
+        })();
     }
 
     /**
@@ -417,12 +438,15 @@ export class YCellular extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_lockedOperator(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('lockedOperator',rest_val);
+    set_lockedOperator(newval) {
+        var _this9 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this9._setAttr('lockedOperator', rest_val);
+        })();
     }
 
     /**
@@ -434,14 +458,17 @@ export class YCellular extends YFunction
      *
      * On failure, throws an exception or returns YCellular.ENABLEDATA_INVALID.
      */
-    async get_enableData()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_ENABLEDATA_INVALID;
+    get_enableData() {
+        var _this10 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this10._cacheExpiration <= _this10._yapi.GetTickCount()) {
+                if ((yield _this10.load(_this10._yapi.defaultCacheValidity)) != _this10._yapi.SUCCESS) {
+                    return Y_ENABLEDATA_INVALID;
+                }
             }
-        }
-        return this._enableData;
+            return _this10._enableData;
+        })();
     }
 
     /**
@@ -460,12 +487,15 @@ export class YCellular extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_enableData(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('enableData',rest_val);
+    set_enableData(newval) {
+        var _this11 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this11._setAttr('enableData', rest_val);
+        })();
     }
 
     /**
@@ -476,14 +506,17 @@ export class YCellular extends YFunction
      *
      * On failure, throws an exception or returns YCellular.APN_INVALID.
      */
-    async get_apn()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_APN_INVALID;
+    get_apn() {
+        var _this12 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this12._cacheExpiration <= _this12._yapi.GetTickCount()) {
+                if ((yield _this12.load(_this12._yapi.defaultCacheValidity)) != _this12._yapi.SUCCESS) {
+                    return Y_APN_INVALID;
+                }
             }
-        }
-        return this._apn;
+            return _this12._apn;
+        })();
     }
 
     /**
@@ -496,12 +529,15 @@ export class YCellular extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_apn(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('apn',rest_val);
+    set_apn(newval) {
+        var _this13 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this13._setAttr('apn', rest_val);
+        })();
     }
 
     /**
@@ -515,40 +551,52 @@ export class YCellular extends YFunction
      *
      * On failure, throws an exception or returns YCellular.APNSECRET_INVALID.
      */
-    async get_apnSecret()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_APNSECRET_INVALID;
+    get_apnSecret() {
+        var _this14 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this14._cacheExpiration <= _this14._yapi.GetTickCount()) {
+                if ((yield _this14.load(_this14._yapi.defaultCacheValidity)) != _this14._yapi.SUCCESS) {
+                    return Y_APNSECRET_INVALID;
+                }
             }
-        }
-        return this._apnSecret;
+            return _this14._apnSecret;
+        })();
     }
 
-    async set_apnSecret(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('apnSecret',rest_val);
+    set_apnSecret(newval) {
+        var _this15 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this15._setAttr('apnSecret', rest_val);
+        })();
     }
 
-    async get_command()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_COMMAND_INVALID;
+    get_command() {
+        var _this16 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this16._cacheExpiration <= _this16._yapi.GetTickCount()) {
+                if ((yield _this16.load(_this16._yapi.defaultCacheValidity)) != _this16._yapi.SUCCESS) {
+                    return Y_COMMAND_INVALID;
+                }
             }
-        }
-        return this._command;
+            return _this16._command;
+        })();
     }
 
-    async set_command(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('command',rest_val);
+    set_command(newval) {
+        var _this17 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this17._setAttr('command', rest_val);
+        })();
     }
 
     /**
@@ -574,14 +622,13 @@ export class YCellular extends YFunction
      *
      * @return {YCellular} a YCellular object allowing you to drive the cellular interface.
      */
-    static FindCellular(func)
-    {
+    static FindCellular(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('Cellular', func);
+        obj = _yocto_api.YFunction._FindFromCache('Cellular', func);
         if (obj == null) {
-            obj = new YCellular(YAPI, func);
-            YFunction._AddToCache('Cellular',  func, obj);
+            obj = new YCellular(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('Cellular', func, obj);
         }
         return obj;
     }
@@ -610,14 +657,13 @@ export class YCellular extends YFunction
      *
      * @return {YCellular} a YCellular object allowing you to drive the cellular interface.
      */
-    static FindCellularInContext(yctx,func)
-    {
+    static FindCellularInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'Cellular', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Cellular', func);
         if (obj == null) {
             obj = new YCellular(yctx, func);
-            YFunction._AddToCache('Cellular',  func, obj);
+            _yocto_api.YFunction._AddToCache('Cellular', func, obj);
         }
         return obj;
     }
@@ -636,18 +682,21 @@ export class YCellular extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async sendPUK(puk,newPin)
-    {
-        /** @type {string} **/
-        let gsmMsg;
-        gsmMsg = await this.get_message();
-        if (!(gsmMsg == 'Enter SIM PUK')) {
-            return this._throw(this._yapi.INVALID_ARGUMENT,'PUK not expected at this time',this._yapi.INVALID_ARGUMENT);
-        }
-        if (newPin == '') {
-            return await this.set_command('AT+CPIN='+puk+',0000;+CLCK=SC,0,0000');
-        }
-        return await this.set_command('AT+CPIN='+puk+','+newPin);
+    sendPUK(puk, newPin) {
+        var _this18 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let gsmMsg;
+            gsmMsg = yield _this18.get_message();
+            if (!(gsmMsg == 'Enter SIM PUK')) {
+                return _this18._throw(_this18._yapi.INVALID_ARGUMENT, 'PUK not expected at this time', _this18._yapi.INVALID_ARGUMENT);
+            }
+            if (newPin == '') {
+                return yield _this18.set_command('AT+CPIN=' + puk + ',0000;+CLCK=SC,0,0000');
+            }
+            return yield _this18.set_command('AT+CPIN=' + puk + ',' + newPin);
+        })();
     }
 
     /**
@@ -661,9 +710,12 @@ export class YCellular extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_apnAuth(username,password)
-    {
-        return await this.set_apnSecret(username+','+password);
+    set_apnAuth(username, password) {
+        var _this19 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this19.set_apnSecret(username + ',' + password);
+        })();
     }
 
     /**
@@ -677,72 +729,75 @@ export class YCellular extends YFunction
      * @return {string} a string with the result of the commands. Empty lines are
      *         automatically removed from the output.
      */
-    async _AT(cmd)
-    {
-        /** @type {number} **/
-        let chrPos;
-        /** @type {number} **/
-        let cmdLen;
-        /** @type {number} **/
-        let waitMore;
-        /** @type {string} **/
-        let res;
-        /** @type {Uint8Array} **/
-        let buff;
-        /** @type {number} **/
-        let bufflen;
-        /** @type {string} **/
-        let buffstr;
-        /** @type {number} **/
-        let buffstrlen;
-        /** @type {number} **/
-        let idx;
-        /** @type {number} **/
-        let suffixlen;
-        // quote dangerous characters used in AT commands
-        cmdLen = (cmd).length;
-        chrPos = (cmd).indexOf('#');
-        while (chrPos >= 0) {
-            cmd = (cmd).substr( 0, chrPos)+''+String.fromCharCode(37)+'23'+(cmd).substr( chrPos+1, cmdLen-chrPos-1);
-            cmdLen = cmdLen + 2;
-            chrPos = (cmd).indexOf('#');
-        }
-        chrPos = (cmd).indexOf('+');
-        while (chrPos >= 0) {
-            cmd = (cmd).substr( 0, chrPos)+''+String.fromCharCode(37)+'2B'+(cmd).substr( chrPos+1, cmdLen-chrPos-1);
-            cmdLen = cmdLen + 2;
-            chrPos = (cmd).indexOf('+');
-        }
-        chrPos = (cmd).indexOf('=');
-        while (chrPos >= 0) {
-            cmd = (cmd).substr( 0, chrPos)+''+String.fromCharCode(37)+'3D'+(cmd).substr( chrPos+1, cmdLen-chrPos-1);
-            cmdLen = cmdLen + 2;
-            chrPos = (cmd).indexOf('=');
-        }
-        cmd = 'at.txt?cmd='+cmd;
-        res = '';
-        // max 2 minutes (each iteration may take up to 5 seconds if waiting)
-        waitMore = 24;
-        while (waitMore > 0) {
-            buff = await this._download(cmd);
-            bufflen = (buff).length;
-            buffstr = this._yapi.imm_bin2str(buff);
-            buffstrlen = (buffstr).length;
-            idx = bufflen - 1;
-            while ((idx > 0) && (buff[idx] != 64) && (buff[idx] != 10) && (buff[idx] != 13)) {
-                idx = idx - 1;
+    _AT(cmd) {
+        var _this20 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let chrPos;
+            /** @type {number} **/
+            let cmdLen;
+            /** @type {number} **/
+            let waitMore;
+            /** @type {string} **/
+            let res;
+            /** @type {Uint8Array} **/
+            let buff;
+            /** @type {number} **/
+            let bufflen;
+            /** @type {string} **/
+            let buffstr;
+            /** @type {number} **/
+            let buffstrlen;
+            /** @type {number} **/
+            let idx;
+            /** @type {number} **/
+            let suffixlen;
+            // quote dangerous characters used in AT commands
+            cmdLen = cmd.length;
+            chrPos = cmd.indexOf('#');
+            while (chrPos >= 0) {
+                cmd = cmd.substr(0, chrPos) + '' + String.fromCharCode(37) + '23' + cmd.substr(chrPos + 1, cmdLen - chrPos - 1);
+                cmdLen = cmdLen + 2;
+                chrPos = cmd.indexOf('#');
             }
-            if (buff[idx] == 64) {
-                suffixlen = bufflen - idx;
-                cmd = 'at.txt?cmd='+(buffstr).substr( buffstrlen - suffixlen, suffixlen);
-                buffstr = (buffstr).substr( 0, buffstrlen - suffixlen);
-                waitMore = waitMore - 1;
-            } else {
-                waitMore = 0;
+            chrPos = cmd.indexOf('+');
+            while (chrPos >= 0) {
+                cmd = cmd.substr(0, chrPos) + '' + String.fromCharCode(37) + '2B' + cmd.substr(chrPos + 1, cmdLen - chrPos - 1);
+                cmdLen = cmdLen + 2;
+                chrPos = cmd.indexOf('+');
             }
-            res = res+''+buffstr;
-        }
-        return res;
+            chrPos = cmd.indexOf('=');
+            while (chrPos >= 0) {
+                cmd = cmd.substr(0, chrPos) + '' + String.fromCharCode(37) + '3D' + cmd.substr(chrPos + 1, cmdLen - chrPos - 1);
+                cmdLen = cmdLen + 2;
+                chrPos = cmd.indexOf('=');
+            }
+            cmd = 'at.txt?cmd=' + cmd;
+            res = '';
+            // max 2 minutes (each iteration may take up to 5 seconds if waiting)
+            waitMore = 24;
+            while (waitMore > 0) {
+                buff = yield _this20._download(cmd);
+                bufflen = buff.length;
+                buffstr = _this20._yapi.imm_bin2str(buff);
+                buffstrlen = buffstr.length;
+                idx = bufflen - 1;
+                while (idx > 0 && buff[idx] != 64 && buff[idx] != 10 && buff[idx] != 13) {
+                    idx = idx - 1;
+                }
+                if (buff[idx] == 64) {
+                    suffixlen = bufflen - idx;
+                    cmd = 'at.txt?cmd=' + buffstr.substr(buffstrlen - suffixlen, suffixlen);
+                    buffstr = buffstr.substr(0, buffstrlen - suffixlen);
+                    waitMore = waitMore - 1;
+                } else {
+                    waitMore = 0;
+                }
+                res = res + '' + buffstr;
+            }
+            return res;
+        })();
     }
 
     /**
@@ -754,36 +809,39 @@ export class YCellular extends YFunction
      *
      * @return {string[]} a list of string (cell operator names).
      */
-    async get_availableOperators()
-    {
-        /** @type {string} **/
-        let cops;
-        /** @type {number} **/
-        let idx;
-        /** @type {number} **/
-        let slen;
-        /** @type {string[]} **/
-        let res = [];
-        // may throw an exception
-        cops = await this._AT('+COPS=?');
-        slen = (cops).length;
-        res.length = 0;
-        idx = (cops).indexOf('(');
-        while (idx >= 0) {
-            slen = slen - (idx+1);
-            cops = (cops).substr( idx+1, slen);
-            idx = (cops).indexOf('"');
-            if (idx > 0) {
-                slen = slen - (idx+1);
-                cops = (cops).substr( idx+1, slen);
-                idx = (cops).indexOf('"');
+    get_availableOperators() {
+        var _this21 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let cops;
+            /** @type {number} **/
+            let idx;
+            /** @type {number} **/
+            let slen;
+            /** @type {string[]} **/
+            let res = [];
+            // may throw an exception
+            cops = yield _this21._AT('+COPS=?');
+            slen = cops.length;
+            res.length = 0;
+            idx = cops.indexOf('(');
+            while (idx >= 0) {
+                slen = slen - (idx + 1);
+                cops = cops.substr(idx + 1, slen);
+                idx = cops.indexOf('"');
                 if (idx > 0) {
-                    res.push((cops).substr( 0, idx));
+                    slen = slen - (idx + 1);
+                    cops = cops.substr(idx + 1, slen);
+                    idx = cops.indexOf('"');
+                    if (idx > 0) {
+                        res.push(cops.substr(0, idx));
+                    }
                 }
+                idx = cops.indexOf('(');
             }
-            idx = (cops).indexOf('(');
-        }
-        return res;
+            return res;
+        })();
     }
 
     /**
@@ -794,89 +852,92 @@ export class YCellular extends YFunction
      *
      * @return {YCellRecord[]} a list of YCellRecords.
      */
-    async quickCellSurvey()
-    {
-        /** @type {string} **/
-        let moni;
-        /** @type {string[]} **/
-        let recs = [];
-        /** @type {number} **/
-        let llen;
-        /** @type {string} **/
-        let mccs;
-        /** @type {number} **/
-        let mcc;
-        /** @type {string} **/
-        let mncs;
-        /** @type {number} **/
-        let mnc;
-        /** @type {number} **/
-        let lac;
-        /** @type {number} **/
-        let cellId;
-        /** @type {string} **/
-        let dbms;
-        /** @type {number} **/
-        let dbm;
-        /** @type {string} **/
-        let tads;
-        /** @type {number} **/
-        let tad;
-        /** @type {string} **/
-        let oper;
-        /** @type {YCellRecord[]} **/
-        let res = [];
-        // may throw an exception
-        moni = await this._AT('+CCED=0;#MONI=7;#MONI');
-        mccs = (moni).substr(7, 3);
-        if ((mccs).substr(0, 1) == '0') {
-            mccs = (mccs).substr(1, 2);
-        }
-        if ((mccs).substr(0, 1) == '0') {
-            mccs = (mccs).substr(1, 1);
-        }
-        mcc = this._yapi.imm_atoi(mccs);
-        mncs = (moni).substr(11, 3);
-        if ((mncs).substr(2, 1) == ',') {
-            mncs = (mncs).substr(0, 2);
-        }
-        if ((mncs).substr(0, 1) == '0') {
-            mncs = (mncs).substr(1, (mncs).length-1);
-        }
-        mnc = this._yapi.imm_atoi(mncs);
-        recs = (moni).split('#');
-        // process each line in turn
-        res.length = 0;
-        for (let ii in recs) {
-            llen = (recs[ii]).length - 2;
-            if (llen >= 44) {
-                if ((recs[ii]).substr(41, 3) == 'dbm') {
-                    lac = parseInt((recs[ii]).substr(16, 4), 16);
-                    cellId = parseInt((recs[ii]).substr(23, 4), 16);
-                    dbms = (recs[ii]).substr(37, 4);
-                    if ((dbms).substr(0, 1) == ' ') {
-                        dbms = (dbms).substr(1, 3);
-                    }
-                    dbm = this._yapi.imm_atoi(dbms);
-                    if (llen > 66) {
-                        tads = (recs[ii]).substr(54, 2);
-                        if ((tads).substr(0, 1) == ' ') {
-                            tads = (tads).substr(1, 3);
+    quickCellSurvey() {
+        var _this22 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let moni;
+            /** @type {string[]} **/
+            let recs = [];
+            /** @type {number} **/
+            let llen;
+            /** @type {string} **/
+            let mccs;
+            /** @type {number} **/
+            let mcc;
+            /** @type {string} **/
+            let mncs;
+            /** @type {number} **/
+            let mnc;
+            /** @type {number} **/
+            let lac;
+            /** @type {number} **/
+            let cellId;
+            /** @type {string} **/
+            let dbms;
+            /** @type {number} **/
+            let dbm;
+            /** @type {string} **/
+            let tads;
+            /** @type {number} **/
+            let tad;
+            /** @type {string} **/
+            let oper;
+            /** @type {YCellRecord[]} **/
+            let res = [];
+            // may throw an exception
+            moni = yield _this22._AT('+CCED=0;#MONI=7;#MONI');
+            mccs = moni.substr(7, 3);
+            if (mccs.substr(0, 1) == '0') {
+                mccs = mccs.substr(1, 2);
+            }
+            if (mccs.substr(0, 1) == '0') {
+                mccs = mccs.substr(1, 1);
+            }
+            mcc = _this22._yapi.imm_atoi(mccs);
+            mncs = moni.substr(11, 3);
+            if (mncs.substr(2, 1) == ',') {
+                mncs = mncs.substr(0, 2);
+            }
+            if (mncs.substr(0, 1) == '0') {
+                mncs = mncs.substr(1, mncs.length - 1);
+            }
+            mnc = _this22._yapi.imm_atoi(mncs);
+            recs = moni.split('#');
+            // process each line in turn
+            res.length = 0;
+            for (let ii in recs) {
+                llen = recs[ii].length - 2;
+                if (llen >= 44) {
+                    if (recs[ii].substr(41, 3) == 'dbm') {
+                        lac = parseInt(recs[ii].substr(16, 4), 16);
+                        cellId = parseInt(recs[ii].substr(23, 4), 16);
+                        dbms = recs[ii].substr(37, 4);
+                        if (dbms.substr(0, 1) == ' ') {
+                            dbms = dbms.substr(1, 3);
                         }
-                        tad = this._yapi.imm_atoi(tads);
-                        oper = (recs[ii]).substr(66, llen-66);
-                    } else {
-                        tad = -1;
-                        oper = '';
-                    }
-                    if (lac < 65535) {
-                        res.push(new YCellRecord(mcc, mnc, lac, cellId, dbm, tad, oper));
+                        dbm = _this22._yapi.imm_atoi(dbms);
+                        if (llen > 66) {
+                            tads = recs[ii].substr(54, 2);
+                            if (tads.substr(0, 1) == ' ') {
+                                tads = tads.substr(1, 3);
+                            }
+                            tad = _this22._yapi.imm_atoi(tads);
+                            oper = recs[ii].substr(66, llen - 66);
+                        } else {
+                            tad = -1;
+                            oper = '';
+                        }
+                        if (lac < 65535) {
+                            res.push(new YCellRecord(mcc, mnc, lac, cellId, dbm, tad, oper));
+                        }
                     }
                 }
+                ;;
             }
-            ;;
-        }
-        return res;
+            return res;
+        })();
     }
 
     /**
@@ -886,14 +947,13 @@ export class YCellular extends YFunction
      *         a cellular interface currently online, or a null pointer
      *         if there are no more cellular interfaces to enumerate.
      */
-    nextCellular()
-    {
+    nextCellular() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YCellular.FindCellularInContext(this._yapi, next_hwid);
     }
 
@@ -906,11 +966,10 @@ export class YCellular extends YFunction
      *         the first cellular interface currently online, or a null pointer
      *         if there are none.
      */
-    static FirstCellular()
-    {
+    static FirstCellular() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('Cellular');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('Cellular');
+        if (next_hwid == null) return null;
         return YCellular.FindCellular(next_hwid);
     }
 
@@ -925,18 +984,17 @@ export class YCellular extends YFunction
      *         the first cellular interface currently online, or a null pointer
      *         if there are none.
      */
-    static FirstCellularInContext(yctx)
-    {
+    static FirstCellularInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('Cellular');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YCellular.FindCellularInContext(yctx, next_hwid);
     }
 
     //--- (end of generated code: YCellular implementation)
 }
 
-//--- (generated code: Cellular functions)
+exports.YCellular = YCellular; //--- (generated code: Cellular functions)
 
 /**
  * Retrieves a cellular interface for a given identifier.
@@ -961,8 +1019,8 @@ export class YCellular extends YFunction
  *
  * @return {YCellular} a YCellular object allowing you to drive the cellular interface.
  */
-export function yFindCellular(func)
-{
+
+function yFindCellular(func) {
     return YCellular.FindCellular(func);
 }
 
@@ -975,8 +1033,7 @@ export function yFindCellular(func)
  *         the first cellular interface currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstCellular()
-{
+function yFirstCellular() {
     return YCellular.FirstCellular();
 }
 

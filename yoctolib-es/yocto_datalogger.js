@@ -1,66 +1,75 @@
-/*********************************************************************
- *
- * $Id: yocto_datalogger.js 20704 2015-06-20 19:43:34Z mvuilleu $
- *
- * Implements yFindDataLogger(), the high-level API for DataLogger functions
- *
- * - - - - - - - - - License information: - - - - - - - - - 
- *
- *  Copyright (C) 2011 and beyond by Yoctopuce Sarl, Switzerland.
- *
- *  Yoctopuce Sarl (hereafter Licensor) grants to you a perpetual
- *  non-exclusive license to use, modify, copy and integrate this
- *  file into your software for the sole purpose of interfacing 
- *  with Yoctopuce products. 
- *
- *  You may reproduce and distribute copies of this file in 
- *  source or object form, as long as the sole purpose of this
- *  code is to interface with Yoctopuce products. You must retain 
- *  this notice in the distributed source file.
- *
- *  You should refer to Yoctopuce General Terms and Conditions
- *  for additional information regarding your rights and 
- *  obligations.
- *
- *  THE SOFTWARE AND DOCUMENTATION ARE PROVIDED "AS IS" WITHOUT
- *  WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING 
- *  WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, FITNESS 
- *  FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO
- *  EVENT SHALL LICENSOR BE LIABLE FOR ANY INCIDENTAL, SPECIAL,
- *  INDIRECT OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, 
- *  COST OF PROCUREMENT OF SUBSTITUTE GOODS, TECHNOLOGY OR 
- *  SERVICES, ANY CLAIMS BY THIRD PARTIES (INCLUDING BUT NOT 
- *  LIMITED TO ANY DEFENSE THEREOF), ANY CLAIMS FOR INDEMNITY OR
- *  CONTRIBUTION, OR OTHER SIMILAR COSTS, WHETHER ASSERTED ON THE
- *  BASIS OF CONTRACT, TORT (INCLUDING NEGLIGENCE), BREACH OF
- *  WARRANTY, OR OTHERWISE.
- *
- *********************************************************************/
+'use strict';
 
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor, YDataStream } from 'yoctolib-es/yocto_api'
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YDataLogger = exports.YOldDataStream = exports.Y_MAXVALUE_INVALID = exports.Y_AVERAGEVALUE_INVALID = exports.Y_MINVALUE_INVALID = exports.Y_DATA_INVALID = exports.Y_TIMEUTC_INVALID = exports.Y_CURRENTRUNINDEX_INVALID = exports.Y_CLEARHISTORY_INVALID = exports.Y_CLEARHISTORY_TRUE = exports.Y_CLEARHISTORY_FALSE = exports.Y_BEACONDRIVEN_INVALID = exports.Y_BEACONDRIVEN_ON = exports.Y_BEACONDRIVEN_OFF = exports.Y_AUTOSTART_INVALID = exports.Y_AUTOSTART_ON = exports.Y_AUTOSTART_OFF = exports.Y_RECORDING_INVALID = exports.Y_RECORDING_PENDING = exports.Y_RECORDING_ON = exports.Y_RECORDING_OFF = undefined;
+exports.yFindDataLogger = yFindDataLogger;
+exports.yFirstDataLogger = yFirstDataLogger;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; } /*********************************************************************
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              * $Id: yocto_datalogger.js 20704 2015-06-20 19:43:34Z mvuilleu $
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              * Implements yFindDataLogger(), the high-level API for DataLogger functions
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              * - - - - - - - - - License information: - - - - - - - - - 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  Copyright (C) 2011 and beyond by Yoctopuce Sarl, Switzerland.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  Yoctopuce Sarl (hereafter Licensor) grants to you a perpetual
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  non-exclusive license to use, modify, copy and integrate this
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  file into your software for the sole purpose of interfacing 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  with Yoctopuce products. 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  You may reproduce and distribute copies of this file in 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  source or object form, as long as the sole purpose of this
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  code is to interface with Yoctopuce products. You must retain 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  this notice in the distributed source file.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  You should refer to Yoctopuce General Terms and Conditions
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  for additional information regarding your rights and 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  obligations.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  THE SOFTWARE AND DOCUMENTATION ARE PROVIDED "AS IS" WITHOUT
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, FITNESS 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  EVENT SHALL LICENSOR BE LIABLE FOR ANY INCIDENTAL, SPECIAL,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  INDIRECT OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  COST OF PROCUREMENT OF SUBSTITUTE GOODS, TECHNOLOGY OR 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  SERVICES, ANY CLAIMS BY THIRD PARTIES (INCLUDING BUT NOT 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  LIMITED TO ANY DEFENSE THEREOF), ANY CLAIMS FOR INDEMNITY OR
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  CONTRIBUTION, OR OTHER SIMILAR COSTS, WHETHER ASSERTED ON THE
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  BASIS OF CONTRACT, TORT (INCLUDING NEGLIGENCE), BREACH OF
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  WARRANTY, OR OTHERWISE.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *********************************************************************/
 
 //--- (generated code: YDataLogger definitions)
-export const Y_RECORDING_OFF                 = 0;
-export const Y_RECORDING_ON                  = 1;
-export const Y_RECORDING_PENDING             = 2;
-export const Y_RECORDING_INVALID             = -1;
-export const Y_AUTOSTART_OFF                 = 0;
-export const Y_AUTOSTART_ON                  = 1;
-export const Y_AUTOSTART_INVALID             = -1;
-export const Y_BEACONDRIVEN_OFF              = 0;
-export const Y_BEACONDRIVEN_ON               = 1;
-export const Y_BEACONDRIVEN_INVALID          = -1;
-export const Y_CLEARHISTORY_FALSE            = 0;
-export const Y_CLEARHISTORY_TRUE             = 1;
-export const Y_CLEARHISTORY_INVALID          = -1;
-export const Y_CURRENTRUNINDEX_INVALID       = YAPI.INVALID_UINT;
-export const Y_TIMEUTC_INVALID               = YAPI.INVALID_LONG;
+const Y_RECORDING_OFF = exports.Y_RECORDING_OFF = 0;
+const Y_RECORDING_ON = exports.Y_RECORDING_ON = 1;
+const Y_RECORDING_PENDING = exports.Y_RECORDING_PENDING = 2;
+const Y_RECORDING_INVALID = exports.Y_RECORDING_INVALID = -1;
+const Y_AUTOSTART_OFF = exports.Y_AUTOSTART_OFF = 0;
+const Y_AUTOSTART_ON = exports.Y_AUTOSTART_ON = 1;
+const Y_AUTOSTART_INVALID = exports.Y_AUTOSTART_INVALID = -1;
+const Y_BEACONDRIVEN_OFF = exports.Y_BEACONDRIVEN_OFF = 0;
+const Y_BEACONDRIVEN_ON = exports.Y_BEACONDRIVEN_ON = 1;
+const Y_BEACONDRIVEN_INVALID = exports.Y_BEACONDRIVEN_INVALID = -1;
+const Y_CLEARHISTORY_FALSE = exports.Y_CLEARHISTORY_FALSE = 0;
+const Y_CLEARHISTORY_TRUE = exports.Y_CLEARHISTORY_TRUE = 1;
+const Y_CLEARHISTORY_INVALID = exports.Y_CLEARHISTORY_INVALID = -1;
+const Y_CURRENTRUNINDEX_INVALID = exports.Y_CURRENTRUNINDEX_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_TIMEUTC_INVALID = exports.Y_TIMEUTC_INVALID = _yocto_api.YAPI.INVALID_LONG;
 //--- (end of generated code: YDataLogger definitions)
 
-export const Y_DATA_INVALID                  = YAPI.INVALID_DOUBLE;
-export const Y_MINVALUE_INVALID              = YAPI.INVALID_DOUBLE;
-export const Y_AVERAGEVALUE_INVALID          = YAPI.INVALID_DOUBLE;
-export const Y_MAXVALUE_INVALID              = YAPI.INVALID_DOUBLE;
+const Y_DATA_INVALID = exports.Y_DATA_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
+const Y_MINVALUE_INVALID = exports.Y_MINVALUE_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
+const Y_AVERAGEVALUE_INVALID = exports.Y_AVERAGEVALUE_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
+const Y_MAXVALUE_INVALID = exports.Y_MAXVALUE_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
 
 /**
  * YOldDataStream Class: Sequence of measured data, returned by the data logger
@@ -70,160 +79,161 @@ export const Y_MAXVALUE_INVALID              = YAPI.INVALID_DOUBLE;
  * (they are preloaded at instantiation time), while most other properties and
  * the actual data are loaded on demand when accessed for the first time.
  */
-export class YOldDataStream extends YDataStream
-{
+class YOldDataStream extends _yocto_api.YDataStream {
     // Data preloaded on object instantiation
-    constructor(obj_parent, int_run, int_stamp, int_utc, int_itv)
-    {
-        super(obj_parent);       
+    constructor(obj_parent, int_run, int_stamp, int_utc, int_itv) {
+        super(obj_parent);
         this._dataLogger = obj_parent;
-        this._runNo      = int_run;
-        this._timeStamp  = int_stamp;
-        this._utcStamp   = (int_utc == null ? -1 : int_utc);
-        this._interval   = (int_itv == null ? 0 : int_itv);
-        this._samplesPerHour = (this._interval == 0 ? 3600 : 3600 / this._interval);
-        this._isClosed   = 1;
-        this._minVal     = this.DATA_INVALID;
-        this._avgVal     = this.DATA_INVALID;
-        this._maxVal     = this.DATA_INVALID;
+        this._runNo = int_run;
+        this._timeStamp = int_stamp;
+        this._utcStamp = int_utc == null ? -1 : int_utc;
+        this._interval = int_itv == null ? 0 : int_itv;
+        this._samplesPerHour = this._interval == 0 ? 3600 : 3600 / this._interval;
+        this._isClosed = 1;
+        this._minVal = this.DATA_INVALID;
+        this._avgVal = this.DATA_INVALID;
+        this._maxVal = this.DATA_INVALID;
     }
 
     // Internal function to preload all values into object
     //
-    async loadStream()
-    {
-        var coldiv = null;
-        var coltyp = null;
-        var colscl = null;
-        var colofs = null;
-        var calhdl = null;
-        var caltyp = null;
-        var calpar = null;
-        var calraw = null;
-        var calref = null;
-        var c, i;
+    loadStream() {
+        var _this = this;
 
-        var loadval = this._dataLogger.getData(this._runNo, this._timeStamp);
-        if(loadval == null) {
-            return this._dataLogger.get_errorType();
-        }
-        if(loadval['time'] != null)     this._timeStamp = loadval['time'];
-        if(loadval['UTC'] != null)      this._utcStamp  = loadval['UTC'];
-        if(loadval['interval'] != null) this._interval  = loadval['interval'];
-        if(loadval['nRows'] != null)    this._nRows     = loadval['nRows'];
-        if(loadval['keys'] != null) {
-            this._columnNames = loadval['keys'];
-            if(this._nCols == 0) {
-                this._nCols = this._columnNames.length;
-            } else if(this._nCols != this._columnNames.length) {
-                this._nCols = 0;
-                return YAPI.IO_ERROR;
+        return _asyncToGenerator(function* () {
+            var coldiv = null;
+            var coltyp = null;
+            var colscl = null;
+            var colofs = null;
+            var calhdl = null;
+            var caltyp = null;
+            var calpar = null;
+            var calraw = null;
+            var calref = null;
+            var c, i;
+
+            var loadval = _this._dataLogger.getData(_this._runNo, _this._timeStamp);
+            if (loadval == null) {
+                return _this._dataLogger.get_errorType();
             }
-        }
-        if(loadval['div'] != null) {
-            coldiv = loadval['div'];
-            if(this._nCols == 0) {
-                this._nCols = coldiv.length;
-            } else if(this._nCols != coldiv.length) {
-                this._nCols = 0;
-                return YAPI.IO_ERROR;
+            if (loadval['time'] != null) _this._timeStamp = loadval['time'];
+            if (loadval['UTC'] != null) _this._utcStamp = loadval['UTC'];
+            if (loadval['interval'] != null) _this._interval = loadval['interval'];
+            if (loadval['nRows'] != null) _this._nRows = loadval['nRows'];
+            if (loadval['keys'] != null) {
+                _this._columnNames = loadval['keys'];
+                if (_this._nCols == 0) {
+                    _this._nCols = _this._columnNames.length;
+                } else if (_this._nCols != _this._columnNames.length) {
+                    _this._nCols = 0;
+                    return _yocto_api.YAPI.IO_ERROR;
+                }
             }
-        }
-        if(loadval['type'] != null) {
-            coltyp = loadval['type'];
-            if(this._nCols == 0) {
-                this._nCols = coltyp.length;
-            } else if(this._nCols != coltyp.length) {
-                this._nCols = 0;
-                return YAPI.IO_ERROR;
+            if (loadval['div'] != null) {
+                coldiv = loadval['div'];
+                if (_this._nCols == 0) {
+                    _this._nCols = coldiv.length;
+                } else if (_this._nCols != coldiv.length) {
+                    _this._nCols = 0;
+                    return _yocto_api.YAPI.IO_ERROR;
+                }
             }
-        }
-        if(loadval['scal'] != null) {
-            colscl = loadval['scal'];
-            colofs = [];
-            if(this._nCols != colscl.length) {
-                this._nCols = 0;
-                return YAPI.IO_ERROR;
+            if (loadval['type'] != null) {
+                coltyp = loadval['type'];
+                if (_this._nCols == 0) {
+                    _this._nCols = coltyp.length;
+                } else if (_this._nCols != coltyp.length) {
+                    _this._nCols = 0;
+                    return _yocto_api.YAPI.IO_ERROR;
+                }
             }
-            for(i = 0; i < colscl.length; i++) {
-                colscl[i] /= 65536.0;
-                colofs[i] = (coltyp[i] != 0 ? -32767 : 0);
+            if (loadval['scal'] != null) {
+                colscl = loadval['scal'];
+                colofs = [];
+                if (_this._nCols != colscl.length) {
+                    _this._nCols = 0;
+                    return _yocto_api.YAPI.IO_ERROR;
+                }
+                for (i = 0; i < colscl.length; i++) {
+                    colscl[i] /= 65536.0;
+                    colofs[i] = coltyp[i] != 0 ? -32767 : 0;
+                }
+            } else {
+                colscl = [];
+                colofs = [];
+                for (i = 0; i < coldiv.length; i++) {
+                    colscl[i] = 1.0 / coldiv[i];
+                    colofs[i] = coltyp[i] != 0 ? -32767 : 0;
+                }
             }
-        } else {
-            colscl = [];
-            colofs = [];
-            for(i = 0; i < coldiv.length; i++) {
-                colscl[i] = 1.0 / coldiv[i];
-                colofs[i] = (coltyp[i] != 0 ? -32767 : 0);
+            if (loadval['cal'] != null) {
+                calhdl = new Array(_this._nCols);
+                caltyp = new Array(_this._nCols);
+                calpar = new Array(_this._nCols);
+                calraw = new Array(_this._nCols);
+                calref = new Array(_this._nCols);
+                for (c = 0; c < _this._nCols; c++) {
+                    var params = loadval['cal'][c];
+                    if (!params) continue;
+                    params = params.split(',');
+                    if (params.length < 11) continue;
+                    calhdl[c] = _yocto_api.YAPI._getCalibrationHandler(params[0]);
+                    if (!calhdl[c]) continue;
+                    caltyp[c] = parseInt(params[0]);
+                    calpar[c] = new Array(params.length - 1);
+                    calraw[c] = new Array(params.length >> 1);
+                    calref[c] = new Array(params.length >> 1);
+                    for (i = 1; i < params.length; i += 2) {
+                        calpar[c][i - 1] = parseInt(params[i]);
+                        calpar[c][i] = parseInt(params[i + 1]);
+                        if (caltyp[c] <= 10) {
+                            calraw[c][i >> 1] = (calpar[c][i - 1] + colofs[c]) / coldiv[c];
+                            calref[c][i >> 1] = (calpar[c][i] + colofs[c]) / coldiv[c];
+                        } else {
+                            calraw[c][i >> 1] = _yocto_api.YAPI._decimalToDouble(calpar[c][i - 1]);
+                            calref[c][i >> 1] = _yocto_api.YAPI._decimalToDouble(calpar[c][i]);
+                        }
+                    }
+                }
             }
-        }
-        if(loadval['cal'] != null) {
-            calhdl = new Array(this._nCols);
-            caltyp = new Array(this._nCols);
-            calpar = new Array(this._nCols);
-            calraw = new Array(this._nCols);
-            calref = new Array(this._nCols);
-            for(c = 0; c < this._nCols; c++) {
-                var params = loadval['cal'][c];
-                if(!params) continue;
-                params = params.split(',');
-                if(params.length < 11) continue;
-                calhdl[c] = YAPI._getCalibrationHandler(params[0]);
-                if(!calhdl[c]) continue;
-                caltyp[c] = parseInt(params[0]);
-                calpar[c] = new Array(params.length-1);
-                calraw[c] = new Array(params.length>>1);
-                calref[c] = new Array(params.length>>1);
-                for(i = 1; i < params.length; i += 2) {
-                    calpar[c][i-1] = parseInt(params[i]);
-                    calpar[c][i]   = parseInt(params[i+1]);
-                    if(caltyp[c] <= 10) {
-                        calraw[c][i>>1] = (calpar[c][i-1] + colofs[c]) / coldiv[c];
-                        calref[c][i>>1] = (calpar[c][i]   + colofs[c]) / coldiv[c];
+            if (loadval['data'] != null) {
+                if (_this._nCols == 0 || coldiv == null || coltyp == null) {
+                    return _yocto_api.YAPI.IO_ERROR;
+                }
+                _this._values = [];
+                var data = loadval['data'];
+                if (typeof data == 'string') {
+                    data = _yocto_api.YAPI._decodeWords(data);
+                }
+                var dat = [];
+                c = 0;
+                for (var idx in data) {
+                    var val;
+                    if (coltyp[c] < 2) {
+                        val = (data[idx] + colofs[c]) * colscl[c];
                     } else {
-                        calraw[c][i>>1] = YAPI._decimalToDouble(calpar[c][i-1]);
-                        calref[c][i>>1] = YAPI._decimalToDouble(calpar[c][i]);
+                        val = _yocto_api.YAPI._decimalToDouble(data[idx] - 32767);
+                    }
+                    if (calhdl && calhdl[c]) {
+                        // use post-calibration function
+                        if (caltyp[c] <= 10) {
+                            // linear calibration using unscaled value
+                            val = calhdl[c]((data[idx] + colofs[c]) / coldiv[c], caltyp[c], calpar[c], calraw[c], calref[c]);
+                        } else if (caltyp[c] > 20) {
+                            // custom calibration using raw floating-point value stored by the datalogger
+                            val = calhdl[c](val, caltyp[c], calpar[c], calraw[c], calref[c]);
+                        }
+                    }
+                    dat.push(val);
+                    if (++c == _this._nCols) {
+                        _this._values.push(dat);
+                        dat = [];
+                        c = 0;
                     }
                 }
             }
-        }
-        if(loadval['data'] != null) {
-            if(this._nCols == 0 || coldiv == null || coltyp == null) {
-                return YAPI.IO_ERROR;
-            }
-            this._values = [];
-            var data = loadval['data'];
-            if(typeof data == 'string') {
-                data = YAPI._decodeWords(data);
-            }
-            var dat = [];
-            c = 0;
-            for(var idx in data) {
-                var val;
-                if(coltyp[c] < 2) {
-                    val = (data[idx] + colofs[c]) * colscl[c];
-                } else {
-                    val = YAPI._decimalToDouble(data[idx]-32767);
-                }
-                if(calhdl && calhdl[c]) {
-                    // use post-calibration function
-                    if(caltyp[c] <= 10) {
-                        // linear calibration using unscaled value
-                        val = calhdl[c]((data[idx] + colofs[c]) / coldiv[c], caltyp[c], calpar[c], calraw[c], calref[c]);
-                    } else if(caltyp[c] > 20) {
-                        // custom calibration using raw floating-point value stored by the datalogger
-                        val = calhdl[c](val, caltyp[c], calpar[c], calraw[c], calref[c]);
-                    }
-                }
-                dat.push(val);
-                if(++c == this._nCols) {
-                    this._values.push(dat);
-                    dat = [];
-                    c = 0;
-                }
-            }
-        }
-        return YAPI_SUCCESS;
+            return _yocto_api.YAPI_SUCCESS;
+        })();
     }
 
     /**
@@ -239,9 +249,12 @@ export class YOldDataStream extends YDataStream
      *         between the start of the run and the beginning of this data
      *         stream.
      */
-    async get_startTime()
-    {
-        return this._timeStamp;
+    get_startTime() {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this2._timeStamp;
+        })();
     }
 
     /**
@@ -255,14 +268,17 @@ export class YOldDataStream extends YDataStream
      * 
      * @return an unsigned number corresponding to a number of seconds.
      */
-    async get_dataSamplesInterval()
-    {
-        if(this._interval == 0) await this.loadStream();
-        return this._interval;
+    get_dataSamplesInterval() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._interval == 0) yield _this3.loadStream();
+            return _this3._interval;
+        })();
     }
 }
 
-//--- (generated code: YDataLogger class start)
+exports.YOldDataStream = YOldDataStream; //--- (generated code: YDataLogger class start)
 /**
  * YDataLogger Class: DataLogger function interface
  *
@@ -272,76 +288,78 @@ export class YOldDataStream extends YDataStream
  * logger.
  */
 //--- (end of generated code: YDataLogger class start)
-export class YDataLogger extends YFunction
-{
-    constructor(obj_yapi,str_func)
-    {
+
+class YDataLogger extends _yocto_api.YFunction {
+    constructor(obj_yapi, str_func) {
         //--- (generated code: YDataLogger constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'DataLogger';
+        this._className = 'DataLogger';
         /** @member {number} **/
-        this._currentRunIndex            = Y_CURRENTRUNINDEX_INVALID;
+        this._currentRunIndex = Y_CURRENTRUNINDEX_INVALID;
         /** @member {number} **/
-        this._timeUTC                    = Y_TIMEUTC_INVALID;
+        this._timeUTC = Y_TIMEUTC_INVALID;
         /** @member {number} **/
-        this._recording                  = Y_RECORDING_INVALID;
+        this._recording = Y_RECORDING_INVALID;
         /** @member {number} **/
-        this._autoStart                  = Y_AUTOSTART_INVALID;
+        this._autoStart = Y_AUTOSTART_INVALID;
         /** @member {number} **/
-        this._beaconDriven               = Y_BEACONDRIVEN_INVALID;
+        this._beaconDriven = Y_BEACONDRIVEN_INVALID;
         /** @member {number} **/
-        this._clearHistory               = Y_CLEARHISTORY_INVALID;
+        this._clearHistory = Y_CLEARHISTORY_INVALID;
         this.imm_setConst({
-            CURRENTRUNINDEX_INVALID      : YAPI.INVALID_UINT,
-            TIMEUTC_INVALID              : YAPI.INVALID_LONG,
-            RECORDING_OFF                : 0,
-            RECORDING_ON                 : 1,
-            RECORDING_PENDING            : 2,
-            RECORDING_INVALID            : -1,
-            AUTOSTART_OFF                : 0,
-            AUTOSTART_ON                 : 1,
-            AUTOSTART_INVALID            : -1,
-            BEACONDRIVEN_OFF             : 0,
-            BEACONDRIVEN_ON              : 1,
-            BEACONDRIVEN_INVALID         : -1,
-            CLEARHISTORY_FALSE           : 0,
-            CLEARHISTORY_TRUE            : 1,
-            CLEARHISTORY_INVALID         : -1
+            CURRENTRUNINDEX_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            TIMEUTC_INVALID: _yocto_api.YAPI.INVALID_LONG,
+            RECORDING_OFF: 0,
+            RECORDING_ON: 1,
+            RECORDING_PENDING: 2,
+            RECORDING_INVALID: -1,
+            AUTOSTART_OFF: 0,
+            AUTOSTART_ON: 1,
+            AUTOSTART_INVALID: -1,
+            BEACONDRIVEN_OFF: 0,
+            BEACONDRIVEN_ON: 1,
+            BEACONDRIVEN_INVALID: -1,
+            CLEARHISTORY_FALSE: 0,
+            CLEARHISTORY_TRUE: 1,
+            CLEARHISTORY_INVALID: -1
         });
         //--- (end of generated code: YDataLogger constructor)
-        this.const({ DATA_INVALID       : -Number.MAX_VALUE});
+        this.const({ DATA_INVALID: -Number.MAX_VALUE });
     }
 
     // Internal function to retrieve datalogger memory
     //
-    async getData(runIdx, timeIdx)
-    {
-        var loadval;
+    getData(runIdx, timeIdx) {
+        var _this4 = this;
 
-        if(this.dataLoggerURL == undefined) {
-            this.dataLoggerURL = '/logger.json';
-        }
+        return _asyncToGenerator(function* () {
+            var loadval;
 
-        // get the device serial number
-        var devid = this.module().get_serialNumber();
-        if(devid == YModule.SERIALNUMBER_INVALID) {
-            return null;
-        }
-        var httpreq = 'GET '+this.dataLoggerURL;
-        if(timeIdx) {
-            httpreq += '?run='+runIdx+'&time='+timeIdx;
-        }
-        var yreq = await YAPI.devRequest(devid, httpreq);
-        if(yreq.errorType != YAPI_SUCCESS) {
-            if(yreq.errorMsg.indexOf('HTTP status 404') >= 0 && this.dataLoggerURL != '/dataLogger.json') {
-                this.dataLoggerURL = '/dataLogger.json';
-                return await this.getData(runIdx, timeIdx);
+            if (_this4.dataLoggerURL == undefined) {
+                _this4.dataLoggerURL = '/logger.json';
             }
-            return this._throw(yreq.errorType, yreq.errorMsg, null);
-        }
 
-        return JSON.parse(yreq.result);
+            // get the device serial number
+            var devid = _this4.module().get_serialNumber();
+            if (devid == _yocto_api.YModule.SERIALNUMBER_INVALID) {
+                return null;
+            }
+            var httpreq = 'GET ' + _this4.dataLoggerURL;
+            if (timeIdx) {
+                httpreq += '?run=' + runIdx + '&time=' + timeIdx;
+            }
+            var yreq = yield _yocto_api.YAPI.devRequest(devid, httpreq);
+            if (yreq.errorType != _yocto_api.YAPI_SUCCESS) {
+                if (yreq.errorMsg.indexOf('HTTP status 404') >= 0 && _this4.dataLoggerURL != '/dataLogger.json') {
+                    _this4.dataLoggerURL = '/dataLogger.json';
+                    return yield _this4.getData(runIdx, timeIdx);
+                }
+                return _this4._throw(yreq.errorType, yreq.errorMsg, null);
+            }
+
+            return JSON.parse(yreq.result);
+        })();
     }
 
     /**
@@ -361,62 +379,63 @@ export class YDataLogger extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async get_dataStreams(v)
-    {
-        var loadval = await this.getData(null, null);
-        if(loadval == null) {
-            return this.get_errorType();
-        }
-        if(loadval.length == 0) {
-            return YAPI_SUCCESS;
-        }
-        if(Array.isArray(loadval[0])) {
-            // old datalogger format: [runIdx, timerel, utc, interval]
-            for(var idx in loadval) {
-                var arr = loadval[idx];
-                if(arr.length < 4) {
-                    _throw(YAPI.IO_ERROR, 'Unexpected JSON reply format');
-                    return YAPI.IO_ERROR;
-                }
-                v.push(new YOldDataStream(this,arr[0],arr[1],arr[2],arr[3]));
-            }
-        } else {
-            // new datalogger format: {"id":"...","unit":"...","streams":["...",...]}
-            var sets = this.parse_dataSets(JSON.stringify(loadval));
-            for (var i = 0; i < sets.length; i++) { 
-                var ds = sets[i].get_privateDataStreams();
-                for (var si=0; si < ds.length; si++) { 
-                    v.push(ds[si]);
-                }
-            }
-        }
-        return YAPI_SUCCESS;
-    }
+    get_dataStreams(v) {
+        var _this5 = this;
 
+        return _asyncToGenerator(function* () {
+            var loadval = yield _this5.getData(null, null);
+            if (loadval == null) {
+                return _this5.get_errorType();
+            }
+            if (loadval.length == 0) {
+                return _yocto_api.YAPI_SUCCESS;
+            }
+            if (Array.isArray(loadval[0])) {
+                // old datalogger format: [runIdx, timerel, utc, interval]
+                for (var idx in loadval) {
+                    var arr = loadval[idx];
+                    if (arr.length < 4) {
+                        _throw(_yocto_api.YAPI.IO_ERROR, 'Unexpected JSON reply format');
+                        return _yocto_api.YAPI.IO_ERROR;
+                    }
+                    v.push(new YOldDataStream(_this5, arr[0], arr[1], arr[2], arr[3]));
+                }
+            } else {
+                // new datalogger format: {"id":"...","unit":"...","streams":["...",...]}
+                var sets = _this5.parse_dataSets(JSON.stringify(loadval));
+                for (var i = 0; i < sets.length; i++) {
+                    var ds = sets[i].get_privateDataStreams();
+                    for (var si = 0; si < ds.length; si++) {
+                        v.push(ds[si]);
+                    }
+                }
+            }
+            return _yocto_api.YAPI_SUCCESS;
+        })();
+    }
 
     //--- (generated code: YDataLogger implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'currentRunIndex':
-            this._currentRunIndex = parseInt(val);
-            return 1;
-        case 'timeUTC':
-            this._timeUTC = parseInt(val);
-            return 1;
-        case 'recording':
-            this._recording = parseInt(val);
-            return 1;
-        case 'autoStart':
-            this._autoStart = parseInt(val);
-            return 1;
-        case 'beaconDriven':
-            this._beaconDriven = parseInt(val);
-            return 1;
-        case 'clearHistory':
-            this._clearHistory = parseInt(val);
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'currentRunIndex':
+                this._currentRunIndex = parseInt(val);
+                return 1;
+            case 'timeUTC':
+                this._timeUTC = parseInt(val);
+                return 1;
+            case 'recording':
+                this._recording = parseInt(val);
+                return 1;
+            case 'autoStart':
+                this._autoStart = parseInt(val);
+                return 1;
+            case 'beaconDriven':
+                this._beaconDriven = parseInt(val);
+                return 1;
+            case 'clearHistory':
+                this._clearHistory = parseInt(val);
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -431,14 +450,17 @@ export class YDataLogger extends YFunction
      *
      * On failure, throws an exception or returns YDataLogger.CURRENTRUNINDEX_INVALID.
      */
-    async get_currentRunIndex()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_CURRENTRUNINDEX_INVALID;
+    get_currentRunIndex() {
+        var _this6 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this6._cacheExpiration <= _this6._yapi.GetTickCount()) {
+                if ((yield _this6.load(_this6._yapi.defaultCacheValidity)) != _this6._yapi.SUCCESS) {
+                    return Y_CURRENTRUNINDEX_INVALID;
+                }
             }
-        }
-        return this._currentRunIndex;
+            return _this6._currentRunIndex;
+        })();
     }
 
     /**
@@ -448,14 +470,17 @@ export class YDataLogger extends YFunction
      *
      * On failure, throws an exception or returns YDataLogger.TIMEUTC_INVALID.
      */
-    async get_timeUTC()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_TIMEUTC_INVALID;
+    get_timeUTC() {
+        var _this7 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this7._cacheExpiration <= _this7._yapi.GetTickCount()) {
+                if ((yield _this7.load(_this7._yapi.defaultCacheValidity)) != _this7._yapi.SUCCESS) {
+                    return Y_TIMEUTC_INVALID;
+                }
             }
-        }
-        return this._timeUTC;
+            return _this7._timeUTC;
+        })();
     }
 
     /**
@@ -467,12 +492,15 @@ export class YDataLogger extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_timeUTC(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('timeUTC',rest_val);
+    set_timeUTC(newval) {
+        var _this8 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this8._setAttr('timeUTC', rest_val);
+        })();
     }
 
     /**
@@ -483,14 +511,17 @@ export class YDataLogger extends YFunction
      *
      * On failure, throws an exception or returns YDataLogger.RECORDING_INVALID.
      */
-    async get_recording()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_RECORDING_INVALID;
+    get_recording() {
+        var _this9 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this9._cacheExpiration <= _this9._yapi.GetTickCount()) {
+                if ((yield _this9.load(_this9._yapi.defaultCacheValidity)) != _this9._yapi.SUCCESS) {
+                    return Y_RECORDING_INVALID;
+                }
             }
-        }
-        return this._recording;
+            return _this9._recording;
+        })();
     }
 
     /**
@@ -504,12 +535,15 @@ export class YDataLogger extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_recording(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('recording',rest_val);
+    set_recording(newval) {
+        var _this10 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this10._setAttr('recording', rest_val);
+        })();
     }
 
     /**
@@ -520,14 +554,17 @@ export class YDataLogger extends YFunction
      *
      * On failure, throws an exception or returns YDataLogger.AUTOSTART_INVALID.
      */
-    async get_autoStart()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_AUTOSTART_INVALID;
+    get_autoStart() {
+        var _this11 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this11._cacheExpiration <= _this11._yapi.GetTickCount()) {
+                if ((yield _this11.load(_this11._yapi.defaultCacheValidity)) != _this11._yapi.SUCCESS) {
+                    return Y_AUTOSTART_INVALID;
+                }
             }
-        }
-        return this._autoStart;
+            return _this11._autoStart;
+        })();
     }
 
     /**
@@ -542,12 +579,15 @@ export class YDataLogger extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_autoStart(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('autoStart',rest_val);
+    set_autoStart(newval) {
+        var _this12 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this12._setAttr('autoStart', rest_val);
+        })();
     }
 
     /**
@@ -557,14 +597,17 @@ export class YDataLogger extends YFunction
      *
      * On failure, throws an exception or returns YDataLogger.BEACONDRIVEN_INVALID.
      */
-    async get_beaconDriven()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_BEACONDRIVEN_INVALID;
+    get_beaconDriven() {
+        var _this13 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this13._cacheExpiration <= _this13._yapi.GetTickCount()) {
+                if ((yield _this13.load(_this13._yapi.defaultCacheValidity)) != _this13._yapi.SUCCESS) {
+                    return Y_BEACONDRIVEN_INVALID;
+                }
             }
-        }
-        return this._beaconDriven;
+            return _this13._beaconDriven;
+        })();
     }
 
     /**
@@ -579,30 +622,39 @@ export class YDataLogger extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_beaconDriven(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('beaconDriven',rest_val);
+    set_beaconDriven(newval) {
+        var _this14 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this14._setAttr('beaconDriven', rest_val);
+        })();
     }
 
-    async get_clearHistory()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_CLEARHISTORY_INVALID;
+    get_clearHistory() {
+        var _this15 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this15._cacheExpiration <= _this15._yapi.GetTickCount()) {
+                if ((yield _this15.load(_this15._yapi.defaultCacheValidity)) != _this15._yapi.SUCCESS) {
+                    return Y_CLEARHISTORY_INVALID;
+                }
             }
-        }
-        return this._clearHistory;
+            return _this15._clearHistory;
+        })();
     }
 
-    async set_clearHistory(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('clearHistory',rest_val);
+    set_clearHistory(newval) {
+        var _this16 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this16._setAttr('clearHistory', rest_val);
+        })();
     }
 
     /**
@@ -628,14 +680,13 @@ export class YDataLogger extends YFunction
      *
      * @return {YDataLogger} a YDataLogger object allowing you to drive the data logger.
      */
-    static FindDataLogger(func)
-    {
+    static FindDataLogger(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('DataLogger', func);
+        obj = _yocto_api.YFunction._FindFromCache('DataLogger', func);
         if (obj == null) {
-            obj = new YDataLogger(YAPI, func);
-            YFunction._AddToCache('DataLogger',  func, obj);
+            obj = new YDataLogger(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('DataLogger', func, obj);
         }
         return obj;
     }
@@ -664,14 +715,13 @@ export class YDataLogger extends YFunction
      *
      * @return {YDataLogger} a YDataLogger object allowing you to drive the data logger.
      */
-    static FindDataLoggerInContext(yctx,func)
-    {
+    static FindDataLoggerInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'DataLogger', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'DataLogger', func);
         if (obj == null) {
             obj = new YDataLogger(yctx, func);
-            YFunction._AddToCache('DataLogger',  func, obj);
+            _yocto_api.YFunction._AddToCache('DataLogger', func, obj);
         }
         return obj;
     }
@@ -684,9 +734,12 @@ export class YDataLogger extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async forgetAllDataStreams()
-    {
-        return await this.set_clearHistory(Y_CLEARHISTORY_TRUE);
+    forgetAllDataStreams() {
+        var _this17 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this17.set_clearHistory(Y_CLEARHISTORY_TRUE);
+        })();
     }
 
     /**
@@ -701,28 +754,34 @@ export class YDataLogger extends YFunction
      *
      * On failure, throws an exception or returns an empty list.
      */
-    async get_dataSets()
-    {
-        return await this.parse_dataSets(await this._download('logger.json'));
+    get_dataSets() {
+        var _this18 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this18.parse_dataSets((yield _this18._download('logger.json')));
+        })();
     }
 
-    async parse_dataSets(json)
-    {
-        /** @type {string[]} **/
-        let dslist = [];
-        /** @type {YDataSetPtr} **/
-        let dataset;
-        /** @type {YDataSet[]} **/
-        let res = [];
-        // may throw an exception
-        dslist = this.imm_json_get_array(json);
-        res.length = 0;
-        for (let ii in dslist) {
-            dataset = new YDataSet(this);
-            await dataset._parse(dslist[ii]);
-            res.push(dataset);;
-        }
-        return res;
+    parse_dataSets(json) {
+        var _this19 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string[]} **/
+            let dslist = [];
+            /** @type {YDataSetPtr} **/
+            let dataset;
+            /** @type {YDataSet[]} **/
+            let res = [];
+            // may throw an exception
+            dslist = _this19.imm_json_get_array(json);
+            res.length = 0;
+            for (let ii in dslist) {
+                dataset = new YDataSet(_this19);
+                yield dataset._parse(dslist[ii]);
+                res.push(dataset);;
+            }
+            return res;
+        })();
     }
 
     /**
@@ -732,14 +791,13 @@ export class YDataLogger extends YFunction
      *         a data logger currently online, or a null pointer
      *         if there are no more data loggers to enumerate.
      */
-    nextDataLogger()
-    {
+    nextDataLogger() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YDataLogger.FindDataLoggerInContext(this._yapi, next_hwid);
     }
 
@@ -752,11 +810,10 @@ export class YDataLogger extends YFunction
      *         the first data logger currently online, or a null pointer
      *         if there are none.
      */
-    static FirstDataLogger()
-    {
+    static FirstDataLogger() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('DataLogger');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('DataLogger');
+        if (next_hwid == null) return null;
         return YDataLogger.FindDataLogger(next_hwid);
     }
 
@@ -771,18 +828,17 @@ export class YDataLogger extends YFunction
      *         the first data logger currently online, or a null pointer
      *         if there are none.
      */
-    static FirstDataLoggerInContext(yctx)
-    {
+    static FirstDataLoggerInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('DataLogger');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YDataLogger.FindDataLoggerInContext(yctx, next_hwid);
     }
 
     //--- (end of generated code: YDataLogger implementation)
 }
 
-//--- (generated code: DataLogger functions)
+exports.YDataLogger = YDataLogger; //--- (generated code: DataLogger functions)
 
 /**
  * Retrieves a data logger for a given identifier.
@@ -807,8 +863,8 @@ export class YDataLogger extends YFunction
  *
  * @return {YDataLogger} a YDataLogger object allowing you to drive the data logger.
  */
-export function yFindDataLogger(func)
-{
+
+function yFindDataLogger(func) {
     return YDataLogger.FindDataLogger(func);
 }
 
@@ -821,8 +877,7 @@ export function yFindDataLogger(func)
  *         the first data logger currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstDataLogger()
-{
+function yFirstDataLogger() {
     return YDataLogger.FirstDataLogger();
 }
 

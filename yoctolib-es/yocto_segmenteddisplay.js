@@ -38,17 +38,27 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YSegmentedDisplay = exports.Y_DISPLAYEDTEXT_INVALID = exports.Y_DISPLAYMODE_INVALID = exports.Y_DISPLAYMODE_AUTO60 = exports.Y_DISPLAYMODE_AUTO1 = exports.Y_DISPLAYMODE_MANUAL = exports.Y_DISPLAYMODE_DISCONNECTED = undefined;
+exports.yFindSegmentedDisplay = yFindSegmentedDisplay;
+exports.yFirstSegmentedDisplay = yFirstSegmentedDisplay;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YSegmentedDisplay return codes)
 //--- (end of YSegmentedDisplay return codes)
 //--- (YSegmentedDisplay definitions)
-export const Y_DISPLAYMODE_DISCONNECTED      = 0;
-export const Y_DISPLAYMODE_MANUAL            = 1;
-export const Y_DISPLAYMODE_AUTO1             = 2;
-export const Y_DISPLAYMODE_AUTO60            = 3;
-export const Y_DISPLAYMODE_INVALID           = -1;
-export const Y_DISPLAYEDTEXT_INVALID         = YAPI.INVALID_STRING;
+const Y_DISPLAYMODE_DISCONNECTED = exports.Y_DISPLAYMODE_DISCONNECTED = 0;
+const Y_DISPLAYMODE_MANUAL = exports.Y_DISPLAYMODE_MANUAL = 1;
+const Y_DISPLAYMODE_AUTO1 = exports.Y_DISPLAYMODE_AUTO1 = 2;
+const Y_DISPLAYMODE_AUTO60 = exports.Y_DISPLAYMODE_AUTO60 = 3;
+const Y_DISPLAYMODE_INVALID = exports.Y_DISPLAYMODE_INVALID = -1;
+const Y_DISPLAYEDTEXT_INVALID = exports.Y_DISPLAYEDTEXT_INVALID = _yocto_api.YAPI.INVALID_STRING;
 //--- (end of YSegmentedDisplay definitions)
 
 //--- (YSegmentedDisplay class start)
@@ -59,40 +69,37 @@ export const Y_DISPLAYEDTEXT_INVALID         = YAPI.INVALID_STRING;
  */
 //--- (end of YSegmentedDisplay class start)
 
-export class YSegmentedDisplay extends YFunction
-{
-    constructor(obj_yapi, str_func)
-    {
+class YSegmentedDisplay extends _yocto_api.YFunction {
+    constructor(obj_yapi, str_func) {
         //--- (YSegmentedDisplay constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'SegmentedDisplay';
+        this._className = 'SegmentedDisplay';
         /** @member {string} **/
-        this._displayedText              = Y_DISPLAYEDTEXT_INVALID;
+        this._displayedText = Y_DISPLAYEDTEXT_INVALID;
         /** @member {number} **/
-        this._displayMode                = Y_DISPLAYMODE_INVALID;
+        this._displayMode = Y_DISPLAYMODE_INVALID;
         this.imm_setConst({
-            DISPLAYEDTEXT_INVALID        : YAPI.INVALID_STRING,
-            DISPLAYMODE_DISCONNECTED     : 0,
-            DISPLAYMODE_MANUAL           : 1,
-            DISPLAYMODE_AUTO1            : 2,
-            DISPLAYMODE_AUTO60           : 3,
-            DISPLAYMODE_INVALID          : -1
+            DISPLAYEDTEXT_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            DISPLAYMODE_DISCONNECTED: 0,
+            DISPLAYMODE_MANUAL: 1,
+            DISPLAYMODE_AUTO1: 2,
+            DISPLAYMODE_AUTO60: 3,
+            DISPLAYMODE_INVALID: -1
         });
         //--- (end of YSegmentedDisplay constructor)
     }
 
     //--- (YSegmentedDisplay implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'displayedText':
-            this._displayedText = val;
-            return 1;
-        case 'displayMode':
-            this._displayMode = parseInt(val);
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'displayedText':
+                this._displayedText = val;
+                return 1;
+            case 'displayMode':
+                this._displayMode = parseInt(val);
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -104,14 +111,17 @@ export class YSegmentedDisplay extends YFunction
      *
      * On failure, throws an exception or returns YSegmentedDisplay.DISPLAYEDTEXT_INVALID.
      */
-    async get_displayedText()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_DISPLAYEDTEXT_INVALID;
+    get_displayedText() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
+                    return Y_DISPLAYEDTEXT_INVALID;
+                }
             }
-        }
-        return this._displayedText;
+            return _this._displayedText;
+        })();
     }
 
     /**
@@ -123,30 +133,39 @@ export class YSegmentedDisplay extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_displayedText(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('displayedText',rest_val);
+    set_displayedText(newval) {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this2._setAttr('displayedText', rest_val);
+        })();
     }
 
-    async get_displayMode()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_DISPLAYMODE_INVALID;
+    get_displayMode() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
+                    return Y_DISPLAYMODE_INVALID;
+                }
             }
-        }
-        return this._displayMode;
+            return _this3._displayMode;
+        })();
     }
 
-    async set_displayMode(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('displayMode',rest_val);
+    set_displayMode(newval) {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this4._setAttr('displayMode', rest_val);
+        })();
     }
 
     /**
@@ -172,14 +191,13 @@ export class YSegmentedDisplay extends YFunction
      *
      * @return {YSegmentedDisplay} a YSegmentedDisplay object allowing you to drive the segmented displays.
      */
-    static FindSegmentedDisplay(func)
-    {
+    static FindSegmentedDisplay(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('SegmentedDisplay', func);
+        obj = _yocto_api.YFunction._FindFromCache('SegmentedDisplay', func);
         if (obj == null) {
-            obj = new YSegmentedDisplay(YAPI, func);
-            YFunction._AddToCache('SegmentedDisplay',  func, obj);
+            obj = new YSegmentedDisplay(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('SegmentedDisplay', func, obj);
         }
         return obj;
     }
@@ -208,14 +226,13 @@ export class YSegmentedDisplay extends YFunction
      *
      * @return {YSegmentedDisplay} a YSegmentedDisplay object allowing you to drive the segmented displays.
      */
-    static FindSegmentedDisplayInContext(yctx,func)
-    {
+    static FindSegmentedDisplayInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'SegmentedDisplay', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'SegmentedDisplay', func);
         if (obj == null) {
             obj = new YSegmentedDisplay(yctx, func);
-            YFunction._AddToCache('SegmentedDisplay',  func, obj);
+            _yocto_api.YFunction._AddToCache('SegmentedDisplay', func, obj);
         }
         return obj;
     }
@@ -227,14 +244,13 @@ export class YSegmentedDisplay extends YFunction
      *         a segmented display currently online, or a null pointer
      *         if there are no more segmented displays to enumerate.
      */
-    nextSegmentedDisplay()
-    {
+    nextSegmentedDisplay() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YSegmentedDisplay.FindSegmentedDisplayInContext(this._yapi, next_hwid);
     }
 
@@ -247,11 +263,10 @@ export class YSegmentedDisplay extends YFunction
      *         the first segmented displays currently online, or a null pointer
      *         if there are none.
      */
-    static FirstSegmentedDisplay()
-    {
+    static FirstSegmentedDisplay() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('SegmentedDisplay');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('SegmentedDisplay');
+        if (next_hwid == null) return null;
         return YSegmentedDisplay.FindSegmentedDisplay(next_hwid);
     }
 
@@ -266,18 +281,17 @@ export class YSegmentedDisplay extends YFunction
      *         the first segmented displays currently online, or a null pointer
      *         if there are none.
      */
-    static FirstSegmentedDisplayInContext(yctx)
-    {
+    static FirstSegmentedDisplayInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('SegmentedDisplay');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YSegmentedDisplay.FindSegmentedDisplayInContext(yctx, next_hwid);
     }
 
     //--- (end of YSegmentedDisplay implementation)
 }
 
-//--- (SegmentedDisplay functions)
+exports.YSegmentedDisplay = YSegmentedDisplay; //--- (SegmentedDisplay functions)
 
 /**
  * Retrieves a segmented display for a given identifier.
@@ -302,8 +316,8 @@ export class YSegmentedDisplay extends YFunction
  *
  * @return {YSegmentedDisplay} a YSegmentedDisplay object allowing you to drive the segmented displays.
  */
-export function yFindSegmentedDisplay(func)
-{
+
+function yFindSegmentedDisplay(func) {
     return YSegmentedDisplay.FindSegmentedDisplay(func);
 }
 
@@ -316,8 +330,7 @@ export function yFindSegmentedDisplay(func)
  *         the first segmented displays currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstSegmentedDisplay()
-{
+function yFirstSegmentedDisplay() {
     return YSegmentedDisplay.FirstSegmentedDisplay();
 }
 

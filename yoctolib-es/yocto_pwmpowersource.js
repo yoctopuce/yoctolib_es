@@ -38,16 +38,26 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YPwmPowerSource = exports.Y_POWERMODE_INVALID = exports.Y_POWERMODE_OPNDRN = exports.Y_POWERMODE_EXT_V = exports.Y_POWERMODE_USB_3V = exports.Y_POWERMODE_USB_5V = undefined;
+exports.yFindPwmPowerSource = yFindPwmPowerSource;
+exports.yFirstPwmPowerSource = yFirstPwmPowerSource;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YPwmPowerSource return codes)
 //--- (end of YPwmPowerSource return codes)
 //--- (YPwmPowerSource definitions)
-export const Y_POWERMODE_USB_5V              = 0;
-export const Y_POWERMODE_USB_3V              = 1;
-export const Y_POWERMODE_EXT_V               = 2;
-export const Y_POWERMODE_OPNDRN              = 3;
-export const Y_POWERMODE_INVALID             = -1;
+const Y_POWERMODE_USB_5V = exports.Y_POWERMODE_USB_5V = 0;
+const Y_POWERMODE_USB_3V = exports.Y_POWERMODE_USB_3V = 1;
+const Y_POWERMODE_EXT_V = exports.Y_POWERMODE_EXT_V = 2;
+const Y_POWERMODE_OPNDRN = exports.Y_POWERMODE_OPNDRN = 3;
+const Y_POWERMODE_INVALID = exports.Y_POWERMODE_INVALID = -1;
 //--- (end of YPwmPowerSource definitions)
 
 //--- (YPwmPowerSource class start)
@@ -59,34 +69,31 @@ export const Y_POWERMODE_INVALID             = -1;
  */
 //--- (end of YPwmPowerSource class start)
 
-export class YPwmPowerSource extends YFunction
-{
-    constructor(obj_yapi, str_func)
-    {
+class YPwmPowerSource extends _yocto_api.YFunction {
+    constructor(obj_yapi, str_func) {
         //--- (YPwmPowerSource constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'PwmPowerSource';
+        this._className = 'PwmPowerSource';
         /** @member {number} **/
-        this._powerMode                  = Y_POWERMODE_INVALID;
+        this._powerMode = Y_POWERMODE_INVALID;
         this.imm_setConst({
-            POWERMODE_USB_5V             : 0,
-            POWERMODE_USB_3V             : 1,
-            POWERMODE_EXT_V              : 2,
-            POWERMODE_OPNDRN             : 3,
-            POWERMODE_INVALID            : -1
+            POWERMODE_USB_5V: 0,
+            POWERMODE_USB_3V: 1,
+            POWERMODE_EXT_V: 2,
+            POWERMODE_OPNDRN: 3,
+            POWERMODE_INVALID: -1
         });
         //--- (end of YPwmPowerSource constructor)
     }
 
     //--- (YPwmPowerSource implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'powerMode':
-            this._powerMode = parseInt(val);
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'powerMode':
+                this._powerMode = parseInt(val);
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -100,14 +107,17 @@ export class YPwmPowerSource extends YFunction
      *
      * On failure, throws an exception or returns YPwmPowerSource.POWERMODE_INVALID.
      */
-    async get_powerMode()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_POWERMODE_INVALID;
+    get_powerMode() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
+                    return Y_POWERMODE_INVALID;
+                }
             }
-        }
-        return this._powerMode;
+            return _this._powerMode;
+        })();
     }
 
     /**
@@ -127,12 +137,15 @@ export class YPwmPowerSource extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_powerMode(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('powerMode',rest_val);
+    set_powerMode(newval) {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this2._setAttr('powerMode', rest_val);
+        })();
     }
 
     /**
@@ -158,14 +171,13 @@ export class YPwmPowerSource extends YFunction
      *
      * @return {YPwmPowerSource} a YPwmPowerSource object allowing you to drive the voltage source.
      */
-    static FindPwmPowerSource(func)
-    {
+    static FindPwmPowerSource(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('PwmPowerSource', func);
+        obj = _yocto_api.YFunction._FindFromCache('PwmPowerSource', func);
         if (obj == null) {
-            obj = new YPwmPowerSource(YAPI, func);
-            YFunction._AddToCache('PwmPowerSource',  func, obj);
+            obj = new YPwmPowerSource(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('PwmPowerSource', func, obj);
         }
         return obj;
     }
@@ -194,14 +206,13 @@ export class YPwmPowerSource extends YFunction
      *
      * @return {YPwmPowerSource} a YPwmPowerSource object allowing you to drive the voltage source.
      */
-    static FindPwmPowerSourceInContext(yctx,func)
-    {
+    static FindPwmPowerSourceInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'PwmPowerSource', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'PwmPowerSource', func);
         if (obj == null) {
             obj = new YPwmPowerSource(yctx, func);
-            YFunction._AddToCache('PwmPowerSource',  func, obj);
+            _yocto_api.YFunction._AddToCache('PwmPowerSource', func, obj);
         }
         return obj;
     }
@@ -213,14 +224,13 @@ export class YPwmPowerSource extends YFunction
      *         a voltage source currently online, or a null pointer
      *         if there are no more Voltage sources to enumerate.
      */
-    nextPwmPowerSource()
-    {
+    nextPwmPowerSource() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YPwmPowerSource.FindPwmPowerSourceInContext(this._yapi, next_hwid);
     }
 
@@ -233,11 +243,10 @@ export class YPwmPowerSource extends YFunction
      *         the first source currently online, or a null pointer
      *         if there are none.
      */
-    static FirstPwmPowerSource()
-    {
+    static FirstPwmPowerSource() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('PwmPowerSource');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('PwmPowerSource');
+        if (next_hwid == null) return null;
         return YPwmPowerSource.FindPwmPowerSource(next_hwid);
     }
 
@@ -252,18 +261,17 @@ export class YPwmPowerSource extends YFunction
      *         the first source currently online, or a null pointer
      *         if there are none.
      */
-    static FirstPwmPowerSourceInContext(yctx)
-    {
+    static FirstPwmPowerSourceInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('PwmPowerSource');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YPwmPowerSource.FindPwmPowerSourceInContext(yctx, next_hwid);
     }
 
     //--- (end of YPwmPowerSource implementation)
 }
 
-//--- (PwmPowerSource functions)
+exports.YPwmPowerSource = YPwmPowerSource; //--- (PwmPowerSource functions)
 
 /**
  * Retrieves a voltage source for a given identifier.
@@ -288,8 +296,8 @@ export class YPwmPowerSource extends YFunction
  *
  * @return {YPwmPowerSource} a YPwmPowerSource object allowing you to drive the voltage source.
  */
-export function yFindPwmPowerSource(func)
-{
+
+function yFindPwmPowerSource(func) {
     return YPwmPowerSource.FindPwmPowerSource(func);
 }
 
@@ -302,8 +310,7 @@ export function yFindPwmPowerSource(func)
  *         the first source currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstPwmPowerSource()
-{
+function yFirstPwmPowerSource() {
     return YPwmPowerSource.FirstPwmPowerSource();
 }
 

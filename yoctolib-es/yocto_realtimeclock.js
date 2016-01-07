@@ -38,17 +38,27 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YRealTimeClock = exports.Y_UTCOFFSET_INVALID = exports.Y_DATETIME_INVALID = exports.Y_UNIXTIME_INVALID = exports.Y_TIMESET_INVALID = exports.Y_TIMESET_TRUE = exports.Y_TIMESET_FALSE = undefined;
+exports.yFindRealTimeClock = yFindRealTimeClock;
+exports.yFirstRealTimeClock = yFirstRealTimeClock;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YRealTimeClock return codes)
 //--- (end of YRealTimeClock return codes)
 //--- (YRealTimeClock definitions)
-export const Y_TIMESET_FALSE                 = 0;
-export const Y_TIMESET_TRUE                  = 1;
-export const Y_TIMESET_INVALID               = -1;
-export const Y_UNIXTIME_INVALID              = YAPI.INVALID_LONG;
-export const Y_DATETIME_INVALID              = YAPI.INVALID_STRING;
-export const Y_UTCOFFSET_INVALID             = YAPI.INVALID_INT;
+const Y_TIMESET_FALSE = exports.Y_TIMESET_FALSE = 0;
+const Y_TIMESET_TRUE = exports.Y_TIMESET_TRUE = 1;
+const Y_TIMESET_INVALID = exports.Y_TIMESET_INVALID = -1;
+const Y_UNIXTIME_INVALID = exports.Y_UNIXTIME_INVALID = _yocto_api.YAPI.INVALID_LONG;
+const Y_DATETIME_INVALID = exports.Y_DATETIME_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_UTCOFFSET_INVALID = exports.Y_UTCOFFSET_INVALID = _yocto_api.YAPI.INVALID_INT;
 //--- (end of YRealTimeClock definitions)
 
 //--- (YRealTimeClock class start)
@@ -62,50 +72,47 @@ export const Y_UTCOFFSET_INVALID             = YAPI.INVALID_INT;
  */
 //--- (end of YRealTimeClock class start)
 
-export class YRealTimeClock extends YFunction
-{
-    constructor(obj_yapi, str_func)
-    {
+class YRealTimeClock extends _yocto_api.YFunction {
+    constructor(obj_yapi, str_func) {
         //--- (YRealTimeClock constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'RealTimeClock';
+        this._className = 'RealTimeClock';
         /** @member {number} **/
-        this._unixTime                   = Y_UNIXTIME_INVALID;
+        this._unixTime = Y_UNIXTIME_INVALID;
         /** @member {string} **/
-        this._dateTime                   = Y_DATETIME_INVALID;
+        this._dateTime = Y_DATETIME_INVALID;
         /** @member {number} **/
-        this._utcOffset                  = Y_UTCOFFSET_INVALID;
+        this._utcOffset = Y_UTCOFFSET_INVALID;
         /** @member {number} **/
-        this._timeSet                    = Y_TIMESET_INVALID;
+        this._timeSet = Y_TIMESET_INVALID;
         this.imm_setConst({
-            UNIXTIME_INVALID             : YAPI.INVALID_LONG,
-            DATETIME_INVALID             : YAPI.INVALID_STRING,
-            UTCOFFSET_INVALID            : YAPI.INVALID_INT,
-            TIMESET_FALSE                : 0,
-            TIMESET_TRUE                 : 1,
-            TIMESET_INVALID              : -1
+            UNIXTIME_INVALID: _yocto_api.YAPI.INVALID_LONG,
+            DATETIME_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            UTCOFFSET_INVALID: _yocto_api.YAPI.INVALID_INT,
+            TIMESET_FALSE: 0,
+            TIMESET_TRUE: 1,
+            TIMESET_INVALID: -1
         });
         //--- (end of YRealTimeClock constructor)
     }
 
     //--- (YRealTimeClock implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'unixTime':
-            this._unixTime = parseInt(val);
-            return 1;
-        case 'dateTime':
-            this._dateTime = val;
-            return 1;
-        case 'utcOffset':
-            this._utcOffset = parseInt(val);
-            return 1;
-        case 'timeSet':
-            this._timeSet = parseInt(val);
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'unixTime':
+                this._unixTime = parseInt(val);
+                return 1;
+            case 'dateTime':
+                this._dateTime = val;
+                return 1;
+            case 'utcOffset':
+                this._utcOffset = parseInt(val);
+                return 1;
+            case 'timeSet':
+                this._timeSet = parseInt(val);
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -118,14 +125,17 @@ export class YRealTimeClock extends YFunction
      *
      * On failure, throws an exception or returns YRealTimeClock.UNIXTIME_INVALID.
      */
-    async get_unixTime()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_UNIXTIME_INVALID;
+    get_unixTime() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
+                    return Y_UNIXTIME_INVALID;
+                }
             }
-        }
-        return this._unixTime;
+            return _this._unixTime;
+        })();
     }
 
     /**
@@ -137,12 +147,15 @@ export class YRealTimeClock extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_unixTime(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('unixTime',rest_val);
+    set_unixTime(newval) {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this2._setAttr('unixTime', rest_val);
+        })();
     }
 
     /**
@@ -152,14 +165,17 @@ export class YRealTimeClock extends YFunction
      *
      * On failure, throws an exception or returns YRealTimeClock.DATETIME_INVALID.
      */
-    async get_dateTime()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_DATETIME_INVALID;
+    get_dateTime() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
+                    return Y_DATETIME_INVALID;
+                }
             }
-        }
-        return this._dateTime;
+            return _this3._dateTime;
+        })();
     }
 
     /**
@@ -169,14 +185,17 @@ export class YRealTimeClock extends YFunction
      *
      * On failure, throws an exception or returns YRealTimeClock.UTCOFFSET_INVALID.
      */
-    async get_utcOffset()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_UTCOFFSET_INVALID;
+    get_utcOffset() {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this4._cacheExpiration <= _this4._yapi.GetTickCount()) {
+                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _this4._yapi.SUCCESS) {
+                    return Y_UTCOFFSET_INVALID;
+                }
             }
-        }
-        return this._utcOffset;
+            return _this4._utcOffset;
+        })();
     }
 
     /**
@@ -190,12 +209,15 @@ export class YRealTimeClock extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_utcOffset(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('utcOffset',rest_val);
+    set_utcOffset(newval) {
+        var _this5 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this5._setAttr('utcOffset', rest_val);
+        })();
     }
 
     /**
@@ -206,14 +228,17 @@ export class YRealTimeClock extends YFunction
      *
      * On failure, throws an exception or returns YRealTimeClock.TIMESET_INVALID.
      */
-    async get_timeSet()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_TIMESET_INVALID;
+    get_timeSet() {
+        var _this6 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this6._cacheExpiration <= _this6._yapi.GetTickCount()) {
+                if ((yield _this6.load(_this6._yapi.defaultCacheValidity)) != _this6._yapi.SUCCESS) {
+                    return Y_TIMESET_INVALID;
+                }
             }
-        }
-        return this._timeSet;
+            return _this6._timeSet;
+        })();
     }
 
     /**
@@ -239,14 +264,13 @@ export class YRealTimeClock extends YFunction
      *
      * @return {YRealTimeClock} a YRealTimeClock object allowing you to drive the clock.
      */
-    static FindRealTimeClock(func)
-    {
+    static FindRealTimeClock(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('RealTimeClock', func);
+        obj = _yocto_api.YFunction._FindFromCache('RealTimeClock', func);
         if (obj == null) {
-            obj = new YRealTimeClock(YAPI, func);
-            YFunction._AddToCache('RealTimeClock',  func, obj);
+            obj = new YRealTimeClock(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('RealTimeClock', func, obj);
         }
         return obj;
     }
@@ -275,14 +299,13 @@ export class YRealTimeClock extends YFunction
      *
      * @return {YRealTimeClock} a YRealTimeClock object allowing you to drive the clock.
      */
-    static FindRealTimeClockInContext(yctx,func)
-    {
+    static FindRealTimeClockInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'RealTimeClock', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'RealTimeClock', func);
         if (obj == null) {
             obj = new YRealTimeClock(yctx, func);
-            YFunction._AddToCache('RealTimeClock',  func, obj);
+            _yocto_api.YFunction._AddToCache('RealTimeClock', func, obj);
         }
         return obj;
     }
@@ -294,14 +317,13 @@ export class YRealTimeClock extends YFunction
      *         a clock currently online, or a null pointer
      *         if there are no more clocks to enumerate.
      */
-    nextRealTimeClock()
-    {
+    nextRealTimeClock() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YRealTimeClock.FindRealTimeClockInContext(this._yapi, next_hwid);
     }
 
@@ -314,11 +336,10 @@ export class YRealTimeClock extends YFunction
      *         the first clock currently online, or a null pointer
      *         if there are none.
      */
-    static FirstRealTimeClock()
-    {
+    static FirstRealTimeClock() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('RealTimeClock');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('RealTimeClock');
+        if (next_hwid == null) return null;
         return YRealTimeClock.FindRealTimeClock(next_hwid);
     }
 
@@ -333,18 +354,17 @@ export class YRealTimeClock extends YFunction
      *         the first clock currently online, or a null pointer
      *         if there are none.
      */
-    static FirstRealTimeClockInContext(yctx)
-    {
+    static FirstRealTimeClockInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('RealTimeClock');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YRealTimeClock.FindRealTimeClockInContext(yctx, next_hwid);
     }
 
     //--- (end of YRealTimeClock implementation)
 }
 
-//--- (RealTimeClock functions)
+exports.YRealTimeClock = YRealTimeClock; //--- (RealTimeClock functions)
 
 /**
  * Retrieves a clock for a given identifier.
@@ -369,8 +389,8 @@ export class YRealTimeClock extends YFunction
  *
  * @return {YRealTimeClock} a YRealTimeClock object allowing you to drive the clock.
  */
-export function yFindRealTimeClock(func)
-{
+
+function yFindRealTimeClock(func) {
     return YRealTimeClock.FindRealTimeClock(func);
 }
 
@@ -383,8 +403,7 @@ export function yFindRealTimeClock(func)
  *         the first clock currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstRealTimeClock()
-{
+function yFirstRealTimeClock() {
     return YRealTimeClock.FirstRealTimeClock();
 }
 

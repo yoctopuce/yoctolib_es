@@ -2,7 +2,7 @@
   "name": "yoctolib-es",
   "author": "Yoctopuce",
   "description": "Yoctopuce library for EcmaScript (fully asynchronous)",
-  "version": "1.10.22620",
+  "version": "1.10.22622",
   "license": "SEE LICENSE IN LICENSE.txt",
   "repository": {
     "type": "git",
@@ -18,30 +18,26 @@
   "directories": {
     "bin": "bin",
     "doc": "doc",
-    "lib": "yoctolib-node",
+    "lib": "yoctolib-es",
     "example": "example_nodejs"
   },
   "main": "yoctolib-node.js",
   "scripts": {
-    "build": "node bin/build.js build",
-    "unbuild": "node bin/build.js unbuild",
     "set-version": "node bin/build.js set-version",
     "make-index": "node bin/build.js make-index",
-    "babel": "babel lib --presets es2015-node,stage-3 --out-dir nodejs -s"
+    "babel": "node bin/build.js babel",
+    "build": "node bin/build.js build"
   },
   "dependencies": {
     "ws": "^0.8.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.3.17",
-    "babel-plugin-transform-async-to-generator": "^6.3.13",
+    "babel-core": "^6.4.0",
+    "babel-plugin-transform-async-to-generator": "^6.4.0",
     "babel-plugin-transform-es2015-arrow-functions": "^6.4.0",
-    "babel-plugin-transform-es2015-destructuring": "^6.3.15",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.3.16",
-    "babel-plugin-transform-es2015-object-super": "^6.3.13",
-    "babel-plugin-transform-es2015-parameters": "^6.3.26",
-    "babel-plugin-transform-es2015-typeof-symbol": "^6.3.13",
-    "babel-plugin-transform-strict-mode": "^6.3.13",
+    "babel-plugin-transform-es2015-destructuring": "^6.4.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.4.0",
+    "babel-plugin-transform-es2015-parameters": "^6.4.2",
     "jspm": "^0.16.19",
     "semver": "^5.1.0"
   },
@@ -49,9 +45,6 @@
     "registry": "jspm",
     "main": "index.js",
     "format": "es6",
-    "directories": {
-      "lib": "yoctolib-es"
-    },
     "map": {
       "yoctolib-es": "."
     },

@@ -1,47 +1,56 @@
-/*********************************************************************
- *
- * $Id: yocto_files.js 19607 2015-03-05 10:36:54Z seb $
- *
- * Implements yFindFiles(), the high-level API for Files functions
- *
- * - - - - - - - - - License information: - - - - - - - - - 
- *
- *  Copyright (C) 2011 and beyond by Yoctopuce Sarl, Switzerland.
- *
- *  Yoctopuce Sarl (hereafter Licensor) grants to you a perpetual
- *  non-exclusive license to use, modify, copy and integrate this
- *  file into your software for the sole purpose of interfacing 
- *  with Yoctopuce products. 
- *
- *  You may reproduce and distribute copies of this file in 
- *  source or object form, as long as the sole purpose of this
- *  code is to interface with Yoctopuce products. You must retain 
- *  this notice in the distributed source file.
- *
- *  You should refer to Yoctopuce General Terms and Conditions
- *  for additional information regarding your rights and 
- *  obligations.
- *
- *  THE SOFTWARE AND DOCUMENTATION ARE PROVIDED "AS IS" WITHOUT
- *  WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING 
- *  WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, FITNESS 
- *  FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO
- *  EVENT SHALL LICENSOR BE LIABLE FOR ANY INCIDENTAL, SPECIAL,
- *  INDIRECT OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, 
- *  COST OF PROCUREMENT OF SUBSTITUTE GOODS, TECHNOLOGY OR 
- *  SERVICES, ANY CLAIMS BY THIRD PARTIES (INCLUDING BUT NOT 
- *  LIMITED TO ANY DEFENSE THEREOF), ANY CLAIMS FOR INDEMNITY OR
- *  CONTRIBUTION, OR OTHER SIMILAR COSTS, WHETHER ASSERTED ON THE
- *  BASIS OF CONTRACT, TORT (INCLUDING NEGLIGENCE), BREACH OF
- *  WARRANTY, OR OTHERWISE.
- *
- *********************************************************************/
+'use strict';
 
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YFiles = exports.Y_FREESPACE_INVALID = exports.Y_FILESCOUNT_INVALID = undefined;
+exports.yFindFiles = yFindFiles;
+exports.yFirstFiles = yFirstFiles;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; } /*********************************************************************
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              * $Id: yocto_files.js 19607 2015-03-05 10:36:54Z seb $
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              * Implements yFindFiles(), the high-level API for Files functions
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              * - - - - - - - - - License information: - - - - - - - - - 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  Copyright (C) 2011 and beyond by Yoctopuce Sarl, Switzerland.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  Yoctopuce Sarl (hereafter Licensor) grants to you a perpetual
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  non-exclusive license to use, modify, copy and integrate this
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  file into your software for the sole purpose of interfacing 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  with Yoctopuce products. 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  You may reproduce and distribute copies of this file in 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  source or object form, as long as the sole purpose of this
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  code is to interface with Yoctopuce products. You must retain 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  this notice in the distributed source file.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  You should refer to Yoctopuce General Terms and Conditions
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  for additional information regarding your rights and 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  obligations.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  THE SOFTWARE AND DOCUMENTATION ARE PROVIDED "AS IS" WITHOUT
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, FITNESS 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  EVENT SHALL LICENSOR BE LIABLE FOR ANY INCIDENTAL, SPECIAL,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  INDIRECT OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  COST OF PROCUREMENT OF SUBSTITUTE GOODS, TECHNOLOGY OR 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  SERVICES, ANY CLAIMS BY THIRD PARTIES (INCLUDING BUT NOT 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  LIMITED TO ANY DEFENSE THEREOF), ANY CLAIMS FOR INDEMNITY OR
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  CONTRIBUTION, OR OTHER SIMILAR COSTS, WHETHER ASSERTED ON THE
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  BASIS OF CONTRACT, TORT (INCLUDING NEGLIGENCE), BREACH OF
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  WARRANTY, OR OTHERWISE.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *********************************************************************/
 
 //--- (generated code: YFiles definitions)
-export const Y_FILESCOUNT_INVALID            = YAPI.INVALID_UINT;
-export const Y_FREESPACE_INVALID             = YAPI.INVALID_UINT;
+const Y_FILESCOUNT_INVALID = exports.Y_FILESCOUNT_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_FREESPACE_INVALID = exports.Y_FREESPACE_INVALID = _yocto_api.YAPI.INVALID_UINT;
 //--- (end of generated code: YFiles definitions)
 
 //--- (generated code: YFileRecord definitions)
@@ -55,44 +64,50 @@ export const Y_FREESPACE_INVALID             = YAPI.INVALID_UINT;
  */
 //--- (end of generated code: YFileRecord class start)
 
-class YFileRecord
-{
-    constructor(str_json)
-    {
+class YFileRecord {
+    constructor(str_json) {
         //--- (generated code: YFileRecord constructor)
         /** @member {string} **/
-        this._name                       = '';
+        this._name = '';
         /** @member {number} **/
-        this._size                       = 0;
+        this._size = 0;
         /** @member {number} **/
-        this._crc                        = 0;
+        this._crc = 0;
         //--- (end of generated code: YFileRecord constructor)
         var loadval = JSON.parse(str_json);
         this._name = loadval.name;
         this._size = loadval.size;
-        this._crc  = loadval.crc;
+        this._crc = loadval.crc;
     }
 
     //--- (generated code: YFileRecord implementation)
 
-    async get_name()
-    {
-        return this._name;
+    get_name() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            return _this._name;
+        })();
     }
 
-    async get_size()
-    {
-        return this._size;
+    get_size() {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this2._size;
+        })();
     }
 
-    async get_crc()
-    {
-        return this._crc;
+    get_crc() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this3._crc;
+        })();
     }
 
     //--- (end of generated code: YFileRecord implementation)
 }
-
 
 //--- (generated code: YFiles class start)
 /**
@@ -105,36 +120,33 @@ class YFileRecord
  */
 //--- (end of generated code: YFiles class start)
 
-export class YFiles extends YFunction
-{
-    constructor(obj_yapi, str_func)
-    {
+class YFiles extends _yocto_api.YFunction {
+    constructor(obj_yapi, str_func) {
         //--- (generated code: YFiles constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'Files';
+        this._className = 'Files';
         /** @member {number} **/
-        this._filesCount                 = Y_FILESCOUNT_INVALID;
+        this._filesCount = Y_FILESCOUNT_INVALID;
         /** @member {number} **/
-        this._freeSpace                  = Y_FREESPACE_INVALID;
+        this._freeSpace = Y_FREESPACE_INVALID;
         this.imm_setConst({
-            FILESCOUNT_INVALID           : YAPI.INVALID_UINT,
-            FREESPACE_INVALID            : YAPI.INVALID_UINT
+            FILESCOUNT_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            FREESPACE_INVALID: _yocto_api.YAPI.INVALID_UINT
         });
         //--- (end of generated code: YFiles constructor)
     }
 
     //--- (generated code: YFiles implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'filesCount':
-            this._filesCount = parseInt(val);
-            return 1;
-        case 'freeSpace':
-            this._freeSpace = parseInt(val);
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'filesCount':
+                this._filesCount = parseInt(val);
+                return 1;
+            case 'freeSpace':
+                this._freeSpace = parseInt(val);
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -146,14 +158,17 @@ export class YFiles extends YFunction
      *
      * On failure, throws an exception or returns YFiles.FILESCOUNT_INVALID.
      */
-    async get_filesCount()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_FILESCOUNT_INVALID;
+    get_filesCount() {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this4._cacheExpiration <= _this4._yapi.GetTickCount()) {
+                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _this4._yapi.SUCCESS) {
+                    return Y_FILESCOUNT_INVALID;
+                }
             }
-        }
-        return this._filesCount;
+            return _this4._filesCount;
+        })();
     }
 
     /**
@@ -163,14 +178,17 @@ export class YFiles extends YFunction
      *
      * On failure, throws an exception or returns YFiles.FREESPACE_INVALID.
      */
-    async get_freeSpace()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_FREESPACE_INVALID;
+    get_freeSpace() {
+        var _this5 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this5._cacheExpiration <= _this5._yapi.GetTickCount()) {
+                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _this5._yapi.SUCCESS) {
+                    return Y_FREESPACE_INVALID;
+                }
             }
-        }
-        return this._freeSpace;
+            return _this5._freeSpace;
+        })();
     }
 
     /**
@@ -196,14 +214,13 @@ export class YFiles extends YFunction
      *
      * @return {YFiles} a YFiles object allowing you to drive the filesystem.
      */
-    static FindFiles(func)
-    {
+    static FindFiles(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('Files', func);
+        obj = _yocto_api.YFunction._FindFromCache('Files', func);
         if (obj == null) {
-            obj = new YFiles(YAPI, func);
-            YFunction._AddToCache('Files',  func, obj);
+            obj = new YFiles(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('Files', func, obj);
         }
         return obj;
     }
@@ -232,25 +249,27 @@ export class YFiles extends YFunction
      *
      * @return {YFiles} a YFiles object allowing you to drive the filesystem.
      */
-    static FindFilesInContext(yctx,func)
-    {
+    static FindFilesInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'Files', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Files', func);
         if (obj == null) {
             obj = new YFiles(yctx, func);
-            YFunction._AddToCache('Files',  func, obj);
+            _yocto_api.YFunction._AddToCache('Files', func, obj);
         }
         return obj;
     }
 
-    async sendCommand(command)
-    {
-        /** @type {string} **/
-        let url;
-        url = 'files.json?a='+command;
-        // may throw an exception
-        return await this._download(url);
+    sendCommand(command) {
+        var _this6 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let url;
+            url = 'files.json?a=' + command;
+            // may throw an exception
+            return yield _this6._download(url);
+        })();
     }
 
     /**
@@ -261,18 +280,21 @@ export class YFiles extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async format_fs()
-    {
-        /** @type {Uint8Array} **/
-        let json;
-        /** @type {string} **/
-        let res;
-        json = await this.sendCommand('format');
-        res = this.imm_json_get_key(json, 'res');
-        if (!(res == 'ok')) {
-            return this._throw(this._yapi.IO_ERROR,'format failed',this._yapi.IO_ERROR);
-        }
-        return this._yapi.SUCCESS;
+    format_fs() {
+        var _this7 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {Uint8Array} **/
+            let json;
+            /** @type {string} **/
+            let res;
+            json = yield _this7.sendCommand('format');
+            res = _this7.imm_json_get_key(json, 'res');
+            if (!(res == 'ok')) {
+                return _this7._throw(_this7._yapi.IO_ERROR, 'format failed', _this7._yapi.IO_ERROR);
+            }
+            return _this7._yapi.SUCCESS;
+        })();
     }
 
     /**
@@ -288,21 +310,24 @@ export class YFiles extends YFunction
      *
      * On failure, throws an exception or returns an empty list.
      */
-    async get_list(pattern)
-    {
-        /** @type {Uint8Array} **/
-        let json;
-        /** @type {string[]} **/
-        let filelist = [];
-        /** @type {YFileRecord[]} **/
-        let res = [];
-        json = await this.sendCommand('dir&f='+pattern);
-        filelist = this.imm_json_get_array(json);
-        res.length = 0;
-        for (let ii in filelist) {
-            res.push(new YFileRecord(filelist[ii]));
-        }
-        return res;
+    get_list(pattern) {
+        var _this8 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {Uint8Array} **/
+            let json;
+            /** @type {string[]} **/
+            let filelist = [];
+            /** @type {YFileRecord[]} **/
+            let res = [];
+            json = yield _this8.sendCommand('dir&f=' + pattern);
+            filelist = _this8.imm_json_get_array(json);
+            res.length = 0;
+            for (let ii in filelist) {
+                res.push(new YFileRecord(filelist[ii]));
+            }
+            return res;
+        })();
     }
 
     /**
@@ -314,9 +339,12 @@ export class YFiles extends YFunction
      *
      * On failure, throws an exception or returns an empty content.
      */
-    async download(pathname)
-    {
-        return await this._download(pathname);
+    download(pathname) {
+        var _this9 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this9._download(pathname);
+        })();
     }
 
     /**
@@ -330,9 +358,12 @@ export class YFiles extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async upload(pathname,content)
-    {
-        return await this._upload(pathname, content);
+    upload(pathname, content) {
+        var _this10 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this10._upload(pathname, content);
+        })();
     }
 
     /**
@@ -349,18 +380,21 @@ export class YFiles extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async remove(pathname)
-    {
-        /** @type {Uint8Array} **/
-        let json;
-        /** @type {string} **/
-        let res;
-        json = await this.sendCommand('del&f='+pathname);
-        res  = this.imm_json_get_key(json, 'res');
-        if (!(res == 'ok')) {
-            return this._throw(this._yapi.IO_ERROR,'unable to remove file',this._yapi.IO_ERROR);
-        }
-        return this._yapi.SUCCESS;
+    remove(pathname) {
+        var _this11 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {Uint8Array} **/
+            let json;
+            /** @type {string} **/
+            let res;
+            json = yield _this11.sendCommand('del&f=' + pathname);
+            res = _this11.imm_json_get_key(json, 'res');
+            if (!(res == 'ok')) {
+                return _this11._throw(_this11._yapi.IO_ERROR, 'unable to remove file', _this11._yapi.IO_ERROR);
+            }
+            return _this11._yapi.SUCCESS;
+        })();
     }
 
     /**
@@ -370,14 +404,13 @@ export class YFiles extends YFunction
      *         a filesystem currently online, or a null pointer
      *         if there are no more filesystems to enumerate.
      */
-    nextFiles()
-    {
+    nextFiles() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YFiles.FindFilesInContext(this._yapi, next_hwid);
     }
 
@@ -390,11 +423,10 @@ export class YFiles extends YFunction
      *         the first filesystem currently online, or a null pointer
      *         if there are none.
      */
-    static FirstFiles()
-    {
+    static FirstFiles() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('Files');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('Files');
+        if (next_hwid == null) return null;
         return YFiles.FindFiles(next_hwid);
     }
 
@@ -409,18 +441,17 @@ export class YFiles extends YFunction
      *         the first filesystem currently online, or a null pointer
      *         if there are none.
      */
-    static FirstFilesInContext(yctx)
-    {
+    static FirstFilesInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('Files');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YFiles.FindFilesInContext(yctx, next_hwid);
     }
 
     //--- (end of generated code: YFiles implementation)
 }
 
-//--- (generated code: Files functions)
+exports.YFiles = YFiles; //--- (generated code: Files functions)
 
 /**
  * Retrieves a filesystem for a given identifier.
@@ -445,8 +476,8 @@ export class YFiles extends YFunction
  *
  * @return {YFiles} a YFiles object allowing you to drive the filesystem.
  */
-export function yFindFiles(func)
-{
+
+function yFindFiles(func) {
     return YFiles.FindFiles(func);
 }
 
@@ -459,8 +490,7 @@ export function yFindFiles(func)
  *         the first filesystem currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstFiles()
-{
+function yFirstFiles() {
     return YFiles.FirstFiles();
 }
 

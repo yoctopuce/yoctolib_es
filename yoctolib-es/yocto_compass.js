@@ -38,16 +38,26 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YCompass = exports.Y_MAGNETICHEADING_INVALID = exports.Y_AXIS_INVALID = exports.Y_AXIS_Z = exports.Y_AXIS_Y = exports.Y_AXIS_X = undefined;
+exports.yFindCompass = yFindCompass;
+exports.yFirstCompass = yFirstCompass;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YCompass return codes)
 //--- (end of YCompass return codes)
 //--- (YCompass definitions)
-export const Y_AXIS_X                        = 0;
-export const Y_AXIS_Y                        = 1;
-export const Y_AXIS_Z                        = 2;
-export const Y_AXIS_INVALID                  = -1;
-export const Y_MAGNETICHEADING_INVALID       = YAPI.INVALID_DOUBLE;
+const Y_AXIS_X = exports.Y_AXIS_X = 0;
+const Y_AXIS_Y = exports.Y_AXIS_Y = 1;
+const Y_AXIS_Z = exports.Y_AXIS_Z = 2;
+const Y_AXIS_INVALID = exports.Y_AXIS_INVALID = -1;
+const Y_MAGNETICHEADING_INVALID = exports.Y_MAGNETICHEADING_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
 //--- (end of YCompass definitions)
 
 //--- (YCompass class start)
@@ -66,51 +76,51 @@ export const Y_MAGNETICHEADING_INVALID       = YAPI.INVALID_DOUBLE;
  */
 //--- (end of YCompass class start)
 
-export class YCompass extends YSensor
-{
-    constructor(obj_yapi, str_func)
-    {
+class YCompass extends _yocto_api.YSensor {
+    constructor(obj_yapi, str_func) {
         //--- (YCompass constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'Compass';
+        this._className = 'Compass';
         /** @member {number} **/
-        this._axis                       = Y_AXIS_INVALID;
+        this._axis = Y_AXIS_INVALID;
         /** @member {number} **/
-        this._magneticHeading            = Y_MAGNETICHEADING_INVALID;
+        this._magneticHeading = Y_MAGNETICHEADING_INVALID;
         this.imm_setConst({
-            AXIS_X                       : 0,
-            AXIS_Y                       : 1,
-            AXIS_Z                       : 2,
-            AXIS_INVALID                 : -1,
-            MAGNETICHEADING_INVALID      : YAPI.INVALID_DOUBLE
+            AXIS_X: 0,
+            AXIS_Y: 1,
+            AXIS_Z: 2,
+            AXIS_INVALID: -1,
+            MAGNETICHEADING_INVALID: _yocto_api.YAPI.INVALID_DOUBLE
         });
         //--- (end of YCompass constructor)
     }
 
     //--- (YCompass implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'axis':
-            this._axis = parseInt(val);
-            return 1;
-        case 'magneticHeading':
-            this._magneticHeading = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'axis':
+                this._axis = parseInt(val);
+                return 1;
+            case 'magneticHeading':
+                this._magneticHeading = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
 
-    async get_axis()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_AXIS_INVALID;
+    get_axis() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
+                    return Y_AXIS_INVALID;
+                }
             }
-        }
-        return this._axis;
+            return _this._axis;
+        })();
     }
 
     /**
@@ -121,14 +131,17 @@ export class YCompass extends YSensor
      *
      * On failure, throws an exception or returns YCompass.MAGNETICHEADING_INVALID.
      */
-    async get_magneticHeading()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_MAGNETICHEADING_INVALID;
+    get_magneticHeading() {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this2._cacheExpiration <= _this2._yapi.GetTickCount()) {
+                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _this2._yapi.SUCCESS) {
+                    return Y_MAGNETICHEADING_INVALID;
+                }
             }
-        }
-        return this._magneticHeading;
+            return _this2._magneticHeading;
+        })();
     }
 
     /**
@@ -154,14 +167,13 @@ export class YCompass extends YSensor
      *
      * @return {YCompass} a YCompass object allowing you to drive the compass.
      */
-    static FindCompass(func)
-    {
+    static FindCompass(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('Compass', func);
+        obj = _yocto_api.YFunction._FindFromCache('Compass', func);
         if (obj == null) {
-            obj = new YCompass(YAPI, func);
-            YFunction._AddToCache('Compass',  func, obj);
+            obj = new YCompass(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('Compass', func, obj);
         }
         return obj;
     }
@@ -190,14 +202,13 @@ export class YCompass extends YSensor
      *
      * @return {YCompass} a YCompass object allowing you to drive the compass.
      */
-    static FindCompassInContext(yctx,func)
-    {
+    static FindCompassInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'Compass', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Compass', func);
         if (obj == null) {
             obj = new YCompass(yctx, func);
-            YFunction._AddToCache('Compass',  func, obj);
+            _yocto_api.YFunction._AddToCache('Compass', func, obj);
         }
         return obj;
     }
@@ -209,14 +220,13 @@ export class YCompass extends YSensor
      *         a compass currently online, or a null pointer
      *         if there are no more compasses to enumerate.
      */
-    nextCompass()
-    {
+    nextCompass() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YCompass.FindCompassInContext(this._yapi, next_hwid);
     }
 
@@ -229,11 +239,10 @@ export class YCompass extends YSensor
      *         the first compass currently online, or a null pointer
      *         if there are none.
      */
-    static FirstCompass()
-    {
+    static FirstCompass() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('Compass');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('Compass');
+        if (next_hwid == null) return null;
         return YCompass.FindCompass(next_hwid);
     }
 
@@ -248,18 +257,17 @@ export class YCompass extends YSensor
      *         the first compass currently online, or a null pointer
      *         if there are none.
      */
-    static FirstCompassInContext(yctx)
-    {
+    static FirstCompassInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('Compass');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YCompass.FindCompassInContext(yctx, next_hwid);
     }
 
     //--- (end of YCompass implementation)
 }
 
-//--- (Compass functions)
+exports.YCompass = YCompass; //--- (Compass functions)
 
 /**
  * Retrieves a compass for a given identifier.
@@ -284,8 +292,8 @@ export class YCompass extends YSensor
  *
  * @return {YCompass} a YCompass object allowing you to drive the compass.
  */
-export function yFindCompass(func)
-{
+
+function yFindCompass(func) {
     return YCompass.FindCompass(func);
 }
 
@@ -298,8 +306,7 @@ export function yFindCompass(func)
  *         the first compass currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstCompass()
-{
+function yFirstCompass() {
     return YCompass.FirstCompass();
 }
 

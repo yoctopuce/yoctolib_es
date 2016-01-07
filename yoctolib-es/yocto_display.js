@@ -1,84 +1,93 @@
-/*********************************************************************
- *
- * $Id: yocto_display.js 19607 2015-03-05 10:36:54Z seb $
- *
- * Implements yFindDisplay(), the high-level API for Display functions
- *
- * - - - - - - - - - License information: - - - - - - - - - 
- *
- *  Copyright (C) 2011 and beyond by Yoctopuce Sarl, Switzerland.
- *
- *  Yoctopuce Sarl (hereafter Licensor) grants to you a perpetual
- *  non-exclusive license to use, modify, copy and integrate this
- *  file into your software for the sole purpose of interfacing 
- *  with Yoctopuce products. 
- *
- *  You may reproduce and distribute copies of this file in 
- *  source or object form, as long as the sole purpose of this
- *  code is to interface with Yoctopuce products. You must retain 
- *  this notice in the distributed source file.
- *
- *  You should refer to Yoctopuce General Terms and Conditions
- *  for additional information regarding your rights and 
- *  obligations.
- *
- *  THE SOFTWARE AND DOCUMENTATION ARE PROVIDED "AS IS" WITHOUT
- *  WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING 
- *  WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, FITNESS 
- *  FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO
- *  EVENT SHALL LICENSOR BE LIABLE FOR ANY INCIDENTAL, SPECIAL,
- *  INDIRECT OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, 
- *  COST OF PROCUREMENT OF SUBSTITUTE GOODS, TECHNOLOGY OR 
- *  SERVICES, ANY CLAIMS BY THIRD PARTIES (INCLUDING BUT NOT 
- *  LIMITED TO ANY DEFENSE THEREOF), ANY CLAIMS FOR INDEMNITY OR
- *  CONTRIBUTION, OR OTHER SIMILAR COSTS, WHETHER ASSERTED ON THE
- *  BASIS OF CONTRACT, TORT (INCLUDING NEGLIGENCE), BREACH OF
- *  WARRANTY, OR OTHERWISE.
- *
- *********************************************************************/
+'use strict';
 
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YDisplay = exports.Y_ALIGN_BOTTOM_RIGHT = exports.Y_ALIGN_BASELINE_RIGHT = exports.Y_ALIGN_CENTER_RIGHT = exports.Y_ALIGN_TOP_RIGHT = exports.Y_ALIGN_BOTTOM_DECIMAL = exports.Y_ALIGN_BASELINE_DECIMAL = exports.Y_ALIGN_CENTER_DECIMAL = exports.Y_ALIGN_TOP_DECIMAL = exports.Y_ALIGN_BOTTOM_CENTER = exports.Y_ALIGN_BASELINE_CENTER = exports.Y_ALIGN_CENTER = exports.Y_ALIGN_TOP_CENTER = exports.Y_ALIGN_BOTTOM_LEFT = exports.Y_ALIGN_BASELINE_LEFT = exports.Y_ALIGN_CENTER_LEFT = exports.Y_ALIGN_TOP_LEFT = exports.Y_COMMAND_INVALID = exports.Y_LAYERCOUNT_INVALID = exports.Y_LAYERHEIGHT_INVALID = exports.Y_LAYERWIDTH_INVALID = exports.Y_DISPLAYHEIGHT_INVALID = exports.Y_DISPLAYWIDTH_INVALID = exports.Y_BRIGHTNESS_INVALID = exports.Y_STARTUPSEQ_INVALID = exports.Y_DISPLAYTYPE_INVALID = exports.Y_DISPLAYTYPE_RGB = exports.Y_DISPLAYTYPE_GRAY = exports.Y_DISPLAYTYPE_MONO = exports.Y_ORIENTATION_INVALID = exports.Y_ORIENTATION_DOWN = exports.Y_ORIENTATION_RIGHT = exports.Y_ORIENTATION_UP = exports.Y_ORIENTATION_LEFT = exports.Y_ENABLED_INVALID = exports.Y_ENABLED_TRUE = exports.Y_ENABLED_FALSE = undefined;
+exports.yFindDisplay = yFindDisplay;
+exports.yFirstDisplay = yFirstDisplay;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; } /*********************************************************************
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              * $Id: yocto_display.js 19607 2015-03-05 10:36:54Z seb $
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              * Implements yFindDisplay(), the high-level API for Display functions
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              * - - - - - - - - - License information: - - - - - - - - - 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  Copyright (C) 2011 and beyond by Yoctopuce Sarl, Switzerland.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  Yoctopuce Sarl (hereafter Licensor) grants to you a perpetual
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  non-exclusive license to use, modify, copy and integrate this
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  file into your software for the sole purpose of interfacing 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  with Yoctopuce products. 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  You may reproduce and distribute copies of this file in 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  source or object form, as long as the sole purpose of this
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  code is to interface with Yoctopuce products. You must retain 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  this notice in the distributed source file.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  You should refer to Yoctopuce General Terms and Conditions
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  for additional information regarding your rights and 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  obligations.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  THE SOFTWARE AND DOCUMENTATION ARE PROVIDED "AS IS" WITHOUT
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, FITNESS 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  EVENT SHALL LICENSOR BE LIABLE FOR ANY INCIDENTAL, SPECIAL,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  INDIRECT OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  COST OF PROCUREMENT OF SUBSTITUTE GOODS, TECHNOLOGY OR 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  SERVICES, ANY CLAIMS BY THIRD PARTIES (INCLUDING BUT NOT 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  LIMITED TO ANY DEFENSE THEREOF), ANY CLAIMS FOR INDEMNITY OR
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  CONTRIBUTION, OR OTHER SIMILAR COSTS, WHETHER ASSERTED ON THE
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  BASIS OF CONTRACT, TORT (INCLUDING NEGLIGENCE), BREACH OF
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *  WARRANTY, OR OTHERWISE.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              *********************************************************************/
 
 //--- (generated code: YDisplay definitions)
-export const Y_ENABLED_FALSE                 = 0;
-export const Y_ENABLED_TRUE                  = 1;
-export const Y_ENABLED_INVALID               = -1;
-export const Y_ORIENTATION_LEFT              = 0;
-export const Y_ORIENTATION_UP                = 1;
-export const Y_ORIENTATION_RIGHT             = 2;
-export const Y_ORIENTATION_DOWN              = 3;
-export const Y_ORIENTATION_INVALID           = -1;
-export const Y_DISPLAYTYPE_MONO              = 0;
-export const Y_DISPLAYTYPE_GRAY              = 1;
-export const Y_DISPLAYTYPE_RGB               = 2;
-export const Y_DISPLAYTYPE_INVALID           = -1;
-export const Y_STARTUPSEQ_INVALID            = YAPI.INVALID_STRING;
-export const Y_BRIGHTNESS_INVALID            = YAPI.INVALID_UINT;
-export const Y_DISPLAYWIDTH_INVALID          = YAPI.INVALID_UINT;
-export const Y_DISPLAYHEIGHT_INVALID         = YAPI.INVALID_UINT;
-export const Y_LAYERWIDTH_INVALID            = YAPI.INVALID_UINT;
-export const Y_LAYERHEIGHT_INVALID           = YAPI.INVALID_UINT;
-export const Y_LAYERCOUNT_INVALID            = YAPI.INVALID_UINT;
-export const Y_COMMAND_INVALID               = YAPI.INVALID_STRING;
+const Y_ENABLED_FALSE = exports.Y_ENABLED_FALSE = 0;
+const Y_ENABLED_TRUE = exports.Y_ENABLED_TRUE = 1;
+const Y_ENABLED_INVALID = exports.Y_ENABLED_INVALID = -1;
+const Y_ORIENTATION_LEFT = exports.Y_ORIENTATION_LEFT = 0;
+const Y_ORIENTATION_UP = exports.Y_ORIENTATION_UP = 1;
+const Y_ORIENTATION_RIGHT = exports.Y_ORIENTATION_RIGHT = 2;
+const Y_ORIENTATION_DOWN = exports.Y_ORIENTATION_DOWN = 3;
+const Y_ORIENTATION_INVALID = exports.Y_ORIENTATION_INVALID = -1;
+const Y_DISPLAYTYPE_MONO = exports.Y_DISPLAYTYPE_MONO = 0;
+const Y_DISPLAYTYPE_GRAY = exports.Y_DISPLAYTYPE_GRAY = 1;
+const Y_DISPLAYTYPE_RGB = exports.Y_DISPLAYTYPE_RGB = 2;
+const Y_DISPLAYTYPE_INVALID = exports.Y_DISPLAYTYPE_INVALID = -1;
+const Y_STARTUPSEQ_INVALID = exports.Y_STARTUPSEQ_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_BRIGHTNESS_INVALID = exports.Y_BRIGHTNESS_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_DISPLAYWIDTH_INVALID = exports.Y_DISPLAYWIDTH_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_DISPLAYHEIGHT_INVALID = exports.Y_DISPLAYHEIGHT_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_LAYERWIDTH_INVALID = exports.Y_LAYERWIDTH_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_LAYERHEIGHT_INVALID = exports.Y_LAYERHEIGHT_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_LAYERCOUNT_INVALID = exports.Y_LAYERCOUNT_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_COMMAND_INVALID = exports.Y_COMMAND_INVALID = _yocto_api.YAPI.INVALID_STRING;
 //--- (end of generated code: YDisplay definitions)
 
 //--- (generated code: YDisplayLayer definitions)
-export const Y_ALIGN_TOP_LEFT                = 0;
-export const Y_ALIGN_CENTER_LEFT             = 1;
-export const Y_ALIGN_BASELINE_LEFT           = 2;
-export const Y_ALIGN_BOTTOM_LEFT             = 3;
-export const Y_ALIGN_TOP_CENTER              = 4;
-export const Y_ALIGN_CENTER                  = 5;
-export const Y_ALIGN_BASELINE_CENTER         = 6;
-export const Y_ALIGN_BOTTOM_CENTER           = 7;
-export const Y_ALIGN_TOP_DECIMAL             = 8;
-export const Y_ALIGN_CENTER_DECIMAL          = 9;
-export const Y_ALIGN_BASELINE_DECIMAL        = 10;
-export const Y_ALIGN_BOTTOM_DECIMAL          = 11;
-export const Y_ALIGN_TOP_RIGHT               = 12;
-export const Y_ALIGN_CENTER_RIGHT            = 13;
-export const Y_ALIGN_BASELINE_RIGHT          = 14;
-export const Y_ALIGN_BOTTOM_RIGHT            = 15;
+const Y_ALIGN_TOP_LEFT = exports.Y_ALIGN_TOP_LEFT = 0;
+const Y_ALIGN_CENTER_LEFT = exports.Y_ALIGN_CENTER_LEFT = 1;
+const Y_ALIGN_BASELINE_LEFT = exports.Y_ALIGN_BASELINE_LEFT = 2;
+const Y_ALIGN_BOTTOM_LEFT = exports.Y_ALIGN_BOTTOM_LEFT = 3;
+const Y_ALIGN_TOP_CENTER = exports.Y_ALIGN_TOP_CENTER = 4;
+const Y_ALIGN_CENTER = exports.Y_ALIGN_CENTER = 5;
+const Y_ALIGN_BASELINE_CENTER = exports.Y_ALIGN_BASELINE_CENTER = 6;
+const Y_ALIGN_BOTTOM_CENTER = exports.Y_ALIGN_BOTTOM_CENTER = 7;
+const Y_ALIGN_TOP_DECIMAL = exports.Y_ALIGN_TOP_DECIMAL = 8;
+const Y_ALIGN_CENTER_DECIMAL = exports.Y_ALIGN_CENTER_DECIMAL = 9;
+const Y_ALIGN_BASELINE_DECIMAL = exports.Y_ALIGN_BASELINE_DECIMAL = 10;
+const Y_ALIGN_BOTTOM_DECIMAL = exports.Y_ALIGN_BOTTOM_DECIMAL = 11;
+const Y_ALIGN_TOP_RIGHT = exports.Y_ALIGN_TOP_RIGHT = 12;
+const Y_ALIGN_CENTER_RIGHT = exports.Y_ALIGN_CENTER_RIGHT = 13;
+const Y_ALIGN_BASELINE_RIGHT = exports.Y_ALIGN_BASELINE_RIGHT = 14;
+const Y_ALIGN_BOTTOM_RIGHT = exports.Y_ALIGN_BOTTOM_RIGHT = 15;
 //--- (end of generated code: YDisplayLayer definitions)
 
 //--- (generated code: YDisplayLayer class start)
@@ -92,86 +101,93 @@ export const Y_ALIGN_BOTTOM_RIGHT            = 15;
  */
 //--- (end of generated code: YDisplayLayer class start)
 
-class YDisplayLayer
-{
-    constructor(obj_parent, str_id)
-    {
-        this._display      = obj_parent;
-        this._id           = str_id;
-        this._cmdbuff      = '';
-        this._hidden       = false;
+class YDisplayLayer {
+    constructor(obj_parent, str_id) {
+        this._display = obj_parent;
+        this._id = str_id;
+        this._cmdbuff = '';
+        this._hidden = false;
         //--- (generated code: YDisplayLayer constructor)
         /** @member {number} **/
-        this.ALIGN_TOP_LEFT              = 0;
+        this.ALIGN_TOP_LEFT = 0;
         /** @member {number} **/
-        this.ALIGN_CENTER_LEFT           = 1;
+        this.ALIGN_CENTER_LEFT = 1;
         /** @member {number} **/
-        this.ALIGN_BASELINE_LEFT         = 2;
+        this.ALIGN_BASELINE_LEFT = 2;
         /** @member {number} **/
-        this.ALIGN_BOTTOM_LEFT           = 3;
+        this.ALIGN_BOTTOM_LEFT = 3;
         /** @member {number} **/
-        this.ALIGN_TOP_CENTER            = 4;
+        this.ALIGN_TOP_CENTER = 4;
         /** @member {number} **/
-        this.ALIGN_CENTER                = 5;
+        this.ALIGN_CENTER = 5;
         /** @member {number} **/
-        this.ALIGN_BASELINE_CENTER       = 6;
+        this.ALIGN_BASELINE_CENTER = 6;
         /** @member {number} **/
-        this.ALIGN_BOTTOM_CENTER         = 7;
+        this.ALIGN_BOTTOM_CENTER = 7;
         /** @member {number} **/
-        this.ALIGN_TOP_DECIMAL           = 8;
+        this.ALIGN_TOP_DECIMAL = 8;
         /** @member {number} **/
-        this.ALIGN_CENTER_DECIMAL        = 9;
+        this.ALIGN_CENTER_DECIMAL = 9;
         /** @member {number} **/
-        this.ALIGN_BASELINE_DECIMAL      = 10;
+        this.ALIGN_BASELINE_DECIMAL = 10;
         /** @member {number} **/
-        this.ALIGN_BOTTOM_DECIMAL        = 11;
+        this.ALIGN_BOTTOM_DECIMAL = 11;
         /** @member {number} **/
-        this.ALIGN_TOP_RIGHT             = 12;
+        this.ALIGN_TOP_RIGHT = 12;
         /** @member {number} **/
-        this.ALIGN_CENTER_RIGHT          = 13;
+        this.ALIGN_CENTER_RIGHT = 13;
         /** @member {number} **/
-        this.ALIGN_BASELINE_RIGHT        = 14;
+        this.ALIGN_BASELINE_RIGHT = 14;
         /** @member {number} **/
-        this.ALIGN_BOTTOM_RIGHT          = 15;
+        this.ALIGN_BOTTOM_RIGHT = 15;
         //--- (end of generated code: YDisplayLayer constructor)
     }
 
     // internal function to flush any pending command for this layer
-    async flush_now() 
-    {
-        var res = YAPI_SUCCESS;
-        if(this._cmdbuff != '') {
-            res = await this._display.sendCommand(this._cmdbuff);
-            this._cmdbuff = '';
-        }
-        return res;
+    flush_now() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            var res = _yocto_api.YAPI_SUCCESS;
+            if (_this._cmdbuff != '') {
+                res = yield _this._display.sendCommand(_this._cmdbuff);
+                _this._cmdbuff = '';
+            }
+            return res;
+        })();
     }
-    
+
     // internal function to buffer a command for this layer
-    async command_push(str_cmd)
-    {
-        var res = YAPI_SUCCESS;
-        
-        if(this._cmdbuff.length + str_cmd.length >= 100) {
-            // force flush before, to prevent overflow
-            res = await this.flush_now();
-        }
-        if(this._cmdbuff == '') {
-            // always prepend layer ID first
-            this._cmdbuff = this._id;
-        } 
-        this._cmdbuff += str_cmd;
-        return res;
+    command_push(str_cmd) {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            var res = _yocto_api.YAPI_SUCCESS;
+
+            if (_this2._cmdbuff.length + str_cmd.length >= 100) {
+                // force flush before, to prevent overflow
+                res = yield _this2.flush_now();
+            }
+            if (_this2._cmdbuff == '') {
+                // always prepend layer ID first
+                _this2._cmdbuff = _this2._id;
+            }
+            _this2._cmdbuff += str_cmd;
+            return res;
+        })();
     }
 
     // internal function to send a command for this layer
-    async command_flush(str_cmd)
-    {
-        var res = await this.command_push(str_cmd);
-        if(this._hidden) {
-            return res;
-        }
-        return await this.flush_now();
+    command_flush(str_cmd) {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            var res = yield _this3.command_push(str_cmd);
+            if (_this3._hidden) {
+                return res;
+            }
+            return yield _this3.flush_now();
+        })();
     }
 
     //--- (generated code: YDisplayLayer implementation)
@@ -186,10 +202,13 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async reset()
-    {
-        this._hidden = false;
-        return await this.command_flush('X');
+    reset() {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            _this4._hidden = false;
+            return yield _this4.command_flush('X');
+        })();
     }
 
     /**
@@ -202,9 +221,12 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async clear()
-    {
-        return await this.command_flush('x');
+    clear() {
+        var _this5 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this5.command_flush('x');
+        })();
     }
 
     /**
@@ -219,9 +241,12 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async selectColorPen(color)
-    {
-        return await this.command_push('c'+('000000'+(color).toString(16)).slice(-6));
+    selectColorPen(color) {
+        var _this6 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this6.command_push('c' + ('000000' + color.toString(16)).slice(-6));
+        })();
     }
 
     /**
@@ -238,9 +263,12 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async selectGrayPen(graylevel)
-    {
-        return await this.command_push('g'+String(Math.round(graylevel)));
+    selectGrayPen(graylevel) {
+        var _this7 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this7.command_push('g' + String(Math.round(graylevel)));
+        })();
     }
 
     /**
@@ -253,9 +281,12 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async selectEraser()
-    {
-        return await this.command_push('e');
+    selectEraser() {
+        var _this8 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this8.command_push('e');
+        })();
     }
 
     /**
@@ -274,9 +305,12 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async setAntialiasingMode(mode)
-    {
-        return await this.command_push('a'+(mode?"1":"0"));
+    setAntialiasingMode(mode) {
+        var _this9 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this9.command_push('a' + (mode ? "1" : "0"));
+        })();
     }
 
     /**
@@ -289,9 +323,12 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async drawPixel(x,y)
-    {
-        return await this.command_flush('P'+String(Math.round(x))+','+String(Math.round(y)));
+    drawPixel(x, y) {
+        var _this10 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this10.command_flush('P' + String(Math.round(x)) + ',' + String(Math.round(y)));
+        })();
     }
 
     /**
@@ -306,9 +343,12 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async drawRect(x1,y1,x2,y2)
-    {
-        return await this.command_flush('R'+String(Math.round(x1))+','+String(Math.round(y1))+','+String(Math.round(x2))+','+String(Math.round(y2)));
+    drawRect(x1, y1, x2, y2) {
+        var _this11 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this11.command_flush('R' + String(Math.round(x1)) + ',' + String(Math.round(y1)) + ',' + String(Math.round(x2)) + ',' + String(Math.round(y2)));
+        })();
     }
 
     /**
@@ -323,9 +363,12 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async drawBar(x1,y1,x2,y2)
-    {
-        return await this.command_flush('B'+String(Math.round(x1))+','+String(Math.round(y1))+','+String(Math.round(x2))+','+String(Math.round(y2)));
+    drawBar(x1, y1, x2, y2) {
+        var _this12 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this12.command_flush('B' + String(Math.round(x1)) + ',' + String(Math.round(y1)) + ',' + String(Math.round(x2)) + ',' + String(Math.round(y2)));
+        })();
     }
 
     /**
@@ -339,9 +382,12 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async drawCircle(x,y,r)
-    {
-        return await this.command_flush('C'+String(Math.round(x))+','+String(Math.round(y))+','+String(Math.round(r)));
+    drawCircle(x, y, r) {
+        var _this13 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this13.command_flush('C' + String(Math.round(x)) + ',' + String(Math.round(y)) + ',' + String(Math.round(r)));
+        })();
     }
 
     /**
@@ -355,9 +401,12 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async drawDisc(x,y,r)
-    {
-        return await this.command_flush('D'+String(Math.round(x))+','+String(Math.round(y))+','+String(Math.round(r)));
+    drawDisc(x, y, r) {
+        var _this14 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this14.command_flush('D' + String(Math.round(x)) + ',' + String(Math.round(y)) + ',' + String(Math.round(r)));
+        })();
     }
 
     /**
@@ -373,9 +422,12 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async selectFont(fontname)
-    {
-        return await this.command_push('&'+fontname+''+String.fromCharCode(27));
+    selectFont(fontname) {
+        var _this15 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this15.command_push('&' + fontname + '' + String.fromCharCode(27));
+        })();
     }
 
     /**
@@ -400,9 +452,12 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async drawText(x,y,anchor,text)
-    {
-        return await this.command_flush('T'+String(Math.round(x))+','+String(Math.round(y))+','+String(anchor)+','+text+''+String.fromCharCode(27));
+    drawText(x, y, anchor, text) {
+        var _this16 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this16.command_flush('T' + String(Math.round(x)) + ',' + String(Math.round(y)) + ',' + String(anchor) + ',' + text + '' + String.fromCharCode(27));
+        })();
     }
 
     /**
@@ -419,9 +474,12 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async drawImage(x,y,imagename)
-    {
-        return await this.command_flush('*'+String(Math.round(x))+','+String(Math.round(y))+','+imagename+''+String.fromCharCode(27));
+    drawImage(x, y, imagename) {
+        var _this17 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this17.command_flush('*' + String(Math.round(x)) + ',' + String(Math.round(y)) + ',' + imagename + '' + String.fromCharCode(27));
+        })();
     }
 
     /**
@@ -444,12 +502,15 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async drawBitmap(x,y,w,bitmap,bgcol)
-    {
-        /** @type {string} **/
-        let destname;
-        destname = 'layer'+String(Math.round(this._id))+':'+String(Math.round(w))+','+String(Math.round(bgcol))+'@'+String(Math.round(x))+','+String(Math.round(y));
-        return await this._display.upload(destname, bitmap);
+    drawBitmap(x, y, w, bitmap, bgcol) {
+        var _this18 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let destname;
+            destname = 'layer' + String(Math.round(_this18._id)) + ':' + String(Math.round(w)) + ',' + String(Math.round(bgcol)) + '@' + String(Math.round(x)) + ',' + String(Math.round(y));
+            return yield _this18._display.upload(destname, bitmap);
+        })();
     }
 
     /**
@@ -462,9 +523,12 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async moveTo(x,y)
-    {
-        return await this.command_push('@'+String(Math.round(x))+','+String(Math.round(y)));
+    moveTo(x, y) {
+        var _this19 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this19.command_push('@' + String(Math.round(x)) + ',' + String(Math.round(y)));
+        })();
     }
 
     /**
@@ -479,9 +543,12 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async lineTo(x,y)
-    {
-        return await this.command_flush('-'+String(Math.round(x))+','+String(Math.round(y)));
+    lineTo(x, y) {
+        var _this20 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this20.command_flush('-' + String(Math.round(x)) + ',' + String(Math.round(y)));
+        })();
     }
 
     /**
@@ -497,9 +564,12 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async consoleOut(text)
-    {
-        return await this.command_flush('!'+text+''+String.fromCharCode(27));
+    consoleOut(text) {
+        var _this21 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this21.command_flush('!' + text + '' + String.fromCharCode(27));
+        })();
     }
 
     /**
@@ -514,9 +584,12 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async setConsoleMargins(x1,y1,x2,y2)
-    {
-        return await this.command_push('m'+String(Math.round(x1))+','+String(Math.round(y1))+','+String(Math.round(x2))+','+String(Math.round(y2)));
+    setConsoleMargins(x1, y1, x2, y2) {
+        var _this22 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this22.command_push('m' + String(Math.round(x1)) + ',' + String(Math.round(y1)) + ',' + String(Math.round(x2)) + ',' + String(Math.round(y2)));
+        })();
     }
 
     /**
@@ -530,9 +603,12 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async setConsoleBackground(bgcol)
-    {
-        return await this.command_push('b'+String(Math.round(bgcol)));
+    setConsoleBackground(bgcol) {
+        var _this23 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this23.command_push('b' + String(Math.round(bgcol)));
+        })();
     }
 
     /**
@@ -545,9 +621,12 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async setConsoleWordWrap(wordwrap)
-    {
-        return await this.command_push('w'+(wordwrap?"1":"0"));
+    setConsoleWordWrap(wordwrap) {
+        var _this24 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this24.command_push('w' + (wordwrap ? "1" : "0"));
+        })();
     }
 
     /**
@@ -558,9 +637,12 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async clearConsole()
-    {
-        return await this.command_flush('^');
+    clearConsole() {
+        var _this25 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this25.command_flush('^');
+        })();
     }
 
     /**
@@ -577,9 +659,12 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async setLayerPosition(x,y,scrollTime)
-    {
-        return await this.command_flush('#'+String(Math.round(x))+','+String(Math.round(y))+','+String(Math.round(scrollTime)));
+    setLayerPosition(x, y, scrollTime) {
+        var _this26 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this26.command_flush('#' + String(Math.round(x)) + ',' + String(Math.round(y)) + ',' + String(Math.round(scrollTime)));
+        })();
     }
 
     /**
@@ -592,11 +677,14 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async hide()
-    {
-        await this.command_push('h');
-        this._hidden = true;
-        return await this.flush_now();
+    hide() {
+        var _this27 = this;
+
+        return _asyncToGenerator(function* () {
+            yield _this27.command_push('h');
+            _this27._hidden = true;
+            return yield _this27.flush_now();
+        })();
     }
 
     /**
@@ -606,10 +694,13 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async unhide()
-    {
-        this._hidden = false;
-        return await this.command_flush('s');
+    unhide() {
+        var _this28 = this;
+
+        return _asyncToGenerator(function* () {
+            _this28._hidden = false;
+            return yield _this28.command_flush('s');
+        })();
     }
 
     /**
@@ -617,9 +708,12 @@ class YDisplayLayer
      *
      * @return {YDisplay} an YDisplay object
      */
-    async get_display()
-    {
-        return this._display;
+    get_display() {
+        var _this29 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this29._display;
+        })();
     }
 
     /**
@@ -629,9 +723,12 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns YDisplayLayer.DISPLAYWIDTH_INVALID.
      */
-    async get_displayWidth()
-    {
-        return await this._display.get_displayWidth();
+    get_displayWidth() {
+        var _this30 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this30._display.get_displayWidth();
+        })();
     }
 
     /**
@@ -641,9 +738,12 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns YDisplayLayer.DISPLAYHEIGHT_INVALID.
      */
-    async get_displayHeight()
-    {
-        return await this._display.get_displayHeight();
+    get_displayHeight() {
+        var _this31 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this31._display.get_displayHeight();
+        })();
     }
 
     /**
@@ -653,9 +753,12 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns YDisplayLayer.LAYERWIDTH_INVALID.
      */
-    async get_layerWidth()
-    {
-        return await this._display.get_layerWidth();
+    get_layerWidth() {
+        var _this32 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this32._display.get_layerWidth();
+        })();
     }
 
     /**
@@ -665,20 +768,25 @@ class YDisplayLayer
      *
      * On failure, throws an exception or returns YDisplayLayer.LAYERHEIGHT_INVALID.
      */
-    async get_layerHeight()
-    {
-        return await this._display.get_layerHeight();
+    get_layerHeight() {
+        var _this33 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this33._display.get_layerHeight();
+        })();
     }
 
-    async resetHiddenFlag()
-    {
-        this._hidden = false;
-        return this._yapi.SUCCESS;
+    resetHiddenFlag() {
+        var _this34 = this;
+
+        return _asyncToGenerator(function* () {
+            _this34._hidden = false;
+            return _this34._yapi.SUCCESS;
+        })();
     }
 
     //--- (end of generated code: YDisplayLayer implementation)
 };
-
 
 //--- (generated code: YDisplay class start)
 /**
@@ -691,103 +799,100 @@ class YDisplayLayer
  * sequences (animations).
  */
 //--- (end of generated code: YDisplay class start)
-export class YDisplay extends YFunction
-{
-    constructor(obj_yapi,str_func)
-    {
+class YDisplay extends _yocto_api.YFunction {
+    constructor(obj_yapi, str_func) {
         //--- (generated code: YDisplay constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'Display';
+        this._className = 'Display';
         /** @member {number} **/
-        this._enabled                    = Y_ENABLED_INVALID;
+        this._enabled = Y_ENABLED_INVALID;
         /** @member {string} **/
-        this._startupSeq                 = Y_STARTUPSEQ_INVALID;
+        this._startupSeq = Y_STARTUPSEQ_INVALID;
         /** @member {number} **/
-        this._brightness                 = Y_BRIGHTNESS_INVALID;
+        this._brightness = Y_BRIGHTNESS_INVALID;
         /** @member {number} **/
-        this._orientation                = Y_ORIENTATION_INVALID;
+        this._orientation = Y_ORIENTATION_INVALID;
         /** @member {number} **/
-        this._displayWidth               = Y_DISPLAYWIDTH_INVALID;
+        this._displayWidth = Y_DISPLAYWIDTH_INVALID;
         /** @member {number} **/
-        this._displayHeight              = Y_DISPLAYHEIGHT_INVALID;
+        this._displayHeight = Y_DISPLAYHEIGHT_INVALID;
         /** @member {number} **/
-        this._displayType                = Y_DISPLAYTYPE_INVALID;
+        this._displayType = Y_DISPLAYTYPE_INVALID;
         /** @member {number} **/
-        this._layerWidth                 = Y_LAYERWIDTH_INVALID;
+        this._layerWidth = Y_LAYERWIDTH_INVALID;
         /** @member {number} **/
-        this._layerHeight                = Y_LAYERHEIGHT_INVALID;
+        this._layerHeight = Y_LAYERHEIGHT_INVALID;
         /** @member {number} **/
-        this._layerCount                 = Y_LAYERCOUNT_INVALID;
+        this._layerCount = Y_LAYERCOUNT_INVALID;
         /** @member {string} **/
-        this._command                    = Y_COMMAND_INVALID;
+        this._command = Y_COMMAND_INVALID;
         this.imm_setConst({
-            ENABLED_FALSE                : 0,
-            ENABLED_TRUE                 : 1,
-            ENABLED_INVALID              : -1,
-            STARTUPSEQ_INVALID           : YAPI.INVALID_STRING,
-            BRIGHTNESS_INVALID           : YAPI.INVALID_UINT,
-            ORIENTATION_LEFT             : 0,
-            ORIENTATION_UP               : 1,
-            ORIENTATION_RIGHT            : 2,
-            ORIENTATION_DOWN             : 3,
-            ORIENTATION_INVALID          : -1,
-            DISPLAYWIDTH_INVALID         : YAPI.INVALID_UINT,
-            DISPLAYHEIGHT_INVALID        : YAPI.INVALID_UINT,
-            DISPLAYTYPE_MONO             : 0,
-            DISPLAYTYPE_GRAY             : 1,
-            DISPLAYTYPE_RGB              : 2,
-            DISPLAYTYPE_INVALID          : -1,
-            LAYERWIDTH_INVALID           : YAPI.INVALID_UINT,
-            LAYERHEIGHT_INVALID          : YAPI.INVALID_UINT,
-            LAYERCOUNT_INVALID           : YAPI.INVALID_UINT,
-            COMMAND_INVALID              : YAPI.INVALID_STRING
+            ENABLED_FALSE: 0,
+            ENABLED_TRUE: 1,
+            ENABLED_INVALID: -1,
+            STARTUPSEQ_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            BRIGHTNESS_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            ORIENTATION_LEFT: 0,
+            ORIENTATION_UP: 1,
+            ORIENTATION_RIGHT: 2,
+            ORIENTATION_DOWN: 3,
+            ORIENTATION_INVALID: -1,
+            DISPLAYWIDTH_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            DISPLAYHEIGHT_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            DISPLAYTYPE_MONO: 0,
+            DISPLAYTYPE_GRAY: 1,
+            DISPLAYTYPE_RGB: 2,
+            DISPLAYTYPE_INVALID: -1,
+            LAYERWIDTH_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            LAYERHEIGHT_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            LAYERCOUNT_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            COMMAND_INVALID: _yocto_api.YAPI.INVALID_STRING
         });
         //--- (end of generated code: YDisplay constructor)
-        
+
         this._allDisplayLayers;
-        this._sequence         = '';
-        this._recording        = false;
+        this._sequence = '';
+        this._recording = false;
     }
 
     //--- (generated code: YDisplay implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'enabled':
-            this._enabled = parseInt(val);
-            return 1;
-        case 'startupSeq':
-            this._startupSeq = val;
-            return 1;
-        case 'brightness':
-            this._brightness = parseInt(val);
-            return 1;
-        case 'orientation':
-            this._orientation = parseInt(val);
-            return 1;
-        case 'displayWidth':
-            this._displayWidth = parseInt(val);
-            return 1;
-        case 'displayHeight':
-            this._displayHeight = parseInt(val);
-            return 1;
-        case 'displayType':
-            this._displayType = parseInt(val);
-            return 1;
-        case 'layerWidth':
-            this._layerWidth = parseInt(val);
-            return 1;
-        case 'layerHeight':
-            this._layerHeight = parseInt(val);
-            return 1;
-        case 'layerCount':
-            this._layerCount = parseInt(val);
-            return 1;
-        case 'command':
-            this._command = val;
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'enabled':
+                this._enabled = parseInt(val);
+                return 1;
+            case 'startupSeq':
+                this._startupSeq = val;
+                return 1;
+            case 'brightness':
+                this._brightness = parseInt(val);
+                return 1;
+            case 'orientation':
+                this._orientation = parseInt(val);
+                return 1;
+            case 'displayWidth':
+                this._displayWidth = parseInt(val);
+                return 1;
+            case 'displayHeight':
+                this._displayHeight = parseInt(val);
+                return 1;
+            case 'displayType':
+                this._displayType = parseInt(val);
+                return 1;
+            case 'layerWidth':
+                this._layerWidth = parseInt(val);
+                return 1;
+            case 'layerHeight':
+                this._layerHeight = parseInt(val);
+                return 1;
+            case 'layerCount':
+                this._layerCount = parseInt(val);
+                return 1;
+            case 'command':
+                this._command = val;
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -800,14 +905,17 @@ export class YDisplay extends YFunction
      *
      * On failure, throws an exception or returns YDisplay.ENABLED_INVALID.
      */
-    async get_enabled()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_ENABLED_INVALID;
+    get_enabled() {
+        var _this35 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this35._cacheExpiration <= _this35._yapi.GetTickCount()) {
+                if ((yield _this35.load(_this35._yapi.defaultCacheValidity)) != _this35._yapi.SUCCESS) {
+                    return Y_ENABLED_INVALID;
+                }
             }
-        }
-        return this._enabled;
+            return _this35._enabled;
+        })();
     }
 
     /**
@@ -820,12 +928,15 @@ export class YDisplay extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_enabled(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('enabled',rest_val);
+    set_enabled(newval) {
+        var _this36 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this36._setAttr('enabled', rest_val);
+        })();
     }
 
     /**
@@ -835,14 +946,17 @@ export class YDisplay extends YFunction
      *
      * On failure, throws an exception or returns YDisplay.STARTUPSEQ_INVALID.
      */
-    async get_startupSeq()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_STARTUPSEQ_INVALID;
+    get_startupSeq() {
+        var _this37 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this37._cacheExpiration <= _this37._yapi.GetTickCount()) {
+                if ((yield _this37.load(_this37._yapi.defaultCacheValidity)) != _this37._yapi.SUCCESS) {
+                    return Y_STARTUPSEQ_INVALID;
+                }
             }
-        }
-        return this._startupSeq;
+            return _this37._startupSeq;
+        })();
     }
 
     /**
@@ -857,12 +971,15 @@ export class YDisplay extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_startupSeq(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('startupSeq',rest_val);
+    set_startupSeq(newval) {
+        var _this38 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this38._setAttr('startupSeq', rest_val);
+        })();
     }
 
     /**
@@ -872,14 +989,17 @@ export class YDisplay extends YFunction
      *
      * On failure, throws an exception or returns YDisplay.BRIGHTNESS_INVALID.
      */
-    async get_brightness()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_BRIGHTNESS_INVALID;
+    get_brightness() {
+        var _this39 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this39._cacheExpiration <= _this39._yapi.GetTickCount()) {
+                if ((yield _this39.load(_this39._yapi.defaultCacheValidity)) != _this39._yapi.SUCCESS) {
+                    return Y_BRIGHTNESS_INVALID;
+                }
             }
-        }
-        return this._brightness;
+            return _this39._brightness;
+        })();
     }
 
     /**
@@ -893,12 +1013,15 @@ export class YDisplay extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_brightness(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('brightness',rest_val);
+    set_brightness(newval) {
+        var _this40 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this40._setAttr('brightness', rest_val);
+        })();
     }
 
     /**
@@ -910,14 +1033,17 @@ export class YDisplay extends YFunction
      *
      * On failure, throws an exception or returns YDisplay.ORIENTATION_INVALID.
      */
-    async get_orientation()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_ORIENTATION_INVALID;
+    get_orientation() {
+        var _this41 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this41._cacheExpiration <= _this41._yapi.GetTickCount()) {
+                if ((yield _this41.load(_this41._yapi.defaultCacheValidity)) != _this41._yapi.SUCCESS) {
+                    return Y_ORIENTATION_INVALID;
+                }
             }
-        }
-        return this._orientation;
+            return _this41._orientation;
+        })();
     }
 
     /**
@@ -931,12 +1057,15 @@ export class YDisplay extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_orientation(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('orientation',rest_val);
+    set_orientation(newval) {
+        var _this42 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this42._setAttr('orientation', rest_val);
+        })();
     }
 
     /**
@@ -946,14 +1075,17 @@ export class YDisplay extends YFunction
      *
      * On failure, throws an exception or returns YDisplay.DISPLAYWIDTH_INVALID.
      */
-    async get_displayWidth()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_DISPLAYWIDTH_INVALID;
+    get_displayWidth() {
+        var _this43 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this43._cacheExpiration <= _this43._yapi.GetTickCount()) {
+                if ((yield _this43.load(_this43._yapi.defaultCacheValidity)) != _this43._yapi.SUCCESS) {
+                    return Y_DISPLAYWIDTH_INVALID;
+                }
             }
-        }
-        return this._displayWidth;
+            return _this43._displayWidth;
+        })();
     }
 
     /**
@@ -963,14 +1095,17 @@ export class YDisplay extends YFunction
      *
      * On failure, throws an exception or returns YDisplay.DISPLAYHEIGHT_INVALID.
      */
-    async get_displayHeight()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_DISPLAYHEIGHT_INVALID;
+    get_displayHeight() {
+        var _this44 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this44._cacheExpiration <= _this44._yapi.GetTickCount()) {
+                if ((yield _this44.load(_this44._yapi.defaultCacheValidity)) != _this44._yapi.SUCCESS) {
+                    return Y_DISPLAYHEIGHT_INVALID;
+                }
             }
-        }
-        return this._displayHeight;
+            return _this44._displayHeight;
+        })();
     }
 
     /**
@@ -981,14 +1116,17 @@ export class YDisplay extends YFunction
      *
      * On failure, throws an exception or returns YDisplay.DISPLAYTYPE_INVALID.
      */
-    async get_displayType()
-    {
-        if (this._cacheExpiration == 0) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_DISPLAYTYPE_INVALID;
+    get_displayType() {
+        var _this45 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this45._cacheExpiration == 0) {
+                if ((yield _this45.load(_this45._yapi.defaultCacheValidity)) != _this45._yapi.SUCCESS) {
+                    return Y_DISPLAYTYPE_INVALID;
+                }
             }
-        }
-        return this._displayType;
+            return _this45._displayType;
+        })();
     }
 
     /**
@@ -998,14 +1136,17 @@ export class YDisplay extends YFunction
      *
      * On failure, throws an exception or returns YDisplay.LAYERWIDTH_INVALID.
      */
-    async get_layerWidth()
-    {
-        if (this._cacheExpiration == 0) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_LAYERWIDTH_INVALID;
+    get_layerWidth() {
+        var _this46 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this46._cacheExpiration == 0) {
+                if ((yield _this46.load(_this46._yapi.defaultCacheValidity)) != _this46._yapi.SUCCESS) {
+                    return Y_LAYERWIDTH_INVALID;
+                }
             }
-        }
-        return this._layerWidth;
+            return _this46._layerWidth;
+        })();
     }
 
     /**
@@ -1015,14 +1156,17 @@ export class YDisplay extends YFunction
      *
      * On failure, throws an exception or returns YDisplay.LAYERHEIGHT_INVALID.
      */
-    async get_layerHeight()
-    {
-        if (this._cacheExpiration == 0) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_LAYERHEIGHT_INVALID;
+    get_layerHeight() {
+        var _this47 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this47._cacheExpiration == 0) {
+                if ((yield _this47.load(_this47._yapi.defaultCacheValidity)) != _this47._yapi.SUCCESS) {
+                    return Y_LAYERHEIGHT_INVALID;
+                }
             }
-        }
-        return this._layerHeight;
+            return _this47._layerHeight;
+        })();
     }
 
     /**
@@ -1032,32 +1176,41 @@ export class YDisplay extends YFunction
      *
      * On failure, throws an exception or returns YDisplay.LAYERCOUNT_INVALID.
      */
-    async get_layerCount()
-    {
-        if (this._cacheExpiration == 0) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_LAYERCOUNT_INVALID;
+    get_layerCount() {
+        var _this48 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this48._cacheExpiration == 0) {
+                if ((yield _this48.load(_this48._yapi.defaultCacheValidity)) != _this48._yapi.SUCCESS) {
+                    return Y_LAYERCOUNT_INVALID;
+                }
             }
-        }
-        return this._layerCount;
+            return _this48._layerCount;
+        })();
     }
 
-    async get_command()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_COMMAND_INVALID;
+    get_command() {
+        var _this49 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this49._cacheExpiration <= _this49._yapi.GetTickCount()) {
+                if ((yield _this49.load(_this49._yapi.defaultCacheValidity)) != _this49._yapi.SUCCESS) {
+                    return Y_COMMAND_INVALID;
+                }
             }
-        }
-        return this._command;
+            return _this49._command;
+        })();
     }
 
-    async set_command(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('command',rest_val);
+    set_command(newval) {
+        var _this50 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this50._setAttr('command', rest_val);
+        })();
     }
 
     /**
@@ -1083,14 +1236,13 @@ export class YDisplay extends YFunction
      *
      * @return {YDisplay} a YDisplay object allowing you to drive the display.
      */
-    static FindDisplay(func)
-    {
+    static FindDisplay(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('Display', func);
+        obj = _yocto_api.YFunction._FindFromCache('Display', func);
         if (obj == null) {
-            obj = new YDisplay(YAPI, func);
-            YFunction._AddToCache('Display',  func, obj);
+            obj = new YDisplay(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('Display', func, obj);
         }
         return obj;
     }
@@ -1119,14 +1271,13 @@ export class YDisplay extends YFunction
      *
      * @return {YDisplay} a YDisplay object allowing you to drive the display.
      */
-    static FindDisplayInContext(yctx,func)
-    {
+    static FindDisplayInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'Display', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Display', func);
         if (obj == null) {
             obj = new YDisplay(yctx, func);
-            YFunction._AddToCache('Display',  func, obj);
+            _yocto_api.YFunction._AddToCache('Display', func, obj);
         }
         return obj;
     }
@@ -1140,11 +1291,14 @@ export class YDisplay extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async resetAll()
-    {
-        await this.flushLayers();
-        await this.resetHiddenLayerFlags();
-        return await this.sendCommand('Z');
+    resetAll() {
+        var _this51 = this;
+
+        return _asyncToGenerator(function* () {
+            yield _this51.flushLayers();
+            yield _this51.resetHiddenLayerFlags();
+            return yield _this51.sendCommand('Z');
+        })();
     }
 
     /**
@@ -1158,10 +1312,13 @@ export class YDisplay extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async fade(brightness,duration)
-    {
-        await this.flushLayers();
-        return await this.sendCommand('+'+String(Math.round(brightness))+','+String(Math.round(duration)));
+    fade(brightness, duration) {
+        var _this52 = this;
+
+        return _asyncToGenerator(function* () {
+            yield _this52.flushLayers();
+            return yield _this52.sendCommand('+' + String(Math.round(brightness)) + ',' + String(Math.round(duration)));
+        })();
     }
 
     /**
@@ -1173,12 +1330,15 @@ export class YDisplay extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async newSequence()
-    {
-        await this.flushLayers();
-        this._sequence = '';
-        this._recording = true;
-        return this._yapi.SUCCESS;
+    newSequence() {
+        var _this53 = this;
+
+        return _asyncToGenerator(function* () {
+            yield _this53.flushLayers();
+            _this53._sequence = '';
+            _this53._recording = true;
+            return _this53._yapi.SUCCESS;
+        })();
     }
 
     /**
@@ -1192,14 +1352,17 @@ export class YDisplay extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async saveSequence(sequenceName)
-    {
-        await this.flushLayers();
-        this._recording = false;
-        await this._upload(sequenceName, this._yapi.imm_str2bin(this._sequence));
-        //We need to use YPRINTF("") for Objective-C
-        this._sequence = '';
-        return this._yapi.SUCCESS;
+    saveSequence(sequenceName) {
+        var _this54 = this;
+
+        return _asyncToGenerator(function* () {
+            yield _this54.flushLayers();
+            _this54._recording = false;
+            yield _this54._upload(sequenceName, _this54._yapi.imm_str2bin(_this54._sequence));
+            //We need to use YPRINTF("") for Objective-C
+            _this54._sequence = '';
+            return _this54._yapi.SUCCESS;
+        })();
     }
 
     /**
@@ -1212,10 +1375,13 @@ export class YDisplay extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async playSequence(sequenceName)
-    {
-        await this.flushLayers();
-        return await this.sendCommand('S'+sequenceName);
+    playSequence(sequenceName) {
+        var _this55 = this;
+
+        return _asyncToGenerator(function* () {
+            yield _this55.flushLayers();
+            return yield _this55.sendCommand('S' + sequenceName);
+        })();
     }
 
     /**
@@ -1232,10 +1398,13 @@ export class YDisplay extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async pauseSequence(delay_ms)
-    {
-        await this.flushLayers();
-        return await this.sendCommand('W'+String(Math.round(delay_ms)));
+    pauseSequence(delay_ms) {
+        var _this56 = this;
+
+        return _asyncToGenerator(function* () {
+            yield _this56.flushLayers();
+            return yield _this56.sendCommand('W' + String(Math.round(delay_ms)));
+        })();
     }
 
     /**
@@ -1246,10 +1415,13 @@ export class YDisplay extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async stopSequence()
-    {
-        await this.flushLayers();
-        return await this.sendCommand('S');
+    stopSequence() {
+        var _this57 = this;
+
+        return _asyncToGenerator(function* () {
+            yield _this57.flushLayers();
+            return yield _this57.sendCommand('S');
+        })();
     }
 
     /**
@@ -1264,9 +1436,12 @@ export class YDisplay extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async upload(pathname,content)
-    {
-        return await this._upload(pathname, content);
+    upload(pathname, content) {
+        var _this58 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this58._upload(pathname, content);
+        })();
     }
 
     /**
@@ -1283,10 +1458,13 @@ export class YDisplay extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async copyLayerContent(srcLayerId,dstLayerId)
-    {
-        await this.flushLayers();
-        return await this.sendCommand('o'+String(Math.round(srcLayerId))+','+String(Math.round(dstLayerId)));
+    copyLayerContent(srcLayerId, dstLayerId) {
+        var _this59 = this;
+
+        return _asyncToGenerator(function* () {
+            yield _this59.flushLayers();
+            return yield _this59.sendCommand('o' + String(Math.round(srcLayerId)) + ',' + String(Math.round(dstLayerId)));
+        })();
     }
 
     /**
@@ -1304,10 +1482,13 @@ export class YDisplay extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async swapLayerContent(layerIdA,layerIdB)
-    {
-        await this.flushLayers();
-        return await this.sendCommand('E'+String(Math.round(layerIdA))+','+String(Math.round(layerIdB)));
+    swapLayerContent(layerIdA, layerIdB) {
+        var _this60 = this;
+
+        return _asyncToGenerator(function* () {
+            yield _this60.flushLayers();
+            return yield _this60.sendCommand('E' + String(Math.round(layerIdA)) + ',' + String(Math.round(layerIdB)));
+        })();
     }
 
     /**
@@ -1317,14 +1498,13 @@ export class YDisplay extends YFunction
      *         a display currently online, or a null pointer
      *         if there are no more displays to enumerate.
      */
-    nextDisplay()
-    {
+    nextDisplay() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YDisplay.FindDisplayInContext(this._yapi, next_hwid);
     }
 
@@ -1337,11 +1517,10 @@ export class YDisplay extends YFunction
      *         the first display currently online, or a null pointer
      *         if there are none.
      */
-    static FirstDisplay()
-    {
+    static FirstDisplay() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('Display');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('Display');
+        if (next_hwid == null) return null;
         return YDisplay.FindDisplay(next_hwid);
     }
 
@@ -1356,11 +1535,10 @@ export class YDisplay extends YFunction
      *         the first display currently online, or a null pointer
      *         if there are none.
      */
-    static FirstDisplayInContext(yctx)
-    {
+    static FirstDisplayInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('Display');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YDisplay.FindDisplayInContext(yctx, next_hwid);
     }
 
@@ -1377,52 +1555,64 @@ export class YDisplay extends YFunction
      *
      * On failure, throws an exception or returns null.
      */
-    async get_displayLayer(layerId)
-    {
-        if (!this._allDisplayLayers) {
-            var nb_display_layer = await this.get_layerCount();
-            this._allDisplayLayers = [];
-            for(var i=0; i < nb_display_layer; i++) {
-                this._allDisplayLayers[i] = new YDisplayLayer(this, ''+i);
+    get_displayLayer(layerId) {
+        var _this61 = this;
+
+        return _asyncToGenerator(function* () {
+            if (!_this61._allDisplayLayers) {
+                var nb_display_layer = yield _this61.get_layerCount();
+                _this61._allDisplayLayers = [];
+                for (var i = 0; i < nb_display_layer; i++) {
+                    _this61._allDisplayLayers[i] = new YDisplayLayer(_this61, '' + i);
+                }
             }
-        }
-        if(layerId < 0 || layerId >= this._allDisplayLayers.length) {
-            throw new YAPI_Exception(YAPI.INVALID_ARGUMENT, 'Invalid layerId');
-        }
-        return this._allDisplayLayers[layerId];
-    }
-    
-    async flushLayers()
-    {
-        if(this._allDisplayLayers) {
-            for(var i = 0; i < this._allDisplayLayers.length; i++) {
-                await this._allDisplayLayers[i].flush_now();
+            if (layerId < 0 || layerId >= _this61._allDisplayLayers.length) {
+                throw new YAPI_Exception(_yocto_api.YAPI.INVALID_ARGUMENT, 'Invalid layerId');
             }
-        }
-        return YAPI_SUCCESS;
-    }
-    
-    async resetHiddenLayerFlags()
-    {
-        if(this._allDisplayLayers) {
-            for(var i = 0; i < this._allDisplayLayers.length; i++) {
-                await this._allDisplayLayers[i].resetHiddenFlag();
-            }
-        }
+            return _this61._allDisplayLayers[layerId];
+        })();
     }
 
-    async sendCommand(cmd)
-    {
-        if(!this._recording) {
-            // ignore call when there is no ongoing sequence
-            return await this.set_command(cmd);
-        }
-        this._sequence += cmd+'\n';
-        return YAPI_SUCCESS;
-    }    
+    flushLayers() {
+        var _this62 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this62._allDisplayLayers) {
+                for (var i = 0; i < _this62._allDisplayLayers.length; i++) {
+                    yield _this62._allDisplayLayers[i].flush_now();
+                }
+            }
+            return _yocto_api.YAPI_SUCCESS;
+        })();
+    }
+
+    resetHiddenLayerFlags() {
+        var _this63 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this63._allDisplayLayers) {
+                for (var i = 0; i < _this63._allDisplayLayers.length; i++) {
+                    yield _this63._allDisplayLayers[i].resetHiddenFlag();
+                }
+            }
+        })();
+    }
+
+    sendCommand(cmd) {
+        var _this64 = this;
+
+        return _asyncToGenerator(function* () {
+            if (!_this64._recording) {
+                // ignore call when there is no ongoing sequence
+                return yield _this64.set_command(cmd);
+            }
+            _this64._sequence += cmd + '\n';
+            return _yocto_api.YAPI_SUCCESS;
+        })();
+    }
 }
 
-//--- (generated code: Display functions)
+exports.YDisplay = YDisplay; //--- (generated code: Display functions)
 
 /**
  * Retrieves a display for a given identifier.
@@ -1447,8 +1637,8 @@ export class YDisplay extends YFunction
  *
  * @return {YDisplay} a YDisplay object allowing you to drive the display.
  */
-export function yFindDisplay(func)
-{
+
+function yFindDisplay(func) {
     return YDisplay.FindDisplay(func);
 }
 
@@ -1461,11 +1651,8 @@ export function yFindDisplay(func)
  *         the first display currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstDisplay()
-{
+function yFirstDisplay() {
     return YDisplay.FirstDisplay();
 }
 
 //--- (end of generated code: Display functions)
-
-

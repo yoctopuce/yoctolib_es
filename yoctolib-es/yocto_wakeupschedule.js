@@ -38,18 +38,28 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YWakeUpSchedule = exports.Y_NEXTOCCURENCE_INVALID = exports.Y_MONTHS_INVALID = exports.Y_MONTHDAYS_INVALID = exports.Y_WEEKDAYS_INVALID = exports.Y_HOURS_INVALID = exports.Y_MINUTESB_INVALID = exports.Y_MINUTESA_INVALID = undefined;
+exports.yFindWakeUpSchedule = yFindWakeUpSchedule;
+exports.yFirstWakeUpSchedule = yFirstWakeUpSchedule;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YWakeUpSchedule return codes)
 //--- (end of YWakeUpSchedule return codes)
 //--- (YWakeUpSchedule definitions)
-export const Y_MINUTESA_INVALID              = YAPI.INVALID_UINT;
-export const Y_MINUTESB_INVALID              = YAPI.INVALID_UINT;
-export const Y_HOURS_INVALID                 = YAPI.INVALID_UINT;
-export const Y_WEEKDAYS_INVALID              = YAPI.INVALID_UINT;
-export const Y_MONTHDAYS_INVALID             = YAPI.INVALID_UINT;
-export const Y_MONTHS_INVALID                = YAPI.INVALID_UINT;
-export const Y_NEXTOCCURENCE_INVALID         = YAPI.INVALID_LONG;
+const Y_MINUTESA_INVALID = exports.Y_MINUTESA_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_MINUTESB_INVALID = exports.Y_MINUTESB_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_HOURS_INVALID = exports.Y_HOURS_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_WEEKDAYS_INVALID = exports.Y_WEEKDAYS_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_MONTHDAYS_INVALID = exports.Y_MONTHDAYS_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_MONTHS_INVALID = exports.Y_MONTHS_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_NEXTOCCURENCE_INVALID = exports.Y_NEXTOCCURENCE_INVALID = _yocto_api.YAPI.INVALID_LONG;
 //--- (end of YWakeUpSchedule definitions)
 
 //--- (YWakeUpSchedule class start)
@@ -62,66 +72,63 @@ export const Y_NEXTOCCURENCE_INVALID         = YAPI.INVALID_LONG;
  */
 //--- (end of YWakeUpSchedule class start)
 
-export class YWakeUpSchedule extends YFunction
-{
-    constructor(obj_yapi, str_func)
-    {
+class YWakeUpSchedule extends _yocto_api.YFunction {
+    constructor(obj_yapi, str_func) {
         //--- (YWakeUpSchedule constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'WakeUpSchedule';
+        this._className = 'WakeUpSchedule';
         /** @member {number} **/
-        this._minutesA                   = Y_MINUTESA_INVALID;
+        this._minutesA = Y_MINUTESA_INVALID;
         /** @member {number} **/
-        this._minutesB                   = Y_MINUTESB_INVALID;
+        this._minutesB = Y_MINUTESB_INVALID;
         /** @member {number} **/
-        this._hours                      = Y_HOURS_INVALID;
+        this._hours = Y_HOURS_INVALID;
         /** @member {number} **/
-        this._weekDays                   = Y_WEEKDAYS_INVALID;
+        this._weekDays = Y_WEEKDAYS_INVALID;
         /** @member {number} **/
-        this._monthDays                  = Y_MONTHDAYS_INVALID;
+        this._monthDays = Y_MONTHDAYS_INVALID;
         /** @member {number} **/
-        this._months                     = Y_MONTHS_INVALID;
+        this._months = Y_MONTHS_INVALID;
         /** @member {number} **/
-        this._nextOccurence              = Y_NEXTOCCURENCE_INVALID;
+        this._nextOccurence = Y_NEXTOCCURENCE_INVALID;
         this.imm_setConst({
-            MINUTESA_INVALID             : YAPI.INVALID_UINT,
-            MINUTESB_INVALID             : YAPI.INVALID_UINT,
-            HOURS_INVALID                : YAPI.INVALID_UINT,
-            WEEKDAYS_INVALID             : YAPI.INVALID_UINT,
-            MONTHDAYS_INVALID            : YAPI.INVALID_UINT,
-            MONTHS_INVALID               : YAPI.INVALID_UINT,
-            NEXTOCCURENCE_INVALID        : YAPI.INVALID_LONG
+            MINUTESA_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            MINUTESB_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            HOURS_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            WEEKDAYS_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            MONTHDAYS_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            MONTHS_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            NEXTOCCURENCE_INVALID: _yocto_api.YAPI.INVALID_LONG
         });
         //--- (end of YWakeUpSchedule constructor)
     }
 
     //--- (YWakeUpSchedule implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'minutesA':
-            this._minutesA = parseInt(val);
-            return 1;
-        case 'minutesB':
-            this._minutesB = parseInt(val);
-            return 1;
-        case 'hours':
-            this._hours = parseInt(val);
-            return 1;
-        case 'weekDays':
-            this._weekDays = parseInt(val);
-            return 1;
-        case 'monthDays':
-            this._monthDays = parseInt(val);
-            return 1;
-        case 'months':
-            this._months = parseInt(val);
-            return 1;
-        case 'nextOccurence':
-            this._nextOccurence = parseInt(val);
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'minutesA':
+                this._minutesA = parseInt(val);
+                return 1;
+            case 'minutesB':
+                this._minutesB = parseInt(val);
+                return 1;
+            case 'hours':
+                this._hours = parseInt(val);
+                return 1;
+            case 'weekDays':
+                this._weekDays = parseInt(val);
+                return 1;
+            case 'monthDays':
+                this._monthDays = parseInt(val);
+                return 1;
+            case 'months':
+                this._months = parseInt(val);
+                return 1;
+            case 'nextOccurence':
+                this._nextOccurence = parseInt(val);
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -134,14 +141,17 @@ export class YWakeUpSchedule extends YFunction
      *
      * On failure, throws an exception or returns YWakeUpSchedule.MINUTESA_INVALID.
      */
-    async get_minutesA()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_MINUTESA_INVALID;
+    get_minutesA() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
+                    return Y_MINUTESA_INVALID;
+                }
             }
-        }
-        return this._minutesA;
+            return _this._minutesA;
+        })();
     }
 
     /**
@@ -154,12 +164,15 @@ export class YWakeUpSchedule extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_minutesA(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('minutesA',rest_val);
+    set_minutesA(newval) {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this2._setAttr('minutesA', rest_val);
+        })();
     }
 
     /**
@@ -169,14 +182,17 @@ export class YWakeUpSchedule extends YFunction
      *
      * On failure, throws an exception or returns YWakeUpSchedule.MINUTESB_INVALID.
      */
-    async get_minutesB()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_MINUTESB_INVALID;
+    get_minutesB() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
+                    return Y_MINUTESB_INVALID;
+                }
             }
-        }
-        return this._minutesB;
+            return _this3._minutesB;
+        })();
     }
 
     /**
@@ -189,12 +205,15 @@ export class YWakeUpSchedule extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_minutesB(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('minutesB',rest_val);
+    set_minutesB(newval) {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this4._setAttr('minutesB', rest_val);
+        })();
     }
 
     /**
@@ -204,14 +223,17 @@ export class YWakeUpSchedule extends YFunction
      *
      * On failure, throws an exception or returns YWakeUpSchedule.HOURS_INVALID.
      */
-    async get_hours()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_HOURS_INVALID;
+    get_hours() {
+        var _this5 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this5._cacheExpiration <= _this5._yapi.GetTickCount()) {
+                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _this5._yapi.SUCCESS) {
+                    return Y_HOURS_INVALID;
+                }
             }
-        }
-        return this._hours;
+            return _this5._hours;
+        })();
     }
 
     /**
@@ -223,12 +245,15 @@ export class YWakeUpSchedule extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_hours(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('hours',rest_val);
+    set_hours(newval) {
+        var _this6 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this6._setAttr('hours', rest_val);
+        })();
     }
 
     /**
@@ -238,14 +263,17 @@ export class YWakeUpSchedule extends YFunction
      *
      * On failure, throws an exception or returns YWakeUpSchedule.WEEKDAYS_INVALID.
      */
-    async get_weekDays()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_WEEKDAYS_INVALID;
+    get_weekDays() {
+        var _this7 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this7._cacheExpiration <= _this7._yapi.GetTickCount()) {
+                if ((yield _this7.load(_this7._yapi.defaultCacheValidity)) != _this7._yapi.SUCCESS) {
+                    return Y_WEEKDAYS_INVALID;
+                }
             }
-        }
-        return this._weekDays;
+            return _this7._weekDays;
+        })();
     }
 
     /**
@@ -257,12 +285,15 @@ export class YWakeUpSchedule extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_weekDays(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('weekDays',rest_val);
+    set_weekDays(newval) {
+        var _this8 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this8._setAttr('weekDays', rest_val);
+        })();
     }
 
     /**
@@ -272,14 +303,17 @@ export class YWakeUpSchedule extends YFunction
      *
      * On failure, throws an exception or returns YWakeUpSchedule.MONTHDAYS_INVALID.
      */
-    async get_monthDays()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_MONTHDAYS_INVALID;
+    get_monthDays() {
+        var _this9 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this9._cacheExpiration <= _this9._yapi.GetTickCount()) {
+                if ((yield _this9.load(_this9._yapi.defaultCacheValidity)) != _this9._yapi.SUCCESS) {
+                    return Y_MONTHDAYS_INVALID;
+                }
             }
-        }
-        return this._monthDays;
+            return _this9._monthDays;
+        })();
     }
 
     /**
@@ -291,12 +325,15 @@ export class YWakeUpSchedule extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_monthDays(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('monthDays',rest_val);
+    set_monthDays(newval) {
+        var _this10 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this10._setAttr('monthDays', rest_val);
+        })();
     }
 
     /**
@@ -306,14 +343,17 @@ export class YWakeUpSchedule extends YFunction
      *
      * On failure, throws an exception or returns YWakeUpSchedule.MONTHS_INVALID.
      */
-    async get_months()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_MONTHS_INVALID;
+    get_months() {
+        var _this11 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this11._cacheExpiration <= _this11._yapi.GetTickCount()) {
+                if ((yield _this11.load(_this11._yapi.defaultCacheValidity)) != _this11._yapi.SUCCESS) {
+                    return Y_MONTHS_INVALID;
+                }
             }
-        }
-        return this._months;
+            return _this11._months;
+        })();
     }
 
     /**
@@ -325,12 +365,15 @@ export class YWakeUpSchedule extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_months(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('months',rest_val);
+    set_months(newval) {
+        var _this12 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this12._setAttr('months', rest_val);
+        })();
     }
 
     /**
@@ -340,14 +383,17 @@ export class YWakeUpSchedule extends YFunction
      *
      * On failure, throws an exception or returns YWakeUpSchedule.NEXTOCCURENCE_INVALID.
      */
-    async get_nextOccurence()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_NEXTOCCURENCE_INVALID;
+    get_nextOccurence() {
+        var _this13 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this13._cacheExpiration <= _this13._yapi.GetTickCount()) {
+                if ((yield _this13.load(_this13._yapi.defaultCacheValidity)) != _this13._yapi.SUCCESS) {
+                    return Y_NEXTOCCURENCE_INVALID;
+                }
             }
-        }
-        return this._nextOccurence;
+            return _this13._nextOccurence;
+        })();
     }
 
     /**
@@ -373,14 +419,13 @@ export class YWakeUpSchedule extends YFunction
      *
      * @return {YWakeUpSchedule} a YWakeUpSchedule object allowing you to drive the wake up schedule.
      */
-    static FindWakeUpSchedule(func)
-    {
+    static FindWakeUpSchedule(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('WakeUpSchedule', func);
+        obj = _yocto_api.YFunction._FindFromCache('WakeUpSchedule', func);
         if (obj == null) {
-            obj = new YWakeUpSchedule(YAPI, func);
-            YFunction._AddToCache('WakeUpSchedule',  func, obj);
+            obj = new YWakeUpSchedule(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('WakeUpSchedule', func, obj);
         }
         return obj;
     }
@@ -409,14 +454,13 @@ export class YWakeUpSchedule extends YFunction
      *
      * @return {YWakeUpSchedule} a YWakeUpSchedule object allowing you to drive the wake up schedule.
      */
-    static FindWakeUpScheduleInContext(yctx,func)
-    {
+    static FindWakeUpScheduleInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'WakeUpSchedule', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'WakeUpSchedule', func);
         if (obj == null) {
             obj = new YWakeUpSchedule(yctx, func);
-            YFunction._AddToCache('WakeUpSchedule',  func, obj);
+            _yocto_api.YFunction._AddToCache('WakeUpSchedule', func, obj);
         }
         return obj;
     }
@@ -424,15 +468,18 @@ export class YWakeUpSchedule extends YFunction
     /**
      * Returns all the minutes of each hour that are scheduled for wake up.
      */
-    async get_minutes()
-    {
-        /** @type {number} **/
-        let res;
-        // may throw an exception
-        res = await this.get_minutesB();
-        res = ((res) << (30));
-        res = res + await this.get_minutesA();
-        return res;
+    get_minutes() {
+        var _this14 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let res;
+            // may throw an exception
+            res = yield _this14.get_minutesB();
+            res = res << 30;
+            res = res + (yield _this14.get_minutesA());
+            return res;
+        })();
     }
 
     /**
@@ -444,11 +491,14 @@ export class YWakeUpSchedule extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_minutes(bitmap)
-    {
-        await this.set_minutesA(((bitmap) & (0x3fffffff)));
-        bitmap = ((bitmap) >> (30));
-        return await this.set_minutesB(((bitmap) & (0x3fffffff)));
+    set_minutes(bitmap) {
+        var _this15 = this;
+
+        return _asyncToGenerator(function* () {
+            yield _this15.set_minutesA(bitmap & 0x3fffffff);
+            bitmap = bitmap >> 30;
+            return yield _this15.set_minutesB(bitmap & 0x3fffffff);
+        })();
     }
 
     /**
@@ -458,14 +508,13 @@ export class YWakeUpSchedule extends YFunction
      *         a wake up schedule currently online, or a null pointer
      *         if there are no more wake up schedules to enumerate.
      */
-    nextWakeUpSchedule()
-    {
+    nextWakeUpSchedule() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YWakeUpSchedule.FindWakeUpScheduleInContext(this._yapi, next_hwid);
     }
 
@@ -478,11 +527,10 @@ export class YWakeUpSchedule extends YFunction
      *         the first wake up schedule currently online, or a null pointer
      *         if there are none.
      */
-    static FirstWakeUpSchedule()
-    {
+    static FirstWakeUpSchedule() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('WakeUpSchedule');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('WakeUpSchedule');
+        if (next_hwid == null) return null;
         return YWakeUpSchedule.FindWakeUpSchedule(next_hwid);
     }
 
@@ -497,18 +545,17 @@ export class YWakeUpSchedule extends YFunction
      *         the first wake up schedule currently online, or a null pointer
      *         if there are none.
      */
-    static FirstWakeUpScheduleInContext(yctx)
-    {
+    static FirstWakeUpScheduleInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('WakeUpSchedule');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YWakeUpSchedule.FindWakeUpScheduleInContext(yctx, next_hwid);
     }
 
     //--- (end of YWakeUpSchedule implementation)
 }
 
-//--- (WakeUpSchedule functions)
+exports.YWakeUpSchedule = YWakeUpSchedule; //--- (WakeUpSchedule functions)
 
 /**
  * Retrieves a wake up schedule for a given identifier.
@@ -533,8 +580,8 @@ export class YWakeUpSchedule extends YFunction
  *
  * @return {YWakeUpSchedule} a YWakeUpSchedule object allowing you to drive the wake up schedule.
  */
-export function yFindWakeUpSchedule(func)
-{
+
+function yFindWakeUpSchedule(func) {
     return YWakeUpSchedule.FindWakeUpSchedule(func);
 }
 
@@ -547,8 +594,7 @@ export function yFindWakeUpSchedule(func)
  *         the first wake up schedule currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstWakeUpSchedule()
-{
+function yFirstWakeUpSchedule() {
     return YWakeUpSchedule.FirstWakeUpSchedule();
 }
 

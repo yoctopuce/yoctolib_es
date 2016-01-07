@@ -38,7 +38,15 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YGroundSpeed = undefined;
+exports.yFindGroundSpeed = yFindGroundSpeed;
+exports.yFirstGroundSpeed = yFirstGroundSpeed;
+
+var _yocto_api = require('./yocto_api');
 
 //--- (YGroundSpeed return codes)
 //--- (end of YGroundSpeed return codes)
@@ -56,14 +64,12 @@ import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yoc
  */
 //--- (end of YGroundSpeed class start)
 
-export class YGroundSpeed extends YSensor
-{
-    constructor(obj_yapi, str_func)
-    {
+class YGroundSpeed extends _yocto_api.YSensor {
+    constructor(obj_yapi, str_func) {
         //--- (YGroundSpeed constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'GroundSpeed';
+        this._className = 'GroundSpeed';
         //--- (end of YGroundSpeed constructor)
     }
 
@@ -92,14 +98,13 @@ export class YGroundSpeed extends YSensor
      *
      * @return {YGroundSpeed} a YGroundSpeed object allowing you to drive the ground speed sensor.
      */
-    static FindGroundSpeed(func)
-    {
+    static FindGroundSpeed(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('GroundSpeed', func);
+        obj = _yocto_api.YFunction._FindFromCache('GroundSpeed', func);
         if (obj == null) {
-            obj = new YGroundSpeed(YAPI, func);
-            YFunction._AddToCache('GroundSpeed',  func, obj);
+            obj = new YGroundSpeed(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('GroundSpeed', func, obj);
         }
         return obj;
     }
@@ -128,14 +133,13 @@ export class YGroundSpeed extends YSensor
      *
      * @return {YGroundSpeed} a YGroundSpeed object allowing you to drive the ground speed sensor.
      */
-    static FindGroundSpeedInContext(yctx,func)
-    {
+    static FindGroundSpeedInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'GroundSpeed', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'GroundSpeed', func);
         if (obj == null) {
             obj = new YGroundSpeed(yctx, func);
-            YFunction._AddToCache('GroundSpeed',  func, obj);
+            _yocto_api.YFunction._AddToCache('GroundSpeed', func, obj);
         }
         return obj;
     }
@@ -147,14 +151,13 @@ export class YGroundSpeed extends YSensor
      *         a ground speed sensor currently online, or a null pointer
      *         if there are no more ground speed sensors to enumerate.
      */
-    nextGroundSpeed()
-    {
+    nextGroundSpeed() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YGroundSpeed.FindGroundSpeedInContext(this._yapi, next_hwid);
     }
 
@@ -167,11 +170,10 @@ export class YGroundSpeed extends YSensor
      *         the first ground speed sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstGroundSpeed()
-    {
+    static FirstGroundSpeed() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('GroundSpeed');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('GroundSpeed');
+        if (next_hwid == null) return null;
         return YGroundSpeed.FindGroundSpeed(next_hwid);
     }
 
@@ -186,18 +188,17 @@ export class YGroundSpeed extends YSensor
      *         the first ground speed sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstGroundSpeedInContext(yctx)
-    {
+    static FirstGroundSpeedInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('GroundSpeed');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YGroundSpeed.FindGroundSpeedInContext(yctx, next_hwid);
     }
 
     //--- (end of YGroundSpeed implementation)
 }
 
-//--- (GroundSpeed functions)
+exports.YGroundSpeed = YGroundSpeed; //--- (GroundSpeed functions)
 
 /**
  * Retrieves a ground speed sensor for a given identifier.
@@ -222,8 +223,8 @@ export class YGroundSpeed extends YSensor
  *
  * @return {YGroundSpeed} a YGroundSpeed object allowing you to drive the ground speed sensor.
  */
-export function yFindGroundSpeed(func)
-{
+
+function yFindGroundSpeed(func) {
     return YGroundSpeed.FindGroundSpeed(func);
 }
 
@@ -236,8 +237,7 @@ export function yFindGroundSpeed(func)
  *         the first ground speed sensor currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstGroundSpeed()
-{
+function yFirstGroundSpeed() {
     return YGroundSpeed.FirstGroundSpeed();
 }
 

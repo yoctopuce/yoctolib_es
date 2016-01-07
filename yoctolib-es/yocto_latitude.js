@@ -38,7 +38,15 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YLatitude = undefined;
+exports.yFindLatitude = yFindLatitude;
+exports.yFirstLatitude = yFirstLatitude;
+
+var _yocto_api = require('./yocto_api');
 
 //--- (YLatitude return codes)
 //--- (end of YLatitude return codes)
@@ -56,14 +64,12 @@ import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yoc
  */
 //--- (end of YLatitude class start)
 
-export class YLatitude extends YSensor
-{
-    constructor(obj_yapi, str_func)
-    {
+class YLatitude extends _yocto_api.YSensor {
+    constructor(obj_yapi, str_func) {
         //--- (YLatitude constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'Latitude';
+        this._className = 'Latitude';
         //--- (end of YLatitude constructor)
     }
 
@@ -92,14 +98,13 @@ export class YLatitude extends YSensor
      *
      * @return {YLatitude} a YLatitude object allowing you to drive the latitude sensor.
      */
-    static FindLatitude(func)
-    {
+    static FindLatitude(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('Latitude', func);
+        obj = _yocto_api.YFunction._FindFromCache('Latitude', func);
         if (obj == null) {
-            obj = new YLatitude(YAPI, func);
-            YFunction._AddToCache('Latitude',  func, obj);
+            obj = new YLatitude(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('Latitude', func, obj);
         }
         return obj;
     }
@@ -128,14 +133,13 @@ export class YLatitude extends YSensor
      *
      * @return {YLatitude} a YLatitude object allowing you to drive the latitude sensor.
      */
-    static FindLatitudeInContext(yctx,func)
-    {
+    static FindLatitudeInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'Latitude', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Latitude', func);
         if (obj == null) {
             obj = new YLatitude(yctx, func);
-            YFunction._AddToCache('Latitude',  func, obj);
+            _yocto_api.YFunction._AddToCache('Latitude', func, obj);
         }
         return obj;
     }
@@ -147,14 +151,13 @@ export class YLatitude extends YSensor
      *         a latitude sensor currently online, or a null pointer
      *         if there are no more latitude sensors to enumerate.
      */
-    nextLatitude()
-    {
+    nextLatitude() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YLatitude.FindLatitudeInContext(this._yapi, next_hwid);
     }
 
@@ -167,11 +170,10 @@ export class YLatitude extends YSensor
      *         the first latitude sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstLatitude()
-    {
+    static FirstLatitude() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('Latitude');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('Latitude');
+        if (next_hwid == null) return null;
         return YLatitude.FindLatitude(next_hwid);
     }
 
@@ -186,18 +188,17 @@ export class YLatitude extends YSensor
      *         the first latitude sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstLatitudeInContext(yctx)
-    {
+    static FirstLatitudeInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('Latitude');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YLatitude.FindLatitudeInContext(yctx, next_hwid);
     }
 
     //--- (end of YLatitude implementation)
 }
 
-//--- (Latitude functions)
+exports.YLatitude = YLatitude; //--- (Latitude functions)
 
 /**
  * Retrieves a latitude sensor for a given identifier.
@@ -222,8 +223,8 @@ export class YLatitude extends YSensor
  *
  * @return {YLatitude} a YLatitude object allowing you to drive the latitude sensor.
  */
-export function yFindLatitude(func)
-{
+
+function yFindLatitude(func) {
     return YLatitude.FindLatitude(func);
 }
 
@@ -236,8 +237,7 @@ export function yFindLatitude(func)
  *         the first latitude sensor currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstLatitude()
-{
+function yFirstLatitude() {
     return YLatitude.FirstLatitude();
 }
 

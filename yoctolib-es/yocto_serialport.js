@@ -38,30 +38,40 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YSerialPort = exports.Y_COMMAND_INVALID = exports.Y_STARTUPJOB_INVALID = exports.Y_CURRENTJOB_INVALID = exports.Y_LASTMSG_INVALID = exports.Y_TXMSGCOUNT_INVALID = exports.Y_RXMSGCOUNT_INVALID = exports.Y_ERRCOUNT_INVALID = exports.Y_TXCOUNT_INVALID = exports.Y_RXCOUNT_INVALID = exports.Y_PROTOCOL_INVALID = exports.Y_SERIALMODE_INVALID = exports.Y_VOLTAGELEVEL_INVALID = exports.Y_VOLTAGELEVEL_RS485 = exports.Y_VOLTAGELEVEL_RS232 = exports.Y_VOLTAGELEVEL_TTL5VR = exports.Y_VOLTAGELEVEL_TTL5V = exports.Y_VOLTAGELEVEL_TTL3VR = exports.Y_VOLTAGELEVEL_TTL3V = exports.Y_VOLTAGELEVEL_OFF = undefined;
+exports.yFindSerialPort = yFindSerialPort;
+exports.yFirstSerialPort = yFirstSerialPort;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YSerialPort return codes)
 //--- (end of YSerialPort return codes)
 //--- (YSerialPort definitions)
-export const Y_VOLTAGELEVEL_OFF              = 0;
-export const Y_VOLTAGELEVEL_TTL3V            = 1;
-export const Y_VOLTAGELEVEL_TTL3VR           = 2;
-export const Y_VOLTAGELEVEL_TTL5V            = 3;
-export const Y_VOLTAGELEVEL_TTL5VR           = 4;
-export const Y_VOLTAGELEVEL_RS232            = 5;
-export const Y_VOLTAGELEVEL_RS485            = 6;
-export const Y_VOLTAGELEVEL_INVALID          = -1;
-export const Y_SERIALMODE_INVALID            = YAPI.INVALID_STRING;
-export const Y_PROTOCOL_INVALID              = YAPI.INVALID_STRING;
-export const Y_RXCOUNT_INVALID               = YAPI.INVALID_UINT;
-export const Y_TXCOUNT_INVALID               = YAPI.INVALID_UINT;
-export const Y_ERRCOUNT_INVALID              = YAPI.INVALID_UINT;
-export const Y_RXMSGCOUNT_INVALID            = YAPI.INVALID_UINT;
-export const Y_TXMSGCOUNT_INVALID            = YAPI.INVALID_UINT;
-export const Y_LASTMSG_INVALID               = YAPI.INVALID_STRING;
-export const Y_CURRENTJOB_INVALID            = YAPI.INVALID_STRING;
-export const Y_STARTUPJOB_INVALID            = YAPI.INVALID_STRING;
-export const Y_COMMAND_INVALID               = YAPI.INVALID_STRING;
+const Y_VOLTAGELEVEL_OFF = exports.Y_VOLTAGELEVEL_OFF = 0;
+const Y_VOLTAGELEVEL_TTL3V = exports.Y_VOLTAGELEVEL_TTL3V = 1;
+const Y_VOLTAGELEVEL_TTL3VR = exports.Y_VOLTAGELEVEL_TTL3VR = 2;
+const Y_VOLTAGELEVEL_TTL5V = exports.Y_VOLTAGELEVEL_TTL5V = 3;
+const Y_VOLTAGELEVEL_TTL5VR = exports.Y_VOLTAGELEVEL_TTL5VR = 4;
+const Y_VOLTAGELEVEL_RS232 = exports.Y_VOLTAGELEVEL_RS232 = 5;
+const Y_VOLTAGELEVEL_RS485 = exports.Y_VOLTAGELEVEL_RS485 = 6;
+const Y_VOLTAGELEVEL_INVALID = exports.Y_VOLTAGELEVEL_INVALID = -1;
+const Y_SERIALMODE_INVALID = exports.Y_SERIALMODE_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_PROTOCOL_INVALID = exports.Y_PROTOCOL_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_RXCOUNT_INVALID = exports.Y_RXCOUNT_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_TXCOUNT_INVALID = exports.Y_TXCOUNT_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_ERRCOUNT_INVALID = exports.Y_ERRCOUNT_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_RXMSGCOUNT_INVALID = exports.Y_RXMSGCOUNT_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_TXMSGCOUNT_INVALID = exports.Y_TXMSGCOUNT_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_LASTMSG_INVALID = exports.Y_LASTMSG_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_CURRENTJOB_INVALID = exports.Y_CURRENTJOB_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_STARTUPJOB_INVALID = exports.Y_STARTUPJOB_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_COMMAND_INVALID = exports.Y_COMMAND_INVALID = _yocto_api.YAPI.INVALID_STRING;
 //--- (end of YSerialPort definitions)
 
 //--- (YSerialPort class start)
@@ -76,105 +86,102 @@ export const Y_COMMAND_INVALID               = YAPI.INVALID_STRING;
  */
 //--- (end of YSerialPort class start)
 
-export class YSerialPort extends YFunction
-{
-    constructor(obj_yapi, str_func)
-    {
+class YSerialPort extends _yocto_api.YFunction {
+    constructor(obj_yapi, str_func) {
         //--- (YSerialPort constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'SerialPort';
+        this._className = 'SerialPort';
         /** @member {string} **/
-        this._serialMode                 = Y_SERIALMODE_INVALID;
+        this._serialMode = Y_SERIALMODE_INVALID;
         /** @member {string} **/
-        this._protocol                   = Y_PROTOCOL_INVALID;
+        this._protocol = Y_PROTOCOL_INVALID;
         /** @member {number} **/
-        this._voltageLevel               = Y_VOLTAGELEVEL_INVALID;
+        this._voltageLevel = Y_VOLTAGELEVEL_INVALID;
         /** @member {number} **/
-        this._rxCount                    = Y_RXCOUNT_INVALID;
+        this._rxCount = Y_RXCOUNT_INVALID;
         /** @member {number} **/
-        this._txCount                    = Y_TXCOUNT_INVALID;
+        this._txCount = Y_TXCOUNT_INVALID;
         /** @member {number} **/
-        this._errCount                   = Y_ERRCOUNT_INVALID;
+        this._errCount = Y_ERRCOUNT_INVALID;
         /** @member {number} **/
-        this._rxMsgCount                 = Y_RXMSGCOUNT_INVALID;
+        this._rxMsgCount = Y_RXMSGCOUNT_INVALID;
         /** @member {number} **/
-        this._txMsgCount                 = Y_TXMSGCOUNT_INVALID;
+        this._txMsgCount = Y_TXMSGCOUNT_INVALID;
         /** @member {string} **/
-        this._lastMsg                    = Y_LASTMSG_INVALID;
+        this._lastMsg = Y_LASTMSG_INVALID;
         /** @member {string} **/
-        this._currentJob                 = Y_CURRENTJOB_INVALID;
+        this._currentJob = Y_CURRENTJOB_INVALID;
         /** @member {string} **/
-        this._startupJob                 = Y_STARTUPJOB_INVALID;
+        this._startupJob = Y_STARTUPJOB_INVALID;
         /** @member {string} **/
-        this._command                    = Y_COMMAND_INVALID;
+        this._command = Y_COMMAND_INVALID;
         /** @member {number} **/
-        this._rxptr                      = 0;
+        this._rxptr = 0;
         this.imm_setConst({
-            SERIALMODE_INVALID           : YAPI.INVALID_STRING,
-            PROTOCOL_INVALID             : YAPI.INVALID_STRING,
-            VOLTAGELEVEL_OFF             : 0,
-            VOLTAGELEVEL_TTL3V           : 1,
-            VOLTAGELEVEL_TTL3VR          : 2,
-            VOLTAGELEVEL_TTL5V           : 3,
-            VOLTAGELEVEL_TTL5VR          : 4,
-            VOLTAGELEVEL_RS232           : 5,
-            VOLTAGELEVEL_RS485           : 6,
-            VOLTAGELEVEL_INVALID         : -1,
-            RXCOUNT_INVALID              : YAPI.INVALID_UINT,
-            TXCOUNT_INVALID              : YAPI.INVALID_UINT,
-            ERRCOUNT_INVALID             : YAPI.INVALID_UINT,
-            RXMSGCOUNT_INVALID           : YAPI.INVALID_UINT,
-            TXMSGCOUNT_INVALID           : YAPI.INVALID_UINT,
-            LASTMSG_INVALID              : YAPI.INVALID_STRING,
-            CURRENTJOB_INVALID           : YAPI.INVALID_STRING,
-            STARTUPJOB_INVALID           : YAPI.INVALID_STRING,
-            COMMAND_INVALID              : YAPI.INVALID_STRING
+            SERIALMODE_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            PROTOCOL_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            VOLTAGELEVEL_OFF: 0,
+            VOLTAGELEVEL_TTL3V: 1,
+            VOLTAGELEVEL_TTL3VR: 2,
+            VOLTAGELEVEL_TTL5V: 3,
+            VOLTAGELEVEL_TTL5VR: 4,
+            VOLTAGELEVEL_RS232: 5,
+            VOLTAGELEVEL_RS485: 6,
+            VOLTAGELEVEL_INVALID: -1,
+            RXCOUNT_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            TXCOUNT_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            ERRCOUNT_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            RXMSGCOUNT_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            TXMSGCOUNT_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            LASTMSG_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            CURRENTJOB_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            STARTUPJOB_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            COMMAND_INVALID: _yocto_api.YAPI.INVALID_STRING
         });
         //--- (end of YSerialPort constructor)
     }
 
     //--- (YSerialPort implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'serialMode':
-            this._serialMode = val;
-            return 1;
-        case 'protocol':
-            this._protocol = val;
-            return 1;
-        case 'voltageLevel':
-            this._voltageLevel = parseInt(val);
-            return 1;
-        case 'rxCount':
-            this._rxCount = parseInt(val);
-            return 1;
-        case 'txCount':
-            this._txCount = parseInt(val);
-            return 1;
-        case 'errCount':
-            this._errCount = parseInt(val);
-            return 1;
-        case 'rxMsgCount':
-            this._rxMsgCount = parseInt(val);
-            return 1;
-        case 'txMsgCount':
-            this._txMsgCount = parseInt(val);
-            return 1;
-        case 'lastMsg':
-            this._lastMsg = val;
-            return 1;
-        case 'currentJob':
-            this._currentJob = val;
-            return 1;
-        case 'startupJob':
-            this._startupJob = val;
-            return 1;
-        case 'command':
-            this._command = val;
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'serialMode':
+                this._serialMode = val;
+                return 1;
+            case 'protocol':
+                this._protocol = val;
+                return 1;
+            case 'voltageLevel':
+                this._voltageLevel = parseInt(val);
+                return 1;
+            case 'rxCount':
+                this._rxCount = parseInt(val);
+                return 1;
+            case 'txCount':
+                this._txCount = parseInt(val);
+                return 1;
+            case 'errCount':
+                this._errCount = parseInt(val);
+                return 1;
+            case 'rxMsgCount':
+                this._rxMsgCount = parseInt(val);
+                return 1;
+            case 'txMsgCount':
+                this._txMsgCount = parseInt(val);
+                return 1;
+            case 'lastMsg':
+                this._lastMsg = val;
+                return 1;
+            case 'currentJob':
+                this._currentJob = val;
+                return 1;
+            case 'startupJob':
+                this._startupJob = val;
+                return 1;
+            case 'command':
+                this._command = val;
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -192,14 +199,17 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns YSerialPort.SERIALMODE_INVALID.
      */
-    async get_serialMode()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_SERIALMODE_INVALID;
+    get_serialMode() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
+                    return Y_SERIALMODE_INVALID;
+                }
             }
-        }
-        return this._serialMode;
+            return _this._serialMode;
+        })();
     }
 
     /**
@@ -218,12 +228,15 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_serialMode(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('serialMode',rest_val);
+    set_serialMode(newval) {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this2._setAttr('serialMode', rest_val);
+        })();
     }
 
     /**
@@ -239,14 +252,17 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns YSerialPort.PROTOCOL_INVALID.
      */
-    async get_protocol()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_PROTOCOL_INVALID;
+    get_protocol() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
+                    return Y_PROTOCOL_INVALID;
+                }
             }
-        }
-        return this._protocol;
+            return _this3._protocol;
+        })();
     }
 
     /**
@@ -266,12 +282,15 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_protocol(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('protocol',rest_val);
+    set_protocol(newval) {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this4._setAttr('protocol', rest_val);
+        })();
     }
 
     /**
@@ -284,14 +303,17 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns YSerialPort.VOLTAGELEVEL_INVALID.
      */
-    async get_voltageLevel()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_VOLTAGELEVEL_INVALID;
+    get_voltageLevel() {
+        var _this5 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this5._cacheExpiration <= _this5._yapi.GetTickCount()) {
+                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _this5._yapi.SUCCESS) {
+                    return Y_VOLTAGELEVEL_INVALID;
+                }
             }
-        }
-        return this._voltageLevel;
+            return _this5._voltageLevel;
+        })();
     }
 
     /**
@@ -310,12 +332,15 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_voltageLevel(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('voltageLevel',rest_val);
+    set_voltageLevel(newval) {
+        var _this6 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this6._setAttr('voltageLevel', rest_val);
+        })();
     }
 
     /**
@@ -325,14 +350,17 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns YSerialPort.RXCOUNT_INVALID.
      */
-    async get_rxCount()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_RXCOUNT_INVALID;
+    get_rxCount() {
+        var _this7 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this7._cacheExpiration <= _this7._yapi.GetTickCount()) {
+                if ((yield _this7.load(_this7._yapi.defaultCacheValidity)) != _this7._yapi.SUCCESS) {
+                    return Y_RXCOUNT_INVALID;
+                }
             }
-        }
-        return this._rxCount;
+            return _this7._rxCount;
+        })();
     }
 
     /**
@@ -342,14 +370,17 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns YSerialPort.TXCOUNT_INVALID.
      */
-    async get_txCount()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_TXCOUNT_INVALID;
+    get_txCount() {
+        var _this8 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this8._cacheExpiration <= _this8._yapi.GetTickCount()) {
+                if ((yield _this8.load(_this8._yapi.defaultCacheValidity)) != _this8._yapi.SUCCESS) {
+                    return Y_TXCOUNT_INVALID;
+                }
             }
-        }
-        return this._txCount;
+            return _this8._txCount;
+        })();
     }
 
     /**
@@ -359,14 +390,17 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns YSerialPort.ERRCOUNT_INVALID.
      */
-    async get_errCount()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_ERRCOUNT_INVALID;
+    get_errCount() {
+        var _this9 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this9._cacheExpiration <= _this9._yapi.GetTickCount()) {
+                if ((yield _this9.load(_this9._yapi.defaultCacheValidity)) != _this9._yapi.SUCCESS) {
+                    return Y_ERRCOUNT_INVALID;
+                }
             }
-        }
-        return this._errCount;
+            return _this9._errCount;
+        })();
     }
 
     /**
@@ -376,14 +410,17 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns YSerialPort.RXMSGCOUNT_INVALID.
      */
-    async get_rxMsgCount()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_RXMSGCOUNT_INVALID;
+    get_rxMsgCount() {
+        var _this10 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this10._cacheExpiration <= _this10._yapi.GetTickCount()) {
+                if ((yield _this10.load(_this10._yapi.defaultCacheValidity)) != _this10._yapi.SUCCESS) {
+                    return Y_RXMSGCOUNT_INVALID;
+                }
             }
-        }
-        return this._rxMsgCount;
+            return _this10._rxMsgCount;
+        })();
     }
 
     /**
@@ -393,14 +430,17 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns YSerialPort.TXMSGCOUNT_INVALID.
      */
-    async get_txMsgCount()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_TXMSGCOUNT_INVALID;
+    get_txMsgCount() {
+        var _this11 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this11._cacheExpiration <= _this11._yapi.GetTickCount()) {
+                if ((yield _this11.load(_this11._yapi.defaultCacheValidity)) != _this11._yapi.SUCCESS) {
+                    return Y_TXMSGCOUNT_INVALID;
+                }
             }
-        }
-        return this._txMsgCount;
+            return _this11._txMsgCount;
+        })();
     }
 
     /**
@@ -411,14 +451,17 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns YSerialPort.LASTMSG_INVALID.
      */
-    async get_lastMsg()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_LASTMSG_INVALID;
+    get_lastMsg() {
+        var _this12 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this12._cacheExpiration <= _this12._yapi.GetTickCount()) {
+                if ((yield _this12.load(_this12._yapi.defaultCacheValidity)) != _this12._yapi.SUCCESS) {
+                    return Y_LASTMSG_INVALID;
+                }
             }
-        }
-        return this._lastMsg;
+            return _this12._lastMsg;
+        })();
     }
 
     /**
@@ -428,14 +471,17 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns YSerialPort.CURRENTJOB_INVALID.
      */
-    async get_currentJob()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_CURRENTJOB_INVALID;
+    get_currentJob() {
+        var _this13 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this13._cacheExpiration <= _this13._yapi.GetTickCount()) {
+                if ((yield _this13.load(_this13._yapi.defaultCacheValidity)) != _this13._yapi.SUCCESS) {
+                    return Y_CURRENTJOB_INVALID;
+                }
             }
-        }
-        return this._currentJob;
+            return _this13._currentJob;
+        })();
     }
 
     /**
@@ -449,12 +495,15 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_currentJob(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('currentJob',rest_val);
+    set_currentJob(newval) {
+        var _this14 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this14._setAttr('currentJob', rest_val);
+        })();
     }
 
     /**
@@ -464,14 +513,17 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns YSerialPort.STARTUPJOB_INVALID.
      */
-    async get_startupJob()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_STARTUPJOB_INVALID;
+    get_startupJob() {
+        var _this15 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this15._cacheExpiration <= _this15._yapi.GetTickCount()) {
+                if ((yield _this15.load(_this15._yapi.defaultCacheValidity)) != _this15._yapi.SUCCESS) {
+                    return Y_STARTUPJOB_INVALID;
+                }
             }
-        }
-        return this._startupJob;
+            return _this15._startupJob;
+        })();
     }
 
     /**
@@ -485,30 +537,39 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_startupJob(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('startupJob',rest_val);
+    set_startupJob(newval) {
+        var _this16 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this16._setAttr('startupJob', rest_val);
+        })();
     }
 
-    async get_command()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_COMMAND_INVALID;
+    get_command() {
+        var _this17 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this17._cacheExpiration <= _this17._yapi.GetTickCount()) {
+                if ((yield _this17.load(_this17._yapi.defaultCacheValidity)) != _this17._yapi.SUCCESS) {
+                    return Y_COMMAND_INVALID;
+                }
             }
-        }
-        return this._command;
+            return _this17._command;
+        })();
     }
 
-    async set_command(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('command',rest_val);
+    set_command(newval) {
+        var _this18 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this18._setAttr('command', rest_val);
+        })();
     }
 
     /**
@@ -534,14 +595,13 @@ export class YSerialPort extends YFunction
      *
      * @return {YSerialPort} a YSerialPort object allowing you to drive the serial port.
      */
-    static FindSerialPort(func)
-    {
+    static FindSerialPort(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('SerialPort', func);
+        obj = _yocto_api.YFunction._FindFromCache('SerialPort', func);
         if (obj == null) {
-            obj = new YSerialPort(YAPI, func);
-            YFunction._AddToCache('SerialPort',  func, obj);
+            obj = new YSerialPort(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('SerialPort', func, obj);
         }
         return obj;
     }
@@ -570,21 +630,23 @@ export class YSerialPort extends YFunction
      *
      * @return {YSerialPort} a YSerialPort object allowing you to drive the serial port.
      */
-    static FindSerialPortInContext(yctx,func)
-    {
+    static FindSerialPortInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'SerialPort', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'SerialPort', func);
         if (obj == null) {
             obj = new YSerialPort(yctx, func);
-            YFunction._AddToCache('SerialPort',  func, obj);
+            _yocto_api.YFunction._AddToCache('SerialPort', func, obj);
         }
         return obj;
     }
 
-    async sendCommand(text)
-    {
-        return await this.set_command(text);
+    sendCommand(text) {
+        var _this19 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this19.set_command(text);
+        })();
     }
 
     /**
@@ -594,11 +656,14 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async reset()
-    {
-        this._rxptr = 0;
-        // may throw an exception
-        return await this.sendCommand('Z');
+    reset() {
+        var _this20 = this;
+
+        return _asyncToGenerator(function* () {
+            _this20._rxptr = 0;
+            // may throw an exception
+            return yield _this20.sendCommand('Z');
+        })();
     }
 
     /**
@@ -611,9 +676,12 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_RTS(val)
-    {
-        return await this.sendCommand('R'+String(Math.round(val)));
+    set_RTS(val) {
+        var _this21 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this21.sendCommand('R' + String(Math.round(val)));
+        })();
     }
 
     /**
@@ -624,19 +692,22 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async get_CTS()
-    {
-        /** @type {Uint8Array} **/
-        let buff;
-        /** @type {number} **/
-        let res;
-        // may throw an exception
-        buff = await this._download('cts.txt');
-        if (!((buff).length == 1)) {
-            return this._throw(this._yapi.IO_ERROR,'invalid CTS reply',this._yapi.IO_ERROR);
-        }
-        res = buff[0] - 48;
-        return res;
+    get_CTS() {
+        var _this22 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {Uint8Array} **/
+            let buff;
+            /** @type {number} **/
+            let res;
+            // may throw an exception
+            buff = yield _this22._download('cts.txt');
+            if (!(buff.length == 1)) {
+                return _this22._throw(_this22._yapi.IO_ERROR, 'invalid CTS reply', _this22._yapi.IO_ERROR);
+            }
+            res = buff[0] - 48;
+            return res;
+        })();
     }
 
     /**
@@ -648,9 +719,12 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async writeByte(code)
-    {
-        return await this.sendCommand('$'+('00'+(code).toString(16)).slice(-2));
+    writeByte(code) {
+        var _this23 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this23.sendCommand('$' + ('00' + code.toString(16)).slice(-2));
+        })();
     }
 
     /**
@@ -662,35 +736,38 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async writeStr(text)
-    {
-        /** @type {Uint8Array} **/
-        let buff;
-        /** @type {number} **/
-        let bufflen;
-        /** @type {number} **/
-        let idx;
-        /** @type {number} **/
-        let ch;
-        buff = this._yapi.imm_str2bin(text);
-        bufflen = (buff).length;
-        if (bufflen < 100) {
-            ch = 0x20;
-            idx = 0;
-            while ((idx < bufflen) && (ch != 0)) {
-                ch = buff[idx];
-                if ((ch >= 0x20) && (ch < 0x7f)) {
-                    idx = idx + 1;
-                } else {
-                    ch = 0;
+    writeStr(text) {
+        var _this24 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {Uint8Array} **/
+            let buff;
+            /** @type {number} **/
+            let bufflen;
+            /** @type {number} **/
+            let idx;
+            /** @type {number} **/
+            let ch;
+            buff = _this24._yapi.imm_str2bin(text);
+            bufflen = buff.length;
+            if (bufflen < 100) {
+                ch = 0x20;
+                idx = 0;
+                while (idx < bufflen && ch != 0) {
+                    ch = buff[idx];
+                    if (ch >= 0x20 && ch < 0x7f) {
+                        idx = idx + 1;
+                    } else {
+                        ch = 0;
+                    }
+                }
+                if (idx >= bufflen) {
+                    return yield _this24.sendCommand('+' + text);
                 }
             }
-            if (idx >= bufflen) {
-                return await this.sendCommand('+'+text);
-            }
-        }
-        // send string using file upload
-        return await this._upload('txdata', buff);
+            // send string using file upload
+            return yield _this24._upload('txdata', buff);
+        })();
     }
 
     /**
@@ -702,9 +779,12 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async writeBin(buff)
-    {
-        return await this._upload('txdata', buff);
+    writeBin(buff) {
+        var _this25 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this25._upload('txdata', buff);
+        })();
     }
 
     /**
@@ -716,29 +796,32 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async writeArray(byteList)
-    {
-        /** @type {Uint8Array} **/
-        let buff;
-        /** @type {number} **/
-        let bufflen;
-        /** @type {number} **/
-        let idx;
-        /** @type {number} **/
-        let hexb;
-        /** @type {number} **/
-        let res;
-        bufflen = byteList.length;
-        buff = new Uint8Array(bufflen);
-        idx = 0;
-        while (idx < bufflen) {
-            hexb = byteList[idx];
-            buff.set([hexb], idx);
-            idx = idx + 1;
-        }
-        // may throw an exception
-        res = await this._upload('txdata', buff);
-        return res;
+    writeArray(byteList) {
+        var _this26 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {Uint8Array} **/
+            let buff;
+            /** @type {number} **/
+            let bufflen;
+            /** @type {number} **/
+            let idx;
+            /** @type {number} **/
+            let hexb;
+            /** @type {number} **/
+            let res;
+            bufflen = byteList.length;
+            buff = new Uint8Array(bufflen);
+            idx = 0;
+            while (idx < bufflen) {
+                hexb = byteList[idx];
+                buff.set([hexb], idx);
+                idx = idx + 1;
+            }
+            // may throw an exception
+            res = yield _this26._upload('txdata', buff);
+            return res;
+        })();
     }
 
     /**
@@ -750,33 +833,36 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async writeHex(hexString)
-    {
-        /** @type {Uint8Array} **/
-        let buff;
-        /** @type {number} **/
-        let bufflen;
-        /** @type {number} **/
-        let idx;
-        /** @type {number} **/
-        let hexb;
-        /** @type {number} **/
-        let res;
-        bufflen = (hexString).length;
-        if (bufflen < 100) {
-            return await this.sendCommand('$'+hexString);
-        }
-        bufflen = ((bufflen) >> (1));
-        buff = new Uint8Array(bufflen);
-        idx = 0;
-        while (idx < bufflen) {
-            hexb = parseInt((hexString).substr( 2 * idx, 2), 16);
-            buff.set([hexb], idx);
-            idx = idx + 1;
-        }
-        // may throw an exception
-        res = await this._upload('txdata', buff);
-        return res;
+    writeHex(hexString) {
+        var _this27 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {Uint8Array} **/
+            let buff;
+            /** @type {number} **/
+            let bufflen;
+            /** @type {number} **/
+            let idx;
+            /** @type {number} **/
+            let hexb;
+            /** @type {number} **/
+            let res;
+            bufflen = hexString.length;
+            if (bufflen < 100) {
+                return yield _this27.sendCommand('$' + hexString);
+            }
+            bufflen = bufflen >> 1;
+            buff = new Uint8Array(bufflen);
+            idx = 0;
+            while (idx < bufflen) {
+                hexb = parseInt(hexString.substr(2 * idx, 2), 16);
+                buff.set([hexb], idx);
+                idx = idx + 1;
+            }
+            // may throw an exception
+            res = yield _this27._upload('txdata', buff);
+            return res;
+        })();
     }
 
     /**
@@ -788,35 +874,38 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async writeLine(text)
-    {
-        /** @type {Uint8Array} **/
-        let buff;
-        /** @type {number} **/
-        let bufflen;
-        /** @type {number} **/
-        let idx;
-        /** @type {number} **/
-        let ch;
-        buff = this._yapi.imm_str2bin(text+'\r\n');
-        bufflen = (buff).length-2;
-        if (bufflen < 100) {
-            ch = 0x20;
-            idx = 0;
-            while ((idx < bufflen) && (ch != 0)) {
-                ch = buff[idx];
-                if ((ch >= 0x20) && (ch < 0x7f)) {
-                    idx = idx + 1;
-                } else {
-                    ch = 0;
+    writeLine(text) {
+        var _this28 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {Uint8Array} **/
+            let buff;
+            /** @type {number} **/
+            let bufflen;
+            /** @type {number} **/
+            let idx;
+            /** @type {number} **/
+            let ch;
+            buff = _this28._yapi.imm_str2bin(text + '\r\n');
+            bufflen = buff.length - 2;
+            if (bufflen < 100) {
+                ch = 0x20;
+                idx = 0;
+                while (idx < bufflen && ch != 0) {
+                    ch = buff[idx];
+                    if (ch >= 0x20 && ch < 0x7f) {
+                        idx = idx + 1;
+                    } else {
+                        ch = 0;
+                    }
+                }
+                if (idx >= bufflen) {
+                    return yield _this28.sendCommand('!' + text);
                 }
             }
-            if (idx >= bufflen) {
-                return await this.sendCommand('!'+text);
-            }
-        }
-        // send string using file upload
-        return await this._upload('txdata', buff);
+            // send string using file upload
+            return yield _this28._upload('txdata', buff);
+        })();
     }
 
     /**
@@ -830,9 +919,12 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async writeMODBUS(hexString)
-    {
-        return await this.sendCommand(':'+hexString);
+    writeMODBUS(hexString) {
+        var _this29 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this29.sendCommand(':' + hexString);
+        })();
     }
 
     /**
@@ -844,34 +936,37 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async readByte()
-    {
-        /** @type {Uint8Array} **/
-        let buff;
-        /** @type {number} **/
-        let bufflen;
-        /** @type {number} **/
-        let mult;
-        /** @type {number} **/
-        let endpos;
-        /** @type {number} **/
-        let res;
-        // may throw an exception
-        buff = await this._download('rxdata.bin?pos='+String(Math.round(this._rxptr))+'&len=1');
-        bufflen = (buff).length - 1;
-        endpos = 0;
-        mult = 1;
-        while ((bufflen > 0) && (buff[bufflen] != 64)) {
-            endpos = endpos + mult * (buff[bufflen] - 48);
-            mult = mult * 10;
-            bufflen = bufflen - 1;
-        }
-        this._rxptr = endpos;
-        if (bufflen == 0) {
-            return this._yapi.NO_MORE_DATA;
-        }
-        res = buff[0];
-        return res;
+    readByte() {
+        var _this30 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {Uint8Array} **/
+            let buff;
+            /** @type {number} **/
+            let bufflen;
+            /** @type {number} **/
+            let mult;
+            /** @type {number} **/
+            let endpos;
+            /** @type {number} **/
+            let res;
+            // may throw an exception
+            buff = yield _this30._download('rxdata.bin?pos=' + String(Math.round(_this30._rxptr)) + '&len=1');
+            bufflen = buff.length - 1;
+            endpos = 0;
+            mult = 1;
+            while (bufflen > 0 && buff[bufflen] != 64) {
+                endpos = endpos + mult * (buff[bufflen] - 48);
+                mult = mult * 10;
+                bufflen = bufflen - 1;
+            }
+            _this30._rxptr = endpos;
+            if (bufflen == 0) {
+                return _this30._yapi.NO_MORE_DATA;
+            }
+            res = buff[0];
+            return res;
+        })();
     }
 
     /**
@@ -885,34 +980,37 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async readStr(nChars)
-    {
-        /** @type {Uint8Array} **/
-        let buff;
-        /** @type {number} **/
-        let bufflen;
-        /** @type {number} **/
-        let mult;
-        /** @type {number} **/
-        let endpos;
-        /** @type {string} **/
-        let res;
-        if (nChars > 65535) {
-            nChars = 65535;
-        }
-        // may throw an exception
-        buff = await this._download('rxdata.bin?pos='+String(Math.round(this._rxptr))+'&len='+String(Math.round(nChars)));
-        bufflen = (buff).length - 1;
-        endpos = 0;
-        mult = 1;
-        while ((bufflen > 0) && (buff[bufflen] != 64)) {
-            endpos = endpos + mult * (buff[bufflen] - 48);
-            mult = mult * 10;
-            bufflen = bufflen - 1;
-        }
-        this._rxptr = endpos;
-        res = (this._yapi.imm_bin2str(buff)).substr( 0, bufflen);
-        return res;
+    readStr(nChars) {
+        var _this31 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {Uint8Array} **/
+            let buff;
+            /** @type {number} **/
+            let bufflen;
+            /** @type {number} **/
+            let mult;
+            /** @type {number} **/
+            let endpos;
+            /** @type {string} **/
+            let res;
+            if (nChars > 65535) {
+                nChars = 65535;
+            }
+            // may throw an exception
+            buff = yield _this31._download('rxdata.bin?pos=' + String(Math.round(_this31._rxptr)) + '&len=' + String(Math.round(nChars)));
+            bufflen = buff.length - 1;
+            endpos = 0;
+            mult = 1;
+            while (bufflen > 0 && buff[bufflen] != 64) {
+                endpos = endpos + mult * (buff[bufflen] - 48);
+                mult = mult * 10;
+                bufflen = bufflen - 1;
+            }
+            _this31._rxptr = endpos;
+            res = _this31._yapi.imm_bin2str(buff).substr(0, bufflen);
+            return res;
+        })();
     }
 
     /**
@@ -926,41 +1024,44 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async readBin(nChars)
-    {
-        /** @type {Uint8Array} **/
-        let buff;
-        /** @type {number} **/
-        let bufflen;
-        /** @type {number} **/
-        let mult;
-        /** @type {number} **/
-        let endpos;
-        /** @type {number} **/
-        let idx;
-        /** @type {Uint8Array} **/
-        let res;
-        if (nChars > 65535) {
-            nChars = 65535;
-        }
-        // may throw an exception
-        buff = await this._download('rxdata.bin?pos='+String(Math.round(this._rxptr))+'&len='+String(Math.round(nChars)));
-        bufflen = (buff).length - 1;
-        endpos = 0;
-        mult = 1;
-        while ((bufflen > 0) && (buff[bufflen] != 64)) {
-            endpos = endpos + mult * (buff[bufflen] - 48);
-            mult = mult * 10;
-            bufflen = bufflen - 1;
-        }
-        this._rxptr = endpos;
-        res = new Uint8Array(bufflen);
-        idx = 0;
-        while (idx < bufflen) {
-            res.set([buff[idx]], idx);
-            idx = idx + 1;
-        }
-        return res;
+    readBin(nChars) {
+        var _this32 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {Uint8Array} **/
+            let buff;
+            /** @type {number} **/
+            let bufflen;
+            /** @type {number} **/
+            let mult;
+            /** @type {number} **/
+            let endpos;
+            /** @type {number} **/
+            let idx;
+            /** @type {Uint8Array} **/
+            let res;
+            if (nChars > 65535) {
+                nChars = 65535;
+            }
+            // may throw an exception
+            buff = yield _this32._download('rxdata.bin?pos=' + String(Math.round(_this32._rxptr)) + '&len=' + String(Math.round(nChars)));
+            bufflen = buff.length - 1;
+            endpos = 0;
+            mult = 1;
+            while (bufflen > 0 && buff[bufflen] != 64) {
+                endpos = endpos + mult * (buff[bufflen] - 48);
+                mult = mult * 10;
+                bufflen = bufflen - 1;
+            }
+            _this32._rxptr = endpos;
+            res = new Uint8Array(bufflen);
+            idx = 0;
+            while (idx < bufflen) {
+                res.set([buff[idx]], idx);
+                idx = idx + 1;
+            }
+            return res;
+        })();
     }
 
     /**
@@ -974,44 +1075,47 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async readArray(nChars)
-    {
-        /** @type {Uint8Array} **/
-        let buff;
-        /** @type {number} **/
-        let bufflen;
-        /** @type {number} **/
-        let mult;
-        /** @type {number} **/
-        let endpos;
-        /** @type {number} **/
-        let idx;
-        /** @type {number} **/
-        let b;
-        /** @type {number[]} **/
-        let res = [];
-        if (nChars > 65535) {
-            nChars = 65535;
-        }
-        // may throw an exception
-        buff = await this._download('rxdata.bin?pos='+String(Math.round(this._rxptr))+'&len='+String(Math.round(nChars)));
-        bufflen = (buff).length - 1;
-        endpos = 0;
-        mult = 1;
-        while ((bufflen > 0) && (buff[bufflen] != 64)) {
-            endpos = endpos + mult * (buff[bufflen] - 48);
-            mult = mult * 10;
-            bufflen = bufflen - 1;
-        }
-        this._rxptr = endpos;
-        res.length = 0;
-        idx = 0;
-        while (idx < bufflen) {
-            b = buff[idx];
-            res.push(b);
-            idx = idx + 1;
-        }
-        return res;
+    readArray(nChars) {
+        var _this33 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {Uint8Array} **/
+            let buff;
+            /** @type {number} **/
+            let bufflen;
+            /** @type {number} **/
+            let mult;
+            /** @type {number} **/
+            let endpos;
+            /** @type {number} **/
+            let idx;
+            /** @type {number} **/
+            let b;
+            /** @type {number[]} **/
+            let res = [];
+            if (nChars > 65535) {
+                nChars = 65535;
+            }
+            // may throw an exception
+            buff = yield _this33._download('rxdata.bin?pos=' + String(Math.round(_this33._rxptr)) + '&len=' + String(Math.round(nChars)));
+            bufflen = buff.length - 1;
+            endpos = 0;
+            mult = 1;
+            while (bufflen > 0 && buff[bufflen] != 64) {
+                endpos = endpos + mult * (buff[bufflen] - 48);
+                mult = mult * 10;
+                bufflen = bufflen - 1;
+            }
+            _this33._rxptr = endpos;
+            res.length = 0;
+            idx = 0;
+            while (idx < bufflen) {
+                b = buff[idx];
+                res.push(b);
+                idx = idx + 1;
+            }
+            return res;
+        })();
     }
 
     /**
@@ -1025,45 +1129,48 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async readHex(nBytes)
-    {
-        /** @type {Uint8Array} **/
-        let buff;
-        /** @type {number} **/
-        let bufflen;
-        /** @type {number} **/
-        let mult;
-        /** @type {number} **/
-        let endpos;
-        /** @type {number} **/
-        let ofs;
-        /** @type {string} **/
-        let res;
-        if (nBytes > 65535) {
-            nBytes = 65535;
-        }
-        // may throw an exception
-        buff = await this._download('rxdata.bin?pos='+String(Math.round(this._rxptr))+'&len='+String(Math.round(nBytes)));
-        bufflen = (buff).length - 1;
-        endpos = 0;
-        mult = 1;
-        while ((bufflen > 0) && (buff[bufflen] != 64)) {
-            endpos = endpos + mult * (buff[bufflen] - 48);
-            mult = mult * 10;
-            bufflen = bufflen - 1;
-        }
-        this._rxptr = endpos;
-        res = '';
-        ofs = 0;
-        while (ofs + 3 < bufflen) {
-            res = res+''+('00'+(buff[ofs]).toString(16)).slice(-2)+''+('00'+(buff[ofs + 1]).toString(16)).slice(-2)+''+('00'+(buff[ofs + 2]).toString(16)).slice(-2)+''+('00'+(buff[ofs + 3]).toString(16)).slice(-2);
-            ofs = ofs + 4;
-        }
-        while (ofs < bufflen) {
-            res = res+''+('00'+(buff[ofs]).toString(16)).slice(-2);
-            ofs = ofs + 1;
-        }
-        return res;
+    readHex(nBytes) {
+        var _this34 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {Uint8Array} **/
+            let buff;
+            /** @type {number} **/
+            let bufflen;
+            /** @type {number} **/
+            let mult;
+            /** @type {number} **/
+            let endpos;
+            /** @type {number} **/
+            let ofs;
+            /** @type {string} **/
+            let res;
+            if (nBytes > 65535) {
+                nBytes = 65535;
+            }
+            // may throw an exception
+            buff = yield _this34._download('rxdata.bin?pos=' + String(Math.round(_this34._rxptr)) + '&len=' + String(Math.round(nBytes)));
+            bufflen = buff.length - 1;
+            endpos = 0;
+            mult = 1;
+            while (bufflen > 0 && buff[bufflen] != 64) {
+                endpos = endpos + mult * (buff[bufflen] - 48);
+                mult = mult * 10;
+                bufflen = bufflen - 1;
+            }
+            _this34._rxptr = endpos;
+            res = '';
+            ofs = 0;
+            while (ofs + 3 < bufflen) {
+                res = res + '' + ('00' + buff[ofs].toString(16)).slice(-2) + '' + ('00' + buff[ofs + 1].toString(16)).slice(-2) + '' + ('00' + buff[ofs + 2].toString(16)).slice(-2) + '' + ('00' + buff[ofs + 3].toString(16)).slice(-2);
+                ofs = ofs + 4;
+            }
+            while (ofs < bufflen) {
+                res = res + '' + ('00' + buff[ofs].toString(16)).slice(-2);
+                ofs = ofs + 1;
+            }
+            return res;
+        })();
     }
 
     /**
@@ -1079,34 +1186,37 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async readLine()
-    {
-        /** @type {string} **/
-        let url;
-        /** @type {Uint8Array} **/
-        let msgbin;
-        /** @type {string[]} **/
-        let msgarr = [];
-        /** @type {number} **/
-        let msglen;
-        /** @type {string} **/
-        let res;
-        // may throw an exception
-        url = 'rxmsg.json?pos='+String(Math.round(this._rxptr))+'&len=1&maxw=1';
-        msgbin = await this._download(url);
-        msgarr = this.imm_json_get_array(msgbin);
-        msglen = msgarr.length;
-        if (msglen == 0) {
-            return '';
-        }
-        // last element of array is the new position
-        msglen = msglen - 1;
-        this._rxptr = this._yapi.imm_atoi(msgarr[msglen]);
-        if (msglen == 0) {
-            return '';
-        }
-        res = this.imm_json_get_string(this._yapi.imm_str2bin(msgarr[0]));
-        return res;
+    readLine() {
+        var _this35 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let url;
+            /** @type {Uint8Array} **/
+            let msgbin;
+            /** @type {string[]} **/
+            let msgarr = [];
+            /** @type {number} **/
+            let msglen;
+            /** @type {string} **/
+            let res;
+            // may throw an exception
+            url = 'rxmsg.json?pos=' + String(Math.round(_this35._rxptr)) + '&len=1&maxw=1';
+            msgbin = yield _this35._download(url);
+            msgarr = _this35.imm_json_get_array(msgbin);
+            msglen = msgarr.length;
+            if (msglen == 0) {
+                return '';
+            }
+            // last element of array is the new position
+            msglen = msglen - 1;
+            _this35._rxptr = _this35._yapi.imm_atoi(msgarr[msglen]);
+            if (msglen == 0) {
+                return '';
+            }
+            res = _this35.imm_json_get_string(_this35._yapi.imm_str2bin(msgarr[0]));
+            return res;
+        })();
     }
 
     /**
@@ -1130,37 +1240,40 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns an empty array.
      */
-    async readMessages(pattern,maxWait)
-    {
-        /** @type {string} **/
-        let url;
-        /** @type {Uint8Array} **/
-        let msgbin;
-        /** @type {string[]} **/
-        let msgarr = [];
-        /** @type {number} **/
-        let msglen;
-        /** @type {string[]} **/
-        let res = [];
-        /** @type {number} **/
-        let idx;
-        // may throw an exception
-        url = 'rxmsg.json?pos='+String(Math.round(this._rxptr))+'&maxw='+String(Math.round(maxWait))+'&pat='+pattern;
-        msgbin = await this._download(url);
-        msgarr = this.imm_json_get_array(msgbin);
-        msglen = msgarr.length;
-        if (msglen == 0) {
+    readMessages(pattern, maxWait) {
+        var _this36 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let url;
+            /** @type {Uint8Array} **/
+            let msgbin;
+            /** @type {string[]} **/
+            let msgarr = [];
+            /** @type {number} **/
+            let msglen;
+            /** @type {string[]} **/
+            let res = [];
+            /** @type {number} **/
+            let idx;
+            // may throw an exception
+            url = 'rxmsg.json?pos=' + String(Math.round(_this36._rxptr)) + '&maxw=' + String(Math.round(maxWait)) + '&pat=' + pattern;
+            msgbin = yield _this36._download(url);
+            msgarr = _this36.imm_json_get_array(msgbin);
+            msglen = msgarr.length;
+            if (msglen == 0) {
+                return res;
+            }
+            // last element of array is the new position
+            msglen = msglen - 1;
+            _this36._rxptr = _this36._yapi.imm_atoi(msgarr[msglen]);
+            idx = 0;
+            while (idx < msglen) {
+                res.push(_this36.imm_json_get_string(_this36._yapi.imm_str2bin(msgarr[idx])));
+                idx = idx + 1;
+            }
             return res;
-        }
-        // last element of array is the new position
-        msglen = msglen - 1;
-        this._rxptr = this._yapi.imm_atoi(msgarr[msglen]);
-        idx = 0;
-        while (idx < msglen) {
-            res.push(this.imm_json_get_string(this._yapi.imm_str2bin(msgarr[idx])));
-            idx = idx + 1;
-        }
-        return res;
+        })();
     }
 
     /**
@@ -1172,10 +1285,13 @@ export class YSerialPort extends YFunction
      *
      * @return {number} nothing.
      */
-    async read_seek(absPos)
-    {
-        this._rxptr = absPos;
-        return this._yapi.SUCCESS;
+    read_seek(absPos) {
+        var _this37 = this;
+
+        return _asyncToGenerator(function* () {
+            _this37._rxptr = absPos;
+            return _this37._yapi.SUCCESS;
+        })();
     }
 
     /**
@@ -1183,9 +1299,12 @@ export class YSerialPort extends YFunction
      *
      * @return {number} the absolute position index for next read operations.
      */
-    async read_tell()
-    {
-        return this._rxptr;
+    read_tell() {
+        var _this38 = this;
+
+        return _asyncToGenerator(function* () {
+            return _this38._rxptr;
+        })();
     }
 
     /**
@@ -1194,22 +1313,25 @@ export class YSerialPort extends YFunction
      *
      * @return {number} the number of bytes available to read
      */
-    async read_avail()
-    {
-        /** @type {Uint8Array} **/
-        let buff;
-        /** @type {number} **/
-        let bufflen;
-        /** @type {number} **/
-        let res;
-        // may throw an exception
-        buff = await this._download('rxcnt.bin?pos='+String(Math.round(this._rxptr)));
-        bufflen = (buff).length - 1;
-        while ((bufflen > 0) && (buff[bufflen] != 64)) {
-            bufflen = bufflen - 1;
-        }
-        res = this._yapi.imm_atoi((this._yapi.imm_bin2str(buff)).substr( 0, bufflen));
-        return res;
+    read_avail() {
+        var _this39 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {Uint8Array} **/
+            let buff;
+            /** @type {number} **/
+            let bufflen;
+            /** @type {number} **/
+            let res;
+            // may throw an exception
+            buff = yield _this39._download('rxcnt.bin?pos=' + String(Math.round(_this39._rxptr)));
+            bufflen = buff.length - 1;
+            while (bufflen > 0 && buff[bufflen] != 64) {
+                bufflen = bufflen - 1;
+            }
+            res = _this39._yapi.imm_atoi(_this39._yapi.imm_bin2str(buff).substr(0, bufflen));
+            return res;
+        })();
     }
 
     /**
@@ -1224,34 +1346,37 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns an empty array.
      */
-    async queryLine(query,maxWait)
-    {
-        /** @type {string} **/
-        let url;
-        /** @type {Uint8Array} **/
-        let msgbin;
-        /** @type {string[]} **/
-        let msgarr = [];
-        /** @type {number} **/
-        let msglen;
-        /** @type {string} **/
-        let res;
-        // may throw an exception
-        url = 'rxmsg.json?len=1&maxw='+String(Math.round(maxWait))+'&cmd=!'+query;
-        msgbin = await this._download(url);
-        msgarr = this.imm_json_get_array(msgbin);
-        msglen = msgarr.length;
-        if (msglen == 0) {
-            return '';
-        }
-        // last element of array is the new position
-        msglen = msglen - 1;
-        this._rxptr = this._yapi.imm_atoi(msgarr[msglen]);
-        if (msglen == 0) {
-            return '';
-        }
-        res = this.imm_json_get_string(this._yapi.imm_str2bin(msgarr[0]));
-        return res;
+    queryLine(query, maxWait) {
+        var _this40 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let url;
+            /** @type {Uint8Array} **/
+            let msgbin;
+            /** @type {string[]} **/
+            let msgarr = [];
+            /** @type {number} **/
+            let msglen;
+            /** @type {string} **/
+            let res;
+            // may throw an exception
+            url = 'rxmsg.json?len=1&maxw=' + String(Math.round(maxWait)) + '&cmd=!' + query;
+            msgbin = yield _this40._download(url);
+            msgarr = _this40.imm_json_get_array(msgbin);
+            msglen = msgarr.length;
+            if (msglen == 0) {
+                return '';
+            }
+            // last element of array is the new position
+            msglen = msglen - 1;
+            _this40._rxptr = _this40._yapi.imm_atoi(msgarr[msglen]);
+            if (msglen == 0) {
+                return '';
+            }
+            res = _this40.imm_json_get_string(_this40._yapi.imm_str2bin(msgarr[0]));
+            return res;
+        })();
     }
 
     /**
@@ -1266,74 +1391,77 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns an empty array (or a MODBUS error reply).
      */
-    async queryMODBUS(slaveNo,pduBytes)
-    {
-        /** @type {number} **/
-        let funCode;
-        /** @type {number} **/
-        let nib;
-        /** @type {number} **/
-        let i;
-        /** @type {string} **/
-        let cmd;
-        /** @type {string} **/
-        let url;
-        /** @type {string} **/
-        let pat;
-        /** @type {Uint8Array} **/
-        let msgs;
-        /** @type {string[]} **/
-        let reps = [];
-        /** @type {string} **/
-        let rep;
-        /** @type {number[]} **/
-        let res = [];
-        /** @type {number} **/
-        let replen;
-        /** @type {number} **/
-        let hexb;
-        funCode = pduBytes[0];
-        nib = ((funCode) >> (4));
-        pat = ('00'+(slaveNo).toString(16)).slice(-2)+'['+(nib).toString(16)+''+((nib+8)).toString(16)+']'+(((funCode) & (15))).toString(16)+'.*';
-        cmd = ('00'+(slaveNo).toString(16)).slice(-2)+''+('00'+(funCode).toString(16)).slice(-2);
-        i = 1;
-        while (i < pduBytes.length) {
-            cmd = cmd+''+('00'+(((pduBytes[i]) & (0xff))).toString(16)).slice(-2);
-            i = i + 1;
-        }
-        // may throw an exception
-        url = 'rxmsg.json?cmd=:'+cmd+'&pat=:'+pat;
-        msgs = await this._download(url);
-        reps = this.imm_json_get_array(msgs);
-        if (!(reps.length > 1)) {
-            return this._throw(this._yapi.IO_ERROR,'no reply from slave',res);
-        }
-        if (reps.length > 1) {
-            rep = this.imm_json_get_string(this._yapi.imm_str2bin(reps[0]));
-            replen = (((rep).length - 3) >> (1));
-            i = 0;
-            while (i < replen) {
-                hexb = parseInt((rep).substr(2 * i + 3, 2), 16);
-                res.push(hexb);
+    queryMODBUS(slaveNo, pduBytes) {
+        var _this41 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let funCode;
+            /** @type {number} **/
+            let nib;
+            /** @type {number} **/
+            let i;
+            /** @type {string} **/
+            let cmd;
+            /** @type {string} **/
+            let url;
+            /** @type {string} **/
+            let pat;
+            /** @type {Uint8Array} **/
+            let msgs;
+            /** @type {string[]} **/
+            let reps = [];
+            /** @type {string} **/
+            let rep;
+            /** @type {number[]} **/
+            let res = [];
+            /** @type {number} **/
+            let replen;
+            /** @type {number} **/
+            let hexb;
+            funCode = pduBytes[0];
+            nib = funCode >> 4;
+            pat = ('00' + slaveNo.toString(16)).slice(-2) + '[' + nib.toString(16) + '' + (nib + 8).toString(16) + ']' + (funCode & 15).toString(16) + '.*';
+            cmd = ('00' + slaveNo.toString(16)).slice(-2) + '' + ('00' + funCode.toString(16)).slice(-2);
+            i = 1;
+            while (i < pduBytes.length) {
+                cmd = cmd + '' + ('00' + (pduBytes[i] & 0xff).toString(16)).slice(-2);
                 i = i + 1;
             }
-            if (res[0] != funCode) {
-                i = res[1];
-                if (!(i > 1)) {
-                    return this._throw(this._yapi.NOT_SUPPORTED,'MODBUS error: unsupported function code',res);
+            // may throw an exception
+            url = 'rxmsg.json?cmd=:' + cmd + '&pat=:' + pat;
+            msgs = yield _this41._download(url);
+            reps = _this41.imm_json_get_array(msgs);
+            if (!(reps.length > 1)) {
+                return _this41._throw(_this41._yapi.IO_ERROR, 'no reply from slave', res);
+            }
+            if (reps.length > 1) {
+                rep = _this41.imm_json_get_string(_this41._yapi.imm_str2bin(reps[0]));
+                replen = rep.length - 3 >> 1;
+                i = 0;
+                while (i < replen) {
+                    hexb = parseInt(rep.substr(2 * i + 3, 2), 16);
+                    res.push(hexb);
+                    i = i + 1;
                 }
-                if (!(i > 2)) {
-                    return this._throw(this._yapi.INVALID_ARGUMENT,'MODBUS error: illegal data address',res);
-                }
-                if (!(i > 3)) {
-                    return this._throw(this._yapi.INVALID_ARGUMENT,'MODBUS error: illegal data value',res);
-                }
-                if (!(i > 4)) {
-                    return this._throw(this._yapi.INVALID_ARGUMENT,'MODBUS error: failed to execute function',res);
+                if (res[0] != funCode) {
+                    i = res[1];
+                    if (!(i > 1)) {
+                        return _this41._throw(_this41._yapi.NOT_SUPPORTED, 'MODBUS error: unsupported function code', res);
+                    }
+                    if (!(i > 2)) {
+                        return _this41._throw(_this41._yapi.INVALID_ARGUMENT, 'MODBUS error: illegal data address', res);
+                    }
+                    if (!(i > 3)) {
+                        return _this41._throw(_this41._yapi.INVALID_ARGUMENT, 'MODBUS error: illegal data value', res);
+                    }
+                    if (!(i > 4)) {
+                        return _this41._throw(_this41._yapi.INVALID_ARGUMENT, 'MODBUS error: failed to execute function', res);
+                    }
                 }
             }
-        }
-        return res;
+            return res;
+        })();
     }
 
     /**
@@ -1348,55 +1476,58 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns an empty array.
      */
-    async modbusReadBits(slaveNo,pduAddr,nBits)
-    {
-        /** @type {number[]} **/
-        let pdu = [];
-        /** @type {number[]} **/
-        let reply = [];
-        /** @type {number[]} **/
-        let res = [];
-        /** @type {number} **/
-        let bitpos;
-        /** @type {number} **/
-        let idx;
-        /** @type {number} **/
-        let val;
-        /** @type {number} **/
-        let mask;
-        pdu.push(0x01);
-        pdu.push(((pduAddr) >> (8)));
-        pdu.push(((pduAddr) & (0xff)));
-        pdu.push(((nBits) >> (8)));
-        pdu.push(((nBits) & (0xff)));
-        // may throw an exception
-        reply = await this.queryMODBUS(slaveNo, pdu);
-        if (reply.length == 0) {
-            return res;
-        }
-        if (reply[0] != pdu[0]) {
-            return res;
-        }
-        bitpos = 0;
-        idx = 2;
-        val = reply[idx];
-        mask = 1;
-        while (bitpos < nBits) {
-            if (((val) & (mask)) == 0) {
-                res.push(0);
-            } else {
-                res.push(1);
+    modbusReadBits(slaveNo, pduAddr, nBits) {
+        var _this42 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number[]} **/
+            let pdu = [];
+            /** @type {number[]} **/
+            let reply = [];
+            /** @type {number[]} **/
+            let res = [];
+            /** @type {number} **/
+            let bitpos;
+            /** @type {number} **/
+            let idx;
+            /** @type {number} **/
+            let val;
+            /** @type {number} **/
+            let mask;
+            pdu.push(0x01);
+            pdu.push(pduAddr >> 8);
+            pdu.push(pduAddr & 0xff);
+            pdu.push(nBits >> 8);
+            pdu.push(nBits & 0xff);
+            // may throw an exception
+            reply = yield _this42.queryMODBUS(slaveNo, pdu);
+            if (reply.length == 0) {
+                return res;
             }
-            bitpos = bitpos + 1;
-            if (mask == 0x80) {
-                idx = idx + 1;
-                val = reply[idx];
-                mask = 1;
-            } else {
-                mask = ((mask) << (1));
+            if (reply[0] != pdu[0]) {
+                return res;
             }
-        }
-        return res;
+            bitpos = 0;
+            idx = 2;
+            val = reply[idx];
+            mask = 1;
+            while (bitpos < nBits) {
+                if ((val & mask) == 0) {
+                    res.push(0);
+                } else {
+                    res.push(1);
+                }
+                bitpos = bitpos + 1;
+                if (mask == 0x80) {
+                    idx = idx + 1;
+                    val = reply[idx];
+                    mask = 1;
+                } else {
+                    mask = mask << 1;
+                }
+            }
+            return res;
+        })();
     }
 
     /**
@@ -1411,55 +1542,58 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns an empty array.
      */
-    async modbusReadInputBits(slaveNo,pduAddr,nBits)
-    {
-        /** @type {number[]} **/
-        let pdu = [];
-        /** @type {number[]} **/
-        let reply = [];
-        /** @type {number[]} **/
-        let res = [];
-        /** @type {number} **/
-        let bitpos;
-        /** @type {number} **/
-        let idx;
-        /** @type {number} **/
-        let val;
-        /** @type {number} **/
-        let mask;
-        pdu.push(0x02);
-        pdu.push(((pduAddr) >> (8)));
-        pdu.push(((pduAddr) & (0xff)));
-        pdu.push(((nBits) >> (8)));
-        pdu.push(((nBits) & (0xff)));
-        // may throw an exception
-        reply = await this.queryMODBUS(slaveNo, pdu);
-        if (reply.length == 0) {
-            return res;
-        }
-        if (reply[0] != pdu[0]) {
-            return res;
-        }
-        bitpos = 0;
-        idx = 2;
-        val = reply[idx];
-        mask = 1;
-        while (bitpos < nBits) {
-            if (((val) & (mask)) == 0) {
-                res.push(0);
-            } else {
-                res.push(1);
+    modbusReadInputBits(slaveNo, pduAddr, nBits) {
+        var _this43 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number[]} **/
+            let pdu = [];
+            /** @type {number[]} **/
+            let reply = [];
+            /** @type {number[]} **/
+            let res = [];
+            /** @type {number} **/
+            let bitpos;
+            /** @type {number} **/
+            let idx;
+            /** @type {number} **/
+            let val;
+            /** @type {number} **/
+            let mask;
+            pdu.push(0x02);
+            pdu.push(pduAddr >> 8);
+            pdu.push(pduAddr & 0xff);
+            pdu.push(nBits >> 8);
+            pdu.push(nBits & 0xff);
+            // may throw an exception
+            reply = yield _this43.queryMODBUS(slaveNo, pdu);
+            if (reply.length == 0) {
+                return res;
             }
-            bitpos = bitpos + 1;
-            if (mask == 0x80) {
-                idx = idx + 1;
-                val = reply[idx];
-                mask = 1;
-            } else {
-                mask = ((mask) << (1));
+            if (reply[0] != pdu[0]) {
+                return res;
             }
-        }
-        return res;
+            bitpos = 0;
+            idx = 2;
+            val = reply[idx];
+            mask = 1;
+            while (bitpos < nBits) {
+                if ((val & mask) == 0) {
+                    res.push(0);
+                } else {
+                    res.push(1);
+                }
+                bitpos = bitpos + 1;
+                if (mask == 0x80) {
+                    idx = idx + 1;
+                    val = reply[idx];
+                    mask = 1;
+                } else {
+                    mask = mask << 1;
+                }
+            }
+            return res;
+        })();
     }
 
     /**
@@ -1474,44 +1608,47 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns an empty array.
      */
-    async modbusReadRegisters(slaveNo,pduAddr,nWords)
-    {
-        /** @type {number[]} **/
-        let pdu = [];
-        /** @type {number[]} **/
-        let reply = [];
-        /** @type {number[]} **/
-        let res = [];
-        /** @type {number} **/
-        let regpos;
-        /** @type {number} **/
-        let idx;
-        /** @type {number} **/
-        let val;
-        pdu.push(0x03);
-        pdu.push(((pduAddr) >> (8)));
-        pdu.push(((pduAddr) & (0xff)));
-        pdu.push(((nWords) >> (8)));
-        pdu.push(((nWords) & (0xff)));
-        // may throw an exception
-        reply = await this.queryMODBUS(slaveNo, pdu);
-        if (reply.length == 0) {
+    modbusReadRegisters(slaveNo, pduAddr, nWords) {
+        var _this44 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number[]} **/
+            let pdu = [];
+            /** @type {number[]} **/
+            let reply = [];
+            /** @type {number[]} **/
+            let res = [];
+            /** @type {number} **/
+            let regpos;
+            /** @type {number} **/
+            let idx;
+            /** @type {number} **/
+            let val;
+            pdu.push(0x03);
+            pdu.push(pduAddr >> 8);
+            pdu.push(pduAddr & 0xff);
+            pdu.push(nWords >> 8);
+            pdu.push(nWords & 0xff);
+            // may throw an exception
+            reply = yield _this44.queryMODBUS(slaveNo, pdu);
+            if (reply.length == 0) {
+                return res;
+            }
+            if (reply[0] != pdu[0]) {
+                return res;
+            }
+            regpos = 0;
+            idx = 2;
+            while (regpos < nWords) {
+                val = reply[idx] << 8;
+                idx = idx + 1;
+                val = val + reply[idx];
+                idx = idx + 1;
+                res.push(val);
+                regpos = regpos + 1;
+            }
             return res;
-        }
-        if (reply[0] != pdu[0]) {
-            return res;
-        }
-        regpos = 0;
-        idx = 2;
-        while (regpos < nWords) {
-            val = ((reply[idx]) << (8));
-            idx = idx + 1;
-            val = val + reply[idx];
-            idx = idx + 1;
-            res.push(val);
-            regpos = regpos + 1;
-        }
-        return res;
+        })();
     }
 
     /**
@@ -1526,44 +1663,47 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns an empty array.
      */
-    async modbusReadInputRegisters(slaveNo,pduAddr,nWords)
-    {
-        /** @type {number[]} **/
-        let pdu = [];
-        /** @type {number[]} **/
-        let reply = [];
-        /** @type {number[]} **/
-        let res = [];
-        /** @type {number} **/
-        let regpos;
-        /** @type {number} **/
-        let idx;
-        /** @type {number} **/
-        let val;
-        pdu.push(0x04);
-        pdu.push(((pduAddr) >> (8)));
-        pdu.push(((pduAddr) & (0xff)));
-        pdu.push(((nWords) >> (8)));
-        pdu.push(((nWords) & (0xff)));
-        // may throw an exception
-        reply = await this.queryMODBUS(slaveNo, pdu);
-        if (reply.length == 0) {
+    modbusReadInputRegisters(slaveNo, pduAddr, nWords) {
+        var _this45 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number[]} **/
+            let pdu = [];
+            /** @type {number[]} **/
+            let reply = [];
+            /** @type {number[]} **/
+            let res = [];
+            /** @type {number} **/
+            let regpos;
+            /** @type {number} **/
+            let idx;
+            /** @type {number} **/
+            let val;
+            pdu.push(0x04);
+            pdu.push(pduAddr >> 8);
+            pdu.push(pduAddr & 0xff);
+            pdu.push(nWords >> 8);
+            pdu.push(nWords & 0xff);
+            // may throw an exception
+            reply = yield _this45.queryMODBUS(slaveNo, pdu);
+            if (reply.length == 0) {
+                return res;
+            }
+            if (reply[0] != pdu[0]) {
+                return res;
+            }
+            regpos = 0;
+            idx = 2;
+            while (regpos < nWords) {
+                val = reply[idx] << 8;
+                idx = idx + 1;
+                val = val + reply[idx];
+                idx = idx + 1;
+                res.push(val);
+                regpos = regpos + 1;
+            }
             return res;
-        }
-        if (reply[0] != pdu[0]) {
-            return res;
-        }
-        regpos = 0;
-        idx = 2;
-        while (regpos < nWords) {
-            val = ((reply[idx]) << (8));
-            idx = idx + 1;
-            val = val + reply[idx];
-            idx = idx + 1;
-            res.push(val);
-            regpos = regpos + 1;
-        }
-        return res;
+        })();
     }
 
     /**
@@ -1578,33 +1718,36 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns zero.
      */
-    async modbusWriteBit(slaveNo,pduAddr,value)
-    {
-        /** @type {number[]} **/
-        let pdu = [];
-        /** @type {number[]} **/
-        let reply = [];
-        /** @type {number} **/
-        let res;
-        res = 0;
-        if (value != 0) {
-            value = 0xff;
-        }
-        pdu.push(0x05);
-        pdu.push(((pduAddr) >> (8)));
-        pdu.push(((pduAddr) & (0xff)));
-        pdu.push(value);
-        pdu.push(0x00);
-        // may throw an exception
-        reply = await this.queryMODBUS(slaveNo, pdu);
-        if (reply.length == 0) {
+    modbusWriteBit(slaveNo, pduAddr, value) {
+        var _this46 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number[]} **/
+            let pdu = [];
+            /** @type {number[]} **/
+            let reply = [];
+            /** @type {number} **/
+            let res;
+            res = 0;
+            if (value != 0) {
+                value = 0xff;
+            }
+            pdu.push(0x05);
+            pdu.push(pduAddr >> 8);
+            pdu.push(pduAddr & 0xff);
+            pdu.push(value);
+            pdu.push(0x00);
+            // may throw an exception
+            reply = yield _this46.queryMODBUS(slaveNo, pdu);
+            if (reply.length == 0) {
+                return res;
+            }
+            if (reply[0] != pdu[0]) {
+                return res;
+            }
+            res = 1;
             return res;
-        }
-        if (reply[0] != pdu[0]) {
-            return res;
-        }
-        res = 1;
-        return res;
+        })();
     }
 
     /**
@@ -1619,63 +1762,66 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns zero.
      */
-    async modbusWriteBits(slaveNo,pduAddr,bits)
-    {
-        /** @type {number} **/
-        let nBits;
-        /** @type {number} **/
-        let nBytes;
-        /** @type {number} **/
-        let bitpos;
-        /** @type {number} **/
-        let val;
-        /** @type {number} **/
-        let mask;
-        /** @type {number[]} **/
-        let pdu = [];
-        /** @type {number[]} **/
-        let reply = [];
-        /** @type {number} **/
-        let res;
-        res = 0;
-        nBits = bits.length;
-        nBytes = (((nBits + 7)) >> (3));
-        pdu.push(0x0f);
-        pdu.push(((pduAddr) >> (8)));
-        pdu.push(((pduAddr) & (0xff)));
-        pdu.push(((nBits) >> (8)));
-        pdu.push(((nBits) & (0xff)));
-        pdu.push(nBytes);
-        bitpos = 0;
-        val = 0;
-        mask = 1;
-        while (bitpos < nBits) {
-            if (bits[bitpos] != 0) {
-                val = ((val) | (mask));
+    modbusWriteBits(slaveNo, pduAddr, bits) {
+        var _this47 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let nBits;
+            /** @type {number} **/
+            let nBytes;
+            /** @type {number} **/
+            let bitpos;
+            /** @type {number} **/
+            let val;
+            /** @type {number} **/
+            let mask;
+            /** @type {number[]} **/
+            let pdu = [];
+            /** @type {number[]} **/
+            let reply = [];
+            /** @type {number} **/
+            let res;
+            res = 0;
+            nBits = bits.length;
+            nBytes = nBits + 7 >> 3;
+            pdu.push(0x0f);
+            pdu.push(pduAddr >> 8);
+            pdu.push(pduAddr & 0xff);
+            pdu.push(nBits >> 8);
+            pdu.push(nBits & 0xff);
+            pdu.push(nBytes);
+            bitpos = 0;
+            val = 0;
+            mask = 1;
+            while (bitpos < nBits) {
+                if (bits[bitpos] != 0) {
+                    val = val | mask;
+                }
+                bitpos = bitpos + 1;
+                if (mask == 0x80) {
+                    pdu.push(val);
+                    val = 0;
+                    mask = 1;
+                } else {
+                    mask = mask << 1;
+                }
             }
-            bitpos = bitpos + 1;
-            if (mask == 0x80) {
+            if (mask != 1) {
                 pdu.push(val);
-                val = 0;
-                mask = 1;
-            } else {
-                mask = ((mask) << (1));
             }
-        }
-        if (mask != 1) {
-            pdu.push(val);
-        }
-        // may throw an exception
-        reply = await this.queryMODBUS(slaveNo, pdu);
-        if (reply.length == 0) {
+            // may throw an exception
+            reply = yield _this47.queryMODBUS(slaveNo, pdu);
+            if (reply.length == 0) {
+                return res;
+            }
+            if (reply[0] != pdu[0]) {
+                return res;
+            }
+            res = reply[3] << 8;
+            res = res + reply[4];
             return res;
-        }
-        if (reply[0] != pdu[0]) {
-            return res;
-        }
-        res = ((reply[3]) << (8));
-        res = res + reply[4];
-        return res;
+        })();
     }
 
     /**
@@ -1690,33 +1836,36 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns zero.
      */
-    async modbusWriteRegister(slaveNo,pduAddr,value)
-    {
-        /** @type {number[]} **/
-        let pdu = [];
-        /** @type {number[]} **/
-        let reply = [];
-        /** @type {number} **/
-        let res;
-        res = 0;
-        if (value != 0) {
-            value = 0xff;
-        }
-        pdu.push(0x06);
-        pdu.push(((pduAddr) >> (8)));
-        pdu.push(((pduAddr) & (0xff)));
-        pdu.push(((value) >> (8)));
-        pdu.push(((value) & (0xff)));
-        // may throw an exception
-        reply = await this.queryMODBUS(slaveNo, pdu);
-        if (reply.length == 0) {
+    modbusWriteRegister(slaveNo, pduAddr, value) {
+        var _this48 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number[]} **/
+            let pdu = [];
+            /** @type {number[]} **/
+            let reply = [];
+            /** @type {number} **/
+            let res;
+            res = 0;
+            if (value != 0) {
+                value = 0xff;
+            }
+            pdu.push(0x06);
+            pdu.push(pduAddr >> 8);
+            pdu.push(pduAddr & 0xff);
+            pdu.push(value >> 8);
+            pdu.push(value & 0xff);
+            // may throw an exception
+            reply = yield _this48.queryMODBUS(slaveNo, pdu);
+            if (reply.length == 0) {
+                return res;
+            }
+            if (reply[0] != pdu[0]) {
+                return res;
+            }
+            res = 1;
             return res;
-        }
-        if (reply[0] != pdu[0]) {
-            return res;
-        }
-        res = 1;
-        return res;
+        })();
     }
 
     /**
@@ -1731,49 +1880,52 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns zero.
      */
-    async modbusWriteRegisters(slaveNo,pduAddr,values)
-    {
-        /** @type {number} **/
-        let nWords;
-        /** @type {number} **/
-        let nBytes;
-        /** @type {number} **/
-        let regpos;
-        /** @type {number} **/
-        let val;
-        /** @type {number[]} **/
-        let pdu = [];
-        /** @type {number[]} **/
-        let reply = [];
-        /** @type {number} **/
-        let res;
-        res = 0;
-        nWords = values.length;
-        nBytes = 2 * nWords;
-        pdu.push(0x10);
-        pdu.push(((pduAddr) >> (8)));
-        pdu.push(((pduAddr) & (0xff)));
-        pdu.push(((nWords) >> (8)));
-        pdu.push(((nWords) & (0xff)));
-        pdu.push(nBytes);
-        regpos = 0;
-        while (regpos < nWords) {
-            val = values[regpos];
-            pdu.push(((val) >> (8)));
-            pdu.push(((val) & (0xff)));
-            regpos = regpos + 1;
-        }
-        // may throw an exception
-        reply = await this.queryMODBUS(slaveNo, pdu);
-        if (reply.length == 0) {
+    modbusWriteRegisters(slaveNo, pduAddr, values) {
+        var _this49 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let nWords;
+            /** @type {number} **/
+            let nBytes;
+            /** @type {number} **/
+            let regpos;
+            /** @type {number} **/
+            let val;
+            /** @type {number[]} **/
+            let pdu = [];
+            /** @type {number[]} **/
+            let reply = [];
+            /** @type {number} **/
+            let res;
+            res = 0;
+            nWords = values.length;
+            nBytes = 2 * nWords;
+            pdu.push(0x10);
+            pdu.push(pduAddr >> 8);
+            pdu.push(pduAddr & 0xff);
+            pdu.push(nWords >> 8);
+            pdu.push(nWords & 0xff);
+            pdu.push(nBytes);
+            regpos = 0;
+            while (regpos < nWords) {
+                val = values[regpos];
+                pdu.push(val >> 8);
+                pdu.push(val & 0xff);
+                regpos = regpos + 1;
+            }
+            // may throw an exception
+            reply = yield _this49.queryMODBUS(slaveNo, pdu);
+            if (reply.length == 0) {
+                return res;
+            }
+            if (reply[0] != pdu[0]) {
+                return res;
+            }
+            res = reply[3] << 8;
+            res = res + reply[4];
             return res;
-        }
-        if (reply[0] != pdu[0]) {
-            return res;
-        }
-        res = ((reply[3]) << (8));
-        res = res + reply[4];
-        return res;
+        })();
     }
 
     /**
@@ -1791,62 +1943,65 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns an empty array.
      */
-    async modbusWriteAndReadRegisters(slaveNo,pduWriteAddr,values,pduReadAddr,nReadWords)
-    {
-        /** @type {number} **/
-        let nWriteWords;
-        /** @type {number} **/
-        let nBytes;
-        /** @type {number} **/
-        let regpos;
-        /** @type {number} **/
-        let val;
-        /** @type {number} **/
-        let idx;
-        /** @type {number[]} **/
-        let pdu = [];
-        /** @type {number[]} **/
-        let reply = [];
-        /** @type {number[]} **/
-        let res = [];
-        nWriteWords = values.length;
-        nBytes = 2 * nWriteWords;
-        pdu.push(0x17);
-        pdu.push(((pduReadAddr) >> (8)));
-        pdu.push(((pduReadAddr) & (0xff)));
-        pdu.push(((nReadWords) >> (8)));
-        pdu.push(((nReadWords) & (0xff)));
-        pdu.push(((pduWriteAddr) >> (8)));
-        pdu.push(((pduWriteAddr) & (0xff)));
-        pdu.push(((nWriteWords) >> (8)));
-        pdu.push(((nWriteWords) & (0xff)));
-        pdu.push(nBytes);
-        regpos = 0;
-        while (regpos < nWriteWords) {
-            val = values[regpos];
-            pdu.push(((val) >> (8)));
-            pdu.push(((val) & (0xff)));
-            regpos = regpos + 1;
-        }
-        // may throw an exception
-        reply = await this.queryMODBUS(slaveNo, pdu);
-        if (reply.length == 0) {
+    modbusWriteAndReadRegisters(slaveNo, pduWriteAddr, values, pduReadAddr, nReadWords) {
+        var _this50 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let nWriteWords;
+            /** @type {number} **/
+            let nBytes;
+            /** @type {number} **/
+            let regpos;
+            /** @type {number} **/
+            let val;
+            /** @type {number} **/
+            let idx;
+            /** @type {number[]} **/
+            let pdu = [];
+            /** @type {number[]} **/
+            let reply = [];
+            /** @type {number[]} **/
+            let res = [];
+            nWriteWords = values.length;
+            nBytes = 2 * nWriteWords;
+            pdu.push(0x17);
+            pdu.push(pduReadAddr >> 8);
+            pdu.push(pduReadAddr & 0xff);
+            pdu.push(nReadWords >> 8);
+            pdu.push(nReadWords & 0xff);
+            pdu.push(pduWriteAddr >> 8);
+            pdu.push(pduWriteAddr & 0xff);
+            pdu.push(nWriteWords >> 8);
+            pdu.push(nWriteWords & 0xff);
+            pdu.push(nBytes);
+            regpos = 0;
+            while (regpos < nWriteWords) {
+                val = values[regpos];
+                pdu.push(val >> 8);
+                pdu.push(val & 0xff);
+                regpos = regpos + 1;
+            }
+            // may throw an exception
+            reply = yield _this50.queryMODBUS(slaveNo, pdu);
+            if (reply.length == 0) {
+                return res;
+            }
+            if (reply[0] != pdu[0]) {
+                return res;
+            }
+            regpos = 0;
+            idx = 2;
+            while (regpos < nReadWords) {
+                val = reply[idx] << 8;
+                idx = idx + 1;
+                val = val + reply[idx];
+                idx = idx + 1;
+                res.push(val);
+                regpos = regpos + 1;
+            }
             return res;
-        }
-        if (reply[0] != pdu[0]) {
-            return res;
-        }
-        regpos = 0;
-        idx = 2;
-        while (regpos < nReadWords) {
-            val = ((reply[idx]) << (8));
-            idx = idx + 1;
-            val = val + reply[idx];
-            idx = idx + 1;
-            res.push(val);
-            regpos = regpos + 1;
-        }
-        return res;
+        })();
     }
 
     /**
@@ -1860,10 +2015,13 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async uploadJob(jobfile,jsonDef)
-    {
-        await this._upload(jobfile, this._yapi.imm_str2bin(jsonDef));
-        return this._yapi.SUCCESS;
+    uploadJob(jobfile, jsonDef) {
+        var _this51 = this;
+
+        return _asyncToGenerator(function* () {
+            yield _this51._upload(jobfile, _this51._yapi.imm_str2bin(jsonDef));
+            return _this51._yapi.SUCCESS;
+        })();
     }
 
     /**
@@ -1877,9 +2035,12 @@ export class YSerialPort extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async selectJob(jobfile)
-    {
-        return await this.set_currentJob(jobfile);
+    selectJob(jobfile) {
+        var _this52 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this52.set_currentJob(jobfile);
+        })();
     }
 
     /**
@@ -1889,14 +2050,13 @@ export class YSerialPort extends YFunction
      *         a serial port currently online, or a null pointer
      *         if there are no more serial ports to enumerate.
      */
-    nextSerialPort()
-    {
+    nextSerialPort() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YSerialPort.FindSerialPortInContext(this._yapi, next_hwid);
     }
 
@@ -1909,11 +2069,10 @@ export class YSerialPort extends YFunction
      *         the first serial port currently online, or a null pointer
      *         if there are none.
      */
-    static FirstSerialPort()
-    {
+    static FirstSerialPort() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('SerialPort');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('SerialPort');
+        if (next_hwid == null) return null;
         return YSerialPort.FindSerialPort(next_hwid);
     }
 
@@ -1928,18 +2087,17 @@ export class YSerialPort extends YFunction
      *         the first serial port currently online, or a null pointer
      *         if there are none.
      */
-    static FirstSerialPortInContext(yctx)
-    {
+    static FirstSerialPortInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('SerialPort');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YSerialPort.FindSerialPortInContext(yctx, next_hwid);
     }
 
     //--- (end of YSerialPort implementation)
 }
 
-//--- (SerialPort functions)
+exports.YSerialPort = YSerialPort; //--- (SerialPort functions)
 
 /**
  * Retrieves a serial port for a given identifier.
@@ -1964,8 +2122,8 @@ export class YSerialPort extends YFunction
  *
  * @return {YSerialPort} a YSerialPort object allowing you to drive the serial port.
  */
-export function yFindSerialPort(func)
-{
+
+function yFindSerialPort(func) {
     return YSerialPort.FindSerialPort(func);
 }
 
@@ -1978,8 +2136,7 @@ export function yFindSerialPort(func)
  *         the first serial port currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstSerialPort()
-{
+function yFirstSerialPort() {
     return YSerialPort.FirstSerialPort();
 }
 

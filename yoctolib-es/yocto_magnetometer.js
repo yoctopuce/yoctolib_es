@@ -38,14 +38,24 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YMagnetometer = exports.Y_ZVALUE_INVALID = exports.Y_YVALUE_INVALID = exports.Y_XVALUE_INVALID = undefined;
+exports.yFindMagnetometer = yFindMagnetometer;
+exports.yFirstMagnetometer = yFirstMagnetometer;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YMagnetometer return codes)
 //--- (end of YMagnetometer return codes)
 //--- (YMagnetometer definitions)
-export const Y_XVALUE_INVALID                = YAPI.INVALID_DOUBLE;
-export const Y_YVALUE_INVALID                = YAPI.INVALID_DOUBLE;
-export const Y_ZVALUE_INVALID                = YAPI.INVALID_DOUBLE;
+const Y_XVALUE_INVALID = exports.Y_XVALUE_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
+const Y_YVALUE_INVALID = exports.Y_YVALUE_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
+const Y_ZVALUE_INVALID = exports.Y_ZVALUE_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
 //--- (end of YMagnetometer definitions)
 
 //--- (YMagnetometer class start)
@@ -64,42 +74,39 @@ export const Y_ZVALUE_INVALID                = YAPI.INVALID_DOUBLE;
  */
 //--- (end of YMagnetometer class start)
 
-export class YMagnetometer extends YSensor
-{
-    constructor(obj_yapi, str_func)
-    {
+class YMagnetometer extends _yocto_api.YSensor {
+    constructor(obj_yapi, str_func) {
         //--- (YMagnetometer constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'Magnetometer';
+        this._className = 'Magnetometer';
         /** @member {number} **/
-        this._xValue                     = Y_XVALUE_INVALID;
+        this._xValue = Y_XVALUE_INVALID;
         /** @member {number} **/
-        this._yValue                     = Y_YVALUE_INVALID;
+        this._yValue = Y_YVALUE_INVALID;
         /** @member {number} **/
-        this._zValue                     = Y_ZVALUE_INVALID;
+        this._zValue = Y_ZVALUE_INVALID;
         this.imm_setConst({
-            XVALUE_INVALID               : YAPI.INVALID_DOUBLE,
-            YVALUE_INVALID               : YAPI.INVALID_DOUBLE,
-            ZVALUE_INVALID               : YAPI.INVALID_DOUBLE
+            XVALUE_INVALID: _yocto_api.YAPI.INVALID_DOUBLE,
+            YVALUE_INVALID: _yocto_api.YAPI.INVALID_DOUBLE,
+            ZVALUE_INVALID: _yocto_api.YAPI.INVALID_DOUBLE
         });
         //--- (end of YMagnetometer constructor)
     }
 
     //--- (YMagnetometer implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'xValue':
-            this._xValue = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
-        case 'yValue':
-            this._yValue = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
-        case 'zValue':
-            this._zValue = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'xValue':
+                this._xValue = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
+            case 'yValue':
+                this._yValue = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
+            case 'zValue':
+                this._zValue = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -112,14 +119,17 @@ export class YMagnetometer extends YSensor
      *
      * On failure, throws an exception or returns YMagnetometer.XVALUE_INVALID.
      */
-    async get_xValue()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_XVALUE_INVALID;
+    get_xValue() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
+                    return Y_XVALUE_INVALID;
+                }
             }
-        }
-        return this._xValue;
+            return _this._xValue;
+        })();
     }
 
     /**
@@ -130,14 +140,17 @@ export class YMagnetometer extends YSensor
      *
      * On failure, throws an exception or returns YMagnetometer.YVALUE_INVALID.
      */
-    async get_yValue()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_YVALUE_INVALID;
+    get_yValue() {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this2._cacheExpiration <= _this2._yapi.GetTickCount()) {
+                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _this2._yapi.SUCCESS) {
+                    return Y_YVALUE_INVALID;
+                }
             }
-        }
-        return this._yValue;
+            return _this2._yValue;
+        })();
     }
 
     /**
@@ -148,14 +161,17 @@ export class YMagnetometer extends YSensor
      *
      * On failure, throws an exception or returns YMagnetometer.ZVALUE_INVALID.
      */
-    async get_zValue()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_ZVALUE_INVALID;
+    get_zValue() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
+                    return Y_ZVALUE_INVALID;
+                }
             }
-        }
-        return this._zValue;
+            return _this3._zValue;
+        })();
     }
 
     /**
@@ -181,14 +197,13 @@ export class YMagnetometer extends YSensor
      *
      * @return {YMagnetometer} a YMagnetometer object allowing you to drive the magnetometer.
      */
-    static FindMagnetometer(func)
-    {
+    static FindMagnetometer(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('Magnetometer', func);
+        obj = _yocto_api.YFunction._FindFromCache('Magnetometer', func);
         if (obj == null) {
-            obj = new YMagnetometer(YAPI, func);
-            YFunction._AddToCache('Magnetometer',  func, obj);
+            obj = new YMagnetometer(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('Magnetometer', func, obj);
         }
         return obj;
     }
@@ -217,14 +232,13 @@ export class YMagnetometer extends YSensor
      *
      * @return {YMagnetometer} a YMagnetometer object allowing you to drive the magnetometer.
      */
-    static FindMagnetometerInContext(yctx,func)
-    {
+    static FindMagnetometerInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'Magnetometer', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Magnetometer', func);
         if (obj == null) {
             obj = new YMagnetometer(yctx, func);
-            YFunction._AddToCache('Magnetometer',  func, obj);
+            _yocto_api.YFunction._AddToCache('Magnetometer', func, obj);
         }
         return obj;
     }
@@ -236,14 +250,13 @@ export class YMagnetometer extends YSensor
      *         a magnetometer currently online, or a null pointer
      *         if there are no more magnetometers to enumerate.
      */
-    nextMagnetometer()
-    {
+    nextMagnetometer() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YMagnetometer.FindMagnetometerInContext(this._yapi, next_hwid);
     }
 
@@ -256,11 +269,10 @@ export class YMagnetometer extends YSensor
      *         the first magnetometer currently online, or a null pointer
      *         if there are none.
      */
-    static FirstMagnetometer()
-    {
+    static FirstMagnetometer() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('Magnetometer');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('Magnetometer');
+        if (next_hwid == null) return null;
         return YMagnetometer.FindMagnetometer(next_hwid);
     }
 
@@ -275,18 +287,17 @@ export class YMagnetometer extends YSensor
      *         the first magnetometer currently online, or a null pointer
      *         if there are none.
      */
-    static FirstMagnetometerInContext(yctx)
-    {
+    static FirstMagnetometerInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('Magnetometer');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YMagnetometer.FindMagnetometerInContext(yctx, next_hwid);
     }
 
     //--- (end of YMagnetometer implementation)
 }
 
-//--- (Magnetometer functions)
+exports.YMagnetometer = YMagnetometer; //--- (Magnetometer functions)
 
 /**
  * Retrieves a magnetometer for a given identifier.
@@ -311,8 +322,8 @@ export class YMagnetometer extends YSensor
  *
  * @return {YMagnetometer} a YMagnetometer object allowing you to drive the magnetometer.
  */
-export function yFindMagnetometer(func)
-{
+
+function yFindMagnetometer(func) {
     return YMagnetometer.FindMagnetometer(func);
 }
 
@@ -325,8 +336,7 @@ export function yFindMagnetometer(func)
  *         the first magnetometer currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstMagnetometer()
-{
+function yFirstMagnetometer() {
     return YMagnetometer.FirstMagnetometer();
 }
 

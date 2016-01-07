@@ -38,15 +38,25 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YQuadratureDecoder = exports.Y_SPEED_INVALID = exports.Y_DECODING_INVALID = exports.Y_DECODING_ON = exports.Y_DECODING_OFF = undefined;
+exports.yFindQuadratureDecoder = yFindQuadratureDecoder;
+exports.yFirstQuadratureDecoder = yFirstQuadratureDecoder;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YQuadratureDecoder return codes)
 //--- (end of YQuadratureDecoder return codes)
 //--- (YQuadratureDecoder definitions)
-export const Y_DECODING_OFF                  = 0;
-export const Y_DECODING_ON                   = 1;
-export const Y_DECODING_INVALID              = -1;
-export const Y_SPEED_INVALID                 = YAPI.INVALID_DOUBLE;
+const Y_DECODING_OFF = exports.Y_DECODING_OFF = 0;
+const Y_DECODING_ON = exports.Y_DECODING_ON = 1;
+const Y_DECODING_INVALID = exports.Y_DECODING_INVALID = -1;
+const Y_SPEED_INVALID = exports.Y_SPEED_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
 //--- (end of YQuadratureDecoder definitions)
 
 //--- (YQuadratureDecoder class start)
@@ -59,38 +69,35 @@ export const Y_SPEED_INVALID                 = YAPI.INVALID_DOUBLE;
  */
 //--- (end of YQuadratureDecoder class start)
 
-export class YQuadratureDecoder extends YSensor
-{
-    constructor(obj_yapi, str_func)
-    {
+class YQuadratureDecoder extends _yocto_api.YSensor {
+    constructor(obj_yapi, str_func) {
         //--- (YQuadratureDecoder constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'QuadratureDecoder';
+        this._className = 'QuadratureDecoder';
         /** @member {number} **/
-        this._speed                      = Y_SPEED_INVALID;
+        this._speed = Y_SPEED_INVALID;
         /** @member {number} **/
-        this._decoding                   = Y_DECODING_INVALID;
+        this._decoding = Y_DECODING_INVALID;
         this.imm_setConst({
-            SPEED_INVALID                : YAPI.INVALID_DOUBLE,
-            DECODING_OFF                 : 0,
-            DECODING_ON                  : 1,
-            DECODING_INVALID             : -1
+            SPEED_INVALID: _yocto_api.YAPI.INVALID_DOUBLE,
+            DECODING_OFF: 0,
+            DECODING_ON: 1,
+            DECODING_INVALID: -1
         });
         //--- (end of YQuadratureDecoder constructor)
     }
 
     //--- (YQuadratureDecoder implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'speed':
-            this._speed = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
-        case 'decoding':
-            this._decoding = parseInt(val);
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'speed':
+                this._speed = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
+            case 'decoding':
+                this._decoding = parseInt(val);
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -106,12 +113,15 @@ export class YQuadratureDecoder extends YSensor
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_currentValue(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(Math.round(newval * 65536.0));
-        return await this._setAttr('currentValue',rest_val);
+    set_currentValue(newval) {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(Math.round(newval * 65536.0));
+            return yield _this._setAttr('currentValue', rest_val);
+        })();
     }
 
     /**
@@ -121,14 +131,17 @@ export class YQuadratureDecoder extends YSensor
      *
      * On failure, throws an exception or returns YQuadratureDecoder.SPEED_INVALID.
      */
-    async get_speed()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_SPEED_INVALID;
+    get_speed() {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this2._cacheExpiration <= _this2._yapi.GetTickCount()) {
+                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _this2._yapi.SUCCESS) {
+                    return Y_SPEED_INVALID;
+                }
             }
-        }
-        return this._speed;
+            return _this2._speed;
+        })();
     }
 
     /**
@@ -139,14 +152,17 @@ export class YQuadratureDecoder extends YSensor
      *
      * On failure, throws an exception or returns YQuadratureDecoder.DECODING_INVALID.
      */
-    async get_decoding()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_DECODING_INVALID;
+    get_decoding() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
+                    return Y_DECODING_INVALID;
+                }
             }
-        }
-        return this._decoding;
+            return _this3._decoding;
+        })();
     }
 
     /**
@@ -159,12 +175,15 @@ export class YQuadratureDecoder extends YSensor
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_decoding(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('decoding',rest_val);
+    set_decoding(newval) {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this4._setAttr('decoding', rest_val);
+        })();
     }
 
     /**
@@ -190,14 +209,13 @@ export class YQuadratureDecoder extends YSensor
      *
      * @return {YQuadratureDecoder} a YQuadratureDecoder object allowing you to drive the quadrature decoder.
      */
-    static FindQuadratureDecoder(func)
-    {
+    static FindQuadratureDecoder(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('QuadratureDecoder', func);
+        obj = _yocto_api.YFunction._FindFromCache('QuadratureDecoder', func);
         if (obj == null) {
-            obj = new YQuadratureDecoder(YAPI, func);
-            YFunction._AddToCache('QuadratureDecoder',  func, obj);
+            obj = new YQuadratureDecoder(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('QuadratureDecoder', func, obj);
         }
         return obj;
     }
@@ -226,14 +244,13 @@ export class YQuadratureDecoder extends YSensor
      *
      * @return {YQuadratureDecoder} a YQuadratureDecoder object allowing you to drive the quadrature decoder.
      */
-    static FindQuadratureDecoderInContext(yctx,func)
-    {
+    static FindQuadratureDecoderInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'QuadratureDecoder', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'QuadratureDecoder', func);
         if (obj == null) {
             obj = new YQuadratureDecoder(yctx, func);
-            YFunction._AddToCache('QuadratureDecoder',  func, obj);
+            _yocto_api.YFunction._AddToCache('QuadratureDecoder', func, obj);
         }
         return obj;
     }
@@ -245,14 +262,13 @@ export class YQuadratureDecoder extends YSensor
      *         a quadrature decoder currently online, or a null pointer
      *         if there are no more quadrature decoders to enumerate.
      */
-    nextQuadratureDecoder()
-    {
+    nextQuadratureDecoder() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YQuadratureDecoder.FindQuadratureDecoderInContext(this._yapi, next_hwid);
     }
 
@@ -265,11 +281,10 @@ export class YQuadratureDecoder extends YSensor
      *         the first quadrature decoder currently online, or a null pointer
      *         if there are none.
      */
-    static FirstQuadratureDecoder()
-    {
+    static FirstQuadratureDecoder() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('QuadratureDecoder');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('QuadratureDecoder');
+        if (next_hwid == null) return null;
         return YQuadratureDecoder.FindQuadratureDecoder(next_hwid);
     }
 
@@ -284,18 +299,17 @@ export class YQuadratureDecoder extends YSensor
      *         the first quadrature decoder currently online, or a null pointer
      *         if there are none.
      */
-    static FirstQuadratureDecoderInContext(yctx)
-    {
+    static FirstQuadratureDecoderInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('QuadratureDecoder');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YQuadratureDecoder.FindQuadratureDecoderInContext(yctx, next_hwid);
     }
 
     //--- (end of YQuadratureDecoder implementation)
 }
 
-//--- (QuadratureDecoder functions)
+exports.YQuadratureDecoder = YQuadratureDecoder; //--- (QuadratureDecoder functions)
 
 /**
  * Retrieves a quadrature decoder for a given identifier.
@@ -320,8 +334,8 @@ export class YQuadratureDecoder extends YSensor
  *
  * @return {YQuadratureDecoder} a YQuadratureDecoder object allowing you to drive the quadrature decoder.
  */
-export function yFindQuadratureDecoder(func)
-{
+
+function yFindQuadratureDecoder(func) {
     return YQuadratureDecoder.FindQuadratureDecoder(func);
 }
 
@@ -334,8 +348,7 @@ export function yFindQuadratureDecoder(func)
  *         the first quadrature decoder currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstQuadratureDecoder()
-{
+function yFirstQuadratureDecoder() {
     return YQuadratureDecoder.FirstQuadratureDecoder();
 }
 

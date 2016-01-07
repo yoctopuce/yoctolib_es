@@ -38,25 +38,35 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YWakeUpMonitor = exports.Y_RTCTIME_INVALID = exports.Y_NEXTWAKEUP_INVALID = exports.Y_SLEEPCOUNTDOWN_INVALID = exports.Y_POWERDURATION_INVALID = exports.Y_WAKEUPSTATE_INVALID = exports.Y_WAKEUPSTATE_AWAKE = exports.Y_WAKEUPSTATE_SLEEPING = exports.Y_WAKEUPREASON_INVALID = exports.Y_WAKEUPREASON_SCHEDULE2 = exports.Y_WAKEUPREASON_SCHEDULE1 = exports.Y_WAKEUPREASON_EXTSIG1 = exports.Y_WAKEUPREASON_ENDOFSLEEP = exports.Y_WAKEUPREASON_EXTPOWER = exports.Y_WAKEUPREASON_USBPOWER = undefined;
+exports.yFindWakeUpMonitor = yFindWakeUpMonitor;
+exports.yFirstWakeUpMonitor = yFirstWakeUpMonitor;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YWakeUpMonitor return codes)
 //--- (end of YWakeUpMonitor return codes)
 //--- (YWakeUpMonitor definitions)
-export const Y_WAKEUPREASON_USBPOWER         = 0;
-export const Y_WAKEUPREASON_EXTPOWER         = 1;
-export const Y_WAKEUPREASON_ENDOFSLEEP       = 2;
-export const Y_WAKEUPREASON_EXTSIG1          = 3;
-export const Y_WAKEUPREASON_SCHEDULE1        = 4;
-export const Y_WAKEUPREASON_SCHEDULE2        = 5;
-export const Y_WAKEUPREASON_INVALID          = -1;
-export const Y_WAKEUPSTATE_SLEEPING          = 0;
-export const Y_WAKEUPSTATE_AWAKE             = 1;
-export const Y_WAKEUPSTATE_INVALID           = -1;
-export const Y_POWERDURATION_INVALID         = YAPI.INVALID_INT;
-export const Y_SLEEPCOUNTDOWN_INVALID        = YAPI.INVALID_INT;
-export const Y_NEXTWAKEUP_INVALID            = YAPI.INVALID_LONG;
-export const Y_RTCTIME_INVALID               = YAPI.INVALID_LONG;
+const Y_WAKEUPREASON_USBPOWER = exports.Y_WAKEUPREASON_USBPOWER = 0;
+const Y_WAKEUPREASON_EXTPOWER = exports.Y_WAKEUPREASON_EXTPOWER = 1;
+const Y_WAKEUPREASON_ENDOFSLEEP = exports.Y_WAKEUPREASON_ENDOFSLEEP = 2;
+const Y_WAKEUPREASON_EXTSIG1 = exports.Y_WAKEUPREASON_EXTSIG1 = 3;
+const Y_WAKEUPREASON_SCHEDULE1 = exports.Y_WAKEUPREASON_SCHEDULE1 = 4;
+const Y_WAKEUPREASON_SCHEDULE2 = exports.Y_WAKEUPREASON_SCHEDULE2 = 5;
+const Y_WAKEUPREASON_INVALID = exports.Y_WAKEUPREASON_INVALID = -1;
+const Y_WAKEUPSTATE_SLEEPING = exports.Y_WAKEUPSTATE_SLEEPING = 0;
+const Y_WAKEUPSTATE_AWAKE = exports.Y_WAKEUPSTATE_AWAKE = 1;
+const Y_WAKEUPSTATE_INVALID = exports.Y_WAKEUPSTATE_INVALID = -1;
+const Y_POWERDURATION_INVALID = exports.Y_POWERDURATION_INVALID = _yocto_api.YAPI.INVALID_INT;
+const Y_SLEEPCOUNTDOWN_INVALID = exports.Y_SLEEPCOUNTDOWN_INVALID = _yocto_api.YAPI.INVALID_INT;
+const Y_NEXTWAKEUP_INVALID = exports.Y_NEXTWAKEUP_INVALID = _yocto_api.YAPI.INVALID_LONG;
+const Y_RTCTIME_INVALID = exports.Y_RTCTIME_INVALID = _yocto_api.YAPI.INVALID_LONG;
 //--- (end of YWakeUpMonitor definitions)
 
 //--- (YWakeUpMonitor class start)
@@ -68,70 +78,67 @@ export const Y_RTCTIME_INVALID               = YAPI.INVALID_LONG;
  */
 //--- (end of YWakeUpMonitor class start)
 
-export class YWakeUpMonitor extends YFunction
-{
-    constructor(obj_yapi, str_func)
-    {
+class YWakeUpMonitor extends _yocto_api.YFunction {
+    constructor(obj_yapi, str_func) {
         //--- (YWakeUpMonitor constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'WakeUpMonitor';
+        this._className = 'WakeUpMonitor';
         /** @member {number} **/
-        this._powerDuration              = Y_POWERDURATION_INVALID;
+        this._powerDuration = Y_POWERDURATION_INVALID;
         /** @member {number} **/
-        this._sleepCountdown             = Y_SLEEPCOUNTDOWN_INVALID;
+        this._sleepCountdown = Y_SLEEPCOUNTDOWN_INVALID;
         /** @member {number} **/
-        this._nextWakeUp                 = Y_NEXTWAKEUP_INVALID;
+        this._nextWakeUp = Y_NEXTWAKEUP_INVALID;
         /** @member {number} **/
-        this._wakeUpReason               = Y_WAKEUPREASON_INVALID;
+        this._wakeUpReason = Y_WAKEUPREASON_INVALID;
         /** @member {number} **/
-        this._wakeUpState                = Y_WAKEUPSTATE_INVALID;
+        this._wakeUpState = Y_WAKEUPSTATE_INVALID;
         /** @member {number} **/
-        this._rtcTime                    = Y_RTCTIME_INVALID;
+        this._rtcTime = Y_RTCTIME_INVALID;
         /** @member {number} **/
-        this._endOfTime                  = 2145960000;
+        this._endOfTime = 2145960000;
         this.imm_setConst({
-            POWERDURATION_INVALID        : YAPI.INVALID_INT,
-            SLEEPCOUNTDOWN_INVALID       : YAPI.INVALID_INT,
-            NEXTWAKEUP_INVALID           : YAPI.INVALID_LONG,
-            WAKEUPREASON_USBPOWER        : 0,
-            WAKEUPREASON_EXTPOWER        : 1,
-            WAKEUPREASON_ENDOFSLEEP      : 2,
-            WAKEUPREASON_EXTSIG1         : 3,
-            WAKEUPREASON_SCHEDULE1       : 4,
-            WAKEUPREASON_SCHEDULE2       : 5,
-            WAKEUPREASON_INVALID         : -1,
-            WAKEUPSTATE_SLEEPING         : 0,
-            WAKEUPSTATE_AWAKE            : 1,
-            WAKEUPSTATE_INVALID          : -1,
-            RTCTIME_INVALID              : YAPI.INVALID_LONG
+            POWERDURATION_INVALID: _yocto_api.YAPI.INVALID_INT,
+            SLEEPCOUNTDOWN_INVALID: _yocto_api.YAPI.INVALID_INT,
+            NEXTWAKEUP_INVALID: _yocto_api.YAPI.INVALID_LONG,
+            WAKEUPREASON_USBPOWER: 0,
+            WAKEUPREASON_EXTPOWER: 1,
+            WAKEUPREASON_ENDOFSLEEP: 2,
+            WAKEUPREASON_EXTSIG1: 3,
+            WAKEUPREASON_SCHEDULE1: 4,
+            WAKEUPREASON_SCHEDULE2: 5,
+            WAKEUPREASON_INVALID: -1,
+            WAKEUPSTATE_SLEEPING: 0,
+            WAKEUPSTATE_AWAKE: 1,
+            WAKEUPSTATE_INVALID: -1,
+            RTCTIME_INVALID: _yocto_api.YAPI.INVALID_LONG
         });
         //--- (end of YWakeUpMonitor constructor)
     }
 
     //--- (YWakeUpMonitor implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'powerDuration':
-            this._powerDuration = parseInt(val);
-            return 1;
-        case 'sleepCountdown':
-            this._sleepCountdown = parseInt(val);
-            return 1;
-        case 'nextWakeUp':
-            this._nextWakeUp = parseInt(val);
-            return 1;
-        case 'wakeUpReason':
-            this._wakeUpReason = parseInt(val);
-            return 1;
-        case 'wakeUpState':
-            this._wakeUpState = parseInt(val);
-            return 1;
-        case 'rtcTime':
-            this._rtcTime = parseInt(val);
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'powerDuration':
+                this._powerDuration = parseInt(val);
+                return 1;
+            case 'sleepCountdown':
+                this._sleepCountdown = parseInt(val);
+                return 1;
+            case 'nextWakeUp':
+                this._nextWakeUp = parseInt(val);
+                return 1;
+            case 'wakeUpReason':
+                this._wakeUpReason = parseInt(val);
+                return 1;
+            case 'wakeUpState':
+                this._wakeUpState = parseInt(val);
+                return 1;
+            case 'rtcTime':
+                this._rtcTime = parseInt(val);
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -144,14 +151,17 @@ export class YWakeUpMonitor extends YFunction
      *
      * On failure, throws an exception or returns YWakeUpMonitor.POWERDURATION_INVALID.
      */
-    async get_powerDuration()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_POWERDURATION_INVALID;
+    get_powerDuration() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
+                    return Y_POWERDURATION_INVALID;
+                }
             }
-        }
-        return this._powerDuration;
+            return _this._powerDuration;
+        })();
     }
 
     /**
@@ -164,12 +174,15 @@ export class YWakeUpMonitor extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_powerDuration(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('powerDuration',rest_val);
+    set_powerDuration(newval) {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this2._setAttr('powerDuration', rest_val);
+        })();
     }
 
     /**
@@ -179,14 +192,17 @@ export class YWakeUpMonitor extends YFunction
      *
      * On failure, throws an exception or returns YWakeUpMonitor.SLEEPCOUNTDOWN_INVALID.
      */
-    async get_sleepCountdown()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_SLEEPCOUNTDOWN_INVALID;
+    get_sleepCountdown() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
+                    return Y_SLEEPCOUNTDOWN_INVALID;
+                }
             }
-        }
-        return this._sleepCountdown;
+            return _this3._sleepCountdown;
+        })();
     }
 
     /**
@@ -198,12 +214,15 @@ export class YWakeUpMonitor extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_sleepCountdown(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('sleepCountdown',rest_val);
+    set_sleepCountdown(newval) {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this4._setAttr('sleepCountdown', rest_val);
+        })();
     }
 
     /**
@@ -213,14 +232,17 @@ export class YWakeUpMonitor extends YFunction
      *
      * On failure, throws an exception or returns YWakeUpMonitor.NEXTWAKEUP_INVALID.
      */
-    async get_nextWakeUp()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_NEXTWAKEUP_INVALID;
+    get_nextWakeUp() {
+        var _this5 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this5._cacheExpiration <= _this5._yapi.GetTickCount()) {
+                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _this5._yapi.SUCCESS) {
+                    return Y_NEXTWAKEUP_INVALID;
+                }
             }
-        }
-        return this._nextWakeUp;
+            return _this5._nextWakeUp;
+        })();
     }
 
     /**
@@ -232,12 +254,15 @@ export class YWakeUpMonitor extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_nextWakeUp(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('nextWakeUp',rest_val);
+    set_nextWakeUp(newval) {
+        var _this6 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this6._setAttr('nextWakeUp', rest_val);
+        })();
     }
 
     /**
@@ -250,14 +275,17 @@ export class YWakeUpMonitor extends YFunction
      *
      * On failure, throws an exception or returns YWakeUpMonitor.WAKEUPREASON_INVALID.
      */
-    async get_wakeUpReason()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_WAKEUPREASON_INVALID;
+    get_wakeUpReason() {
+        var _this7 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this7._cacheExpiration <= _this7._yapi.GetTickCount()) {
+                if ((yield _this7.load(_this7._yapi.defaultCacheValidity)) != _this7._yapi.SUCCESS) {
+                    return Y_WAKEUPREASON_INVALID;
+                }
             }
-        }
-        return this._wakeUpReason;
+            return _this7._wakeUpReason;
+        })();
     }
 
     /**
@@ -268,32 +296,41 @@ export class YWakeUpMonitor extends YFunction
      *
      * On failure, throws an exception or returns YWakeUpMonitor.WAKEUPSTATE_INVALID.
      */
-    async get_wakeUpState()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_WAKEUPSTATE_INVALID;
+    get_wakeUpState() {
+        var _this8 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this8._cacheExpiration <= _this8._yapi.GetTickCount()) {
+                if ((yield _this8.load(_this8._yapi.defaultCacheValidity)) != _this8._yapi.SUCCESS) {
+                    return Y_WAKEUPSTATE_INVALID;
+                }
             }
-        }
-        return this._wakeUpState;
+            return _this8._wakeUpState;
+        })();
     }
 
-    async set_wakeUpState(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('wakeUpState',rest_val);
+    set_wakeUpState(newval) {
+        var _this9 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this9._setAttr('wakeUpState', rest_val);
+        })();
     }
 
-    async get_rtcTime()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_RTCTIME_INVALID;
+    get_rtcTime() {
+        var _this10 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this10._cacheExpiration <= _this10._yapi.GetTickCount()) {
+                if ((yield _this10.load(_this10._yapi.defaultCacheValidity)) != _this10._yapi.SUCCESS) {
+                    return Y_RTCTIME_INVALID;
+                }
             }
-        }
-        return this._rtcTime;
+            return _this10._rtcTime;
+        })();
     }
 
     /**
@@ -319,14 +356,13 @@ export class YWakeUpMonitor extends YFunction
      *
      * @return {YWakeUpMonitor} a YWakeUpMonitor object allowing you to drive the monitor.
      */
-    static FindWakeUpMonitor(func)
-    {
+    static FindWakeUpMonitor(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('WakeUpMonitor', func);
+        obj = _yocto_api.YFunction._FindFromCache('WakeUpMonitor', func);
         if (obj == null) {
-            obj = new YWakeUpMonitor(YAPI, func);
-            YFunction._AddToCache('WakeUpMonitor',  func, obj);
+            obj = new YWakeUpMonitor(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('WakeUpMonitor', func, obj);
         }
         return obj;
     }
@@ -355,14 +391,13 @@ export class YWakeUpMonitor extends YFunction
      *
      * @return {YWakeUpMonitor} a YWakeUpMonitor object allowing you to drive the monitor.
      */
-    static FindWakeUpMonitorInContext(yctx,func)
-    {
+    static FindWakeUpMonitorInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'WakeUpMonitor', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'WakeUpMonitor', func);
         if (obj == null) {
             obj = new YWakeUpMonitor(yctx, func);
-            YFunction._AddToCache('WakeUpMonitor',  func, obj);
+            _yocto_api.YFunction._AddToCache('WakeUpMonitor', func, obj);
         }
         return obj;
     }
@@ -370,9 +405,12 @@ export class YWakeUpMonitor extends YFunction
     /**
      * Forces a wake up.
      */
-    async wakeUp()
-    {
-        return await this.set_wakeUpState(Y_WAKEUPSTATE_AWAKE);
+    wakeUp() {
+        var _this11 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this11.set_wakeUpState(Y_WAKEUPSTATE_AWAKE);
+        })();
     }
 
     /**
@@ -385,17 +423,20 @@ export class YWakeUpMonitor extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async sleep(secBeforeSleep)
-    {
-        /** @type {number} **/
-        let currTime;
-        currTime = await this.get_rtcTime();
-        if (!(currTime != 0)) {
-            return this._throw(this._yapi.RTC_NOT_READY,'RTC time not set',this._yapi.RTC_NOT_READY);
-        }
-        await this.set_nextWakeUp(this._endOfTime);
-        await this.set_sleepCountdown(secBeforeSleep);
-        return this._yapi.SUCCESS;
+    sleep(secBeforeSleep) {
+        var _this12 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let currTime;
+            currTime = yield _this12.get_rtcTime();
+            if (!(currTime != 0)) {
+                return _this12._throw(_this12._yapi.RTC_NOT_READY, 'RTC time not set', _this12._yapi.RTC_NOT_READY);
+            }
+            yield _this12.set_nextWakeUp(_this12._endOfTime);
+            yield _this12.set_sleepCountdown(secBeforeSleep);
+            return _this12._yapi.SUCCESS;
+        })();
     }
 
     /**
@@ -410,17 +451,20 @@ export class YWakeUpMonitor extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async sleepFor(secUntilWakeUp,secBeforeSleep)
-    {
-        /** @type {number} **/
-        let currTime;
-        currTime = await this.get_rtcTime();
-        if (!(currTime != 0)) {
-            return this._throw(this._yapi.RTC_NOT_READY,'RTC time not set',this._yapi.RTC_NOT_READY);
-        }
-        await this.set_nextWakeUp(currTime+secUntilWakeUp);
-        await this.set_sleepCountdown(secBeforeSleep);
-        return this._yapi.SUCCESS;
+    sleepFor(secUntilWakeUp, secBeforeSleep) {
+        var _this13 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let currTime;
+            currTime = yield _this13.get_rtcTime();
+            if (!(currTime != 0)) {
+                return _this13._throw(_this13._yapi.RTC_NOT_READY, 'RTC time not set', _this13._yapi.RTC_NOT_READY);
+            }
+            yield _this13.set_nextWakeUp(currTime + secUntilWakeUp);
+            yield _this13.set_sleepCountdown(secBeforeSleep);
+            return _this13._yapi.SUCCESS;
+        })();
     }
 
     /**
@@ -435,17 +479,20 @@ export class YWakeUpMonitor extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async sleepUntil(wakeUpTime,secBeforeSleep)
-    {
-        /** @type {number} **/
-        let currTime;
-        currTime = await this.get_rtcTime();
-        if (!(currTime != 0)) {
-            return this._throw(this._yapi.RTC_NOT_READY,'RTC time not set',this._yapi.RTC_NOT_READY);
-        }
-        await this.set_nextWakeUp(wakeUpTime);
-        await this.set_sleepCountdown(secBeforeSleep);
-        return this._yapi.SUCCESS;
+    sleepUntil(wakeUpTime, secBeforeSleep) {
+        var _this14 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let currTime;
+            currTime = yield _this14.get_rtcTime();
+            if (!(currTime != 0)) {
+                return _this14._throw(_this14._yapi.RTC_NOT_READY, 'RTC time not set', _this14._yapi.RTC_NOT_READY);
+            }
+            yield _this14.set_nextWakeUp(wakeUpTime);
+            yield _this14.set_sleepCountdown(secBeforeSleep);
+            return _this14._yapi.SUCCESS;
+        })();
     }
 
     /**
@@ -454,11 +501,14 @@ export class YWakeUpMonitor extends YFunction
      * @return {number} YAPI.SUCCESS if the call succeeds.
      *         On failure, throws an exception or returns a negative error code.
      */
-    async resetSleepCountDown()
-    {
-        await this.set_sleepCountdown(0);
-        await this.set_nextWakeUp(0);
-        return this._yapi.SUCCESS;
+    resetSleepCountDown() {
+        var _this15 = this;
+
+        return _asyncToGenerator(function* () {
+            yield _this15.set_sleepCountdown(0);
+            yield _this15.set_nextWakeUp(0);
+            return _this15._yapi.SUCCESS;
+        })();
     }
 
     /**
@@ -468,14 +518,13 @@ export class YWakeUpMonitor extends YFunction
      *         a monitor currently online, or a null pointer
      *         if there are no more monitors to enumerate.
      */
-    nextWakeUpMonitor()
-    {
+    nextWakeUpMonitor() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YWakeUpMonitor.FindWakeUpMonitorInContext(this._yapi, next_hwid);
     }
 
@@ -488,11 +537,10 @@ export class YWakeUpMonitor extends YFunction
      *         the first monitor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstWakeUpMonitor()
-    {
+    static FirstWakeUpMonitor() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('WakeUpMonitor');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('WakeUpMonitor');
+        if (next_hwid == null) return null;
         return YWakeUpMonitor.FindWakeUpMonitor(next_hwid);
     }
 
@@ -507,18 +555,17 @@ export class YWakeUpMonitor extends YFunction
      *         the first monitor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstWakeUpMonitorInContext(yctx)
-    {
+    static FirstWakeUpMonitorInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('WakeUpMonitor');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YWakeUpMonitor.FindWakeUpMonitorInContext(yctx, next_hwid);
     }
 
     //--- (end of YWakeUpMonitor implementation)
 }
 
-//--- (WakeUpMonitor functions)
+exports.YWakeUpMonitor = YWakeUpMonitor; //--- (WakeUpMonitor functions)
 
 /**
  * Retrieves a monitor for a given identifier.
@@ -543,8 +590,8 @@ export class YWakeUpMonitor extends YFunction
  *
  * @return {YWakeUpMonitor} a YWakeUpMonitor object allowing you to drive the monitor.
  */
-export function yFindWakeUpMonitor(func)
-{
+
+function yFindWakeUpMonitor(func) {
     return YWakeUpMonitor.FindWakeUpMonitor(func);
 }
 
@@ -557,8 +604,7 @@ export function yFindWakeUpMonitor(func)
  *         the first monitor currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstWakeUpMonitor()
-{
+function yFirstWakeUpMonitor() {
     return YWakeUpMonitor.FirstWakeUpMonitor();
 }
 

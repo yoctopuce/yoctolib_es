@@ -38,22 +38,32 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YLed = exports.Y_LUMINOSITY_INVALID = exports.Y_BLINKING_INVALID = exports.Y_BLINKING_PANIC = exports.Y_BLINKING_CALL = exports.Y_BLINKING_RUN = exports.Y_BLINKING_AWARE = exports.Y_BLINKING_RELAX = exports.Y_BLINKING_STILL = exports.Y_POWER_INVALID = exports.Y_POWER_ON = exports.Y_POWER_OFF = undefined;
+exports.yFindLed = yFindLed;
+exports.yFirstLed = yFirstLed;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YLed return codes)
 //--- (end of YLed return codes)
 //--- (YLed definitions)
-export const Y_POWER_OFF                     = 0;
-export const Y_POWER_ON                      = 1;
-export const Y_POWER_INVALID                 = -1;
-export const Y_BLINKING_STILL                = 0;
-export const Y_BLINKING_RELAX                = 1;
-export const Y_BLINKING_AWARE                = 2;
-export const Y_BLINKING_RUN                  = 3;
-export const Y_BLINKING_CALL                 = 4;
-export const Y_BLINKING_PANIC                = 5;
-export const Y_BLINKING_INVALID              = -1;
-export const Y_LUMINOSITY_INVALID            = YAPI.INVALID_UINT;
+const Y_POWER_OFF = exports.Y_POWER_OFF = 0;
+const Y_POWER_ON = exports.Y_POWER_ON = 1;
+const Y_POWER_INVALID = exports.Y_POWER_INVALID = -1;
+const Y_BLINKING_STILL = exports.Y_BLINKING_STILL = 0;
+const Y_BLINKING_RELAX = exports.Y_BLINKING_RELAX = 1;
+const Y_BLINKING_AWARE = exports.Y_BLINKING_AWARE = 2;
+const Y_BLINKING_RUN = exports.Y_BLINKING_RUN = 3;
+const Y_BLINKING_CALL = exports.Y_BLINKING_CALL = 4;
+const Y_BLINKING_PANIC = exports.Y_BLINKING_PANIC = 5;
+const Y_BLINKING_INVALID = exports.Y_BLINKING_INVALID = -1;
+const Y_LUMINOSITY_INVALID = exports.Y_LUMINOSITY_INVALID = _yocto_api.YAPI.INVALID_UINT;
 //--- (end of YLed definitions)
 
 //--- (YLed class start)
@@ -66,50 +76,47 @@ export const Y_LUMINOSITY_INVALID            = YAPI.INVALID_UINT;
  */
 //--- (end of YLed class start)
 
-export class YLed extends YFunction
-{
-    constructor(obj_yapi, str_func)
-    {
+class YLed extends _yocto_api.YFunction {
+    constructor(obj_yapi, str_func) {
         //--- (YLed constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'Led';
+        this._className = 'Led';
         /** @member {number} **/
-        this._power                      = Y_POWER_INVALID;
+        this._power = Y_POWER_INVALID;
         /** @member {number} **/
-        this._luminosity                 = Y_LUMINOSITY_INVALID;
+        this._luminosity = Y_LUMINOSITY_INVALID;
         /** @member {number} **/
-        this._blinking                   = Y_BLINKING_INVALID;
+        this._blinking = Y_BLINKING_INVALID;
         this.imm_setConst({
-            POWER_OFF                    : 0,
-            POWER_ON                     : 1,
-            POWER_INVALID                : -1,
-            LUMINOSITY_INVALID           : YAPI.INVALID_UINT,
-            BLINKING_STILL               : 0,
-            BLINKING_RELAX               : 1,
-            BLINKING_AWARE               : 2,
-            BLINKING_RUN                 : 3,
-            BLINKING_CALL                : 4,
-            BLINKING_PANIC               : 5,
-            BLINKING_INVALID             : -1
+            POWER_OFF: 0,
+            POWER_ON: 1,
+            POWER_INVALID: -1,
+            LUMINOSITY_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            BLINKING_STILL: 0,
+            BLINKING_RELAX: 1,
+            BLINKING_AWARE: 2,
+            BLINKING_RUN: 3,
+            BLINKING_CALL: 4,
+            BLINKING_PANIC: 5,
+            BLINKING_INVALID: -1
         });
         //--- (end of YLed constructor)
     }
 
     //--- (YLed implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'power':
-            this._power = parseInt(val);
-            return 1;
-        case 'luminosity':
-            this._luminosity = parseInt(val);
-            return 1;
-        case 'blinking':
-            this._blinking = parseInt(val);
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'power':
+                this._power = parseInt(val);
+                return 1;
+            case 'luminosity':
+                this._luminosity = parseInt(val);
+                return 1;
+            case 'blinking':
+                this._blinking = parseInt(val);
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -121,14 +128,17 @@ export class YLed extends YFunction
      *
      * On failure, throws an exception or returns YLed.POWER_INVALID.
      */
-    async get_power()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_POWER_INVALID;
+    get_power() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
+                    return Y_POWER_INVALID;
+                }
             }
-        }
-        return this._power;
+            return _this._power;
+        })();
     }
 
     /**
@@ -140,12 +150,15 @@ export class YLed extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_power(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('power',rest_val);
+    set_power(newval) {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this2._setAttr('power', rest_val);
+        })();
     }
 
     /**
@@ -155,14 +168,17 @@ export class YLed extends YFunction
      *
      * On failure, throws an exception or returns YLed.LUMINOSITY_INVALID.
      */
-    async get_luminosity()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_LUMINOSITY_INVALID;
+    get_luminosity() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
+                    return Y_LUMINOSITY_INVALID;
+                }
             }
-        }
-        return this._luminosity;
+            return _this3._luminosity;
+        })();
     }
 
     /**
@@ -174,12 +190,15 @@ export class YLed extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_luminosity(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('luminosity',rest_val);
+    set_luminosity(newval) {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this4._setAttr('luminosity', rest_val);
+        })();
     }
 
     /**
@@ -190,14 +209,17 @@ export class YLed extends YFunction
      *
      * On failure, throws an exception or returns YLed.BLINKING_INVALID.
      */
-    async get_blinking()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_BLINKING_INVALID;
+    get_blinking() {
+        var _this5 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this5._cacheExpiration <= _this5._yapi.GetTickCount()) {
+                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _this5._yapi.SUCCESS) {
+                    return Y_BLINKING_INVALID;
+                }
             }
-        }
-        return this._blinking;
+            return _this5._blinking;
+        })();
     }
 
     /**
@@ -211,12 +233,15 @@ export class YLed extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_blinking(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('blinking',rest_val);
+    set_blinking(newval) {
+        var _this6 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this6._setAttr('blinking', rest_val);
+        })();
     }
 
     /**
@@ -242,14 +267,13 @@ export class YLed extends YFunction
      *
      * @return {YLed} a YLed object allowing you to drive the led.
      */
-    static FindLed(func)
-    {
+    static FindLed(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('Led', func);
+        obj = _yocto_api.YFunction._FindFromCache('Led', func);
         if (obj == null) {
-            obj = new YLed(YAPI, func);
-            YFunction._AddToCache('Led',  func, obj);
+            obj = new YLed(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('Led', func, obj);
         }
         return obj;
     }
@@ -278,14 +302,13 @@ export class YLed extends YFunction
      *
      * @return {YLed} a YLed object allowing you to drive the led.
      */
-    static FindLedInContext(yctx,func)
-    {
+    static FindLedInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'Led', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Led', func);
         if (obj == null) {
             obj = new YLed(yctx, func);
-            YFunction._AddToCache('Led',  func, obj);
+            _yocto_api.YFunction._AddToCache('Led', func, obj);
         }
         return obj;
     }
@@ -297,14 +320,13 @@ export class YLed extends YFunction
      *         a led currently online, or a null pointer
      *         if there are no more leds to enumerate.
      */
-    nextLed()
-    {
+    nextLed() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YLed.FindLedInContext(this._yapi, next_hwid);
     }
 
@@ -317,11 +339,10 @@ export class YLed extends YFunction
      *         the first led currently online, or a null pointer
      *         if there are none.
      */
-    static FirstLed()
-    {
+    static FirstLed() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('Led');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('Led');
+        if (next_hwid == null) return null;
         return YLed.FindLed(next_hwid);
     }
 
@@ -336,18 +357,17 @@ export class YLed extends YFunction
      *         the first led currently online, or a null pointer
      *         if there are none.
      */
-    static FirstLedInContext(yctx)
-    {
+    static FirstLedInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('Led');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YLed.FindLedInContext(yctx, next_hwid);
     }
 
     //--- (end of YLed implementation)
 }
 
-//--- (Led functions)
+exports.YLed = YLed; //--- (Led functions)
 
 /**
  * Retrieves a led for a given identifier.
@@ -372,8 +392,8 @@ export class YLed extends YFunction
  *
  * @return {YLed} a YLed object allowing you to drive the led.
  */
-export function yFindLed(func)
-{
+
+function yFindLed(func) {
     return YLed.FindLed(func);
 }
 
@@ -386,8 +406,7 @@ export function yFindLed(func)
  *         the first led currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstLed()
-{
+function yFirstLed() {
     return YLed.FirstLed();
 }
 

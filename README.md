@@ -47,13 +47,13 @@ WARRANTY, OR OTHERWISE.
 * **LICENCE.txt**
 	Yoctopuce Licence
 * **yoctolib-es.js**
-	Root file for the library (in EcmaScript 2015 + async/await)
+	Root file for the library (node.js-compatible EcmaScript 2015)
 * **yoctolib-es/**
+	Library in transpiled format (node.js-compatible EcmaScript 2015) 
+* **yoctolib-src.js**
+	Root file for loading the whole library from source files (incl. async/await)
+* **src/**
 	Source code of the library (in EcmaScript 2015 + async/await)
-* **yoctolib-node.js**
-	Root file for vanilla node.js library (pointing to pre-transpiled files)
-* **yoctolib-node/**
-	Pre-transpiled library files
 * **package.json**
 	npm's package file
 

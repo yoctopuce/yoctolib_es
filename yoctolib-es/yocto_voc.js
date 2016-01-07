@@ -38,7 +38,15 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YVoc = undefined;
+exports.yFindVoc = yFindVoc;
+exports.yFirstVoc = yFirstVoc;
+
+var _yocto_api = require('./yocto_api');
 
 //--- (YVoc return codes)
 //--- (end of YVoc return codes)
@@ -55,14 +63,12 @@ import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yoc
  */
 //--- (end of YVoc class start)
 
-export class YVoc extends YSensor
-{
-    constructor(obj_yapi, str_func)
-    {
+class YVoc extends _yocto_api.YSensor {
+    constructor(obj_yapi, str_func) {
         //--- (YVoc constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'Voc';
+        this._className = 'Voc';
         //--- (end of YVoc constructor)
     }
 
@@ -91,14 +97,13 @@ export class YVoc extends YSensor
      *
      * @return {YVoc} a YVoc object allowing you to drive the Volatile Organic Compound sensor.
      */
-    static FindVoc(func)
-    {
+    static FindVoc(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('Voc', func);
+        obj = _yocto_api.YFunction._FindFromCache('Voc', func);
         if (obj == null) {
-            obj = new YVoc(YAPI, func);
-            YFunction._AddToCache('Voc',  func, obj);
+            obj = new YVoc(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('Voc', func, obj);
         }
         return obj;
     }
@@ -127,14 +132,13 @@ export class YVoc extends YSensor
      *
      * @return {YVoc} a YVoc object allowing you to drive the Volatile Organic Compound sensor.
      */
-    static FindVocInContext(yctx,func)
-    {
+    static FindVocInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'Voc', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Voc', func);
         if (obj == null) {
             obj = new YVoc(yctx, func);
-            YFunction._AddToCache('Voc',  func, obj);
+            _yocto_api.YFunction._AddToCache('Voc', func, obj);
         }
         return obj;
     }
@@ -146,14 +150,13 @@ export class YVoc extends YSensor
      *         a Volatile Organic Compound sensor currently online, or a null pointer
      *         if there are no more Volatile Organic Compound sensors to enumerate.
      */
-    nextVoc()
-    {
+    nextVoc() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YVoc.FindVocInContext(this._yapi, next_hwid);
     }
 
@@ -166,11 +169,10 @@ export class YVoc extends YSensor
      *         the first Volatile Organic Compound sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstVoc()
-    {
+    static FirstVoc() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('Voc');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('Voc');
+        if (next_hwid == null) return null;
         return YVoc.FindVoc(next_hwid);
     }
 
@@ -185,18 +187,17 @@ export class YVoc extends YSensor
      *         the first Volatile Organic Compound sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstVocInContext(yctx)
-    {
+    static FirstVocInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('Voc');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YVoc.FindVocInContext(yctx, next_hwid);
     }
 
     //--- (end of YVoc implementation)
 }
 
-//--- (Voc functions)
+exports.YVoc = YVoc; //--- (Voc functions)
 
 /**
  * Retrieves a Volatile Organic Compound sensor for a given identifier.
@@ -221,8 +222,8 @@ export class YVoc extends YSensor
  *
  * @return {YVoc} a YVoc object allowing you to drive the Volatile Organic Compound sensor.
  */
-export function yFindVoc(func)
-{
+
+function yFindVoc(func) {
     return YVoc.FindVoc(func);
 }
 
@@ -235,8 +236,7 @@ export function yFindVoc(func)
  *         the first Volatile Organic Compound sensor currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstVoc()
-{
+function yFirstVoc() {
     return YVoc.FirstVoc();
 }
 

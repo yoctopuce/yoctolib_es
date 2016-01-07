@@ -38,21 +38,31 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YDigitalIO = exports.Y_COMMAND_INVALID = exports.Y_PORTSIZE_INVALID = exports.Y_PORTPOLARITY_INVALID = exports.Y_PORTOPENDRAIN_INVALID = exports.Y_PORTDIRECTION_INVALID = exports.Y_PORTSTATE_INVALID = exports.Y_OUTPUTVOLTAGE_INVALID = exports.Y_OUTPUTVOLTAGE_EXT_V = exports.Y_OUTPUTVOLTAGE_USB_3V = exports.Y_OUTPUTVOLTAGE_USB_5V = undefined;
+exports.yFindDigitalIO = yFindDigitalIO;
+exports.yFirstDigitalIO = yFirstDigitalIO;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YDigitalIO return codes)
 //--- (end of YDigitalIO return codes)
 //--- (YDigitalIO definitions)
-export const Y_OUTPUTVOLTAGE_USB_5V          = 0;
-export const Y_OUTPUTVOLTAGE_USB_3V          = 1;
-export const Y_OUTPUTVOLTAGE_EXT_V           = 2;
-export const Y_OUTPUTVOLTAGE_INVALID         = -1;
-export const Y_PORTSTATE_INVALID             = YAPI.INVALID_UINT;
-export const Y_PORTDIRECTION_INVALID         = YAPI.INVALID_UINT;
-export const Y_PORTOPENDRAIN_INVALID         = YAPI.INVALID_UINT;
-export const Y_PORTPOLARITY_INVALID          = YAPI.INVALID_UINT;
-export const Y_PORTSIZE_INVALID              = YAPI.INVALID_UINT;
-export const Y_COMMAND_INVALID               = YAPI.INVALID_STRING;
+const Y_OUTPUTVOLTAGE_USB_5V = exports.Y_OUTPUTVOLTAGE_USB_5V = 0;
+const Y_OUTPUTVOLTAGE_USB_3V = exports.Y_OUTPUTVOLTAGE_USB_3V = 1;
+const Y_OUTPUTVOLTAGE_EXT_V = exports.Y_OUTPUTVOLTAGE_EXT_V = 2;
+const Y_OUTPUTVOLTAGE_INVALID = exports.Y_OUTPUTVOLTAGE_INVALID = -1;
+const Y_PORTSTATE_INVALID = exports.Y_PORTSTATE_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_PORTDIRECTION_INVALID = exports.Y_PORTDIRECTION_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_PORTOPENDRAIN_INVALID = exports.Y_PORTOPENDRAIN_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_PORTPOLARITY_INVALID = exports.Y_PORTPOLARITY_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_PORTSIZE_INVALID = exports.Y_PORTSIZE_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_COMMAND_INVALID = exports.Y_COMMAND_INVALID = _yocto_api.YAPI.INVALID_STRING;
 //--- (end of YDigitalIO definitions)
 
 //--- (YDigitalIO class start)
@@ -66,69 +76,66 @@ export const Y_COMMAND_INVALID               = YAPI.INVALID_STRING;
  */
 //--- (end of YDigitalIO class start)
 
-export class YDigitalIO extends YFunction
-{
-    constructor(obj_yapi, str_func)
-    {
+class YDigitalIO extends _yocto_api.YFunction {
+    constructor(obj_yapi, str_func) {
         //--- (YDigitalIO constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'DigitalIO';
+        this._className = 'DigitalIO';
         /** @member {number} **/
-        this._portState                  = Y_PORTSTATE_INVALID;
+        this._portState = Y_PORTSTATE_INVALID;
         /** @member {number} **/
-        this._portDirection              = Y_PORTDIRECTION_INVALID;
+        this._portDirection = Y_PORTDIRECTION_INVALID;
         /** @member {number} **/
-        this._portOpenDrain              = Y_PORTOPENDRAIN_INVALID;
+        this._portOpenDrain = Y_PORTOPENDRAIN_INVALID;
         /** @member {number} **/
-        this._portPolarity               = Y_PORTPOLARITY_INVALID;
+        this._portPolarity = Y_PORTPOLARITY_INVALID;
         /** @member {number} **/
-        this._portSize                   = Y_PORTSIZE_INVALID;
+        this._portSize = Y_PORTSIZE_INVALID;
         /** @member {number} **/
-        this._outputVoltage              = Y_OUTPUTVOLTAGE_INVALID;
+        this._outputVoltage = Y_OUTPUTVOLTAGE_INVALID;
         /** @member {string} **/
-        this._command                    = Y_COMMAND_INVALID;
+        this._command = Y_COMMAND_INVALID;
         this.imm_setConst({
-            PORTSTATE_INVALID            : YAPI.INVALID_UINT,
-            PORTDIRECTION_INVALID        : YAPI.INVALID_UINT,
-            PORTOPENDRAIN_INVALID        : YAPI.INVALID_UINT,
-            PORTPOLARITY_INVALID         : YAPI.INVALID_UINT,
-            PORTSIZE_INVALID             : YAPI.INVALID_UINT,
-            OUTPUTVOLTAGE_USB_5V         : 0,
-            OUTPUTVOLTAGE_USB_3V         : 1,
-            OUTPUTVOLTAGE_EXT_V          : 2,
-            OUTPUTVOLTAGE_INVALID        : -1,
-            COMMAND_INVALID              : YAPI.INVALID_STRING
+            PORTSTATE_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            PORTDIRECTION_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            PORTOPENDRAIN_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            PORTPOLARITY_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            PORTSIZE_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            OUTPUTVOLTAGE_USB_5V: 0,
+            OUTPUTVOLTAGE_USB_3V: 1,
+            OUTPUTVOLTAGE_EXT_V: 2,
+            OUTPUTVOLTAGE_INVALID: -1,
+            COMMAND_INVALID: _yocto_api.YAPI.INVALID_STRING
         });
         //--- (end of YDigitalIO constructor)
     }
 
     //--- (YDigitalIO implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'portState':
-            this._portState = parseInt(val);
-            return 1;
-        case 'portDirection':
-            this._portDirection = parseInt(val);
-            return 1;
-        case 'portOpenDrain':
-            this._portOpenDrain = parseInt(val);
-            return 1;
-        case 'portPolarity':
-            this._portPolarity = parseInt(val);
-            return 1;
-        case 'portSize':
-            this._portSize = parseInt(val);
-            return 1;
-        case 'outputVoltage':
-            this._outputVoltage = parseInt(val);
-            return 1;
-        case 'command':
-            this._command = val;
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'portState':
+                this._portState = parseInt(val);
+                return 1;
+            case 'portDirection':
+                this._portDirection = parseInt(val);
+                return 1;
+            case 'portOpenDrain':
+                this._portOpenDrain = parseInt(val);
+                return 1;
+            case 'portPolarity':
+                this._portPolarity = parseInt(val);
+                return 1;
+            case 'portSize':
+                this._portSize = parseInt(val);
+                return 1;
+            case 'outputVoltage':
+                this._outputVoltage = parseInt(val);
+                return 1;
+            case 'command':
+                this._command = val;
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -140,14 +147,17 @@ export class YDigitalIO extends YFunction
      *
      * On failure, throws an exception or returns YDigitalIO.PORTSTATE_INVALID.
      */
-    async get_portState()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_PORTSTATE_INVALID;
+    get_portState() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
+                    return Y_PORTSTATE_INVALID;
+                }
             }
-        }
-        return this._portState;
+            return _this._portState;
+        })();
     }
 
     /**
@@ -161,12 +171,15 @@ export class YDigitalIO extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_portState(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('portState',rest_val);
+    set_portState(newval) {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this2._setAttr('portState', rest_val);
+        })();
     }
 
     /**
@@ -177,14 +190,17 @@ export class YDigitalIO extends YFunction
      *
      * On failure, throws an exception or returns YDigitalIO.PORTDIRECTION_INVALID.
      */
-    async get_portDirection()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_PORTDIRECTION_INVALID;
+    get_portDirection() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
+                    return Y_PORTDIRECTION_INVALID;
+                }
             }
-        }
-        return this._portDirection;
+            return _this3._portDirection;
+        })();
     }
 
     /**
@@ -198,12 +214,15 @@ export class YDigitalIO extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_portDirection(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('portDirection',rest_val);
+    set_portDirection(newval) {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this4._setAttr('portDirection', rest_val);
+        })();
     }
 
     /**
@@ -215,14 +234,17 @@ export class YDigitalIO extends YFunction
      *
      * On failure, throws an exception or returns YDigitalIO.PORTOPENDRAIN_INVALID.
      */
-    async get_portOpenDrain()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_PORTOPENDRAIN_INVALID;
+    get_portOpenDrain() {
+        var _this5 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this5._cacheExpiration <= _this5._yapi.GetTickCount()) {
+                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _this5._yapi.SUCCESS) {
+                    return Y_PORTOPENDRAIN_INVALID;
+                }
             }
-        }
-        return this._portOpenDrain;
+            return _this5._portOpenDrain;
+        })();
     }
 
     /**
@@ -236,12 +258,15 @@ export class YDigitalIO extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_portOpenDrain(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('portOpenDrain',rest_val);
+    set_portOpenDrain(newval) {
+        var _this6 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this6._setAttr('portOpenDrain', rest_val);
+        })();
     }
 
     /**
@@ -252,14 +277,17 @@ export class YDigitalIO extends YFunction
      *
      * On failure, throws an exception or returns YDigitalIO.PORTPOLARITY_INVALID.
      */
-    async get_portPolarity()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_PORTPOLARITY_INVALID;
+    get_portPolarity() {
+        var _this7 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this7._cacheExpiration <= _this7._yapi.GetTickCount()) {
+                if ((yield _this7.load(_this7._yapi.defaultCacheValidity)) != _this7._yapi.SUCCESS) {
+                    return Y_PORTPOLARITY_INVALID;
+                }
             }
-        }
-        return this._portPolarity;
+            return _this7._portPolarity;
+        })();
     }
 
     /**
@@ -273,12 +301,15 @@ export class YDigitalIO extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_portPolarity(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('portPolarity',rest_val);
+    set_portPolarity(newval) {
+        var _this8 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this8._setAttr('portPolarity', rest_val);
+        })();
     }
 
     /**
@@ -288,14 +319,17 @@ export class YDigitalIO extends YFunction
      *
      * On failure, throws an exception or returns YDigitalIO.PORTSIZE_INVALID.
      */
-    async get_portSize()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_PORTSIZE_INVALID;
+    get_portSize() {
+        var _this9 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this9._cacheExpiration <= _this9._yapi.GetTickCount()) {
+                if ((yield _this9.load(_this9._yapi.defaultCacheValidity)) != _this9._yapi.SUCCESS) {
+                    return Y_PORTSIZE_INVALID;
+                }
             }
-        }
-        return this._portSize;
+            return _this9._portSize;
+        })();
     }
 
     /**
@@ -306,14 +340,17 @@ export class YDigitalIO extends YFunction
      *
      * On failure, throws an exception or returns YDigitalIO.OUTPUTVOLTAGE_INVALID.
      */
-    async get_outputVoltage()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_OUTPUTVOLTAGE_INVALID;
+    get_outputVoltage() {
+        var _this10 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this10._cacheExpiration <= _this10._yapi.GetTickCount()) {
+                if ((yield _this10.load(_this10._yapi.defaultCacheValidity)) != _this10._yapi.SUCCESS) {
+                    return Y_OUTPUTVOLTAGE_INVALID;
+                }
             }
-        }
-        return this._outputVoltage;
+            return _this10._outputVoltage;
+        })();
     }
 
     /**
@@ -328,30 +365,39 @@ export class YDigitalIO extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_outputVoltage(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('outputVoltage',rest_val);
+    set_outputVoltage(newval) {
+        var _this11 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this11._setAttr('outputVoltage', rest_val);
+        })();
     }
 
-    async get_command()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_COMMAND_INVALID;
+    get_command() {
+        var _this12 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this12._cacheExpiration <= _this12._yapi.GetTickCount()) {
+                if ((yield _this12.load(_this12._yapi.defaultCacheValidity)) != _this12._yapi.SUCCESS) {
+                    return Y_COMMAND_INVALID;
+                }
             }
-        }
-        return this._command;
+            return _this12._command;
+        })();
     }
 
-    async set_command(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('command',rest_val);
+    set_command(newval) {
+        var _this13 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this13._setAttr('command', rest_val);
+        })();
     }
 
     /**
@@ -377,14 +423,13 @@ export class YDigitalIO extends YFunction
      *
      * @return {YDigitalIO} a YDigitalIO object allowing you to drive the digital IO port.
      */
-    static FindDigitalIO(func)
-    {
+    static FindDigitalIO(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('DigitalIO', func);
+        obj = _yocto_api.YFunction._FindFromCache('DigitalIO', func);
         if (obj == null) {
-            obj = new YDigitalIO(YAPI, func);
-            YFunction._AddToCache('DigitalIO',  func, obj);
+            obj = new YDigitalIO(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('DigitalIO', func, obj);
         }
         return obj;
     }
@@ -413,14 +458,13 @@ export class YDigitalIO extends YFunction
      *
      * @return {YDigitalIO} a YDigitalIO object allowing you to drive the digital IO port.
      */
-    static FindDigitalIOInContext(yctx,func)
-    {
+    static FindDigitalIOInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'DigitalIO', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'DigitalIO', func);
         if (obj == null) {
             obj = new YDigitalIO(yctx, func);
-            YFunction._AddToCache('DigitalIO',  func, obj);
+            _yocto_api.YFunction._AddToCache('DigitalIO', func, obj);
         }
         return obj;
     }
@@ -435,15 +479,18 @@ export class YDigitalIO extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_bitState(bitno,bitstate)
-    {
-        if (!(bitstate >= 0)) {
-            return this._throw(this._yapi.INVALID_ARGUMENT,'invalid bitstate',this._yapi.INVALID_ARGUMENT);
-        }
-        if (!(bitstate <= 1)) {
-            return this._throw(this._yapi.INVALID_ARGUMENT,'invalid bitstate',this._yapi.INVALID_ARGUMENT);
-        }
-        return await this.set_command(String.fromCharCode(82+bitstate)+''+String(Math.round(bitno)));
+    set_bitState(bitno, bitstate) {
+        var _this14 = this;
+
+        return _asyncToGenerator(function* () {
+            if (!(bitstate >= 0)) {
+                return _this14._throw(_this14._yapi.INVALID_ARGUMENT, 'invalid bitstate', _this14._yapi.INVALID_ARGUMENT);
+            }
+            if (!(bitstate <= 1)) {
+                return _this14._throw(_this14._yapi.INVALID_ARGUMENT, 'invalid bitstate', _this14._yapi.INVALID_ARGUMENT);
+            }
+            return yield _this14.set_command(String.fromCharCode(82 + bitstate) + '' + String(Math.round(bitno)));
+        })();
     }
 
     /**
@@ -455,12 +502,15 @@ export class YDigitalIO extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async get_bitState(bitno)
-    {
-        /** @type {number} **/
-        let portVal;
-        portVal = await this.get_portState();
-        return ((((portVal) >> (bitno))) & (1));
+    get_bitState(bitno) {
+        var _this15 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let portVal;
+            portVal = yield _this15.get_portState();
+            return portVal >> bitno & 1;
+        })();
     }
 
     /**
@@ -472,9 +522,12 @@ export class YDigitalIO extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async toggle_bitState(bitno)
-    {
-        return await this.set_command('T'+String(Math.round(bitno)));
+    toggle_bitState(bitno) {
+        var _this16 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this16.set_command('T' + String(Math.round(bitno)));
+        })();
     }
 
     /**
@@ -488,15 +541,18 @@ export class YDigitalIO extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_bitDirection(bitno,bitdirection)
-    {
-        if (!(bitdirection >= 0)) {
-            return this._throw(this._yapi.INVALID_ARGUMENT,'invalid direction',this._yapi.INVALID_ARGUMENT);
-        }
-        if (!(bitdirection <= 1)) {
-            return this._throw(this._yapi.INVALID_ARGUMENT,'invalid direction',this._yapi.INVALID_ARGUMENT);
-        }
-        return await this.set_command(String.fromCharCode(73+6*bitdirection)+''+String(Math.round(bitno)));
+    set_bitDirection(bitno, bitdirection) {
+        var _this17 = this;
+
+        return _asyncToGenerator(function* () {
+            if (!(bitdirection >= 0)) {
+                return _this17._throw(_this17._yapi.INVALID_ARGUMENT, 'invalid direction', _this17._yapi.INVALID_ARGUMENT);
+            }
+            if (!(bitdirection <= 1)) {
+                return _this17._throw(_this17._yapi.INVALID_ARGUMENT, 'invalid direction', _this17._yapi.INVALID_ARGUMENT);
+            }
+            return yield _this17.set_command(String.fromCharCode(73 + 6 * bitdirection) + '' + String(Math.round(bitno)));
+        })();
     }
 
     /**
@@ -508,12 +564,15 @@ export class YDigitalIO extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async get_bitDirection(bitno)
-    {
-        /** @type {number} **/
-        let portDir;
-        portDir = await this.get_portDirection();
-        return ((((portDir) >> (bitno))) & (1));
+    get_bitDirection(bitno) {
+        var _this18 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let portDir;
+            portDir = yield _this18.get_portDirection();
+            return portDir >> bitno & 1;
+        })();
     }
 
     /**
@@ -528,15 +587,18 @@ export class YDigitalIO extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_bitPolarity(bitno,bitpolarity)
-    {
-        if (!(bitpolarity >= 0)) {
-            return this._throw(this._yapi.INVALID_ARGUMENT,'invalid bitpolarity',this._yapi.INVALID_ARGUMENT);
-        }
-        if (!(bitpolarity <= 1)) {
-            return this._throw(this._yapi.INVALID_ARGUMENT,'invalid bitpolarity',this._yapi.INVALID_ARGUMENT);
-        }
-        return await this.set_command(String.fromCharCode(110+4*bitpolarity)+''+String(Math.round(bitno)));
+    set_bitPolarity(bitno, bitpolarity) {
+        var _this19 = this;
+
+        return _asyncToGenerator(function* () {
+            if (!(bitpolarity >= 0)) {
+                return _this19._throw(_this19._yapi.INVALID_ARGUMENT, 'invalid bitpolarity', _this19._yapi.INVALID_ARGUMENT);
+            }
+            if (!(bitpolarity <= 1)) {
+                return _this19._throw(_this19._yapi.INVALID_ARGUMENT, 'invalid bitpolarity', _this19._yapi.INVALID_ARGUMENT);
+            }
+            return yield _this19.set_command(String.fromCharCode(110 + 4 * bitpolarity) + '' + String(Math.round(bitno)));
+        })();
     }
 
     /**
@@ -549,12 +611,15 @@ export class YDigitalIO extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async get_bitPolarity(bitno)
-    {
-        /** @type {number} **/
-        let portPol;
-        portPol = await this.get_portPolarity();
-        return ((((portPol) >> (bitno))) & (1));
+    get_bitPolarity(bitno) {
+        var _this20 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let portPol;
+            portPol = yield _this20.get_portPolarity();
+            return portPol >> bitno & 1;
+        })();
     }
 
     /**
@@ -569,15 +634,18 @@ export class YDigitalIO extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_bitOpenDrain(bitno,opendrain)
-    {
-        if (!(opendrain >= 0)) {
-            return this._throw(this._yapi.INVALID_ARGUMENT,'invalid state',this._yapi.INVALID_ARGUMENT);
-        }
-        if (!(opendrain <= 1)) {
-            return this._throw(this._yapi.INVALID_ARGUMENT,'invalid state',this._yapi.INVALID_ARGUMENT);
-        }
-        return await this.set_command(String.fromCharCode(100-32*opendrain)+''+String(Math.round(bitno)));
+    set_bitOpenDrain(bitno, opendrain) {
+        var _this21 = this;
+
+        return _asyncToGenerator(function* () {
+            if (!(opendrain >= 0)) {
+                return _this21._throw(_this21._yapi.INVALID_ARGUMENT, 'invalid state', _this21._yapi.INVALID_ARGUMENT);
+            }
+            if (!(opendrain <= 1)) {
+                return _this21._throw(_this21._yapi.INVALID_ARGUMENT, 'invalid state', _this21._yapi.INVALID_ARGUMENT);
+            }
+            return yield _this21.set_command(String.fromCharCode(100 - 32 * opendrain) + '' + String(Math.round(bitno)));
+        })();
     }
 
     /**
@@ -591,12 +659,15 @@ export class YDigitalIO extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async get_bitOpenDrain(bitno)
-    {
-        /** @type {number} **/
-        let portOpenDrain;
-        portOpenDrain = await this.get_portOpenDrain();
-        return ((((portOpenDrain) >> (bitno))) & (1));
+    get_bitOpenDrain(bitno) {
+        var _this22 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let portOpenDrain;
+            portOpenDrain = yield _this22.get_portOpenDrain();
+            return portOpenDrain >> bitno & 1;
+        })();
     }
 
     /**
@@ -611,9 +682,12 @@ export class YDigitalIO extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async pulse(bitno,ms_duration)
-    {
-        return await this.set_command('Z'+String(Math.round(bitno))+',0,'+String(Math.round(ms_duration)));
+    pulse(bitno, ms_duration) {
+        var _this23 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this23.set_command('Z' + String(Math.round(bitno)) + ',0,' + String(Math.round(ms_duration)));
+        })();
     }
 
     /**
@@ -629,9 +703,12 @@ export class YDigitalIO extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async delayedPulse(bitno,ms_delay,ms_duration)
-    {
-        return await this.set_command('Z'+String(Math.round(bitno))+','+String(Math.round(ms_delay))+','+String(Math.round(ms_duration)));
+    delayedPulse(bitno, ms_delay, ms_duration) {
+        var _this24 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this24.set_command('Z' + String(Math.round(bitno)) + ',' + String(Math.round(ms_delay)) + ',' + String(Math.round(ms_duration)));
+        })();
     }
 
     /**
@@ -641,14 +718,13 @@ export class YDigitalIO extends YFunction
      *         a digital IO port currently online, or a null pointer
      *         if there are no more digital IO ports to enumerate.
      */
-    nextDigitalIO()
-    {
+    nextDigitalIO() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YDigitalIO.FindDigitalIOInContext(this._yapi, next_hwid);
     }
 
@@ -661,11 +737,10 @@ export class YDigitalIO extends YFunction
      *         the first digital IO port currently online, or a null pointer
      *         if there are none.
      */
-    static FirstDigitalIO()
-    {
+    static FirstDigitalIO() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('DigitalIO');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('DigitalIO');
+        if (next_hwid == null) return null;
         return YDigitalIO.FindDigitalIO(next_hwid);
     }
 
@@ -680,18 +755,17 @@ export class YDigitalIO extends YFunction
      *         the first digital IO port currently online, or a null pointer
      *         if there are none.
      */
-    static FirstDigitalIOInContext(yctx)
-    {
+    static FirstDigitalIOInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('DigitalIO');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YDigitalIO.FindDigitalIOInContext(yctx, next_hwid);
     }
 
     //--- (end of YDigitalIO implementation)
 }
 
-//--- (DigitalIO functions)
+exports.YDigitalIO = YDigitalIO; //--- (DigitalIO functions)
 
 /**
  * Retrieves a digital IO port for a given identifier.
@@ -716,8 +790,8 @@ export class YDigitalIO extends YFunction
  *
  * @return {YDigitalIO} a YDigitalIO object allowing you to drive the digital IO port.
  */
-export function yFindDigitalIO(func)
-{
+
+function yFindDigitalIO(func) {
     return YDigitalIO.FindDigitalIO(func);
 }
 
@@ -730,8 +804,7 @@ export function yFindDigitalIO(func)
  *         the first digital IO port currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstDigitalIO()
-{
+function yFirstDigitalIO() {
     return YDigitalIO.FirstDigitalIO();
 }
 

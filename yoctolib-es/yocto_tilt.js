@@ -38,15 +38,25 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YTilt = exports.Y_AXIS_INVALID = exports.Y_AXIS_Z = exports.Y_AXIS_Y = exports.Y_AXIS_X = undefined;
+exports.yFindTilt = yFindTilt;
+exports.yFirstTilt = yFirstTilt;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YTilt return codes)
 //--- (end of YTilt return codes)
 //--- (YTilt definitions)
-export const Y_AXIS_X                        = 0;
-export const Y_AXIS_Y                        = 1;
-export const Y_AXIS_Z                        = 2;
-export const Y_AXIS_INVALID                  = -1;
+const Y_AXIS_X = exports.Y_AXIS_X = 0;
+const Y_AXIS_Y = exports.Y_AXIS_Y = 1;
+const Y_AXIS_Z = exports.Y_AXIS_Z = 2;
+const Y_AXIS_INVALID = exports.Y_AXIS_INVALID = -1;
 //--- (end of YTilt definitions)
 
 //--- (YTilt class start)
@@ -65,45 +75,45 @@ export const Y_AXIS_INVALID                  = -1;
  */
 //--- (end of YTilt class start)
 
-export class YTilt extends YSensor
-{
-    constructor(obj_yapi, str_func)
-    {
+class YTilt extends _yocto_api.YSensor {
+    constructor(obj_yapi, str_func) {
         //--- (YTilt constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'Tilt';
+        this._className = 'Tilt';
         /** @member {number} **/
-        this._axis                       = Y_AXIS_INVALID;
+        this._axis = Y_AXIS_INVALID;
         this.imm_setConst({
-            AXIS_X                       : 0,
-            AXIS_Y                       : 1,
-            AXIS_Z                       : 2,
-            AXIS_INVALID                 : -1
+            AXIS_X: 0,
+            AXIS_Y: 1,
+            AXIS_Z: 2,
+            AXIS_INVALID: -1
         });
         //--- (end of YTilt constructor)
     }
 
     //--- (YTilt implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'axis':
-            this._axis = parseInt(val);
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'axis':
+                this._axis = parseInt(val);
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
 
-    async get_axis()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_AXIS_INVALID;
+    get_axis() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
+                    return Y_AXIS_INVALID;
+                }
             }
-        }
-        return this._axis;
+            return _this._axis;
+        })();
     }
 
     /**
@@ -129,14 +139,13 @@ export class YTilt extends YSensor
      *
      * @return {YTilt} a YTilt object allowing you to drive the tilt sensor.
      */
-    static FindTilt(func)
-    {
+    static FindTilt(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('Tilt', func);
+        obj = _yocto_api.YFunction._FindFromCache('Tilt', func);
         if (obj == null) {
-            obj = new YTilt(YAPI, func);
-            YFunction._AddToCache('Tilt',  func, obj);
+            obj = new YTilt(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('Tilt', func, obj);
         }
         return obj;
     }
@@ -165,14 +174,13 @@ export class YTilt extends YSensor
      *
      * @return {YTilt} a YTilt object allowing you to drive the tilt sensor.
      */
-    static FindTiltInContext(yctx,func)
-    {
+    static FindTiltInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'Tilt', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Tilt', func);
         if (obj == null) {
             obj = new YTilt(yctx, func);
-            YFunction._AddToCache('Tilt',  func, obj);
+            _yocto_api.YFunction._AddToCache('Tilt', func, obj);
         }
         return obj;
     }
@@ -184,14 +192,13 @@ export class YTilt extends YSensor
      *         a tilt sensor currently online, or a null pointer
      *         if there are no more tilt sensors to enumerate.
      */
-    nextTilt()
-    {
+    nextTilt() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YTilt.FindTiltInContext(this._yapi, next_hwid);
     }
 
@@ -204,11 +211,10 @@ export class YTilt extends YSensor
      *         the first tilt sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstTilt()
-    {
+    static FirstTilt() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('Tilt');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('Tilt');
+        if (next_hwid == null) return null;
         return YTilt.FindTilt(next_hwid);
     }
 
@@ -223,18 +229,17 @@ export class YTilt extends YSensor
      *         the first tilt sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstTiltInContext(yctx)
-    {
+    static FirstTiltInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('Tilt');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YTilt.FindTiltInContext(yctx, next_hwid);
     }
 
     //--- (end of YTilt implementation)
 }
 
-//--- (Tilt functions)
+exports.YTilt = YTilt; //--- (Tilt functions)
 
 /**
  * Retrieves a tilt sensor for a given identifier.
@@ -259,8 +264,8 @@ export class YTilt extends YSensor
  *
  * @return {YTilt} a YTilt object allowing you to drive the tilt sensor.
  */
-export function yFindTilt(func)
-{
+
+function yFindTilt(func) {
     return YTilt.FindTilt(func);
 }
 
@@ -273,8 +278,7 @@ export function yFindTilt(func)
  *         the first tilt sensor currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstTilt()
-{
+function yFirstTilt() {
     return YTilt.FirstTilt();
 }
 

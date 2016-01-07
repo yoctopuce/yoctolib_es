@@ -38,18 +38,28 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YCurrentLoopOutput = exports.Y_CURRENTATSTARTUP_INVALID = exports.Y_CURRENTTRANSITION_INVALID = exports.Y_CURRENT_INVALID = exports.Y_LOOPPOWER_INVALID = exports.Y_LOOPPOWER_POWEROK = exports.Y_LOOPPOWER_LOWPWR = exports.Y_LOOPPOWER_NOPWR = undefined;
+exports.yFindCurrentLoopOutput = yFindCurrentLoopOutput;
+exports.yFirstCurrentLoopOutput = yFirstCurrentLoopOutput;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YCurrentLoopOutput return codes)
 //--- (end of YCurrentLoopOutput return codes)
 //--- (YCurrentLoopOutput definitions)
-export const Y_LOOPPOWER_NOPWR               = 0;
-export const Y_LOOPPOWER_LOWPWR              = 1;
-export const Y_LOOPPOWER_POWEROK             = 2;
-export const Y_LOOPPOWER_INVALID             = -1;
-export const Y_CURRENT_INVALID               = YAPI.INVALID_DOUBLE;
-export const Y_CURRENTTRANSITION_INVALID     = YAPI.INVALID_STRING;
-export const Y_CURRENTATSTARTUP_INVALID      = YAPI.INVALID_DOUBLE;
+const Y_LOOPPOWER_NOPWR = exports.Y_LOOPPOWER_NOPWR = 0;
+const Y_LOOPPOWER_LOWPWR = exports.Y_LOOPPOWER_LOWPWR = 1;
+const Y_LOOPPOWER_POWEROK = exports.Y_LOOPPOWER_POWEROK = 2;
+const Y_LOOPPOWER_INVALID = exports.Y_LOOPPOWER_INVALID = -1;
+const Y_CURRENT_INVALID = exports.Y_CURRENT_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
+const Y_CURRENTTRANSITION_INVALID = exports.Y_CURRENTTRANSITION_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_CURRENTATSTARTUP_INVALID = exports.Y_CURRENTATSTARTUP_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
 //--- (end of YCurrentLoopOutput definitions)
 
 //--- (YCurrentLoopOutput class start)
@@ -61,51 +71,48 @@ export const Y_CURRENTATSTARTUP_INVALID      = YAPI.INVALID_DOUBLE;
  */
 //--- (end of YCurrentLoopOutput class start)
 
-export class YCurrentLoopOutput extends YFunction
-{
-    constructor(obj_yapi, str_func)
-    {
+class YCurrentLoopOutput extends _yocto_api.YFunction {
+    constructor(obj_yapi, str_func) {
         //--- (YCurrentLoopOutput constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'CurrentLoopOutput';
+        this._className = 'CurrentLoopOutput';
         /** @member {number} **/
-        this._current                    = Y_CURRENT_INVALID;
+        this._current = Y_CURRENT_INVALID;
         /** @member {string} **/
-        this._currentTransition          = Y_CURRENTTRANSITION_INVALID;
+        this._currentTransition = Y_CURRENTTRANSITION_INVALID;
         /** @member {number} **/
-        this._currentAtStartUp           = Y_CURRENTATSTARTUP_INVALID;
+        this._currentAtStartUp = Y_CURRENTATSTARTUP_INVALID;
         /** @member {number} **/
-        this._loopPower                  = Y_LOOPPOWER_INVALID;
+        this._loopPower = Y_LOOPPOWER_INVALID;
         this.imm_setConst({
-            CURRENT_INVALID              : YAPI.INVALID_DOUBLE,
-            CURRENTTRANSITION_INVALID    : YAPI.INVALID_STRING,
-            CURRENTATSTARTUP_INVALID     : YAPI.INVALID_DOUBLE,
-            LOOPPOWER_NOPWR              : 0,
-            LOOPPOWER_LOWPWR             : 1,
-            LOOPPOWER_POWEROK            : 2,
-            LOOPPOWER_INVALID            : -1
+            CURRENT_INVALID: _yocto_api.YAPI.INVALID_DOUBLE,
+            CURRENTTRANSITION_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            CURRENTATSTARTUP_INVALID: _yocto_api.YAPI.INVALID_DOUBLE,
+            LOOPPOWER_NOPWR: 0,
+            LOOPPOWER_LOWPWR: 1,
+            LOOPPOWER_POWEROK: 2,
+            LOOPPOWER_INVALID: -1
         });
         //--- (end of YCurrentLoopOutput constructor)
     }
 
     //--- (YCurrentLoopOutput implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'current':
-            this._current = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
-        case 'currentTransition':
-            this._currentTransition = val;
-            return 1;
-        case 'currentAtStartUp':
-            this._currentAtStartUp = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
-        case 'loopPower':
-            this._loopPower = parseInt(val);
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'current':
+                this._current = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
+            case 'currentTransition':
+                this._currentTransition = val;
+                return 1;
+            case 'currentAtStartUp':
+                this._currentAtStartUp = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
+            case 'loopPower':
+                this._loopPower = parseInt(val);
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -122,12 +129,15 @@ export class YCurrentLoopOutput extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_current(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(Math.round(newval * 65536.0));
-        return await this._setAttr('current',rest_val);
+    set_current(newval) {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(Math.round(newval * 65536.0));
+            return yield _this._setAttr('current', rest_val);
+        })();
     }
 
     /**
@@ -137,32 +147,41 @@ export class YCurrentLoopOutput extends YFunction
      *
      * On failure, throws an exception or returns YCurrentLoopOutput.CURRENT_INVALID.
      */
-    async get_current()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_CURRENT_INVALID;
+    get_current() {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this2._cacheExpiration <= _this2._yapi.GetTickCount()) {
+                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _this2._yapi.SUCCESS) {
+                    return Y_CURRENT_INVALID;
+                }
             }
-        }
-        return this._current;
+            return _this2._current;
+        })();
     }
 
-    async get_currentTransition()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_CURRENTTRANSITION_INVALID;
+    get_currentTransition() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
+                    return Y_CURRENTTRANSITION_INVALID;
+                }
             }
-        }
-        return this._currentTransition;
+            return _this3._currentTransition;
+        })();
     }
 
-    async set_currentTransition(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('currentTransition',rest_val);
+    set_currentTransition(newval) {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this4._setAttr('currentTransition', rest_val);
+        })();
     }
 
     /**
@@ -175,12 +194,15 @@ export class YCurrentLoopOutput extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_currentAtStartUp(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(Math.round(newval * 65536.0));
-        return await this._setAttr('currentAtStartUp',rest_val);
+    set_currentAtStartUp(newval) {
+        var _this5 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(Math.round(newval * 65536.0));
+            return yield _this5._setAttr('currentAtStartUp', rest_val);
+        })();
     }
 
     /**
@@ -190,14 +212,17 @@ export class YCurrentLoopOutput extends YFunction
      *
      * On failure, throws an exception or returns YCurrentLoopOutput.CURRENTATSTARTUP_INVALID.
      */
-    async get_currentAtStartUp()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_CURRENTATSTARTUP_INVALID;
+    get_currentAtStartUp() {
+        var _this6 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this6._cacheExpiration <= _this6._yapi.GetTickCount()) {
+                if ((yield _this6.load(_this6._yapi.defaultCacheValidity)) != _this6._yapi.SUCCESS) {
+                    return Y_CURRENTATSTARTUP_INVALID;
+                }
             }
-        }
-        return this._currentAtStartUp;
+            return _this6._currentAtStartUp;
+        })();
     }
 
     /**
@@ -211,14 +236,17 @@ export class YCurrentLoopOutput extends YFunction
      *
      * On failure, throws an exception or returns YCurrentLoopOutput.LOOPPOWER_INVALID.
      */
-    async get_loopPower()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_LOOPPOWER_INVALID;
+    get_loopPower() {
+        var _this7 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this7._cacheExpiration <= _this7._yapi.GetTickCount()) {
+                if ((yield _this7.load(_this7._yapi.defaultCacheValidity)) != _this7._yapi.SUCCESS) {
+                    return Y_LOOPPOWER_INVALID;
+                }
             }
-        }
-        return this._loopPower;
+            return _this7._loopPower;
+        })();
     }
 
     /**
@@ -244,14 +272,13 @@ export class YCurrentLoopOutput extends YFunction
      *
      * @return {YCurrentLoopOutput} a YCurrentLoopOutput object allowing you to drive the 4-20mA output.
      */
-    static FindCurrentLoopOutput(func)
-    {
+    static FindCurrentLoopOutput(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('CurrentLoopOutput', func);
+        obj = _yocto_api.YFunction._FindFromCache('CurrentLoopOutput', func);
         if (obj == null) {
-            obj = new YCurrentLoopOutput(YAPI, func);
-            YFunction._AddToCache('CurrentLoopOutput',  func, obj);
+            obj = new YCurrentLoopOutput(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('CurrentLoopOutput', func, obj);
         }
         return obj;
     }
@@ -280,14 +307,13 @@ export class YCurrentLoopOutput extends YFunction
      *
      * @return {YCurrentLoopOutput} a YCurrentLoopOutput object allowing you to drive the 4-20mA output.
      */
-    static FindCurrentLoopOutputInContext(yctx,func)
-    {
+    static FindCurrentLoopOutputInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'CurrentLoopOutput', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'CurrentLoopOutput', func);
         if (obj == null) {
             obj = new YCurrentLoopOutput(yctx, func);
-            YFunction._AddToCache('CurrentLoopOutput',  func, obj);
+            _yocto_api.YFunction._AddToCache('CurrentLoopOutput', func, obj);
         }
         return obj;
     }
@@ -302,19 +328,22 @@ export class YCurrentLoopOutput extends YFunction
      *
      * @return {number} YAPI.SUCCESS when the call succeeds.
      */
-    async currentMove(mA_target,ms_duration)
-    {
-        /** @type {string} **/
-        let newval;
-        if (mA_target < 3.0) {
-            mA_target  = 3.0;
-        }
-        if (mA_target > 21.0) {
-            mA_target = 21.0;
-        }
-        newval = String(Math.round(Math.round(mA_target*1000)))+':'+String(Math.round(ms_duration));
-        // may throw an exception
-        return await this.set_currentTransition(newval);
+    currentMove(mA_target, ms_duration) {
+        var _this8 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let newval;
+            if (mA_target < 3.0) {
+                mA_target = 3.0;
+            }
+            if (mA_target > 21.0) {
+                mA_target = 21.0;
+            }
+            newval = String(Math.round(Math.round(mA_target * 1000))) + ':' + String(Math.round(ms_duration));
+            // may throw an exception
+            return yield _this8.set_currentTransition(newval);
+        })();
     }
 
     /**
@@ -324,14 +353,13 @@ export class YCurrentLoopOutput extends YFunction
      *         a 4-20mA output currently online, or a null pointer
      *         if there are no more 4-20mA outputs to enumerate.
      */
-    nextCurrentLoopOutput()
-    {
+    nextCurrentLoopOutput() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YCurrentLoopOutput.FindCurrentLoopOutputInContext(this._yapi, next_hwid);
     }
 
@@ -344,11 +372,10 @@ export class YCurrentLoopOutput extends YFunction
      *         the first 4-20mA output currently online, or a null pointer
      *         if there are none.
      */
-    static FirstCurrentLoopOutput()
-    {
+    static FirstCurrentLoopOutput() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('CurrentLoopOutput');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('CurrentLoopOutput');
+        if (next_hwid == null) return null;
         return YCurrentLoopOutput.FindCurrentLoopOutput(next_hwid);
     }
 
@@ -363,18 +390,17 @@ export class YCurrentLoopOutput extends YFunction
      *         the first 4-20mA output currently online, or a null pointer
      *         if there are none.
      */
-    static FirstCurrentLoopOutputInContext(yctx)
-    {
+    static FirstCurrentLoopOutputInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('CurrentLoopOutput');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YCurrentLoopOutput.FindCurrentLoopOutputInContext(yctx, next_hwid);
     }
 
     //--- (end of YCurrentLoopOutput implementation)
 }
 
-//--- (CurrentLoopOutput functions)
+exports.YCurrentLoopOutput = YCurrentLoopOutput; //--- (CurrentLoopOutput functions)
 
 /**
  * Retrieves a 4-20mA output for a given identifier.
@@ -399,8 +425,8 @@ export class YCurrentLoopOutput extends YFunction
  *
  * @return {YCurrentLoopOutput} a YCurrentLoopOutput object allowing you to drive the 4-20mA output.
  */
-export function yFindCurrentLoopOutput(func)
-{
+
+function yFindCurrentLoopOutput(func) {
     return YCurrentLoopOutput.FindCurrentLoopOutput(func);
 }
 
@@ -413,8 +439,7 @@ export function yFindCurrentLoopOutput(func)
  *         the first 4-20mA output currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstCurrentLoopOutput()
-{
+function yFirstCurrentLoopOutput() {
     return YCurrentLoopOutput.FirstCurrentLoopOutput();
 }
 

@@ -38,17 +38,27 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YLightSensor = exports.Y_MEASURETYPE_INVALID = exports.Y_MEASURETYPE_HIGH_ENERGY = exports.Y_MEASURETYPE_HIGH_RATE = exports.Y_MEASURETYPE_INFRARED = exports.Y_MEASURETYPE_WIDE_SPECTRUM = exports.Y_MEASURETYPE_HUMAN_EYE = undefined;
+exports.yFindLightSensor = yFindLightSensor;
+exports.yFirstLightSensor = yFirstLightSensor;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YLightSensor return codes)
 //--- (end of YLightSensor return codes)
 //--- (YLightSensor definitions)
-export const Y_MEASURETYPE_HUMAN_EYE         = 0;
-export const Y_MEASURETYPE_WIDE_SPECTRUM     = 1;
-export const Y_MEASURETYPE_INFRARED          = 2;
-export const Y_MEASURETYPE_HIGH_RATE         = 3;
-export const Y_MEASURETYPE_HIGH_ENERGY       = 4;
-export const Y_MEASURETYPE_INVALID           = -1;
+const Y_MEASURETYPE_HUMAN_EYE = exports.Y_MEASURETYPE_HUMAN_EYE = 0;
+const Y_MEASURETYPE_WIDE_SPECTRUM = exports.Y_MEASURETYPE_WIDE_SPECTRUM = 1;
+const Y_MEASURETYPE_INFRARED = exports.Y_MEASURETYPE_INFRARED = 2;
+const Y_MEASURETYPE_HIGH_RATE = exports.Y_MEASURETYPE_HIGH_RATE = 3;
+const Y_MEASURETYPE_HIGH_ENERGY = exports.Y_MEASURETYPE_HIGH_ENERGY = 4;
+const Y_MEASURETYPE_INVALID = exports.Y_MEASURETYPE_INVALID = -1;
 //--- (end of YLightSensor definitions)
 
 //--- (YLightSensor class start)
@@ -65,45 +75,45 @@ export const Y_MEASURETYPE_INVALID           = -1;
  */
 //--- (end of YLightSensor class start)
 
-export class YLightSensor extends YSensor
-{
-    constructor(obj_yapi, str_func)
-    {
+class YLightSensor extends _yocto_api.YSensor {
+    constructor(obj_yapi, str_func) {
         //--- (YLightSensor constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'LightSensor';
+        this._className = 'LightSensor';
         /** @member {number} **/
-        this._measureType                = Y_MEASURETYPE_INVALID;
+        this._measureType = Y_MEASURETYPE_INVALID;
         this.imm_setConst({
-            MEASURETYPE_HUMAN_EYE        : 0,
-            MEASURETYPE_WIDE_SPECTRUM    : 1,
-            MEASURETYPE_INFRARED         : 2,
-            MEASURETYPE_HIGH_RATE        : 3,
-            MEASURETYPE_HIGH_ENERGY      : 4,
-            MEASURETYPE_INVALID          : -1
+            MEASURETYPE_HUMAN_EYE: 0,
+            MEASURETYPE_WIDE_SPECTRUM: 1,
+            MEASURETYPE_INFRARED: 2,
+            MEASURETYPE_HIGH_RATE: 3,
+            MEASURETYPE_HIGH_ENERGY: 4,
+            MEASURETYPE_INVALID: -1
         });
         //--- (end of YLightSensor constructor)
     }
 
     //--- (YLightSensor implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'measureType':
-            this._measureType = parseInt(val);
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'measureType':
+                this._measureType = parseInt(val);
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
 
-    async set_currentValue(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(Math.round(newval * 65536.0));
-        return await this._setAttr('currentValue',rest_val);
+    set_currentValue(newval) {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(Math.round(newval * 65536.0));
+            return yield _this._setAttr('currentValue', rest_val);
+        })();
     }
 
     /**
@@ -119,12 +129,15 @@ export class YLightSensor extends YSensor
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async calibrate(calibratedVal)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(Math.round(calibratedVal * 65536.0));
-        return await this._setAttr('currentValue',rest_val);
+    calibrate(calibratedVal) {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(Math.round(calibratedVal * 65536.0));
+            return yield _this2._setAttr('currentValue', rest_val);
+        })();
     }
 
     /**
@@ -137,14 +150,17 @@ export class YLightSensor extends YSensor
      *
      * On failure, throws an exception or returns YLightSensor.MEASURETYPE_INVALID.
      */
-    async get_measureType()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_MEASURETYPE_INVALID;
+    get_measureType() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
+                    return Y_MEASURETYPE_INVALID;
+                }
             }
-        }
-        return this._measureType;
+            return _this3._measureType;
+        })();
     }
 
     /**
@@ -162,12 +178,15 @@ export class YLightSensor extends YSensor
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_measureType(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('measureType',rest_val);
+    set_measureType(newval) {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this4._setAttr('measureType', rest_val);
+        })();
     }
 
     /**
@@ -193,14 +212,13 @@ export class YLightSensor extends YSensor
      *
      * @return {YLightSensor} a YLightSensor object allowing you to drive the light sensor.
      */
-    static FindLightSensor(func)
-    {
+    static FindLightSensor(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('LightSensor', func);
+        obj = _yocto_api.YFunction._FindFromCache('LightSensor', func);
         if (obj == null) {
-            obj = new YLightSensor(YAPI, func);
-            YFunction._AddToCache('LightSensor',  func, obj);
+            obj = new YLightSensor(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('LightSensor', func, obj);
         }
         return obj;
     }
@@ -229,14 +247,13 @@ export class YLightSensor extends YSensor
      *
      * @return {YLightSensor} a YLightSensor object allowing you to drive the light sensor.
      */
-    static FindLightSensorInContext(yctx,func)
-    {
+    static FindLightSensorInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'LightSensor', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'LightSensor', func);
         if (obj == null) {
             obj = new YLightSensor(yctx, func);
-            YFunction._AddToCache('LightSensor',  func, obj);
+            _yocto_api.YFunction._AddToCache('LightSensor', func, obj);
         }
         return obj;
     }
@@ -248,14 +265,13 @@ export class YLightSensor extends YSensor
      *         a light sensor currently online, or a null pointer
      *         if there are no more light sensors to enumerate.
      */
-    nextLightSensor()
-    {
+    nextLightSensor() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YLightSensor.FindLightSensorInContext(this._yapi, next_hwid);
     }
 
@@ -268,11 +284,10 @@ export class YLightSensor extends YSensor
      *         the first light sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstLightSensor()
-    {
+    static FirstLightSensor() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('LightSensor');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('LightSensor');
+        if (next_hwid == null) return null;
         return YLightSensor.FindLightSensor(next_hwid);
     }
 
@@ -287,18 +302,17 @@ export class YLightSensor extends YSensor
      *         the first light sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstLightSensorInContext(yctx)
-    {
+    static FirstLightSensorInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('LightSensor');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YLightSensor.FindLightSensorInContext(yctx, next_hwid);
     }
 
     //--- (end of YLightSensor implementation)
 }
 
-//--- (LightSensor functions)
+exports.YLightSensor = YLightSensor; //--- (LightSensor functions)
 
 /**
  * Retrieves a light sensor for a given identifier.
@@ -323,8 +337,8 @@ export class YLightSensor extends YSensor
  *
  * @return {YLightSensor} a YLightSensor object allowing you to drive the light sensor.
  */
-export function yFindLightSensor(func)
-{
+
+function yFindLightSensor(func) {
     return YLightSensor.FindLightSensor(func);
 }
 
@@ -337,8 +351,7 @@ export function yFindLightSensor(func)
  *         the first light sensor currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstLightSensor()
-{
+function yFirstLightSensor() {
     return YLightSensor.FirstLightSensor();
 }
 

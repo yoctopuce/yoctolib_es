@@ -38,7 +38,15 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YCurrent = undefined;
+exports.yFindCurrent = yFindCurrent;
+exports.yFirstCurrent = yFirstCurrent;
+
+var _yocto_api = require('./yocto_api');
 
 //--- (YCurrent return codes)
 //--- (end of YCurrent return codes)
@@ -55,14 +63,12 @@ import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yoc
  */
 //--- (end of YCurrent class start)
 
-export class YCurrent extends YSensor
-{
-    constructor(obj_yapi, str_func)
-    {
+class YCurrent extends _yocto_api.YSensor {
+    constructor(obj_yapi, str_func) {
         //--- (YCurrent constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'Current';
+        this._className = 'Current';
         //--- (end of YCurrent constructor)
     }
 
@@ -91,14 +97,13 @@ export class YCurrent extends YSensor
      *
      * @return {YCurrent} a YCurrent object allowing you to drive the current sensor.
      */
-    static FindCurrent(func)
-    {
+    static FindCurrent(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('Current', func);
+        obj = _yocto_api.YFunction._FindFromCache('Current', func);
         if (obj == null) {
-            obj = new YCurrent(YAPI, func);
-            YFunction._AddToCache('Current',  func, obj);
+            obj = new YCurrent(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('Current', func, obj);
         }
         return obj;
     }
@@ -127,14 +132,13 @@ export class YCurrent extends YSensor
      *
      * @return {YCurrent} a YCurrent object allowing you to drive the current sensor.
      */
-    static FindCurrentInContext(yctx,func)
-    {
+    static FindCurrentInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'Current', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Current', func);
         if (obj == null) {
             obj = new YCurrent(yctx, func);
-            YFunction._AddToCache('Current',  func, obj);
+            _yocto_api.YFunction._AddToCache('Current', func, obj);
         }
         return obj;
     }
@@ -146,14 +150,13 @@ export class YCurrent extends YSensor
      *         a current sensor currently online, or a null pointer
      *         if there are no more current sensors to enumerate.
      */
-    nextCurrent()
-    {
+    nextCurrent() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YCurrent.FindCurrentInContext(this._yapi, next_hwid);
     }
 
@@ -166,11 +169,10 @@ export class YCurrent extends YSensor
      *         the first current sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstCurrent()
-    {
+    static FirstCurrent() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('Current');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('Current');
+        if (next_hwid == null) return null;
         return YCurrent.FindCurrent(next_hwid);
     }
 
@@ -185,18 +187,17 @@ export class YCurrent extends YSensor
      *         the first current sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstCurrentInContext(yctx)
-    {
+    static FirstCurrentInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('Current');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YCurrent.FindCurrentInContext(yctx, next_hwid);
     }
 
     //--- (end of YCurrent implementation)
 }
 
-//--- (Current functions)
+exports.YCurrent = YCurrent; //--- (Current functions)
 
 /**
  * Retrieves a current sensor for a given identifier.
@@ -221,8 +222,8 @@ export class YCurrent extends YSensor
  *
  * @return {YCurrent} a YCurrent object allowing you to drive the current sensor.
  */
-export function yFindCurrent(func)
-{
+
+function yFindCurrent(func) {
     return YCurrent.FindCurrent(func);
 }
 
@@ -235,8 +236,7 @@ export function yFindCurrent(func)
  *         the first current sensor currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstCurrent()
-{
+function yFirstCurrent() {
     return YCurrent.FirstCurrent();
 }
 

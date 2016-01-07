@@ -38,21 +38,31 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YHubPort = exports.Y_BAUDRATE_INVALID = exports.Y_PORTSTATE_INVALID = exports.Y_PORTSTATE_PROG = exports.Y_PORTSTATE_RUN = exports.Y_PORTSTATE_ON = exports.Y_PORTSTATE_OVRLD = exports.Y_PORTSTATE_OFF = exports.Y_ENABLED_INVALID = exports.Y_ENABLED_TRUE = exports.Y_ENABLED_FALSE = undefined;
+exports.yFindHubPort = yFindHubPort;
+exports.yFirstHubPort = yFirstHubPort;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YHubPort return codes)
 //--- (end of YHubPort return codes)
 //--- (YHubPort definitions)
-export const Y_ENABLED_FALSE                 = 0;
-export const Y_ENABLED_TRUE                  = 1;
-export const Y_ENABLED_INVALID               = -1;
-export const Y_PORTSTATE_OFF                 = 0;
-export const Y_PORTSTATE_OVRLD               = 1;
-export const Y_PORTSTATE_ON                  = 2;
-export const Y_PORTSTATE_RUN                 = 3;
-export const Y_PORTSTATE_PROG                = 4;
-export const Y_PORTSTATE_INVALID             = -1;
-export const Y_BAUDRATE_INVALID              = YAPI.INVALID_UINT;
+const Y_ENABLED_FALSE = exports.Y_ENABLED_FALSE = 0;
+const Y_ENABLED_TRUE = exports.Y_ENABLED_TRUE = 1;
+const Y_ENABLED_INVALID = exports.Y_ENABLED_INVALID = -1;
+const Y_PORTSTATE_OFF = exports.Y_PORTSTATE_OFF = 0;
+const Y_PORTSTATE_OVRLD = exports.Y_PORTSTATE_OVRLD = 1;
+const Y_PORTSTATE_ON = exports.Y_PORTSTATE_ON = 2;
+const Y_PORTSTATE_RUN = exports.Y_PORTSTATE_RUN = 3;
+const Y_PORTSTATE_PROG = exports.Y_PORTSTATE_PROG = 4;
+const Y_PORTSTATE_INVALID = exports.Y_PORTSTATE_INVALID = -1;
+const Y_BAUDRATE_INVALID = exports.Y_BAUDRATE_INVALID = _yocto_api.YAPI.INVALID_UINT;
 //--- (end of YHubPort definitions)
 
 //--- (YHubPort class start)
@@ -66,49 +76,46 @@ export const Y_BAUDRATE_INVALID              = YAPI.INVALID_UINT;
  */
 //--- (end of YHubPort class start)
 
-export class YHubPort extends YFunction
-{
-    constructor(obj_yapi, str_func)
-    {
+class YHubPort extends _yocto_api.YFunction {
+    constructor(obj_yapi, str_func) {
         //--- (YHubPort constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'HubPort';
+        this._className = 'HubPort';
         /** @member {number} **/
-        this._enabled                    = Y_ENABLED_INVALID;
+        this._enabled = Y_ENABLED_INVALID;
         /** @member {number} **/
-        this._portState                  = Y_PORTSTATE_INVALID;
+        this._portState = Y_PORTSTATE_INVALID;
         /** @member {number} **/
-        this._baudRate                   = Y_BAUDRATE_INVALID;
+        this._baudRate = Y_BAUDRATE_INVALID;
         this.imm_setConst({
-            ENABLED_FALSE                : 0,
-            ENABLED_TRUE                 : 1,
-            ENABLED_INVALID              : -1,
-            PORTSTATE_OFF                : 0,
-            PORTSTATE_OVRLD              : 1,
-            PORTSTATE_ON                 : 2,
-            PORTSTATE_RUN                : 3,
-            PORTSTATE_PROG               : 4,
-            PORTSTATE_INVALID            : -1,
-            BAUDRATE_INVALID             : YAPI.INVALID_UINT
+            ENABLED_FALSE: 0,
+            ENABLED_TRUE: 1,
+            ENABLED_INVALID: -1,
+            PORTSTATE_OFF: 0,
+            PORTSTATE_OVRLD: 1,
+            PORTSTATE_ON: 2,
+            PORTSTATE_RUN: 3,
+            PORTSTATE_PROG: 4,
+            PORTSTATE_INVALID: -1,
+            BAUDRATE_INVALID: _yocto_api.YAPI.INVALID_UINT
         });
         //--- (end of YHubPort constructor)
     }
 
     //--- (YHubPort implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'enabled':
-            this._enabled = parseInt(val);
-            return 1;
-        case 'portState':
-            this._portState = parseInt(val);
-            return 1;
-        case 'baudRate':
-            this._baudRate = parseInt(val);
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'enabled':
+                this._enabled = parseInt(val);
+                return 1;
+            case 'portState':
+                this._portState = parseInt(val);
+                return 1;
+            case 'baudRate':
+                this._baudRate = parseInt(val);
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -121,14 +128,17 @@ export class YHubPort extends YFunction
      *
      * On failure, throws an exception or returns YHubPort.ENABLED_INVALID.
      */
-    async get_enabled()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_ENABLED_INVALID;
+    get_enabled() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
+                    return Y_ENABLED_INVALID;
+                }
             }
-        }
-        return this._enabled;
+            return _this._enabled;
+        })();
     }
 
     /**
@@ -142,12 +152,15 @@ export class YHubPort extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_enabled(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('enabled',rest_val);
+    set_enabled(newval) {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this2._setAttr('enabled', rest_val);
+        })();
     }
 
     /**
@@ -159,14 +172,17 @@ export class YHubPort extends YFunction
      *
      * On failure, throws an exception or returns YHubPort.PORTSTATE_INVALID.
      */
-    async get_portState()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_PORTSTATE_INVALID;
+    get_portState() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
+                    return Y_PORTSTATE_INVALID;
+                }
             }
-        }
-        return this._portState;
+            return _this3._portState;
+        })();
     }
 
     /**
@@ -178,14 +194,17 @@ export class YHubPort extends YFunction
      *
      * On failure, throws an exception or returns YHubPort.BAUDRATE_INVALID.
      */
-    async get_baudRate()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_BAUDRATE_INVALID;
+    get_baudRate() {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this4._cacheExpiration <= _this4._yapi.GetTickCount()) {
+                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _this4._yapi.SUCCESS) {
+                    return Y_BAUDRATE_INVALID;
+                }
             }
-        }
-        return this._baudRate;
+            return _this4._baudRate;
+        })();
     }
 
     /**
@@ -211,14 +230,13 @@ export class YHubPort extends YFunction
      *
      * @return {YHubPort} a YHubPort object allowing you to drive the Yocto-hub port.
      */
-    static FindHubPort(func)
-    {
+    static FindHubPort(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('HubPort', func);
+        obj = _yocto_api.YFunction._FindFromCache('HubPort', func);
         if (obj == null) {
-            obj = new YHubPort(YAPI, func);
-            YFunction._AddToCache('HubPort',  func, obj);
+            obj = new YHubPort(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('HubPort', func, obj);
         }
         return obj;
     }
@@ -247,14 +265,13 @@ export class YHubPort extends YFunction
      *
      * @return {YHubPort} a YHubPort object allowing you to drive the Yocto-hub port.
      */
-    static FindHubPortInContext(yctx,func)
-    {
+    static FindHubPortInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'HubPort', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'HubPort', func);
         if (obj == null) {
             obj = new YHubPort(yctx, func);
-            YFunction._AddToCache('HubPort',  func, obj);
+            _yocto_api.YFunction._AddToCache('HubPort', func, obj);
         }
         return obj;
     }
@@ -266,14 +283,13 @@ export class YHubPort extends YFunction
      *         a Yocto-hub port currently online, or a null pointer
      *         if there are no more Yocto-hub ports to enumerate.
      */
-    nextHubPort()
-    {
+    nextHubPort() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YHubPort.FindHubPortInContext(this._yapi, next_hwid);
     }
 
@@ -286,11 +302,10 @@ export class YHubPort extends YFunction
      *         the first Yocto-hub port currently online, or a null pointer
      *         if there are none.
      */
-    static FirstHubPort()
-    {
+    static FirstHubPort() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('HubPort');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('HubPort');
+        if (next_hwid == null) return null;
         return YHubPort.FindHubPort(next_hwid);
     }
 
@@ -305,18 +320,17 @@ export class YHubPort extends YFunction
      *         the first Yocto-hub port currently online, or a null pointer
      *         if there are none.
      */
-    static FirstHubPortInContext(yctx)
-    {
+    static FirstHubPortInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('HubPort');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YHubPort.FindHubPortInContext(yctx, next_hwid);
     }
 
     //--- (end of YHubPort implementation)
 }
 
-//--- (HubPort functions)
+exports.YHubPort = YHubPort; //--- (HubPort functions)
 
 /**
  * Retrieves a Yocto-hub port for a given identifier.
@@ -341,8 +355,8 @@ export class YHubPort extends YFunction
  *
  * @return {YHubPort} a YHubPort object allowing you to drive the Yocto-hub port.
  */
-export function yFindHubPort(func)
-{
+
+function yFindHubPort(func) {
     return YHubPort.FindHubPort(func);
 }
 
@@ -355,8 +369,7 @@ export function yFindHubPort(func)
  *         the first Yocto-hub port currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstHubPort()
-{
+function yFirstHubPort() {
     return YHubPort.FirstHubPort();
 }
 

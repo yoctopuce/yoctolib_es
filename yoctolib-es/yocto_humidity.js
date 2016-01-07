@@ -38,13 +38,23 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YHumidity = exports.Y_ABSHUM_INVALID = exports.Y_RELHUM_INVALID = undefined;
+exports.yFindHumidity = yFindHumidity;
+exports.yFirstHumidity = yFirstHumidity;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YHumidity return codes)
 //--- (end of YHumidity return codes)
 //--- (YHumidity definitions)
-export const Y_RELHUM_INVALID                = YAPI.INVALID_DOUBLE;
-export const Y_ABSHUM_INVALID                = YAPI.INVALID_DOUBLE;
+const Y_RELHUM_INVALID = exports.Y_RELHUM_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
+const Y_ABSHUM_INVALID = exports.Y_ABSHUM_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
 //--- (end of YHumidity definitions)
 
 //--- (YHumidity class start)
@@ -57,36 +67,33 @@ export const Y_ABSHUM_INVALID                = YAPI.INVALID_DOUBLE;
  */
 //--- (end of YHumidity class start)
 
-export class YHumidity extends YSensor
-{
-    constructor(obj_yapi, str_func)
-    {
+class YHumidity extends _yocto_api.YSensor {
+    constructor(obj_yapi, str_func) {
         //--- (YHumidity constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'Humidity';
+        this._className = 'Humidity';
         /** @member {number} **/
-        this._relHum                     = Y_RELHUM_INVALID;
+        this._relHum = Y_RELHUM_INVALID;
         /** @member {number} **/
-        this._absHum                     = Y_ABSHUM_INVALID;
+        this._absHum = Y_ABSHUM_INVALID;
         this.imm_setConst({
-            RELHUM_INVALID               : YAPI.INVALID_DOUBLE,
-            ABSHUM_INVALID               : YAPI.INVALID_DOUBLE
+            RELHUM_INVALID: _yocto_api.YAPI.INVALID_DOUBLE,
+            ABSHUM_INVALID: _yocto_api.YAPI.INVALID_DOUBLE
         });
         //--- (end of YHumidity constructor)
     }
 
     //--- (YHumidity implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'relHum':
-            this._relHum = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
-        case 'absHum':
-            this._absHum = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'relHum':
+                this._relHum = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
+            case 'absHum':
+                this._absHum = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -106,12 +113,15 @@ export class YHumidity extends YSensor
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_unit(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('unit',rest_val);
+    set_unit(newval) {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this._setAttr('unit', rest_val);
+        })();
     }
 
     /**
@@ -121,14 +131,17 @@ export class YHumidity extends YSensor
      *
      * On failure, throws an exception or returns YHumidity.RELHUM_INVALID.
      */
-    async get_relHum()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_RELHUM_INVALID;
+    get_relHum() {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this2._cacheExpiration <= _this2._yapi.GetTickCount()) {
+                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _this2._yapi.SUCCESS) {
+                    return Y_RELHUM_INVALID;
+                }
             }
-        }
-        return this._relHum;
+            return _this2._relHum;
+        })();
     }
 
     /**
@@ -139,14 +152,17 @@ export class YHumidity extends YSensor
      *
      * On failure, throws an exception or returns YHumidity.ABSHUM_INVALID.
      */
-    async get_absHum()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_ABSHUM_INVALID;
+    get_absHum() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
+                    return Y_ABSHUM_INVALID;
+                }
             }
-        }
-        return this._absHum;
+            return _this3._absHum;
+        })();
     }
 
     /**
@@ -172,14 +188,13 @@ export class YHumidity extends YSensor
      *
      * @return {YHumidity} a YHumidity object allowing you to drive the humidity sensor.
      */
-    static FindHumidity(func)
-    {
+    static FindHumidity(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('Humidity', func);
+        obj = _yocto_api.YFunction._FindFromCache('Humidity', func);
         if (obj == null) {
-            obj = new YHumidity(YAPI, func);
-            YFunction._AddToCache('Humidity',  func, obj);
+            obj = new YHumidity(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('Humidity', func, obj);
         }
         return obj;
     }
@@ -208,14 +223,13 @@ export class YHumidity extends YSensor
      *
      * @return {YHumidity} a YHumidity object allowing you to drive the humidity sensor.
      */
-    static FindHumidityInContext(yctx,func)
-    {
+    static FindHumidityInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'Humidity', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Humidity', func);
         if (obj == null) {
             obj = new YHumidity(yctx, func);
-            YFunction._AddToCache('Humidity',  func, obj);
+            _yocto_api.YFunction._AddToCache('Humidity', func, obj);
         }
         return obj;
     }
@@ -227,14 +241,13 @@ export class YHumidity extends YSensor
      *         a humidity sensor currently online, or a null pointer
      *         if there are no more humidity sensors to enumerate.
      */
-    nextHumidity()
-    {
+    nextHumidity() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YHumidity.FindHumidityInContext(this._yapi, next_hwid);
     }
 
@@ -247,11 +260,10 @@ export class YHumidity extends YSensor
      *         the first humidity sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstHumidity()
-    {
+    static FirstHumidity() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('Humidity');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('Humidity');
+        if (next_hwid == null) return null;
         return YHumidity.FindHumidity(next_hwid);
     }
 
@@ -266,18 +278,17 @@ export class YHumidity extends YSensor
      *         the first humidity sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstHumidityInContext(yctx)
-    {
+    static FirstHumidityInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('Humidity');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YHumidity.FindHumidityInContext(yctx, next_hwid);
     }
 
     //--- (end of YHumidity implementation)
 }
 
-//--- (Humidity functions)
+exports.YHumidity = YHumidity; //--- (Humidity functions)
 
 /**
  * Retrieves a humidity sensor for a given identifier.
@@ -302,8 +313,8 @@ export class YHumidity extends YSensor
  *
  * @return {YHumidity} a YHumidity object allowing you to drive the humidity sensor.
  */
-export function yFindHumidity(func)
-{
+
+function yFindHumidity(func) {
     return YHumidity.FindHumidity(func);
 }
 
@@ -316,8 +327,7 @@ export function yFindHumidity(func)
  *         the first humidity sensor currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstHumidity()
-{
+function yFirstHumidity() {
     return YHumidity.FirstHumidity();
 }
 

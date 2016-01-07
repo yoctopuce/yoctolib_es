@@ -38,34 +38,44 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YWatchdog = exports.Y_TRIGGERDURATION_INVALID = exports.Y_TRIGGERDELAY_INVALID = exports.Y_COUNTDOWN_INVALID = exports.Y_DELAYEDPULSETIMER_INVALID = exports.Y_PULSETIMER_INVALID = exports.Y_MAXTIMEONSTATEB_INVALID = exports.Y_MAXTIMEONSTATEA_INVALID = exports.Y_RUNNING_INVALID = exports.Y_RUNNING_ON = exports.Y_RUNNING_OFF = exports.Y_AUTOSTART_INVALID = exports.Y_AUTOSTART_ON = exports.Y_AUTOSTART_OFF = exports.Y_OUTPUT_INVALID = exports.Y_OUTPUT_ON = exports.Y_OUTPUT_OFF = exports.Y_STATEATPOWERON_INVALID = exports.Y_STATEATPOWERON_B = exports.Y_STATEATPOWERON_A = exports.Y_STATEATPOWERON_UNCHANGED = exports.Y_STATE_INVALID = exports.Y_STATE_B = exports.Y_STATE_A = undefined;
+exports.yFindWatchdog = yFindWatchdog;
+exports.yFirstWatchdog = yFirstWatchdog;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YWatchdog return codes)
 //--- (end of YWatchdog return codes)
 //--- (YWatchdog definitions)
-export const Y_STATE_A                       = 0;
-export const Y_STATE_B                       = 1;
-export const Y_STATE_INVALID                 = -1;
-export const Y_STATEATPOWERON_UNCHANGED      = 0;
-export const Y_STATEATPOWERON_A              = 1;
-export const Y_STATEATPOWERON_B              = 2;
-export const Y_STATEATPOWERON_INVALID        = -1;
-export const Y_OUTPUT_OFF                    = 0;
-export const Y_OUTPUT_ON                     = 1;
-export const Y_OUTPUT_INVALID                = -1;
-export const Y_AUTOSTART_OFF                 = 0;
-export const Y_AUTOSTART_ON                  = 1;
-export const Y_AUTOSTART_INVALID             = -1;
-export const Y_RUNNING_OFF                   = 0;
-export const Y_RUNNING_ON                    = 1;
-export const Y_RUNNING_INVALID               = -1;
-export const Y_MAXTIMEONSTATEA_INVALID       = YAPI.INVALID_LONG;
-export const Y_MAXTIMEONSTATEB_INVALID       = YAPI.INVALID_LONG;
-export const Y_PULSETIMER_INVALID            = YAPI.INVALID_LONG;
-export const Y_DELAYEDPULSETIMER_INVALID     = null;
-export const Y_COUNTDOWN_INVALID             = YAPI.INVALID_LONG;
-export const Y_TRIGGERDELAY_INVALID          = YAPI.INVALID_LONG;
-export const Y_TRIGGERDURATION_INVALID       = YAPI.INVALID_LONG;
+const Y_STATE_A = exports.Y_STATE_A = 0;
+const Y_STATE_B = exports.Y_STATE_B = 1;
+const Y_STATE_INVALID = exports.Y_STATE_INVALID = -1;
+const Y_STATEATPOWERON_UNCHANGED = exports.Y_STATEATPOWERON_UNCHANGED = 0;
+const Y_STATEATPOWERON_A = exports.Y_STATEATPOWERON_A = 1;
+const Y_STATEATPOWERON_B = exports.Y_STATEATPOWERON_B = 2;
+const Y_STATEATPOWERON_INVALID = exports.Y_STATEATPOWERON_INVALID = -1;
+const Y_OUTPUT_OFF = exports.Y_OUTPUT_OFF = 0;
+const Y_OUTPUT_ON = exports.Y_OUTPUT_ON = 1;
+const Y_OUTPUT_INVALID = exports.Y_OUTPUT_INVALID = -1;
+const Y_AUTOSTART_OFF = exports.Y_AUTOSTART_OFF = 0;
+const Y_AUTOSTART_ON = exports.Y_AUTOSTART_ON = 1;
+const Y_AUTOSTART_INVALID = exports.Y_AUTOSTART_INVALID = -1;
+const Y_RUNNING_OFF = exports.Y_RUNNING_OFF = 0;
+const Y_RUNNING_ON = exports.Y_RUNNING_ON = 1;
+const Y_RUNNING_INVALID = exports.Y_RUNNING_INVALID = -1;
+const Y_MAXTIMEONSTATEA_INVALID = exports.Y_MAXTIMEONSTATEA_INVALID = _yocto_api.YAPI.INVALID_LONG;
+const Y_MAXTIMEONSTATEB_INVALID = exports.Y_MAXTIMEONSTATEB_INVALID = _yocto_api.YAPI.INVALID_LONG;
+const Y_PULSETIMER_INVALID = exports.Y_PULSETIMER_INVALID = _yocto_api.YAPI.INVALID_LONG;
+const Y_DELAYEDPULSETIMER_INVALID = exports.Y_DELAYEDPULSETIMER_INVALID = null;
+const Y_COUNTDOWN_INVALID = exports.Y_COUNTDOWN_INVALID = _yocto_api.YAPI.INVALID_LONG;
+const Y_TRIGGERDELAY_INVALID = exports.Y_TRIGGERDELAY_INVALID = _yocto_api.YAPI.INVALID_LONG;
+const Y_TRIGGERDURATION_INVALID = exports.Y_TRIGGERDURATION_INVALID = _yocto_api.YAPI.INVALID_LONG;
 //--- (end of YWatchdog definitions)
 
 //--- (YWatchdog class start)
@@ -81,106 +91,103 @@ export const Y_TRIGGERDURATION_INVALID       = YAPI.INVALID_LONG;
  */
 //--- (end of YWatchdog class start)
 
-export class YWatchdog extends YFunction
-{
-    constructor(obj_yapi, str_func)
-    {
+class YWatchdog extends _yocto_api.YFunction {
+    constructor(obj_yapi, str_func) {
         //--- (YWatchdog constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'Watchdog';
+        this._className = 'Watchdog';
         /** @member {number} **/
-        this._state                      = Y_STATE_INVALID;
+        this._state = Y_STATE_INVALID;
         /** @member {number} **/
-        this._stateAtPowerOn             = Y_STATEATPOWERON_INVALID;
+        this._stateAtPowerOn = Y_STATEATPOWERON_INVALID;
         /** @member {number} **/
-        this._maxTimeOnStateA            = Y_MAXTIMEONSTATEA_INVALID;
+        this._maxTimeOnStateA = Y_MAXTIMEONSTATEA_INVALID;
         /** @member {number} **/
-        this._maxTimeOnStateB            = Y_MAXTIMEONSTATEB_INVALID;
+        this._maxTimeOnStateB = Y_MAXTIMEONSTATEB_INVALID;
         /** @member {number} **/
-        this._output                     = Y_OUTPUT_INVALID;
+        this._output = Y_OUTPUT_INVALID;
         /** @member {number} **/
-        this._pulseTimer                 = Y_PULSETIMER_INVALID;
+        this._pulseTimer = Y_PULSETIMER_INVALID;
         /** @member {YDelayedPulse} **/
-        this._delayedPulseTimer          = Y_DELAYEDPULSETIMER_INVALID;
+        this._delayedPulseTimer = Y_DELAYEDPULSETIMER_INVALID;
         /** @member {number} **/
-        this._countdown                  = Y_COUNTDOWN_INVALID;
+        this._countdown = Y_COUNTDOWN_INVALID;
         /** @member {number} **/
-        this._autoStart                  = Y_AUTOSTART_INVALID;
+        this._autoStart = Y_AUTOSTART_INVALID;
         /** @member {number} **/
-        this._running                    = Y_RUNNING_INVALID;
+        this._running = Y_RUNNING_INVALID;
         /** @member {number} **/
-        this._triggerDelay               = Y_TRIGGERDELAY_INVALID;
+        this._triggerDelay = Y_TRIGGERDELAY_INVALID;
         /** @member {number} **/
-        this._triggerDuration            = Y_TRIGGERDURATION_INVALID;
+        this._triggerDuration = Y_TRIGGERDURATION_INVALID;
         this.imm_setConst({
-            STATE_A                      : 0,
-            STATE_B                      : 1,
-            STATE_INVALID                : -1,
-            STATEATPOWERON_UNCHANGED     : 0,
-            STATEATPOWERON_A             : 1,
-            STATEATPOWERON_B             : 2,
-            STATEATPOWERON_INVALID       : -1,
-            MAXTIMEONSTATEA_INVALID      : YAPI.INVALID_LONG,
-            MAXTIMEONSTATEB_INVALID      : YAPI.INVALID_LONG,
-            OUTPUT_OFF                   : 0,
-            OUTPUT_ON                    : 1,
-            OUTPUT_INVALID               : -1,
-            PULSETIMER_INVALID           : YAPI.INVALID_LONG,
-            COUNTDOWN_INVALID            : YAPI.INVALID_LONG,
-            AUTOSTART_OFF                : 0,
-            AUTOSTART_ON                 : 1,
-            AUTOSTART_INVALID            : -1,
-            RUNNING_OFF                  : 0,
-            RUNNING_ON                   : 1,
-            RUNNING_INVALID              : -1,
-            TRIGGERDELAY_INVALID         : YAPI.INVALID_LONG,
-            TRIGGERDURATION_INVALID      : YAPI.INVALID_LONG
+            STATE_A: 0,
+            STATE_B: 1,
+            STATE_INVALID: -1,
+            STATEATPOWERON_UNCHANGED: 0,
+            STATEATPOWERON_A: 1,
+            STATEATPOWERON_B: 2,
+            STATEATPOWERON_INVALID: -1,
+            MAXTIMEONSTATEA_INVALID: _yocto_api.YAPI.INVALID_LONG,
+            MAXTIMEONSTATEB_INVALID: _yocto_api.YAPI.INVALID_LONG,
+            OUTPUT_OFF: 0,
+            OUTPUT_ON: 1,
+            OUTPUT_INVALID: -1,
+            PULSETIMER_INVALID: _yocto_api.YAPI.INVALID_LONG,
+            COUNTDOWN_INVALID: _yocto_api.YAPI.INVALID_LONG,
+            AUTOSTART_OFF: 0,
+            AUTOSTART_ON: 1,
+            AUTOSTART_INVALID: -1,
+            RUNNING_OFF: 0,
+            RUNNING_ON: 1,
+            RUNNING_INVALID: -1,
+            TRIGGERDELAY_INVALID: _yocto_api.YAPI.INVALID_LONG,
+            TRIGGERDURATION_INVALID: _yocto_api.YAPI.INVALID_LONG
         });
         //--- (end of YWatchdog constructor)
     }
 
     //--- (YWatchdog implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'state':
-            this._state = parseInt(val);
-            return 1;
-        case 'stateAtPowerOn':
-            this._stateAtPowerOn = parseInt(val);
-            return 1;
-        case 'maxTimeOnStateA':
-            this._maxTimeOnStateA = parseInt(val);
-            return 1;
-        case 'maxTimeOnStateB':
-            this._maxTimeOnStateB = parseInt(val);
-            return 1;
-        case 'output':
-            this._output = parseInt(val);
-            return 1;
-        case 'pulseTimer':
-            this._pulseTimer = parseInt(val);
-            return 1;
-        case 'delayedPulseTimer':
-            this._delayedPulseTimer = val;
-            return 1;
-        case 'countdown':
-            this._countdown = parseInt(val);
-            return 1;
-        case 'autoStart':
-            this._autoStart = parseInt(val);
-            return 1;
-        case 'running':
-            this._running = parseInt(val);
-            return 1;
-        case 'triggerDelay':
-            this._triggerDelay = parseInt(val);
-            return 1;
-        case 'triggerDuration':
-            this._triggerDuration = parseInt(val);
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'state':
+                this._state = parseInt(val);
+                return 1;
+            case 'stateAtPowerOn':
+                this._stateAtPowerOn = parseInt(val);
+                return 1;
+            case 'maxTimeOnStateA':
+                this._maxTimeOnStateA = parseInt(val);
+                return 1;
+            case 'maxTimeOnStateB':
+                this._maxTimeOnStateB = parseInt(val);
+                return 1;
+            case 'output':
+                this._output = parseInt(val);
+                return 1;
+            case 'pulseTimer':
+                this._pulseTimer = parseInt(val);
+                return 1;
+            case 'delayedPulseTimer':
+                this._delayedPulseTimer = val;
+                return 1;
+            case 'countdown':
+                this._countdown = parseInt(val);
+                return 1;
+            case 'autoStart':
+                this._autoStart = parseInt(val);
+                return 1;
+            case 'running':
+                this._running = parseInt(val);
+                return 1;
+            case 'triggerDelay':
+                this._triggerDelay = parseInt(val);
+                return 1;
+            case 'triggerDuration':
+                this._triggerDuration = parseInt(val);
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -193,14 +200,17 @@ export class YWatchdog extends YFunction
      *
      * On failure, throws an exception or returns YWatchdog.STATE_INVALID.
      */
-    async get_state()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_STATE_INVALID;
+    get_state() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
+                    return Y_STATE_INVALID;
+                }
             }
-        }
-        return this._state;
+            return _this._state;
+        })();
     }
 
     /**
@@ -213,12 +223,15 @@ export class YWatchdog extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_state(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('state',rest_val);
+    set_state(newval) {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this2._setAttr('state', rest_val);
+        })();
     }
 
     /**
@@ -231,14 +244,17 @@ export class YWatchdog extends YFunction
      *
      * On failure, throws an exception or returns YWatchdog.STATEATPOWERON_INVALID.
      */
-    async get_stateAtPowerOn()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_STATEATPOWERON_INVALID;
+    get_stateAtPowerOn() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
+                    return Y_STATEATPOWERON_INVALID;
+                }
             }
-        }
-        return this._stateAtPowerOn;
+            return _this3._stateAtPowerOn;
+        })();
     }
 
     /**
@@ -253,12 +269,15 @@ export class YWatchdog extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_stateAtPowerOn(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('stateAtPowerOn',rest_val);
+    set_stateAtPowerOn(newval) {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this4._setAttr('stateAtPowerOn', rest_val);
+        })();
     }
 
     /**
@@ -269,14 +288,17 @@ export class YWatchdog extends YFunction
      *
      * On failure, throws an exception or returns YWatchdog.MAXTIMEONSTATEA_INVALID.
      */
-    async get_maxTimeOnStateA()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_MAXTIMEONSTATEA_INVALID;
+    get_maxTimeOnStateA() {
+        var _this5 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this5._cacheExpiration <= _this5._yapi.GetTickCount()) {
+                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _this5._yapi.SUCCESS) {
+                    return Y_MAXTIMEONSTATEA_INVALID;
+                }
             }
-        }
-        return this._maxTimeOnStateA;
+            return _this5._maxTimeOnStateA;
+        })();
     }
 
     /**
@@ -289,12 +311,15 @@ export class YWatchdog extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_maxTimeOnStateA(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('maxTimeOnStateA',rest_val);
+    set_maxTimeOnStateA(newval) {
+        var _this6 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this6._setAttr('maxTimeOnStateA', rest_val);
+        })();
     }
 
     /**
@@ -305,14 +330,17 @@ export class YWatchdog extends YFunction
      *
      * On failure, throws an exception or returns YWatchdog.MAXTIMEONSTATEB_INVALID.
      */
-    async get_maxTimeOnStateB()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_MAXTIMEONSTATEB_INVALID;
+    get_maxTimeOnStateB() {
+        var _this7 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this7._cacheExpiration <= _this7._yapi.GetTickCount()) {
+                if ((yield _this7.load(_this7._yapi.defaultCacheValidity)) != _this7._yapi.SUCCESS) {
+                    return Y_MAXTIMEONSTATEB_INVALID;
+                }
             }
-        }
-        return this._maxTimeOnStateB;
+            return _this7._maxTimeOnStateB;
+        })();
     }
 
     /**
@@ -325,12 +353,15 @@ export class YWatchdog extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_maxTimeOnStateB(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('maxTimeOnStateB',rest_val);
+    set_maxTimeOnStateB(newval) {
+        var _this8 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this8._setAttr('maxTimeOnStateB', rest_val);
+        })();
     }
 
     /**
@@ -341,14 +372,17 @@ export class YWatchdog extends YFunction
      *
      * On failure, throws an exception or returns YWatchdog.OUTPUT_INVALID.
      */
-    async get_output()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_OUTPUT_INVALID;
+    get_output() {
+        var _this9 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this9._cacheExpiration <= _this9._yapi.GetTickCount()) {
+                if ((yield _this9.load(_this9._yapi.defaultCacheValidity)) != _this9._yapi.SUCCESS) {
+                    return Y_OUTPUT_INVALID;
+                }
             }
-        }
-        return this._output;
+            return _this9._output;
+        })();
     }
 
     /**
@@ -361,12 +395,15 @@ export class YWatchdog extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_output(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('output',rest_val);
+    set_output(newval) {
+        var _this10 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this10._setAttr('output', rest_val);
+        })();
     }
 
     /**
@@ -379,22 +416,28 @@ export class YWatchdog extends YFunction
      *
      * On failure, throws an exception or returns YWatchdog.PULSETIMER_INVALID.
      */
-    async get_pulseTimer()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_PULSETIMER_INVALID;
+    get_pulseTimer() {
+        var _this11 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this11._cacheExpiration <= _this11._yapi.GetTickCount()) {
+                if ((yield _this11.load(_this11._yapi.defaultCacheValidity)) != _this11._yapi.SUCCESS) {
+                    return Y_PULSETIMER_INVALID;
+                }
             }
-        }
-        return this._pulseTimer;
+            return _this11._pulseTimer;
+        })();
     }
 
-    async set_pulseTimer(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('pulseTimer',rest_val);
+    set_pulseTimer(newval) {
+        var _this12 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this12._setAttr('pulseTimer', rest_val);
+        })();
     }
 
     /**
@@ -407,30 +450,39 @@ export class YWatchdog extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async pulse(ms_duration)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(ms_duration);
-        return await this._setAttr('pulseTimer',rest_val);
+    pulse(ms_duration) {
+        var _this13 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(ms_duration);
+            return yield _this13._setAttr('pulseTimer', rest_val);
+        })();
     }
 
-    async get_delayedPulseTimer()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_DELAYEDPULSETIMER_INVALID;
+    get_delayedPulseTimer() {
+        var _this14 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this14._cacheExpiration <= _this14._yapi.GetTickCount()) {
+                if ((yield _this14.load(_this14._yapi.defaultCacheValidity)) != _this14._yapi.SUCCESS) {
+                    return Y_DELAYEDPULSETIMER_INVALID;
+                }
             }
-        }
-        return this._delayedPulseTimer;
+            return _this14._delayedPulseTimer;
+        })();
     }
 
-    async set_delayedPulseTimer(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval.target)+':'+String(newval.ms);
-        return await this._setAttr('delayedPulseTimer',rest_val);
+    set_delayedPulseTimer(newval) {
+        var _this15 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval.target) + ':' + String(newval.ms);
+            return yield _this15._setAttr('delayedPulseTimer', rest_val);
+        })();
     }
 
     /**
@@ -443,12 +495,15 @@ export class YWatchdog extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async delayedPulse(ms_delay,ms_duration)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(ms_delay)+':'+String(ms_duration);
-        return await this._setAttr('delayedPulseTimer',rest_val);
+    delayedPulse(ms_delay, ms_duration) {
+        var _this16 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(ms_delay) + ':' + String(ms_duration);
+            return yield _this16._setAttr('delayedPulseTimer', rest_val);
+        })();
     }
 
     /**
@@ -461,14 +516,17 @@ export class YWatchdog extends YFunction
      *
      * On failure, throws an exception or returns YWatchdog.COUNTDOWN_INVALID.
      */
-    async get_countdown()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_COUNTDOWN_INVALID;
+    get_countdown() {
+        var _this17 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this17._cacheExpiration <= _this17._yapi.GetTickCount()) {
+                if ((yield _this17.load(_this17._yapi.defaultCacheValidity)) != _this17._yapi.SUCCESS) {
+                    return Y_COUNTDOWN_INVALID;
+                }
             }
-        }
-        return this._countdown;
+            return _this17._countdown;
+        })();
     }
 
     /**
@@ -479,14 +537,17 @@ export class YWatchdog extends YFunction
      *
      * On failure, throws an exception or returns YWatchdog.AUTOSTART_INVALID.
      */
-    async get_autoStart()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_AUTOSTART_INVALID;
+    get_autoStart() {
+        var _this18 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this18._cacheExpiration <= _this18._yapi.GetTickCount()) {
+                if ((yield _this18.load(_this18._yapi.defaultCacheValidity)) != _this18._yapi.SUCCESS) {
+                    return Y_AUTOSTART_INVALID;
+                }
             }
-        }
-        return this._autoStart;
+            return _this18._autoStart;
+        })();
     }
 
     /**
@@ -500,12 +561,15 @@ export class YWatchdog extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_autoStart(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('autoStart',rest_val);
+    set_autoStart(newval) {
+        var _this19 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this19._setAttr('autoStart', rest_val);
+        })();
     }
 
     /**
@@ -515,14 +579,17 @@ export class YWatchdog extends YFunction
      *
      * On failure, throws an exception or returns YWatchdog.RUNNING_INVALID.
      */
-    async get_running()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_RUNNING_INVALID;
+    get_running() {
+        var _this20 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this20._cacheExpiration <= _this20._yapi.GetTickCount()) {
+                if ((yield _this20.load(_this20._yapi.defaultCacheValidity)) != _this20._yapi.SUCCESS) {
+                    return Y_RUNNING_INVALID;
+                }
             }
-        }
-        return this._running;
+            return _this20._running;
+        })();
     }
 
     /**
@@ -535,12 +602,15 @@ export class YWatchdog extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_running(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('running',rest_val);
+    set_running(newval) {
+        var _this21 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this21._setAttr('running', rest_val);
+        })();
     }
 
     /**
@@ -552,12 +622,15 @@ export class YWatchdog extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async resetWatchdog()
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = '1';
-        return await this._setAttr('running',rest_val);
+    resetWatchdog() {
+        var _this22 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = '1';
+            return yield _this22._setAttr('running', rest_val);
+        })();
     }
 
     /**
@@ -568,14 +641,17 @@ export class YWatchdog extends YFunction
      *
      * On failure, throws an exception or returns YWatchdog.TRIGGERDELAY_INVALID.
      */
-    async get_triggerDelay()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_TRIGGERDELAY_INVALID;
+    get_triggerDelay() {
+        var _this23 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this23._cacheExpiration <= _this23._yapi.GetTickCount()) {
+                if ((yield _this23.load(_this23._yapi.defaultCacheValidity)) != _this23._yapi.SUCCESS) {
+                    return Y_TRIGGERDELAY_INVALID;
+                }
             }
-        }
-        return this._triggerDelay;
+            return _this23._triggerDelay;
+        })();
     }
 
     /**
@@ -588,12 +664,15 @@ export class YWatchdog extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_triggerDelay(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('triggerDelay',rest_val);
+    set_triggerDelay(newval) {
+        var _this24 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this24._setAttr('triggerDelay', rest_val);
+        })();
     }
 
     /**
@@ -603,14 +682,17 @@ export class YWatchdog extends YFunction
      *
      * On failure, throws an exception or returns YWatchdog.TRIGGERDURATION_INVALID.
      */
-    async get_triggerDuration()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_TRIGGERDURATION_INVALID;
+    get_triggerDuration() {
+        var _this25 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this25._cacheExpiration <= _this25._yapi.GetTickCount()) {
+                if ((yield _this25.load(_this25._yapi.defaultCacheValidity)) != _this25._yapi.SUCCESS) {
+                    return Y_TRIGGERDURATION_INVALID;
+                }
             }
-        }
-        return this._triggerDuration;
+            return _this25._triggerDuration;
+        })();
     }
 
     /**
@@ -623,12 +705,15 @@ export class YWatchdog extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_triggerDuration(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('triggerDuration',rest_val);
+    set_triggerDuration(newval) {
+        var _this26 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this26._setAttr('triggerDuration', rest_val);
+        })();
     }
 
     /**
@@ -654,14 +739,13 @@ export class YWatchdog extends YFunction
      *
      * @return {YWatchdog} a YWatchdog object allowing you to drive the watchdog.
      */
-    static FindWatchdog(func)
-    {
+    static FindWatchdog(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('Watchdog', func);
+        obj = _yocto_api.YFunction._FindFromCache('Watchdog', func);
         if (obj == null) {
-            obj = new YWatchdog(YAPI, func);
-            YFunction._AddToCache('Watchdog',  func, obj);
+            obj = new YWatchdog(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('Watchdog', func, obj);
         }
         return obj;
     }
@@ -690,14 +774,13 @@ export class YWatchdog extends YFunction
      *
      * @return {YWatchdog} a YWatchdog object allowing you to drive the watchdog.
      */
-    static FindWatchdogInContext(yctx,func)
-    {
+    static FindWatchdogInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'Watchdog', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Watchdog', func);
         if (obj == null) {
             obj = new YWatchdog(yctx, func);
-            YFunction._AddToCache('Watchdog',  func, obj);
+            _yocto_api.YFunction._AddToCache('Watchdog', func, obj);
         }
         return obj;
     }
@@ -709,14 +792,13 @@ export class YWatchdog extends YFunction
      *         a watchdog currently online, or a null pointer
      *         if there are no more watchdog to enumerate.
      */
-    nextWatchdog()
-    {
+    nextWatchdog() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YWatchdog.FindWatchdogInContext(this._yapi, next_hwid);
     }
 
@@ -729,11 +811,10 @@ export class YWatchdog extends YFunction
      *         the first watchdog currently online, or a null pointer
      *         if there are none.
      */
-    static FirstWatchdog()
-    {
+    static FirstWatchdog() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('Watchdog');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('Watchdog');
+        if (next_hwid == null) return null;
         return YWatchdog.FindWatchdog(next_hwid);
     }
 
@@ -748,18 +829,17 @@ export class YWatchdog extends YFunction
      *         the first watchdog currently online, or a null pointer
      *         if there are none.
      */
-    static FirstWatchdogInContext(yctx)
-    {
+    static FirstWatchdogInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('Watchdog');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YWatchdog.FindWatchdogInContext(yctx, next_hwid);
     }
 
     //--- (end of YWatchdog implementation)
 }
 
-//--- (Watchdog functions)
+exports.YWatchdog = YWatchdog; //--- (Watchdog functions)
 
 /**
  * Retrieves a watchdog for a given identifier.
@@ -784,8 +864,8 @@ export class YWatchdog extends YFunction
  *
  * @return {YWatchdog} a YWatchdog object allowing you to drive the watchdog.
  */
-export function yFindWatchdog(func)
-{
+
+function yFindWatchdog(func) {
     return YWatchdog.FindWatchdog(func);
 }
 
@@ -798,8 +878,7 @@ export function yFindWatchdog(func)
  *         the first watchdog currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstWatchdog()
-{
+function yFirstWatchdog() {
     return YWatchdog.FirstWatchdog();
 }
 

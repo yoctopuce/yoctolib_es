@@ -38,17 +38,27 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YBuzzer = exports.Y_COMMAND_INVALID = exports.Y_PLAYSEQSIGNATURE_INVALID = exports.Y_PLAYSEQMAXSIZE_INVALID = exports.Y_PLAYSEQSIZE_INVALID = exports.Y_VOLUME_INVALID = exports.Y_FREQUENCY_INVALID = undefined;
+exports.yFindBuzzer = yFindBuzzer;
+exports.yFirstBuzzer = yFirstBuzzer;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YBuzzer return codes)
 //--- (end of YBuzzer return codes)
 //--- (YBuzzer definitions)
-export const Y_FREQUENCY_INVALID             = YAPI.INVALID_DOUBLE;
-export const Y_VOLUME_INVALID                = YAPI.INVALID_UINT;
-export const Y_PLAYSEQSIZE_INVALID           = YAPI.INVALID_UINT;
-export const Y_PLAYSEQMAXSIZE_INVALID        = YAPI.INVALID_UINT;
-export const Y_PLAYSEQSIGNATURE_INVALID      = YAPI.INVALID_UINT;
-export const Y_COMMAND_INVALID               = YAPI.INVALID_STRING;
+const Y_FREQUENCY_INVALID = exports.Y_FREQUENCY_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
+const Y_VOLUME_INVALID = exports.Y_VOLUME_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_PLAYSEQSIZE_INVALID = exports.Y_PLAYSEQSIZE_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_PLAYSEQMAXSIZE_INVALID = exports.Y_PLAYSEQMAXSIZE_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_PLAYSEQSIGNATURE_INVALID = exports.Y_PLAYSEQSIGNATURE_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_COMMAND_INVALID = exports.Y_COMMAND_INVALID = _yocto_api.YAPI.INVALID_STRING;
 //--- (end of YBuzzer definitions)
 
 //--- (YBuzzer class start)
@@ -61,60 +71,57 @@ export const Y_COMMAND_INVALID               = YAPI.INVALID_STRING;
  */
 //--- (end of YBuzzer class start)
 
-export class YBuzzer extends YFunction
-{
-    constructor(obj_yapi, str_func)
-    {
+class YBuzzer extends _yocto_api.YFunction {
+    constructor(obj_yapi, str_func) {
         //--- (YBuzzer constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'Buzzer';
+        this._className = 'Buzzer';
         /** @member {number} **/
-        this._frequency                  = Y_FREQUENCY_INVALID;
+        this._frequency = Y_FREQUENCY_INVALID;
         /** @member {number} **/
-        this._volume                     = Y_VOLUME_INVALID;
+        this._volume = Y_VOLUME_INVALID;
         /** @member {number} **/
-        this._playSeqSize                = Y_PLAYSEQSIZE_INVALID;
+        this._playSeqSize = Y_PLAYSEQSIZE_INVALID;
         /** @member {number} **/
-        this._playSeqMaxSize             = Y_PLAYSEQMAXSIZE_INVALID;
+        this._playSeqMaxSize = Y_PLAYSEQMAXSIZE_INVALID;
         /** @member {number} **/
-        this._playSeqSignature           = Y_PLAYSEQSIGNATURE_INVALID;
+        this._playSeqSignature = Y_PLAYSEQSIGNATURE_INVALID;
         /** @member {string} **/
-        this._command                    = Y_COMMAND_INVALID;
+        this._command = Y_COMMAND_INVALID;
         this.imm_setConst({
-            FREQUENCY_INVALID            : YAPI.INVALID_DOUBLE,
-            VOLUME_INVALID               : YAPI.INVALID_UINT,
-            PLAYSEQSIZE_INVALID          : YAPI.INVALID_UINT,
-            PLAYSEQMAXSIZE_INVALID       : YAPI.INVALID_UINT,
-            PLAYSEQSIGNATURE_INVALID     : YAPI.INVALID_UINT,
-            COMMAND_INVALID              : YAPI.INVALID_STRING
+            FREQUENCY_INVALID: _yocto_api.YAPI.INVALID_DOUBLE,
+            VOLUME_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            PLAYSEQSIZE_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            PLAYSEQMAXSIZE_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            PLAYSEQSIGNATURE_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            COMMAND_INVALID: _yocto_api.YAPI.INVALID_STRING
         });
         //--- (end of YBuzzer constructor)
     }
 
     //--- (YBuzzer implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'frequency':
-            this._frequency = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
-        case 'volume':
-            this._volume = parseInt(val);
-            return 1;
-        case 'playSeqSize':
-            this._playSeqSize = parseInt(val);
-            return 1;
-        case 'playSeqMaxSize':
-            this._playSeqMaxSize = parseInt(val);
-            return 1;
-        case 'playSeqSignature':
-            this._playSeqSignature = parseInt(val);
-            return 1;
-        case 'command':
-            this._command = val;
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'frequency':
+                this._frequency = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
+            case 'volume':
+                this._volume = parseInt(val);
+                return 1;
+            case 'playSeqSize':
+                this._playSeqSize = parseInt(val);
+                return 1;
+            case 'playSeqMaxSize':
+                this._playSeqMaxSize = parseInt(val);
+                return 1;
+            case 'playSeqSignature':
+                this._playSeqSignature = parseInt(val);
+                return 1;
+            case 'command':
+                this._command = val;
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -128,12 +135,15 @@ export class YBuzzer extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_frequency(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(Math.round(newval * 65536.0));
-        return await this._setAttr('frequency',rest_val);
+    set_frequency(newval) {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(Math.round(newval * 65536.0));
+            return yield _this._setAttr('frequency', rest_val);
+        })();
     }
 
     /**
@@ -144,14 +154,17 @@ export class YBuzzer extends YFunction
      *
      * On failure, throws an exception or returns YBuzzer.FREQUENCY_INVALID.
      */
-    async get_frequency()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_FREQUENCY_INVALID;
+    get_frequency() {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this2._cacheExpiration <= _this2._yapi.GetTickCount()) {
+                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _this2._yapi.SUCCESS) {
+                    return Y_FREQUENCY_INVALID;
+                }
             }
-        }
-        return this._frequency;
+            return _this2._frequency;
+        })();
     }
 
     /**
@@ -161,14 +174,17 @@ export class YBuzzer extends YFunction
      *
      * On failure, throws an exception or returns YBuzzer.VOLUME_INVALID.
      */
-    async get_volume()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_VOLUME_INVALID;
+    get_volume() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
+                    return Y_VOLUME_INVALID;
+                }
             }
-        }
-        return this._volume;
+            return _this3._volume;
+        })();
     }
 
     /**
@@ -180,12 +196,15 @@ export class YBuzzer extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_volume(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('volume',rest_val);
+    set_volume(newval) {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this4._setAttr('volume', rest_val);
+        })();
     }
 
     /**
@@ -195,14 +214,17 @@ export class YBuzzer extends YFunction
      *
      * On failure, throws an exception or returns YBuzzer.PLAYSEQSIZE_INVALID.
      */
-    async get_playSeqSize()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_PLAYSEQSIZE_INVALID;
+    get_playSeqSize() {
+        var _this5 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this5._cacheExpiration <= _this5._yapi.GetTickCount()) {
+                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _this5._yapi.SUCCESS) {
+                    return Y_PLAYSEQSIZE_INVALID;
+                }
             }
-        }
-        return this._playSeqSize;
+            return _this5._playSeqSize;
+        })();
     }
 
     /**
@@ -212,14 +234,17 @@ export class YBuzzer extends YFunction
      *
      * On failure, throws an exception or returns YBuzzer.PLAYSEQMAXSIZE_INVALID.
      */
-    async get_playSeqMaxSize()
-    {
-        if (this._cacheExpiration == 0) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_PLAYSEQMAXSIZE_INVALID;
+    get_playSeqMaxSize() {
+        var _this6 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this6._cacheExpiration == 0) {
+                if ((yield _this6.load(_this6._yapi.defaultCacheValidity)) != _this6._yapi.SUCCESS) {
+                    return Y_PLAYSEQMAXSIZE_INVALID;
+                }
             }
-        }
-        return this._playSeqMaxSize;
+            return _this6._playSeqMaxSize;
+        })();
     }
 
     /**
@@ -232,32 +257,41 @@ export class YBuzzer extends YFunction
      *
      * On failure, throws an exception or returns YBuzzer.PLAYSEQSIGNATURE_INVALID.
      */
-    async get_playSeqSignature()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_PLAYSEQSIGNATURE_INVALID;
+    get_playSeqSignature() {
+        var _this7 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this7._cacheExpiration <= _this7._yapi.GetTickCount()) {
+                if ((yield _this7.load(_this7._yapi.defaultCacheValidity)) != _this7._yapi.SUCCESS) {
+                    return Y_PLAYSEQSIGNATURE_INVALID;
+                }
             }
-        }
-        return this._playSeqSignature;
+            return _this7._playSeqSignature;
+        })();
     }
 
-    async get_command()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_COMMAND_INVALID;
+    get_command() {
+        var _this8 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this8._cacheExpiration <= _this8._yapi.GetTickCount()) {
+                if ((yield _this8.load(_this8._yapi.defaultCacheValidity)) != _this8._yapi.SUCCESS) {
+                    return Y_COMMAND_INVALID;
+                }
             }
-        }
-        return this._command;
+            return _this8._command;
+        })();
     }
 
-    async set_command(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('command',rest_val);
+    set_command(newval) {
+        var _this9 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this9._setAttr('command', rest_val);
+        })();
     }
 
     /**
@@ -283,14 +317,13 @@ export class YBuzzer extends YFunction
      *
      * @return {YBuzzer} a YBuzzer object allowing you to drive the buzzer.
      */
-    static FindBuzzer(func)
-    {
+    static FindBuzzer(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('Buzzer', func);
+        obj = _yocto_api.YFunction._FindFromCache('Buzzer', func);
         if (obj == null) {
-            obj = new YBuzzer(YAPI, func);
-            YFunction._AddToCache('Buzzer',  func, obj);
+            obj = new YBuzzer(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('Buzzer', func, obj);
         }
         return obj;
     }
@@ -319,21 +352,23 @@ export class YBuzzer extends YFunction
      *
      * @return {YBuzzer} a YBuzzer object allowing you to drive the buzzer.
      */
-    static FindBuzzerInContext(yctx,func)
-    {
+    static FindBuzzerInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'Buzzer', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Buzzer', func);
         if (obj == null) {
             obj = new YBuzzer(yctx, func);
-            YFunction._AddToCache('Buzzer',  func, obj);
+            _yocto_api.YFunction._AddToCache('Buzzer', func, obj);
         }
         return obj;
     }
 
-    async sendCommand(command)
-    {
-        return await this.set_command(command);
+    sendCommand(command) {
+        var _this10 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this10.set_command(command);
+        })();
     }
 
     /**
@@ -345,9 +380,12 @@ export class YBuzzer extends YFunction
      * @return {number} YAPI.SUCCESS if the call succeeds.
      *         On failure, throws an exception or returns a negative error code.
      */
-    async addFreqMoveToPlaySeq(freq,msDelay)
-    {
-        return await this.sendCommand('A'+String(Math.round(freq))+','+String(Math.round(msDelay)));
+    addFreqMoveToPlaySeq(freq, msDelay) {
+        var _this11 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this11.sendCommand('A' + String(Math.round(freq)) + ',' + String(Math.round(msDelay)));
+        })();
     }
 
     /**
@@ -359,9 +397,12 @@ export class YBuzzer extends YFunction
      * @return {number} YAPI.SUCCESS if the call succeeds.
      *         On failure, throws an exception or returns a negative error code.
      */
-    async addPulseToPlaySeq(freq,msDuration)
-    {
-        return await this.sendCommand('B'+String(Math.round(freq))+','+String(Math.round(msDuration)));
+    addPulseToPlaySeq(freq, msDuration) {
+        var _this12 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this12.sendCommand('B' + String(Math.round(freq)) + ',' + String(Math.round(msDuration)));
+        })();
     }
 
     /**
@@ -374,9 +415,12 @@ export class YBuzzer extends YFunction
      * @return {number} YAPI.SUCCESS if the call succeeds.
      *         On failure, throws an exception or returns a negative error code.
      */
-    async addVolMoveToPlaySeq(volume,msDuration)
-    {
-        return await this.sendCommand('C'+String(Math.round(volume))+','+String(Math.round(msDuration)));
+    addVolMoveToPlaySeq(volume, msDuration) {
+        var _this13 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this13.sendCommand('C' + String(Math.round(volume)) + ',' + String(Math.round(msDuration)));
+        })();
     }
 
     /**
@@ -387,9 +431,12 @@ export class YBuzzer extends YFunction
      * @return {number} YAPI.SUCCESS if the call succeeds.
      *         On failure, throws an exception or returns a negative error code.
      */
-    async startPlaySeq()
-    {
-        return await this.sendCommand('S');
+    startPlaySeq() {
+        var _this14 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this14.sendCommand('S');
+        })();
     }
 
     /**
@@ -398,9 +445,12 @@ export class YBuzzer extends YFunction
      * @return {number} YAPI.SUCCESS if the call succeeds.
      *         On failure, throws an exception or returns a negative error code.
      */
-    async stopPlaySeq()
-    {
-        return await this.sendCommand('X');
+    stopPlaySeq() {
+        var _this15 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this15.sendCommand('X');
+        })();
     }
 
     /**
@@ -409,9 +459,12 @@ export class YBuzzer extends YFunction
      * @return {number} YAPI.SUCCESS if the call succeeds.
      *         On failure, throws an exception or returns a negative error code.
      */
-    async resetPlaySeq()
-    {
-        return await this.sendCommand('Z');
+    resetPlaySeq() {
+        var _this16 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this16.sendCommand('Z');
+        })();
     }
 
     /**
@@ -424,9 +477,12 @@ export class YBuzzer extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async pulse(frequency,duration)
-    {
-        return await this.set_command('P'+String(Math.round(frequency))+','+String(Math.round(duration)));
+    pulse(frequency, duration) {
+        var _this17 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this17.set_command('P' + String(Math.round(frequency)) + ',' + String(Math.round(duration)));
+        })();
     }
 
     /**
@@ -439,9 +495,12 @@ export class YBuzzer extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async freqMove(frequency,duration)
-    {
-        return await this.set_command('F'+String(Math.round(frequency))+','+String(Math.round(duration)));
+    freqMove(frequency, duration) {
+        var _this18 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this18.set_command('F' + String(Math.round(frequency)) + ',' + String(Math.round(duration)));
+        })();
     }
 
     /**
@@ -454,9 +513,12 @@ export class YBuzzer extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async volumeMove(volume,duration)
-    {
-        return await this.set_command('V'+String(Math.round(volume))+','+String(Math.round(duration)));
+    volumeMove(volume, duration) {
+        var _this19 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this19.set_command('V' + String(Math.round(volume)) + ',' + String(Math.round(duration)));
+        })();
     }
 
     /**
@@ -466,14 +528,13 @@ export class YBuzzer extends YFunction
      *         a buzzer currently online, or a null pointer
      *         if there are no more buzzers to enumerate.
      */
-    nextBuzzer()
-    {
+    nextBuzzer() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YBuzzer.FindBuzzerInContext(this._yapi, next_hwid);
     }
 
@@ -486,11 +547,10 @@ export class YBuzzer extends YFunction
      *         the first buzzer currently online, or a null pointer
      *         if there are none.
      */
-    static FirstBuzzer()
-    {
+    static FirstBuzzer() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('Buzzer');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('Buzzer');
+        if (next_hwid == null) return null;
         return YBuzzer.FindBuzzer(next_hwid);
     }
 
@@ -505,18 +565,17 @@ export class YBuzzer extends YFunction
      *         the first buzzer currently online, or a null pointer
      *         if there are none.
      */
-    static FirstBuzzerInContext(yctx)
-    {
+    static FirstBuzzerInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('Buzzer');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YBuzzer.FindBuzzerInContext(yctx, next_hwid);
     }
 
     //--- (end of YBuzzer implementation)
 }
 
-//--- (Buzzer functions)
+exports.YBuzzer = YBuzzer; //--- (Buzzer functions)
 
 /**
  * Retrieves a buzzer for a given identifier.
@@ -541,8 +600,8 @@ export class YBuzzer extends YFunction
  *
  * @return {YBuzzer} a YBuzzer object allowing you to drive the buzzer.
  */
-export function yFindBuzzer(func)
-{
+
+function yFindBuzzer(func) {
     return YBuzzer.FindBuzzer(func);
 }
 
@@ -555,8 +614,7 @@ export function yFindBuzzer(func)
  *         the first buzzer currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstBuzzer()
-{
+function yFirstBuzzer() {
     return YBuzzer.FirstBuzzer();
 }
 

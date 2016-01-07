@@ -38,13 +38,23 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YAltitude = exports.Y_TECHNOLOGY_INVALID = exports.Y_QNH_INVALID = undefined;
+exports.yFindAltitude = yFindAltitude;
+exports.yFirstAltitude = yFirstAltitude;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YAltitude return codes)
 //--- (end of YAltitude return codes)
 //--- (YAltitude definitions)
-export const Y_QNH_INVALID                   = YAPI.INVALID_DOUBLE;
-export const Y_TECHNOLOGY_INVALID            = YAPI.INVALID_STRING;
+const Y_QNH_INVALID = exports.Y_QNH_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
+const Y_TECHNOLOGY_INVALID = exports.Y_TECHNOLOGY_INVALID = _yocto_api.YAPI.INVALID_STRING;
 //--- (end of YAltitude definitions)
 
 //--- (YAltitude class start)
@@ -59,36 +69,33 @@ export const Y_TECHNOLOGY_INVALID            = YAPI.INVALID_STRING;
  */
 //--- (end of YAltitude class start)
 
-export class YAltitude extends YSensor
-{
-    constructor(obj_yapi, str_func)
-    {
+class YAltitude extends _yocto_api.YSensor {
+    constructor(obj_yapi, str_func) {
         //--- (YAltitude constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'Altitude';
+        this._className = 'Altitude';
         /** @member {number} **/
-        this._qnh                        = Y_QNH_INVALID;
+        this._qnh = Y_QNH_INVALID;
         /** @member {string} **/
-        this._technology                 = Y_TECHNOLOGY_INVALID;
+        this._technology = Y_TECHNOLOGY_INVALID;
         this.imm_setConst({
-            QNH_INVALID                  : YAPI.INVALID_DOUBLE,
-            TECHNOLOGY_INVALID           : YAPI.INVALID_STRING
+            QNH_INVALID: _yocto_api.YAPI.INVALID_DOUBLE,
+            TECHNOLOGY_INVALID: _yocto_api.YAPI.INVALID_STRING
         });
         //--- (end of YAltitude constructor)
     }
 
     //--- (YAltitude implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'qnh':
-            this._qnh = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
-        case 'technology':
-            this._technology = val;
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'qnh':
+                this._qnh = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
+            case 'technology':
+                this._technology = val;
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -103,12 +110,15 @@ export class YAltitude extends YSensor
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_currentValue(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(Math.round(newval * 65536.0));
-        return await this._setAttr('currentValue',rest_val);
+    set_currentValue(newval) {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(Math.round(newval * 65536.0));
+            return yield _this._setAttr('currentValue', rest_val);
+        })();
     }
 
     /**
@@ -124,12 +134,15 @@ export class YAltitude extends YSensor
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_qnh(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(Math.round(newval * 65536.0));
-        return await this._setAttr('qnh',rest_val);
+    set_qnh(newval) {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(Math.round(newval * 65536.0));
+            return yield _this2._setAttr('qnh', rest_val);
+        })();
     }
 
     /**
@@ -142,14 +155,17 @@ export class YAltitude extends YSensor
      *
      * On failure, throws an exception or returns YAltitude.QNH_INVALID.
      */
-    async get_qnh()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_QNH_INVALID;
+    get_qnh() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
+                    return Y_QNH_INVALID;
+                }
             }
-        }
-        return this._qnh;
+            return _this3._qnh;
+        })();
     }
 
     /**
@@ -161,14 +177,17 @@ export class YAltitude extends YSensor
      *
      * On failure, throws an exception or returns YAltitude.TECHNOLOGY_INVALID.
      */
-    async get_technology()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_TECHNOLOGY_INVALID;
+    get_technology() {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this4._cacheExpiration <= _this4._yapi.GetTickCount()) {
+                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _this4._yapi.SUCCESS) {
+                    return Y_TECHNOLOGY_INVALID;
+                }
             }
-        }
-        return this._technology;
+            return _this4._technology;
+        })();
     }
 
     /**
@@ -194,14 +213,13 @@ export class YAltitude extends YSensor
      *
      * @return {YAltitude} a YAltitude object allowing you to drive the altimeter.
      */
-    static FindAltitude(func)
-    {
+    static FindAltitude(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('Altitude', func);
+        obj = _yocto_api.YFunction._FindFromCache('Altitude', func);
         if (obj == null) {
-            obj = new YAltitude(YAPI, func);
-            YFunction._AddToCache('Altitude',  func, obj);
+            obj = new YAltitude(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('Altitude', func, obj);
         }
         return obj;
     }
@@ -230,14 +248,13 @@ export class YAltitude extends YSensor
      *
      * @return {YAltitude} a YAltitude object allowing you to drive the altimeter.
      */
-    static FindAltitudeInContext(yctx,func)
-    {
+    static FindAltitudeInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'Altitude', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Altitude', func);
         if (obj == null) {
             obj = new YAltitude(yctx, func);
-            YFunction._AddToCache('Altitude',  func, obj);
+            _yocto_api.YFunction._AddToCache('Altitude', func, obj);
         }
         return obj;
     }
@@ -249,14 +266,13 @@ export class YAltitude extends YSensor
      *         an altimeter currently online, or a null pointer
      *         if there are no more altimeters to enumerate.
      */
-    nextAltitude()
-    {
+    nextAltitude() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YAltitude.FindAltitudeInContext(this._yapi, next_hwid);
     }
 
@@ -269,11 +285,10 @@ export class YAltitude extends YSensor
      *         the first altimeter currently online, or a null pointer
      *         if there are none.
      */
-    static FirstAltitude()
-    {
+    static FirstAltitude() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('Altitude');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('Altitude');
+        if (next_hwid == null) return null;
         return YAltitude.FindAltitude(next_hwid);
     }
 
@@ -288,18 +303,17 @@ export class YAltitude extends YSensor
      *         the first altimeter currently online, or a null pointer
      *         if there are none.
      */
-    static FirstAltitudeInContext(yctx)
-    {
+    static FirstAltitudeInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('Altitude');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YAltitude.FindAltitudeInContext(yctx, next_hwid);
     }
 
     //--- (end of YAltitude implementation)
 }
 
-//--- (Altitude functions)
+exports.YAltitude = YAltitude; //--- (Altitude functions)
 
 /**
  * Retrieves an altimeter for a given identifier.
@@ -324,8 +338,8 @@ export class YAltitude extends YSensor
  *
  * @return {YAltitude} a YAltitude object allowing you to drive the altimeter.
  */
-export function yFindAltitude(func)
-{
+
+function yFindAltitude(func) {
     return YAltitude.FindAltitude(func);
 }
 
@@ -338,8 +352,7 @@ export function yFindAltitude(func)
  *         the first altimeter currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstAltitude()
-{
+function yFirstAltitude() {
     return YAltitude.FirstAltitude();
 }
 

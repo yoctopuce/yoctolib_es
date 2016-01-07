@@ -38,26 +38,36 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YAnButton = exports.Y_PULSETIMER_INVALID = exports.Y_PULSECOUNTER_INVALID = exports.Y_LASTTIMERELEASED_INVALID = exports.Y_LASTTIMEPRESSED_INVALID = exports.Y_SENSITIVITY_INVALID = exports.Y_CALIBRATIONMIN_INVALID = exports.Y_CALIBRATIONMAX_INVALID = exports.Y_RAWVALUE_INVALID = exports.Y_CALIBRATEDVALUE_INVALID = exports.Y_ISPRESSED_INVALID = exports.Y_ISPRESSED_TRUE = exports.Y_ISPRESSED_FALSE = exports.Y_ANALOGCALIBRATION_INVALID = exports.Y_ANALOGCALIBRATION_ON = exports.Y_ANALOGCALIBRATION_OFF = undefined;
+exports.yFindAnButton = yFindAnButton;
+exports.yFirstAnButton = yFirstAnButton;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YAnButton return codes)
 //--- (end of YAnButton return codes)
 //--- (YAnButton definitions)
-export const Y_ANALOGCALIBRATION_OFF         = 0;
-export const Y_ANALOGCALIBRATION_ON          = 1;
-export const Y_ANALOGCALIBRATION_INVALID     = -1;
-export const Y_ISPRESSED_FALSE               = 0;
-export const Y_ISPRESSED_TRUE                = 1;
-export const Y_ISPRESSED_INVALID             = -1;
-export const Y_CALIBRATEDVALUE_INVALID       = YAPI.INVALID_UINT;
-export const Y_RAWVALUE_INVALID              = YAPI.INVALID_UINT;
-export const Y_CALIBRATIONMAX_INVALID        = YAPI.INVALID_UINT;
-export const Y_CALIBRATIONMIN_INVALID        = YAPI.INVALID_UINT;
-export const Y_SENSITIVITY_INVALID           = YAPI.INVALID_UINT;
-export const Y_LASTTIMEPRESSED_INVALID       = YAPI.INVALID_LONG;
-export const Y_LASTTIMERELEASED_INVALID      = YAPI.INVALID_LONG;
-export const Y_PULSECOUNTER_INVALID          = YAPI.INVALID_LONG;
-export const Y_PULSETIMER_INVALID            = YAPI.INVALID_LONG;
+const Y_ANALOGCALIBRATION_OFF = exports.Y_ANALOGCALIBRATION_OFF = 0;
+const Y_ANALOGCALIBRATION_ON = exports.Y_ANALOGCALIBRATION_ON = 1;
+const Y_ANALOGCALIBRATION_INVALID = exports.Y_ANALOGCALIBRATION_INVALID = -1;
+const Y_ISPRESSED_FALSE = exports.Y_ISPRESSED_FALSE = 0;
+const Y_ISPRESSED_TRUE = exports.Y_ISPRESSED_TRUE = 1;
+const Y_ISPRESSED_INVALID = exports.Y_ISPRESSED_INVALID = -1;
+const Y_CALIBRATEDVALUE_INVALID = exports.Y_CALIBRATEDVALUE_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_RAWVALUE_INVALID = exports.Y_RAWVALUE_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_CALIBRATIONMAX_INVALID = exports.Y_CALIBRATIONMAX_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_CALIBRATIONMIN_INVALID = exports.Y_CALIBRATIONMIN_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_SENSITIVITY_INVALID = exports.Y_SENSITIVITY_INVALID = _yocto_api.YAPI.INVALID_UINT;
+const Y_LASTTIMEPRESSED_INVALID = exports.Y_LASTTIMEPRESSED_INVALID = _yocto_api.YAPI.INVALID_LONG;
+const Y_LASTTIMERELEASED_INVALID = exports.Y_LASTTIMERELEASED_INVALID = _yocto_api.YAPI.INVALID_LONG;
+const Y_PULSECOUNTER_INVALID = exports.Y_PULSECOUNTER_INVALID = _yocto_api.YAPI.INVALID_LONG;
+const Y_PULSETIMER_INVALID = exports.Y_PULSETIMER_INVALID = _yocto_api.YAPI.INVALID_LONG;
 //--- (end of YAnButton definitions)
 
 //--- (YAnButton class start)
@@ -73,94 +83,91 @@ export const Y_PULSETIMER_INVALID            = YAPI.INVALID_LONG;
  */
 //--- (end of YAnButton class start)
 
-export class YAnButton extends YFunction
-{
-    constructor(obj_yapi, str_func)
-    {
+class YAnButton extends _yocto_api.YFunction {
+    constructor(obj_yapi, str_func) {
         //--- (YAnButton constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'AnButton';
+        this._className = 'AnButton';
         /** @member {number} **/
-        this._calibratedValue            = Y_CALIBRATEDVALUE_INVALID;
+        this._calibratedValue = Y_CALIBRATEDVALUE_INVALID;
         /** @member {number} **/
-        this._rawValue                   = Y_RAWVALUE_INVALID;
+        this._rawValue = Y_RAWVALUE_INVALID;
         /** @member {number} **/
-        this._analogCalibration          = Y_ANALOGCALIBRATION_INVALID;
+        this._analogCalibration = Y_ANALOGCALIBRATION_INVALID;
         /** @member {number} **/
-        this._calibrationMax             = Y_CALIBRATIONMAX_INVALID;
+        this._calibrationMax = Y_CALIBRATIONMAX_INVALID;
         /** @member {number} **/
-        this._calibrationMin             = Y_CALIBRATIONMIN_INVALID;
+        this._calibrationMin = Y_CALIBRATIONMIN_INVALID;
         /** @member {number} **/
-        this._sensitivity                = Y_SENSITIVITY_INVALID;
+        this._sensitivity = Y_SENSITIVITY_INVALID;
         /** @member {number} **/
-        this._isPressed                  = Y_ISPRESSED_INVALID;
+        this._isPressed = Y_ISPRESSED_INVALID;
         /** @member {number} **/
-        this._lastTimePressed            = Y_LASTTIMEPRESSED_INVALID;
+        this._lastTimePressed = Y_LASTTIMEPRESSED_INVALID;
         /** @member {number} **/
-        this._lastTimeReleased           = Y_LASTTIMERELEASED_INVALID;
+        this._lastTimeReleased = Y_LASTTIMERELEASED_INVALID;
         /** @member {number} **/
-        this._pulseCounter               = Y_PULSECOUNTER_INVALID;
+        this._pulseCounter = Y_PULSECOUNTER_INVALID;
         /** @member {number} **/
-        this._pulseTimer                 = Y_PULSETIMER_INVALID;
+        this._pulseTimer = Y_PULSETIMER_INVALID;
         this.imm_setConst({
-            CALIBRATEDVALUE_INVALID      : YAPI.INVALID_UINT,
-            RAWVALUE_INVALID             : YAPI.INVALID_UINT,
-            ANALOGCALIBRATION_OFF        : 0,
-            ANALOGCALIBRATION_ON         : 1,
-            ANALOGCALIBRATION_INVALID    : -1,
-            CALIBRATIONMAX_INVALID       : YAPI.INVALID_UINT,
-            CALIBRATIONMIN_INVALID       : YAPI.INVALID_UINT,
-            SENSITIVITY_INVALID          : YAPI.INVALID_UINT,
-            ISPRESSED_FALSE              : 0,
-            ISPRESSED_TRUE               : 1,
-            ISPRESSED_INVALID            : -1,
-            LASTTIMEPRESSED_INVALID      : YAPI.INVALID_LONG,
-            LASTTIMERELEASED_INVALID     : YAPI.INVALID_LONG,
-            PULSECOUNTER_INVALID         : YAPI.INVALID_LONG,
-            PULSETIMER_INVALID           : YAPI.INVALID_LONG
+            CALIBRATEDVALUE_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            RAWVALUE_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            ANALOGCALIBRATION_OFF: 0,
+            ANALOGCALIBRATION_ON: 1,
+            ANALOGCALIBRATION_INVALID: -1,
+            CALIBRATIONMAX_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            CALIBRATIONMIN_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            SENSITIVITY_INVALID: _yocto_api.YAPI.INVALID_UINT,
+            ISPRESSED_FALSE: 0,
+            ISPRESSED_TRUE: 1,
+            ISPRESSED_INVALID: -1,
+            LASTTIMEPRESSED_INVALID: _yocto_api.YAPI.INVALID_LONG,
+            LASTTIMERELEASED_INVALID: _yocto_api.YAPI.INVALID_LONG,
+            PULSECOUNTER_INVALID: _yocto_api.YAPI.INVALID_LONG,
+            PULSETIMER_INVALID: _yocto_api.YAPI.INVALID_LONG
         });
         //--- (end of YAnButton constructor)
     }
 
     //--- (YAnButton implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'calibratedValue':
-            this._calibratedValue = parseInt(val);
-            return 1;
-        case 'rawValue':
-            this._rawValue = parseInt(val);
-            return 1;
-        case 'analogCalibration':
-            this._analogCalibration = parseInt(val);
-            return 1;
-        case 'calibrationMax':
-            this._calibrationMax = parseInt(val);
-            return 1;
-        case 'calibrationMin':
-            this._calibrationMin = parseInt(val);
-            return 1;
-        case 'sensitivity':
-            this._sensitivity = parseInt(val);
-            return 1;
-        case 'isPressed':
-            this._isPressed = parseInt(val);
-            return 1;
-        case 'lastTimePressed':
-            this._lastTimePressed = parseInt(val);
-            return 1;
-        case 'lastTimeReleased':
-            this._lastTimeReleased = parseInt(val);
-            return 1;
-        case 'pulseCounter':
-            this._pulseCounter = parseInt(val);
-            return 1;
-        case 'pulseTimer':
-            this._pulseTimer = parseInt(val);
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'calibratedValue':
+                this._calibratedValue = parseInt(val);
+                return 1;
+            case 'rawValue':
+                this._rawValue = parseInt(val);
+                return 1;
+            case 'analogCalibration':
+                this._analogCalibration = parseInt(val);
+                return 1;
+            case 'calibrationMax':
+                this._calibrationMax = parseInt(val);
+                return 1;
+            case 'calibrationMin':
+                this._calibrationMin = parseInt(val);
+                return 1;
+            case 'sensitivity':
+                this._sensitivity = parseInt(val);
+                return 1;
+            case 'isPressed':
+                this._isPressed = parseInt(val);
+                return 1;
+            case 'lastTimePressed':
+                this._lastTimePressed = parseInt(val);
+                return 1;
+            case 'lastTimeReleased':
+                this._lastTimeReleased = parseInt(val);
+                return 1;
+            case 'pulseCounter':
+                this._pulseCounter = parseInt(val);
+                return 1;
+            case 'pulseTimer':
+                this._pulseTimer = parseInt(val);
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -172,14 +179,17 @@ export class YAnButton extends YFunction
      *
      * On failure, throws an exception or returns YAnButton.CALIBRATEDVALUE_INVALID.
      */
-    async get_calibratedValue()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_CALIBRATEDVALUE_INVALID;
+    get_calibratedValue() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
+                    return Y_CALIBRATEDVALUE_INVALID;
+                }
             }
-        }
-        return this._calibratedValue;
+            return _this._calibratedValue;
+        })();
     }
 
     /**
@@ -190,14 +200,17 @@ export class YAnButton extends YFunction
      *
      * On failure, throws an exception or returns YAnButton.RAWVALUE_INVALID.
      */
-    async get_rawValue()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_RAWVALUE_INVALID;
+    get_rawValue() {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this2._cacheExpiration <= _this2._yapi.GetTickCount()) {
+                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _this2._yapi.SUCCESS) {
+                    return Y_RAWVALUE_INVALID;
+                }
             }
-        }
-        return this._rawValue;
+            return _this2._rawValue;
+        })();
     }
 
     /**
@@ -207,14 +220,17 @@ export class YAnButton extends YFunction
      *
      * On failure, throws an exception or returns YAnButton.ANALOGCALIBRATION_INVALID.
      */
-    async get_analogCalibration()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_ANALOGCALIBRATION_INVALID;
+    get_analogCalibration() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
+                    return Y_ANALOGCALIBRATION_INVALID;
+                }
             }
-        }
-        return this._analogCalibration;
+            return _this3._analogCalibration;
+        })();
     }
 
     /**
@@ -227,12 +243,15 @@ export class YAnButton extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_analogCalibration(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('analogCalibration',rest_val);
+    set_analogCalibration(newval) {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this4._setAttr('analogCalibration', rest_val);
+        })();
     }
 
     /**
@@ -243,14 +262,17 @@ export class YAnButton extends YFunction
      *
      * On failure, throws an exception or returns YAnButton.CALIBRATIONMAX_INVALID.
      */
-    async get_calibrationMax()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_CALIBRATIONMAX_INVALID;
+    get_calibrationMax() {
+        var _this5 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this5._cacheExpiration <= _this5._yapi.GetTickCount()) {
+                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _this5._yapi.SUCCESS) {
+                    return Y_CALIBRATIONMAX_INVALID;
+                }
             }
-        }
-        return this._calibrationMax;
+            return _this5._calibrationMax;
+        })();
     }
 
     /**
@@ -266,12 +288,15 @@ export class YAnButton extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_calibrationMax(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('calibrationMax',rest_val);
+    set_calibrationMax(newval) {
+        var _this6 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this6._setAttr('calibrationMax', rest_val);
+        })();
     }
 
     /**
@@ -282,14 +307,17 @@ export class YAnButton extends YFunction
      *
      * On failure, throws an exception or returns YAnButton.CALIBRATIONMIN_INVALID.
      */
-    async get_calibrationMin()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_CALIBRATIONMIN_INVALID;
+    get_calibrationMin() {
+        var _this7 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this7._cacheExpiration <= _this7._yapi.GetTickCount()) {
+                if ((yield _this7.load(_this7._yapi.defaultCacheValidity)) != _this7._yapi.SUCCESS) {
+                    return Y_CALIBRATIONMIN_INVALID;
+                }
             }
-        }
-        return this._calibrationMin;
+            return _this7._calibrationMin;
+        })();
     }
 
     /**
@@ -305,12 +333,15 @@ export class YAnButton extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_calibrationMin(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('calibrationMin',rest_val);
+    set_calibrationMin(newval) {
+        var _this8 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this8._setAttr('calibrationMin', rest_val);
+        })();
     }
 
     /**
@@ -321,14 +352,17 @@ export class YAnButton extends YFunction
      *
      * On failure, throws an exception or returns YAnButton.SENSITIVITY_INVALID.
      */
-    async get_sensitivity()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_SENSITIVITY_INVALID;
+    get_sensitivity() {
+        var _this9 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this9._cacheExpiration <= _this9._yapi.GetTickCount()) {
+                if ((yield _this9.load(_this9._yapi.defaultCacheValidity)) != _this9._yapi.SUCCESS) {
+                    return Y_SENSITIVITY_INVALID;
+                }
             }
-        }
-        return this._sensitivity;
+            return _this9._sensitivity;
+        })();
     }
 
     /**
@@ -346,12 +380,15 @@ export class YAnButton extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_sensitivity(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('sensitivity',rest_val);
+    set_sensitivity(newval) {
+        var _this10 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this10._setAttr('sensitivity', rest_val);
+        })();
     }
 
     /**
@@ -362,14 +399,17 @@ export class YAnButton extends YFunction
      *
      * On failure, throws an exception or returns YAnButton.ISPRESSED_INVALID.
      */
-    async get_isPressed()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_ISPRESSED_INVALID;
+    get_isPressed() {
+        var _this11 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this11._cacheExpiration <= _this11._yapi.GetTickCount()) {
+                if ((yield _this11.load(_this11._yapi.defaultCacheValidity)) != _this11._yapi.SUCCESS) {
+                    return Y_ISPRESSED_INVALID;
+                }
             }
-        }
-        return this._isPressed;
+            return _this11._isPressed;
+        })();
     }
 
     /**
@@ -382,14 +422,17 @@ export class YAnButton extends YFunction
      *
      * On failure, throws an exception or returns YAnButton.LASTTIMEPRESSED_INVALID.
      */
-    async get_lastTimePressed()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_LASTTIMEPRESSED_INVALID;
+    get_lastTimePressed() {
+        var _this12 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this12._cacheExpiration <= _this12._yapi.GetTickCount()) {
+                if ((yield _this12.load(_this12._yapi.defaultCacheValidity)) != _this12._yapi.SUCCESS) {
+                    return Y_LASTTIMEPRESSED_INVALID;
+                }
             }
-        }
-        return this._lastTimePressed;
+            return _this12._lastTimePressed;
+        })();
     }
 
     /**
@@ -402,14 +445,17 @@ export class YAnButton extends YFunction
      *
      * On failure, throws an exception or returns YAnButton.LASTTIMERELEASED_INVALID.
      */
-    async get_lastTimeReleased()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_LASTTIMERELEASED_INVALID;
+    get_lastTimeReleased() {
+        var _this13 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this13._cacheExpiration <= _this13._yapi.GetTickCount()) {
+                if ((yield _this13.load(_this13._yapi.defaultCacheValidity)) != _this13._yapi.SUCCESS) {
+                    return Y_LASTTIMERELEASED_INVALID;
+                }
             }
-        }
-        return this._lastTimeReleased;
+            return _this13._lastTimeReleased;
+        })();
     }
 
     /**
@@ -419,22 +465,28 @@ export class YAnButton extends YFunction
      *
      * On failure, throws an exception or returns YAnButton.PULSECOUNTER_INVALID.
      */
-    async get_pulseCounter()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_PULSECOUNTER_INVALID;
+    get_pulseCounter() {
+        var _this14 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this14._cacheExpiration <= _this14._yapi.GetTickCount()) {
+                if ((yield _this14.load(_this14._yapi.defaultCacheValidity)) != _this14._yapi.SUCCESS) {
+                    return Y_PULSECOUNTER_INVALID;
+                }
             }
-        }
-        return this._pulseCounter;
+            return _this14._pulseCounter;
+        })();
     }
 
-    async set_pulseCounter(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('pulseCounter',rest_val);
+    set_pulseCounter(newval) {
+        var _this15 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this15._setAttr('pulseCounter', rest_val);
+        })();
     }
 
     /**
@@ -444,14 +496,17 @@ export class YAnButton extends YFunction
      *
      * On failure, throws an exception or returns YAnButton.PULSETIMER_INVALID.
      */
-    async get_pulseTimer()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_PULSETIMER_INVALID;
+    get_pulseTimer() {
+        var _this16 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this16._cacheExpiration <= _this16._yapi.GetTickCount()) {
+                if ((yield _this16.load(_this16._yapi.defaultCacheValidity)) != _this16._yapi.SUCCESS) {
+                    return Y_PULSETIMER_INVALID;
+                }
             }
-        }
-        return this._pulseTimer;
+            return _this16._pulseTimer;
+        })();
     }
 
     /**
@@ -477,14 +532,13 @@ export class YAnButton extends YFunction
      *
      * @return {YAnButton} a YAnButton object allowing you to drive the analog input.
      */
-    static FindAnButton(func)
-    {
+    static FindAnButton(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('AnButton', func);
+        obj = _yocto_api.YFunction._FindFromCache('AnButton', func);
         if (obj == null) {
-            obj = new YAnButton(YAPI, func);
-            YFunction._AddToCache('AnButton',  func, obj);
+            obj = new YAnButton(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('AnButton', func, obj);
         }
         return obj;
     }
@@ -513,14 +567,13 @@ export class YAnButton extends YFunction
      *
      * @return {YAnButton} a YAnButton object allowing you to drive the analog input.
      */
-    static FindAnButtonInContext(yctx,func)
-    {
+    static FindAnButtonInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'AnButton', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'AnButton', func);
         if (obj == null) {
             obj = new YAnButton(yctx, func);
-            YFunction._AddToCache('AnButton',  func, obj);
+            _yocto_api.YFunction._AddToCache('AnButton', func, obj);
         }
         return obj;
     }
@@ -532,9 +585,12 @@ export class YAnButton extends YFunction
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async resetCounter()
-    {
-        return await this.set_pulseCounter(0);
+    resetCounter() {
+        var _this17 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this17.set_pulseCounter(0);
+        })();
     }
 
     /**
@@ -544,14 +600,13 @@ export class YAnButton extends YFunction
      *         an analog input currently online, or a null pointer
      *         if there are no more analog inputs to enumerate.
      */
-    nextAnButton()
-    {
+    nextAnButton() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YAnButton.FindAnButtonInContext(this._yapi, next_hwid);
     }
 
@@ -564,11 +619,10 @@ export class YAnButton extends YFunction
      *         the first analog input currently online, or a null pointer
      *         if there are none.
      */
-    static FirstAnButton()
-    {
+    static FirstAnButton() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('AnButton');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('AnButton');
+        if (next_hwid == null) return null;
         return YAnButton.FindAnButton(next_hwid);
     }
 
@@ -583,18 +637,17 @@ export class YAnButton extends YFunction
      *         the first analog input currently online, or a null pointer
      *         if there are none.
      */
-    static FirstAnButtonInContext(yctx)
-    {
+    static FirstAnButtonInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('AnButton');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YAnButton.FindAnButtonInContext(yctx, next_hwid);
     }
 
     //--- (end of YAnButton implementation)
 }
 
-//--- (AnButton functions)
+exports.YAnButton = YAnButton; //--- (AnButton functions)
 
 /**
  * Retrieves an analog input for a given identifier.
@@ -619,8 +672,8 @@ export class YAnButton extends YFunction
  *
  * @return {YAnButton} a YAnButton object allowing you to drive the analog input.
  */
-export function yFindAnButton(func)
-{
+
+function yFindAnButton(func) {
     return YAnButton.FindAnButton(func);
 }
 
@@ -633,8 +686,7 @@ export function yFindAnButton(func)
  *         the first analog input currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstAnButton()
-{
+function yFirstAnButton() {
     return YAnButton.FirstAnButton();
 }
 

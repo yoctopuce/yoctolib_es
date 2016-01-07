@@ -38,17 +38,27 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YAccelerometer = exports.Y_ZVALUE_INVALID = exports.Y_YVALUE_INVALID = exports.Y_XVALUE_INVALID = exports.Y_GRAVITYCANCELLATION_INVALID = exports.Y_GRAVITYCANCELLATION_ON = exports.Y_GRAVITYCANCELLATION_OFF = undefined;
+exports.yFindAccelerometer = yFindAccelerometer;
+exports.yFirstAccelerometer = yFirstAccelerometer;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YAccelerometer return codes)
 //--- (end of YAccelerometer return codes)
 //--- (YAccelerometer definitions)
-export const Y_GRAVITYCANCELLATION_OFF       = 0;
-export const Y_GRAVITYCANCELLATION_ON        = 1;
-export const Y_GRAVITYCANCELLATION_INVALID   = -1;
-export const Y_XVALUE_INVALID                = YAPI.INVALID_DOUBLE;
-export const Y_YVALUE_INVALID                = YAPI.INVALID_DOUBLE;
-export const Y_ZVALUE_INVALID                = YAPI.INVALID_DOUBLE;
+const Y_GRAVITYCANCELLATION_OFF = exports.Y_GRAVITYCANCELLATION_OFF = 0;
+const Y_GRAVITYCANCELLATION_ON = exports.Y_GRAVITYCANCELLATION_ON = 1;
+const Y_GRAVITYCANCELLATION_INVALID = exports.Y_GRAVITYCANCELLATION_INVALID = -1;
+const Y_XVALUE_INVALID = exports.Y_XVALUE_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
+const Y_YVALUE_INVALID = exports.Y_YVALUE_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
+const Y_ZVALUE_INVALID = exports.Y_ZVALUE_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
 //--- (end of YAccelerometer definitions)
 
 //--- (YAccelerometer class start)
@@ -67,50 +77,47 @@ export const Y_ZVALUE_INVALID                = YAPI.INVALID_DOUBLE;
  */
 //--- (end of YAccelerometer class start)
 
-export class YAccelerometer extends YSensor
-{
-    constructor(obj_yapi, str_func)
-    {
+class YAccelerometer extends _yocto_api.YSensor {
+    constructor(obj_yapi, str_func) {
         //--- (YAccelerometer constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'Accelerometer';
+        this._className = 'Accelerometer';
         /** @member {number} **/
-        this._xValue                     = Y_XVALUE_INVALID;
+        this._xValue = Y_XVALUE_INVALID;
         /** @member {number} **/
-        this._yValue                     = Y_YVALUE_INVALID;
+        this._yValue = Y_YVALUE_INVALID;
         /** @member {number} **/
-        this._zValue                     = Y_ZVALUE_INVALID;
+        this._zValue = Y_ZVALUE_INVALID;
         /** @member {number} **/
-        this._gravityCancellation        = Y_GRAVITYCANCELLATION_INVALID;
+        this._gravityCancellation = Y_GRAVITYCANCELLATION_INVALID;
         this.imm_setConst({
-            XVALUE_INVALID               : YAPI.INVALID_DOUBLE,
-            YVALUE_INVALID               : YAPI.INVALID_DOUBLE,
-            ZVALUE_INVALID               : YAPI.INVALID_DOUBLE,
-            GRAVITYCANCELLATION_OFF      : 0,
-            GRAVITYCANCELLATION_ON       : 1,
-            GRAVITYCANCELLATION_INVALID  : -1
+            XVALUE_INVALID: _yocto_api.YAPI.INVALID_DOUBLE,
+            YVALUE_INVALID: _yocto_api.YAPI.INVALID_DOUBLE,
+            ZVALUE_INVALID: _yocto_api.YAPI.INVALID_DOUBLE,
+            GRAVITYCANCELLATION_OFF: 0,
+            GRAVITYCANCELLATION_ON: 1,
+            GRAVITYCANCELLATION_INVALID: -1
         });
         //--- (end of YAccelerometer constructor)
     }
 
     //--- (YAccelerometer implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'xValue':
-            this._xValue = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
-        case 'yValue':
-            this._yValue = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
-        case 'zValue':
-            this._zValue = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
-        case 'gravityCancellation':
-            this._gravityCancellation = parseInt(val);
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'xValue':
+                this._xValue = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
+            case 'yValue':
+                this._yValue = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
+            case 'zValue':
+                this._zValue = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
+            case 'gravityCancellation':
+                this._gravityCancellation = parseInt(val);
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -123,14 +130,17 @@ export class YAccelerometer extends YSensor
      *
      * On failure, throws an exception or returns YAccelerometer.XVALUE_INVALID.
      */
-    async get_xValue()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_XVALUE_INVALID;
+    get_xValue() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
+                    return Y_XVALUE_INVALID;
+                }
             }
-        }
-        return this._xValue;
+            return _this._xValue;
+        })();
     }
 
     /**
@@ -141,14 +151,17 @@ export class YAccelerometer extends YSensor
      *
      * On failure, throws an exception or returns YAccelerometer.YVALUE_INVALID.
      */
-    async get_yValue()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_YVALUE_INVALID;
+    get_yValue() {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this2._cacheExpiration <= _this2._yapi.GetTickCount()) {
+                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _this2._yapi.SUCCESS) {
+                    return Y_YVALUE_INVALID;
+                }
             }
-        }
-        return this._yValue;
+            return _this2._yValue;
+        })();
     }
 
     /**
@@ -159,32 +172,41 @@ export class YAccelerometer extends YSensor
      *
      * On failure, throws an exception or returns YAccelerometer.ZVALUE_INVALID.
      */
-    async get_zValue()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_ZVALUE_INVALID;
+    get_zValue() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
+                    return Y_ZVALUE_INVALID;
+                }
             }
-        }
-        return this._zValue;
+            return _this3._zValue;
+        })();
     }
 
-    async get_gravityCancellation()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_GRAVITYCANCELLATION_INVALID;
+    get_gravityCancellation() {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this4._cacheExpiration <= _this4._yapi.GetTickCount()) {
+                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _this4._yapi.SUCCESS) {
+                    return Y_GRAVITYCANCELLATION_INVALID;
+                }
             }
-        }
-        return this._gravityCancellation;
+            return _this4._gravityCancellation;
+        })();
     }
 
-    async set_gravityCancellation(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('gravityCancellation',rest_val);
+    set_gravityCancellation(newval) {
+        var _this5 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this5._setAttr('gravityCancellation', rest_val);
+        })();
     }
 
     /**
@@ -210,14 +232,13 @@ export class YAccelerometer extends YSensor
      *
      * @return {YAccelerometer} a YAccelerometer object allowing you to drive the accelerometer.
      */
-    static FindAccelerometer(func)
-    {
+    static FindAccelerometer(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('Accelerometer', func);
+        obj = _yocto_api.YFunction._FindFromCache('Accelerometer', func);
         if (obj == null) {
-            obj = new YAccelerometer(YAPI, func);
-            YFunction._AddToCache('Accelerometer',  func, obj);
+            obj = new YAccelerometer(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('Accelerometer', func, obj);
         }
         return obj;
     }
@@ -246,14 +267,13 @@ export class YAccelerometer extends YSensor
      *
      * @return {YAccelerometer} a YAccelerometer object allowing you to drive the accelerometer.
      */
-    static FindAccelerometerInContext(yctx,func)
-    {
+    static FindAccelerometerInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'Accelerometer', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'Accelerometer', func);
         if (obj == null) {
             obj = new YAccelerometer(yctx, func);
-            YFunction._AddToCache('Accelerometer',  func, obj);
+            _yocto_api.YFunction._AddToCache('Accelerometer', func, obj);
         }
         return obj;
     }
@@ -265,14 +285,13 @@ export class YAccelerometer extends YSensor
      *         an accelerometer currently online, or a null pointer
      *         if there are no more accelerometers to enumerate.
      */
-    nextAccelerometer()
-    {
+    nextAccelerometer() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YAccelerometer.FindAccelerometerInContext(this._yapi, next_hwid);
     }
 
@@ -285,11 +304,10 @@ export class YAccelerometer extends YSensor
      *         the first accelerometer currently online, or a null pointer
      *         if there are none.
      */
-    static FirstAccelerometer()
-    {
+    static FirstAccelerometer() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('Accelerometer');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('Accelerometer');
+        if (next_hwid == null) return null;
         return YAccelerometer.FindAccelerometer(next_hwid);
     }
 
@@ -304,18 +322,17 @@ export class YAccelerometer extends YSensor
      *         the first accelerometer currently online, or a null pointer
      *         if there are none.
      */
-    static FirstAccelerometerInContext(yctx)
-    {
+    static FirstAccelerometerInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('Accelerometer');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YAccelerometer.FindAccelerometerInContext(yctx, next_hwid);
     }
 
     //--- (end of YAccelerometer implementation)
 }
 
-//--- (Accelerometer functions)
+exports.YAccelerometer = YAccelerometer; //--- (Accelerometer functions)
 
 /**
  * Retrieves an accelerometer for a given identifier.
@@ -340,8 +357,8 @@ export class YAccelerometer extends YSensor
  *
  * @return {YAccelerometer} a YAccelerometer object allowing you to drive the accelerometer.
  */
-export function yFindAccelerometer(func)
-{
+
+function yFindAccelerometer(func) {
     return YAccelerometer.FindAccelerometer(func);
 }
 
@@ -354,8 +371,7 @@ export function yFindAccelerometer(func)
  *         the first accelerometer currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstAccelerometer()
-{
+function yFirstAccelerometer() {
     return YAccelerometer.FirstAccelerometer();
 }
 

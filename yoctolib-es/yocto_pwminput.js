@@ -38,22 +38,32 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YPwmInput = exports.Y_PULSETIMER_INVALID = exports.Y_PULSECOUNTER_INVALID = exports.Y_PERIOD_INVALID = exports.Y_FREQUENCY_INVALID = exports.Y_PULSEDURATION_INVALID = exports.Y_DUTYCYCLE_INVALID = exports.Y_PWMREPORTMODE_INVALID = exports.Y_PWMREPORTMODE_PWM_EDGECOUNT = exports.Y_PWMREPORTMODE_PWM_PULSEDURATION = exports.Y_PWMREPORTMODE_PWM_FREQUENCY = exports.Y_PWMREPORTMODE_PWM_DUTYCYCLE = undefined;
+exports.yFindPwmInput = yFindPwmInput;
+exports.yFirstPwmInput = yFirstPwmInput;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YPwmInput return codes)
 //--- (end of YPwmInput return codes)
 //--- (YPwmInput definitions)
-export const Y_PWMREPORTMODE_PWM_DUTYCYCLE   = 0;
-export const Y_PWMREPORTMODE_PWM_FREQUENCY   = 1;
-export const Y_PWMREPORTMODE_PWM_PULSEDURATION = 2;
-export const Y_PWMREPORTMODE_PWM_EDGECOUNT   = 3;
-export const Y_PWMREPORTMODE_INVALID         = -1;
-export const Y_DUTYCYCLE_INVALID             = YAPI.INVALID_DOUBLE;
-export const Y_PULSEDURATION_INVALID         = YAPI.INVALID_DOUBLE;
-export const Y_FREQUENCY_INVALID             = YAPI.INVALID_DOUBLE;
-export const Y_PERIOD_INVALID                = YAPI.INVALID_DOUBLE;
-export const Y_PULSECOUNTER_INVALID          = YAPI.INVALID_LONG;
-export const Y_PULSETIMER_INVALID            = YAPI.INVALID_LONG;
+const Y_PWMREPORTMODE_PWM_DUTYCYCLE = exports.Y_PWMREPORTMODE_PWM_DUTYCYCLE = 0;
+const Y_PWMREPORTMODE_PWM_FREQUENCY = exports.Y_PWMREPORTMODE_PWM_FREQUENCY = 1;
+const Y_PWMREPORTMODE_PWM_PULSEDURATION = exports.Y_PWMREPORTMODE_PWM_PULSEDURATION = 2;
+const Y_PWMREPORTMODE_PWM_EDGECOUNT = exports.Y_PWMREPORTMODE_PWM_EDGECOUNT = 3;
+const Y_PWMREPORTMODE_INVALID = exports.Y_PWMREPORTMODE_INVALID = -1;
+const Y_DUTYCYCLE_INVALID = exports.Y_DUTYCYCLE_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
+const Y_PULSEDURATION_INVALID = exports.Y_PULSEDURATION_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
+const Y_FREQUENCY_INVALID = exports.Y_FREQUENCY_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
+const Y_PERIOD_INVALID = exports.Y_PERIOD_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
+const Y_PULSECOUNTER_INVALID = exports.Y_PULSECOUNTER_INVALID = _yocto_api.YAPI.INVALID_LONG;
+const Y_PULSETIMER_INVALID = exports.Y_PULSETIMER_INVALID = _yocto_api.YAPI.INVALID_LONG;
 //--- (end of YPwmInput definitions)
 
 //--- (YPwmInput class start)
@@ -68,70 +78,67 @@ export const Y_PULSETIMER_INVALID            = YAPI.INVALID_LONG;
  */
 //--- (end of YPwmInput class start)
 
-export class YPwmInput extends YSensor
-{
-    constructor(obj_yapi, str_func)
-    {
+class YPwmInput extends _yocto_api.YSensor {
+    constructor(obj_yapi, str_func) {
         //--- (YPwmInput constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'PwmInput';
+        this._className = 'PwmInput';
         /** @member {number} **/
-        this._dutyCycle                  = Y_DUTYCYCLE_INVALID;
+        this._dutyCycle = Y_DUTYCYCLE_INVALID;
         /** @member {number} **/
-        this._pulseDuration              = Y_PULSEDURATION_INVALID;
+        this._pulseDuration = Y_PULSEDURATION_INVALID;
         /** @member {number} **/
-        this._frequency                  = Y_FREQUENCY_INVALID;
+        this._frequency = Y_FREQUENCY_INVALID;
         /** @member {number} **/
-        this._period                     = Y_PERIOD_INVALID;
+        this._period = Y_PERIOD_INVALID;
         /** @member {number} **/
-        this._pulseCounter               = Y_PULSECOUNTER_INVALID;
+        this._pulseCounter = Y_PULSECOUNTER_INVALID;
         /** @member {number} **/
-        this._pulseTimer                 = Y_PULSETIMER_INVALID;
+        this._pulseTimer = Y_PULSETIMER_INVALID;
         /** @member {number} **/
-        this._pwmReportMode              = Y_PWMREPORTMODE_INVALID;
+        this._pwmReportMode = Y_PWMREPORTMODE_INVALID;
         this.imm_setConst({
-            DUTYCYCLE_INVALID            : YAPI.INVALID_DOUBLE,
-            PULSEDURATION_INVALID        : YAPI.INVALID_DOUBLE,
-            FREQUENCY_INVALID            : YAPI.INVALID_DOUBLE,
-            PERIOD_INVALID               : YAPI.INVALID_DOUBLE,
-            PULSECOUNTER_INVALID         : YAPI.INVALID_LONG,
-            PULSETIMER_INVALID           : YAPI.INVALID_LONG,
-            PWMREPORTMODE_PWM_DUTYCYCLE  : 0,
-            PWMREPORTMODE_PWM_FREQUENCY  : 1,
-            PWMREPORTMODE_PWM_PULSEDURATION : 2,
-            PWMREPORTMODE_PWM_EDGECOUNT  : 3,
-            PWMREPORTMODE_INVALID        : -1
+            DUTYCYCLE_INVALID: _yocto_api.YAPI.INVALID_DOUBLE,
+            PULSEDURATION_INVALID: _yocto_api.YAPI.INVALID_DOUBLE,
+            FREQUENCY_INVALID: _yocto_api.YAPI.INVALID_DOUBLE,
+            PERIOD_INVALID: _yocto_api.YAPI.INVALID_DOUBLE,
+            PULSECOUNTER_INVALID: _yocto_api.YAPI.INVALID_LONG,
+            PULSETIMER_INVALID: _yocto_api.YAPI.INVALID_LONG,
+            PWMREPORTMODE_PWM_DUTYCYCLE: 0,
+            PWMREPORTMODE_PWM_FREQUENCY: 1,
+            PWMREPORTMODE_PWM_PULSEDURATION: 2,
+            PWMREPORTMODE_PWM_EDGECOUNT: 3,
+            PWMREPORTMODE_INVALID: -1
         });
         //--- (end of YPwmInput constructor)
     }
 
     //--- (YPwmInput implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'dutyCycle':
-            this._dutyCycle = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
-        case 'pulseDuration':
-            this._pulseDuration = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
-        case 'frequency':
-            this._frequency = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
-        case 'period':
-            this._period = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
-        case 'pulseCounter':
-            this._pulseCounter = parseInt(val);
-            return 1;
-        case 'pulseTimer':
-            this._pulseTimer = parseInt(val);
-            return 1;
-        case 'pwmReportMode':
-            this._pwmReportMode = parseInt(val);
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'dutyCycle':
+                this._dutyCycle = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
+            case 'pulseDuration':
+                this._pulseDuration = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
+            case 'frequency':
+                this._frequency = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
+            case 'period':
+                this._period = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
+            case 'pulseCounter':
+                this._pulseCounter = parseInt(val);
+                return 1;
+            case 'pulseTimer':
+                this._pulseTimer = parseInt(val);
+                return 1;
+            case 'pwmReportMode':
+                this._pwmReportMode = parseInt(val);
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -143,14 +150,17 @@ export class YPwmInput extends YSensor
      *
      * On failure, throws an exception or returns YPwmInput.DUTYCYCLE_INVALID.
      */
-    async get_dutyCycle()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_DUTYCYCLE_INVALID;
+    get_dutyCycle() {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this._cacheExpiration <= _this._yapi.GetTickCount()) {
+                if ((yield _this.load(_this._yapi.defaultCacheValidity)) != _this._yapi.SUCCESS) {
+                    return Y_DUTYCYCLE_INVALID;
+                }
             }
-        }
-        return this._dutyCycle;
+            return _this._dutyCycle;
+        })();
     }
 
     /**
@@ -161,14 +171,17 @@ export class YPwmInput extends YSensor
      *
      * On failure, throws an exception or returns YPwmInput.PULSEDURATION_INVALID.
      */
-    async get_pulseDuration()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_PULSEDURATION_INVALID;
+    get_pulseDuration() {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this2._cacheExpiration <= _this2._yapi.GetTickCount()) {
+                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _this2._yapi.SUCCESS) {
+                    return Y_PULSEDURATION_INVALID;
+                }
             }
-        }
-        return this._pulseDuration;
+            return _this2._pulseDuration;
+        })();
     }
 
     /**
@@ -178,14 +191,17 @@ export class YPwmInput extends YSensor
      *
      * On failure, throws an exception or returns YPwmInput.FREQUENCY_INVALID.
      */
-    async get_frequency()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_FREQUENCY_INVALID;
+    get_frequency() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._cacheExpiration <= _this3._yapi.GetTickCount()) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
+                    return Y_FREQUENCY_INVALID;
+                }
             }
-        }
-        return this._frequency;
+            return _this3._frequency;
+        })();
     }
 
     /**
@@ -195,14 +211,17 @@ export class YPwmInput extends YSensor
      *
      * On failure, throws an exception or returns YPwmInput.PERIOD_INVALID.
      */
-    async get_period()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_PERIOD_INVALID;
+    get_period() {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this4._cacheExpiration <= _this4._yapi.GetTickCount()) {
+                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _this4._yapi.SUCCESS) {
+                    return Y_PERIOD_INVALID;
+                }
             }
-        }
-        return this._period;
+            return _this4._period;
+        })();
     }
 
     /**
@@ -214,22 +233,28 @@ export class YPwmInput extends YSensor
      *
      * On failure, throws an exception or returns YPwmInput.PULSECOUNTER_INVALID.
      */
-    async get_pulseCounter()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_PULSECOUNTER_INVALID;
+    get_pulseCounter() {
+        var _this5 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this5._cacheExpiration <= _this5._yapi.GetTickCount()) {
+                if ((yield _this5.load(_this5._yapi.defaultCacheValidity)) != _this5._yapi.SUCCESS) {
+                    return Y_PULSECOUNTER_INVALID;
+                }
             }
-        }
-        return this._pulseCounter;
+            return _this5._pulseCounter;
+        })();
     }
 
-    async set_pulseCounter(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('pulseCounter',rest_val);
+    set_pulseCounter(newval) {
+        var _this6 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this6._setAttr('pulseCounter', rest_val);
+        })();
     }
 
     /**
@@ -239,14 +264,17 @@ export class YPwmInput extends YSensor
      *
      * On failure, throws an exception or returns YPwmInput.PULSETIMER_INVALID.
      */
-    async get_pulseTimer()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_PULSETIMER_INVALID;
+    get_pulseTimer() {
+        var _this7 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this7._cacheExpiration <= _this7._yapi.GetTickCount()) {
+                if ((yield _this7.load(_this7._yapi.defaultCacheValidity)) != _this7._yapi.SUCCESS) {
+                    return Y_PULSETIMER_INVALID;
+                }
             }
-        }
-        return this._pulseTimer;
+            return _this7._pulseTimer;
+        })();
     }
 
     /**
@@ -260,14 +288,17 @@ export class YPwmInput extends YSensor
      *
      * On failure, throws an exception or returns YPwmInput.PWMREPORTMODE_INVALID.
      */
-    async get_pwmReportMode()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_PWMREPORTMODE_INVALID;
+    get_pwmReportMode() {
+        var _this8 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this8._cacheExpiration <= _this8._yapi.GetTickCount()) {
+                if ((yield _this8.load(_this8._yapi.defaultCacheValidity)) != _this8._yapi.SUCCESS) {
+                    return Y_PWMREPORTMODE_INVALID;
+                }
             }
-        }
-        return this._pwmReportMode;
+            return _this8._pwmReportMode;
+        })();
     }
 
     /**
@@ -284,12 +315,15 @@ export class YPwmInput extends YSensor
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_pwmReportMode(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('pwmReportMode',rest_val);
+    set_pwmReportMode(newval) {
+        var _this9 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this9._setAttr('pwmReportMode', rest_val);
+        })();
     }
 
     /**
@@ -315,14 +349,13 @@ export class YPwmInput extends YSensor
      *
      * @return {YPwmInput} a YPwmInput object allowing you to drive the PWM input.
      */
-    static FindPwmInput(func)
-    {
+    static FindPwmInput(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('PwmInput', func);
+        obj = _yocto_api.YFunction._FindFromCache('PwmInput', func);
         if (obj == null) {
-            obj = new YPwmInput(YAPI, func);
-            YFunction._AddToCache('PwmInput',  func, obj);
+            obj = new YPwmInput(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('PwmInput', func, obj);
         }
         return obj;
     }
@@ -351,14 +384,13 @@ export class YPwmInput extends YSensor
      *
      * @return {YPwmInput} a YPwmInput object allowing you to drive the PWM input.
      */
-    static FindPwmInputInContext(yctx,func)
-    {
+    static FindPwmInputInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'PwmInput', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'PwmInput', func);
         if (obj == null) {
             obj = new YPwmInput(yctx, func);
-            YFunction._AddToCache('PwmInput',  func, obj);
+            _yocto_api.YFunction._AddToCache('PwmInput', func, obj);
         }
         return obj;
     }
@@ -370,9 +402,12 @@ export class YPwmInput extends YSensor
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async resetCounter()
-    {
-        return await this.set_pulseCounter(0);
+    resetCounter() {
+        var _this10 = this;
+
+        return _asyncToGenerator(function* () {
+            return yield _this10.set_pulseCounter(0);
+        })();
     }
 
     /**
@@ -382,14 +417,13 @@ export class YPwmInput extends YSensor
      *         a PWM input currently online, or a null pointer
      *         if there are no more PWM inputs to enumerate.
      */
-    nextPwmInput()
-    {
+    nextPwmInput() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YPwmInput.FindPwmInputInContext(this._yapi, next_hwid);
     }
 
@@ -402,11 +436,10 @@ export class YPwmInput extends YSensor
      *         the first PWM input currently online, or a null pointer
      *         if there are none.
      */
-    static FirstPwmInput()
-    {
+    static FirstPwmInput() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('PwmInput');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('PwmInput');
+        if (next_hwid == null) return null;
         return YPwmInput.FindPwmInput(next_hwid);
     }
 
@@ -421,18 +454,17 @@ export class YPwmInput extends YSensor
      *         the first PWM input currently online, or a null pointer
      *         if there are none.
      */
-    static FirstPwmInputInContext(yctx)
-    {
+    static FirstPwmInputInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('PwmInput');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YPwmInput.FindPwmInputInContext(yctx, next_hwid);
     }
 
     //--- (end of YPwmInput implementation)
 }
 
-//--- (PwmInput functions)
+exports.YPwmInput = YPwmInput; //--- (PwmInput functions)
 
 /**
  * Retrieves a PWM input for a given identifier.
@@ -457,8 +489,8 @@ export class YPwmInput extends YSensor
  *
  * @return {YPwmInput} a YPwmInput object allowing you to drive the PWM input.
  */
-export function yFindPwmInput(func)
-{
+
+function yFindPwmInput(func) {
     return YPwmInput.FindPwmInput(func);
 }
 
@@ -471,8 +503,7 @@ export function yFindPwmInput(func)
  *         the first PWM input currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstPwmInput()
-{
+function yFirstPwmInput() {
     return YPwmInput.FirstPwmInput();
 }
 

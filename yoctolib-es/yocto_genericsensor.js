@@ -38,21 +38,31 @@
  *********************************************************************/
 
 'use strict';
-import { YAPI, YAPI_SUCCESS, YFunction, YModule, YSensor } from 'yoctolib-es/yocto_api'
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.YGenericSensor = exports.Y_SIGNALBIAS_INVALID = exports.Y_VALUERANGE_INVALID = exports.Y_SIGNALRANGE_INVALID = exports.Y_SIGNALUNIT_INVALID = exports.Y_SIGNALVALUE_INVALID = exports.Y_SIGNALSAMPLING_INVALID = exports.Y_SIGNALSAMPLING_LOW_NOISE_FILTERED = exports.Y_SIGNALSAMPLING_LOW_NOISE = exports.Y_SIGNALSAMPLING_HIGH_RATE_FILTERED = exports.Y_SIGNALSAMPLING_HIGH_RATE = undefined;
+exports.yFindGenericSensor = yFindGenericSensor;
+exports.yFirstGenericSensor = yFirstGenericSensor;
+
+var _yocto_api = require('./yocto_api');
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
 
 //--- (YGenericSensor return codes)
 //--- (end of YGenericSensor return codes)
 //--- (YGenericSensor definitions)
-export const Y_SIGNALSAMPLING_HIGH_RATE      = 0;
-export const Y_SIGNALSAMPLING_HIGH_RATE_FILTERED = 1;
-export const Y_SIGNALSAMPLING_LOW_NOISE      = 2;
-export const Y_SIGNALSAMPLING_LOW_NOISE_FILTERED = 3;
-export const Y_SIGNALSAMPLING_INVALID        = -1;
-export const Y_SIGNALVALUE_INVALID           = YAPI.INVALID_DOUBLE;
-export const Y_SIGNALUNIT_INVALID            = YAPI.INVALID_STRING;
-export const Y_SIGNALRANGE_INVALID           = YAPI.INVALID_STRING;
-export const Y_VALUERANGE_INVALID            = YAPI.INVALID_STRING;
-export const Y_SIGNALBIAS_INVALID            = YAPI.INVALID_DOUBLE;
+const Y_SIGNALSAMPLING_HIGH_RATE = exports.Y_SIGNALSAMPLING_HIGH_RATE = 0;
+const Y_SIGNALSAMPLING_HIGH_RATE_FILTERED = exports.Y_SIGNALSAMPLING_HIGH_RATE_FILTERED = 1;
+const Y_SIGNALSAMPLING_LOW_NOISE = exports.Y_SIGNALSAMPLING_LOW_NOISE = 2;
+const Y_SIGNALSAMPLING_LOW_NOISE_FILTERED = exports.Y_SIGNALSAMPLING_LOW_NOISE_FILTERED = 3;
+const Y_SIGNALSAMPLING_INVALID = exports.Y_SIGNALSAMPLING_INVALID = -1;
+const Y_SIGNALVALUE_INVALID = exports.Y_SIGNALVALUE_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
+const Y_SIGNALUNIT_INVALID = exports.Y_SIGNALUNIT_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_SIGNALRANGE_INVALID = exports.Y_SIGNALRANGE_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_VALUERANGE_INVALID = exports.Y_VALUERANGE_INVALID = _yocto_api.YAPI.INVALID_STRING;
+const Y_SIGNALBIAS_INVALID = exports.Y_SIGNALBIAS_INVALID = _yocto_api.YAPI.INVALID_DOUBLE;
 //--- (end of YGenericSensor definitions)
 
 //--- (YGenericSensor class start)
@@ -67,64 +77,61 @@ export const Y_SIGNALBIAS_INVALID            = YAPI.INVALID_DOUBLE;
  */
 //--- (end of YGenericSensor class start)
 
-export class YGenericSensor extends YSensor
-{
-    constructor(obj_yapi, str_func)
-    {
+class YGenericSensor extends _yocto_api.YSensor {
+    constructor(obj_yapi, str_func) {
         //--- (YGenericSensor constructor)
         super(obj_yapi, str_func);
         /** @member {string} **/
-        this._className                  = 'GenericSensor';
+        this._className = 'GenericSensor';
         /** @member {number} **/
-        this._signalValue                = Y_SIGNALVALUE_INVALID;
+        this._signalValue = Y_SIGNALVALUE_INVALID;
         /** @member {string} **/
-        this._signalUnit                 = Y_SIGNALUNIT_INVALID;
+        this._signalUnit = Y_SIGNALUNIT_INVALID;
         /** @member {string} **/
-        this._signalRange                = Y_SIGNALRANGE_INVALID;
+        this._signalRange = Y_SIGNALRANGE_INVALID;
         /** @member {string} **/
-        this._valueRange                 = Y_VALUERANGE_INVALID;
+        this._valueRange = Y_VALUERANGE_INVALID;
         /** @member {number} **/
-        this._signalBias                 = Y_SIGNALBIAS_INVALID;
+        this._signalBias = Y_SIGNALBIAS_INVALID;
         /** @member {number} **/
-        this._signalSampling             = Y_SIGNALSAMPLING_INVALID;
+        this._signalSampling = Y_SIGNALSAMPLING_INVALID;
         this.imm_setConst({
-            SIGNALVALUE_INVALID          : YAPI.INVALID_DOUBLE,
-            SIGNALUNIT_INVALID           : YAPI.INVALID_STRING,
-            SIGNALRANGE_INVALID          : YAPI.INVALID_STRING,
-            VALUERANGE_INVALID           : YAPI.INVALID_STRING,
-            SIGNALBIAS_INVALID           : YAPI.INVALID_DOUBLE,
-            SIGNALSAMPLING_HIGH_RATE     : 0,
-            SIGNALSAMPLING_HIGH_RATE_FILTERED : 1,
-            SIGNALSAMPLING_LOW_NOISE     : 2,
-            SIGNALSAMPLING_LOW_NOISE_FILTERED : 3,
-            SIGNALSAMPLING_INVALID       : -1
+            SIGNALVALUE_INVALID: _yocto_api.YAPI.INVALID_DOUBLE,
+            SIGNALUNIT_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            SIGNALRANGE_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            VALUERANGE_INVALID: _yocto_api.YAPI.INVALID_STRING,
+            SIGNALBIAS_INVALID: _yocto_api.YAPI.INVALID_DOUBLE,
+            SIGNALSAMPLING_HIGH_RATE: 0,
+            SIGNALSAMPLING_HIGH_RATE_FILTERED: 1,
+            SIGNALSAMPLING_LOW_NOISE: 2,
+            SIGNALSAMPLING_LOW_NOISE_FILTERED: 3,
+            SIGNALSAMPLING_INVALID: -1
         });
         //--- (end of YGenericSensor constructor)
     }
 
     //--- (YGenericSensor implementation)
 
-    imm_parseAttr(name, val)
-    {
-        switch(name) {
-        case 'signalValue':
-            this._signalValue = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
-        case 'signalUnit':
-            this._signalUnit = val;
-            return 1;
-        case 'signalRange':
-            this._signalRange = val;
-            return 1;
-        case 'valueRange':
-            this._valueRange = val;
-            return 1;
-        case 'signalBias':
-            this._signalBias = Math.round(val * 1000.0 / 65536.0) / 1000.0;
-            return 1;
-        case 'signalSampling':
-            this._signalSampling = parseInt(val);
-            return 1;
+    imm_parseAttr(name, val) {
+        switch (name) {
+            case 'signalValue':
+                this._signalValue = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
+            case 'signalUnit':
+                this._signalUnit = val;
+                return 1;
+            case 'signalRange':
+                this._signalRange = val;
+                return 1;
+            case 'valueRange':
+                this._valueRange = val;
+                return 1;
+            case 'signalBias':
+                this._signalBias = Math.round(val * 1000.0 / 65536.0) / 1000.0;
+                return 1;
+            case 'signalSampling':
+                this._signalSampling = parseInt(val);
+                return 1;
         }
         return super.imm_parseAttr(name, val);
     }
@@ -140,12 +147,15 @@ export class YGenericSensor extends YSensor
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_unit(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('unit',rest_val);
+    set_unit(newval) {
+        var _this = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this._setAttr('unit', rest_val);
+        })();
     }
 
     /**
@@ -156,14 +166,17 @@ export class YGenericSensor extends YSensor
      *
      * On failure, throws an exception or returns YGenericSensor.SIGNALVALUE_INVALID.
      */
-    async get_signalValue()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_SIGNALVALUE_INVALID;
+    get_signalValue() {
+        var _this2 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this2._cacheExpiration <= _this2._yapi.GetTickCount()) {
+                if ((yield _this2.load(_this2._yapi.defaultCacheValidity)) != _this2._yapi.SUCCESS) {
+                    return Y_SIGNALVALUE_INVALID;
+                }
             }
-        }
-        return Math.round(this._signalValue * 1000) / 1000;
+            return Math.round(_this2._signalValue * 1000) / 1000;
+        })();
     }
 
     /**
@@ -173,14 +186,17 @@ export class YGenericSensor extends YSensor
      *
      * On failure, throws an exception or returns YGenericSensor.SIGNALUNIT_INVALID.
      */
-    async get_signalUnit()
-    {
-        if (this._cacheExpiration == 0) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_SIGNALUNIT_INVALID;
+    get_signalUnit() {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this3._cacheExpiration == 0) {
+                if ((yield _this3.load(_this3._yapi.defaultCacheValidity)) != _this3._yapi.SUCCESS) {
+                    return Y_SIGNALUNIT_INVALID;
+                }
             }
-        }
-        return this._signalUnit;
+            return _this3._signalUnit;
+        })();
     }
 
     /**
@@ -190,14 +206,17 @@ export class YGenericSensor extends YSensor
      *
      * On failure, throws an exception or returns YGenericSensor.SIGNALRANGE_INVALID.
      */
-    async get_signalRange()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_SIGNALRANGE_INVALID;
+    get_signalRange() {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this4._cacheExpiration <= _this4._yapi.GetTickCount()) {
+                if ((yield _this4.load(_this4._yapi.defaultCacheValidity)) != _this4._yapi.SUCCESS) {
+                    return Y_SIGNALRANGE_INVALID;
+                }
             }
-        }
-        return this._signalRange;
+            return _this4._signalRange;
+        })();
     }
 
     /**
@@ -209,12 +228,15 @@ export class YGenericSensor extends YSensor
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_signalRange(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('signalRange',rest_val);
+    set_signalRange(newval) {
+        var _this5 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this5._setAttr('signalRange', rest_val);
+        })();
     }
 
     /**
@@ -224,14 +246,17 @@ export class YGenericSensor extends YSensor
      *
      * On failure, throws an exception or returns YGenericSensor.VALUERANGE_INVALID.
      */
-    async get_valueRange()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_VALUERANGE_INVALID;
+    get_valueRange() {
+        var _this6 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this6._cacheExpiration <= _this6._yapi.GetTickCount()) {
+                if ((yield _this6.load(_this6._yapi.defaultCacheValidity)) != _this6._yapi.SUCCESS) {
+                    return Y_VALUERANGE_INVALID;
+                }
             }
-        }
-        return this._valueRange;
+            return _this6._valueRange;
+        })();
     }
 
     /**
@@ -244,12 +269,15 @@ export class YGenericSensor extends YSensor
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_valueRange(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = newval;
-        return await this._setAttr('valueRange',rest_val);
+    set_valueRange(newval) {
+        var _this7 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = newval;
+            return yield _this7._setAttr('valueRange', rest_val);
+        })();
     }
 
     /**
@@ -264,12 +292,15 @@ export class YGenericSensor extends YSensor
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_signalBias(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(Math.round(newval * 65536.0));
-        return await this._setAttr('signalBias',rest_val);
+    set_signalBias(newval) {
+        var _this8 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(Math.round(newval * 65536.0));
+            return yield _this8._setAttr('signalBias', rest_val);
+        })();
     }
 
     /**
@@ -281,14 +312,17 @@ export class YGenericSensor extends YSensor
      *
      * On failure, throws an exception or returns YGenericSensor.SIGNALBIAS_INVALID.
      */
-    async get_signalBias()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_SIGNALBIAS_INVALID;
+    get_signalBias() {
+        var _this9 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this9._cacheExpiration <= _this9._yapi.GetTickCount()) {
+                if ((yield _this9.load(_this9._yapi.defaultCacheValidity)) != _this9._yapi.SUCCESS) {
+                    return Y_SIGNALBIAS_INVALID;
+                }
             }
-        }
-        return this._signalBias;
+            return _this9._signalBias;
+        })();
     }
 
     /**
@@ -305,14 +339,17 @@ export class YGenericSensor extends YSensor
      *
      * On failure, throws an exception or returns YGenericSensor.SIGNALSAMPLING_INVALID.
      */
-    async get_signalSampling()
-    {
-        if (this._cacheExpiration <= this._yapi.GetTickCount()) {
-            if (await this.load(this._yapi.defaultCacheValidity) != this._yapi.SUCCESS) {
-                return Y_SIGNALSAMPLING_INVALID;
+    get_signalSampling() {
+        var _this10 = this;
+
+        return _asyncToGenerator(function* () {
+            if (_this10._cacheExpiration <= _this10._yapi.GetTickCount()) {
+                if ((yield _this10.load(_this10._yapi.defaultCacheValidity)) != _this10._yapi.SUCCESS) {
+                    return Y_SIGNALSAMPLING_INVALID;
+                }
             }
-        }
-        return this._signalSampling;
+            return _this10._signalSampling;
+        })();
     }
 
     /**
@@ -331,12 +368,15 @@ export class YGenericSensor extends YSensor
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async set_signalSampling(newval)
-    {
-        /** @type {string} **/
-        let rest_val;
-        rest_val = String(newval);
-        return await this._setAttr('signalSampling',rest_val);
+    set_signalSampling(newval) {
+        var _this11 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {string} **/
+            let rest_val;
+            rest_val = String(newval);
+            return yield _this11._setAttr('signalSampling', rest_val);
+        })();
     }
 
     /**
@@ -362,14 +402,13 @@ export class YGenericSensor extends YSensor
      *
      * @return {YGenericSensor} a YGenericSensor object allowing you to drive the generic sensor.
      */
-    static FindGenericSensor(func)
-    {
+    static FindGenericSensor(func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCache('GenericSensor', func);
+        obj = _yocto_api.YFunction._FindFromCache('GenericSensor', func);
         if (obj == null) {
-            obj = new YGenericSensor(YAPI, func);
-            YFunction._AddToCache('GenericSensor',  func, obj);
+            obj = new YGenericSensor(_yocto_api.YAPI, func);
+            _yocto_api.YFunction._AddToCache('GenericSensor', func, obj);
         }
         return obj;
     }
@@ -398,14 +437,13 @@ export class YGenericSensor extends YSensor
      *
      * @return {YGenericSensor} a YGenericSensor object allowing you to drive the generic sensor.
      */
-    static FindGenericSensorInContext(yctx,func)
-    {
+    static FindGenericSensorInContext(yctx, func) {
         /** @type {YFunction} **/
         let obj;
-        obj = YFunction._FindFromCacheInContext(yctx,  'GenericSensor', func);
+        obj = _yocto_api.YFunction._FindFromCacheInContext(yctx, 'GenericSensor', func);
         if (obj == null) {
             obj = new YGenericSensor(yctx, func);
-            YFunction._AddToCache('GenericSensor',  func, obj);
+            _yocto_api.YFunction._AddToCache('GenericSensor', func, obj);
         }
         return obj;
     }
@@ -418,15 +456,18 @@ export class YGenericSensor extends YSensor
      *
      * On failure, throws an exception or returns a negative error code.
      */
-    async zeroAdjust()
-    {
-        /** @type {number} **/
-        let currSignal;
-        /** @type {number} **/
-        let currBias;
-        currSignal = await this.get_signalValue();
-        currBias = await this.get_signalBias();
-        return await this.set_signalBias(currSignal + currBias);
+    zeroAdjust() {
+        var _this12 = this;
+
+        return _asyncToGenerator(function* () {
+            /** @type {number} **/
+            let currSignal;
+            /** @type {number} **/
+            let currBias;
+            currSignal = yield _this12.get_signalValue();
+            currBias = yield _this12.get_signalBias();
+            return yield _this12.set_signalBias(currSignal + currBias);
+        })();
     }
 
     /**
@@ -436,14 +477,13 @@ export class YGenericSensor extends YSensor
      *         a generic sensor currently online, or a null pointer
      *         if there are no more generic sensors to enumerate.
      */
-    nextGenericSensor()
-    {
+    nextGenericSensor() {
         /** @type {object} **/
         let resolve = this._yapi.imm_resolveFunction(this._className, this._func);
-        if(resolve.errorType != YAPI_SUCCESS) return null;
+        if (resolve.errorType != _yocto_api.YAPI_SUCCESS) return null;
         /** @type {string|null} **/
         let next_hwid = this._yapi.imm_getNextHardwareId(this._className, resolve.result);
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YGenericSensor.FindGenericSensorInContext(this._yapi, next_hwid);
     }
 
@@ -456,11 +496,10 @@ export class YGenericSensor extends YSensor
      *         the first generic sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstGenericSensor()
-    {
+    static FirstGenericSensor() {
         /** @type {string|null} **/
-        let next_hwid = YAPI.imm_getFirstHardwareId('GenericSensor');
-        if(next_hwid == null) return null;
+        let next_hwid = _yocto_api.YAPI.imm_getFirstHardwareId('GenericSensor');
+        if (next_hwid == null) return null;
         return YGenericSensor.FindGenericSensor(next_hwid);
     }
 
@@ -475,18 +514,17 @@ export class YGenericSensor extends YSensor
      *         the first generic sensor currently online, or a null pointer
      *         if there are none.
      */
-    static FirstGenericSensorInContext(yctx)
-    {
+    static FirstGenericSensorInContext(yctx) {
         /** @type {string|null} **/
         let next_hwid = yctx.imm_getFirstHardwareId('GenericSensor');
-        if(next_hwid == null) return null;
+        if (next_hwid == null) return null;
         return YGenericSensor.FindGenericSensorInContext(yctx, next_hwid);
     }
 
     //--- (end of YGenericSensor implementation)
 }
 
-//--- (GenericSensor functions)
+exports.YGenericSensor = YGenericSensor; //--- (GenericSensor functions)
 
 /**
  * Retrieves a generic sensor for a given identifier.
@@ -511,8 +549,8 @@ export class YGenericSensor extends YSensor
  *
  * @return {YGenericSensor} a YGenericSensor object allowing you to drive the generic sensor.
  */
-export function yFindGenericSensor(func)
-{
+
+function yFindGenericSensor(func) {
     return YGenericSensor.FindGenericSensor(func);
 }
 
@@ -525,8 +563,7 @@ export function yFindGenericSensor(func)
  *         the first generic sensor currently online, or a null pointer
  *         if there are none.
  */
-export function yFirstGenericSensor()
-{
+function yFirstGenericSensor() {
     return YGenericSensor.FirstGenericSensor();
 }
 
