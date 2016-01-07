@@ -99,20 +99,23 @@ function runBabel()
         ],
         'compact': false
     };
-    var index = 'module.exports = require("./yoctolib-es/yocto_api.js");\n'+
-            'function addExports(mod) { for(var key in mod) module.exports[key] = mod[key]; }\n';
+    var rootIndex = 'module.exports = require("./yoctolib-es/yocto_api.js");\n';
+    var jspmIndex = 'module.exports = require("./yocto_api.js");\n';
+    rootIndex += 'function addExports(mod) { for(var key in mod) module.exports[key] = mod[key]; }\n';
+    jspmIndex += 'function addExports(mod) { for(var key in mod) module.exports[key] = mod[key]; }\n';
     fs.readdirSync(lib).forEach(function (mod) {
         if (mod.length > 3 && mod.slice(-3) == '.js' && mod != 'index.js') {
             var res = babel.transformFileSync('src/'+mod, babel_options);
             res.code = res.code.replace(/'src\//g, "'./");
             fs.writeFileSync('yoctolib-es/'+mod, res.code + '\n', 'utf-8');
             if(mod != 'yocto_api.js') {
-                index += 'addExports(require("./yoctolib-es/'+mod+'"));\n';
+                rootIndex += 'addExports(require("./yoctolib-es/'+mod+'"));\n';
+                jspmIndex += 'addExports(require("./'+mod+'"));\n';
             }
         }
     });
-    fs.writeFileSync('yoctolib-es.js', index, 'utf-8');
-    fs.writeFileSync('yoctolib-es/index.js', index, 'utf-8');
+    fs.writeFileSync('yoctolib-es.js', rootIndex, 'utf-8');
+    fs.writeFileSync('yoctolib-es/index.js', jspmIndex, 'utf-8');
     console.log('yoctolib-es version has been updated')
 }
 
