@@ -35,28 +35,23 @@ WARRANTY, OR OTHERWISE.
 ## Content of this package
 
 * **bin/**
-	Misc tools used internally
-* **bundles/**
-	Pretranspiled files
-* **example_html/**
-	Directory with examples that run into a web browser
-* **example_node/**
-	Directory with examples that run on node.js
+	Misc scripts used internally by build commands
+* **package.json**
+	npm package file, including build commands
 * **config.js**
-	jspm's configuration file file
+	jspm configuration file file
+* **example_html/**
+	Example files that run within a web browser
+* **example_node/**
+	Example files that run on node.js
 * **LICENCE.txt**
 	Yoctopuce Licence
-* **yoctolib-es.js**
-	Root file for the library (node.js-compatible EcmaScript 2015)
-* **yoctolib-es/**
-	Library in transpiled format (node.js-compatible EcmaScript 2015) 
-* **yoctolib-src.js**
-	Root file for loading the whole library from source files (incl. async/await)
 * **src/**
-	Source code of the library (in EcmaScript 2015 + async/await)
-* **package.json**
-	npm's package file
-
+	Source code of the library (EcmaScript 2015 + async/await stage-3 extension)
+* **yoctolib-es/**
+	Transpiled code for the library, ready to use with V8 engine (node.js v4+, Chrome, etc) 
+* **yoctolib-es.js**
+	Root file for loading the transpiled library locally with jspm
 
 ## Installation
 
