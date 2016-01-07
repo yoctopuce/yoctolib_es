@@ -8678,7 +8678,7 @@ class YAPIContext {
      */
     GetAPIVersion() {
         return _asyncToGenerator(function* () {
-            return (/* version number patched automatically */'1.10.22622'
+            return (/* version number patched automatically */'1.10.22624'
             );
         })();
     }
