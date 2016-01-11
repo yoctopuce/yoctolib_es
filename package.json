@@ -45,7 +45,6 @@
   "jspm": {
     "registry": "npm",
     "main": "index.js",
-    "format": "cjs",
     "directories": {
       "bin": "bin",
       "doc": "doc",
