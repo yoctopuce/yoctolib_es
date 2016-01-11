@@ -1,5 +1,81 @@
-Preview of the EcmaScript 2015 library
-=======================================
+Preview of Yoctopuce EcmaScript 2015 library
+============================================
+
+## Content of this package
+
+* **bin/**
+	Misc scripts used internally by build commands
+* **package.json**
+	npm package file, including build commands
+* **config.js**
+	jspm configuration file file
+* **example_html/**
+	Example files that run within a web browser
+* **example_node/**
+	Example files that run on node.js
+* **yoctolib-es.js**
+	Root file for loading the library locally with npm or jspm (transpiled version, for V8 engine)
+* **yoctolib-es/yocto_*.js**
+	Transpiled code for the library, ready to use with V8 engine (node.js v4+, Chrome, etc) 
+* **yoctolib-es/src.js**
+	Root file for using the library in source format with jspm
+* **yoctolib-es/src/**
+	Source code of the library (EcmaScript 2015 + async/await stage-3 extension)
+* **LICENCE.txt**
+	Yoctopuce Licence
+
+## Using the library with jspm
+
+Start by installing Node.js and jspm on your system, because you'll need them. It is very easy, under Windows you
+only have to run the npm installer and that's it. Make sure to install it fully, including npm, and add it to the
+system path. To install jspm on the machine, you will need a single npm command:
+```bash
+npm install jspm -g
+```
+
+That's it, you are ready to create your first jspm-enabled application. Create a new directory, go into it and type
+ the following commands: (note that depending on your system setup, you might need to 'sudo' these jspm commands)
+
+```bash
+jspm init . -y
+jspm install npm:yoctolib-es
+```
+
+This creates all necessary configuration files in your directory to run the Yoctopuce EcmaScript 2015 library with jspm.
+To give it a try, copy one of the example file to your directory (for instance example_nodejs/Doc-Inventory/inventory.js)
+and then type:
+
+```bash
+jspm run inventory.js
+```
+
+For HTML examples, it's even simpler: you only have to open the HTML file with a browser, as it is the SystemJS module
+manager which loads and transpiles the code on the fly. Simply make sure the directory on which you have put your
+project is available through a web server, and copy the two files under example_html/Doc-Inventory to your directory.
+Then open inventory.html through your HTTP server, and your code will run.
+
+To avoid transpiling your JS code each time you load the page and to load all the individual shims, you can ask jspm
+to build a monolithic js file that contains everything needed for your project, like this:
+
+```bash
+jspm bundle-sfx --minify inventory.js inventory-sfx.js
+```
+
+Now you can replace all includes in inventory.html by a single include of inventory-sfx.js.
+
+## Using the library WITHOUT jspm
+
+Since the yoctopuce EcmaScript 2015 ships with pre-transpiled files for the V8 engine used by Node.JS versions 4+,
+Google Chrome, as well as for Firefox. It is therefore possible to use it without JSPM, if you can live without
+the convenient async/await syntax (or if you transpile your code async/await code yourself using babel).
+
+In order to use the library in node.js WITHOUT jspm, just install yoctolib-es in your project:
+```bash
+npm install yoctolib-es --save
+```
+
+Then require it in your node.js code, and use all functions taking into account that they all return
+promises. There is an example in example_nodejs/Prog-VanillaNodeJs.
 
 ## License information
 
@@ -31,81 +107,4 @@ LIMITED TO ANY DEFENSE THEREOF), ANY CLAIMS FOR INDEMNITY OR
 CONTRIBUTION, OR OTHER SIMILAR COSTS, WHETHER ASSERTED ON THE
 BASIS OF CONTRACT, TORT (INCLUDING NEGLIGENCE), BREACH OF
 WARRANTY, OR OTHERWISE.
-
-## Content of this package
-
-* **bin/**
-	Misc scripts used internally by build commands
-* **package.json**
-	npm package file, including build commands
-* **config.js**
-	jspm configuration file file
-* **example_html/**
-	Example files that run within a web browser
-* **example_node/**
-	Example files that run on node.js
-* **LICENCE.txt**
-	Yoctopuce Licence
-* **src/**
-	Source code of the library (EcmaScript 2015 + async/await stage-3 extension)
-* **yoctolib-es/**
-	Transpiled code for the library, ready to use with V8 engine (node.js v4+, Chrome, etc) 
-* **yoctolib-es.js**
-	Root file for loading the transpiled library locally with jspm
-
-## Installation
-
-Start by installing Node.js for your system, because you'll need it to install jspm. It's very easy, under Windows you
-only have to run the installer and that's it. Make sure to install it fully, including npm, and add it to the system
-path. Now, you must install jspm on the machine. You can do this very easily with an npm command:
-```bash
- npm install jspm -g
-```
-
-Then, you can prepare npm and jspm to work with our EcmaScript Yoctopuce library. To do so, go to the library root
-directory and run:
-
-```bash
-npm install
-jspm install
-```
-
-
-## Running the library examples
-
-To transpile and run with Node.JS one of the examples, you can simply use the jspm run command:
-
-```bash
-jspm run example_nodejs/Doc-Inventory/inventory.js
-```
-
-
-For HTML examples, it's even simpler: you only have to open the HTML file with a browser, as it is the SystemJS module
-manager which loads and transpiles the code on the fly.
-
-To avoid transpiling the library each time you run the code, because it takes a few seconds, you can ask jspm to
-pre-build a bundle with the translation of all the classes and all the shims needed to run these classes.
-
-Here is how to proceed:
-
-```bash
-jspm bundle lib/yocto_api bundles/yocto_api.js --inject
-```
-
-
-The module manager is then able to automatically intercept all the references to the yocto_api module and to use the
-pre-transpiled bundle instead.
-
-Finally, to make a monolithic compressed file with all the dependencies of a project, as said above, you use the
-following command:
-
-```bash
-jspm bundle-sfx --minify example_html/Doc-Inventory/inventory inventory-sfx.js
-```
-
-
-## More information
-
-* http://www.yoctopuce.com/EN/article/experimenting-with-ecmascript-2015
-* http://www.yoctopuce.com/EN/article/remote-device-control-using-websocket-callbacks
 

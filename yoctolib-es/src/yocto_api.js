@@ -8333,7 +8333,7 @@ export class YAPIContext
      */
     async GetAPIVersion()
     {
-        return /* version number patched automatically */'1.10.22658';
+        return /* version number patched automatically */'1.10.22659';
     }
 
     /**
