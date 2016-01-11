@@ -1,5 +1,5 @@
 "use strict";
-var yoctolib = require('../../yoctolib-es');
+var yoctolib = require('yoctolib-es');
 var YAPI = yoctolib.YAPI;
 var YErrorMsg = yoctolib.YErrorMsg;
 var YAnButton = yoctolib.YAnButton;

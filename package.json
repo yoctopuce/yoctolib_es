@@ -2,7 +2,7 @@
   "name": "yoctolib-es",
   "author": "Yoctopuce",
   "description": "Yoctopuce library for EcmaScript (fully asynchronous)",
-  "version": "1.10.22629",
+  "version": "1.10.22654",
   "license": "SEE LICENSE IN LICENSE.txt",
   "repository": {
     "type": "git",
@@ -13,7 +13,8 @@
   },
   "keywords": [
     "Yoctopuce",
-    "EcmaScript"
+    "EcmaScript",
+    "async"
   ],
   "directories": {
     "bin": "bin",
@@ -21,7 +22,7 @@
     "lib": "yoctolib-es",
     "example": "example_nodejs"
   },
-  "main": "yoctolib-node.js",
+  "main": "yoctolib-es.js",
   "scripts": {
     "set-version": "node bin/build.js set-version",
     "make-index": "node bin/build.js make-index",
@@ -38,17 +39,23 @@
     "babel-plugin-transform-es2015-destructuring": "^6.4.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.4.0",
     "babel-plugin-transform-es2015-parameters": "^6.4.2",
-    "jspm": "^0.16.19",
+    "jspm": "^0.16.20",
     "semver": "^5.1.0"
   },
   "jspm": {
     "registry": "npm",
-    "format": "cjs",
-    "jspmNodeConversion": false,
-    "map": {
-      "yoctolib-es": "."
-    },
     "main": "index.js",
+    "format": "cjs",
+    "directories": {
+      "bin": "bin",
+      "doc": "doc",
+      "example": "example_nodejs",
+      "lib": "yoctolib-es"
+    },
+    "map": {
+      "yoctolib-es": ".",
+      "yoctolib-es/src": "yoctolib-es/src"
+    },
     "dependencies": {},
     "devDependencies": {
       "babel": "babel-core@^5.8.24",
