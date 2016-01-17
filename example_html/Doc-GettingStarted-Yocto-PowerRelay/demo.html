@@ -3,9 +3,10 @@
 <head>
     <title>Hello World</title>
     <script src='../../jspm_packages/system.js'></script>
-    <script src='../../config.js'></script>
+    <script src='../../jspm.browser.js'></script>
+    <script src='../../jspm.js'></script>
     <script>
-        System.import('example_html/Doc-GettingStarted-Yocto-PowerRelay/demo')
+        System.import('example_html/Doc-GettingStarted-Yocto-PowerRelay/demo.js')
                 .then((demo) => { window.sw = demo.sw; });
     </script>
 </head>

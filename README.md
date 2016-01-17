@@ -7,8 +7,10 @@ Preview of Yoctopuce EcmaScript 2015 library
 	Misc scripts used internally by build commands
 * **package.json**
 	npm package file, including build commands
-* **config.js**
-	jspm configuration file file
+* **jspm.browser.js**
+	jspm browser-specific configuration file file
+* **jspm.js**
+	jspm common configuration file
 * **example_html/**
 	Example files that run within a web browser
 * **example_node/**

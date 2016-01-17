@@ -2,7 +2,7 @@
   "name": "yoctolib-es",
   "author": "Yoctopuce",
   "description": "Yoctopuce library for EcmaScript (fully asynchronous)",
-  "version": "1.10.22661",
+  "version": "1.10.22843",
   "license": "SEE LICENSE IN LICENSE.txt",
   "repository": {
     "type": "git",
@@ -19,10 +19,10 @@
   "directories": {
     "bin": "bin",
     "doc": "doc",
-    "lib": "yoctolib-es",
+    "lib": "lib",
     "example": "example_nodejs"
   },
-  "main": "yoctolib-es.js",
+  "main": "lib/index.js",
   "scripts": {
     "set-version": "node bin/build.js set-version",
     "make-index": "node bin/build.js make-index",
@@ -39,19 +39,13 @@
     "babel-plugin-transform-es2015-destructuring": "^6.4.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.4.0",
     "babel-plugin-transform-es2015-parameters": "^6.4.2",
-    "jspm": "^0.16.20",
+    "jspm": "^0.17.0-beta.2",
     "semver": "^5.1.0"
   },
   "jspm": {
     "registry": "npm",
     "format": "cjs",
     "main": "index.js",
-    "directories": {
-      "bin": "bin",
-      "doc": "doc",
-      "example": "example_nodejs",
-      "lib": "yoctolib-es"
-    },
     "meta": {
       "src.js": {
         "format": "esm"
@@ -61,14 +55,24 @@
       }
     },
     "map": {
-      "yoctolib-es": ".",
-      "yoctolib-es/src": "yoctolib-es/src"
+      "yoctolib-es": "lib"
     },
     "dependencies": {},
     "devDependencies": {
-      "babel": "babel-core@^5.8.24",
+      "plugin-babel": "systemjs-plugin-babel@^0.0.2"
+    },
+    "peerDependencies": {
       "babel-runtime": "^5.8.24",
-      "core-js": "^1.1.4"
+      "core-js": "^1.1.4",
+      "fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
+      "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
+      "process": "github:jspm/nodelibs-process@^0.2.0-alpha"
+    },
+    "overrides": {
+      "npm:babel-runtime@5.8.34": {
+        "main": false,
+        "dependencies": {}
+      }
     }
   }
 }
