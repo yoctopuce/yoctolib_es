@@ -2,7 +2,7 @@
   "name": "yoctolib-es",
   "author": "Yoctopuce",
   "description": "Yoctopuce library for EcmaScript (fully asynchronous)",
-  "version": "1.10.22845",
+  "version": "1.10.22846",
   "license": "SEE LICENSE IN LICENSE.txt",
   "repository": {
     "type": "git",
@@ -53,6 +53,9 @@
       "src/*": {
         "format": "esm"
       }
+    },
+    "directories": {
+      "lib": "lib"
     },
     "map": {
       "yoctolib-es": "."
