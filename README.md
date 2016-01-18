@@ -8,20 +8,20 @@ Preview of Yoctopuce EcmaScript 2015 library
 * **package.json**
 	npm package file, including build commands
 * **jspm.browser.js**
-	jspm browser-specific configuration file file
+	jspm browser-specific configuration file
 * **jspm.js**
 	jspm common configuration file
 * **example_html/**
 	Example files that run within a web browser
 * **example_node/**
 	Example files that run on node.js
-* **yoctolib-es.js**
-	Root file for loading the library locally with npm or jspm (transpiled version, for V8 engine)
-* **yoctolib-es/yocto_*.js**
+* **lib/index.js**
+	Root file for loading the library whole with npm or jspm (transpiled version, for V8 engine)
+* **lib/yocto_*.js**
 	Transpiled code for the library, ready to use with V8 engine (node.js v4+, Chrome, etc) 
-* **yoctolib-es/src.js**
+* **lib/src.js**
 	Root file for using the library in source format with jspm
-* **yoctolib-es/src/**
+* **lib/src/**
 	Source code of the library (EcmaScript 2015 + async/await stage-3 extension)
 * **LICENCE.txt**
 	Yoctopuce Licence

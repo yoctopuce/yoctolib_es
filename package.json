@@ -2,7 +2,7 @@
   "name": "yoctolib-es",
   "author": "Yoctopuce",
   "description": "Yoctopuce library for EcmaScript (fully asynchronous)",
-  "version": "1.10.22843",
+  "version": "1.10.22845",
   "license": "SEE LICENSE IN LICENSE.txt",
   "repository": {
     "type": "git",
@@ -55,7 +55,7 @@
       }
     },
     "map": {
-      "yoctolib-es": "lib"
+      "yoctolib-es": "."
     },
     "dependencies": {},
     "devDependencies": {
@@ -63,10 +63,7 @@
     },
     "peerDependencies": {
       "babel-runtime": "^5.8.24",
-      "core-js": "^1.1.4",
-      "fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
-      "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
-      "process": "github:jspm/nodelibs-process@^0.2.0-alpha"
+      "core-js": "^1.1.4"
     },
     "overrides": {
       "npm:babel-runtime@5.8.34": {
