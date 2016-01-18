@@ -28,11 +28,13 @@ Preview of Yoctopuce EcmaScript 2015 library
 
 ## Using the library with jspm
 
+NOTE: This version of the library is designed for jspm 0.17 (currently in beta) !
+
 Start by installing Node.js and jspm on your system, because you'll need them. It is very easy, under Windows you
 only have to run the npm installer and that's it. Make sure to install it fully, including npm, and add it to the
 system path. To install jspm on the machine, you will need a single npm command:
 ```bash
-npm install jspm -g
+npm install jspm@beta -g
 ```
 
 That's it, you are ready to create your first jspm-enabled application. Create a new directory, go into it and type
