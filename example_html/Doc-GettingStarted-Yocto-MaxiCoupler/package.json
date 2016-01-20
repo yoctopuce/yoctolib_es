@@ -1,0 +1,33 @@
+{
+  "name": "doc-gettingstarted-yocto-maxicoupler",
+  "author": "Yoctopuce",
+  "description": "Yoctopuce Doc-GettingStarted-Yocto-MaxiCoupler example",
+  "devDependencies": {
+    "jspm": "^0.17.0-beta.2"
+  },
+  "jspm": {
+    "name": "app",
+    "directories": {
+      "lib": "src"
+    },
+    "dependencies": {
+      "yoctolib-es": "npm:yoctolib-es@^1.10.22847"
+    },
+    "devDependencies": {
+      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.2"
+    },
+    "peerDependencies": {
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4",
+      "fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
+      "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
+      "process": "github:jspm/nodelibs-process@^0.2.0-alpha"
+    },
+    "overrides": {
+      "npm:babel-runtime@5.8.34": {
+        "main": false,
+        "dependencies": {}
+      }
+    }
+  }
+}

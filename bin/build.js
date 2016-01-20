@@ -33,7 +33,7 @@ var babel = require('babel-core');
 function makeIndex()
 {
     // generate a source file (async/await) index that includes support for all Yoctopuce functions
-    var index = 'export * from \'lib/src/yocto_api\'\n';
+    var index = 'export * from \'yoctolib-es/src/yocto_api\'\n';
     var lib = resolve(__dirname, '../lib/src/');
     fs.readdirSync(lib).forEach(function (mod) {
         if (mod.length > 3 && mod.slice(-3) == '.js' && mod != 'index.js' && mod != 'yocto_api.js') {

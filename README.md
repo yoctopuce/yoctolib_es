@@ -30,42 +30,95 @@ Preview of Yoctopuce EcmaScript 2015 library
 
 NOTE: This version of the library is designed for jspm 0.17 (currently in beta) !
 
-Start by installing Node.js and jspm on your system, because you'll need them. It is very easy, under Windows you
-only have to run the npm installer and that's it. Make sure to install it fully, including npm, and add it to the
-system path. To install jspm on the machine, you will need a single npm command:
+Start by installing **Node.js** and **jspm** on your system, because you'll need them. It is very easy.
+On Windows, you only have to run the npm installer and that's it. Make sure to install it fully,
+including npm, and add it to the system path. To install jspm on the machine, you will need a single
+npm command:
 ```bash
 npm install jspm@beta -g
 ```
 
-That's it, you are ready to create your first jspm-enabled application. Create a new directory, go into it and type
- the following commands: (note that depending on your system setup, you might need to 'sudo' these jspm commands)
+To give it a try, go into one of the example directory (for instance `example_nodejs/Doc-Inventory`). You will
+see that it include an application description file (`package.json`), a jspm configuration file (`jspm.js`) and
+the source code (`src/demo.js`). To download and setup the libraries needed by this example, run:
+```bash
+npm install
+jspm install
+```
+Once done, you can start the example file using
+```bash
+jspm run src/demo.js
+```
+The `jspm run` command will actually transpile the example code into JS code that node can understand, and
+execute it with node.js.
 
+When you go into production, you can build your application once for all to avoid requiring jspm on the target
+machine. In order to do this, just run:
+```bash
+jspm build src/demo.js --node
+```
+This will create a single file named `build.js`, that includes everything needed to run your demo.js (even if
+your application is made of multiple source files). You can then execute it simply using:
+```bash
+node build.js
+```
+
+## Using JSPM in browser code
+
+For HTML examples, the principle is very similar. When you open the HTML file with a browser, the SystemJS module
+manager will loads and transpiles the code on the fly.
+
+To give it a try, go into one of the example directory (for instance `example_html/Doc-Inventory`). You will
+see that it include an application description file (`package.json`), a jspm configuration file (`jspm.js`),
+a browser-specific jspm configuration file (`jspm.browser.js`) and the the source files (`inventory.html`
+and `src/demo.js`). To download and setup the libraries needed by this example, go into the project directory
+and run:
+```bash
+npm install
+jspm install
+```
+Then make sure the directory on which you have your project is available through a web server (you can specify
+the base URL in `jspm.browser.js`), and open `inventory.html` in your browser through your HTTP server.
+
+Note that our pre-transpiled library code is optimized for running quickly with recent JS engines (Chrome 47,
+FireFox 45, Opera 36, Edge 13, Safari 9). If you need to support older browsers, you can import our library
+in source form rather than pre-transpiled form. This will takes a bit longer to load initially, but will
+then run on any EcmaScript-5 browser. In order to do so, in the `demo.js` code, change the import statement
+as below to point to the source library:
+```javascript
+import { YAPI, YModule, YErrMsg } from 'yoctolib-es/src'
+```
+
+To avoid transpiling your JS code each time you load the page and to load all the individual shims, you can
+also ask jspm to build a monolithic js file that contains everything needed for your project, minified to
+reduce file transfers, like this:
+```bash
+jspm build --minify src/demo.js demo-sfx.js
+```
+Now you can replace all include lines in `inventory.html` by a single include of `demo-sfx.js`.
+
+You can further reduce the amount of code downloaded by importing just the submodules that you need from
+our library, instead of including it completely. For instance, in the inventory example, you could use
+```javascript
+import { YAPI, YModule, YErrMsg } from 'yoctolib-es/yocto_api'
+```
+or to import in source form:
+```javascript
+import { YAPI, YModule, YErrMsg } from 'yoctolib-es/src/yocto_api'
+```
+
+## Creating a JSPM application from scratch
+
+Rather than starting from one of our examples, you can create a "blank" JSPM application using our library
+from scratch using the following commands:
 ```bash
 jspm init . -y
 jspm install npm:yoctolib-es
 ```
 
-This creates all necessary configuration files in your directory to run the Yoctopuce EcmaScript 2015 library with jspm.
-To give it a try, copy one of the example file to your directory (for instance example_nodejs/Doc-Inventory/inventory.js)
-and then type:
-
-```bash
-jspm run inventory.js
-```
-
-For HTML examples, it's even simpler: you only have to open the HTML file with a browser, as it is the SystemJS module
-manager which loads and transpiles the code on the fly. Simply make sure the directory on which you have put your
-project is available through a web server, and copy the two files under example_html/Doc-Inventory to your directory.
-Then open inventory.html through your HTTP server, and your code will run.
-
-To avoid transpiling your JS code each time you load the page and to load all the individual shims, you can ask jspm
-to build a monolithic js file that contains everything needed for your project, like this:
-
-```bash
-jspm bundle-sfx --minify inventory.js inventory-sfx.js
-```
-
-Now you can replace all includes in inventory.html by a single include of inventory-sfx.js.
+This creates all necessary configuration files in your directory to run the Yoctopuce EcmaScript 2015 library with
+jspm. If you remove the `-y` argument on the command line, you will be prompted for individual settings such
+as preferred directory names, etc.
 
 ## Using the library WITHOUT jspm
 
