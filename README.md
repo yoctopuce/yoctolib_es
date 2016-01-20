@@ -7,17 +7,17 @@ Preview of Yoctopuce EcmaScript 2015 library
 	Misc scripts used internally by build commands
 * **package.json**
 	npm package file, including build commands
+* **jspm.config.js**
+	jspm common configuration file
 * **jspm.browser.js**
 	jspm browser-specific configuration file
-* **jspm.js**
-	jspm common configuration file
 * **example_html/**
 	Example files that run within a web browser
 * **example_node/**
 	Example files that run on node.js
 * **lib/index.js**
 	Root file for loading the library whole with npm or jspm (transpiled version, for V8 engine)
-* **lib/yocto_*.js**
+* **lib/yocto_xxxxx.js**
 	Transpiled code for the library, ready to use with V8 engine (node.js v4+, Chrome, etc) 
 * **lib/src.js**
 	Root file for using the library in source format with jspm
@@ -39,7 +39,7 @@ npm install jspm@beta -g
 ```
 
 To give it a try, go into one of the example directory (for instance `example_nodejs/Doc-Inventory`). You will
-see that it include an application description file (`package.json`), a jspm configuration file (`jspm.js`) and
+see that it include an application description file (`package.json`), a jspm configuration file (`jspm.config.js`) and
 the source code (`src/demo.js`). To download and setup the libraries needed by this example, run:
 ```bash
 npm install
@@ -69,7 +69,7 @@ For HTML examples, the principle is very similar. When you open the HTML file wi
 manager will loads and transpiles the code on the fly.
 
 To give it a try, go into one of the example directory (for instance `example_html/Doc-Inventory`). You will
-see that it include an application description file (`package.json`), a jspm configuration file (`jspm.js`),
+see that it include an application description file (`package.json`), a jspm configuration file (`jspm.config.js`),
 a browser-specific jspm configuration file (`jspm.browser.js`) and the the source files (`inventory.html`
 and `src/demo.js`). To download and setup the libraries needed by this example, go into the project directory
 and run:
@@ -112,6 +112,7 @@ import { YAPI, YModule, YErrMsg } from 'yoctolib-es/src/yocto_api'
 Rather than starting from one of our examples, you can create a "blank" JSPM application using our library
 from scratch using the following commands:
 ```bash
+npm install jspm@beta --save-dev
 jspm init . -y
 jspm install npm:yoctolib-es
 ```

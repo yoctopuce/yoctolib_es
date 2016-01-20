@@ -3,15 +3,15 @@
   "author": "Yoctopuce",
   "description": "Yoctopuce Doc-GettingStarted-Yocto-MaxiPowerRelay example",
   "devDependencies": {
-    "jspm": "^0.17.0-beta.2"
+    "jspm": "~0.17.0-beta.3"
   },
   "jspm": {
     "name": "app",
     "directories": {
-      "lib": "src"
+      "dist": "src"
     },
     "dependencies": {
-      "yoctolib-es": "npm:yoctolib-es@^1.10.22876"
+      "yoctolib-es": "npm:yoctolib-es@^1.10.22884"
     },
     "devDependencies": {
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.2"

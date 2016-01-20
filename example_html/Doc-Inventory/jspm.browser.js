@@ -1,5 +1,5 @@
 SystemJS.config({
-  baseURL: "/EcmaScript/example_html/Doc-Inventory/",
+  baseURL: "/",
   paths: {
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
