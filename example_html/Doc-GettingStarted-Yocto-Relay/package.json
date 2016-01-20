@@ -11,7 +11,7 @@
       "lib": "src"
     },
     "dependencies": {
-      "yoctolib-es": "npm:yoctolib-es@^1.10.22847"
+      "yoctolib-es": "npm:yoctolib-es@^1.10.22876"
     },
     "devDependencies": {
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.2"

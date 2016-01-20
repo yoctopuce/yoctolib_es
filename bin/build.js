@@ -48,20 +48,21 @@ function setVersion(str_newver)
 {
     // update version number is package.json
     var json = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+    var newver = '?';
     console.log('Was at version ' + json.version);
     if (str_newver) {
         // argument is new version number
-        var newver = semver.clean(str_newver);
-        if (newver) {
-            json.version = newver;
-        } else {
+        newver = semver.clean(str_newver);
+        if (!newver) {
             console.log('Invalid version number: ' + process.argv[2]);
+            process.exit(1);
         }
     } else {
         // bump local revision number
-        json.version = semver.inc(json.version, 'prerelease', 'dev');
+        newver = semver.inc(json.version, 'prerelease', 'dev');
     }
-    console.log('Now at version ' + json.version);
+    console.log('Now at version ' + newver);
+    json.version = newver;
     fs.writeFileSync("package.json", JSON.stringify(json, null, 2), 'utf-8');
 
     // update version number in yocto_api.js
@@ -73,13 +74,59 @@ function setVersion(str_newver)
     } else {
         pos += pattern.length;
         var endMark = jsFile.indexOf(';', pos);
-        var patch = "'" + json.version + "'";
+        var patch = "'" + newver + "'";
         var res = new Buffer(pos + patch.length + jsFile.length-endMark);
         jsFile.copy(res, 0, 0, pos);
         res.write(patch, pos);
         jsFile.copy(res, pos + patch.length, endMark);
         fs.writeFileSync('lib/src/yocto_api.js', res);
     }
+
+    // update version number in example configuration files
+    [ 'example_html', 'example_nodejs', 'hidden'].forEach(function(dirname) {
+        var lib = resolve(__dirname, '../'+dirname);
+        fs.readdirSync(lib).forEach(function (exname) {
+            var exdir = resolve(lib, exname);
+            // patch package.json
+            json = false;
+            try {
+                json = JSON.parse(fs.readFileSync(exdir + '/package.json', 'utf8'));
+            } catch (err) {
+                //console.log('No file "'+exdir+'/package.json"');
+            }
+            if (json && json.dependencies) {
+                json.dependencies['yoctolib-es'] = '^'+newver;
+                fs.writeFileSync(exdir+'/package.json', JSON.stringify(json, null, 2), 'utf-8');
+            }
+            if (json && json.jspm && json.jspm.dependencies) {
+                json.jspm.dependencies['yoctolib-es'] = 'npm:yoctolib-es@^'+newver;
+                fs.writeFileSync(exdir+'/package.json', JSON.stringify(json, null, 2), 'utf-8');
+            }
+            // patch jspm.js
+            var jspmjs = false;
+            try {
+                jspmjs = fs.readFileSync(exdir + '/jspm.js');
+            } catch (err) {
+                //console.log('No file "'+exdir+'/jspm.js"');
+            }
+            if(jspmjs) {
+                pattern = '"yoctolib-es": "npm:yoctolib-es@';
+                pos = jspmjs.indexOf(pattern);
+                if(pos < 0) {
+                    console.log('*** in '+exdir+' :');
+                    console.log('*** Warning, cannot patch jspm.js, pattern not found !');
+                } else {
+                    pos += pattern.length;
+                    var endMark = jspmjs.indexOf('"', pos);
+                    var res = new Buffer(pos + newver.length + jspmjs.length-endMark);
+                    jspmjs.copy(res, 0, 0, pos);
+                    res.write(newver, pos);
+                    jspmjs.copy(res, pos + newver.length, endMark);
+                    fs.writeFileSync(exdir + '/jspm.js', res);
+                }
+            }
+        });
+    });
 }
 
 function runBabel()

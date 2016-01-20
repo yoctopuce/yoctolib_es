@@ -14,7 +14,7 @@ SystemJS.config({
     "path": "github:jspm/nodelibs-path@0.2.0-alpha",
     "plugin-babel": "npm:systemjs-plugin-babel@0.0.2",
     "process": "github:jspm/nodelibs-process@0.2.0-alpha",
-    "yoctolib-es": "npm:yoctolib-es@1.10.22847"
+    "yoctolib-es": "npm:yoctolib-es@1.10.22876"
   },
 
   packages: {
