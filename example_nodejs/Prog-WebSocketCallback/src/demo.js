@@ -28,9 +28,7 @@ async function WebSocketCallbackHandler(ws)
     yctx.FreeAPI();
 }
 
-process.on('unhandledRejection', function(reason, p) {
-    console.log("Unhandled Rejection at: Promise ", p, " reason: ", reason);
-});
+YAPI.LogUnhandledPromiseRejections();
 
 // Instantiate a simple HTTP server
 var wss = new WebSocketServer({ port: 8044 });

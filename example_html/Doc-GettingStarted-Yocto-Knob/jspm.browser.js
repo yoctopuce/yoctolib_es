@@ -1,5 +1,5 @@
 SystemJS.config({
-  baseURL: "/",
+  baseURL: "/EcmaScript/example_html/Doc-GettingStarted-Yocto-Knob/",
   paths: {
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"

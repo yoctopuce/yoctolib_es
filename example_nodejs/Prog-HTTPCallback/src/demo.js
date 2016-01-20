@@ -1,4 +1,4 @@
-import { YAPI, YAPIContext, YFunction, YModule, YSensor, YErrorMsg, yGetTickCount } from 'yoctolib-es';
+import { YAPI, YAPIContext, YModule, YErrorMsg } from 'yoctolib-es';
 
 var http = System._nodeRequire('http');
 
@@ -35,9 +35,7 @@ async function HttpCallbackHandler(message, response) {
     response.end();
 }
 
-process.on('unhandledRejection', function(reason, p) {
-    console.log("Unhandled Rejection at: Promise ", p, " reason: ", reason);
-});
+YAPI.LogUnhandledPromiseRejections();
 
 // Instantiate a simple HTTP server
 http.createServer(HttpCallbackHandler).listen(8044, '127.0.0.1');

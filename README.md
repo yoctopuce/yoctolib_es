@@ -26,7 +26,7 @@ Preview of Yoctopuce EcmaScript 2015 library
 * **LICENCE.txt**
 	Yoctopuce Licence
 
-## Using the library with jspm
+## Using the library with JSPM and node.js
 
 NOTE: This version of the library is designed for jspm 0.17 (currently in beta) !
 
@@ -63,7 +63,7 @@ your application is made of multiple source files). You can then execute it simp
 node build.js
 ```
 
-## Using JSPM in browser code
+## Using the library with JSPM in browser code
 
 For HTML examples, the principle is very similar. When you open the HTML file with a browser, the SystemJS module
 manager will loads and transpiles the code on the fly.

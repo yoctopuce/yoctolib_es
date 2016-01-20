@@ -2,9 +2,11 @@ import { YAPI, YModule, YErrorMsg } from 'yoctolib-es';
 
 async function startDemo()
 {
+    await YAPI.LogUnhandledPromiseRejections();
+    await YAPI.DisableExceptions();
+
     // Setup the API to use the VirtualHub on local machine
     let errmsg = new YErrorMsg();
-    await YAPI.DisableExceptions();
     if (await YAPI.RegisterHub('http://127.0.0.1:4444/', errmsg) != YAPI.SUCCESS) {
         console.log('Cannot contact VirtualHub on 127.0.0.1');
         return;
@@ -31,11 +33,6 @@ async function refresh()
     }
 }
 
-process.on('unhandledRejection', function(reason, p) {
-    console.log("Unhandled Rejection at: Promise ", p, " reason: ", reason);
-});
-
-console.log('Start demo');
 try {
     startDemo();
 } catch(e) {

@@ -73,9 +73,9 @@ function setVersion(str_newver)
         console.log('*** Warning, cannot patch yocto_api.js, pattern not found !');
     } else {
         pos += pattern.length;
-        var endMark = jsFile.indexOf(';', pos);
-        var patch = "'" + newver + "'";
-        var res = new Buffer(pos + patch.length + jsFile.length-endMark);
+        let endMark = jsFile.indexOf(';', pos);
+        let patch = "'" + newver + "'";
+        let res = new Buffer(pos + patch.length + jsFile.length-endMark);
         jsFile.copy(res, 0, 0, pos);
         res.write(patch, pos);
         jsFile.copy(res, pos + patch.length, endMark);
@@ -99,30 +99,47 @@ function setVersion(str_newver)
                 fs.writeFileSync(exdir+'/package.json', JSON.stringify(json, null, 2), 'utf-8');
             }
             if (json && json.jspm && json.jspm.dependencies) {
+                json.jspm.name = json.name;
                 json.jspm.dependencies['yoctolib-es'] = 'npm:yoctolib-es@^'+newver;
                 fs.writeFileSync(exdir+'/package.json', JSON.stringify(json, null, 2), 'utf-8');
             }
-            // patch jspm.js
-            var jspmjs = false;
+            // patch jspm.config.js (remove map: section, if any)
+            var configjs = false;
             try {
-                jspmjs = fs.readFileSync(exdir + '/jspm.js');
-            } catch (err) {
-                //console.log('No file "'+exdir+'/jspm.js"');
+                configjs = fs.readFileSync(exdir + '/jspm.config.js');
+            } catch(err) {
+                //console.log('No file "'+exdir+'/jspm.config.js"');
             }
-            if(jspmjs) {
-                pattern = '"yoctolib-es": "npm:yoctolib-es@';
-                pos = jspmjs.indexOf(pattern);
-                if(pos < 0) {
-                    console.log('*** in '+exdir+' :');
-                    console.log('*** Warning, cannot patch jspm.js, pattern not found !');
-                } else {
+            if(configjs) {
+                pattern = 'map: {';
+                pos = configjs.indexOf(pattern);
+                if(pos >= 0) {
+                    let endMark = configjs.indexOf('},', pos)+2;
+                    let res = new Buffer(pos + configjs.length-endMark);
+                    configjs.copy(res, 0, 0, pos);
+                    configjs.copy(res, pos, endMark);
+                    fs.writeFileSync(exdir + '/jspm.config.js', res);
+                }
+            }
+            // patch jspm.browser.js (BaseURL)
+            var browserjs = false;
+            try {
+                browserjs = fs.readFileSync(exdir + '/jspm.browser.js');
+            } catch (err) {
+                //console.log('No file "'+exdir+'/jspm.browser.js"');
+            }
+            if(browserjs) {
+                pattern = 'baseURL: "';
+                pos = browserjs.indexOf(pattern);
+                if(pos >= 0) {
                     pos += pattern.length;
-                    var endMark = jspmjs.indexOf('"', pos);
-                    var res = new Buffer(pos + newver.length + jspmjs.length-endMark);
-                    jspmjs.copy(res, 0, 0, pos);
-                    res.write(newver, pos);
-                    jspmjs.copy(res, pos + newver.length, endMark);
-                    fs.writeFileSync(exdir + '/jspm.js', res);
+                    let endMark = browserjs.indexOf('"', pos);
+                    let patch = '/EcmaScript/'+dirname+'/'+exname+'/';
+                    let res = new Buffer(pos + patch.length + browserjs.length-endMark);
+                    browserjs.copy(res, 0, 0, pos);
+                    res.write(patch, pos);
+                    browserjs.copy(res, pos + patch.length, endMark);
+                    fs.writeFileSync(exdir + '/jspm.browser.js', res);
                 }
             }
         });

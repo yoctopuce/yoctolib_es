@@ -6,12 +6,12 @@
     "jspm": "~0.17.0-beta.3"
   },
   "jspm": {
-    "name": "app",
+    "name": "doc-gettingstarted-yocto-latchedrelay",
     "directories": {
       "dist": "src"
     },
     "dependencies": {
-      "yoctolib-es": "npm:yoctolib-es@^1.10.22884"
+      "yoctolib-es": "npm:yoctolib-es@^1.10.22888"
     },
     "devDependencies": {
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.2"
