@@ -114,7 +114,8 @@ function setVersion(str_newver)
                 pattern = 'map: {';
                 pos = configjs.indexOf(pattern);
                 if(pos >= 0) {
-                    let endMark = configjs.indexOf('},', pos)+2;
+                    pos += pattern.length;
+                    let endMark = configjs.indexOf('}', pos);
                     let res = new Buffer(pos + configjs.length-endMark);
                     configjs.copy(res, 0, 0, pos);
                     configjs.copy(res, pos, endMark);

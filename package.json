@@ -2,7 +2,7 @@
   "name": "yoctolib-es",
   "author": "Yoctopuce",
   "description": "Yoctopuce library for EcmaScript (fully asynchronous)",
-  "version": "1.10.23236",
+  "version": "1.10.23658",
   "license": "SEE LICENSE IN LICENSE.txt",
   "repository": {
     "type": "git",
@@ -39,7 +39,6 @@
     "babel-plugin-transform-es2015-destructuring": "^6.4.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.4.0",
     "babel-plugin-transform-es2015-parameters": "^6.4.2",
-    "jspm": "~0.17.0-beta.3",
     "semver": "^5.1.0"
   },
   "jspm": {
@@ -65,7 +64,7 @@
       "plugin-babel": "systemjs-plugin-babel@^0.0.2"
     },
     "peerDependencies": {
-      "babel-runtime": "^5.8.24",
+      "babel-runtime": "^5.8.35",
       "core-js": "^1.1.4"
     },
     "overrides": {
