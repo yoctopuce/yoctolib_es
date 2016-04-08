@@ -28,7 +28,7 @@ async function refresh()
         }
     }
     relay = YRelay.FindRelay(serial+".relay1");
-    if(relay.isOnline()) {
+    if(await relay.isOnline()) {
         document.getElementById('msg').value = '';
     } else {
         document.getElementById('msg').value = 'Module not connected';         

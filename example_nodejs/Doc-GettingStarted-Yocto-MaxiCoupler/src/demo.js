@@ -39,9 +39,9 @@ async function startDemo(args)
 }
 
 if(process.argv.length < 5) {
-    console.log("usage: demo <serial_number> <channel> [ ON | OFF ]");
-    console.log("       demo <logical_name> <channel> [ ON | OFF ]");
-    console.log("       demo any <channel> [ ON | OFF ]              (use any discovered device)");
+    console.log("usage: jspm run src/demo.js <serial_number> <channel> [ ON | OFF ]");
+    console.log("       jspm run src/demo.js <logical_name> <channel> [ ON | OFF ]");
+    console.log("       jspm run src/demo.js any <channel> [ ON | OFF ]              (use any discovered device)");
 } else {
     startDemo(process.argv.slice(process.argv.length - 3));
 }

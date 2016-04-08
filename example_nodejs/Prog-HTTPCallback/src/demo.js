@@ -1,6 +1,6 @@
 import { YAPI, YAPIContext, YModule, YErrorMsg } from 'yoctolib-es';
 
-var http = System._nodeRequire('http');
+var http = YAPI._nodeRequire('http');
 
 async function HttpCallbackHandler(message, response) {
     // Here you can filter the requests by URL if you want

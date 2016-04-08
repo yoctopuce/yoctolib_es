@@ -1,6 +1,6 @@
 import { YAPI, YAPIContext, YFunction, YModule, YSensor, YErrorMsg, yGetTickCount } from 'yoctolib-es';
 
-var WebSocketServer = System._nodeRequire('ws').Server;
+var WebSocketServer = YAPI._nodeRequire('ws').Server;
 
 async function WebSocketCallbackHandler(ws)
 {

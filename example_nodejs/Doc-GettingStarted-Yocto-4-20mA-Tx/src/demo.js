@@ -48,9 +48,9 @@ async function startDemo(args)
 }
 
 if(process.argv.length < 4) {
-    console.log("usage: demo <serial_number> <current>");
-    console.log("       demo <logical_name>  <current>");
-    console.log("       demo any <current>              (use any discovered device)");
+    console.log("usage: jspm run src/demo.js <serial_number> <current>");
+    console.log("       jspm run src/demo.js <logical_name>  <current>");
+    console.log("       jspm run src/demo.js any <current>              (use any discovered device)");
 } else {
     startDemo(process.argv.slice(process.argv.length - 2));
 }

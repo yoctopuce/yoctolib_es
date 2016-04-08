@@ -30,7 +30,7 @@ async function refresh()
     for(let i = 1; i <= 8; i++) {
         relays[i] = YRelay.FindRelay(serial+".relay"+i);
     }
-    if(relays[1].isOnline()) {
+    if(await relays[1].isOnline()) {
         document.getElementById('msg').value = '';
     } else {
         document.getElementById('msg').value = 'Module not connected';         

@@ -2,8 +2,12 @@
   "name": "doc-gettingstarted-yocto-maxipowerrelay",
   "author": "Yoctopuce",
   "description": "Yoctopuce Doc-GettingStarted-Yocto-MaxiPowerRelay example",
+  "dependencies": {
+    "ws": "^1.0.1",
+    "yoctolib-es": "^1.10.23817"
+  },
   "devDependencies": {
-    "jspm": "~0.17.0-beta.3"
+    "jspm": "~0.17.0-beta.12"
   },
   "jspm": {
     "name": "doc-gettingstarted-yocto-maxipowerrelay",
@@ -11,7 +15,7 @@
       "dist": "src"
     },
     "dependencies": {
-      "yoctolib-es": "npm:yoctolib-es@^1.10.23715"
+      "yoctolib-es": "npm:yoctolib-es@^1.10.23817"
     },
     "devDependencies": {
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.2"

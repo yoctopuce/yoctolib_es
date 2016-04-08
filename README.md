@@ -1,5 +1,5 @@
-Preview of Yoctopuce EcmaScript 2015 library
-============================================
+Yoctopuce EcmaScript 2015 library
+=================================
 
 ## Content of this package
 
@@ -26,9 +26,26 @@ Preview of Yoctopuce EcmaScript 2015 library
 * **LICENCE.txt**
 	Yoctopuce Licence
 
+## What is this library good for ?
+
+This library provides access to [Yoctopuce devices](http://www.yoctopuce.com) for modern JavaScript
+engines. It can be used within a browser as well as with Node.js. Asynchronous communication with the devices
+is handled across the whole library using Promise objects. This makes it possible to use the new `async` /
+`await` non-blocking syntax for asynchronous I/O.
+
+As the `async` / `await` syntax is not yet available in current JavaScript engines, your applications using
+this library will most probably need to be transpiled to more standard JavaScript to run.
+
+* The easiest way to do that is to use JSPM, as described in the next sections.
+* Alternatively, you can run Babel to transpile your source code explicitly.
+  Your favorite editor might have a watcher that runs Babel automatically each time you
+  change the source code.
+* Or you can write your code in pure EcmaScript 2015 and handle Promises explictly, instead of
+  using `async` / `await`. You will find more on that approach at the end of this document.
+
 ## Using the library with JSPM and node.js
 
-NOTE: This version of the library is designed for jspm 0.17 (currently in beta) !
+NOTE: This version of the library is designed for jspm 0.17 (still in beta, but nevertheless stable now).
 
 Start by installing **Node.js** and **jspm** on your system, because you'll need them. It is very easy.
 On Windows, you only have to run the npm installer and that's it. Make sure to install it fully,
@@ -58,10 +75,11 @@ machine. In order to do this, just run:
 jspm build src/demo.js --node
 ```
 This will create a single file named `build.js`, that includes everything needed to run your demo.js (even if
-your application is made of multiple source files). You can then execute it simply using:
+your application is made of multiple source files). This file does not anymore require `jspm` to run. You can then execute it simply using:
 ```bash
 node build.js
 ```
+Once built in this way, you can also send your application to any standard node.js hosting server.
 
 ## Using the library with JSPM in browser code
 
@@ -81,7 +99,7 @@ Then make sure the directory on which you have your project is available through
 the base URL in `jspm.browser.js`), and open `inventory.html` in your browser through your HTTP server.
 
 Note that our pre-transpiled library code is optimized for running quickly with recent JS engines (Chrome 47,
-FireFox 45, Opera 36, Edge 13, Safari 9). If you need to support older browsers, you can import our library
+Firefox 45, Opera 36, Edge 13, Safari 9). If you need to support older browsers, you can import our library
 in source form rather than pre-transpiled form. This will takes a bit longer to load initially, but will
 then run on any EcmaScript-5 browser. In order to do so, in the `demo.js` code, change the import statement
 as below to point to the source library:
@@ -115,6 +133,7 @@ from scratch using the following commands:
 npm install jspm@beta --save-dev
 jspm init . -y
 jspm install npm:yoctolib-es
+npm install ws --save
 ```
 
 This creates all necessary configuration files in your directory to run the Yoctopuce EcmaScript 2015 library with

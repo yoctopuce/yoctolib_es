@@ -1,3 +1,5 @@
+SystemJS.config({});
+
 SystemJS.config({
   packageConfigPaths: [
     "npm:@*/*.json",
@@ -6,8 +8,8 @@ SystemJS.config({
   ],
   globalEvaluationScope: false,
   transpiler: "plugin-babel",
-
   packages: {
     "app": {}
-  }
+  },
+  map: {}
 });
