@@ -38,9 +38,9 @@ async function refresh()
     setTimeout(refresh, 500);
 }
 
-export function sw(index,state)
+window.sw = function sw(index,state)
 {
     relays[index].set_output(state ? YRelay.OUTPUT_ON : YRelay.OUTPUT_OFF);
-}
+};
 
 startDemo();

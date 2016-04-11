@@ -29,9 +29,9 @@ async function startDemo(args)
     }
     console.log('Using device '+target);
     let loop = YCurrentLoopOutput.FindCurrentLoopOutput(target + ".currentLoopOutput");
-    if (loop.isOnline()) {
-        loop.set_current(value);
-        switch (loop.get_loopPower()) {
+    if (await loop.isOnline()) {
+        await loop.set_current(value);
+        switch (await loop.get_loopPower()) {
             case YCurrentLoopOutput.LOOPPOWER_POWEROK:
                 console.log('Loop is powered');
                 break;

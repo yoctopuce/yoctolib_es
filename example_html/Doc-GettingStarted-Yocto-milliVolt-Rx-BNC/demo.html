@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello World</title>
+  <script src='jspm_packages/system.js'></script>
+  <script src='jspm.browser.js'></script>
+  <script src='jspm.config.js'></script>
+  <script>
+    System.import('app/demo.js');
+  </script>
+  <!-- When going in production, you can generate a self-contained js file using
+
+  jspm build --minify src/demo.js demo-sfx.js
+
+  and replace the 6 lines above by just this one:
+
+  <script src='demo-sfx.js'></script>
+  -->
+</head>
+<body>
+Module to use: <input id='serial'>
+<input id='msg' style='color:red;border:none;' readonly><br>
+input : <input id='sensor-val1' readonly><br>
+</body>
+</html>

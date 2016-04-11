@@ -30,7 +30,7 @@ async function refresh()
     if (await loop.isOnline()) {
         document.getElementById('msg').innerHTML = '';
         var pwrState = '';
-        switch (loop.get_loopPower()) {
+        switch (await loop.get_loopPower()) {
             case YCurrentLoopOutput.LOOPPOWER_POWEROK:
                 pwrState = 'Loop is powered';
                 break;
@@ -44,9 +44,9 @@ async function refresh()
         document.getElementById('loopPwr').innerHTML=pwrState;
         var input = document.getElementById('current');
         if (document.activeElement == input) {
-            loop.set_current(parseFloat(input.value));
+            await loop.set_current(parseFloat(input.value));
         } else {
-            input.value = loop.get_current();
+            input.value = await loop.get_current();
         }
     } else {
         document.getElementById('msg').value = 'Module not connected';
