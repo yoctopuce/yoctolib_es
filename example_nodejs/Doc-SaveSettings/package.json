@@ -4,7 +4,7 @@
   "description": "Yoctopuce Doc-SaveSettings example",
   "dependencies": {
     "ws": "^1.0.1",
-    "yoctolib-es": "^1.10.23857"
+    "yoctolib-es": "^1.10.24182"
   },
   "devDependencies": {
     "jspm": "~0.17.0-beta.12"
@@ -15,10 +15,10 @@
       "dist": "src"
     },
     "dependencies": {
-      "yoctolib-es": "npm:yoctolib-es@^1.10.23857"
+      "yoctolib-es": "npm:yoctolib-es@^1.10.24182"
     },
     "devDependencies": {
-      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.2"
+      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.9"
     },
     "peerDependencies": {
       "babel-runtime": "npm:babel-runtime@^5.8.24",

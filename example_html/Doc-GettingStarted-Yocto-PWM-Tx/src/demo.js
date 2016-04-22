@@ -28,12 +28,12 @@ async function refresh()
         }
     }
     pwmoutput1 = YPwmOutput.FindPwmOutput(serial+'.pwmOutput1');
-    pwmoutput1.set_frequency(1000);
-    pwmoutput1.set_enabled(Y_ENABLED_TRUE);
+    await pwmoutput1.set_frequency(1000);
+    await pwmoutput1.set_enabled(Y_ENABLED_TRUE);
 
     pwmoutput2 = YPwmOutput.FindPwmOutput(serial+'.pwmOutput2');
-    pwmoutput2.set_frequency(1000);
-    pwmoutput2.set_enabled(Y_ENABLED_TRUE);
+    await pwmoutput2.set_frequency(1000);
+    await pwmoutput2.set_enabled(Y_ENABLED_TRUE);
 
     if(await pwmoutput1.isOnline()) {
         document.getElementById('msg').value = '';

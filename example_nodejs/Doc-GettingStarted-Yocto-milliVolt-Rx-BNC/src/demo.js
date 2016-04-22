@@ -1,6 +1,6 @@
 import { YAPI, YErrorMsg, YGenericSensor } from 'yoctolib-es';
 
-var sensor1, sensor2;
+var sensor1;
 
 async function startDemo()
 {
@@ -29,7 +29,6 @@ async function startDemo()
     }
     console.log('Using device '+serial);
     sensor1  = YGenericSensor.FindGenericSensor(serial+".genericSensor1");
-    sensor2  = YGenericSensor.FindGenericSensor(serial+".genericSensor2");
 
     refresh();
 }
@@ -37,8 +36,7 @@ async function startDemo()
 async function refresh()
 {
     if (await sensor1.isOnline()) {
-        console.log('Input 1: '+(await sensor1.get_currentValue()) + (await sensor1.get_unit()));
-        console.log('Input 2: '+(await sensor2.get_currentValue()) + (await sensor2.get_unit()));
+        console.log('Input: '+(await sensor1.get_currentValue()) + (await sensor1.get_unit()));
     } else {
         console.log('Module not connected');
     }

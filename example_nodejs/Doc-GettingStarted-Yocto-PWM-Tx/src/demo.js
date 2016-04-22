@@ -12,7 +12,7 @@ async function startDemo(args)
         return;
     }
     
-    // Select the relay to use
+    // Select the module to use
     let target;
     if(args[0] == "any") {
         let anyPwm = YPwmOutput.FirstPwmOutput();
@@ -54,6 +54,6 @@ if(process.argv.length < 5) {
     console.log("       <frequency>: integer between 1Hz and 1000000Hz");
     console.log("       <dutyCycle>: floating point number between 0.0 and 100.0");
 } else {
-    startDemo(process.argv.slice(process.argv.length - 2));
+    startDemo(process.argv.slice(process.argv.length - 3));
 }
 

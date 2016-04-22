@@ -142,9 +142,9 @@ as preferred directory names, etc.
 
 ## Using the library WITHOUT jspm
 
-Since the yoctopuce EcmaScript 2015 ships with pre-transpiled files for the V8 engine used by Node.JS versions 4+,
+Yoctopuce library for EcmaScript ships with pre-transpiled files for the V8 engine used by Node.JS versions 4+,
 Google Chrome, as well as for Firefox. It is therefore possible to use it without JSPM, if you can live without
-the convenient async/await syntax (or if you transpile your code async/await code yourself using babel).
+the convenient async/await syntax (or if you transpile your code async/await code yourself using Babel).
 
 In order to use the library in node.js WITHOUT jspm, just install yoctolib-es in your project:
 ```bash

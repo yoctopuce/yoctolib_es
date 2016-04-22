@@ -9,7 +9,7 @@ async function startDemo()
 
     // Setup the API to use the VirtualHub on local machine
     let errmsg = new YErrorMsg();
-    if(await YAPI.RegisterHub('127.0.0.1', errmsg) != YAPI.SUCCESS) {
+    if(await YAPI.RegisterHub('172.17.17.110', errmsg) != YAPI.SUCCESS) {
         console.log('Cannot contact VirtualHub on 127.0.0.1: '+errmsg.msg);
         return;
     }
@@ -45,11 +45,11 @@ async function refresh()
             console.log("tilt1\ttilt2\tcompass\tacc\tgyro");
         }
         console.log(
-            tilt1.get_currentValue()+"\t"+
-            tilt2.get_currentValue()+"\t"+
-            compass.get_currentValue()+"\t"+
-            accelerometer.get_currentValue()+"\t"+
-            gyro.get_currentValue()
+            await tilt1.get_currentValue()+"\t"+
+            await tilt2.get_currentValue()+"\t"+
+            await compass.get_currentValue()+"\t"+
+            await accelerometer.get_currentValue()+"\t"+
+            await gyro.get_currentValue()
         );
         count++;
     } else {
