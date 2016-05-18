@@ -1,6 +1,3 @@
-- Add YSpiPort class
-- Add YModule.updateFirmwareEx method
-- Add Doc-GettingStarted examples
-- Add missing functions in SyncProxy
-- Fix array upload over HTTP on node.js
-- Minor fixes
+- Add missing methods in YColorledCluster
+- Improve error methods after user-aborted firmware upgrade
+- Fix YCellular.sendPUK() method
