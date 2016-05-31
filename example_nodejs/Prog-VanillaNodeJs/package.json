@@ -3,6 +3,6 @@
   "author": "Yoctopuce",
   "description": "Yoctopuce Prog-VanillaNodeJs example",
   "dependencies": {
-    "yoctolib-es": "^1.10.24497"
+    "yoctolib-es": "^1.10.24655"
   }
 }

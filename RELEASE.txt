@@ -1,3 +1,2 @@
-- Add missing methods in YColorledCluster
-- Improve error methods after user-aborted firmware upgrade
-- Fix YCellular.sendPUK() method
+- Add YAPI.TestHub method
+- Add support for sending and receiving SMS

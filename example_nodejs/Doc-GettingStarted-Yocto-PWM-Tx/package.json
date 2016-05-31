@@ -4,7 +4,7 @@
   "description": "Yoctopuce Doc-GettingStarted-Yocto-PWM-Tx example",
   "dependencies": {
     "ws": "^1.0.1",
-    "yoctolib-es": "^1.10.24497"
+    "yoctolib-es": "^1.10.24655"
   },
   "devDependencies": {
     "jspm": "~0.17.0-beta.12"
@@ -15,7 +15,7 @@
       "dist": "src"
     },
     "dependencies": {
-      "yoctolib-es": "npm:yoctolib-es@^1.10.24497"
+      "yoctolib-es": "npm:yoctolib-es@^1.10.24655"
     },
     "devDependencies": {
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.9"
