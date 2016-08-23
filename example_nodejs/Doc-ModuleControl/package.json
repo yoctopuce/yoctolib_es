@@ -4,7 +4,7 @@
   "description": "Yoctopuce Doc-ModuleControl example",
   "dependencies": {
     "ws": "^1.0.1",
-    "yoctolib-es": "^1.10.24718"
+    "yoctolib-es": "^1.10.25250"
   },
   "devDependencies": {
     "jspm": "~0.17.0-beta.12"
@@ -15,7 +15,7 @@
       "dist": "src"
     },
     "dependencies": {
-      "yoctolib-es": "npm:yoctolib-es@^1.10.24718"
+      "yoctolib-es": "npm:yoctolib-es@^1.10.25250"
     },
     "devDependencies": {
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.9"
