@@ -9,7 +9,7 @@ async function startDemo()
 
     // Setup the API to use the VirtualHub on local machine
     let errmsg = new YErrorMsg();
-    if(await YAPI.RegisterHub('172.17.17.110', errmsg) != YAPI.SUCCESS) {
+    if(await YAPI.RegisterHub('127.0.0.1', errmsg) != YAPI.SUCCESS) {
         console.log('Cannot contact VirtualHub on 127.0.0.1: '+errmsg.msg);
         return;
     }

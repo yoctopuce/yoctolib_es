@@ -1,6 +1,12 @@
-- Add roaming neutrality support for YoctoHub-GSM
-- Add Yocto-3D-V2 support (new calibration instructions)
-- Add read-ahead buffer for readByte function
-- Fix overestimated round-trip on YoctoHub
-- Fix some missing await
-- Fix MODBUS write register command
+- Fix YAPI.RegisterHub('http://xxxx) that was using WebSocket
+- Fix YAPI.FreeAPI() that was not flushing correctly all pending request.
+- Fix some comments in sources
+- Add Doc-GettingStarted-Yocto-Buzzer example
+- Add Doc-GettingStarted-Yocto-Display
+- Add Doc-GettingStarted-Yocto-MaxiDisplay
+- Add Doc-GettingStarted-Yocto-MiniDisplay
+- Add Doc-GettingStarted-Yocto-Maxi-IO
+- Add Doc-GettingStarted-Yocto-Motor-DC
+- Add Doc-GettingStarted-Yocto-PowerColor
+- Add Doc-GettingStarted-Yocto-RS232
+- Add Doc-GettingStarted-Yocto-RS485Add Doc-GettingStarted-Yocto-Serial

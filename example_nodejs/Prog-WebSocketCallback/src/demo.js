@@ -25,7 +25,7 @@ async function WebSocketCallbackHandler(ws)
         console.log(msg);
         module = module.nextModule();
     }
-    yctx.FreeAPI();
+    await yctx.FreeAPI();
 }
 
 YAPI.LogUnhandledPromiseRejections();

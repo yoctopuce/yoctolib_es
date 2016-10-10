@@ -44,7 +44,7 @@ async function startDemo(args)
         console.log("Module not connected (check identification and USB cable)\n");
     }
 
-    YAPI.FreeAPI();
+    await YAPI.FreeAPI();
 }
 
 if(process.argv.length < 5) {

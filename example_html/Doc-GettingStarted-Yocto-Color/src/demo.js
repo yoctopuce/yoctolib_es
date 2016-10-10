@@ -38,7 +38,7 @@ async function refresh()
     setTimeout(refresh, 500);
 }
 
-window.setColor = function(pos)
+window.setColor = function(color)
 {
     // Change the color in two different ways
     led1.set_rgbColor(color);  // immediate switch
