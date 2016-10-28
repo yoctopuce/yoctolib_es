@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello World</title>
+  <script src='jspm_packages/system.js'></script>
+  <script src='jspm.browser.js'></script>
+  <script src='jspm.config.js'></script>
+  <script>
+    System.import('app/demo.js');
+  </script>
+  <!-- When going in production, you can generate a self-contained js file using
+
+  jspm build --minify src/demo.js demo-sfx.js
+
+  and replace the 6 lines above by just this one:
+
+  <script src='demo-sfx.js'></script>
+  -->
+</head>
+<body>
+Module to use: <input id='serial'>
+<input id='msg' style='color:red;border:none;' readonly><br>
+<span id='main' style='display:none'>
+  Please enter the MODBUS slave address (1...255)<br>
+  slave:<input id='slaveinput' onchange='javascript:slavechanged()'>
+  <span id='slavevalue'></span><br>
+  <span id='regspan' style='display:none'>
+  Please select a Coil No (>=1), Input Bit No (>=10001+)<br>
+  Input Register No (>=30001) or Register No (>=40001)<br>
+  No: <input id='reginput' onchange='javascript:regchanged()'>
+  <span id='regvalue'></span><br>
+</span>
+<span id='valuespan' style='display:none'>
+  CurrentValue: <span id='value'></span><br>
+</span>
+</body>
+</html>

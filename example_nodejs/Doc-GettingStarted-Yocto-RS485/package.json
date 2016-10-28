@@ -1,54 +1,36 @@
 {
-  "name": "doc-gettingstarted-yocto-amp",
+  "name": "doc-gettingstarted-yocto-rs485",
   "author": "Yoctopuce",
-  "description": "Yoctopuce Doc-GettingStarted-Yocto-Amp example",
+  "description": "Yoctopuce Doc-GettingStarted-Yocto-RS485 example",
   "dependencies": {
     "ws": "^1.0.1",
-    "yoctolib-es": "^1.10.25534"
+    "yoctolib-es": "^1.10.25748"
   },
   "devDependencies": {
     "jspm": "~0.17.0-beta.12"
   },
   "jspm": {
-    "name": "doc-gettingstarted-yocto-amp",
+    "name": "doc-gettingstarted-yocto-rs485",
     "directories": {
       "dist": "src"
     },
     "dependencies": {
-      "yoctolib-es": "npm:yoctolib-es@^1.10.25534"
+      "yoctolib-es": "npm:yoctolib-es@^1.10.25748"
     },
     "devDependencies": {
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.9"
     },
     "peerDependencies": {
-      "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
       "babel-runtime": "npm:babel-runtime@^5.8.24",
-      "buffer": "github:jspm/nodelibs-buffer@^0.2.0-alpha",
-      "constants": "github:jspm/nodelibs-constants@^0.2.0-alpha",
       "core-js": "npm:core-js@^1.1.4",
-      "crypto": "github:jspm/nodelibs-crypto@^0.2.0-alpha",
-      "events": "github:jspm/nodelibs-events@^0.2.0-alpha",
       "fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
-      "os": "github:jspm/nodelibs-os@^0.2.0-alpha",
       "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
-      "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
-      "stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
-      "string_decoder": "github:jspm/nodelibs-string_decoder@^0.2.0-alpha",
-      "util": "github:jspm/nodelibs-util@^0.2.0-alpha",
-      "vm": "github:jspm/nodelibs-vm@^0.2.0-alpha"
+      "process": "github:jspm/nodelibs-process@^0.2.0-alpha"
     },
     "overrides": {
-      "npm:babel-runtime@5.8.38": {
+      "npm:babel-runtime@5.8.34": {
         "main": false,
-        "dependencies": {},
-        "optionalDependencies": {
-          "core-js": "^1.2.0"
-        }
-      },
-      "npm:inherits@2.0.3": {
-        "ignore": [
-          "test.js"
-        ]
+        "dependencies": {}
       }
     }
   }

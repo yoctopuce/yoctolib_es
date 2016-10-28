@@ -11,24 +11,20 @@ async function startDemo() {
     // Setup the API to use the VirtualHub on local machine
     let errmsg = new YErrorMsg();
     if (await YAPI.RegisterHub('127.0.0.1', errmsg) != YAPI.SUCCESS) {
-        console.log('Cannot contact VirtualHub on 127.0.0.1: ' + errmsg.msg);
-        return;
+        alert('Cannot contact VirtualHub on 127.0.0.1: ' + errmsg.msg);
     }
 
     // Select specified device, or use first available one
-    let serial = process.argv[process.argv.length - 1];
-    if (serial[8] != '-') {
+    let serial = document.getElementById('serial').value;
+    if (serial == '') {
         // by default use any connected module suitable for the demo
-        let anysensor = YDisplay.FirstDisplay();
-        if (anysensor) {
-            let module = await anysensor.module();
+        let anydiplay = YDisplay.FirstDisplay();
+        if (anydiplay) {
+            let module = await anydiplay.module();
             serial = await module.get_serialNumber();
-        } else {
-            console.log('No matching sensor connected, check cable !');
-            return;
+                 document.getElementById('serial').value = serial;
         }
     }
-    console.log('Using device ' + serial);
     disp = YDisplay.FindDisplay(serial + ".display");
 
     //clean up
@@ -63,7 +59,6 @@ async function startDemo() {
     await l1.drawCircle(h / 8, h / 8, h / 8);
 
     // and animate the layer
-    console.log("Use Ctrl-C to stop");
     x = 0;
     y = 0;
     vx = 1;
@@ -79,7 +74,7 @@ async function refresh() {
         if ((y < 0) || (y > h - (h / 4))) vy = -vy;
         await l1.setLayerPosition(x, y, 0);
     } else {
-        console.log('Module not connected');
+        document.getElementById('msg').value ='Module not connected';
     }
     setTimeout(refresh, 5);
 }

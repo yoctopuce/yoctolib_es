@@ -11,11 +11,11 @@ async function startDemo(args)
         console.log('Cannot contact VirtualHub on 127.0.0.1: '+errmsg.msg);
         return;
     }
-    
+
     // Select the relay to use
     let target;
     if(args[0] == "any") {
-        let anyrelay = YRelay.FirstRelay();   
+        let anyrelay = YRelay.FirstRelay();
         if (anyrelay == null) {
             console.log("No module connected (check USB cable)\n");
             process.exit(1);
@@ -38,7 +38,7 @@ async function startDemo(args)
     await YAPI.FreeAPI();
 }
 
-if(process.argv.length < 4) {
+if(process.argv.length < 5) {
     console.log("usage: jspm run src/demo.js <serial_number> [ ON | OFF ]");
     console.log("       jspm run src/demo.js <logical_name> [ ON | OFF ]");
     console.log("       jspm run src/demo.js any [ ON | OFF ]              (use any discovered device)");

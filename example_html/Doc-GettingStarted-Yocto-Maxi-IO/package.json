@@ -1,21 +1,21 @@
 {
-  "name": "doc-gettingstarted-yocto-3d-v2",
+  "name": "doc-gettingstarted-yocto-maxi-io",
   "author": "Yoctopuce",
-  "description": "Yoctopuce Doc-GettingStarted-Yocto-3D-V2 example",
+  "description": "Yoctopuce Doc-GettingStarted-Yocto-Maxi-IO example",
   "dependencies": {
     "ws": "^1.0.1",
-    "yoctolib-es": "^1.10.25534"
+    "yoctolib-es": "^1.10.25748"
   },
   "devDependencies": {
     "jspm": "~0.17.0-beta.12"
   },
   "jspm": {
-    "name": "doc-gettingstarted-yocto-3d-v2",
+    "name": "doc-gettingstarted-yocto-maxi-io",
     "directories": {
       "dist": "src"
     },
     "dependencies": {
-      "yoctolib-es": "npm:yoctolib-es@^1.10.25534"
+      "yoctolib-es": "npm:yoctolib-es@^1.10.25748"
     },
     "devDependencies": {
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.9"

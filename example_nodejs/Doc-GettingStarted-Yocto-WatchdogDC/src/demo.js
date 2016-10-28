@@ -11,7 +11,7 @@ async function startDemo(args)
         console.log('Cannot contact VirtualHub on 127.0.0.1: '+errmsg.msg);
         return;
     }
-    
+
     // Select the watchdog to use
     let target;
     if(args[0] == "any") {
@@ -39,7 +39,7 @@ async function startDemo(args)
     await YAPI.FreeAPI();
 }
 
-if(process.argv.length < 4) {
+if(process.argv.length < 5) {
     console.log("usage: jspm run src/demo.js <serial_number> [ on | off | reset ]");
     console.log("       jspm run src/demo.js <logical_name> [ on | off | reset ]");
     console.log("       jspm run src/demo.js any [ on | off | reset ]           (use any discovered device)");

@@ -3,63 +3,54 @@ import {YAPI, YErrorMsg, YSerialPort} from 'yoctolib-es';
 var serialPort;
 
 async function startDemo() {
-    const readline = YAPI._nodeRequire('readline');
     await YAPI.LogUnhandledPromiseRejections();
     await YAPI.DisableExceptions();
 
     // Setup the API to use the VirtualHub on local machine
     let errmsg = new YErrorMsg();
     if (await YAPI.RegisterHub('127.0.0.1', errmsg) != YAPI.SUCCESS) {
-        console.log('Cannot contact VirtualHub on 127.0.0.1: ' + errmsg.msg);
+        alert('Cannot contact VirtualHub on 127.0.0.1: ' + errmsg.msg);
         return;
     }
 
-    // Select specified device, or use first available one
-    let serial = process.argv[process.argv.length - 1];
-    if (serial[8] != '-') {
+
+    let serial = document.getElementById('serial').value;
+    if(serial == '') {
         // by default use any connected module suitable for the demo
-        let anysensor = YSerialPort.FirstSerialPort();
-        if (anysensor) {
-            let module = await anysensor.module();
+        let anySerial = YSerialPort.FirstSerialPort();
+        if(anySerial) {
+            let module = await anySerial.module();
             serial = await module.get_serialNumber();
-        } else {
-            console.log('No matching module connected, check cable !');
-            return;
+            document.getElementById('serial').value = serial;
         }
     }
-    console.log('Using device ' + serial);
     serialPort = YSerialPort.FindSerialPort(serial + ".serialPort");
 
     await serialPort.set_serialMode("9600,8N1");
     await serialPort.set_protocol("Line");
     await serialPort.reset();
 
-    const rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout
-    });
-    console.log('Type line to send, or Ctrl-C to exit:');
-    rl.on('line', (input) => {
-        serialPort.writeLine(input);
-    });
-
     refresh();
 }
 
-async function refresh() {
+async function refresh()
+{
+
     var line;
     if (await serialPort.isOnline()) {
-        do {
-            line = await serialPort.readLine();
-            if (line != "") {
-                console.log("Received: " + line);
-            }
-        } while (line != "");
+        line = await serialPort.readLine();
+        document.getElementById('returned_value').value +=line;
     } else {
         console.log('Module not connected');
     }
     setTimeout(refresh, 500);
 }
+
+window.send_data = function()
+{
+    var tosend = document.getElementById('line_input').value;
+    serialPort.writeLine(tosend);
+};
 
 
 startDemo();

@@ -1,6 +1,6 @@
-import { YAPI, YErrorMsg, YGenericSensor } from 'yoctolib-es';
+import { YAPI, YErrorMsg, YPwmInput } from 'yoctolib-es';
 
-var sensor1, sensor2;
+var pwm1, pwm2;
 
 async function startDemo()
 {
@@ -18,9 +18,9 @@ async function startDemo()
     let serial = process.argv[process.argv.length-1];
     if(serial[8] != '-') {
         // by default use any connected module suitable for the demo
-        let anysensor = YGenericSensor.FirstGenericSensor();
-        if(anysensor) {
-            let module = await anysensor.module();
+        let anyPwm = YPwmInput.FirstPwmInput();
+        if(anyPwm) {
+            let module = await anyPwm.module();
             serial = await module.get_serialNumber();
         } else {
             console.log('No matching sensor connected, check cable !');
@@ -28,17 +28,21 @@ async function startDemo()
         }
     }
     console.log('Using device '+serial);
-    sensor1  = YGenericSensor.FindGenericSensor(serial+".genericSensor1");
-    sensor2  = YGenericSensor.FindGenericSensor(serial+".genericSensor2");
+    pwm1  = YPwmInput.FindPwmInput(serial + ".pwmInput1");
+    pwm2  = YPwmInput.FindPwmInput(serial + ".pwmInput2");
 
     refresh();
 }
 
 async function refresh()
 {
-    if (await sensor1.isOnline()) {
-        console.log('Input 1: '+(await sensor1.get_currentValue()) + (await sensor1.get_unit()));
-        console.log('Input 2: '+(await sensor2.get_currentValue()) + (await sensor2.get_unit()));
+    if (await pwm1.isOnline()) {
+        console.log("PWM1 : " + (await pwm1.get_frequency()) + "Hz "
+                         + (await pwm1.get_dutyCycle()) + "% "
+                         + (await pwm1.get_pulseCounter()) +" pulse edges ");
+        console.log("PWM2 : " + (await pwm2.get_frequency()) + "Hz "
+                         + (await pwm2.get_dutyCycle()) + "% "
+                         + (await pwm2.get_pulseCounter()) + " pulse edges ");
     } else {
         console.log('Module not connected');
     }

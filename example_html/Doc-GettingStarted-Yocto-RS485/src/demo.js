@@ -1,11 +1,9 @@
 import {YAPI, YErrorMsg, YSerialPort} from 'yoctolib-es';
 
 var serialPort;
-var target = {slave: 0, reg: 0};
-var g_step = 1;
-var rl;
+var slave;
+var reg;
 async function startDemo() {
-    const readline = YAPI._nodeRequire('readline');
 
     await YAPI.LogUnhandledPromiseRejections();
     await YAPI.DisableExceptions();
@@ -13,91 +11,62 @@ async function startDemo() {
     // Setup the API to use the VirtualHub on local machine
     let errmsg = new YErrorMsg();
     if (await YAPI.RegisterHub('127.0.0.1', errmsg) != YAPI.SUCCESS) {
-        console.log('Cannot contact VirtualHub on 127.0.0.1: ' + errmsg.msg);
+        alert('Cannot contact VirtualHub on 127.0.0.1: ' + errmsg.msg);
         return;
     }
-
+    refresh();
+}
+async function refresh() {
     // Select specified device, or use first available one
-    let serial = process.argv[process.argv.length - 1];
-    if (serial[8] != '-') {
+    let serial = document.getElementById('serial').value;
+    if (serial == '') {
         // by default use any connected module suitable for the demo
         let anyserial = YSerialPort.FirstSerialPort();
         if (anyserial) {
             let module = await anyserial.module();
             serial = await module.get_serialNumber();
-        } else {
-            console.log('No matching module connected, check cable !');
-            return;
+            document.getElementById('serial').value = serial;
         }
     }
-    console.log('Using device ' + serial);
     serialPort = YSerialPort.FirstSerialPort();
-    rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout
-    });
-    console.log('Please enter the MODBUS slave address (1...255)');
-    console.log('Slave:');
-    rl.on('line', handleInput);
+     if (await serialPort.isOnline()) {
+        // display motor status
+        document.getElementById('msg').value = '';
+        document.getElementById('main').style.display = '';
+    } else {
+        document.getElementById('msg').value = 'Module not connected';
+    }
+    setTimeout(refresh, 500);
 }
 
-async function handleInput(chunk) {
-    var val = parseInt(chunk);
-    switch (g_step) {
-        case 1:
-            if (val < 1 || val > 255) {
-                console.log("invalid slave number");
-            } else {
-                target.slave = val;
-                g_step++;
-                console.log("Slave = " + target.slave);
-                console.log("Please select a Coil No (>=1), Input Bit No (>=10001+),");
-                console.log("       Register No (>=30001) or Input Register No (>=40001)");
-                console.log("No: ");
-            }
-            break;
-        case 2:
-            if (val < 1 || val >= 50000 || (val % 10000) == 0) {
-                console.log("invalid register number");
-            } else {
-                target.reg = val;
-                await printModbusValue(target.slave, target.reg);
-                g_step++;
-                console.log("Press ENTER to read again, Q to quit:");
-                if ((target.reg % 30000) < 10000) {
-                    console.log(" or enter a new value:");
-                }
-            }
-            break;
-        case 3:
-            if (chunk.charAt(0) == 'q' || chunk.charAt(0) == 'Q') {
-                await YAPI.FreeAPI();
-                rl.close();
-                break;
-            }
-            if (chunk.charAt(0) != 'r' && chunk.charAt(0) != 'R' && (target.reg % 30000) < 10000) {
-                if (target.reg >= 30001) {
-                    await serialPort.modbusWriteRegister(target.slave, target.reg - 30001, val);
-                } else {
-                    await serialPort.modbusWriteBit(target.slave, target.reg - 1, val);
-                }
-            }
-            await printModbusValue(target.slave, target.reg);
-            console.log("Press R to read again, Q to quit");
-            if ((target.reg % 30000) < 10000) {
-                console.log(" or enter a new value");
-            }
-            console.log(": ");
-            break;
-        default:
-            console.log('data: ' + chunk);
+
+function slavechanged() {
+    slave = parseInt(document.getElementById('slaveinput').value);
+    if (slave > 0) {
+        document.getElementById('slaveinput').style.display = 'none';
+        document.getElementById('slavevalue').innerHTML = slave;
+        document.getElementById('regspan').style.display = '';
     }
 }
 
-async function printModbusValue(slave, reg) {
-    var val;
-    console.log("reg=" + reg + " slave=" + slave);
-    if (reg >= 40001) {
+
+async function regchanged() {
+    reg = parseInt(document.getElementById('reginput').value);
+    var res;
+    if (reg > 0) {
+        let value = await modbus_readvalue(slave, reg);
+        document.getElementById('reginput').style.display = 'none';
+        document.getElementById('regvalue').innerHTML = reg;
+        document.getElementById('valuespan').style.display = '';
+        document.getElementById('value').innerHTML = value;
+    }
+}
+
+
+
+async function modbus_readvalue(slave, reg) {
+    let val;
+     if (reg >= 40001) {
         val = (await serialPort.modbusReadRegisters(slave, reg - 40001, 1))[0];
     } else if (reg >= 30001) {
         val = (await serialPort.modbusReadInputRegisters(slave, reg - 30001, 1))[0];
@@ -109,6 +78,10 @@ async function printModbusValue(slave, reg) {
     console.log("Current value: " + val);
     return val;
 }
+
+
+window.slavechanged = slavechanged;
+window.regchanged = regchanged;
 
 
 startDemo();

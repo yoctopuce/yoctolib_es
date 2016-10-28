@@ -11,7 +11,7 @@ async function startDemo(args)
         console.log('Cannot contact VirtualHub on 127.0.0.1: '+errmsg.msg);
         return;
     }
-    
+
     // Select the relay to use
     let target;
     if(args[0] == "any") {
@@ -28,7 +28,7 @@ async function startDemo(args)
 
     // Switch relay as requested
     console.log("Turn LED " + args[1]);
-    var led = YLed.FindLed(target + ".relay1");
+    var led = YLed.FindLed(target + ".led");
     if(await led.isOnline()) {
         await led.set_power(args[1] == "ON" ? YLed.POWER_ON : YLed.POWER_OFF);
     } else {
@@ -38,7 +38,7 @@ async function startDemo(args)
     await YAPI.FreeAPI();
 }
 
-if(process.argv.length < 4) {
+if(process.argv.length < 5) {
     console.log("usage: jspm run src/demo.js <serial_number> [ ON | OFF ]");
     console.log("       jspm run src/demo.js <logical_name> [ ON | OFF ]");
     console.log("       jspm run src/demo.js any [ ON | OFF ]              (use any discovered device)");

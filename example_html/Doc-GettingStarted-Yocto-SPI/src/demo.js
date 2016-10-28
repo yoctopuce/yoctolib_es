@@ -30,7 +30,7 @@ async function refresh()
     spiPort = YSpiPort.FindSpiPort(serial+'.spiPort');
     if(await spiPort.isOnline()) {
         document.getElementById('msg').value = '';
-        await spiPort.set_spiMode("250000,2,msb");
+        await spiPort.set_spiMode("250000,3,msb");
         await spiPort.set_ssPolarity(YSpiPort.SSPOLARITY_ACTIVE_LOW);
         await spiPort.set_protocol("Frame:5ms");
         await spiPort.reset();

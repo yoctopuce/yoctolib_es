@@ -1,5 +1,6 @@
-import { YAPI, YErrorMsg, YGenericSensor } from 'yoctolib-es';
+import { YAPI, YErrorMsg, YPwmInput } from 'yoctolib-es';
 
+var pwm1, pwm2;
 async function startDemo()
 {
     await YAPI.LogUnhandledPromiseRejections();
@@ -18,20 +19,24 @@ async function refresh()
     let serial = document.getElementById('serial').value;
     if(serial == '') {
         // by default use any connected module suitable for the demo
-        let anysensor = YGenericSensor.FirstGenericSensor();
-        if(anysensor) {
-            let module = await anysensor.module();
+        let anyPwm = YPwmInput.FirstPwmInput();
+        if(anyPwm) {
+            let module = await anyPwm.module();
             serial = await module.get_serialNumber();
             document.getElementById('serial').value = serial;
         }
     }
-    let sensor1  = YGenericSensor.FindGenericSensor(serial+".genericSensor1");
-    let sensor2  = YGenericSensor.FindGenericSensor(serial+".genericSensor2");
+    pwm1  = YPwmInput.FindPwmInput(serial + ".pwmInput1");
+    pwm2  = YPwmInput.FindPwmInput(serial + ".pwmInput2");
 
-    if (await sensor1.isOnline()) {
+    if (await pwm1.isOnline()) {
         document.getElementById('msg').value = '';
-        document.getElementById("sensor-val1").value = (await sensor1.get_currentValue()) + (await sensor1.get_unit());
-        document.getElementById("sensor-val2").value = (await sensor2.get_currentValue()) + (await sensor2.get_unit());
+        document.getElementById('pwm1-state').value = (await pwm1.get_frequency()) + "Hz "
+                         + (await pwm1.get_dutyCycle()) + "% "
+                         + (await pwm1.get_pulseCounter()) +" pulse edges ";
+        document.getElementById('pwm2-state').value = (await pwm2.get_frequency()) + "Hz "
+                         + (await pwm2.get_dutyCycle()) + "% "
+                         + (await pwm2.get_pulseCounter()) + " pulse edges ";
     } else {
         document.getElementById('msg').value = 'Module not connected';
     }

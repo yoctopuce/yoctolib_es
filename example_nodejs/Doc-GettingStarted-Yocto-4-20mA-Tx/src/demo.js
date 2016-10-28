@@ -28,6 +28,7 @@ async function startDemo(args)
         target = args[0];
     }
     console.log('Using device '+target);
+    let value = args[1];
     let loop = YCurrentLoopOutput.FindCurrentLoopOutput(target + ".currentLoopOutput");
     if (await loop.isOnline()) {
         await loop.set_current(value);
@@ -48,7 +49,7 @@ async function startDemo(args)
     await YAPI.FreeAPI();
 }
 
-if(process.argv.length < 4) {
+if(process.argv.length < 5) {
     console.log("usage: jspm run src/demo.js <serial_number> <current>");
     console.log("       jspm run src/demo.js <logical_name>  <current>");
     console.log("       jspm run src/demo.js any <current>              (use any discovered device)");

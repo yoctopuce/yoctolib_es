@@ -25,11 +25,11 @@ async function refresh()
             document.getElementById('serial').value = serial;
         }
     }
-    let tilt1         = yFindTilt(serial+".tilt1");
-    let tilt2         = yFindTilt(serial+".tilt2");
-    let compass       = yFindCompass(serial+".compass");
-    let gyro          = yFindGyro(serial+".gyro");
-    let accelerometer = yFindAccelerometer(serial+".accelerometer");
+    let tilt1         = YTilt.FindTilt(serial+".tilt1");
+    let tilt2         = YTilt.FindTilt(serial+".tilt2");
+    let compass       = YCompass.FindCompass(serial+".compass");
+    let gyro          = YGyro.FindGyro(serial+".gyro");
+    let accelerometer = YAccelerometer.FindAccelerometer(serial+".accelerometer");
     if (await tilt1.isOnline()) {
         document.getElementById('msg').value = '';
         document.getElementById("tilt1-val").value    = await tilt1.get_currentValue();

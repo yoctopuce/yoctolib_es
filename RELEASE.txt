@@ -1,12 +1,14 @@
-- Fix YAPI.RegisterHub('http://xxxx) that was using WebSocket
-- Fix YAPI.FreeAPI() that was not flushing correctly all pending request.
-- Fix some comments in sources
-- Add Doc-GettingStarted-Yocto-Buzzer example
-- Add Doc-GettingStarted-Yocto-Display
-- Add Doc-GettingStarted-Yocto-MaxiDisplay
-- Add Doc-GettingStarted-Yocto-MiniDisplay
-- Add Doc-GettingStarted-Yocto-Maxi-IO
-- Add Doc-GettingStarted-Yocto-Motor-DC
-- Add Doc-GettingStarted-Yocto-PowerColor
-- Add Doc-GettingStarted-Yocto-RS232
-- Add Doc-GettingStarted-Yocto-RS485Add Doc-GettingStarted-Yocto-Serial
+- Fix possible timeout during firmware update of GSM hub
+- Fix method sendPUK of class YCellular
+- Fix Yocto-PowerColor example
+- Fix Yocto-Maxi-IO example
+- Fix Yocto-PWM-RX examples
+- Fix Yocto-PWM-TX examples
+- Fix Yocto-miniDisplay example
+- Fix Yocto-Display example
+- Fix Yocto-MaxiDisplayexamples
+- Fix Yocto-Motor-DC example
+- Fix Yocto-RS232 example
+- Fix Yocto-RS485 example
+- Fix Yocto-SPI example
+- Fix Yocto-Demo example

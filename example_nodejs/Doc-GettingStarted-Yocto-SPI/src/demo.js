@@ -11,7 +11,7 @@ async function startDemo(args)
         console.log('Cannot contact VirtualHub on 127.0.0.1: '+errmsg.msg);
         return;
     }
-    
+
     // Select the SPI interface to use
     let target;
     if(args[0] == "any") {
@@ -32,7 +32,7 @@ async function startDemo(args)
     if(await spiPort.isOnline()) {
         // sample code driving MAX7219 7-segment display driver
         // such as SPI7SEGDISP8.56 from www.embedded-lab.com
-        await spiPort.set_spiMode("250000,2,msb");
+        await spiPort.set_spiMode("250000,3,msb");
         await spiPort.set_ssPolarity(YSpiPort.SSPOLARITY_ACTIVE_LOW);
         await spiPort.set_protocol("Frame:5ms");
         await spiPort.reset();

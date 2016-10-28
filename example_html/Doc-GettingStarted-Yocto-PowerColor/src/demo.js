@@ -1,5 +1,7 @@
 import { YAPI, YErrorMsg, YColorLed } from 'yoctolib-es';
 
+var c1;
+
 async function startDemo(args)
 {
     await YAPI.LogUnhandledPromiseRejections();
@@ -8,54 +10,37 @@ async function startDemo(args)
     // Setup the API to use the VirtualHub on local machine
     let errmsg = new YErrorMsg();
     if(await YAPI.RegisterHub('127.0.0.1', errmsg) != YAPI.SUCCESS) {
-        console.log('Cannot contact VirtualHub on 127.0.0.1: '+errmsg.msg);
-        return;
+        alert('Cannot contact VirtualHub on 127.0.0.1: '+errmsg.msg);
     }
+    refresh();
+}
 
-    // Select the relay to use
-    let target;
-    if(args[0] == "any") {
+
+async function refresh()
+{
+    let serial = document.getElementById('serial').value;
+    if(serial == '') {
+        // by default use any connected module suitable for the demo
         let anyLed = YColorLed.FirstColorLed();
-        if (anyLed == null) {
-            console.log("No module connected (check USB cable)\n");
-            process.exit(1);
+        if(anyLed) {
+            let module = await anyLed.module();
+            serial = await module.get_serialNumber();
+            document.getElementById('serial').value = serial;
         }
-        let module = await anyLed.get_module();
-        target = await module.get_serialNumber();
-    } else {
-        target = args[0];
     }
-
-    let led1 = YColorLed.FindColorLed(target+'.colorLed1');
-
-    let color;
-    if (args[1] == "red")
-        color = 0xFF0000;
-    else if (args[1] == "green")
-        color = 0x00FF00;
-    else if (args[1] == "blue")
-        color = 0x0000FF;
-    else
-        color = parseInt(args[1],16);
-
-    if(await led1.isOnline()) {
-        // Change the color in two different ways
-        led1.rgbMove(color,1000);  // smooth transition
+    c1 = YColorLed.FindColorLed(serial+'.colorLed1');
+    if(await c1.isOnline()) {
+        document.getElementById('msg').value = '';
     } else {
-        console.log("Module not connected (check identification and USB cable)\n");
+        document.getElementById('msg').value = 'Module not connected';
     }
-
-    await YAPI.FreeAPI();
+    setTimeout(refresh, 500);
 }
 
-if(process.argv.length < 5) {
-    console.log("usage: jspm run src/demo.js <serial_number> [ color | rgb ]");
-    console.log("       jspm run src/demo.js <logical_name> [ color | rgb ]");
-    console.log("       jspm run src/demo.js any [ color | rgb ]       (use any discovered device)");
-    console.log("Eg.");
-    console.log("   jspm run src/demo.js any FF1493 ");
-    console.log("   jspm run src/demo.js YRGBLED1-123456 red");
-} else {
-    startDemo(process.argv.slice(process.argv.length - 2));
-}
+window.setColor = function(corlor)
+{
+    c1.rgbMove(corlor,3000);    // move in 3 seconds
+};
+
+startDemo();
 
