@@ -1,14 +1,2 @@
-- Fix possible timeout during firmware update of GSM hub
-- Fix method sendPUK of class YCellular
-- Fix Yocto-PowerColor example
-- Fix Yocto-Maxi-IO example
-- Fix Yocto-PWM-RX examples
-- Fix Yocto-PWM-TX examples
-- Fix Yocto-miniDisplay example
-- Fix Yocto-Display example
-- Fix Yocto-MaxiDisplayexamples
-- Fix Yocto-Motor-DC example
-- Fix Yocto-RS232 example
-- Fix Yocto-RS485 example
-- Fix Yocto-SPI example
-- Fix Yocto-Demo example
+- Fix typo in CO2 calibration function name
+- Fix comment of method set_portPolarity() of YDigitalIO class.
