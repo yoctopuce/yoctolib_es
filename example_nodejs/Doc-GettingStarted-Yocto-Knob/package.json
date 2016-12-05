@@ -4,7 +4,7 @@
   "description": "Yoctopuce Doc-GettingStarted-Yocto-Knob example",
   "dependencies": {
     "ws": "^1.0.1",
-    "yoctolib-es": "^1.10.25913"
+    "yoctolib-es": "^1.10.26144"
   },
   "devDependencies": {
     "jspm": "~0.17.0-beta.12"
@@ -15,7 +15,7 @@
       "dist": "src"
     },
     "dependencies": {
-      "yoctolib-es": "npm:yoctolib-es@^1.10.25913"
+      "yoctolib-es": "npm:yoctolib-es@^1.10.26144"
     },
     "devDependencies": {
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.9"
