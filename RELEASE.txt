@@ -1,1 +1,5 @@
-- Fix timestamps of YMeasures that was not rounded to 1/1000s
+- Add Prog-DataLogger example
+- Add isSensorReady alias to sensor proxy
+- Add loadAttribute method
+- Add Yocto-Proximity example
+- Fix JSPM error with Node.JS > 4.0
