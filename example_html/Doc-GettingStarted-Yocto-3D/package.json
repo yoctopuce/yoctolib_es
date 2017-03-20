@@ -4,7 +4,7 @@
   "description": "Yoctopuce Doc-GettingStarted-Yocto-3D example",
   "dependencies": {
     "ws": "^1.0.1",
-    "yoctolib-es": "^1.10.26380"
+    "yoctolib-es": "^1.10.26849"
   },
   "devDependencies": {
     "jspm": "~0.17.0-beta.12"
@@ -15,7 +15,7 @@
       "dist": "src"
     },
     "dependencies": {
-      "yoctolib-es": "npm:yoctolib-es@^1.10.26380"
+      "yoctolib-es": "npm:yoctolib-es@^1.10.26849"
     },
     "devDependencies": {
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.18"

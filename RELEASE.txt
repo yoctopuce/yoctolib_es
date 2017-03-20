@@ -1,5 +1,1 @@
-- Add Prog-DataLogger example
-- Add isSensorReady alias to sensor proxy
-- Add loadAttribute method
-- Add Yocto-Proximity example
-- Fix JSPM error with Node.JS > 4.0
+- Add YRangeFinder class
