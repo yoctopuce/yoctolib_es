@@ -3,7 +3,7 @@ Yoctopuce EcmaScript 2015 library (DEPRECATED)
 
 **Important: this is an old version of Yoctopuce library for JavaScript / EcmaScript.**
 It has been preserved on GitHub to avoid breaking dependencies, but is not any more updated.
-We recommend using the ***EcmaScript 2017** version, which is much more convenient and does
+We recommend using the [EcmaScript 2017](https://github.com/yoctopuce/yoctolib_es2017) version, which is much more convenient and does
 not anymore require the use of `jspm`.
 
 ## Content of this package
