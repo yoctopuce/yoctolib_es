@@ -3,7 +3,7 @@
   "author": "Yoctopuce",
   "description": "Yoctopuce Doc-GettingStarted-Yocto-Altimeter example",
   "dependencies": {
-    "ws": "^1.0.1",
+    "ws": "^6.2.1",
     "yoctolib-es": "^1.10.27439"
   },
   "devDependencies": {
